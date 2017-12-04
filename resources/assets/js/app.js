@@ -7,6 +7,13 @@
 
 window.Vue = require('vue');
 
+import Vue from 'vue';
+import VueMaterial from 'vue-material';
+import 'vue-material/dist/vue-material.min.css';
+import 'vue-material/dist/theme/default.css'
+
+Vue.use(VueMaterial);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -14,6 +21,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('arcoders-app', require('./components/layouts/app.vue'));
 
 const app = new Vue({
     el: '#app'
