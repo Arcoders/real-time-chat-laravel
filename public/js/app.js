@@ -42217,7 +42217,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.md-app[data-v-226279c7] {\n  height: 100vh;\n  border: 2px solid rgba(0, 0, 0, 0.12);\n}\n.separator[data-v-226279c7] {\n  margin-top: 25px;\n}\n.arcoders-right[data-v-226279c7] {\n  margin-right: 2%;\n  margin-top: 10px;\n}\n.arcoders-tip[data-v-226279c7] {\n  background-color: rgba(0, 0, 0, 0.12);\n  font-size: 14px;\n}\n.md-app-content[data-v-226279c7] {\n  padding: 5px;\n}\n.md-layout[data-v-226279c7] {\n  height: 100%;\n}\n.md-layout-item[data-v-226279c7] {\n  background: rgba(230, 230, 250, 0.12);\n}\n.arcoders-padding[data-v-226279c7] {\n  padding: 10px;\n}\n.md-scrollbar[data-v-226279c7] {\n  overflow-y: auto;\n}\n", ""]);
+exports.push([module.i, "\n.md-app[data-v-226279c7] {\n  height: 100vh;\n  border: 2px solid rgba(0, 0, 0, 0.12);\n}\n.separator[data-v-226279c7] {\n  margin-top: 25px;\n}\n.arcoders-right[data-v-226279c7] {\n  margin-right: 2%;\n  margin-top: 10px;\n}\n.arcoders-tip[data-v-226279c7] {\n  background-color: rgba(0, 0, 0, 0.12);\n  font-size: 14px;\n}\n.arcoders-height-10[data-v-226279c7] {\n  height: 10%;\n}\n.arcoders-height-90[data-v-226279c7] {\n  height: 90%;\n  background: rgba(230, 230, 250, 0.12);\n}\n", ""]);
 
 // exports
 
@@ -42558,7 +42558,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -42582,7 +42581,7 @@ var render = function() {
     [
       _c(
         "md-app",
-        { attrs: { "md-waterfall": "", "md-mode": "overlap" } },
+        { attrs: { "md-mode": "overlap" } },
         [
           _c("md-app-toolbar", { staticClass: "md-primary md-large" }, [
             _c(
@@ -42647,23 +42646,17 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("md-app-content", [
-            _c(
-              "div",
-              { staticClass: "md-layout" },
-              [
-                _c(
-                  "md-content",
-                  { staticClass: "md-scrollbar" },
-                  [_c("arcoders-list-rooms")],
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "md-layout-item arcoders-padding" }, [
-                  _vm._v("mmm")
-                ])
-              ],
-              1
-            )
+            _c("div", { staticClass: "md-layout arcoders-height-10" }, [
+              _c("div", { staticClass: "md-layout-item" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "md-layout-item" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "md-layout arcoders-height-90" }, [
+              _c("div", { staticClass: "md-layout-item" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "md-layout-item" })
+            ])
           ])
         ],
         1
@@ -42823,7 +42816,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.md-list[data-v-47562d44] {\n  width: 320px;\n  max-width: 100%;\n  display: inline-block;\n  vertical-align: top;\n  border: 1px solid rgba(0, 0, 0, 0.12);\n}\n", ""]);
+exports.push([module.i, "\n.md-list[data-v-47562d44] {\n  position: relative;\n  width: 320px;\n  max-width: 100%;\n  vertical-align: top;\n  border: 0px solid rgba(0, 0, 0, 0.12);\n}\n.md-scrollbar[data-v-47562d44] {\n  overflow-y: auto;\n}\n.md-content[data-v-47562d44] {\n  max-width: 100%;\n  max-height: 450px;\n}\n", ""]);
 
 // exports
 
@@ -42998,204 +42991,276 @@ var render = function() {
     "div",
     [
       _c(
-        "md-list",
+        "md-field",
+        { staticClass: "arcoders-search" },
+        [
+          _c("label", [_vm._v("Search...")]),
+          _vm._v(" "),
+          _c("md-input"),
+          _vm._v(" "),
+          _c("md-icon", [_vm._v("search")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-content",
+        { staticClass: "md-scrollbar" },
         [
           _c(
-            "md-list-item",
+            "md-list",
             [
-              _c("md-avatar", [
-                _c("img", {
-                  attrs: {
-                    src: "https://placeimg.com/40/40/people/5",
-                    alt: "People"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "md-list-item-text" }, [
-                _vm._v("Abbey Christansen")
-              ]),
-              _vm._v(" "),
               _c(
-                "md-button",
-                { staticClass: "md-icon-button md-list-action" },
+                "md-list-item",
                 [
-                  _c("md-icon", { staticClass: "md-primary" }, [
-                    _vm._v("chat_bubble")
-                  ])
+                  _c("md-avatar", [
+                    _c("img", {
+                      attrs: {
+                        src: "https://placeimg.com/40/40/people/1",
+                        alt: "People"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "md-list-item-text" }, [
+                    _vm._v("Alex Nelson")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "md-button",
+                    { staticClass: "md-icon-button md-list-action" },
+                    [
+                      _c("md-icon", { staticClass: "md-primary" }, [
+                        _vm._v("chat_bubble")
+                      ])
+                    ],
+                    1
+                  )
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("md-divider", { staticClass: "md-inset" }),
-          _vm._v(" "),
-          _c(
-            "md-list-item",
-            [
-              _c("md-avatar", [
-                _c("img", {
-                  attrs: {
-                    src: "https://placeimg.com/40/40/people/1",
-                    alt: "People"
-                  }
-                })
-              ]),
+              ),
               _vm._v(" "),
-              _c("span", { staticClass: "md-list-item-text" }, [
-                _vm._v("Alex Nelson")
-              ]),
+              _c("md-divider", { staticClass: "md-inset" }),
               _vm._v(" "),
               _c(
-                "md-button",
-                { staticClass: "md-icon-button md-list-action" },
+                "md-list-item",
                 [
-                  _c("md-icon", { staticClass: "md-primary" }, [
-                    _vm._v("chat_bubble")
-                  ])
+                  _c("md-avatar", [
+                    _c("img", {
+                      attrs: {
+                        src: "https://placeimg.com/40/40/people/6",
+                        alt: "People"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "md-list-item-text" }, [
+                    _vm._v("Mary Johnson")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "md-button",
+                    { staticClass: "md-icon-button md-list-action" },
+                    [_c("md-icon", [_vm._v("chat_bubble")])],
+                    1
+                  )
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("md-divider", { staticClass: "md-inset" }),
-          _vm._v(" "),
-          _c(
-            "md-list-item",
-            [
-              _c("md-avatar", [
-                _c("img", {
-                  attrs: {
-                    src: "https://placeimg.com/40/40/people/6",
-                    alt: "People"
-                  }
-                })
-              ]),
+              ),
               _vm._v(" "),
-              _c("span", { staticClass: "md-list-item-text" }, [
-                _vm._v("Mary Johnson")
-              ]),
+              _c("md-divider", { staticClass: "md-inset" }),
               _vm._v(" "),
               _c(
-                "md-button",
-                { staticClass: "md-icon-button md-list-action" },
-                [_c("md-icon", [_vm._v("chat_bubble")])],
+                "md-list-item",
+                [
+                  _c("md-avatar", [
+                    _c("img", {
+                      attrs: {
+                        src: "https://placeimg.com/40/40/people/10",
+                        alt: "People"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "md-list-item-text" }, [
+                    _vm._v("Mary Johnson")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "md-button",
+                    { staticClass: "md-icon-button md-list-action" },
+                    [_c("md-icon", [_vm._v("chat_bubble")])],
+                    1
+                  )
+                ],
                 1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("md-divider", { staticClass: "md-inset" }),
-          _vm._v(" "),
-          _c(
-            "md-list-item",
-            [
-              _c("md-avatar", [
-                _c("img", {
-                  attrs: {
-                    src: "https://placeimg.com/40/40/people/10",
-                    alt: "People"
-                  }
-                })
-              ]),
+              ),
               _vm._v(" "),
-              _c("span", { staticClass: "md-list-item-text" }, [
-                _vm._v("Mary Johnson")
-              ]),
+              _c("md-divider", { staticClass: "md-inset" }),
               _vm._v(" "),
               _c(
-                "md-button",
-                { staticClass: "md-icon-button md-list-action" },
-                [_c("md-icon", [_vm._v("chat_bubble")])],
+                "md-list-item",
+                [
+                  _c("md-avatar", [
+                    _c("img", {
+                      attrs: {
+                        src: "https://placeimg.com/40/40/people/8",
+                        alt: "People"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "md-list-item-text" }, [
+                    _vm._v("Mary Johnson")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "md-button",
+                    { staticClass: "md-icon-button md-list-action" },
+                    [_c("md-icon", [_vm._v("chat_bubble")])],
+                    1
+                  )
+                ],
                 1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("md-divider", { staticClass: "md-inset" }),
-          _vm._v(" "),
-          _c(
-            "md-list-item",
-            [
-              _c("md-avatar", [
-                _c("img", {
-                  attrs: {
-                    src: "https://placeimg.com/40/40/people/8",
-                    alt: "People"
-                  }
-                })
-              ]),
+              ),
               _vm._v(" "),
-              _c("span", { staticClass: "md-list-item-text" }, [
-                _vm._v("Mary Johnson")
-              ]),
+              _c("md-divider", { staticClass: "md-inset" }),
               _vm._v(" "),
               _c(
-                "md-button",
-                { staticClass: "md-icon-button md-list-action" },
-                [_c("md-icon", [_vm._v("chat_bubble")])],
+                "md-list-item",
+                [
+                  _c("md-avatar", [
+                    _c("img", {
+                      attrs: {
+                        src: "https://placeimg.com/40/40/people/9",
+                        alt: "People"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "md-list-item-text" }, [
+                    _vm._v("Mary Johnson")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "md-button",
+                    { staticClass: "md-icon-button md-list-action" },
+                    [_c("md-icon", [_vm._v("chat_bubble")])],
+                    1
+                  )
+                ],
                 1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("md-divider", { staticClass: "md-inset" }),
-          _vm._v(" "),
-          _c(
-            "md-list-item",
-            [
-              _c("md-avatar", [
-                _c("img", {
-                  attrs: {
-                    src: "https://placeimg.com/40/40/people/9",
-                    alt: "People"
-                  }
-                })
-              ]),
+              ),
               _vm._v(" "),
-              _c("span", { staticClass: "md-list-item-text" }, [
-                _vm._v("Mary Johnson")
-              ]),
+              _c("md-divider", { staticClass: "md-inset" }),
               _vm._v(" "),
               _c(
-                "md-button",
-                { staticClass: "md-icon-button md-list-action" },
-                [_c("md-icon", [_vm._v("chat_bubble")])],
+                "md-list-item",
+                [
+                  _c("md-avatar", [
+                    _c("img", {
+                      attrs: {
+                        src: "https://placeimg.com/40/40/people/11",
+                        alt: "People"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "md-list-item-text" }, [
+                    _vm._v("Mary Johnson")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "md-button",
+                    { staticClass: "md-icon-button md-list-action" },
+                    [_c("md-icon", [_vm._v("chat_bubble")])],
+                    1
+                  )
+                ],
                 1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("md-divider", { staticClass: "md-inset" }),
-          _vm._v(" "),
-          _c(
-            "md-list-item",
-            [
-              _c("md-avatar", [
-                _c("img", {
-                  attrs: {
-                    src: "https://placeimg.com/40/40/people/11",
-                    alt: "People"
-                  }
-                })
-              ]),
+              ),
               _vm._v(" "),
-              _c("span", { staticClass: "md-list-item-text" }, [
-                _vm._v("Mary Johnson")
-              ]),
+              _c("md-divider", { staticClass: "md-inset" }),
               _vm._v(" "),
               _c(
-                "md-button",
-                { staticClass: "md-icon-button md-list-action" },
-                [_c("md-icon", [_vm._v("chat_bubble")])],
+                "md-list-item",
+                [
+                  _c("md-avatar", [
+                    _c("img", {
+                      attrs: {
+                        src: "https://placeimg.com/40/40/people/13",
+                        alt: "People"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "md-list-item-text" }, [
+                    _vm._v("Mary Johnson")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "md-button",
+                    { staticClass: "md-icon-button md-list-action" },
+                    [_c("md-icon", [_vm._v("chat_bubble")])],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("md-divider", { staticClass: "md-inset" }),
+              _vm._v(" "),
+              _c(
+                "md-list-item",
+                [
+                  _c("md-avatar", [
+                    _c("img", {
+                      attrs: {
+                        src: "https://placeimg.com/40/40/people/21",
+                        alt: "People"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "md-list-item-text" }, [
+                    _vm._v("Mary Johnson")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "md-button",
+                    { staticClass: "md-icon-button md-list-action" },
+                    [_c("md-icon", [_vm._v("chat_bubble")])],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("md-divider", { staticClass: "md-inset" }),
+              _vm._v(" "),
+              _c(
+                "md-list-item",
+                [
+                  _c("md-avatar", [
+                    _c("img", {
+                      attrs: {
+                        src: "https://placeimg.com/40/40/people/23",
+                        alt: "People"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "md-list-item-text" }, [
+                    _vm._v("Mary Johnson")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "md-button",
+                    { staticClass: "md-icon-button md-list-action" },
+                    [_c("md-icon", [_vm._v("chat_bubble")])],
+                    1
+                  )
+                ],
                 1
               )
             ],

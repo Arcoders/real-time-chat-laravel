@@ -1,6 +1,6 @@
 <template>
     <div class="page-container">
-        <md-app md-waterfall md-mode="overlap">
+        <md-app  md-mode="overlap">
             <md-app-toolbar class="md-primary md-large">
                 <div class="md-toolbar-row separator">
 
@@ -28,13 +28,20 @@
 
             <md-app-content>
 
-                <div class="md-layout">
+                <div class="md-layout arcoders-height-10">
 
-                    <md-content class="md-scrollbar">
-                        <arcoders-list-rooms></arcoders-list-rooms>
-                    </md-content>
+                    <div class="md-layout-item"></div>
 
-                    <div class="md-layout-item arcoders-padding">mmm</div>
+                    <div class="md-layout-item"></div>
+
+                </div>
+
+                <div class="md-layout arcoders-height-90">
+
+                    <div class="md-layout-item"></div>
+
+                    <div class="md-layout-item"></div>
+
                 </div>
 
             </md-app-content>
@@ -58,20 +65,12 @@
         background-color: rgba(#000, .12);
         font-size: 14px;
     }
-    .md-app-content {
-        padding: 5px;
+    .arcoders-height-10 {
+        height: 10%;
     }
-    .md-layout {
-        height: 100%;
-    }
-    .md-layout-item {
+    .arcoders-height-90 {
+        height: 90%;
         background: rgba(lavender, .12);
-    }
-    .arcoders-padding {
-        padding: 10px;
-    }
-    .md-scrollbar {
-        overflow-y: auto;
     }
 </style>
 
