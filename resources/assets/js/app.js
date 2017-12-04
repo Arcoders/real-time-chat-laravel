@@ -22,6 +22,7 @@ Vue.use(VueMaterial);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('arcoders-app', require('./components/layouts/app.vue'));
+Vue.component('arcoders-list-rooms', require('./components/rooms/list-rooms.vue'));
 
 const app = new Vue({
     el: '#app'

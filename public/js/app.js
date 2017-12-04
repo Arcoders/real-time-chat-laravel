@@ -11054,6 +11054,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example-component', __webpack_require__(14));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('arcoders-app', __webpack_require__(17));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('arcoders-list-rooms', __webpack_require__(30));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
@@ -42216,7 +42217,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.md-app[data-v-226279c7] {\n  height: 100vh;\n  border: 5px solid rgba(0, 0, 0, 0.12);\n}\n.separator[data-v-226279c7] {\n  margin-top: 25px;\n}\n.arcoders-right[data-v-226279c7] {\n  margin-right: 2%;\n  margin-top: 10px;\n}\n.arcoders-tip[data-v-226279c7] {\n  background-color: rgba(0, 0, 0, 0.12);\n  font-size: 14px;\n}\n", ""]);
+exports.push([module.i, "\n.md-app[data-v-226279c7] {\n  height: 100vh;\n  border: 2px solid rgba(0, 0, 0, 0.12);\n}\n.separator[data-v-226279c7] {\n  margin-top: 25px;\n}\n.arcoders-right[data-v-226279c7] {\n  margin-right: 2%;\n  margin-top: 10px;\n}\n.arcoders-tip[data-v-226279c7] {\n  background-color: rgba(0, 0, 0, 0.12);\n  font-size: 14px;\n}\n.md-app-content[data-v-226279c7] {\n  padding: 5px;\n}\n.md-layout[data-v-226279c7] {\n  height: 100%;\n}\n.md-layout-item[data-v-226279c7] {\n  background: rgba(230, 230, 250, 0.12);\n}\n.arcoders-padding[data-v-226279c7] {\n  padding: 10px;\n}\n.md-scrollbar[data-v-226279c7] {\n  overflow-y: auto;\n}\n", ""]);
 
 // exports
 
@@ -42533,6 +42534,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -42605,8 +42631,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("img", {
                           attrs: {
-                            src:
-                              "data:image/png;base64,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",
+                            src: "https://placeimg.com/80/80/people/3",
                             alt: "Avatar"
                           }
                         })
@@ -42621,7 +42646,25 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("md-app-content")
+          _c("md-app-content", [
+            _c(
+              "div",
+              { staticClass: "md-layout" },
+              [
+                _c(
+                  "md-content",
+                  { staticClass: "md-scrollbar" },
+                  [_c("arcoders-list-rooms")],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "md-layout-item arcoders-padding" }, [
+                  _vm._v("mmm")
+                ])
+              ],
+              1
+            )
+          ])
         ],
         1
       )
@@ -42692,6 +42735,488 @@ exports.push([module.i, ":root{--md-theme-default-primary:#448aff;--md-theme-def
 
 // exports
 
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(31)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(33)
+/* template */
+var __vue_template__ = __webpack_require__(34)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-47562d44"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\rooms\\list-rooms.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-47562d44", Component.options)
+  } else {
+    hotAPI.reload("data-v-47562d44", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(32);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(20)("160f2cc9", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-47562d44\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./list-rooms.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-47562d44\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./list-rooms.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.md-list[data-v-47562d44] {\n  width: 320px;\n  max-width: 100%;\n  display: inline-block;\n  vertical-align: top;\n  border: 1px solid rgba(0, 0, 0, 0.12);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 33 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'SingleLine'
+});
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "md-list",
+        [
+          _c(
+            "md-list-item",
+            [
+              _c("md-avatar", [
+                _c("img", {
+                  attrs: {
+                    src: "https://placeimg.com/40/40/people/5",
+                    alt: "People"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-list-item-text" }, [
+                _vm._v("Abbey Christansen")
+              ]),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                { staticClass: "md-icon-button md-list-action" },
+                [
+                  _c("md-icon", { staticClass: "md-primary" }, [
+                    _vm._v("chat_bubble")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("md-divider", { staticClass: "md-inset" }),
+          _vm._v(" "),
+          _c(
+            "md-list-item",
+            [
+              _c("md-avatar", [
+                _c("img", {
+                  attrs: {
+                    src: "https://placeimg.com/40/40/people/1",
+                    alt: "People"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-list-item-text" }, [
+                _vm._v("Alex Nelson")
+              ]),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                { staticClass: "md-icon-button md-list-action" },
+                [
+                  _c("md-icon", { staticClass: "md-primary" }, [
+                    _vm._v("chat_bubble")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("md-divider", { staticClass: "md-inset" }),
+          _vm._v(" "),
+          _c(
+            "md-list-item",
+            [
+              _c("md-avatar", [
+                _c("img", {
+                  attrs: {
+                    src: "https://placeimg.com/40/40/people/6",
+                    alt: "People"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-list-item-text" }, [
+                _vm._v("Mary Johnson")
+              ]),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                { staticClass: "md-icon-button md-list-action" },
+                [_c("md-icon", [_vm._v("chat_bubble")])],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("md-divider", { staticClass: "md-inset" }),
+          _vm._v(" "),
+          _c(
+            "md-list-item",
+            [
+              _c("md-avatar", [
+                _c("img", {
+                  attrs: {
+                    src: "https://placeimg.com/40/40/people/10",
+                    alt: "People"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-list-item-text" }, [
+                _vm._v("Mary Johnson")
+              ]),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                { staticClass: "md-icon-button md-list-action" },
+                [_c("md-icon", [_vm._v("chat_bubble")])],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("md-divider", { staticClass: "md-inset" }),
+          _vm._v(" "),
+          _c(
+            "md-list-item",
+            [
+              _c("md-avatar", [
+                _c("img", {
+                  attrs: {
+                    src: "https://placeimg.com/40/40/people/8",
+                    alt: "People"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-list-item-text" }, [
+                _vm._v("Mary Johnson")
+              ]),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                { staticClass: "md-icon-button md-list-action" },
+                [_c("md-icon", [_vm._v("chat_bubble")])],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("md-divider", { staticClass: "md-inset" }),
+          _vm._v(" "),
+          _c(
+            "md-list-item",
+            [
+              _c("md-avatar", [
+                _c("img", {
+                  attrs: {
+                    src: "https://placeimg.com/40/40/people/9",
+                    alt: "People"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-list-item-text" }, [
+                _vm._v("Mary Johnson")
+              ]),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                { staticClass: "md-icon-button md-list-action" },
+                [_c("md-icon", [_vm._v("chat_bubble")])],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("md-divider", { staticClass: "md-inset" }),
+          _vm._v(" "),
+          _c(
+            "md-list-item",
+            [
+              _c("md-avatar", [
+                _c("img", {
+                  attrs: {
+                    src: "https://placeimg.com/40/40/people/11",
+                    alt: "People"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-list-item-text" }, [
+                _vm._v("Mary Johnson")
+              ]),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                { staticClass: "md-icon-button md-list-action" },
+                [_c("md-icon", [_vm._v("chat_bubble")])],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-47562d44", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
