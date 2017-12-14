@@ -49,7 +49,8 @@ i {
   display: -ms-flexbox;
   display: flex;
   height: 100vh;
-  width: 1400px;
+  min-width: 600px;
+  max-width: 90%;
   margin: auto;
   border-radius: 10px;
   -webkit-box-shadow: 0 2px 4px #7E7E7E;
@@ -246,7 +247,7 @@ i {
 }
 
 .right {
-  width: 1000px;
+  min-width: calc(100% - 400px);
   height: 100%;
 }
 
@@ -500,6 +501,7 @@ body::-webkit-scrollbar-thumb,
     margin-bottom: 2vh;
     margin-top: 25px;
     height: calc(98vh - 25px);
+    width: 90%;
   }
 }
 
@@ -507,6 +509,7 @@ body::-webkit-scrollbar-thumb,
   .wrap {
     width: 100%;
     min-width: 100%;
+    height: 100vh;
   }
 
   .left {
