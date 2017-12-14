@@ -8,11 +8,11 @@
 window.Vue = require('vue');
 
 import Vue from 'vue';
-import VueMaterial from 'vue-material';
+/*import VueMaterial from 'vue-material';
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default.css'
 
-Vue.use(VueMaterial);
+Vue.use(VueMaterial);*/
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -21,8 +21,6 @@ Vue.use(VueMaterial);
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('arcoders-app', require('./components/layouts/app.vue'));
-Vue.component('arcoders-list-rooms', require('./components/rooms/list-rooms.vue'));
 
 const app = new Vue({
     el: '#app'
