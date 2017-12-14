@@ -1,5 +1,5 @@
 <template>
-    <div id="contact_list_app">
+    <div id="list_app">
 
     </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Contact list ok!')
+            console.log('List ok!')
         }
     }
 </script>
