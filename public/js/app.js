@@ -10967,7 +10967,18 @@ Vue.use(VueMaterial);*/
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example-component', __webpack_require__(17));
+// Components for left side
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('left', __webpack_require__(59));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('search', __webpack_require__(33));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('groups', __webpack_require__(39));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('private', __webpack_require__(42));
+
+// Components for right side
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('right', __webpack_require__(62));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('box', __webpack_require__(45));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('send', __webpack_require__(48));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
@@ -11422,15 +11433,36 @@ process.umask = function() { return 0; };
 /* 14 */,
 /* 15 */,
 /* 16 */,
-/* 17 */
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 32 */,
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(18)
+var __vue_script__ = __webpack_require__(34)
 /* template */
-var __vue_template__ = __webpack_require__(19)
+var __vue_template__ = __webpack_require__(35)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -11447,7 +11479,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\ExampleComponent.vue"
+Component.options.__file = "resources\\assets\\js\\components\\left\\search.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -11457,9 +11489,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0ca92eac", Component.options)
+    hotAPI.createRecord("data-v-136909d4", Component.options)
   } else {
-    hotAPI.reload("data-v-0ca92eac", Component.options)
+    hotAPI.reload("data-v-136909d4", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -11470,7 +11502,125 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 18 */
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Search ok!');
+    }
+});
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0, false, false)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "search_app" } }, [
+      _c("div", { staticClass: "wrap-search" }, [
+        _c("div", { staticClass: "search" }, [
+          _c("i", {
+            staticClass: "fa fa-search fa",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "input-search",
+            attrs: { type: "text", placeholder: "Buscar contacto" }
+          })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-136909d4", module.exports)
+  }
+}
+
+/***/ }),
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(40)
+/* template */
+var __vue_template__ = __webpack_require__(41)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\left\\groups.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6e20f942", Component.options)
+  } else {
+    hotAPI.reload("data-v-6e20f942", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11491,15 +11641,161 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
-        console.log('Component mounted.');
+        console.log('Groups ok!');
     }
 });
 
 /***/ }),
-/* 19 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -11513,20 +11809,1929 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
-            ]),
+    return _c("div", { attrs: { id: "groups_app" } }, [
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
             _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                    I'm an example component!\n                "
-              )
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
             ])
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6e20f942", module.exports)
+  }
+}
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(43)
+/* template */
+var __vue_template__ = __webpack_require__(44)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\left\\private.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6b6cc285", Component.options)
+  } else {
+    hotAPI.reload("data-v-6b6cc285", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Private ok!');
+    }
+});
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0, false, false)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "private_app" } }, [
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas.")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6b6cc285", module.exports)
+  }
+}
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(46)
+/* template */
+var __vue_template__ = __webpack_require__(47)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\box.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7f123144", Component.options)
+  } else {
+    hotAPI.reload("data-v-7f123144", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Box ok!');
+    }
+});
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "box_app" } })
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7f123144", module.exports)
+  }
+}
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(49)
+/* template */
+var __vue_template__ = __webpack_require__(50)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\send.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-29f16bdf", Component.options)
+  } else {
+    hotAPI.reload("data-v-29f16bdf", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Send ok!');
+    }
+});
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "send_app" } })
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-29f16bdf", module.exports)
+  }
+}
+
+/***/ }),
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(60)
+/* template */
+var __vue_template__ = __webpack_require__(61)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\left\\left.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62e5a916", Component.options)
+  } else {
+    hotAPI.reload("data-v-62e5a916", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Left ok!');
+    }
+});
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "left_app" } }, [
+    _c(
+      "section",
+      { staticClass: "left" },
+      [
+        _vm._m(0, false, false),
+        _vm._v(" "),
+        _c("search"),
+        _vm._v(" "),
+        _vm._m(1, false, false),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-list" }, [_c("groups")], 1)
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "profile" }, [
+      _c("img", { attrs: { src: "https://avatars.io/twitter/nada" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "icons" }, [
+        _c("i", {
+          staticClass: "fa fa-pencil",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fa fa-user-plus",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fa fa-users",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("i", { staticClass: "fa fa-cog", attrs: { "aria-hidden": "true" } }),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fa fa-bell",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fa fa-power-off",
+          attrs: { "aria-hidden": "true" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "wrap-filter" }, [
+      _c("div", { staticClass: "link_filter" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Groups")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "link_filter" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Private")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62e5a916", module.exports)
+  }
+}
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(63)
+/* template */
+var __vue_template__ = __webpack_require__(64)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\right.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-90845e56", Component.options)
+  } else {
+    hotAPI.reload("data-v-90845e56", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Right ok!');
+    }
+});
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0, false, false)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "right_app" } }, [
+      _c("section", { staticClass: "right" }, [
+        _c("div", { staticClass: "chat-head" }, [
+          _c("img", {
+            attrs: {
+              alt: "profilepicture",
+              src: "https://avatars.io/twitter/maryam"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "chat-name" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Laravel")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-online" }, [
+              _vm._v("Ismael, Fatima, Admin, Marta, victor...")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("i", {
+            staticClass: "fa fa-whatsapp fa-lg",
+            attrs: { "aria-hidden": "true" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "wrap-chat" }, [
+          _c("div", { staticClass: "chat" }, [
+            _c("div", { staticClass: "chat-bubble me" }, [
+              _c("div", { staticClass: "my-mouth" }, [
+                _c("img", {
+                  staticClass: "me_img",
+                  attrs: { src: "https://avatars.io/twitter/maryam" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble you" }, [
+              _c("div", { staticClass: "your-mouth" }, [
+                _c("img", {
+                  staticClass: "you_img",
+                  attrs: { src: "https://avatars.io/twitter/nada" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("Awdi ghir m3a dnya")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble me" }, [
+              _c("div", { staticClass: "my-mouth" }, [
+                _c("img", {
+                  staticClass: "me_img",
+                  attrs: { src: "https://avatars.io/twitter/maryam" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble you" }, [
+              _c("div", { staticClass: "your-mouth" }, [
+                _c("img", {
+                  staticClass: "you_img",
+                  attrs: { src: "https://avatars.io/twitter/nada" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("Awdi ghir m3a dnya")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble me" }, [
+              _c("div", { staticClass: "my-mouth" }, [
+                _c("img", {
+                  staticClass: "me_img",
+                  attrs: { src: "https://avatars.io/twitter/maryam" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble you" }, [
+              _c("div", { staticClass: "your-mouth" }, [
+                _c("img", {
+                  staticClass: "you_img",
+                  attrs: { src: "https://avatars.io/twitter/nada" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("Awdi ghir m3a dnya")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble me" }, [
+              _c("div", { staticClass: "my-mouth" }, [
+                _c("img", {
+                  staticClass: "me_img",
+                  attrs: { src: "https://avatars.io/twitter/maryam" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble you" }, [
+              _c("div", { staticClass: "your-mouth" }, [
+                _c("img", {
+                  staticClass: "you_img",
+                  attrs: { src: "https://avatars.io/twitter/nada" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("Awdi ghir m3a dnya")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble me" }, [
+              _c("div", { staticClass: "my-mouth" }, [
+                _c("img", {
+                  staticClass: "me_img",
+                  attrs: { src: "https://avatars.io/twitter/maryam" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble you" }, [
+              _c("div", { staticClass: "your-mouth" }, [
+                _c("img", {
+                  staticClass: "you_img",
+                  attrs: { src: "https://avatars.io/twitter/nada" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("Awdi ghir m3a dnya")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble me" }, [
+              _c("div", { staticClass: "my-mouth" }, [
+                _c("img", {
+                  staticClass: "me_img",
+                  attrs: { src: "https://avatars.io/twitter/maryam" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble you" }, [
+              _c("div", { staticClass: "your-mouth" }, [
+                _c("img", {
+                  staticClass: "you_img",
+                  attrs: { src: "https://avatars.io/twitter/nada" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("Awdi ghir m3a dnya")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble me" }, [
+              _c("div", { staticClass: "my-mouth" }, [
+                _c("img", {
+                  staticClass: "me_img",
+                  attrs: { src: "https://avatars.io/twitter/maryam" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble you" }, [
+              _c("div", { staticClass: "your-mouth" }, [
+                _c("img", {
+                  staticClass: "you_img",
+                  attrs: { src: "https://avatars.io/twitter/nada" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("Awdi ghir m3a dnya")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble me" }, [
+              _c("div", { staticClass: "my-mouth" }, [
+                _c("img", {
+                  staticClass: "me_img",
+                  attrs: { src: "https://avatars.io/twitter/maryam" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble you" }, [
+              _c("div", { staticClass: "your-mouth" }, [
+                _c("img", {
+                  staticClass: "you_img",
+                  attrs: { src: "https://avatars.io/twitter/nada" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("Awdi ghir m3a dnya")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble me" }, [
+              _c("div", { staticClass: "my-mouth" }, [
+                _c("img", {
+                  staticClass: "me_img",
+                  attrs: { src: "https://avatars.io/twitter/maryam" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble you" }, [
+              _c("div", { staticClass: "your-mouth" }, [
+                _c("img", {
+                  staticClass: "you_img",
+                  attrs: { src: "https://avatars.io/twitter/nada" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("Awdi ghir m3a dnya")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble me" }, [
+              _c("div", { staticClass: "my-mouth" }, [
+                _c("img", {
+                  staticClass: "me_img",
+                  attrs: { src: "https://avatars.io/twitter/maryam" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble you" }, [
+              _c("div", { staticClass: "your-mouth" }, [
+                _c("img", {
+                  staticClass: "you_img",
+                  attrs: { src: "https://avatars.io/twitter/nada" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("Awdi ghir m3a dnya")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble me" }, [
+              _c("div", { staticClass: "my-mouth" }, [
+                _c("img", {
+                  staticClass: "me_img",
+                  attrs: { src: "https://avatars.io/twitter/maryam" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "chat-bubble you" }, [
+              _c("div", { staticClass: "your-mouth" }, [
+                _c("img", {
+                  staticClass: "you_img",
+                  attrs: { src: "https://avatars.io/twitter/nada" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v("Awdi ghir m3a dnya")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "upload_foto" }, [
+            _c("div", { staticClass: "container_foto font-preview" }, [
+              _c("p", [_vm._v("Subir imagen")])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "wrap-message" }, [
+          _c("i", {
+            staticClass: "fa fa-smile-o fa-lg",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "message" }, [
+            _c("input", {
+              staticClass: "input-message",
+              attrs: { type: "text", placeholder: "Escribe un nuevo mensaje" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("i", {
+            staticClass: "fa fa-paper-plane-o",
+            attrs: { "aria-hidden": "true" }
+          })
         ])
       ])
     ])
@@ -11537,26 +13742,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0ca92eac", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-90845e56", module.exports)
   }
 }
-
-/***/ }),
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

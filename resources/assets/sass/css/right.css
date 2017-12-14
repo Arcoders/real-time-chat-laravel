@@ -1,5 +1,6 @@
 .right {
-		min-width: calc(100% - 400px);
+        width: 1000px;
+        height: 100%;
 }
 
 /* chat head */

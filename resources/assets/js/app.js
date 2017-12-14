@@ -20,7 +20,18 @@ Vue.use(VueMaterial);*/
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Components for left side
+
+Vue.component('left', require('./components/left/left.vue'));
+Vue.component('search', require('./components/left/search.vue'));
+Vue.component('groups', require('./components/left/groups.vue'));
+Vue.component('private', require('./components/left/private.vue'));
+
+// Components for right side
+
+Vue.component('right', require('./components/right/right.vue'));
+Vue.component('box', require('./components/right/box.vue'));
+Vue.component('send', require('./components/right/send.vue'));
 
 const app = new Vue({
     el: '#app'
