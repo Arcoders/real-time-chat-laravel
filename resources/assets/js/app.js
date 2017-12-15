@@ -10,12 +10,11 @@ window.Vue = require('vue');
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-/*import VueMaterial from 'vue-material';
+import VueMaterial from 'vue-material';
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default.css'
 
-Vue.use(VueMaterial);*/
-
+window.Vue.use(VueMaterial);
 window.Vue.use(VueRouter);
 
 /**
@@ -34,7 +33,6 @@ Vue.component('search', require('./components/left/search.vue'));
 // Components for right side
 
 Vue.component('bar', require('./components/right/bar.vue'));
-Vue.component('box', require('./components/right/box.vue'));
 Vue.component('messages', require('./components/right/messages.vue'));
 Vue.component('send', require('./components/right/send.vue'));
 

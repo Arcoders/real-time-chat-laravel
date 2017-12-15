@@ -1,5 +1,6 @@
 <template>
     <div id="bar_app">
+
         <div class="chat-head">
             <img alt="profilepicture" src="https://avatars.io/twitter/maryam">
             <div class="chat-name">
