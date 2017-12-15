@@ -12409,6 +12409,74 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -16431,7 +16499,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-6b6cc285] {\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-6b6cc285] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-6b6cc285] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-6b6cc285] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-6b6cc285] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n", ""]);
 
 // exports
 
@@ -16444,380 +16512,1022 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "private_app" } },
-    [
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: {
-              name: "private",
-              params: { private_id: 1, user_name: "Ismael" }
+  return _c("div", { attrs: { id: "private_app" } }, [
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 1, user_name: "Ismael" }
+              }
             }
-          }
-        },
-        [
-          _c("div", { staticClass: "contact" }, [
+          },
+          [
             _c("img", {
               attrs: {
                 src: "https://avatars.io/twitter/maryam",
                 alt: "profilpicture"
               }
-            }),
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 1, user_name: "Ismael" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "font-preview" }, [
-                  _vm._v("Hola muy buenas")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact-time" }, [
-              _c("p", [_vm._v("00:24")])
-            ])
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 1, user_name: "Ismael" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: { name: "private", params: { private_id: 2, user_name: "Ab" } }
-          }
-        },
-        [
-          _c("div", { staticClass: "contact" }, [
+        ]),
+        _vm._v(" "),
+        _vm._m(0, false, false)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
             _c("img", {
               attrs: {
                 src: "https://avatars.io/twitter/maryam",
                 alt: "profilpicture"
               }
-            }),
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "font-preview" }, [
-                  _vm._v("Hola muy buenas")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact-time" }, [
-              _c("p", [_vm._v("00:24")])
-            ])
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: { name: "private", params: { private_id: 3, user_name: "Cd" } }
-          }
-        },
-        [
-          _c("div", { staticClass: "contact" }, [
+        ]),
+        _vm._v(" "),
+        _vm._m(1, false, false)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
             _c("img", {
               attrs: {
                 src: "https://avatars.io/twitter/maryam",
                 alt: "profilpicture"
               }
-            }),
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "font-preview" }, [
-                  _vm._v("Hola muy buenas")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact-time" }, [
-              _c("p", [_vm._v("00:24")])
-            ])
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: { name: "private", params: { private_id: 4, user_name: "Ef" } }
-          }
-        },
-        [
-          _c("div", { staticClass: "contact" }, [
+        ]),
+        _vm._v(" "),
+        _vm._m(2, false, false)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
             _c("img", {
               attrs: {
                 src: "https://avatars.io/twitter/maryam",
                 alt: "profilpicture"
               }
-            }),
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "font-preview" }, [
-                  _vm._v("Hola muy buenas")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact-time" }, [
-              _c("p", [_vm._v("00:24")])
-            ])
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: { name: "private", params: { private_id: 5, user_name: "Gh" } }
-          }
-        },
-        [
-          _c("div", { staticClass: "contact" }, [
+        ]),
+        _vm._v(" "),
+        _vm._m(3, false, false)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
             _c("img", {
               attrs: {
                 src: "https://avatars.io/twitter/maryam",
                 alt: "profilpicture"
               }
-            }),
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "font-preview" }, [
-                  _vm._v("Hola muy buenas")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact-time" }, [
-              _c("p", [_vm._v("00:24")])
-            ])
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: { name: "private", params: { private_id: 6, user_name: "Ij" } }
-          }
-        },
-        [
-          _c("div", { staticClass: "contact" }, [
+        ]),
+        _vm._v(" "),
+        _vm._m(4, false, false)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
             _c("img", {
               attrs: {
                 src: "https://avatars.io/twitter/maryam",
                 alt: "profilpicture"
               }
-            }),
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "font-preview" }, [
-                  _vm._v("Hola muy buenas")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact-time" }, [
-              _c("p", [_vm._v("00:24")])
-            ])
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: { name: "private", params: { private_id: 7, user_name: "Kl" } }
-          }
-        },
-        [
-          _c("div", { staticClass: "contact" }, [
+        ]),
+        _vm._v(" "),
+        _vm._m(5, false, false)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
             _c("img", {
               attrs: {
                 src: "https://avatars.io/twitter/maryam",
                 alt: "profilpicture"
               }
-            }),
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "font-preview" }, [
-                  _vm._v("Hola muy buenas")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact-time" }, [
-              _c("p", [_vm._v("00:24")])
-            ])
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: { name: "private", params: { private_id: 7, user_name: "Mn" } }
-          }
-        },
-        [
-          _c("div", { staticClass: "contact" }, [
+        ]),
+        _vm._v(" "),
+        _vm._m(6, false, false)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
             _c("img", {
               attrs: {
                 src: "https://avatars.io/twitter/maryam",
                 alt: "profilpicture"
               }
-            }),
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "font-preview" }, [
-                  _vm._v("Hola muy buenas")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact-time" }, [
-              _c("p", [_vm._v("00:24")])
-            ])
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: { name: "private", params: { private_id: 8, user_name: "Op" } }
-          }
-        },
-        [
-          _c("div", { staticClass: "contact" }, [
+        ]),
+        _vm._v(" "),
+        _vm._m(7, false, false)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
             _c("img", {
               attrs: {
                 src: "https://avatars.io/twitter/maryam",
                 alt: "profilpicture"
               }
-            }),
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "font-preview" }, [
-                  _vm._v("Hola muy buenas")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact-time" }, [
-              _c("p", [_vm._v("00:24")])
-            ])
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: { name: "private", params: { private_id: 9, user_name: "Qr" } }
-          }
-        },
-        [
-          _c("div", { staticClass: "contact" }, [
+        ]),
+        _vm._v(" "),
+        _vm._m(8, false, false)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
             _c("img", {
               attrs: {
                 src: "https://avatars.io/twitter/maryam",
                 alt: "profilpicture"
               }
-            }),
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "font-preview" }, [
-                  _vm._v("Hola muy buenas")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact-time" }, [
-              _c("p", [_vm._v("00:24")])
-            ])
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: { name: "private", params: { private_id: 10, user_name: "St" } }
-          }
-        },
-        [
-          _c("div", { staticClass: "contact" }, [
+        ]),
+        _vm._v(" "),
+        _vm._m(9, false, false)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 10, user_name: "St" }
+              }
+            }
+          },
+          [
             _c("img", {
               attrs: {
                 src: "https://avatars.io/twitter/maryam",
                 alt: "profilpicture"
               }
-            }),
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 10, user_name: "St" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "font-preview" }, [
-                  _vm._v("Hola muy buenas")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "contact-time" }, [
-              _c("p", [_vm._v("00:24")])
-            ])
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 10, user_name: "St" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
-        ]
-      )
-    ],
-    1
-  )
+        ]),
+        _vm._v(" "),
+        _vm._m(10, false, false)
+      ],
+      1
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
