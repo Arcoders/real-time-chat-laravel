@@ -10,10 +10,6 @@ window.Vue = require('vue');
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import VueMaterial from 'vue-material';
-import 'vue-material/dist/vue-material.min.css';
-import 'vue-material/dist/theme/default.css'
-
 window.Vue.use(VueMaterial);
 window.Vue.use(VueRouter);
 

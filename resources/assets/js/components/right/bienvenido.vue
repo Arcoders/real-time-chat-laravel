@@ -12,7 +12,7 @@
         <div class="chat">
             <md-table v-model="people" md-card @md-selected="onSelect">
                 <md-table-toolbar>
-                    <h1 class="md-title">With auto select and alternate headers</h1>
+                    <h3 class="md-title">With auto select and alternate headers</h3>
                 </md-table-toolbar>
 
                 <md-table-toolbar slot="md-table-alternate-header" slot-scope="{ count }">
@@ -52,6 +52,7 @@
     .chat {
         height: calc(98vh - 85px);
         padding: 0;
+        background-color: #ffffff;
     }
 </style>
 
@@ -83,12 +84,6 @@
                     email: 'tstave4@reference.com',
                     gender: 'Male',
                     title: 'Software Test Engineer III'
-                },
-                {
-                    name: 'Clarinda Marieton',
-                    email: 'cmarietonh@theatlantic.com',
-                    gender: 'Female',
-                    title: 'Paralegal'
                 },
                 {
                     name: 'Clarinda Marieton',
