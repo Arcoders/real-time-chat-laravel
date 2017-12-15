@@ -12800,6 +12800,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -16362,7 +16376,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n", ""]);
+exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n.active_icon[data-v-62e5a916] {\n    border-radius: 25%;\n    background-color: #fafafa;\n}\n", ""]);
 
 // exports
 
@@ -16379,7 +16393,59 @@ var render = function() {
     "div",
     { attrs: { id: "left_app" } },
     [
-      _vm._m(0, false, false),
+      _c("div", { staticClass: "profile" }, [
+        _c("img", { attrs: { src: "https://avatars.io/twitter/nada" } }),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "icons" },
+          [
+            _c(
+              "router-link",
+              { attrs: { to: "/", "exact-active-class": "active_icon" } },
+              [
+                _c("i", {
+                  staticClass: "fa fa-pencil",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              { attrs: { to: "/1", "exact-active-class": "active_icon" } },
+              [
+                _c("i", {
+                  staticClass: "fa fa-user-plus",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              { attrs: { to: "/2", "exact-active-class": "active_icon" } },
+              [
+                _c("i", {
+                  staticClass: "fa fa-cog",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c("i", {
+              staticClass: "fa fa-bell",
+              attrs: { "aria-hidden": "true" }
+            }),
+            _vm._v(" "),
+            _c("i", {
+              staticClass: "fa fa-power-off",
+              attrs: { "aria-hidden": "true" }
+            })
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _c("search"),
       _vm._v(" "),
@@ -16400,13 +16466,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "link_filter" },
-          [
-            _c(
-              "router-link",
-              { attrs: { to: "/", "exact-active-class": "active" } },
-              [_vm._v("Groups")]
-            )
-          ],
+          [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Groups")])],
           1
         )
       ]),
@@ -16416,45 +16476,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile" }, [
-      _c("img", { attrs: { src: "https://avatars.io/twitter/nada" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "icons" }, [
-        _c("i", {
-          staticClass: "fa fa-pencil",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("i", {
-          staticClass: "fa fa-user-plus",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("i", {
-          staticClass: "fa fa-users",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("i", { staticClass: "fa fa-cog", attrs: { "aria-hidden": "true" } }),
-        _vm._v(" "),
-        _c("i", {
-          staticClass: "fa fa-bell",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("i", {
-          staticClass: "fa fa-power-off",
-          attrs: { "aria-hidden": "true" }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

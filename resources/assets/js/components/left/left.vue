@@ -4,12 +4,22 @@
         <div class="profile">
             <img src="https://avatars.io/twitter/nada">
             <div class="icons">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-                <i class="fa fa-user-plus" aria-hidden="true"></i>
-                <i class="fa fa-users" aria-hidden="true"></i>
-                <i class="fa fa-cog" aria-hidden="true"></i>
+
+                <router-link to="/" exact-active-class="active_icon">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </router-link>
+
+                <router-link to="/1" exact-active-class="active_icon">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </router-link>
+
+                <router-link to="/2" exact-active-class="active_icon">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </router-link>
+
                 <i class="fa fa-bell" aria-hidden="true"></i>
                 <i class="fa fa-power-off" aria-hidden="true"></i>
+
             </div>
         </div>
 
@@ -20,7 +30,7 @@
                 <router-link to="/" exact-active-class="active">Private</router-link>
             </div>
             <div class="link_filter">
-                <router-link to="/" exact-active-class="active">Groups</router-link>
+                <router-link to="/">Groups</router-link>
             </div>
         </div>
 
@@ -34,6 +44,10 @@
 <style scoped>
     .contact-list {
         height: calc(98vh - 180px);
+    }
+    .active_icon {
+        border-radius: 25%;
+        background-color: #fafafa;
     }
 </style>
 
