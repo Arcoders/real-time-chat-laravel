@@ -48,7 +48,7 @@ import bienvenido from './components/right/bienvenido.vue';
 const router = new VueRouter({
     routes: [
         { path: '/', component: bienvenido},
-        { path: '/private/:private_id/:name', component: right, name: 'private'}
+        { path: '/private/:private_id/:user_name', component: right, name: 'private'},
     ]
 });
 
