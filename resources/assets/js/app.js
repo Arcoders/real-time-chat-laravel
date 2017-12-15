@@ -8,11 +8,15 @@
 window.Vue = require('vue');
 
 import Vue from 'vue';
+import VueRouter from 'vue-router';
+
 /*import VueMaterial from 'vue-material';
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default.css'
 
 Vue.use(VueMaterial);*/
+
+window.Vue.use(VueRouter);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -22,17 +26,33 @@ Vue.use(VueMaterial);*/
 
 // Components for left side
 
-Vue.component('left', require('./components/left/left.vue'));
 Vue.component('search', require('./components/left/search.vue'));
-Vue.component('groups', require('./components/left/groups.vue'));
 Vue.component('private', require('./components/left/private.vue'));
 
 // Components for right side
 
 Vue.component('right', require('./components/right/right.vue'));
+Vue.component('bar', require('./components/right/bar.vue'));
 Vue.component('box', require('./components/right/box.vue'));
+Vue.component('messages', require('./components/right/messages.vue'));
 Vue.component('send', require('./components/right/send.vue'));
 
-const app = new Vue({
-    el: '#app'
+// Define route components
+
+import groups from './components/left/groups.vue';
+import private_chat from './components/left/private.vue';
+
+// Define some routes
+
+const router = new VueRouter({
+    routes: [
+        { path: '/', component: private_chat },
+        { path: '/groups', component: groups },
+    ]
 });
+
+
+new Vue({
+    el: '#app',
+    router
+}).$mount(this.el);

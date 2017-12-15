@@ -1,6 +1,8 @@
 <template>
     <div id="box_app">
 
+
+
     </div>
 </template>
 

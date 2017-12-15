@@ -99,6 +99,10 @@
 	box-shadow: 0px -1px 0px 0px rgba(186,186,186,1);
 }
 
+.active {
+    font-weight: bold;
+    box-shadow: 0px -1px 0px 0px rgba(186,186,186,1);
+}
 
 /* contact list */
 

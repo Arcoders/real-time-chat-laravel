@@ -41,7 +41,7 @@
 .wrap-chat {
     height: calc(100% - 120px);
     display: flex;
-		position: relative;
+    position: relative;
 }
 
 .chat {
