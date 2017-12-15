@@ -11247,10 +11247,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_left_groups_vue__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_left_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_left_groups_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_left_private_vue__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_left_private_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_left_private_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_right_right_vue__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_right_right_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_right_right_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_bienvenido_vue__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_bienvenido_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_right_bienvenido_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -11279,12 +11279,13 @@ window.Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 // Components for left side
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('search', __webpack_require__(33));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('left', __webpack_require__(59));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('groups', __webpack_require__(39));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('private', __webpack_require__(42));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('search', __webpack_require__(33));
 
 // Components for right side
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('right', __webpack_require__(62));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('bar', __webpack_require__(68));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('box', __webpack_require__(45));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('messages', __webpack_require__(65));
@@ -11298,7 +11299,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('send', __webpack_require_
 // Define some routes
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
-    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_3__components_left_private_vue___default.a }, { path: '/groups', component: __WEBPACK_IMPORTED_MODULE_2__components_left_groups_vue___default.a }]
+    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_3__components_right_bienvenido_vue___default.a }, { path: '/private/:private_id/:name', component: __WEBPACK_IMPORTED_MODULE_2__components_right_right_vue___default.a, name: 'private' }]
 });
 
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
@@ -12156,17 +12157,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(78)
+}
 var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(43)
 /* template */
-var __vue_template__ = __webpack_require__(44)
+var __vue_template__ = __webpack_require__(80)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-6b6cc285"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -12392,6 +12397,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -12400,348 +12414,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0, false, false)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "private_app" } }, [
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas.")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6b6cc285", module.exports)
-  }
-}
-
-/***/ }),
+/* 44 */,
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12960,8 +12633,110 @@ if (false) {
 /* 56 */,
 /* 57 */,
 /* 58 */,
-/* 59 */,
-/* 60 */,
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(75)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(60)
+/* template */
+var __vue_template__ = __webpack_require__(77)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-62e5a916"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\left\\left.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62e5a916", Component.options)
+  } else {
+    hotAPI.reload("data-v-62e5a916", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Left ok!');
+    }
+});
+
+/***/ }),
 /* 61 */,
 /* 62 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -16429,7 +16204,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n.chat[data-v-90845e56] {\n    max-height: calc(98vh - 165px) !important;\n}\n", ""]);
+exports.push([module.i, "\n.chat[data-v-90845e56] {\n    height: calc(98vh - 165px);\n}\n", ""]);
 
 // exports
 
@@ -16477,6 +16252,735 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-90845e56", module.exports)
+  }
+}
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(76);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("c2e296c4", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-62e5a916\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./left.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-62e5a916\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./left.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "left_app" } },
+    [
+      _vm._m(0, false, false),
+      _vm._v(" "),
+      _c("search"),
+      _vm._v(" "),
+      _c("div", { staticClass: "wrap-filter" }, [
+        _c(
+          "div",
+          { staticClass: "link_filter" },
+          [
+            _c(
+              "router-link",
+              { attrs: { to: "/", "exact-active-class": "active" } },
+              [_vm._v("Private")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "link_filter" },
+          [
+            _c(
+              "router-link",
+              { attrs: { to: "/", "exact-active-class": "active" } },
+              [_vm._v("Groups")]
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-list" }, [_c("private")], 1)
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "profile" }, [
+      _c("img", { attrs: { src: "https://avatars.io/twitter/nada" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "icons" }, [
+        _c("i", {
+          staticClass: "fa fa-pencil",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fa fa-user-plus",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fa fa-users",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("i", { staticClass: "fa fa-cog", attrs: { "aria-hidden": "true" } }),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fa fa-bell",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fa fa-power-off",
+          attrs: { "aria-hidden": "true" }
+        })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62e5a916", module.exports)
+  }
+}
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(79);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("22ae76c8", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6b6cc285\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./private.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6b6cc285\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./private.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\na[data-v-6b6cc285] {\n    text-decoration: none;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "private_app" } },
+    [
+      _c(
+        "router-link",
+        {
+          attrs: {
+            to: { name: "private", params: { private_id: 1, name: "Ismael" } }
+          }
+        },
+        [
+          _c("div", { staticClass: "contact" }, [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "contact-preview" }, [
+              _c("div", { staticClass: "contact-text" }, [
+                _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "font-preview" }, [
+                  _vm._v("Hola muy buenas")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "contact-time" }, [
+              _c("p", [_vm._v("00:24")])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(0, false, false),
+      _vm._v(" "),
+      _vm._m(1, false, false),
+      _vm._v(" "),
+      _vm._m(2, false, false),
+      _vm._v(" "),
+      _vm._m(3, false, false),
+      _vm._v(" "),
+      _vm._m(4, false, false),
+      _vm._v(" "),
+      _vm._m(5, false, false),
+      _vm._v(" "),
+      _vm._m(6, false, false),
+      _vm._v(" "),
+      _vm._m(7, false, false),
+      _vm._v(" "),
+      _vm._m(8, false, false),
+      _vm._v(" "),
+      _vm._m(9, false, false),
+      _vm._v(" "),
+      _vm._m(10, false, false),
+      _vm._v(" "),
+      _vm._m(11, false, false),
+      _vm._v(" "),
+      _vm._m(12, false, false),
+      _vm._v(" "),
+      _vm._m(13, false, false)
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact" }, [
+      _c("img", {
+        attrs: {
+          src: "https://avatars.io/twitter/maryam",
+          alt: "profilpicture"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-preview" }, [
+        _c("div", { staticClass: "contact-text" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo amigo")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-preview" }, [_vm._v("Hola muy buenas.")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6b6cc285", module.exports)
+  }
+}
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(82)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(84)
+/* template */
+var __vue_template__ = __webpack_require__(85)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-4fe9507c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\bienvenido.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4fe9507c", Component.options)
+  } else {
+    hotAPI.reload("data-v-4fe9507c", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(83);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("dd273308", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fe9507c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./bienvenido.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fe9507c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./bienvenido.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n#right_app[data-v-4fe9507c] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 84 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Right ok!');
+    }
+});
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "right_app" } })
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4fe9507c", module.exports)
   }
 }
 

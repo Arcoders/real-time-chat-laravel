@@ -26,7 +26,7 @@
 
 <style scoped>
     .chat {
-        max-height: calc(98vh - 165px) !important;
+        height: calc(98vh - 165px);
     }
 </style>
 
