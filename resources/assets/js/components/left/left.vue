@@ -6,19 +6,16 @@
             <div class="icons">
 
                 <router-link to="/" exact-active-class="active_icon">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i class="material-icons">person</i>
                 </router-link>
 
-                <router-link to="/1" exact-active-class="active_icon">
-                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                <router-link to="/groups" exact-active-class="active_icon">
+                    <i class="material-icons">person_add</i>
                 </router-link>
 
                 <router-link to="/2" exact-active-class="active_icon">
-                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <i class="material-icons">settings</i>
                 </router-link>
-
-                <i class="fa fa-bell" aria-hidden="true"></i>
-                <i class="fa fa-power-off" aria-hidden="true"></i>
 
             </div>
         </div>
@@ -45,9 +42,17 @@
     .contact-list {
         height: calc(98vh - 180px);
     }
+    .icons a {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
     .active_icon {
-        border-radius: 25%;
-        background-color: #fafafa;
+        box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);
     }
 </style>
 

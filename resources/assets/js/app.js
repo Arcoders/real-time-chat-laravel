@@ -35,12 +35,14 @@ Vue.component('send', require('./components/right/send.vue'));
 
 import right from './components/right/right.vue';
 import bienvenido from './components/right/bienvenido.vue';
+import groups from './components/right/manage_groups.vue';
 
 // Define some routes
 
 const router = new VueRouter({
     routes: [
         { path: '/', component: bienvenido},
+        { path: '/groups', component: groups},
         { path: '/private/:private_id/:user_name', component: right, name: 'private'},
     ]
 });
