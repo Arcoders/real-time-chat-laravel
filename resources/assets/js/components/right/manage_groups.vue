@@ -15,7 +15,7 @@
 
                 <div v-if="$route.path == '/groups'">
 
-                    <div class="wrap-filter">
+                    <div class="groups">
                         <div class="link_filter">
                             <router-link to="groups/all" exact-active-class="active">All groups</router-link>
                         </div>
@@ -50,6 +50,34 @@
         padding: 20px;
         background-color: #ffffff;
         height: calc(98vh - 125px);
+    }
+    .groups {
+        width: 100%;
+        height: 100%;
+        min-height: 100%;
+        background: #f1f1f1;
+        display: flex;
+    }
+
+    .link_filter {
+        width: 50%;
+        height: 100%;
+        min-height: 10%;
+    }
+
+    .link_filter a{
+        width: 100%;
+        height: 100%;
+        color: #777777;
+        font-size: 0.8em;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .link_filter a:hover{
+        font-weight: bold;
+        box-shadow: 0px -1px 0px 0px rgba(186,186,186,1);
     }
 </style>
 
