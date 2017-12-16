@@ -4,17 +4,8 @@
   padding: 0px;
 }
 
-html {
-  height: auto !important;
-}
-
-html.md-theme-default {
-  background-color: #dbdbdb !important;
-}
-
 body {
-  background-color: #dbdbdb;
-  z-index: 10;
+  background: #dbdbdb;
 }
 
 i {
