@@ -13,91 +13,20 @@
         <div class="wrap-content">
             <div class="dynamic_content">
 
-                <h4>My groups</h4>
+                <div v-if="$route.path == '/groups'">
 
-                <hr>
+                    <div class="wrap-filter">
+                        <div class="link_filter">
+                            <router-link to="groups/all" exact-active-class="active">All groups</router-link>
+                        </div>
+                        <div class="link_filter">
+                            <router-link to="groups/my">My groups</router-link>
+                        </div>
+                    </div>
 
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Avatar</th>
-                        <th>Name</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/bones">
-                        </td>
-                        <td>Laravel</td>
-                        <td>
-                            <button>
-                                <i class="material-icons green_teal">mode_edit</i>
-                            </button>
-                        </td>
-                        <td>
-                            <button>
-                                <i class="material-icons cool_red">delete</i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/adios">
-                        </td>
-                        <td>Nodejs</td>
-                        <td>
-                            <button>
-                                <i class="material-icons green_teal">mode_edit</i>
-                            </button>
-                        </td>
-                        <td>
-                            <button>
-                                <i class="material-icons cool_red">delete</i>
-                            </button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                </div>
 
-                <h4>All groups</h4>
-
-                <hr>
-
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Avatar</th>
-                        <th>Name</th>
-                        <th>Owner</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/rosa">
-                        </td>
-                        <td>Música</td>
-                        <td>Ismael</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/marta">
-                        </td>
-                        <td>Material</td>
-                        <td>Victor</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/chiste">
-                        </td>
-                        <td>Famoso</td>
-                        <td>Marcos</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <router-view></router-view>
 
             </div>
         </div>
