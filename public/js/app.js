@@ -17732,7 +17732,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.big_icon[data-v-c6811ab2] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\n.dynamic_content[data-v-c6811ab2] {\n    padding: 20px;\n    background-color: #ffffff;\n    height: calc(98vh - 125px);\n}\n.groups[data-v-c6811ab2] {\n    width: 100%;\n    height: 100%;\n    min-height: 100%;\n    background: #f1f1f1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.link_filter[data-v-c6811ab2] {\n    width: 50%;\n    height: 100%;\n    min-height: 10%;\n}\n.link_filter a[data-v-c6811ab2]{\n    width: 100%;\n    height: 100%;\n    color: #777777;\n    font-size: 0.8em;\n    text-decoration: none;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.link_filter a[data-v-c6811ab2]:hover{\n    font-weight: bold;\n    -webkit-box-shadow: 0px -1px 0px 0px rgba(186,186,186,1);\n            box-shadow: 0px -1px 0px 0px rgba(186,186,186,1);\n}\n", ""]);
+exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.big_icon[data-v-c6811ab2] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\n.dynamic_content[data-v-c6811ab2] {\n    padding: 20px;\n    background-color: #ffffff;\n    height: calc(98vh - 125px);\n}\n.groups[data-v-c6811ab2] {\n    width: 100%;\n    background: #f1f1f1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.group[data-v-c6811ab2] {\n    width: 50%;\n    height: calc(98vh - 125px);\n}\n.group a[data-v-c6811ab2]{\n    width: 100%;\n    height: 100%;\n    color: #777777;\n    font-size: 0.9em;\n    font-weight: bold;\n    text-decoration: none;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.group a[data-v-c6811ab2]:hover{\n    color: #009688;\n    background-color: #f3f3f3;\n}\n", ""]);
 
 // exports
 
@@ -17743,8 +17743,6 @@ exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -17854,7 +17852,7 @@ var render = function() {
                 _c("div", { staticClass: "groups" }, [
                   _c(
                     "div",
-                    { staticClass: "link_filter" },
+                    { staticClass: "group" },
                     [
                       _c(
                         "router-link",
@@ -17872,7 +17870,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "link_filter" },
+                    { staticClass: "group" },
                     [
                       _c("router-link", { attrs: { to: "groups/my" } }, [
                         _vm._v("My groups")

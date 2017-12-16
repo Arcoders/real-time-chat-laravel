@@ -16,10 +16,10 @@
                 <div v-if="$route.path == '/groups'">
 
                     <div class="groups">
-                        <div class="link_filter">
+                        <div class="group">
                             <router-link to="groups/all" exact-active-class="active">All groups</router-link>
                         </div>
-                        <div class="link_filter">
+                        <div class="group">
                             <router-link to="groups/my">My groups</router-link>
                         </div>
                     </div>
@@ -53,31 +53,29 @@
     }
     .groups {
         width: 100%;
-        height: 100%;
-        min-height: 100%;
         background: #f1f1f1;
         display: flex;
     }
 
-    .link_filter {
+    .group {
         width: 50%;
-        height: 100%;
-        min-height: 10%;
+        height: calc(98vh - 125px);
     }
 
-    .link_filter a{
+    .group a{
         width: 100%;
         height: 100%;
         color: #777777;
-        font-size: 0.8em;
+        font-size: 0.9em;
+        font-weight: bold;
         text-decoration: none;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .link_filter a:hover{
-        font-weight: bold;
-        box-shadow: 0px -1px 0px 0px rgba(186,186,186,1);
+    .group a:hover{
+        color: #009688;
+        background-color: #f3f3f3;
     }
 </style>
 
