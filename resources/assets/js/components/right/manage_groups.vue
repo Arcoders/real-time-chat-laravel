@@ -10,156 +10,91 @@
             <i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i>
         </div>
 
-        <div class="wrap-chat">
-            <div class="chat">
+        <div class="wrap-content">
+            <div class="dynamic_content">
+
+                <h4>My groups</h4>
+
+                <hr>
 
                 <table>
                     <thead>
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Job Title</th>
-                        <th>Twitter</th>
+                        <th>Avatar</th>
+                        <th>Name</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
+                        <td>
+                            <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/bones">
+                        </td>
                         <td>Laravel</td>
-                        <td>Edit</td>
+                        <td>
+                            <button>
+                                <i class="material-icons green_teal">mode_edit</i>
+                            </button>
+                        </td>
+                        <td>
+                            <button>
+                                <i class="material-icons cool_red">delete</i>
+                            </button>
+                        </td>
                     </tr>
                     <tr>
+                        <td>
+                            <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/adios">
+                        </td>
+                        <td>Nodejs</td>
+                        <td>
+                            <button>
+                                <i class="material-icons green_teal">mode_edit</i>
+                            </button>
+                        </td>
+                        <td>
+                            <button>
+                                <i class="material-icons cool_red">delete</i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h4>All groups</h4>
+
+                <hr>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Avatar</th>
+                        <th>Name</th>
+                        <th>Owner</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/rosa">
+                        </td>
+                        <td>Música</td>
                         <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
                     </tr>
                     <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
+                        <td>
+                            <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/marta">
+                        </td>
+                        <td>Material</td>
+                        <td>Victor</td>
                     </tr>
                     <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit</td>
-                    </tr>
-                    <tr>
-                        <td>Ismael</td>
-                        <td>Haytam</td>
-                        <td>Laravel</td>
-                        <td>Edit...</td>
+                        <td>
+                            <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/chiste">
+                        </td>
+                        <td>Famoso</td>
+                        <td>Marcos</td>
                     </tr>
                     </tbody>
                 </table>
@@ -182,10 +117,20 @@
         font-size: 40px;
         color: #777777;
     }
-    .chat {
-        padding: 10px;
+    h4 {
+        margin: 20px 0;
+        color: #777777;
+    }
+    hr {
+        border: 0;
+        height: 2px;
+        box-shadow: 0px 1px 0px 0px rgba(0,0,0,.3);
+        margin: 20px 0;
+    }
+    .dynamic_content {
+        padding: 20px;
         background-color: #ffffff;
-        height: calc(98vh - 105px);
+        height: calc(98vh - 125px);
     }
     table {
         width: 100%;
@@ -215,6 +160,23 @@
         color: #777777;
         font-size: 0.9em;
         font-weight: inherit;
+    }
+    .group_avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+    }
+    button {
+        border: none;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+    }
+    .green_teal {
+        color: #009688;
+    }
+    .cool_red {
+        color: #E57373;
     }
 
 </style>

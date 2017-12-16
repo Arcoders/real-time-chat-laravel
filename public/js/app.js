@@ -17231,6 +17231,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['uploadImageState'],
@@ -17331,7 +17335,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.chat[data-v-90845e56] {\n    height: calc(98vh - 165px);\n}\n", ""]);
+exports.push([module.i, "\n.dynamic_content[data-v-90845e56] {\n    height: calc(98vh - 165px);\n}\n", ""]);
 
 // exports
 
@@ -17406,8 +17410,8 @@ var render = function() {
     [
       _c("bar"),
       _vm._v(" "),
-      _c("div", { staticClass: "wrap-chat" }, [
-        _c("div", { staticClass: "chat" }, [_c("messages")], 1),
+      _c("div", { staticClass: "wrap-content" }, [
+        _c("div", { staticClass: "dynamic_content chat" }, [_c("messages")], 1),
         _vm._v(" "),
         _vm.uploadImage
           ? _c("div", { staticClass: "upload_foto" }, [_vm._m(0)])
@@ -17527,7 +17531,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n#bienvenido[data-v-4fe9507c] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.chat[data-v-4fe9507c] {\n    padding: 10px;\n    background-color: #ffffff;\n    height: calc(98vh - 105px);\n}\n", ""]);
+exports.push([module.i, "\n#bienvenido[data-v-4fe9507c] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.dynamic_content[data-v-4fe9507c] {\n    padding: 10px;\n    background-color: #ffffff;\n    height: calc(98vh - 105px);\n}\n", ""]);
 
 // exports
 
@@ -17618,8 +17622,8 @@ var staticRenderFns = [
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "wrap-chat" }, [
-        _c("div", { staticClass: "chat" })
+      _c("div", { staticClass: "wrap-content" }, [
+        _c("div", { staticClass: "dynamic_content" })
       ])
     ])
   }
@@ -17719,7 +17723,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.big_icon[data-v-c6811ab2] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\n.chat[data-v-c6811ab2] {\n    padding: 10px;\n    background-color: #ffffff;\n    height: calc(98vh - 105px);\n}\ntable[data-v-c6811ab2] {\n    width: 100%;\n    border-collapse: collapse;\n    margin: auto;\n    -webkit-box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n            box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n}\n\n/* Zebra striping */\ntr[data-v-c6811ab2]:nth-of-type(odd) {\n    background: #fbfbfb;\n}\nth[data-v-c6811ab2] {\n    background: #f1f1f1;\n    color: #777777;\n    font-size: 0.8em;\n    text-align: center;\n    padding: 15px;\n    border-bottom: 1px solid #ccc;\n}\ntd[data-v-c6811ab2] {\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n    text-align: center;\n    color: #777777;\n    font-size: 0.9em;\n    font-weight: inherit;\n}\n\n", ""]);
+exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.big_icon[data-v-c6811ab2] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\nh4[data-v-c6811ab2] {\n    margin: 20px 0;\n    color: #777777;\n}\nhr[data-v-c6811ab2] {\n    border: 0;\n    height: 2px;\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(0,0,0,.3);\n            box-shadow: 0px 1px 0px 0px rgba(0,0,0,.3);\n    margin: 20px 0;\n}\n.dynamic_content[data-v-c6811ab2] {\n    padding: 20px;\n    background-color: #ffffff;\n    height: calc(98vh - 125px);\n}\ntable[data-v-c6811ab2] {\n    width: 100%;\n    border-collapse: collapse;\n    margin: auto;\n    -webkit-box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n            box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n}\n\n/* Zebra striping */\ntr[data-v-c6811ab2]:nth-of-type(odd) {\n    background: #fbfbfb;\n}\nth[data-v-c6811ab2] {\n    background: #f1f1f1;\n    color: #777777;\n    font-size: 0.8em;\n    text-align: center;\n    padding: 15px;\n    border-bottom: 1px solid #ccc;\n}\ntd[data-v-c6811ab2] {\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n    text-align: center;\n    color: #777777;\n    font-size: 0.9em;\n    font-weight: inherit;\n}\n.group_avatar[data-v-c6811ab2] {\n    width: 35px;\n    height: 35px;\n    border-radius: 50%;\n}\nbutton[data-v-c6811ab2] {\n    border: none;\n    background-color: transparent;\n    outline: none;\n    cursor: pointer;\n}\n.green_teal[data-v-c6811ab2] {\n    color: #009688;\n}\n.cool_red[data-v-c6811ab2] {\n    color: #E57373;\n}\n\n", ""]);
 
 // exports
 
@@ -17730,44 +17734,6 @@ exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -17993,250 +17959,150 @@ var staticRenderFns = [
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "wrap-chat" }, [
-        _c("div", { staticClass: "chat" }, [
+      _c("div", { staticClass: "wrap-content" }, [
+        _c("div", { staticClass: "dynamic_content" }, [
+          _c("h4", [_vm._v("My groups")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
           _c("table", [
             _c("thead", [
               _c("tr", [
-                _c("th", [_vm._v("First Name")]),
+                _c("th", [_vm._v("Avatar")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Last Name")]),
+                _c("th", [_vm._v("Name")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Job Title")]),
+                _c("th", [_vm._v("Edit")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Twitter")])
+                _c("th", [_vm._v("Delete")])
               ])
             ]),
             _vm._v(" "),
             _c("tbody", [
               _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
+                _c("td", [
+                  _c("img", {
+                    staticClass: "group_avatar",
+                    attrs: {
+                      alt: "profilepicture",
+                      src: "https://avatars.io/twitter/bones"
+                    }
+                  })
+                ]),
                 _vm._v(" "),
                 _c("td", [_vm._v("Laravel")]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
+                _c("td", [
+                  _c("button", [
+                    _c("i", { staticClass: "material-icons green_teal" }, [
+                      _vm._v("mode_edit")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("button", [
+                    _c("i", { staticClass: "material-icons cool_red" }, [
+                      _vm._v("delete")
+                    ])
+                  ])
+                ])
               ]),
               _vm._v(" "),
               _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
+                _c("td", [
+                  _c("img", {
+                    staticClass: "group_avatar",
+                    attrs: {
+                      alt: "profilepicture",
+                      src: "https://avatars.io/twitter/adios"
+                    }
+                  })
+                ]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
+                _c("td", [_vm._v("Nodejs")]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
+                _c("td", [
+                  _c("button", [
+                    _c("i", { staticClass: "material-icons green_teal" }, [
+                      _vm._v("mode_edit")
+                    ])
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
+                _c("td", [
+                  _c("button", [
+                    _c("i", { staticClass: "material-icons cool_red" }, [
+                      _vm._v("delete")
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("h4", [_vm._v("All groups")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("table", [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("Avatar")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Name")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Owner")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [
+                _c("td", [
+                  _c("img", {
+                    staticClass: "group_avatar",
+                    attrs: {
+                      alt: "profilepicture",
+                      src: "https://avatars.io/twitter/rosa"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Música")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Ismael")])
               ]),
               _vm._v(" "),
               _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
+                _c("td", [
+                  _c("img", {
+                    staticClass: "group_avatar",
+                    attrs: {
+                      alt: "profilepicture",
+                      src: "https://avatars.io/twitter/marta"
+                    }
+                  })
+                ]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
+                _c("td", [_vm._v("Material")]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
+                _c("td", [_vm._v("Victor")])
               ]),
               _vm._v(" "),
               _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
+                _c("td", [
+                  _c("img", {
+                    staticClass: "group_avatar",
+                    attrs: {
+                      alt: "profilepicture",
+                      src: "https://avatars.io/twitter/chiste"
+                    }
+                  })
+                ]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
+                _c("td", [_vm._v("Famoso")]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Ismael")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Haytam")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Laravel")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edit...")])
+                _c("td", [_vm._v("Marcos")])
               ])
             ])
           ])
@@ -18298,7 +18164,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-29f16bdf] {\n    text-decoration: none;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-29f16bdf] {\n    border: none;\n    background-color: transparent;\n    outline: none;\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -18313,13 +18179,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "send_app" } }, [
     _c("div", { staticClass: "wrap-message" }, [
-      _c("a", { attrs: { href: "#" }, on: { click: _vm.showModal } }, [
+      _c("button", { on: { click: _vm.showModal } }, [
         _c("i", { staticClass: "material-icons" }, [_vm._v("photo_camera")])
       ]),
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _c("i", { staticClass: "material-icons" }, [_vm._v("send")])
+      _vm._m(1)
     ])
   ])
 }
@@ -18333,6 +18199,14 @@ var staticRenderFns = [
         staticClass: "input-message",
         attrs: { type: "text", placeholder: "Escribe un nuevo mensaje" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", [
+      _c("i", { staticClass: "material-icons" }, [_vm._v("send")])
     ])
   }
 ]

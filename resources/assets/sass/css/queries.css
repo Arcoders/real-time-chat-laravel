@@ -23,7 +23,7 @@
 	.me_img , .you_img {
 		display: none;
 	}
-	.chat {
+	.dynamic_content {
 			padding: 20px;
 	}
 }

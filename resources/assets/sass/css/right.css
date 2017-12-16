@@ -38,17 +38,20 @@
 
 /* chat */
 
-.wrap-chat {
+.wrap-content {
     height: calc(100% - 120px);
     display: flex;
     position: relative;
 }
 
-.chat {
-    background-color: #ECE5DD;
+.dynamic_content {
     width: 100%;
     padding: 10px 100px;
     overflow-y: auto;
+}
+
+.chat {
+    background-color: #ECE5DD;
 }
 
 /* Upload foto */
@@ -71,8 +74,8 @@
 .container_foto {
 	background-color: #fbfbfb;
 	border: 0px solid #ffffff;
-	width: 50%;
-	height: 70%;
+	width: 70%;
+	height: 80%;
 	border-radius: 2px;
 	box-shadow: 0 2px 4px #7E7E7E;
 	display: flex;

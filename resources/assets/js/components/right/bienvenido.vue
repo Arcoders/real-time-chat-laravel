@@ -10,8 +10,8 @@
             <i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i>
         </div>
 
-        <div class="wrap-chat">
-            <div class="chat">
+        <div class="wrap-content">
+            <div class="dynamic_content">
 
 
             </div>
@@ -26,7 +26,7 @@
         border-radius: 2px;
         height: calc(98vh - 25px);
     }
-    .chat {
+    .dynamic_content {
         padding: 10px;
         background-color: #ffffff;
         height: calc(98vh - 105px);

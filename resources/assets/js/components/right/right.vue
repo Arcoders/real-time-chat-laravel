@@ -3,9 +3,9 @@
 
         <bar></bar>
 
-        <div class="wrap-chat">
+        <div class="wrap-content">
 
-            <div class="chat">
+            <div class="dynamic_content chat">
 
                 <messages></messages>
 
@@ -25,7 +25,7 @@
 </template>
 
 <style scoped>
-    .chat {
+    .dynamic_content {
         height: calc(98vh - 165px);
     }
 </style>
