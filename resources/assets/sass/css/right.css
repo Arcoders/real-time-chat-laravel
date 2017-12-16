@@ -18,8 +18,8 @@
 .chat-head img {
     width: 50px;
     height: 50px;
-		min-width: 50px;
-		min-height: 50px;
+    min-width: 50px;
+    min-height: 50px;
     margin: 5px 20px;
     border-radius: 50%;
 }
@@ -66,7 +66,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	display: none;
 }
 
 .container_foto {

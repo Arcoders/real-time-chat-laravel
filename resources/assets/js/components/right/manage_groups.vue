@@ -2,10 +2,10 @@
     <div id="manage_groups_app">
 
         <div class="chat-head">
-            <img alt="profilepicture" src="https://avatars.io/twitter/nada">
+            <i class="material-icons big_icon">group_add</i>
             <div class="chat-name">
                 <h1 class="font-name">Groups</h1>
-                <p class="font-online">Ismael, Fatima, Admin, Marta, victor...</p>
+                <p class="font-online">You can create public chat rooms for all users...</p>
             </div>
             <i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i>
         </div>
@@ -175,6 +175,12 @@
         background-color: #ffffff;
         border-radius: 2px;
         height: calc(98vh - 25px);
+    }
+    .big_icon {
+        margin: 10px 20px;
+        border-radius: 50%;
+        font-size: 40px;
+        color: #777777;
     }
     .chat {
         padding: 10px;

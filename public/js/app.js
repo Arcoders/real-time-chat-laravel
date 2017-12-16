@@ -11283,7 +11283,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(6);
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(52);
 
 
 /***/ }),
@@ -11299,7 +11299,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_right_right_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_right_right_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_bienvenido_vue__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_bienvenido_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_right_bienvenido_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_manage_groups_vue__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_manage_groups_vue__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_manage_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_right_manage_groups_vue__);
 
 /**
@@ -17154,17 +17154,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(56)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(35)
 /* template */
-var __vue_template__ = __webpack_require__(36)
+var __vue_template__ = __webpack_require__(58)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-29f16bdf"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -17216,60 +17220,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['uploadImageState'],
+    methods: {
+        showModal: function showModal(event) {
+            this.$emit('showUpload', !this.uploadImageState);
+        }
+    },
     mounted: function mounted() {
         console.log('Send ok!');
     }
 });
 
 /***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "send_app" } }, [
-      _c("div", { staticClass: "wrap-message" }, [
-        _c("i", {
-          staticClass: "fa fa-smile-o fa-lg",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "message" }, [
-          _c("input", {
-            staticClass: "input-message",
-            attrs: { type: "text", placeholder: "Escribe un nuevo mensaje" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("i", {
-          staticClass: "fa fa-paper-plane-o",
-          attrs: { "aria-hidden": "true" }
-        })
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-29f16bdf", module.exports)
-  }
-}
-
-/***/ }),
+/* 36 */,
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17400,6 +17376,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            uploadImage: false
+        };
+    },
+
+    methods: {
+        showImageModal: function showImageModal(data) {
+            this.uploadImage = data;
+        }
+    },
     mounted: function mounted() {
         console.log('Right ok!');
     }
@@ -17422,10 +17409,15 @@ var render = function() {
       _c("div", { staticClass: "wrap-chat" }, [
         _c("div", { staticClass: "chat" }, [_c("messages")], 1),
         _vm._v(" "),
-        _vm._m(0)
+        _vm.uploadImage
+          ? _c("div", { staticClass: "upload_foto" }, [_vm._m(0)])
+          : _vm._e()
       ]),
       _vm._v(" "),
-      _c("send")
+      _c("send", {
+        attrs: { uploadImageState: _vm.uploadImage },
+        on: { showUpload: _vm.showImageModal }
+      })
     ],
     1
   )
@@ -17435,10 +17427,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "upload_foto" }, [
-      _c("div", { staticClass: "container_foto font-preview" }, [
-        _c("p", [_vm._v("Subir imagen")])
-      ])
+    return _c("div", { staticClass: "container_foto font-preview" }, [
+      _c("p", [_vm._v("Subir imagen")])
     ])
   }
 ]
@@ -17645,27 +17635,18 @@ if (false) {
 
 /***/ }),
 /* 47 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(52)
+  __webpack_require__(48)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(54)
+var __vue_script__ = __webpack_require__(50)
 /* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(51)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -17704,13 +17685,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 52 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(53);
+var content = __webpack_require__(49);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -17730,7 +17711,7 @@ if(false) {
 }
 
 /***/ }),
-/* 53 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -17738,17 +17719,23 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.chat[data-v-c6811ab2] {\n    padding: 10px;\n    background-color: #ffffff;\n    height: calc(98vh - 105px);\n}\ntable[data-v-c6811ab2] {\n    width: 100%;\n    border-collapse: collapse;\n    margin: auto;\n    -webkit-box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n            box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n}\n\n/* Zebra striping */\ntr[data-v-c6811ab2]:nth-of-type(odd) {\n    background: #fbfbfb;\n}\nth[data-v-c6811ab2] {\n    background: #f1f1f1;\n    color: #777777;\n    font-size: 0.8em;\n    text-align: center;\n    padding: 15px;\n    border-bottom: 1px solid #ccc;\n}\ntd[data-v-c6811ab2] {\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n    text-align: center;\n    color: #777777;\n    font-size: 0.9em;\n    font-weight: inherit;\n}\n\n", ""]);
+exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.big_icon[data-v-c6811ab2] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\n.chat[data-v-c6811ab2] {\n    padding: 10px;\n    background-color: #ffffff;\n    height: calc(98vh - 105px);\n}\ntable[data-v-c6811ab2] {\n    width: 100%;\n    border-collapse: collapse;\n    margin: auto;\n    -webkit-box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n            box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n}\n\n/* Zebra striping */\ntr[data-v-c6811ab2]:nth-of-type(odd) {\n    background: #fbfbfb;\n}\nth[data-v-c6811ab2] {\n    background: #f1f1f1;\n    color: #777777;\n    font-size: 0.8em;\n    text-align: center;\n    padding: 15px;\n    border-bottom: 1px solid #ccc;\n}\ntd[data-v-c6811ab2] {\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n    text-align: center;\n    color: #777777;\n    font-size: 0.9em;\n    font-weight: inherit;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 54 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -17972,7 +17959,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 55 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -17988,18 +17975,15 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "manage_groups_app" } }, [
       _c("div", { staticClass: "chat-head" }, [
-        _c("img", {
-          attrs: {
-            alt: "profilepicture",
-            src: "https://avatars.io/twitter/nada"
-          }
-        }),
+        _c("i", { staticClass: "material-icons big_icon" }, [
+          _vm._v("group_add")
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "chat-name" }, [
           _c("h1", { staticClass: "font-name" }, [_vm._v("Groups")]),
           _vm._v(" "),
           _c("p", { staticClass: "font-online" }, [
-            _vm._v("Ismael, Fatima, Admin, Marta, victor...")
+            _vm._v("You can create public chat rooms for all users...")
           ])
         ]),
         _vm._v(" "),
@@ -18267,6 +18251,97 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-c6811ab2", module.exports)
+  }
+}
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(57);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("67fad634", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-29f16bdf\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./send.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-29f16bdf\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./send.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\na[data-v-29f16bdf] {\n    text-decoration: none;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "send_app" } }, [
+    _c("div", { staticClass: "wrap-message" }, [
+      _c("a", { attrs: { href: "#" }, on: { click: _vm.showModal } }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("photo_camera")])
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("i", { staticClass: "material-icons" }, [_vm._v("send")])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "message" }, [
+      _c("input", {
+        staticClass: "input-message",
+        attrs: { type: "text", placeholder: "Escribe un nuevo mensaje" }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-29f16bdf", module.exports)
   }
 }
 
