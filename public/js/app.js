@@ -17732,7 +17732,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.big_icon[data-v-c6811ab2] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\nh4[data-v-c6811ab2] {\n    margin: 20px 0;\n    color: #777777;\n}\nhr[data-v-c6811ab2] {\n    border: 0;\n    height: 2px;\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(0,0,0,.3);\n            box-shadow: 0px 1px 0px 0px rgba(0,0,0,.3);\n    margin: 20px 0;\n}\n.dynamic_content[data-v-c6811ab2] {\n    padding: 20px;\n    background-color: #ffffff;\n    height: calc(98vh - 125px);\n}\ntable[data-v-c6811ab2] {\n    width: 100%;\n    border-collapse: collapse;\n    margin: auto;\n    -webkit-box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n            box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n}\n\n/* Zebra striping */\ntr[data-v-c6811ab2]:nth-of-type(odd) {\n    background: #fbfbfb;\n}\nth[data-v-c6811ab2] {\n    background: #f1f1f1;\n    color: #777777;\n    font-size: 0.8em;\n    text-align: center;\n    padding: 15px;\n    border-bottom: 1px solid #ccc;\n}\ntd[data-v-c6811ab2] {\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n    text-align: center;\n    color: #777777;\n    font-size: 0.9em;\n    font-weight: inherit;\n}\n.group_avatar[data-v-c6811ab2] {\n    width: 35px;\n    height: 35px;\n    border-radius: 50%;\n}\nbutton[data-v-c6811ab2] {\n    border: none;\n    background-color: transparent;\n    outline: none;\n    cursor: pointer;\n}\n.green_teal[data-v-c6811ab2] {\n    color: #009688;\n}\n.cool_red[data-v-c6811ab2] {\n    color: #E57373;\n}\n\n", ""]);
+exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.big_icon[data-v-c6811ab2] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\n.dynamic_content[data-v-c6811ab2] {\n    padding: 20px;\n    background-color: #ffffff;\n    height: calc(98vh - 125px);\n}\n", ""]);
 
 // exports
 
@@ -17743,63 +17743,6 @@ exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -18139,7 +18082,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-423c9880] {\n    text-decoration: none;\n    color: #777777;\n}\nh4[data-v-423c9880] {\n    margin: 20px 0;\n    color: #777777;\n}\nhr[data-v-423c9880] {\n    border: 0;\n    height: 2px;\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(0,0,0,.3);\n            box-shadow: 0px 1px 0px 0px rgba(0,0,0,.3);\n    margin: 20px 0;\n}\ntable[data-v-423c9880] {\n    width: 100%;\n    border-collapse: collapse;\n    margin: auto;\n    -webkit-box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n            box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n}\n\n/* Zebra striping */\ntr[data-v-423c9880]:nth-of-type(odd) {\n    background: #fbfbfb;\n}\nth[data-v-423c9880] {\n    background: #f1f1f1;\n    color: #777777;\n    font-size: 0.8em;\n    text-align: center;\n    padding: 15px;\n    border-bottom: 1px solid #ccc;\n}\ntd[data-v-423c9880] {\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n    text-align: center;\n    color: #777777;\n    font-size: 0.9em;\n    font-weight: inherit;\n}\n.group_avatar[data-v-423c9880] {\n    width: 35px;\n    height: 35px;\n    border-radius: 50%;\n}\nbutton[data-v-423c9880] {\n    border: none;\n    background-color: transparent;\n    outline: none;\n    cursor: pointer;\n}\n.green_teal[data-v-423c9880] {\n    color: #009688;\n}\n.cool_red[data-v-423c9880] {\n    color: #E57373;\n}\n\n", ""]);
+exports.push([module.i, "\na[data-v-423c9880] {\n    text-decoration: none;\n    color: #777777;\n}\n", ""]);
 
 // exports
 
@@ -18150,63 +18093,6 @@ exports.push([module.i, "\na[data-v-423c9880] {\n    text-decoration: none;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -18340,7 +18226,7 @@ var staticRenderFns = [
           _c("td", [_vm._v("Laravel")]),
           _vm._v(" "),
           _c("td", [
-            _c("button", [
+            _c("button", { staticClass: "format_button" }, [
               _c("i", { staticClass: "material-icons green_teal" }, [
                 _vm._v("mode_edit")
               ])
@@ -18348,7 +18234,7 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("td", [
-            _c("button", [
+            _c("button", { staticClass: "format_button" }, [
               _c("i", { staticClass: "material-icons cool_red" }, [
                 _vm._v("delete")
               ])
@@ -18370,7 +18256,7 @@ var staticRenderFns = [
           _c("td", [_vm._v("Nodejs")]),
           _vm._v(" "),
           _c("td", [
-            _c("button", [
+            _c("button", { staticClass: "format_button" }, [
               _c("i", { staticClass: "material-icons green_teal" }, [
                 _vm._v("mode_edit")
               ])
@@ -18378,7 +18264,7 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("td", [
-            _c("button", [
+            _c("button", { staticClass: "format_button" }, [
               _c("i", { staticClass: "material-icons cool_red" }, [
                 _vm._v("delete")
               ])
@@ -18484,7 +18370,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-36d7bb6e] {\n    text-decoration: none;\n    color: #777777;\n}\nh4[data-v-36d7bb6e] {\n    margin: 20px 0;\n    color: #777777;\n}\nhr[data-v-36d7bb6e] {\n    border: 0;\n    height: 2px;\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(0,0,0,.3);\n            box-shadow: 0px 1px 0px 0px rgba(0,0,0,.3);\n    margin: 20px 0;\n}\ntable[data-v-36d7bb6e] {\n    width: 100%;\n    border-collapse: collapse;\n    margin: auto;\n    -webkit-box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n            box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);\n}\n\n/* Zebra striping */\ntr[data-v-36d7bb6e]:nth-of-type(odd) {\n    background: #fbfbfb;\n}\nth[data-v-36d7bb6e] {\n    background: #f1f1f1;\n    color: #777777;\n    font-size: 0.8em;\n    text-align: center;\n    padding: 15px;\n    border-bottom: 1px solid #ccc;\n}\ntd[data-v-36d7bb6e] {\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n    text-align: center;\n    color: #777777;\n    font-size: 0.9em;\n    font-weight: inherit;\n}\n.group_avatar[data-v-36d7bb6e] {\n    width: 35px;\n    height: 35px;\n    border-radius: 50%;\n}\nbutton[data-v-36d7bb6e] {\n    border: none;\n    background-color: transparent;\n    outline: none;\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-36d7bb6e] {\n    text-decoration: none;\n    color: #777777;\n}\n", ""]);
 
 // exports
 
@@ -18495,56 +18381,6 @@ exports.push([module.i, "\na[data-v-36d7bb6e] {\n    text-decoration: none;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //

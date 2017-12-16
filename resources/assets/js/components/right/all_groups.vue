@@ -49,56 +49,6 @@
         text-decoration: none;
         color: #777777;
     }
-    h4 {
-        margin: 20px 0;
-        color: #777777;
-    }
-    hr {
-        border: 0;
-        height: 2px;
-        box-shadow: 0px 1px 0px 0px rgba(0,0,0,.3);
-        margin: 20px 0;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: auto;
-        box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);
-    }
-
-    /* Zebra striping */
-    tr:nth-of-type(odd) {
-        background: #fbfbfb;
-    }
-
-    th {
-        background: #f1f1f1;
-        color: #777777;
-        font-size: 0.8em;
-        text-align: center;
-        padding: 15px;
-        border-bottom: 1px solid #ccc;
-    }
-
-    td {
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-        text-align: center;
-        color: #777777;
-        font-size: 0.9em;
-        font-weight: inherit;
-    }
-    .group_avatar {
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-    }
-    button {
-        border: none;
-        background-color: transparent;
-        outline: none;
-        cursor: pointer;
-    }
 </style>
 
 <script>
