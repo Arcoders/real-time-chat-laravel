@@ -18718,14 +18718,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -18781,26 +18773,10 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "information_content" }, [
-              _c("h1", [_vm._v("Name:")]),
+              _c("h1", [_vm._v("Statuses:")]),
               _vm._v(" "),
               _c("p", { staticClass: "font-preview" }, [
-                _vm._v("Ismael Haytam")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "information_content" }, [
-              _c("h1", [_vm._v("Name:")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "font-preview" }, [
-                _vm._v("Ismael Haytam")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "information_content" }, [
-              _c("h1", [_vm._v("Name:")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "font-preview" }, [
-                _vm._v("Ismael Haytam")
+                _vm._v("Don't you wish there were a knob on the...")
               ])
             ])
           ])

@@ -20,16 +20,8 @@
                     </div>
 
                     <div class="information_content">
-                        <h1>Name:</h1>
-                        <p class="font-preview">Ismael Haytam</p>
-                    </div>
-                    <div class="information_content">
-                        <h1>Name:</h1>
-                        <p class="font-preview">Ismael Haytam</p>
-                    </div>
-                    <div class="information_content">
-                        <h1>Name:</h1>
-                        <p class="font-preview">Ismael Haytam</p>
+                        <h1>Statuses:</h1>
+                        <p class="font-preview">Don't you wish there were a knob on the...</p>
                     </div>
                 </div>
 
