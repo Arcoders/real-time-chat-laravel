@@ -35,6 +35,7 @@ Vue.component('send', require('./components/right/send.vue'));
 
 import right from './components/right/right.vue';
 import profile from './components/right/profile.vue';
+import edit_profile from './components/right/edit_profile';
 import bienvenido from './components/right/bienvenido.vue';
 import groups from './components/right/manage_groups.vue';
 import all_groups from './components/right/all_groups.vue';
@@ -45,7 +46,12 @@ import my_groups from './components/right/my_groups.vue';
 const router = new VueRouter({
     routes: [
         { path: '/', component: bienvenido},
-        { path: '/profile', component: profile},
+        {
+            path: '/profile', component: profile,
+            children: [
+                { path: 'edit', component: edit_profile }
+            ]
+        },
         {
             path: '/groups', component: groups,
             children: [

@@ -7,9 +7,9 @@
                 <h1 class="font-name">Profile</h1>
                 <p class="font-online">Ismael Haytam...</p>
             </div>
-            <button>
+            <router-link to="profile/edit">
                 <i class="material-icons">edit</i>
-            </button>
+            </router-link>
         </div>
 
         <div class="wrap-content">
@@ -25,6 +25,9 @@
                         <h1>Statuses:</h1>
                         <p class="font-preview">Don't you wish there were a knob on the...</p>
                     </div>
+
+                    <router-view></router-view>
+
                 </div>
 
             </div>
@@ -43,6 +46,18 @@
         padding: 0px;
         background-color: #ffffff;
         height: calc(98vh - 85px);
+    }
+    a i {
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    a i:hover {
+        color: #009688;
+    }
+
+    i_green {
+        color: #009688;
     }
 </style>
 

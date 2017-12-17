@@ -1,10 +1,10 @@
 <template>
     <div id="search_app">
 
-        <div class="wrap-search">
-            <div class="search">
+        <div class="wrap-input">
+            <div class="input">
                 <i class="fa fa-search fa" aria-hidden="true"></i>
-                <input type="text" class="input-search" placeholder="Buscar contacto">
+                <input type="text" class="input-global" placeholder="Buscar contacto">
             </div>
         </div>
 
