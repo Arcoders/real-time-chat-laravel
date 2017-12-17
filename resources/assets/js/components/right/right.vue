@@ -13,7 +13,12 @@
 
             <div v-if="uploadImage" class="upload_foto">
                 <div class="container_foto font-preview">
-                    <p>Subir imagen</p>
+                    <label class="fileContainer">
+                        <button>
+                            <i class="material-icons">file_upload</i>
+                        </button>
+                        <input type="file"/>
+                    </label>
                 </div>
             </div>
 

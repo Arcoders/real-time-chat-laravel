@@ -2,7 +2,7 @@
     <div id="send_app">
 
         <div class="wrap-message">
-            <button v-on:click="showModal">
+            <button class="format_button" v-on:click="showModal">
                 <i v-bind:class="[uploadImageState ? 'green_teal' : '', 'material-icons']">photo_camera</i>
             </button>
 
@@ -10,7 +10,7 @@
                 <input type="text" class="input-message" placeholder="Escribe un nuevo mensaje">
             </div>
 
-            <button>
+            <button class="format_button">
                 <i class="material-icons">send</i>
             </button>
         </div>

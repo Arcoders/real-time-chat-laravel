@@ -17309,15 +17309,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "send_app" } }, [
     _c("div", { staticClass: "wrap-message" }, [
-      _c("button", { on: { click: _vm.showModal } }, [
-        _c(
-          "i",
-          {
-            class: [_vm.uploadImageState ? "green_teal" : "", "material-icons"]
-          },
-          [_vm._v("photo_camera")]
-        )
-      ]),
+      _c(
+        "button",
+        { staticClass: "format_button", on: { click: _vm.showModal } },
+        [
+          _c(
+            "i",
+            {
+              class: [
+                _vm.uploadImageState ? "green_teal" : "",
+                "material-icons"
+              ]
+            },
+            [_vm._v("photo_camera")]
+          )
+        ]
+      ),
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
@@ -17341,7 +17348,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("button", [
+    return _c("button", { staticClass: "format_button" }, [
       _c("i", { staticClass: "material-icons" }, [_vm._v("send")])
     ])
   }
@@ -17484,6 +17491,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -17538,7 +17550,13 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container_foto font-preview" }, [
-      _c("p", [_vm._v("Subir imagen")])
+      _c("label", { staticClass: "fileContainer" }, [
+        _c("button", [
+          _c("i", { staticClass: "material-icons" }, [_vm._v("file_upload")])
+        ]),
+        _vm._v(" "),
+        _c("input", { attrs: { type: "file" } })
+      ])
     ])
   }
 ]
