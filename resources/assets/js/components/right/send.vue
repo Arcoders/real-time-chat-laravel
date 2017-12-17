@@ -3,7 +3,7 @@
 
         <div class="wrap-message">
             <button v-on:click="showModal">
-                <i class="material-icons">photo_camera</i>
+                <i v-bind:class="[uploadImageState ? 'green_teal' : '', 'material-icons']">photo_camera</i>
             </button>
 
             <div class="message">
@@ -19,11 +19,8 @@
 </template>
 
 <style scoped>
-    button {
-        border: none;
-        background-color: transparent;
-        outline: none;
-        cursor: pointer;
+    .green_teal {
+        color: #009688;
     }
 </style>
 

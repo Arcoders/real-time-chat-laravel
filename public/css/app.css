@@ -559,6 +559,10 @@ button {
   cursor: pointer;
 }
 
+button i:hover {
+  color: #009688;
+}
+
 .green_teal {
   color: #009688;
 }
