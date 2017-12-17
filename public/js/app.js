@@ -18718,6 +18718,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -18755,10 +18757,9 @@ var staticRenderFns = [
           _c("p", { staticClass: "font-online" }, [_vm._v("Ismael Haytam...")])
         ]),
         _vm._v(" "),
-        _c("i", {
-          staticClass: "fa fa-whatsapp fa-lg",
-          attrs: { "aria-hidden": "true" }
-        })
+        _c("button", [
+          _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "wrap-content" }, [

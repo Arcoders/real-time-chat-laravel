@@ -7,7 +7,9 @@
                 <h1 class="font-name">Profile</h1>
                 <p class="font-online">Ismael Haytam...</p>
             </div>
-            <i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i>
+            <button>
+                <i class="material-icons">edit</i>
+            </button>
         </div>
 
         <div class="wrap-content">
