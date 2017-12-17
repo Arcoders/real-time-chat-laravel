@@ -21,7 +21,7 @@
 </template>
 
 <style scoped>
-    #bienvenido {
+    #bienvenido_app {
         background-color: #ffffff;
         border-radius: 2px;
         height: calc(98vh - 25px);

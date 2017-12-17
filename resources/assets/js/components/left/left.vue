@@ -5,7 +5,7 @@
             <img src="https://avatars.io/twitter/nada">
             <div class="icons">
 
-                <router-link to="/" exact-active-class="active_icon">
+                <router-link to="/profile" exact-active-class="active_icon">
                     <i class="material-icons">person</i>
                 </router-link>
 

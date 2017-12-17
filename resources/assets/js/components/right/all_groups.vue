@@ -54,7 +54,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Right ok!')
+            console.log('All groups ok!')
         }
     }
 </script>

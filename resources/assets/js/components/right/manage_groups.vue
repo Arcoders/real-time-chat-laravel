@@ -82,7 +82,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Right ok!')
+            console.log('Groups ok!')
         }
     }
 </script>

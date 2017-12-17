@@ -67,7 +67,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Right ok!')
+            console.log('My groups ok!')
         }
     }
 </script>
