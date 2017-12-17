@@ -7,8 +7,13 @@
                 <h1 class="font-name">Profile</h1>
                 <p class="font-online">Ismael Haytam...</p>
             </div>
-            <router-link to="profile/edit">
+
+            <router-link v-if="$route.path == '/profile'" to="/profile/edit">
                 <i class="material-icons">edit</i>
+            </router-link>
+
+            <router-link v-if="$route.path == '/profile/edit'" to="/profile">
+                <i class="material-icons">arrow_back</i>
             </router-link>
         </div>
 

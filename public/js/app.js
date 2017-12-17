@@ -17735,6 +17735,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -17764,9 +17769,17 @@ var render = function() {
         _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),
-        _c("router-link", { attrs: { to: "profile/edit" } }, [
-          _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
-        ])
+        _vm.$route.path == "/profile"
+          ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
+              _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.$route.path == "/profile/edit"
+          ? _c("router-link", { attrs: { to: "/profile" } }, [
+              _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
+            ])
+          : _vm._e()
       ],
       1
     ),
@@ -18939,7 +18952,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.green_teal[data-v-10f5e86a] {\n    color: #009688;\n}\n.wrap-input[data-v-10f5e86a] {\n    padding: 2px 2px 0 2px;\n}\n.add_padding[data-v-10f5e86a] {\n    padding-bottom: 2px;\n}\n", ""]);
+exports.push([module.i, "\n.green_teal[data-v-10f5e86a] {\n    color: #009688;\n}\n.wrap-input[data-v-10f5e86a] {\n    padding: 2px 2px 0 2px;\n}\n.add_padding[data-v-10f5e86a] {\n    padding-bottom: 2px;\n}\nbutton[data-v-10f5e86a] {\n    color: #444444;\n}\n", ""]);
 
 // exports
 
@@ -18950,6 +18963,16 @@ exports.push([module.i, "\n.green_teal[data-v-10f5e86a] {\n    color: #009688;\n
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19009,7 +19032,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "edit_profile_app" } }, [
       _c("div", { staticClass: "information_content" }, [
-        _c("h1", [_vm._v("Edit:")]),
+        _c("h1", [_vm._v("Edit information:")]),
         _vm._v(" "),
         _c("div", { staticClass: "wrap-input" }, [
           _c("input", {
@@ -19018,18 +19041,25 @@ var staticRenderFns = [
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "wrap-input" }, [
+        _c("div", { staticClass: "wrap-input add_padding" }, [
           _c("input", {
             staticClass: "input-global",
             attrs: { type: "text", placeholder: "Status" }
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "wrap-input add_padding" }, [
-          _c("input", {
-            staticClass: "input-global",
-            attrs: { type: "text", placeholder: "Buscar contacto" }
-          })
+        _c("br"),
+        _vm._v(" "),
+        _c("h1", [_vm._v("Edit avatar:")]),
+        _vm._v(" "),
+        _c("label", { staticClass: "fileContainer font-online" }, [
+          _c("button", [
+            _vm._v(
+              "\n                Click here to trigger the file uploader!\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("input", { attrs: { type: "file" } })
         ])
       ])
     ])

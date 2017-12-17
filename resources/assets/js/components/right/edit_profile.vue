@@ -2,19 +2,26 @@
     <div id="edit_profile_app">
 
         <div class="information_content">
-            <h1>Edit:</h1>
+            <h1>Edit information:</h1>
 
             <div class="wrap-input">
                 <input type="text" class="input-global" placeholder="User name">
             </div>
 
-            <div class="wrap-input">
+            <div class="wrap-input add_padding">
                 <input type="text" class="input-global" placeholder="Status">
             </div>
 
-            <div class="wrap-input add_padding">
-                <input type="text" class="input-global" placeholder="Buscar contacto">
-            </div>
+            <br>
+
+            <h1>Edit avatar:</h1>
+
+            <label class="fileContainer font-online">
+                <button>
+                    Click here to trigger the file uploader!
+                </button>
+                <input type="file"/>
+            </label>
 
         </div>
 
@@ -30,6 +37,9 @@
     }
     .add_padding {
         padding-bottom: 2px;
+    }
+    button {
+        color: #444444;
     }
 </style>
 
