@@ -2,7 +2,12 @@
     <div id="left_app">
 
         <div class="profile">
-            <img src="https://avatars.io/twitter/nada">
+            <avatar :username="user.name"
+                    color="#fff"
+                    :src="user.avatar"
+                    class="avatar">
+            </avatar>
+            <span>{{ user.name }}</span>
             <div class="icons">
 
                 <router-link to="/profile" exact-active-class="active_icon">
@@ -54,12 +59,20 @@
     .active_icon {
         box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);
     }
+    span {
+        margin: auto;
+        color: #777777;
+    }
+    .avatar {
+        margin: 5px 20px;
+    }
 </style>
 
 <script>
     export default {
+        props: ['user'],
         mounted() {
-            console.log('Left ok!')
+            console.log('Left ok!');
         }
     }
 </script>

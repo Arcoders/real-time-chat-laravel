@@ -7,7 +7,7 @@
 
             <div class="dynamic_content chat">
 
-                <messages></messages>
+                <messages :user="user"></messages>
 
             </div>
 
@@ -46,6 +46,7 @@
 
 <script>
     export default {
+        props: ['user'],
         data() {
             return {
                 uploadImage: false,

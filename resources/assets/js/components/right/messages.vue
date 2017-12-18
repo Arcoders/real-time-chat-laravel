@@ -11,7 +11,11 @@
 
         <div class="chat-bubble you">
             <div class="your-mouth">
-                <img class="you_img" src="https://avatars.io/twitter/nada">
+                <avatar :username="user.name"
+                        color="#fff"
+                        :src="user.avatar"
+                        class="you_img">
+                </avatar>
             </div>
             <div class="content">Awdi ghir m3a dnya</div>
             <div class="time">15:27</div>
@@ -27,56 +31,11 @@
 
         <div class="chat-bubble you">
             <div class="your-mouth">
-                <img class="you_img" src="https://avatars.io/twitter/nada">
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <img class="you_img" src="https://avatars.io/twitter/nada">
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <img class="you_img" src="https://avatars.io/twitter/nada">
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <img class="you_img" src="https://avatars.io/twitter/nada">
+                <avatar :username="user.name"
+                        color="#fff"
+                        :src="user.avatar"
+                        class="you_img">
+                </avatar>
             </div>
             <div class="content">Awdi ghir m3a dnya</div>
             <div class="time">15:27</div>
@@ -93,7 +52,11 @@
 
         <div class="chat-bubble you">
             <div class="your-mouth">
-                <img class="you_img" src="https://avatars.io/twitter/nada">
+                <avatar :username="user.name"
+                        color="#fff"
+                        :src="user.avatar"
+                        class="you_img">
+                </avatar>
             </div>
             <div class="content">Awdi ghir m3a dnya</div>
             <div class="time">15:27</div>
@@ -109,7 +72,11 @@
 
         <div class="chat-bubble you">
             <div class="your-mouth">
-                <img class="you_img" src="https://avatars.io/twitter/nada">
+                <avatar :username="user.name"
+                        color="#fff"
+                        :src="user.avatar"
+                        class="you_img">
+                </avatar>
             </div>
             <div class="content">Awdi ghir m3a dnya</div>
             <div class="time">15:27</div>
@@ -125,7 +92,32 @@
 
         <div class="chat-bubble you">
             <div class="your-mouth">
-                <img class="you_img" src="https://avatars.io/twitter/nada">
+                <avatar :username="user.name"
+                        color="#fff"
+                        :src="user.avatar"
+                        class="you_img">
+                </avatar>
+            </div>
+            <div class="content">Awdi ghir m3a dnya</div>
+            <div class="time">15:27</div>
+        </div>
+
+
+        <div class="chat-bubble me">
+            <div class="my-mouth">
+                <img class="me_img" src="https://avatars.io/twitter/maryam">
+            </div>
+            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
+            <div class="time">15:20</div>
+        </div>
+
+        <div class="chat-bubble you">
+            <div class="your-mouth">
+                <avatar :username="user.name"
+                        color="#fff"
+                        :src="user.avatar"
+                        class="you_img">
+                </avatar>
             </div>
             <div class="content">Awdi ghir m3a dnya</div>
             <div class="time">15:27</div>
@@ -141,7 +133,11 @@
 
         <div class="chat-bubble you">
             <div class="your-mouth">
-                <img class="you_img" src="https://avatars.io/twitter/nada">
+                <avatar :username="user.name"
+                        color="#fff"
+                        :src="user.avatar"
+                        class="you_img">
+                </avatar>
             </div>
             <div class="content">Awdi ghir m3a dnya</div>
             <div class="time">15:27</div>
@@ -157,7 +153,11 @@
 
         <div class="chat-bubble you">
             <div class="your-mouth">
-                <img class="you_img" src="https://avatars.io/twitter/nada">
+                <avatar :username="user.name"
+                        color="#fff"
+                        :src="user.avatar"
+                        class="you_img">
+                </avatar>
             </div>
             <div class="content">Awdi ghir m3a dnya</div>
             <div class="time">15:27</div>
@@ -173,7 +173,51 @@
 
         <div class="chat-bubble you">
             <div class="your-mouth">
-                <img class="you_img" src="https://avatars.io/twitter/nada">
+                <avatar :username="user.name"
+                        color="#fff"
+                        :src="user.avatar"
+                        class="you_img">
+                </avatar>
+            </div>
+            <div class="content">Awdi ghir m3a dnya</div>
+            <div class="time">15:27</div>
+        </div>
+
+        <div class="chat-bubble me">
+            <div class="my-mouth">
+                <img class="me_img" src="https://avatars.io/twitter/maryam">
+            </div>
+            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
+            <div class="time">15:20</div>
+        </div>
+
+        <div class="chat-bubble you">
+            <div class="your-mouth">
+                <avatar :username="user.name"
+                        color="#fff"
+                        :src="user.avatar"
+                        class="you_img">
+                </avatar>
+            </div>
+            <div class="content">Awdi ghir m3a dnya</div>
+            <div class="time">15:27</div>
+        </div>
+
+        <div class="chat-bubble me">
+            <div class="my-mouth">
+                <img class="me_img" src="https://avatars.io/twitter/maryam">
+            </div>
+            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
+            <div class="time">15:20</div>
+        </div>
+
+        <div class="chat-bubble you">
+            <div class="your-mouth">
+                <avatar :username="user.name"
+                        color="#fff"
+                        :src="user.avatar"
+                        class="you_img">
+                </avatar>
             </div>
             <div class="content">Awdi ghir m3a dnya</div>
             <div class="time">15:27</div>
@@ -184,8 +228,10 @@
 
 <script>
     export default {
+        props: ['user'],
         mounted() {
-            console.log('Messages ok!')
+            console.log('Messages ok!');
+            console.log(this.user);
         }
     }
 </script>

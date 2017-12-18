@@ -2,10 +2,14 @@
     <div id="profile_app">
 
         <div class="chat-head">
-            <img alt="profilepicture" :src="avatar">
+            <avatar :username="user.name"
+                    color="#fff"
+                    :src="avatar"
+                    class="img-head">
+            </avatar>
             <div class="chat-name">
                 <h1 class="font-name">Profile</h1>
-                <p class="font-online">Ismael Haytam...</p>
+                <p class="font-online">{{ user.name }}...</p>
             </div>
 
             <router-link v-if="$route.path == '/profile'" to="/profile/edit">
@@ -68,13 +72,14 @@
 
 <script>
     export default {
+        props: ['user'],
         data() {
             return {
-                avatar: "https://avatars.io/twitter/nada"
+                avatar: this.user.avatar
             }
         },
         mounted() {
-            console.log('Profile ok!')
+            console.log('Profile ok!');
         },
         methods: {
             updateImage(data) {

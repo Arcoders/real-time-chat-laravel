@@ -11295,20 +11295,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_right_right_vue__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_right_right_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_right_right_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_profile_vue__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_right_profile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_edit_profile__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_edit_profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_right_edit_profile__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_right_bienvenido_vue__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_right_bienvenido_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_right_bienvenido_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_right_manage_groups_vue__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_right_manage_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_right_manage_groups_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_right_all_groups_vue__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_right_all_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_right_all_groups_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_my_groups_vue__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_my_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_right_my_groups_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_avatar__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_avatar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_avatar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_right_vue__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_right_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_right_right_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_profile_vue__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_right_profile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_right_edit_profile__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_right_edit_profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_right_edit_profile__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_right_bienvenido_vue__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_right_bienvenido_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_right_bienvenido_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_right_manage_groups_vue__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_right_manage_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_right_manage_groups_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_all_groups_vue__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_all_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_right_all_groups_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_my_groups_vue__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_my_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_right_my_groups_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -11317,6 +11319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 window.Vue = __webpack_require__(3);
+
 
 
 
@@ -11342,6 +11345,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('bar', __webpack_require__
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('messages', __webpack_require__(31));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('send', __webpack_require__(34));
 
+// Global components
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('avatar', __WEBPACK_IMPORTED_MODULE_2_vue_avatar___default.a);
+
 // Define route components
 
 
@@ -11355,13 +11362,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('send', __webpack_require_
 // Define some routes
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
-    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_5__components_right_bienvenido_vue___default.a }, {
-        path: '/profile', component: __WEBPACK_IMPORTED_MODULE_3__components_right_profile_vue___default.a,
-        children: [{ path: 'edit', component: __WEBPACK_IMPORTED_MODULE_4__components_right_edit_profile___default.a }]
+    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_6__components_right_bienvenido_vue___default.a }, {
+        path: '/profile', component: __WEBPACK_IMPORTED_MODULE_4__components_right_profile_vue___default.a,
+        children: [{ path: 'edit', component: __WEBPACK_IMPORTED_MODULE_5__components_right_edit_profile___default.a }]
     }, {
-        path: '/groups', component: __WEBPACK_IMPORTED_MODULE_6__components_right_manage_groups_vue___default.a,
-        children: [{ path: 'my', component: __WEBPACK_IMPORTED_MODULE_8__components_right_my_groups_vue___default.a }, { path: 'all', component: __WEBPACK_IMPORTED_MODULE_7__components_right_all_groups_vue___default.a }]
-    }, { path: '/private/:private_id/:user_name', component: __WEBPACK_IMPORTED_MODULE_2__components_right_right_vue___default.a, name: 'private' }]
+        path: '/groups', component: __WEBPACK_IMPORTED_MODULE_7__components_right_manage_groups_vue___default.a,
+        children: [{ path: 'my', component: __WEBPACK_IMPORTED_MODULE_9__components_right_my_groups_vue___default.a }, { path: 'all', component: __WEBPACK_IMPORTED_MODULE_8__components_right_all_groups_vue___default.a }]
+    }, { path: '/private/:private_id/:user_name', component: __WEBPACK_IMPORTED_MODULE_3__components_right_right_vue___default.a, name: 'private' }]
 });
 
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
@@ -14527,7 +14534,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n.icons a[data-v-62e5a916] {\n    display: inline-block;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    text-decoration: none;\n}\n.active_icon[data-v-62e5a916] {\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n            box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n}\n", ""]);
+exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n.icons a[data-v-62e5a916] {\n    display: inline-block;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    text-decoration: none;\n}\n.active_icon[data-v-62e5a916] {\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n            box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n}\nspan[data-v-62e5a916] {\n    margin: auto;\n    color: #777777;\n}\n.avatar[data-v-62e5a916] {\n    margin: 5px 20px;\n}\n", ""]);
 
 // exports
 
@@ -14629,8 +14636,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user'],
     mounted: function mounted() {
         console.log('Left ok!');
     }
@@ -14648,40 +14668,60 @@ var render = function() {
     "div",
     { attrs: { id: "left_app" } },
     [
-      _c("div", { staticClass: "profile" }, [
-        _c("img", { attrs: { src: "https://avatars.io/twitter/nada" } }),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "icons" },
-          [
-            _c(
-              "router-link",
-              {
-                attrs: { to: "/profile", "exact-active-class": "active_icon" }
-              },
-              [_c("i", { staticClass: "material-icons" }, [_vm._v("person")])]
-            ),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              { attrs: { to: "/groups", "exact-active-class": "active_icon" } },
-              [
-                _c("i", { staticClass: "material-icons" }, [
-                  _vm._v("person_add")
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              { attrs: { to: "/2", "exact-active-class": "active_icon" } },
-              [_c("i", { staticClass: "material-icons" }, [_vm._v("settings")])]
-            )
-          ],
-          1
-        )
-      ]),
+      _c(
+        "div",
+        { staticClass: "profile" },
+        [
+          _c("avatar", {
+            staticClass: "avatar",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [_vm._v(_vm._s(_vm.user.name))]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "icons" },
+            [
+              _c(
+                "router-link",
+                {
+                  attrs: { to: "/profile", "exact-active-class": "active_icon" }
+                },
+                [_c("i", { staticClass: "material-icons" }, [_vm._v("person")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  attrs: { to: "/groups", "exact-active-class": "active_icon" }
+                },
+                [
+                  _c("i", { staticClass: "material-icons" }, [
+                    _vm._v("person_add")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                { attrs: { to: "/2", "exact-active-class": "active_icon" } },
+                [
+                  _c("i", { staticClass: "material-icons" }, [
+                    _vm._v("settings")
+                  ])
+                ]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("search"),
       _vm._v(" "),
@@ -16827,10 +16867,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user'],
     mounted: function mounted() {
         console.log('Messages ok!');
+        console.log(this.user);
     }
 });
 
@@ -16842,321 +16928,480 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "messages_app" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(3),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(4),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(5),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(6),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(7),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(8),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(9),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(10),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "messages_app" } }, [
-      _c("div", { staticClass: "chat-bubble me" }, [
-        _c("div", { staticClass: "my-mouth" }, [
-          _c("img", {
-            staticClass: "me_img",
-            attrs: { src: "https://avatars.io/twitter/maryam" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble you" }, [
-        _c("div", { staticClass: "your-mouth" }, [
-          _c("img", {
-            staticClass: "you_img",
-            attrs: { src: "https://avatars.io/twitter/nada" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble me" }, [
-        _c("div", { staticClass: "my-mouth" }, [
-          _c("img", {
-            staticClass: "me_img",
-            attrs: { src: "https://avatars.io/twitter/maryam" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble you" }, [
-        _c("div", { staticClass: "your-mouth" }, [
-          _c("img", {
-            staticClass: "you_img",
-            attrs: { src: "https://avatars.io/twitter/nada" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble me" }, [
-        _c("div", { staticClass: "my-mouth" }, [
-          _c("img", {
-            staticClass: "me_img",
-            attrs: { src: "https://avatars.io/twitter/maryam" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble you" }, [
-        _c("div", { staticClass: "your-mouth" }, [
-          _c("img", {
-            staticClass: "you_img",
-            attrs: { src: "https://avatars.io/twitter/nada" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble me" }, [
-        _c("div", { staticClass: "my-mouth" }, [
-          _c("img", {
-            staticClass: "me_img",
-            attrs: { src: "https://avatars.io/twitter/maryam" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble you" }, [
-        _c("div", { staticClass: "your-mouth" }, [
-          _c("img", {
-            staticClass: "you_img",
-            attrs: { src: "https://avatars.io/twitter/nada" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble me" }, [
-        _c("div", { staticClass: "my-mouth" }, [
-          _c("img", {
-            staticClass: "me_img",
-            attrs: { src: "https://avatars.io/twitter/maryam" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble you" }, [
-        _c("div", { staticClass: "your-mouth" }, [
-          _c("img", {
-            staticClass: "you_img",
-            attrs: { src: "https://avatars.io/twitter/nada" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble me" }, [
-        _c("div", { staticClass: "my-mouth" }, [
-          _c("img", {
-            staticClass: "me_img",
-            attrs: { src: "https://avatars.io/twitter/maryam" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble you" }, [
-        _c("div", { staticClass: "your-mouth" }, [
-          _c("img", {
-            staticClass: "you_img",
-            attrs: { src: "https://avatars.io/twitter/nada" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble me" }, [
-        _c("div", { staticClass: "my-mouth" }, [
-          _c("img", {
-            staticClass: "me_img",
-            attrs: { src: "https://avatars.io/twitter/maryam" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble you" }, [
-        _c("div", { staticClass: "your-mouth" }, [
-          _c("img", {
-            staticClass: "you_img",
-            attrs: { src: "https://avatars.io/twitter/nada" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble me" }, [
-        _c("div", { staticClass: "my-mouth" }, [
-          _c("img", {
-            staticClass: "me_img",
-            attrs: { src: "https://avatars.io/twitter/maryam" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble you" }, [
-        _c("div", { staticClass: "your-mouth" }, [
-          _c("img", {
-            staticClass: "you_img",
-            attrs: { src: "https://avatars.io/twitter/nada" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble me" }, [
-        _c("div", { staticClass: "my-mouth" }, [
-          _c("img", {
-            staticClass: "me_img",
-            attrs: { src: "https://avatars.io/twitter/maryam" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble you" }, [
-        _c("div", { staticClass: "your-mouth" }, [
-          _c("img", {
-            staticClass: "you_img",
-            attrs: { src: "https://avatars.io/twitter/nada" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble me" }, [
-        _c("div", { staticClass: "my-mouth" }, [
-          _c("img", {
-            staticClass: "me_img",
-            attrs: { src: "https://avatars.io/twitter/maryam" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble you" }, [
-        _c("div", { staticClass: "your-mouth" }, [
-          _c("img", {
-            staticClass: "you_img",
-            attrs: { src: "https://avatars.io/twitter/nada" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble me" }, [
-        _c("div", { staticClass: "my-mouth" }, [
-          _c("img", {
-            staticClass: "me_img",
-            attrs: { src: "https://avatars.io/twitter/maryam" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-bubble you" }, [
-        _c("div", { staticClass: "your-mouth" }, [
-          _c("img", {
-            staticClass: "you_img",
-            attrs: { src: "https://avatars.io/twitter/nada" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-      ])
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
     ])
   }
 ]
@@ -17528,6 +17773,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user'],
     data: function data() {
         return {
             uploadImage: false,
@@ -17577,7 +17823,12 @@ var render = function() {
       _c("bar"),
       _vm._v(" "),
       _c("div", { staticClass: "wrap-content" }, [
-        _c("div", { staticClass: "dynamic_content chat" }, [_c("messages")], 1),
+        _c(
+          "div",
+          { staticClass: "dynamic_content chat" },
+          [_c("messages", { attrs: { user: _vm.user } })],
+          1
+        ),
         _vm._v(" "),
         _vm.uploadImage
           ? _c("div", { staticClass: "upload_foto" }, [
@@ -17806,11 +18057,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user'],
     data: function data() {
         return {
-            avatar: "https://avatars.io/twitter/nada"
+            avatar: this.user.avatar
         };
     },
     mounted: function mounted() {
@@ -17837,9 +18093,18 @@ var render = function() {
       "div",
       { staticClass: "chat-head" },
       [
-        _c("img", { attrs: { alt: "profilepicture", src: _vm.avatar } }),
+        _c("avatar", {
+          staticClass: "img-head",
+          attrs: { username: _vm.user.name, color: "#fff", src: _vm.avatar }
+        }),
         _vm._v(" "),
-        _vm._m(0),
+        _c("div", { staticClass: "chat-name" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-online" }, [
+            _vm._v(_vm._s(_vm.user.name) + "...")
+          ])
+        ]),
         _vm._v(" "),
         _vm.$route.path == "/profile"
           ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
@@ -17862,9 +18127,9 @@ var render = function() {
           "div",
           { staticClass: "information" },
           [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
-            _vm._m(2),
+            _vm._m(1),
             _vm._v(" "),
             _c("router-view", { on: { previewImage: _vm.updateImage } })
           ],
@@ -17875,16 +18140,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-name" }, [
-      _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "font-online" }, [_vm._v("Ismael Haytam...")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -19203,6 +19458,15 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,n){ true?module.exports=n():"function"==typeof define&&define.amd?define([],n):"object"==typeof exports?exports.VueAvatar=n():t.VueAvatar=n()}(this,function(){return function(t){function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}var e={};return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{configurable:!1,enumerable:!0,get:r})},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,n){return Object.prototype.hasOwnProperty.call(t,n)},n.p="/",n(n.s=9)}([function(t,n){var e=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=e)},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n,e){t.exports=!e(3)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n){var e=t.exports={version:"2.5.1"};"number"==typeof __e&&(__e=e)},function(t,n,e){var r=e(6),o=e(7);t.exports=function(t){return r(o(t))}},function(t,n,e){var r=e(30);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==r(t)?t.split(""):Object(t)}},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n){var e=Math.ceil,r=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?r:e)(t)}},function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.Avatar=void 0;var r=e(10),o=function(t){return t&&t.__esModule?t:{default:t}}(r);n.Avatar=o.default,n.default=o.default},function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=e(12),o=e.n(r),i=e(41),u=e(11),c=u(o.a,i.a,!1,null,null,null);n.default=c.exports},function(t,n){t.exports=function(t,n,e,r,o,i){var u,c=t=t||{},a=typeof t.default;"object"!==a&&"function"!==a||(u=t,c=t.default);var s="function"==typeof c?c.options:c;n&&(s.render=n.render,s.staticRenderFns=n.staticRenderFns,s._compiled=!0),e&&(s.functional=!0),o&&(s._scopeId=o);var f;if(i?(f=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),r&&r.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(i)},s._ssrRegister=f):r&&(f=r),f){var l=s.functional,p=l?s.render:s.beforeCreate;l?(s._injectStyles=f,s.render=function(t,n){return f.call(n),p(t,n)}):s.beforeCreate=p?[].concat(p,f):[f]}return{esModule:u,exports:c,options:s}}},function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=e(13),o=function(t){return t&&t.__esModule?t:{default:t}}(r);n.default={name:"avatar",props:{username:{type:String,required:!0},initials:{type:String},backgroundColor:{type:String},color:{type:String},customStyle:{type:Object},size:{type:Number,default:50},src:{type:String},rounded:{type:Boolean,default:!0},lighten:{type:Number,default:80}},data:function(){return{backgroundColors:["#F44336","#FF4081","#9C27B0","#673AB7","#3F51B5","#2196F3","#03A9F4","#00BCD4","#009688","#4CAF50","#8BC34A","#CDDC39","#FFC107","#FF9800","#FF5722","#795548","#9E9E9E","#607D8B"]}},mounted:function(){this.$emit("avatar-initials",this.username,this.userInitial)},computed:{background:function(){return this.backgroundColor||this.randomBackgroundColor(this.username.length,this.backgroundColors)},fontColor:function(){return this.color||this.lightenColor(this.background,this.lighten)},isImage:function(){return Boolean(this.src)},style:function(){var t={width:this.size+"px",height:this.size+"px",borderRadius:this.rounded?"50%":0,textAlign:"center",verticalAlign:"middle"},n={background:"transparent url("+this.src+") no-repeat scroll 0% 0% / "+this.size+"px "+this.size+"px content-box border-box"},e={backgroundColor:this.background,font:Math.floor(this.size/2.5)+"px/100px Helvetica, Arial, sans-serif",fontWeight:"bold",color:this.fontColor,lineHeight:this.size+Math.floor(this.size/20)+"px"},r=this.isImage?n:e;return(0,o.default)(t,r),t},userInitial:function(){return this.initials||this.initial(this.username)}},methods:{initial:function(t){for(var n=t.split(/[ -]/),e="",r=0;r<n.length;r++)e+=n[r].charAt(0);return e.length>3&&-1!==e.search(/[A-Z]/)&&(e=e.replace(/[a-z]+/g,"")),e=e.substr(0,3).toUpperCase()},randomBackgroundColor:function(t,n){return n[t%n.length]},lightenColor:function(t,n){var e=!1;"#"===t[0]&&(t=t.slice(1),e=!0);var r=parseInt(t,16),o=(r>>16)+n;o>255?o=255:o<0&&(o=0);var i=(r>>8&255)+n;i>255?i=255:i<0&&(i=0);var u=(255&r)+n;return u>255?u=255:u<0&&(u=0),(e?"#":"")+(u|i<<8|o<<16).toString(16)}}}},function(t,n,e){t.exports={default:e(14),__esModule:!0}},function(t,n,e){e(15),t.exports=e(4).Object.assign},function(t,n,e){var r=e(16);r(r.S+r.F,"Object",{assign:e(26)})},function(t,n,e){var r=e(0),o=e(4),i=e(17),u=e(19),c=function(t,n,e){var a,s,f,l=t&c.F,p=t&c.G,d=t&c.S,h=t&c.P,v=t&c.B,y=t&c.W,g=p?o:o[n]||(o[n]={}),b=g.prototype,x=p?r:d?r[n]:(r[n]||{}).prototype;p&&(e=n);for(a in e)(s=!l&&x&&void 0!==x[a])&&a in g||(f=s?x[a]:e[a],g[a]=p&&"function"!=typeof x[a]?e[a]:v&&s?i(f,r):y&&x[a]==f?function(t){var n=function(n,e,r){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(n);case 2:return new t(n,e)}return new t(n,e,r)}return t.apply(this,arguments)};return n.prototype=t.prototype,n}(f):h&&"function"==typeof f?i(Function.call,f):f,h&&((g.virtual||(g.virtual={}))[a]=f,t&c.R&&b&&!b[a]&&u(b,a,f)))};c.F=1,c.G=2,c.S=4,c.P=8,c.B=16,c.W=32,c.U=64,c.R=128,t.exports=c},function(t,n,e){var r=e(18);t.exports=function(t,n,e){if(r(t),void 0===n)return t;switch(e){case 1:return function(e){return t.call(n,e)};case 2:return function(e,r){return t.call(n,e,r)};case 3:return function(e,r,o){return t.call(n,e,r,o)}}return function(){return t.apply(n,arguments)}}},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n,e){var r=e(20),o=e(25);t.exports=e(2)?function(t,n,e){return r.f(t,n,o(1,e))}:function(t,n,e){return t[n]=e,t}},function(t,n,e){var r=e(21),o=e(22),i=e(24),u=Object.defineProperty;n.f=e(2)?Object.defineProperty:function(t,n,e){if(r(t),n=i(n,!0),r(e),o)try{return u(t,n,e)}catch(t){}if("get"in e||"set"in e)throw TypeError("Accessors not supported!");return"value"in e&&(t[n]=e.value),t}},function(t,n,e){var r=e(1);t.exports=function(t){if(!r(t))throw TypeError(t+" is not an object!");return t}},function(t,n,e){t.exports=!e(2)&&!e(3)(function(){return 7!=Object.defineProperty(e(23)("div"),"a",{get:function(){return 7}}).a})},function(t,n,e){var r=e(1),o=e(0).document,i=r(o)&&r(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,n,e){var r=e(1);t.exports=function(t,n){if(!r(t))return t;var e,o;if(n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;if("function"==typeof(e=t.valueOf)&&!r(o=e.call(t)))return o;if(!n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;throw TypeError("Can't convert object to primitive value")}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n,e){"use strict";var r=e(27),o=e(38),i=e(39),u=e(40),c=e(6),a=Object.assign;t.exports=!a||e(3)(function(){var t={},n={},e=Symbol(),r="abcdefghijklmnopqrst";return t[e]=7,r.split("").forEach(function(t){n[t]=t}),7!=a({},t)[e]||Object.keys(a({},n)).join("")!=r})?function(t,n){for(var e=u(t),a=arguments.length,s=1,f=o.f,l=i.f;a>s;)for(var p,d=c(arguments[s++]),h=f?r(d).concat(f(d)):r(d),v=h.length,y=0;v>y;)l.call(d,p=h[y++])&&(e[p]=d[p]);return e}:a},function(t,n,e){var r=e(28),o=e(37);t.exports=Object.keys||function(t){return r(t,o)}},function(t,n,e){var r=e(29),o=e(5),i=e(31)(!1),u=e(34)("IE_PROTO");t.exports=function(t,n){var e,c=o(t),a=0,s=[];for(e in c)e!=u&&r(c,e)&&s.push(e);for(;n.length>a;)r(c,e=n[a++])&&(~i(s,e)||s.push(e));return s}},function(t,n){var e={}.hasOwnProperty;t.exports=function(t,n){return e.call(t,n)}},function(t,n){var e={}.toString;t.exports=function(t){return e.call(t).slice(8,-1)}},function(t,n,e){var r=e(5),o=e(32),i=e(33);t.exports=function(t){return function(n,e,u){var c,a=r(n),s=o(a.length),f=i(u,s);if(t&&e!=e){for(;s>f;)if((c=a[f++])!=c)return!0}else for(;s>f;f++)if((t||f in a)&&a[f]===e)return t||f||0;return!t&&-1}}},function(t,n,e){var r=e(8),o=Math.min;t.exports=function(t){return t>0?o(r(t),9007199254740991):0}},function(t,n,e){var r=e(8),o=Math.max,i=Math.min;t.exports=function(t,n){return t=r(t),t<0?o(t+n,0):i(t,n)}},function(t,n,e){var r=e(35)("keys"),o=e(36);t.exports=function(t){return r[t]||(r[t]=o(t))}},function(t,n,e){var r=e(0),o=r["__core-js_shared__"]||(r["__core-js_shared__"]={});t.exports=function(t){return o[t]||(o[t]={})}},function(t,n){var e=0,r=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++e+r).toString(36))}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,e){var r=e(7);t.exports=function(t){return Object(r(t))}},function(t,n,e){"use strict";var r=function(){var t=this,n=t.$createElement,e=t._self._c||n;return e("div",{staticClass:"vue-avatar--wrapper",style:[t.style,t.customStyle]},[this.src?t._e():e("span",[t._v(t._s(t.userInitial))])])},o=[],i={render:r,staticRenderFns:o};n.a=i}])});
 
 /***/ })
 /******/ ]);

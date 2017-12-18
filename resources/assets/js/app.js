@@ -9,6 +9,7 @@ window.Vue = require('vue');
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Avatar from 'vue-avatar';
 
 window.Vue.use(VueRouter);
 
@@ -30,6 +31,10 @@ Vue.component('search', require('./components/left/search.vue'));
 Vue.component('bar', require('./components/right/bar.vue'));
 Vue.component('messages', require('./components/right/messages.vue'));
 Vue.component('send', require('./components/right/send.vue'));
+
+// Global components
+
+Vue.component('avatar', Avatar);
 
 // Define route components
 
