@@ -1,23 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.chat')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+@section('aplication')
+    <div class="green-background"></div>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <div class="wrap">
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+
+        <section class="left">
+
+            <left></left>
+
+        </section>
+
+
+        <section class="right">
+
+
+            <router-view :key="$route.fullPath"></router-view>
+
+
+        </section>
+
     </div>
-</div>
 @endsection
