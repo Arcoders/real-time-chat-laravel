@@ -3,8 +3,8 @@
 
         <div class="wrap-input">
             <div class="input">
-                <i class="fa fa-search fa" aria-hidden="true"></i>
-                <input type="text" class="input-global" placeholder="Buscar contacto">
+                <i class="material-icons">search</i>
+                <input type="text" class="input-global" placeholder="Search contact...">
             </div>
         </div>
 

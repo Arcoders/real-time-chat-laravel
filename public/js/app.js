@@ -16452,14 +16452,11 @@ var staticRenderFns = [
     return _c("div", { attrs: { id: "search_app" } }, [
       _c("div", { staticClass: "wrap-input" }, [
         _c("div", { staticClass: "input" }, [
-          _c("i", {
-            staticClass: "fa fa-search fa",
-            attrs: { "aria-hidden": "true" }
-          }),
+          _c("i", { staticClass: "material-icons" }, [_vm._v("search")]),
           _vm._v(" "),
           _c("input", {
             staticClass: "input-global",
-            attrs: { type: "text", placeholder: "Buscar contacto" }
+            attrs: { type: "text", placeholder: "Search contact..." }
           })
         ])
       ])
