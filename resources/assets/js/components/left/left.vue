@@ -10,11 +10,11 @@
             <span>{{ user.name }}</span>
             <div class="icons">
 
-                <router-link to="/profile" exact-active-class="active_icon">
+                <router-link to="/profile">
                     <i class="material-icons">person</i>
                 </router-link>
 
-                <router-link to="/groups" exact-active-class="active_icon">
+                <router-link to="/groups">
                     <i class="material-icons">person_add</i>
                 </router-link>
 
@@ -25,7 +25,7 @@
 
         <div class="wrap-filter">
             <div class="link_filter">
-                <router-link to="/" exact-active-class="active">Private</router-link>
+                <router-link to="/">Private</router-link>
             </div>
             <div class="link_filter">
                 <router-link to="/">Groups</router-link>
@@ -51,9 +51,6 @@
         align-items: center;
         justify-content: center;
         text-decoration: none;
-    }
-    .active_icon {
-        box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);
     }
     .router-link-active {
         box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);
