@@ -18,10 +18,6 @@
                     <i class="material-icons">person_add</i>
                 </router-link>
 
-                <router-link to="/2" exact-active-class="active_icon">
-                    <i class="material-icons">settings</i>
-                </router-link>
-
             </div>
         </div>
 
@@ -57,6 +53,9 @@
         text-decoration: none;
     }
     .active_icon {
+        box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);
+    }
+    .router-link-active {
         box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);
     }
     span {

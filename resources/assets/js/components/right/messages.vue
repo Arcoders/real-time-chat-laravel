@@ -231,7 +231,6 @@
         props: ['user'],
         mounted() {
             console.log('Messages ok!');
-            console.log(this.user);
         }
     }
 </script>

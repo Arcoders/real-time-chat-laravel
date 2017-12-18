@@ -2,9 +2,8 @@
     <div id="bienvenido_app">
 
         <div class="chat-head">
-            <img alt="profilepicture" src="https://avatars.io/twitter/nada">
             <div class="chat-name">
-                <h1 class="font-name">Profile</h1>
+                <h1 class="font-name">Welcome</h1>
                 <p class="font-online">Ismael, Fatima, Admin, Marta, victor...</p>
             </div>
             <i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i>

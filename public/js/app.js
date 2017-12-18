@@ -14534,7 +14534,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n.icons a[data-v-62e5a916] {\n    display: inline-block;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    text-decoration: none;\n}\n.active_icon[data-v-62e5a916] {\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n            box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n}\nspan[data-v-62e5a916] {\n    margin: auto;\n    color: #777777;\n}\n.avatar[data-v-62e5a916] {\n    margin: 5px 20px;\n}\n", ""]);
+exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n.icons a[data-v-62e5a916] {\n    display: inline-block;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    text-decoration: none;\n}\n.active_icon[data-v-62e5a916] {\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n            box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n}\n.router-link-active[data-v-62e5a916] {\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n            box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n}\nspan[data-v-62e5a916] {\n    margin: auto;\n    color: #777777;\n}\n.avatar[data-v-62e5a916] {\n    margin: 5px 20px;\n}\n", ""]);
 
 // exports
 
@@ -14578,7 +14578,6 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -14703,16 +14702,6 @@ var render = function() {
                 [
                   _c("i", { staticClass: "material-icons" }, [
                     _vm._v("person_add")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                { attrs: { to: "/2", "exact-active-class": "active_icon" } },
-                [
-                  _c("i", { staticClass: "material-icons" }, [
-                    _vm._v("settings")
                   ])
                 ]
               )
@@ -16597,6 +16586,7 @@ var render = function() {
   return _c("div", { attrs: { id: "bar_app" } }, [
     _c("div", { staticClass: "chat-head" }, [
       _c("img", {
+        staticClass: "img-head",
         attrs: {
           alt: "profilepicture",
           src: "https://avatars.io/twitter/maryam"
@@ -16916,7 +16906,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['user'],
     mounted: function mounted() {
         console.log('Messages ok!');
-        console.log(this.user);
     }
 });
 
@@ -18566,7 +18555,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -18591,15 +18579,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "bienvenido_app" } }, [
       _c("div", { staticClass: "chat-head" }, [
-        _c("img", {
-          attrs: {
-            alt: "profilepicture",
-            src: "https://avatars.io/twitter/nada"
-          }
-        }),
-        _vm._v(" "),
         _c("div", { staticClass: "chat-name" }, [
-          _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Welcome")]),
           _vm._v(" "),
           _c("p", { staticClass: "font-online" }, [
             _vm._v("Ismael, Fatima, Admin, Marta, victor...")
