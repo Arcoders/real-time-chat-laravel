@@ -2,7 +2,7 @@
     <div id="profile_app">
 
         <div class="chat-head">
-            <img alt="profilepicture" :src="image">
+            <img alt="profilepicture" :src="avatar">
             <div class="chat-name">
                 <h1 class="font-name">Profile</h1>
                 <p class="font-online">Ismael Haytam...</p>
@@ -70,7 +70,7 @@
     export default {
         data() {
             return {
-                image: "https://avatars.io/twitter/nada"
+                avatar: "https://avatars.io/twitter/nada"
             }
         },
         mounted() {
@@ -78,7 +78,7 @@
         },
         methods: {
             updateImage(data) {
-                this.image = data;
+                this.avatar = data;
             }
         }
     }

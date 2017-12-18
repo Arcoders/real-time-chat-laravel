@@ -17292,11 +17292,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['uploadImageState'],
     methods: {
-        showModal: function showModal(event) {
+        showModal: function showModal() {
             this.$emit('showUpload', !this.uploadImageState);
         }
     },
@@ -17316,25 +17318,38 @@ var render = function() {
   return _c("div", { attrs: { id: "send_app" } }, [
     _c("div", { staticClass: "wrap-message" }, [
       _c(
-        "button",
-        { staticClass: "format_button", on: { click: _vm.showModal } },
+        "form",
+        {
+          staticClass: "wrap-message",
+          attrs: { method: "POST", enctype: "multipart/form-data" }
+        },
         [
           _c(
-            "i",
+            "button",
             {
-              class: [
-                _vm.uploadImageState ? "green_teal" : "",
-                "material-icons"
-              ]
+              staticClass: "format_button",
+              attrs: { type: "button" },
+              on: { click: _vm.showModal }
             },
-            [_vm._v("photo_camera")]
-          )
+            [
+              _c(
+                "i",
+                {
+                  class: [
+                    _vm.uploadImageState ? "green_teal" : "",
+                    "material-icons"
+                  ]
+                },
+                [_vm._v("photo_camera")]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1)
         ]
-      ),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1)
+      )
     ])
   ])
 }
@@ -17502,21 +17517,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            uploadImage: false
+            uploadImage: false,
+            image: null
         };
+    },
+    mounted: function mounted() {
+        console.log('Right ok!');
     },
 
     methods: {
         showImageModal: function showImageModal(data) {
             this.uploadImage = data;
+        },
+        onFileChange: function onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length) return;
+            this.createImage(files[0]);
+        },
+        createImage: function createImage(file) {
+            var _this = this;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                _this.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        clearImage: function clearImage() {
+            this.image = null;
         }
-    },
-    mounted: function mounted() {
-        console.log('Right ok!');
     }
 });
 
@@ -17538,7 +17580,37 @@ var render = function() {
         _c("div", { staticClass: "dynamic_content chat" }, [_c("messages")], 1),
         _vm._v(" "),
         _vm.uploadImage
-          ? _c("div", { staticClass: "upload_foto" }, [_vm._m(0)])
+          ? _c("div", { staticClass: "upload_foto" }, [
+              !_vm.image
+                ? _c("div", { staticClass: "container_foto font-preview" }, [
+                    _c("label", { staticClass: "fileContainer" }, [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c("input", {
+                        ref: "fileInput",
+                        attrs: { type: "file", name: "fileInput" },
+                        on: {
+                          change: function($event) {
+                            _vm.onFileChange($event)
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                : _c("div", { staticClass: "container_foto" }, [
+                    _c("div", { staticClass: "preview-image" }, [
+                      _c("img", {
+                        attrs: { alt: "profilepicture", src: _vm.image }
+                      }),
+                      _vm._v(" "),
+                      _c("a", { on: { click: _vm.clearImage } }, [
+                        _c("i", { staticClass: "material-icons" }, [
+                          _vm._v("clear")
+                        ])
+                      ])
+                    ])
+                  ])
+            ])
           : _vm._e()
       ]),
       _vm._v(" "),
@@ -17555,14 +17627,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container_foto font-preview" }, [
-      _c("label", { staticClass: "fileContainer" }, [
-        _c("button", [
-          _c("i", { staticClass: "material-icons" }, [_vm._v("file_upload")])
-        ]),
-        _vm._v(" "),
-        _c("input", { attrs: { type: "file" } })
-      ])
+    return _c("button", [
+      _c("i", { staticClass: "material-icons" }, [_vm._v("file_upload")])
     ])
   }
 ]
@@ -17744,7 +17810,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            image: "https://avatars.io/twitter/nada"
+            avatar: "https://avatars.io/twitter/nada"
         };
     },
     mounted: function mounted() {
@@ -17753,7 +17819,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         updateImage: function updateImage(data) {
-            this.image = data;
+            this.avatar = data;
         }
     }
 });
@@ -17771,7 +17837,7 @@ var render = function() {
       "div",
       { staticClass: "chat-head" },
       [
-        _c("img", { attrs: { alt: "profilepicture", src: _vm.image } }),
+        _c("img", { attrs: { alt: "profilepicture", src: _vm.avatar } }),
         _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),

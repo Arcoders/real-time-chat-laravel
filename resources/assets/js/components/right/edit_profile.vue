@@ -71,7 +71,7 @@
                     this.$emit('previewImage', this.image);
                 };
                 reader.readAsDataURL(file);
-            },
+            }
         }
     }
 </script>
