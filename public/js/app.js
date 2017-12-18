@@ -17742,8 +17742,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            image: "https://avatars.io/twitter/nada"
+        };
+    },
     mounted: function mounted() {
         console.log('Profile ok!');
+    },
+
+    methods: {
+        updateImage: function updateImage(data) {
+            this.image = data;
+        }
     }
 });
 
@@ -17760,12 +17771,7 @@ var render = function() {
       "div",
       { staticClass: "chat-head" },
       [
-        _c("img", {
-          attrs: {
-            alt: "profilepicture",
-            src: "https://avatars.io/twitter/nada"
-          }
-        }),
+        _c("img", { attrs: { alt: "profilepicture", src: _vm.image } }),
         _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),
@@ -17789,7 +17795,13 @@ var render = function() {
         _c(
           "div",
           { staticClass: "information" },
-          [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("router-view")],
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c("router-view", { on: { previewImage: _vm.updateImage } })
+          ],
           1
         )
       ])
@@ -17981,10 +17993,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            image: null
+        };
+    },
     mounted: function mounted() {
         console.log('Update profile ok!');
+    },
+
+    methods: {
+        onFileChange: function onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length) return;
+            this.createImage(files[0]);
+        },
+        createImage: function createImage(file) {
+            var _this = this;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                _this.image = e.target.result;
+                _this.$emit('previewImage', _this.image);
+            };
+            reader.readAsDataURL(file);
+        }
     }
 });
 
@@ -17996,45 +18035,73 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "edit_profile_app" } }, [
+    _c("div", { staticClass: "information_content" }, [
+      _c("h1", [_vm._v("Edit information:")]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          attrs: { method: "POST", enctype: "multipart/form-data" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              _vm.upload()
+            }
+          }
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h1", [_vm._v("Edit avatar:")]),
+          _vm._v(" "),
+          _c("label", { staticClass: "fileContainer font-online" }, [
+            _c("button", [
+              _vm._v(
+                "\n                    Click here to trigger the file uploader!\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              ref: "fileInput",
+              attrs: { type: "file", name: "fileInput" },
+              on: {
+                change: function($event) {
+                  _vm.onFileChange($event)
+                }
+              }
+            })
+          ])
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "edit_profile_app" } }, [
-      _c("div", { staticClass: "information_content" }, [
-        _c("h1", [_vm._v("Edit information:")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "wrap-input" }, [
-          _c("input", {
-            staticClass: "input-global",
-            attrs: { type: "text", placeholder: "User name" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "wrap-input add_padding" }, [
-          _c("input", {
-            staticClass: "input-global",
-            attrs: { type: "text", placeholder: "Status" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("h1", [_vm._v("Edit avatar:")]),
-        _vm._v(" "),
-        _c("label", { staticClass: "fileContainer font-online" }, [
-          _c("button", [
-            _vm._v(
-              "\n                Click here to trigger the file uploader!\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("input", { attrs: { type: "file" } })
-        ])
-      ])
+    return _c("div", { staticClass: "wrap-input" }, [
+      _c("input", {
+        staticClass: "input-global",
+        attrs: { type: "text", placeholder: "User name" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "wrap-input add_padding" }, [
+      _c("input", {
+        staticClass: "input-global",
+        attrs: { type: "text", placeholder: "Status" }
+      })
     ])
   }
 ]

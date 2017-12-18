@@ -4,24 +4,28 @@
         <div class="information_content">
             <h1>Edit information:</h1>
 
-            <div class="wrap-input">
-                <input type="text" class="input-global" placeholder="User name">
-            </div>
+            <form method="POST" v-on:submit.prevent="upload()" enctype="multipart/form-data">
 
-            <div class="wrap-input add_padding">
-                <input type="text" class="input-global" placeholder="Status">
-            </div>
+                <div class="wrap-input">
+                    <input type="text" class="input-global" placeholder="User name">
+                </div>
 
-            <br>
+                <div class="wrap-input add_padding">
+                    <input type="text" class="input-global" placeholder="Status">
+                </div>
 
-            <h1>Edit avatar:</h1>
+                <br>
 
-            <label class="fileContainer font-online">
-                <button>
-                    Click here to trigger the file uploader!
-                </button>
-                <input type="file"/>
-            </label>
+                <h1>Edit avatar:</h1>
+
+                <label class="fileContainer font-online">
+                    <button>
+                        Click here to trigger the file uploader!
+                    </button>
+                    <input type="file" name="fileInput" v-on:change="onFileChange($event)" ref="fileInput">
+                </label>
+
+            </form>
 
         </div>
 
@@ -45,8 +49,29 @@
 
 <script>
     export default {
+        data() {
+            return {
+                image: null
+            }
+        },
         mounted() {
             console.log('Update profile ok!')
+        },
+        methods: {
+            onFileChange(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.createImage(files[0]);
+            },
+            createImage(file) {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    this.image = e.target.result;
+                    this.$emit('previewImage', this.image);
+                };
+                reader.readAsDataURL(file);
+            },
         }
     }
 </script>

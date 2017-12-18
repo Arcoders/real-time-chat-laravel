@@ -2,7 +2,7 @@
     <div id="profile_app">
 
         <div class="chat-head">
-            <img alt="profilepicture" src="https://avatars.io/twitter/nada">
+            <img alt="profilepicture" :src="image">
             <div class="chat-name">
                 <h1 class="font-name">Profile</h1>
                 <p class="font-online">Ismael Haytam...</p>
@@ -31,7 +31,7 @@
                         <p class="font-preview">Don't you wish there were a knob on the...</p>
                     </div>
 
-                    <router-view></router-view>
+                    <router-view @previewImage="updateImage"></router-view>
 
                 </div>
 
@@ -68,8 +68,18 @@
 
 <script>
     export default {
+        data() {
+            return {
+                image: "https://avatars.io/twitter/nada"
+            }
+        },
         mounted() {
             console.log('Profile ok!')
+        },
+        methods: {
+            updateImage(data) {
+                this.image = data;
+            }
         }
     }
 </script>
