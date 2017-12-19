@@ -17,8 +17,7 @@ window.Vue.use(VueResource);
 
 // headers
 
-Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf-token')
-                                                  .getAttribute('content');
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf-token').getAttribute('content');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,15 +28,15 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf-token')
 // Components for left side
 
 Vue.component('left', require('./components/left/left.vue'));
-Vue.component('groups', require('./components/left/groups.vue'));
-Vue.component('private', require('./components/left/private.vue'));
-Vue.component('search', require('./components/left/search.vue'));
+Vue.component('groups', require('./components/left/sections/groups.vue'));
+Vue.component('private', require('./components/left/sections/private.vue'));
+Vue.component('search', require('./components/left/sections/search.vue'));
 
 // Components for right side
 
-Vue.component('bar', require('./components/right/bar.vue'));
-Vue.component('messages', require('./components/right/messages.vue'));
-Vue.component('send', require('./components/right/send.vue'));
+Vue.component('bar', require('./components/right/chat/bar.vue'));
+Vue.component('messages', require('./components/right/chat/messages.vue'));
+Vue.component('send', require('./components/right/chat/send.vue'));
 
 // Global components
 
@@ -46,12 +45,14 @@ Vue.component('avatar', Avatar);
 // Define route components
 
 import right from './components/right/right.vue';
-import profile from './components/right/profile.vue';
-import edit_profile from './components/right/edit_profile';
 import bienvenido from './components/right/bienvenido.vue';
-import groups from './components/right/manage_groups.vue';
-import all_groups from './components/right/all_groups.vue';
-import my_groups from './components/right/my_groups.vue';
+
+import profile from './components/right/profile/profile.vue';
+import edit_profile from './components/right/profile/edit_profile';
+
+import groups from './components/right/groups/manage_groups.vue';
+import all_groups from './components/right/groups/all_groups.vue';
+import my_groups from './components/right/groups/my_groups.vue';
 
 // Define some routes
 

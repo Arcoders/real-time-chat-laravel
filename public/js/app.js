@@ -11299,18 +11299,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_avatar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_avatar__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_right_vue__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_right_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_right_right_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_profile_vue__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_right_profile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_right_edit_profile__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_right_edit_profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_right_edit_profile__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_right_bienvenido_vue__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_right_bienvenido_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_right_bienvenido_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_right_manage_groups_vue__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_right_manage_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_right_manage_groups_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_all_groups_vue__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_all_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_right_all_groups_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_my_groups_vue__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_my_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_right_my_groups_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_bienvenido_vue__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_bienvenido_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_right_bienvenido_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_right_profile_profile_vue__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_right_profile_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_right_profile_profile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_right_profile_edit_profile__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_right_profile_edit_profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_right_profile_edit_profile__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_right_groups_manage_groups_vue__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_right_groups_manage_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_right_groups_manage_groups_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_groups_all_groups_vue__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_groups_all_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_right_groups_all_groups_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_groups_my_groups_vue__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_groups_my_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_right_groups_my_groups_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -11341,15 +11341,15 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['X-CSRF-TOKEN'] 
 // Components for left side
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('left', __webpack_require__(11));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('groups', __webpack_require__(17));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('private', __webpack_require__(20));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('search', __webpack_require__(25));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('groups', __webpack_require__(81));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('private', __webpack_require__(84));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('search', __webpack_require__(89));
 
 // Components for right side
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('bar', __webpack_require__(28));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('messages', __webpack_require__(31));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('send', __webpack_require__(34));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('bar', __webpack_require__(92));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('messages', __webpack_require__(95));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('send', __webpack_require__(98));
 
 // Global components
 
@@ -11365,15 +11365,17 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('avatar', __WEBPACK_IMPORT
 
 
 
+
+
 // Define some routes
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
-    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_6__components_right_bienvenido_vue___default.a }, {
-        path: '/profile', component: __WEBPACK_IMPORTED_MODULE_4__components_right_profile_vue___default.a,
-        children: [{ path: 'edit', component: __WEBPACK_IMPORTED_MODULE_5__components_right_edit_profile___default.a }]
+    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_4__components_right_bienvenido_vue___default.a }, {
+        path: '/profile', component: __WEBPACK_IMPORTED_MODULE_5__components_right_profile_profile_vue___default.a,
+        children: [{ path: 'edit', component: __WEBPACK_IMPORTED_MODULE_6__components_right_profile_edit_profile___default.a }]
     }, {
-        path: '/groups', component: __WEBPACK_IMPORTED_MODULE_7__components_right_manage_groups_vue___default.a,
-        children: [{ path: 'my', component: __WEBPACK_IMPORTED_MODULE_9__components_right_my_groups_vue___default.a }, { path: 'all', component: __WEBPACK_IMPORTED_MODULE_8__components_right_all_groups_vue___default.a }]
+        path: '/groups', component: __WEBPACK_IMPORTED_MODULE_7__components_right_groups_manage_groups_vue___default.a,
+        children: [{ path: 'my', component: __WEBPACK_IMPORTED_MODULE_9__components_right_groups_my_groups_vue___default.a }, { path: 'all', component: __WEBPACK_IMPORTED_MODULE_8__components_right_groups_all_groups_vue___default.a }]
     }, { path: '/private/:private_id/:user_name', component: __WEBPACK_IMPORTED_MODULE_3__components_right_right_vue___default.a, name: 'private' }]
 });
 
@@ -14776,2869 +14778,28 @@ if (false) {
 }
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(18)
-/* template */
-var __vue_template__ = __webpack_require__(19)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\left\\groups.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6e20f942", Component.options)
-  } else {
-    hotAPI.reload("data-v-6e20f942", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 18 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Groups ok!');
-    }
-});
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "groups_app" } }, [
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6e20f942", module.exports)
-  }
-}
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(21)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(23)
-/* template */
-var __vue_template__ = __webpack_require__(24)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-6b6cc285"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\left\\private.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6b6cc285", Component.options)
-  } else {
-    hotAPI.reload("data-v-6b6cc285", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(22);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("22ae76c8", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6b6cc285\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./private.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6b6cc285\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./private.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\na[data-v-6b6cc285] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-6b6cc285] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-6b6cc285] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-6b6cc285] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Private ok!');
-    }
-});
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "private_app" } }, [
-    _c(
-      "div",
-      { staticClass: "contact" },
-      [
-        _c(
-          "router-link",
-          {
-            attrs: {
-              "exact-active-class": "active_image",
-              to: {
-                name: "private",
-                params: { private_id: 1, user_name: "Ismael" }
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://avatars.io/twitter/maryam",
-                alt: "profilpicture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c(
-              "h1",
-              { staticClass: "font-name" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_chat",
-                      to: {
-                        name: "private",
-                        params: { private_id: 1, user_name: "Ismael" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola Amigo\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "font-preview" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_message",
-                      to: {
-                        name: "private",
-                        params: { private_id: 1, user_name: "Ismael" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola muy buenas\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(0)
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "contact" },
-      [
-        _c(
-          "router-link",
-          {
-            attrs: {
-              "exact-active-class": "active_image",
-              to: {
-                name: "private",
-                params: { private_id: 5, user_name: "Random" }
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://avatars.io/twitter/maryam",
-                alt: "profilpicture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c(
-              "h1",
-              { staticClass: "font-name" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_chat",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola Amigo\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "font-preview" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_message",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola muy buenas\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(1)
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "contact" },
-      [
-        _c(
-          "router-link",
-          {
-            attrs: {
-              "exact-active-class": "active_image",
-              to: {
-                name: "private",
-                params: { private_id: 5, user_name: "Random" }
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://avatars.io/twitter/maryam",
-                alt: "profilpicture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c(
-              "h1",
-              { staticClass: "font-name" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_chat",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola Amigo\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "font-preview" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_message",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola muy buenas\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(2)
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "contact" },
-      [
-        _c(
-          "router-link",
-          {
-            attrs: {
-              "exact-active-class": "active_image",
-              to: {
-                name: "private",
-                params: { private_id: 5, user_name: "Random" }
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://avatars.io/twitter/maryam",
-                alt: "profilpicture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c(
-              "h1",
-              { staticClass: "font-name" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_chat",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola Amigo\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "font-preview" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_message",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola muy buenas\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(3)
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "contact" },
-      [
-        _c(
-          "router-link",
-          {
-            attrs: {
-              "exact-active-class": "active_image",
-              to: {
-                name: "private",
-                params: { private_id: 5, user_name: "Random" }
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://avatars.io/twitter/maryam",
-                alt: "profilpicture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c(
-              "h1",
-              { staticClass: "font-name" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_chat",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola Amigo\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "font-preview" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_message",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola muy buenas\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(4)
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "contact" },
-      [
-        _c(
-          "router-link",
-          {
-            attrs: {
-              "exact-active-class": "active_image",
-              to: {
-                name: "private",
-                params: { private_id: 5, user_name: "Random" }
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://avatars.io/twitter/maryam",
-                alt: "profilpicture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c(
-              "h1",
-              { staticClass: "font-name" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_chat",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola Amigo\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "font-preview" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_message",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola muy buenas\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(5)
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "contact" },
-      [
-        _c(
-          "router-link",
-          {
-            attrs: {
-              "exact-active-class": "active_image",
-              to: {
-                name: "private",
-                params: { private_id: 5, user_name: "Random" }
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://avatars.io/twitter/maryam",
-                alt: "profilpicture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c(
-              "h1",
-              { staticClass: "font-name" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_chat",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola Amigo\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "font-preview" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_message",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola muy buenas\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(6)
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "contact" },
-      [
-        _c(
-          "router-link",
-          {
-            attrs: {
-              "exact-active-class": "active_image",
-              to: {
-                name: "private",
-                params: { private_id: 5, user_name: "Random" }
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://avatars.io/twitter/maryam",
-                alt: "profilpicture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c(
-              "h1",
-              { staticClass: "font-name" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_chat",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola Amigo\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "font-preview" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_message",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola muy buenas\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(7)
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "contact" },
-      [
-        _c(
-          "router-link",
-          {
-            attrs: {
-              "exact-active-class": "active_image",
-              to: {
-                name: "private",
-                params: { private_id: 5, user_name: "Random" }
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://avatars.io/twitter/maryam",
-                alt: "profilpicture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c(
-              "h1",
-              { staticClass: "font-name" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_chat",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola Amigo\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "font-preview" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_message",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola muy buenas\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(8)
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "contact" },
-      [
-        _c(
-          "router-link",
-          {
-            attrs: {
-              "exact-active-class": "active_image",
-              to: {
-                name: "private",
-                params: { private_id: 5, user_name: "Random" }
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://avatars.io/twitter/maryam",
-                alt: "profilpicture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c(
-              "h1",
-              { staticClass: "font-name" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_chat",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola Amigo\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "font-preview" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_message",
-                      to: {
-                        name: "private",
-                        params: { private_id: 5, user_name: "Random" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola muy buenas\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(9)
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "contact" },
-      [
-        _c(
-          "router-link",
-          {
-            attrs: {
-              "exact-active-class": "active_image",
-              to: {
-                name: "private",
-                params: { private_id: 10, user_name: "St" }
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: {
-                src: "https://avatars.io/twitter/maryam",
-                alt: "profilpicture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c(
-              "h1",
-              { staticClass: "font-name" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_chat",
-                      to: {
-                        name: "private",
-                        params: { private_id: 10, user_name: "St" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola Amigo\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "font-preview" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_message",
-                      to: {
-                        name: "private",
-                        params: { private_id: 10, user_name: "St" }
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Hola muy buenas\n                    "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(10)
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6b6cc285", module.exports)
-  }
-}
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(26)
-/* template */
-var __vue_template__ = __webpack_require__(27)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\left\\search.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-136909d4", Component.options)
-  } else {
-    hotAPI.reload("data-v-136909d4", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Search ok!');
-    }
-});
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "search_app" } }, [
-      _c("div", { staticClass: "wrap-input" }, [
-        _c("div", { staticClass: "input" }, [
-          _c("i", { staticClass: "material-icons" }, [_vm._v("search")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "input-global",
-            attrs: { type: "text", placeholder: "Search contact..." }
-          })
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-136909d4", module.exports)
-  }
-}
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(29)
-/* template */
-var __vue_template__ = __webpack_require__(30)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\right\\bar.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-66d9cb8c", Component.options)
-  } else {
-    hotAPI.reload("data-v-66d9cb8c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 29 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            private_name: this.$route.params.user_name,
-            private_id: this.$route.params.private_id
-        };
-    },
-    mounted: function mounted() {
-        console.log('Bar ok!');
-    }
-});
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "bar_app" } }, [
-    _c("div", { staticClass: "chat-head" }, [
-      _c("img", {
-        staticClass: "img-head",
-        attrs: {
-          alt: "profilepicture",
-          src: "https://avatars.io/twitter/maryam"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "chat-name" }, [
-        _c("h1", { staticClass: "font-name" }, [
-          _vm._v(_vm._s(_vm.private_name))
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "font-online" }, [
-          _vm._v("Ismael, Fatima, Admin, Marta, victor...")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("i", {
-        staticClass: "fa fa-whatsapp fa-lg",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-66d9cb8c", module.exports)
-  }
-}
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(32)
-/* template */
-var __vue_template__ = __webpack_require__(33)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\right\\messages.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7ebf2423", Component.options)
-  } else {
-    hotAPI.reload("data-v-7ebf2423", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 32 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['user'],
-    mounted: function mounted() {
-        console.log('Messages ok!');
-    }
-});
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "messages_app" } }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(2),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(3),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(4),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(5),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(6),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(7),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(8),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(9),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(10),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7ebf2423", module.exports)
-  }
-}
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(35)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(37)
-/* template */
-var __vue_template__ = __webpack_require__(38)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-29f16bdf"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\right\\send.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-29f16bdf", Component.options)
-  } else {
-    hotAPI.reload("data-v-29f16bdf", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(36);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("67fad634", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-29f16bdf\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./send.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-29f16bdf\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./send.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.green_teal[data-v-29f16bdf] {\n    color: #009688;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 37 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['uploadImageState'],
-    methods: {
-        showModal: function showModal() {
-            this.$emit('showUpload', !this.uploadImageState);
-        }
-    },
-    mounted: function mounted() {
-        console.log('Send ok!');
-    }
-});
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "send_app" } }, [
-    _c("div", { staticClass: "wrap-message" }, [
-      _c(
-        "form",
-        {
-          staticClass: "wrap-message",
-          attrs: { method: "POST", enctype: "multipart/form-data" }
-        },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "format_button",
-              attrs: { type: "button" },
-              on: { click: _vm.showModal }
-            },
-            [
-              _c(
-                "i",
-                {
-                  class: [
-                    _vm.uploadImageState ? "green_teal" : "",
-                    "material-icons"
-                  ]
-                },
-                [_vm._v("photo_camera")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1)
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "message" }, [
-      _c("input", {
-        staticClass: "input-message",
-        attrs: { type: "text", placeholder: "Escribe un nuevo mensaje" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "format_button" }, [
-      _c("i", { staticClass: "material-icons" }, [_vm._v("send")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-29f16bdf", module.exports)
-  }
-}
-
-/***/ }),
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17903,549 +15064,16 @@ if (false) {
 }
 
 /***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(45)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(47)
-/* template */
-var __vue_template__ = __webpack_require__(48)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-219205a2"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\right\\profile.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-219205a2", Component.options)
-  } else {
-    hotAPI.reload("data-v-219205a2", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(46);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("4c2cd8eb", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-219205a2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./profile.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-219205a2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./profile.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n#profile_app[data-v-219205a2] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.dynamic_content[data-v-219205a2] {\n    padding: 0px;\n    background-color: #ffffff;\n    height: calc(98vh - 85px);\n}\na i[data-v-219205a2] {\n    cursor: pointer;\n    text-decoration: none;\n}\na i[data-v-219205a2]:hover {\n    color: #009688;\n}\ni_green[data-v-219205a2] {\n    color: #009688;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 47 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['user'],
-    data: function data() {
-        return {
-            avatar: this.user.avatar
-        };
-    },
-    mounted: function mounted() {
-        console.log('Profile ok!');
-    },
-
-    methods: {
-        updateImage: function updateImage(data) {
-            this.avatar = data;
-        }
-    }
-});
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "profile_app" } }, [
-    _c(
-      "div",
-      { staticClass: "chat-head" },
-      [
-        _c("avatar", {
-          staticClass: "img-head",
-          attrs: { username: _vm.user.name, color: "#fff", src: _vm.avatar }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "chat-name" }, [
-          _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
-          _vm._v(" "),
-          _c("p", { staticClass: "font-online" }, [
-            _vm._v(_vm._s(_vm.user.name) + "...")
-          ])
-        ]),
-        _vm._v(" "),
-        _vm.$route.path == "/profile"
-          ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
-              _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.$route.path == "/profile/edit"
-          ? _c("router-link", { attrs: { to: "/profile" } }, [
-              _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
-            ])
-          : _vm._e()
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "wrap-content" }, [
-      _c("div", { staticClass: "dynamic_content" }, [
-        _c(
-          "div",
-          { staticClass: "information" },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c("router-view", { on: { previewImage: _vm.updateImage } })
-          ],
-          1
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "information_content" }, [
-      _c("h1", [_vm._v("Name:")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "font-preview" }, [_vm._v("Ismael Haytam")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "information_content" }, [
-      _c("h1", [_vm._v("Statuses:")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "font-preview" }, [
-        _vm._v("Don't you wish there were a knob on the...")
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-219205a2", module.exports)
-  }
-}
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(50)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(52)
-/* template */
-var __vue_template__ = __webpack_require__(53)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-10f5e86a"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\right\\edit_profile.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-10f5e86a", Component.options)
-  } else {
-    hotAPI.reload("data-v-10f5e86a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(51);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("4106e8ee", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10f5e86a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./edit_profile.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10f5e86a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./edit_profile.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.green_teal[data-v-10f5e86a] {\n    color: #009688;\n}\n.wrap-input[data-v-10f5e86a] {\n    padding: 2px 2px 0 2px;\n}\n.add_padding[data-v-10f5e86a] {\n    padding-bottom: 2px;\n}\nbutton[data-v-10f5e86a] {\n    color: #444444;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 52 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            image: null
-        };
-    },
-    mounted: function mounted() {
-        console.log('Update profile ok!');
-    },
-
-    methods: {
-        onFileChange: function onFileChange(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length) return;
-            this.createImage(files[0]);
-        },
-        createImage: function createImage(file) {
-            var _this = this;
-
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                _this.image = e.target.result;
-                _this.$emit('previewImage', _this.image);
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-});
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "edit_profile_app" } }, [
-    _c("div", { staticClass: "information_content" }, [
-      _c("h1", [_vm._v("Edit information:")]),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          attrs: { method: "POST", enctype: "multipart/form-data" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              _vm.upload()
-            }
-          }
-        },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("h1", [_vm._v("Edit avatar:")]),
-          _vm._v(" "),
-          _c("label", { staticClass: "fileContainer font-online" }, [
-            _c("button", [
-              _vm._v(
-                "\n                    Click here to trigger the file uploader!\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              ref: "fileInput",
-              attrs: { type: "file", name: "fileInput" },
-              on: {
-                change: function($event) {
-                  _vm.onFileChange($event)
-                }
-              }
-            })
-          ])
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "wrap-input" }, [
-      _c("input", {
-        staticClass: "input-global",
-        attrs: { type: "text", placeholder: "User name" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "wrap-input add_padding" }, [
-      _c("input", {
-        staticClass: "input-global",
-        attrs: { type: "text", placeholder: "Status" }
-      })
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-10f5e86a", module.exports)
-  }
-}
-
-/***/ }),
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
 /* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18630,832 +15258,21 @@ if (false) {
 }
 
 /***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(60)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(62)
-/* template */
-var __vue_template__ = __webpack_require__(63)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-c6811ab2"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\right\\manage_groups.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c6811ab2", Component.options)
-  } else {
-    hotAPI.reload("data-v-c6811ab2", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(61);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("fd541378", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c6811ab2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./manage_groups.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c6811ab2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./manage_groups.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n#manage_groups_app[data-v-c6811ab2] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.big_icon[data-v-c6811ab2] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\n.dynamic_content[data-v-c6811ab2] {\n    padding: 20px;\n    background-color: #ffffff;\n    height: calc(98vh - 125px);\n}\n.groups[data-v-c6811ab2] {\n    width: 100%;\n    background: #f1f1f1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.group[data-v-c6811ab2] {\n    width: 50%;\n    height: calc(98vh - 125px);\n}\n.group a[data-v-c6811ab2]{\n    width: 100%;\n    height: 100%;\n    color: #777777;\n    font-size: 0.9em;\n    font-weight: bold;\n    text-decoration: none;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.group a[data-v-c6811ab2]:hover{\n    color: #009688;\n    background-color: #f3f3f3;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 62 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Groups ok!');
-    }
-});
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "manage_groups_app" } }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "wrap-content" }, [
-      _c(
-        "div",
-        { staticClass: "dynamic_content" },
-        [
-          _vm.$route.path == "/groups"
-            ? _c("div", [
-                _c("div", { staticClass: "groups" }, [
-                  _c(
-                    "div",
-                    { staticClass: "group" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          attrs: {
-                            to: "groups/all",
-                            "exact-active-class": "active"
-                          }
-                        },
-                        [_vm._v("All groups")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "group" },
-                    [
-                      _c("router-link", { attrs: { to: "groups/my" } }, [
-                        _vm._v("My groups")
-                      ])
-                    ],
-                    1
-                  )
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("router-view")
-        ],
-        1
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-head" }, [
-      _c("i", { staticClass: "material-icons big_icon" }, [
-        _vm._v("group_add")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "chat-name" }, [
-        _c("h1", { staticClass: "font-name" }, [_vm._v("Groups")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "font-online" }, [
-          _vm._v("You can create public chat rooms for all users...")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("i", {
-        staticClass: "fa fa-whatsapp fa-lg",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-c6811ab2", module.exports)
-  }
-}
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(65)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(67)
-/* template */
-var __vue_template__ = __webpack_require__(68)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-36d7bb6e"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\right\\all_groups.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-36d7bb6e", Component.options)
-  } else {
-    hotAPI.reload("data-v-36d7bb6e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(66);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("035a57b7", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-36d7bb6e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./all_groups.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-36d7bb6e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./all_groups.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\na[data-v-36d7bb6e] {\n    text-decoration: none;\n    color: #777777;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 67 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('All groups ok!');
-    }
-});
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "all_groups_app" } },
-    [
-      _c(
-        "router-link",
-        { attrs: { to: "/groups", "exact-active-class": "active_icon" } },
-        [_c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])]
-      ),
-      _vm._v(" "),
-      _c("h4", [_vm._v("All groups")]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _vm._m(0)
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("table", [
-      _c("thead", [
-        _c("tr", [
-          _c("th", [_vm._v("Avatar")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Name")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Owner")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("td", [
-            _c("img", {
-              staticClass: "group_avatar",
-              attrs: {
-                alt: "profilepicture",
-                src: "https://avatars.io/twitter/rosa"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Música")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Ismael")])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [
-            _c("img", {
-              staticClass: "group_avatar",
-              attrs: {
-                alt: "profilepicture",
-                src: "https://avatars.io/twitter/marta"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Material")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Victor")])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [
-            _c("img", {
-              staticClass: "group_avatar",
-              attrs: {
-                alt: "profilepicture",
-                src: "https://avatars.io/twitter/chiste"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Famoso")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Marcos")])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-36d7bb6e", module.exports)
-  }
-}
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(70)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(72)
-/* template */
-var __vue_template__ = __webpack_require__(73)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-423c9880"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\right\\my_groups.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-423c9880", Component.options)
-  } else {
-    hotAPI.reload("data-v-423c9880", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(71);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("748499e4", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-423c9880\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./my_groups.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-423c9880\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./my_groups.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\na[data-v-423c9880] {\n    text-decoration: none;\n    color: #777777;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 72 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('My groups ok!');
-    }
-});
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "my_groups_app" } },
-    [
-      _c(
-        "router-link",
-        { attrs: { to: "/groups", "exact-active-class": "active_icon" } },
-        [_c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])]
-      ),
-      _vm._v(" "),
-      _c("h4", [_vm._v("My groups")]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _vm._m(0)
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("table", [
-      _c("thead", [
-        _c("tr", [
-          _c("th", [_vm._v("Avatar")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Name")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Edit")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Delete")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("td", [
-            _c("img", {
-              staticClass: "group_avatar",
-              attrs: {
-                alt: "profilepicture",
-                src: "https://avatars.io/twitter/bones"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Laravel")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("button", { staticClass: "format_button" }, [
-              _c("i", { staticClass: "material-icons green_teal" }, [
-                _vm._v("mode_edit")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c("button", { staticClass: "format_button" }, [
-              _c("i", { staticClass: "material-icons cool_red" }, [
-                _vm._v("delete")
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [
-            _c("img", {
-              staticClass: "group_avatar",
-              attrs: {
-                alt: "profilepicture",
-                src: "https://avatars.io/twitter/adios"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Nodejs")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("button", { staticClass: "format_button" }, [
-              _c("i", { staticClass: "material-icons green_teal" }, [
-                _vm._v("mode_edit")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c("button", { staticClass: "format_button" }, [
-              _c("i", { staticClass: "material-icons cool_red" }, [
-                _vm._v("delete")
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-423c9880", module.exports)
-  }
-}
-
-/***/ }),
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
 /* 74 */
 /***/ (function(module, exports) {
 
@@ -21053,6 +16870,4238 @@ if (typeof window !== 'undefined' && window.Vue) {
 /***/ (function(module, exports) {
 
 /* (ignored) */
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(82)
+/* template */
+var __vue_template__ = __webpack_require__(83)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\left\\sections\\groups.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-63979a78", Component.options)
+  } else {
+    hotAPI.reload("data-v-63979a78", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Groups ok!');
+    }
+});
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "groups_app" } }, [
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "contact" }, [
+        _c("img", {
+          attrs: {
+            src: "https://avatars.io/twitter/maryam",
+            alt: "profilpicture"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-preview" }, [
+              _vm._v("Hola muy buenas")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-63979a78", module.exports)
+  }
+}
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(85)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(87)
+/* template */
+var __vue_template__ = __webpack_require__(88)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-0dc0b943"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\left\\sections\\private.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0dc0b943", Component.options)
+  } else {
+    hotAPI.reload("data-v-0dc0b943", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(86);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("cd8af8de", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0dc0b943\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./private.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0dc0b943\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./private.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\na[data-v-0dc0b943] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-0dc0b943] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-0dc0b943] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-0dc0b943] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 87 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Private ok!');
+    }
+});
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "private_app" } }, [
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 1, user_name: "Ismael" }
+              }
+            }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 1, user_name: "Ismael" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 1, user_name: "Ismael" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(2)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(3)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(4)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(5)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(6)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(7)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(8)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 5, user_name: "Random" }
+              }
+            }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 5, user_name: "Random" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(9)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "contact" },
+      [
+        _c(
+          "router-link",
+          {
+            attrs: {
+              "exact-active-class": "active_image",
+              to: {
+                name: "private",
+                params: { private_id: 10, user_name: "St" }
+              }
+            }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "https://avatars.io/twitter/maryam",
+                alt: "profilpicture"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "contact-preview" }, [
+          _c("div", { staticClass: "contact-text" }, [
+            _c(
+              "h1",
+              { staticClass: "font-name" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_chat",
+                      to: {
+                        name: "private",
+                        params: { private_id: 10, user_name: "St" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola Amigo\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "p",
+              { staticClass: "font-preview" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_message",
+                      to: {
+                        name: "private",
+                        params: { private_id: 10, user_name: "St" }
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Hola muy buenas\n                    "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(10)
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0dc0b943", module.exports)
+  }
+}
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(90)
+/* template */
+var __vue_template__ = __webpack_require__(91)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\left\\sections\\search.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-565eb498", Component.options)
+  } else {
+    hotAPI.reload("data-v-565eb498", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 90 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Search ok!');
+    }
+});
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "search_app" } }, [
+      _c("div", { staticClass: "wrap-input" }, [
+        _c("div", { staticClass: "input" }, [
+          _c("i", { staticClass: "material-icons" }, [_vm._v("search")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "input-global",
+            attrs: { type: "text", placeholder: "Search contact..." }
+          })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-565eb498", module.exports)
+  }
+}
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(93)
+/* template */
+var __vue_template__ = __webpack_require__(94)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\chat\\bar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-40d0bee6", Component.options)
+  } else {
+    hotAPI.reload("data-v-40d0bee6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 93 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            private_name: this.$route.params.user_name,
+            private_id: this.$route.params.private_id
+        };
+    },
+    mounted: function mounted() {
+        console.log('Bar ok!');
+    }
+});
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "bar_app" } }, [
+    _c("div", { staticClass: "chat-head" }, [
+      _c("img", {
+        staticClass: "img-head",
+        attrs: {
+          alt: "profilepicture",
+          src: "https://avatars.io/twitter/maryam"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "chat-name" }, [
+        _c("h1", { staticClass: "font-name" }, [
+          _vm._v(_vm._s(_vm.private_name))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "font-online" }, [
+          _vm._v("Ismael, Fatima, Admin, Marta, victor...")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("i", {
+        staticClass: "fa fa-whatsapp fa-lg",
+        attrs: { "aria-hidden": "true" }
+      })
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-40d0bee6", module.exports)
+  }
+}
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(96)
+/* template */
+var __vue_template__ = __webpack_require__(97)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\chat\\messages.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9c878dee", Component.options)
+  } else {
+    hotAPI.reload("data-v-9c878dee", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 96 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user'],
+    mounted: function mounted() {
+        console.log('Messages ok!');
+    }
+});
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "messages_app" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(3),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(4),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(5),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(6),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(7),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(8),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(9),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ]),
+    _vm._v(" "),
+    _vm._m(10),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-bubble you" }, [
+      _c(
+        "div",
+        { staticClass: "your-mouth" },
+        [
+          _c("avatar", {
+            staticClass: "you_img",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-bubble me" }, [
+      _c("div", { staticClass: "my-mouth" }, [
+        _c("img", {
+          staticClass: "me_img",
+          attrs: { src: "https://avatars.io/twitter/maryam" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9c878dee", module.exports)
+  }
+}
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(99)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(101)
+/* template */
+var __vue_template__ = __webpack_require__(102)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-e24e3876"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\chat\\send.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e24e3876", Component.options)
+  } else {
+    hotAPI.reload("data-v-e24e3876", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(100);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("0761d0c3", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e24e3876\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./send.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e24e3876\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./send.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.green_teal[data-v-e24e3876] {\n    color: #009688;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['uploadImageState'],
+    methods: {
+        showModal: function showModal() {
+            this.$emit('showUpload', !this.uploadImageState);
+        }
+    },
+    mounted: function mounted() {
+        console.log('Send ok!');
+    }
+});
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "send_app" } }, [
+    _c("div", { staticClass: "wrap-message" }, [
+      _c(
+        "form",
+        {
+          staticClass: "wrap-message",
+          attrs: { method: "POST", enctype: "multipart/form-data" }
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "format_button",
+              attrs: { type: "button" },
+              on: { click: _vm.showModal }
+            },
+            [
+              _c(
+                "i",
+                {
+                  class: [
+                    _vm.uploadImageState ? "green_teal" : "",
+                    "material-icons"
+                  ]
+                },
+                [_vm._v("photo_camera")]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1)
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "message" }, [
+      _c("input", {
+        staticClass: "input-message",
+        attrs: { type: "text", placeholder: "Escribe un nuevo mensaje" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", { staticClass: "format_button" }, [
+      _c("i", { staticClass: "material-icons" }, [_vm._v("send")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e24e3876", module.exports)
+  }
+}
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(104)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(106)
+/* template */
+var __vue_template__ = __webpack_require__(107)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3f8256ef"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\profile\\profile.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3f8256ef", Component.options)
+  } else {
+    hotAPI.reload("data-v-3f8256ef", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 104 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(105);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("3d4ce093", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3f8256ef\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./profile.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3f8256ef\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./profile.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n#profile_app[data-v-3f8256ef] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.dynamic_content[data-v-3f8256ef] {\n    padding: 0px;\n    background-color: #ffffff;\n    height: calc(98vh - 85px);\n}\na i[data-v-3f8256ef] {\n    cursor: pointer;\n    text-decoration: none;\n}\na i[data-v-3f8256ef]:hover {\n    color: #009688;\n}\ni_green[data-v-3f8256ef] {\n    color: #009688;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 106 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user'],
+    data: function data() {
+        return {
+            avatar: this.user.avatar
+        };
+    },
+    mounted: function mounted() {
+        console.log('Profile ok!');
+    },
+
+    methods: {
+        updateImage: function updateImage(data) {
+            this.avatar = data;
+        }
+    }
+});
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "profile_app" } }, [
+    _c(
+      "div",
+      { staticClass: "chat-head" },
+      [
+        _c("avatar", {
+          staticClass: "img-head",
+          attrs: { username: _vm.user.name, color: "#fff", src: _vm.avatar }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "chat-name" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "font-online" }, [
+            _vm._v(_vm._s(_vm.user.name) + "...")
+          ])
+        ]),
+        _vm._v(" "),
+        _vm.$route.path == "/profile"
+          ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
+              _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.$route.path == "/profile/edit"
+          ? _c("router-link", { attrs: { to: "/profile" } }, [
+              _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
+            ])
+          : _vm._e()
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "wrap-content" }, [
+      _c("div", { staticClass: "dynamic_content" }, [
+        _c(
+          "div",
+          { staticClass: "information" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _c("router-view", { on: { previewImage: _vm.updateImage } })
+          ],
+          1
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "information_content" }, [
+      _c("h1", [_vm._v("Name:")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "font-preview" }, [_vm._v("Ismael Haytam")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "information_content" }, [
+      _c("h1", [_vm._v("Statuses:")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "font-preview" }, [
+        _vm._v("Don't you wish there were a knob on the...")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3f8256ef", module.exports)
+  }
+}
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(109)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(111)
+/* template */
+var __vue_template__ = __webpack_require__(112)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-68f6fac4"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\profile\\edit_profile.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-68f6fac4", Component.options)
+  } else {
+    hotAPI.reload("data-v-68f6fac4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(110);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("227b2d73", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-68f6fac4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./edit_profile.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-68f6fac4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./edit_profile.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.green_teal[data-v-68f6fac4] {\n    color: #009688;\n}\n.wrap-input[data-v-68f6fac4] {\n    padding: 2px 2px 0 2px;\n}\n.add_padding[data-v-68f6fac4] {\n    padding-bottom: 2px;\n}\nbutton[data-v-68f6fac4] {\n    color: #444444;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 111 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            image: null
+        };
+    },
+    mounted: function mounted() {
+        console.log('Update profile ok!');
+    },
+
+    methods: {
+        onFileChange: function onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length) return;
+            this.createImage(files[0]);
+        },
+        createImage: function createImage(file) {
+            var _this = this;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                _this.image = e.target.result;
+                _this.$emit('previewImage', _this.image);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+});
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "edit_profile_app" } }, [
+    _c("div", { staticClass: "information_content" }, [
+      _c("h1", [_vm._v("Edit information:")]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          attrs: { method: "POST", enctype: "multipart/form-data" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              _vm.upload()
+            }
+          }
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h1", [_vm._v("Edit avatar:")]),
+          _vm._v(" "),
+          _c("label", { staticClass: "fileContainer font-online" }, [
+            _c("button", [
+              _vm._v(
+                "\n                    Click here to trigger the file uploader!\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              ref: "fileInput",
+              attrs: { type: "file", name: "fileInput" },
+              on: {
+                change: function($event) {
+                  _vm.onFileChange($event)
+                }
+              }
+            })
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "wrap-input" }, [
+      _c("input", {
+        staticClass: "input-global",
+        attrs: { type: "text", placeholder: "User name" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "wrap-input add_padding" }, [
+      _c("input", {
+        staticClass: "input-global",
+        attrs: { type: "text", placeholder: "Status" }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-68f6fac4", module.exports)
+  }
+}
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(114)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(116)
+/* template */
+var __vue_template__ = __webpack_require__(117)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-d3688d86"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\groups\\manage_groups.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d3688d86", Component.options)
+  } else {
+    hotAPI.reload("data-v-d3688d86", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(115);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("6fee1ac2", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d3688d86\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./manage_groups.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d3688d86\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./manage_groups.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n#manage_groups_app[data-v-d3688d86] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.big_icon[data-v-d3688d86] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\n.dynamic_content[data-v-d3688d86] {\n    padding: 20px;\n    background-color: #ffffff;\n    height: calc(98vh - 125px);\n}\n.groups[data-v-d3688d86] {\n    width: 100%;\n    background: #f1f1f1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.group[data-v-d3688d86] {\n    width: 50%;\n    height: calc(98vh - 125px);\n}\n.group a[data-v-d3688d86]{\n    width: 100%;\n    height: 100%;\n    color: #777777;\n    font-size: 0.9em;\n    font-weight: bold;\n    text-decoration: none;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.group a[data-v-d3688d86]:hover{\n    color: #009688;\n    background-color: #f3f3f3;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 116 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Groups ok!');
+    }
+});
+
+/***/ }),
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "manage_groups_app" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "wrap-content" }, [
+      _c(
+        "div",
+        { staticClass: "dynamic_content" },
+        [
+          _vm.$route.path == "/groups"
+            ? _c("div", [
+                _c("div", { staticClass: "groups" }, [
+                  _c(
+                    "div",
+                    { staticClass: "group" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: {
+                            to: "groups/all",
+                            "exact-active-class": "active"
+                          }
+                        },
+                        [_vm._v("All groups")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "group" },
+                    [
+                      _c("router-link", { attrs: { to: "groups/my" } }, [
+                        _vm._v("My groups")
+                      ])
+                    ],
+                    1
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("router-view")
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-head" }, [
+      _c("i", { staticClass: "material-icons big_icon" }, [
+        _vm._v("group_add")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "chat-name" }, [
+        _c("h1", { staticClass: "font-name" }, [_vm._v("Groups")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "font-online" }, [
+          _vm._v("You can create public chat rooms for all users...")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("i", {
+        staticClass: "fa fa-whatsapp fa-lg",
+        attrs: { "aria-hidden": "true" }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d3688d86", module.exports)
+  }
+}
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(119)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(121)
+/* template */
+var __vue_template__ = __webpack_require__(122)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-06415373"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\groups\\all_groups.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-06415373", Component.options)
+  } else {
+    hotAPI.reload("data-v-06415373", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(120);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("78018818", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-06415373\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./all_groups.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-06415373\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./all_groups.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\na[data-v-06415373] {\n    text-decoration: none;\n    color: #777777;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 121 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('All groups ok!');
+    }
+});
+
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "all_groups_app" } },
+    [
+      _c(
+        "router-link",
+        { attrs: { to: "/groups", "exact-active-class": "active_icon" } },
+        [_c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])]
+      ),
+      _vm._v(" "),
+      _c("h4", [_vm._v("All groups")]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._m(0)
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("table", [
+      _c("thead", [
+        _c("tr", [
+          _c("th", [_vm._v("Avatar")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Name")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Owner")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tbody", [
+        _c("tr", [
+          _c("td", [
+            _c("img", {
+              staticClass: "group_avatar",
+              attrs: {
+                alt: "profilepicture",
+                src: "https://avatars.io/twitter/rosa"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("td", [_vm._v("Música")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("Ismael")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [
+            _c("img", {
+              staticClass: "group_avatar",
+              attrs: {
+                alt: "profilepicture",
+                src: "https://avatars.io/twitter/marta"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("td", [_vm._v("Material")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("Victor")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [
+            _c("img", {
+              staticClass: "group_avatar",
+              attrs: {
+                alt: "profilepicture",
+                src: "https://avatars.io/twitter/chiste"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("td", [_vm._v("Famoso")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("Marcos")])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-06415373", module.exports)
+  }
+}
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(124)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(126)
+/* template */
+var __vue_template__ = __webpack_require__(127)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-9220cbd4"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\groups\\my_groups.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9220cbd4", Component.options)
+  } else {
+    hotAPI.reload("data-v-9220cbd4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(125);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("d8b1cc44", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9220cbd4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./my_groups.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9220cbd4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./my_groups.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\na[data-v-9220cbd4] {\n    text-decoration: none;\n    color: #777777;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 126 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('My groups ok!');
+    }
+});
+
+/***/ }),
+/* 127 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "my_groups_app" } },
+    [
+      _c(
+        "router-link",
+        { attrs: { to: "/groups", "exact-active-class": "active_icon" } },
+        [_c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])]
+      ),
+      _vm._v(" "),
+      _c("h4", [_vm._v("My groups")]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._m(0)
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("table", [
+      _c("thead", [
+        _c("tr", [
+          _c("th", [_vm._v("Avatar")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Name")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Edit")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Delete")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tbody", [
+        _c("tr", [
+          _c("td", [
+            _c("img", {
+              staticClass: "group_avatar",
+              attrs: {
+                alt: "profilepicture",
+                src: "https://avatars.io/twitter/bones"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("td", [_vm._v("Laravel")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("button", { staticClass: "format_button" }, [
+              _c("i", { staticClass: "material-icons green_teal" }, [
+                _vm._v("mode_edit")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _c("button", { staticClass: "format_button" }, [
+              _c("i", { staticClass: "material-icons cool_red" }, [
+                _vm._v("delete")
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [
+            _c("img", {
+              staticClass: "group_avatar",
+              attrs: {
+                alt: "profilepicture",
+                src: "https://avatars.io/twitter/adios"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("td", [_vm._v("Nodejs")]),
+          _vm._v(" "),
+          _c("td", [
+            _c("button", { staticClass: "format_button" }, [
+              _c("i", { staticClass: "material-icons green_teal" }, [
+                _vm._v("mode_edit")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _c("button", { staticClass: "format_button" }, [
+              _c("i", { staticClass: "material-icons cool_red" }, [
+                _vm._v("delete")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9220cbd4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
