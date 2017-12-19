@@ -18,6 +18,10 @@
                     <i class="material-icons">person_add</i>
                 </router-link>
 
+                <a v-on:click="logout">
+                    <i v-bind:class="[logoutError ? 'error' : '', 'material-icons']">fingerprint</i>
+                </a>
+
             </div>
         </div>
 
@@ -62,13 +66,35 @@
     .avatar {
         margin: 5px 20px;
     }
+    .error {
+        color: #E57373;
+    }
 </style>
 
 <script>
     export default {
         props: ['user'],
+        data() {
+            return {
+                logoutError: null
+            }
+        },
         mounted() {
             console.log('Left ok!');
+        },
+        methods: {
+            logout() {
+                this.$http.post('/logout').then(response => {
+                    if (response.status == 200) {
+                        this.$router.push('/');
+                        window.location.reload();
+                    } else {
+                        this.logoutError = true;
+                    }
+                }, response => {
+                    this.logoutError = true;
+                });
+            }
         }
     }
 </script>

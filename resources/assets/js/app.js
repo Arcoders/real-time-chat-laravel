@@ -10,8 +10,15 @@ window.Vue = require('vue');
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Avatar from 'vue-avatar';
+const VueResource = require('vue-resource');
 
 window.Vue.use(VueRouter);
+window.Vue.use(VueResource);
+
+// headers
+
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf-token')
+                                                  .getAttribute('content');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
