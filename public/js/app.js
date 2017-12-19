@@ -18308,217 +18308,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['user'],
+    props: ['user', 'messages'],
     mounted: function mounted() {
         console.log('Messages ok!');
+    },
+
+    methods: {
+        checkId: function checkId(message_user_id) {
+            return this.user.id == message_user_id;
+        }
     }
 });
 
@@ -18530,483 +18330,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "messages_app" } }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
+  return _c(
+    "div",
+    { attrs: { id: "messages_app" } },
+    _vm._l(_vm.messages, function(message_user) {
+      return _c(
         "div",
-        { staticClass: "your-mouth" },
+        { class: [_vm.checkId(message_user.id) ? "me" : "you", "chat-bubble"] },
         [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(2),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(3),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(4),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(5),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(6),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(7),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(8),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(9),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ]),
-    _vm._v(" "),
-    _vm._m(10),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-bubble you" }, [
-      _c(
-        "div",
-        { staticClass: "your-mouth" },
-        [
-          _c("avatar", {
-            staticClass: "you_img",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._v("Awdi ghir m3a dnya")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:27")])
-    ])
-  ])
+          _c(
+            "div",
+            { class: _vm.checkId(message_user.id) ? "my-mouth" : "your-mouth" },
+            [
+              _c("avatar", {
+                class: _vm.checkId(message_user.id) ? "me_img" : "you_img",
+                attrs: {
+                  username: message_user.name,
+                  color: "#fff",
+                  src: message_user.avatar
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "content" }, [
+            _vm._v(_vm._s(message_user.text))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "time" }, [
+            _vm._v(_vm._s(message_user.time))
+          ])
+        ]
+      )
+    })
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-bubble me" }, [
-      _c("div", { staticClass: "my-mouth" }, [
-        _c("img", {
-          staticClass: "me_img",
-          attrs: { src: "https://avatars.io/twitter/maryam" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _vm._v("قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "time" }, [_vm._v("15:20")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -19141,16 +18501,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['uploadImageState'],
+    props: ['uploadImageState', 'user'],
+    data: function data() {
+        return {
+            messageText: ''
+        };
+    },
+
     methods: {
         showModal: function showModal() {
             this.$emit('showUpload', !this.uploadImageState);
+        },
+        addMessage: function addMessage() {
+            if (this.btnSubmit) return;
+
+            this.$emit('pushMessage', this.messageText = {
+                id: this.user.id,
+                name: this.user.name,
+                avatar: this.user.avatar,
+                text: this.messageText,
+                time: '08:32'
+            });
+
+            this.messageText = '';
         }
     },
     mounted: function mounted() {
         console.log('Send ok!');
+    },
+
+    computed: {
+        btnSubmit: function btnSubmit() {
+            return this.messageText.length <= 2;
+        }
     }
 });
 
@@ -19168,7 +18559,12 @@ var render = function() {
         "form",
         {
           staticClass: "wrap-message",
-          attrs: { method: "POST", enctype: "multipart/form-data" }
+          attrs: { method: "POST", enctype: "multipart/form-data" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+            }
+          }
         },
         [
           _c(
@@ -19192,35 +18588,62 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "message" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.messageText,
+                  expression: "messageText"
+                }
+              ],
+              staticClass: "input-message",
+              attrs: { type: "text", placeholder: "Escribe un nuevo mensaje" },
+              domProps: { value: _vm.messageText },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key)
+                  ) {
+                    return null
+                  }
+                  _vm.addMessage($event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.messageText = $event.target.value
+                }
+              }
+            })
+          ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c(
+            "button",
+            {
+              staticClass: "format_button",
+              attrs: { type: "button" },
+              on: { click: _vm.addMessage }
+            },
+            [
+              _c(
+                "i",
+                {
+                  class: [_vm.btnSubmit ? "" : "green_teal", "material-icons"]
+                },
+                [_vm._v("send")]
+              )
+            ]
+          )
         ]
       )
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "message" }, [
-      _c("input", {
-        staticClass: "input-message",
-        attrs: { type: "text", placeholder: "Escribe un nuevo mensaje" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "format_button" }, [
-      _c("i", { staticClass: "material-icons" }, [_vm._v("send")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -19316,7 +18739,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.container[data-v-5d8cd3f2] {\n    position: absolute;\n    top: 10%;\n    right: 0;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n}\n.dot[data-v-5d8cd3f2] {\n    width: 7px;\n    height: 7px;\n    border: 2px solid #009688;\n    border-radius: 50%;\n    float: left;\n    margin: 0 5px;\n    -webkit-transform: scale(0);\n            transform: scale(0);\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 0ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 0ms;\n}\n.dot[data-v-5d8cd3f2]:nth-child(2) {\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 300ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 300ms;\n}\n.dot[data-v-5d8cd3f2]:nth-child(3) {\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 600ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 600ms;\n}\n@-webkit-keyframes fx-data-v-5d8cd3f2 {\n50% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n        opacity: 1;\n}\n100% {\n        opacity: 0;\n}\n}\n@keyframes fx-data-v-5d8cd3f2 {\n50% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n        opacity: 1;\n}\n100% {\n        opacity: 0;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.top[data-v-5d8cd3f2] {\n    position: absolute;\n    top: 10%;\n    right: 0;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n}\n.normal[data-v-5d8cd3f2] {\n    margin: 10px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.dot[data-v-5d8cd3f2] {\n    width: 7px;\n    height: 7px;\n    border: 2px solid #009688;\n    border-radius: 50%;\n    float: left;\n    margin: 0 5px;\n    -webkit-transform: scale(0);\n            transform: scale(0);\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 0ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 0ms;\n}\n.dot[data-v-5d8cd3f2]:nth-child(2) {\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 300ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 300ms;\n}\n.dot[data-v-5d8cd3f2]:nth-child(3) {\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 600ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 600ms;\n}\n@-webkit-keyframes fx-data-v-5d8cd3f2 {\n50% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n        opacity: 1;\n}\n100% {\n        opacity: 0;\n}\n}\n@keyframes fx-data-v-5d8cd3f2 {\n50% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n        opacity: 1;\n}\n100% {\n        opacity: 0;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -19371,8 +18794,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        normal: {
+            default: false,
+            type: Boolean
+        }
+    },
     mounted: function mounted() {
         console.log('Loading ok!');
     }
@@ -19386,22 +18821,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { class: _vm.normal ? "normal" : "top" }, [
+    _c("span", { staticClass: "dot" }),
+    _vm._v(" "),
+    _c("span", { staticClass: "dot" }),
+    _vm._v(" "),
+    _c("span", { staticClass: "dot" })
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("span", { staticClass: "dot" }),
-      _vm._v(" "),
-      _c("span", { staticClass: "dot" }),
-      _vm._v(" "),
-      _c("span", { staticClass: "dot" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -19554,16 +18982,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user'],
     data: function data() {
         return {
             uploadImage: false,
-            image: null
+            image: null,
+            messages: [],
+            messages_ready: false
         };
     },
     mounted: function mounted() {
+        this.allMessages();
         console.log('Right ok!');
     },
 
@@ -19587,6 +19022,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         clearImage: function clearImage() {
             this.image = null;
+        },
+        allMessages: function allMessages() {
+            this.messages.push({
+                id: this.user.id,
+                name: this.user.name,
+                avatar: this.user.avatar,
+                text: 'Hola muy buenas lorem ipsum dolor set amet',
+                time: '15:20'
+            }, {
+                id: 2,
+                name: 'Berto Romero',
+                avatar: 'https://avatars.io/twitter/maryam',
+                text: 'قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا',
+                time: '23:45'
+            });
+        },
+        addMessage: function addMessage(new_message) {
+            this.messages.push(new_message);
         }
     }
 });
@@ -19609,7 +19062,11 @@ var render = function() {
         _c(
           "div",
           { staticClass: "dynamic_content chat" },
-          [_c("messages", { attrs: { user: _vm.user } })],
+          [
+            _c("messages", {
+              attrs: { messages: _vm.messages, user: _vm.user }
+            })
+          ],
           1
         ),
         _vm._v(" "),
@@ -19649,8 +19106,8 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("send", {
-        attrs: { uploadImageState: _vm.uploadImage },
-        on: { showUpload: _vm.showImageModal }
+        attrs: { user: _vm.user, uploadImageState: _vm.uploadImage },
+        on: { showUpload: _vm.showImageModal, pushMessage: _vm.addMessage }
       })
     ],
     1
@@ -21437,7 +20894,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.loading = false;
 
                 if (response.status == 200) {
-                    console.log(_this2.groupName);
+                    console.log(_this2.groupName + ' - Groupo agregado...');
                     _this2.groupName = '';
                 } else {
                     _this2.error = true;

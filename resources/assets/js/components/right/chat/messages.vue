@@ -1,226 +1,20 @@
 <template>
     <div id="messages_app">
 
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
+        <div v-for="message_user in messages"
+             v-bind:class="[checkId(message_user.id) ? 'me' : 'you', 'chat-bubble']">
 
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <avatar :username="user.name"
+            <div v-bind:class="checkId(message_user.id) ? 'my-mouth' : 'your-mouth'">
+                <avatar :username="message_user.name"
                         color="#fff"
-                        :src="user.avatar"
-                        class="you_img">
+                        :src="message_user.avatar"
+                        v-bind:class="checkId(message_user.id) ? 'me_img' : 'you_img'">
                 </avatar>
             </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
 
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
+            <div class="content">{{ message_user.text }}</div>
+            <div class="time">{{ message_user.time }}</div>
 
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <avatar :username="user.name"
-                        color="#fff"
-                        :src="user.avatar"
-                        class="you_img">
-                </avatar>
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <avatar :username="user.name"
-                        color="#fff"
-                        :src="user.avatar"
-                        class="you_img">
-                </avatar>
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <avatar :username="user.name"
-                        color="#fff"
-                        :src="user.avatar"
-                        class="you_img">
-                </avatar>
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <avatar :username="user.name"
-                        color="#fff"
-                        :src="user.avatar"
-                        class="you_img">
-                </avatar>
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <avatar :username="user.name"
-                        color="#fff"
-                        :src="user.avatar"
-                        class="you_img">
-                </avatar>
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <avatar :username="user.name"
-                        color="#fff"
-                        :src="user.avatar"
-                        class="you_img">
-                </avatar>
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <avatar :username="user.name"
-                        color="#fff"
-                        :src="user.avatar"
-                        class="you_img">
-                </avatar>
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <avatar :username="user.name"
-                        color="#fff"
-                        :src="user.avatar"
-                        class="you_img">
-                </avatar>
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <avatar :username="user.name"
-                        color="#fff"
-                        :src="user.avatar"
-                        class="you_img">
-                </avatar>
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
-        </div>
-
-        <div class="chat-bubble me">
-            <div class="my-mouth">
-                <img class="me_img" src="https://avatars.io/twitter/maryam">
-            </div>
-            <div class="content">قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا</div>
-            <div class="time">15:20</div>
-        </div>
-
-        <div class="chat-bubble you">
-            <div class="your-mouth">
-                <avatar :username="user.name"
-                        color="#fff"
-                        :src="user.avatar"
-                        class="you_img">
-                </avatar>
-            </div>
-            <div class="content">Awdi ghir m3a dnya</div>
-            <div class="time">15:27</div>
         </div>
 
     </div>
@@ -228,9 +22,14 @@
 
 <script>
     export default {
-        props: ['user'],
+        props: ['user', 'messages'],
         mounted() {
             console.log('Messages ok!');
+        },
+        methods: {
+            checkId(message_user_id) {
+                return (this.user.id == message_user_id);
+            }
         }
     }
 </script>

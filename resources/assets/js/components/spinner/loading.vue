@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div v-bind:class="normal ? 'normal' : 'top'">
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
@@ -8,11 +8,17 @@
 
 <style  scoped>
 
-    .container {
+    .top {
         position: absolute;
         top: 10%;
         right: 0;
         transform: translate(-50%, -50%);
+    }
+    .normal {
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .dot {
         width: 7px;
@@ -44,6 +50,12 @@
 
 <script>
     export default {
+        props: {
+            normal: {
+                default: false,
+                type: Boolean
+            }
+        },
         mounted() {
             console.log('Loading ok!');
         }

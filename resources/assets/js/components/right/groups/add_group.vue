@@ -86,7 +86,7 @@
                     this.loading = false;
 
                     if (response.status == 200) {
-                        console.log(this.groupName);
+                        console.log(this.groupName + ' - Groupo agregado...');
                         this.groupName = '';
                     } else {
                         this.error = true;

@@ -7,7 +7,7 @@
 
             <div class="dynamic_content chat">
 
-                <messages :user="user"></messages>
+                <messages :messages="messages" :user="user"></messages>
 
             </div>
 
@@ -33,7 +33,11 @@
 
         </div>
 
-        <send :uploadImageState="uploadImage" @showUpload="showImageModal"></send>
+        <send :user="user"
+              :uploadImageState="uploadImage"
+              @showUpload="showImageModal"
+              @pushMessage="addMessage">
+        </send>
 
     </div>
 </template>
@@ -50,10 +54,13 @@
         data() {
             return {
                 uploadImage: false,
-                image: null
+                image: null,
+                messages: [],
+                messages_ready: false
             }
         },
         mounted() {
+            this.allMessages();
             console.log('Right ok!');
         },
         methods: {
@@ -75,6 +82,25 @@
             },
             clearImage() {
                 this.image = null;
+            },
+            allMessages() {
+                this.messages.push({
+                        id: this.user.id,
+                        name: this.user.name,
+                        avatar: this.user.avatar,
+                        text: 'Hola muy buenas lorem ipsum dolor set amet',
+                        time: '15:20'
+                    },
+                    {
+                        id: 2,
+                        name: 'Berto Romero',
+                        avatar: 'https://avatars.io/twitter/maryam',
+                        text: 'قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا',
+                        time: '23:45'
+                    });
+            },
+            addMessage(new_message) {
+                this.messages.push(new_message);
             }
         }
     }
