@@ -1,11 +1,16 @@
 <template>
     <div id="my_groups_app">
 
-        <router-link to="/groups" exact-active-class="active_icon">
+        <router-link to="/groups">
             <i class="material-icons">arrow_back</i>
         </router-link>
 
-        <h4>My groups</h4>
+        <h4>
+            My groups
+            <router-link to="/groups/my/add">
+                <i class="add material-icons">add</i>
+            </router-link>
+        </h4>
 
         <hr>
 
@@ -61,6 +66,14 @@
     a {
         text-decoration: none;
         color: #777777;
+    }
+    .add {
+        background-color: #fafafa;
+        border-radius: 50%;
+    }
+    .add:hover {
+        background-color: #f1f1f1;
+        color: #009688;
     }
 </style>
 

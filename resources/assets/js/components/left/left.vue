@@ -7,7 +7,7 @@
                     :src="user.avatar"
                     class="avatar">
             </avatar>
-            <span>{{ user.name }}</span>
+            <div class="name">{{ user.name }}</div>
             <div class="icons">
 
                 <router-link to="/profile">
@@ -58,10 +58,6 @@
     }
     .router-link-active {
         box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);
-    }
-    span {
-        margin: auto;
-        color: #777777;
     }
     .avatar {
         margin: 5px 20px;

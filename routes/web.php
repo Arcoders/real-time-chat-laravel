@@ -11,15 +11,19 @@
 |
 */
 
+// Auth...
 Auth::routes();
 
+// Welcome
+Route::get('/', function () { return view('welcome'); });
+
+// Group routes
 Route::group(['middleware' => ['auth']], function () {
 
     // Home...
-    Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index')->name('home');
 
     // Groups...
-    Route::get('/new_group', 'GroupsController@newGroup');
+    Route::post('/new_group', 'GroupsController@newGroup');
 
 });

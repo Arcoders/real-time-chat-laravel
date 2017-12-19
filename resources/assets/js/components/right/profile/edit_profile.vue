@@ -51,7 +51,7 @@
     export default {
         data() {
             return {
-                image: null
+                avatar: null
             }
         },
         mounted() {
@@ -67,8 +67,8 @@
             createImage(file) {
                 let reader = new FileReader();
                 reader.onload = (e) => {
-                    this.image = e.target.result;
-                    this.$emit('previewImage', this.image);
+                    this.avatar = e.target.result;
+                    this.$emit('previewImage', this.avatar);
                 };
                 reader.readAsDataURL(file);
             }
