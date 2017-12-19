@@ -12,7 +12,13 @@
                 </avatar>
             </div>
 
-            <div class="content">{{ message_user.text }}</div>
+            <div class="content">
+                <div v-if="message_user.photo">
+                    <img :src="message_user.photo">
+                </div>
+                {{ message_user.text }}
+            </div>
+
             <div class="time">{{ message_user.time }}</div>
 
         </div>

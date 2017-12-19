@@ -34,7 +34,7 @@
 
 <script>
     export default {
-        props: ['uploadImageState', 'user'],
+        props: ['uploadImageState', 'user', 'photo'],
         data() {
           return {
               messageText: ''
@@ -51,6 +51,7 @@
                     id: this.user.id,
                     name: this.user.name,
                     avatar: this.user.avatar,
+                    photo: this.photo,
                     text: this.messageText,
                     time: '08:32'
                 });
@@ -63,7 +64,7 @@
         },
         computed: {
             btnSubmit() {
-                return ( this.messageText.length <= 2);
+                return ( this.messageText.length < 2);
             }
         }
     }

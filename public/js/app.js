@@ -18308,6 +18308,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user', 'messages'],
@@ -18355,7 +18361,10 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("div", { staticClass: "content" }, [
-            _vm._v(_vm._s(message_user.text))
+            message_user.photo
+              ? _c("div", [_c("img", { attrs: { src: message_user.photo } })])
+              : _vm._e(),
+            _vm._v("\n            " + _vm._s(message_user.text) + "\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "time" }, [
@@ -18509,7 +18518,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['uploadImageState', 'user'],
+    props: ['uploadImageState', 'user', 'photo'],
     data: function data() {
         return {
             messageText: ''
@@ -18527,6 +18536,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: this.user.id,
                 name: this.user.name,
                 avatar: this.user.avatar,
+                photo: this.photo,
                 text: this.messageText,
                 time: '08:32'
             });
@@ -18540,7 +18550,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         btnSubmit: function btnSubmit() {
-            return this.messageText.length <= 2;
+            return this.messageText.length < 2;
         }
     }
 });
@@ -18986,13 +18996,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user'],
     data: function data() {
         return {
             uploadImage: false,
-            image: null,
+            photo: null,
             messages: [],
             messages_ready: false
         };
@@ -19016,30 +19027,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var reader = new FileReader();
             reader.onload = function (e) {
-                _this.image = e.target.result;
+                _this.photo = e.target.result;
             };
             reader.readAsDataURL(file);
         },
         clearImage: function clearImage() {
-            this.image = null;
+            this.photo = null;
         },
         allMessages: function allMessages() {
             this.messages.push({
                 id: this.user.id,
                 name: this.user.name,
                 avatar: this.user.avatar,
+                photo: 'https://avatars.io/twitter/cute',
                 text: 'Hola muy buenas lorem ipsum dolor set amet',
                 time: '15:20'
             }, {
                 id: 2,
                 name: 'Berto Romero',
                 avatar: 'https://avatars.io/twitter/maryam',
+                photo: null,
                 text: 'قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا',
                 time: '23:45'
             });
         },
         addMessage: function addMessage(new_message) {
             this.messages.push(new_message);
+            this.photo = null;
+            this.uploadImage = false;
         }
     }
 });
@@ -19072,7 +19087,7 @@ var render = function() {
         _vm._v(" "),
         _vm.uploadImage
           ? _c("div", { staticClass: "upload_foto" }, [
-              !_vm.image
+              !_vm.photo
                 ? _c("div", { staticClass: "container_foto font-preview" }, [
                     _c("label", { staticClass: "fileContainer" }, [
                       _vm._m(0),
@@ -19091,7 +19106,7 @@ var render = function() {
                 : _c("div", { staticClass: "container_foto" }, [
                     _c("div", { staticClass: "preview-image" }, [
                       _c("img", {
-                        attrs: { alt: "profilepicture", src: _vm.image }
+                        attrs: { alt: "profilepicture", src: _vm.photo }
                       }),
                       _vm._v(" "),
                       _c("a", { on: { click: _vm.clearImage } }, [
@@ -19106,7 +19121,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("send", {
-        attrs: { user: _vm.user, uploadImageState: _vm.uploadImage },
+        attrs: {
+          user: _vm.user,
+          uploadImageState: _vm.uploadImage,
+          photo: _vm.photo
+        },
         on: { showUpload: _vm.showImageModal, pushMessage: _vm.addMessage }
       })
     ],
