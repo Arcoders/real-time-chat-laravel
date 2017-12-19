@@ -20870,6 +20870,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -20914,6 +20926,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status == 200) {
                     console.log(_this2.groupName + ' - Groupo agregado...');
+                    console.log(_this2.avatar);
+                    _this2.clearAvatar();
                     _this2.groupName = '';
                 } else {
                     _this2.error = true;
@@ -20969,17 +20983,24 @@ var render = function() {
           },
           [
             _c("label", { staticClass: "fileContainer font-online" }, [
-              _c("button", { attrs: { type: "button" } }, [
-                !_vm.avatar
-                  ? _c("i", { staticClass: "material-icons" }, [
+              !_vm.avatar
+                ? _c("button", { attrs: { type: "button" } }, [
+                    _c("i", { staticClass: "material-icons" }, [
                       _vm._v("photo")
                     ])
-                  : _c("a", { on: { click: _vm.clearAvatar } }, [
+                  ])
+                : _c(
+                    "button",
+                    {
+                      attrs: { type: "button" },
+                      on: { click: _vm.clearAvatar }
+                    },
+                    [
                       _c("i", { staticClass: "material-icons" }, [
                         _vm._v("clear")
                       ])
-                    ])
-              ]),
+                    ]
+                  ),
               _vm._v(" "),
               !_vm.avatar
                 ? _c("input", {

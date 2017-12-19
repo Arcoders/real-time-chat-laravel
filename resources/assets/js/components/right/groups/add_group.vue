@@ -15,16 +15,28 @@
                 <form class="input" v-on:submit.prevent="" method="POST" enctype="multipart/form-data">
 
                     <label class="fileContainer font-online">
-                        <button type="button">
-                            <i v-if="!avatar" class="material-icons">photo</i>
-                            <a v-on:click="clearAvatar" v-else>
-                                <i class="material-icons">clear</i>
-                            </a>
+
+                        <button v-if="!avatar" type="button">
+                            <i class="material-icons">photo</i>
                         </button>
-                        <input v-if="!avatar" type="file" name="fileInput" v-on:change="onFileChange($event)" ref="fileInput">
+
+                        <button v-else v-on:click="clearAvatar" type="button">
+                            <i class="material-icons">clear</i>
+                        </button>
+
+                        <input v-if="!avatar"
+                               type="file"
+                               name="fileInput"
+                               v-on:change="onFileChange($event)"
+                               ref="fileInput">
+
                     </label>
 
-                    <input @keyup.enter="addGroup" v-model="groupName" type="text" class="input-global" placeholder="Group name...">
+                    <input @keyup.enter="addGroup"
+                           v-model="groupName"
+                           type="text"
+                           class="input-global"
+                           placeholder="Group name...">
 
                     <button type="button" @click="addGroup" v-bind:disabled="btnSubmit">
                         <i class="material-icons">add</i>
@@ -87,6 +99,8 @@
 
                     if (response.status == 200) {
                         console.log(this.groupName + ' - Groupo agregado...');
+                        console.log(this.avatar);
+                        this.clearAvatar();
                         this.groupName = '';
                     } else {
                         this.error = true;
