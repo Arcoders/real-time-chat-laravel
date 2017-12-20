@@ -15,7 +15,7 @@
 
         <div class="wrap-input">
 
-                <form class="input" v-on:submit.prevent="addGroup()" method="POST" enctype="multipart/form-data">
+                <form class="input" v-on:submit.prevent="" method="POST" enctype="multipart/form-data">
 
                     <label class="fileContainer font-online">
 
@@ -27,9 +27,9 @@
                             <i class="material-icons">clear</i>
                         </button>
 
-                        <input v-if="!avatar"
+                        <input v-show="!avatar"
                                type="file"
-                               name="fileInput"
+                               name="avatar"
                                v-on:change="onFileChange($event)"
                                ref="fileInput">
 
@@ -37,6 +37,7 @@
 
                     <input @keyup.enter="addGroup"
                            v-model="groupName"
+                           name="name"
                            type="text"
                            class="input-global"
                            placeholder="Group name...">
@@ -101,7 +102,11 @@
                 if (this.btnSubmit) return;
                 this.loading = true;
 
-                this.$http.post('/new_group', {name: this.groupName, avatar: this.groupAvatar}).then(response => {
+                let formData = new FormData();
+                formData.append('avatar', this.$refs.fileInput.files[0]);
+                formData.append('name', this.groupName);
+
+                this.$http.post('/new_group', formData).then(response => {
 
                     this.loading = false;
 
@@ -154,18 +159,6 @@
         computed: {
             btnSubmit() {
                 return ( this.groupName.length < 3);
-            },
-            groupAvatar() {
-                if (this.avatar) {
-
-                    let formData = new FormData();
-                    formData.append('fileInput', this.$refs.fileInput.files[0]);
-
-                    return formData;
-
-                } else {
-                    return;
-                }
             }
         }
     }

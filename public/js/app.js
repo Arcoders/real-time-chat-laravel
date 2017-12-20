@@ -21131,6 +21131,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -21172,7 +21173,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.btnSubmit) return;
             this.loading = true;
 
-            this.$http.post('/new_group', { name: this.groupName, avatar: this.groupAvatar }).then(function (response) {
+            var formData = new FormData();
+            formData.append('avatar', this.$refs.fileInput.files[0]);
+            formData.append('name', this.groupName);
+
+            this.$http.post('/new_group', formData).then(function (response) {
 
                 _this2.loading = false;
 
@@ -21225,17 +21230,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         btnSubmit: function btnSubmit() {
             return this.groupName.length < 3;
-        },
-        groupAvatar: function groupAvatar() {
-            if (this.avatar) {
-
-                var formData = new FormData();
-                formData.append('fileInput', this.$refs.fileInput.files[0]);
-
-                return formData;
-            } else {
-                return;
-            }
         }
     }
 });
@@ -21277,7 +21271,6 @@ var render = function() {
             on: {
               submit: function($event) {
                 $event.preventDefault()
-                _vm.addGroup()
               }
             }
           },
@@ -21302,17 +21295,23 @@ var render = function() {
                     ]
                   ),
               _vm._v(" "),
-              !_vm.avatar
-                ? _c("input", {
-                    ref: "fileInput",
-                    attrs: { type: "file", name: "fileInput" },
-                    on: {
-                      change: function($event) {
-                        _vm.onFileChange($event)
-                      }
-                    }
-                  })
-                : _vm._e()
+              _c("input", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.avatar,
+                    expression: "!avatar"
+                  }
+                ],
+                ref: "fileInput",
+                attrs: { type: "file", name: "avatar" },
+                on: {
+                  change: function($event) {
+                    _vm.onFileChange($event)
+                  }
+                }
+              })
             ]),
             _vm._v(" "),
             _c("input", {
@@ -21325,7 +21324,11 @@ var render = function() {
                 }
               ],
               staticClass: "input-global",
-              attrs: { type: "text", placeholder: "Group name..." },
+              attrs: {
+                name: "name",
+                type: "text",
+                placeholder: "Group name..."
+              },
               domProps: { value: _vm.groupName },
               on: {
                 keyup: function($event) {

@@ -15,16 +15,20 @@ class GroupsController extends Controller
 
         $request->validate([
             'name' => 'required|unique:groups|min:4|max:15',
-//            'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
+            'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
         ]);
 
         $user = Auth::user();
 
-        if ($request['avatar']) {
+        if ($request->file('avatar')) {
 
-            $avatar = Image::make($request['avatar']);
 
-            $avatar_name = time() . '_' . $user->id . '_' . $avatar->getClientOriginalName();
+            $data = $request->file('avatar');
+
+            $avatar = Image::make($data);
+            $avatar->fit(200, 200);
+
+            $avatar_name = time() . '_' . $user->id . '_' . $data->getClientOriginalName();
 
             return $avatar_name;
 
@@ -32,7 +36,8 @@ class GroupsController extends Controller
 
         $create = Group::create([
             'name' => $request['name'],
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'avatar' => $avatar_name
         ]);
 
         if ($create) return response()->json('Group created successfully', 200);
