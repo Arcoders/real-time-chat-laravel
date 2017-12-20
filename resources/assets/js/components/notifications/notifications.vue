@@ -1,6 +1,8 @@
 <template>
-    <div class="global">
-        <span class="nortification animateOpen">Add New Message!</span>
+    <div v-if="active" class="global">
+        <span v-bind:class="[show , 'notification', 'animateOpen']">
+            {{ message }}
+        </span>
     </div>
 </template>
 
@@ -10,7 +12,7 @@
         width: 100%;
     }
 
-    .nortification {
+    .notification {
         padding: 5px 10px;
         position: absolute;
         top: 10px;
@@ -19,9 +21,24 @@
         margin-right: 20px;
         border-radius: 7px;
         background-color: #fff;
-        color: #009688;
         font-weight: bold;
         box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);
+    }
+
+    .default {
+        color: #777777;
+    }
+
+    .done {
+        color: #009688;
+    }
+
+    .validation {
+        color: #FF7043;
+    }
+
+    .error {
+        color: #E57373;
     }
 
     .animateOpen {
@@ -46,13 +63,38 @@
 <script>
     export default {
         props: {
-            normal: {
-                default: false,
-                type: Boolean
+            show: {
+                type: String,
+                required: true,
+                default: 'default'
+            },
+            message: {
+                type: String,
+                required: true,
+                default: 'Default message...'
+            },
+            active: {
+                type: Boolean,
+                default: false
+            },
+            time: {
+                type: Number,
+                default: 4000
             }
         },
         mounted() {
+            if (this.active) this.showNotification(this.time);
             console.log('Notifications ok!');
+        },
+        methods: {
+            showNotification(time) {
+                this.active = true;
+
+                setTimeout(() => {
+                    this.active = false;
+                }, time);
+            }
         }
     }
+
 </script>

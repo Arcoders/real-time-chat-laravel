@@ -1,7 +1,7 @@
 <template>
     <div id="add_group_app">
 
-        <notifications></notifications>
+        <notifications :show="type" :message="result" :active="status"></notifications>
 
         <router-link to="/groups/my">
             <i class="material-icons">arrow_back</i>
@@ -48,8 +48,6 @@
                 </form>
         </div>
 
-        <p class="font-online">{{ result }}</p>
-
         <loading v-if="loading"></loading>
 
     </div>
@@ -73,8 +71,9 @@
               groupName: '',
               avatar: null,
               loading: false,
-              result: '',
-
+              status: false,
+              type: 'default',
+              result: 'Default message...',
           }
         },
         mounted() {
@@ -108,6 +107,9 @@
                     if (response.status == 200) {
 
                         this.result = response.data;
+                        this.type = 'done';
+                        this.status = true;
+
                         this.clearAvatar();
                         this.groupName = '';
 
@@ -120,7 +122,9 @@
                     this.loading = false;
 
                     if (response.status == 422) {
-                        this.result = response.data.errors.name[0]
+                        this.result = response.data.errors.name[0];
+                        this.type= 'validation';
+                        this.status = true;
                     } else {
                         this.errorMessage;
                     }
@@ -134,6 +138,8 @@
             },
             errorMessage() {
                 this.result = 'Group can not be added, try it later';
+                this.type = 'error';
+                this.status = true;
             }
         }
     }

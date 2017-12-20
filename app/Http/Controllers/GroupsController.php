@@ -13,7 +13,7 @@ class GroupsController extends Controller
     {
 
         $request->validate([
-            'name' => 'required|unique:groups|min:3|max:15'
+            'name' => 'required|unique:groups|min:4|max:15'
         ]);
 
         $create = Group::create([
