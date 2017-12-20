@@ -387,12 +387,16 @@ i {
   height: 30px;
   text-decoration: none;
   cursor: pointer;
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 2px 2px 0;
 }
 
 .container_foto i {
-  color: #E57373;
+  color: #009688;
   font-size: 30px;
+}
+
+.container_foto i:hover {
+  color: #E57373;
 }
 
 /* input file */
@@ -490,6 +494,7 @@ i {
 
 .content img {
   width: 100%;
+  max-height: 350px;
   margin-bottom: 10px;
   border-radius: 5px;
 }
@@ -627,7 +632,7 @@ button {
 }
 
 button i:hover {
-  color: #009688;
+  color: #777777;
 }
 
 .green_teal {

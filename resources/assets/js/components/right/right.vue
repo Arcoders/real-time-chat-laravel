@@ -14,10 +14,16 @@
             <div v-if="uploadImage" class="upload_foto">
                 <div class="container_foto font-preview" v-if="!photo">
                     <label class="fileContainer">
+
                         <button>
                             <i class="material-icons">file_upload</i>
                         </button>
-                        <input type="file" name="fileInput" v-on:change="onFileChange($event)" ref="fileInput">
+
+                        <input type="file"
+                               name="fileInput"
+                               v-on:change="onFileChange($event)"
+                               ref="fileInput">
+
                     </label>
                 </div>
 
@@ -78,6 +84,7 @@
                 let reader = new FileReader();
                 reader.onload = (e) => {
                     this.photo = e.target.result;
+                    document.getElementById("inputMessage").focus();
                 };
                 reader.readAsDataURL(file);
             },

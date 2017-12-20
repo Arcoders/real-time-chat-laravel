@@ -18516,6 +18516,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['uploadImageState', 'user', 'photo'],
@@ -18523,6 +18531,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             messageText: ''
         };
+    },
+    mounted: function mounted() {
+        console.log('Send ok!');
     },
 
     methods: {
@@ -18544,12 +18555,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.messageText = '';
         }
     },
-    mounted: function mounted() {
-        console.log('Send ok!');
-    },
-
     computed: {
         btnSubmit: function btnSubmit() {
+            if (this.photo) return;
             return this.messageText.length < 2;
         }
     }
@@ -18593,7 +18601,7 @@ var render = function() {
                     "material-icons"
                   ]
                 },
-                [_vm._v("photo_camera")]
+                [_vm._v("\n                    photo_camera\n                ")]
               )
             ]
           ),
@@ -18609,7 +18617,11 @@ var render = function() {
                 }
               ],
               staticClass: "input-message",
-              attrs: { type: "text", placeholder: "Escribe un nuevo mensaje" },
+              attrs: {
+                type: "text",
+                id: "inputMessage",
+                placeholder: "Escribe un nuevo mensaje"
+              },
               domProps: { value: _vm.messageText },
               on: {
                 keyup: function($event) {
@@ -18997,6 +19009,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user'],
@@ -19028,6 +19046,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var reader = new FileReader();
             reader.onload = function (e) {
                 _this.photo = e.target.result;
+                document.getElementById("inputMessage").focus();
             };
             reader.readAsDataURL(file);
         },

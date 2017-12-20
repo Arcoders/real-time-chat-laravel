@@ -2,9 +2,15 @@
     <div id="send_app">
 
         <div class="wrap-message">
-            <form method="POST" class="wrap-message" v-on:submit.prevent=""  enctype="multipart/form-data">
+            <form method="POST"
+                  class="wrap-message"
+                  v-on:submit.prevent=""
+                  enctype="multipart/form-data">
+
                 <button  type="button" class="format_button" v-on:click="showModal">
-                    <i v-bind:class="[uploadImageState ? 'green_teal' : '', 'material-icons']">photo_camera</i>
+                    <i v-bind:class="[uploadImageState ? 'green_teal' : '', 'material-icons']">
+                        photo_camera
+                    </i>
                 </button>
 
                 <div class="message">
@@ -12,6 +18,7 @@
                            v-model="messageText"
                            type="text"
                            class="input-message"
+                           id="inputMessage"
                            placeholder="Escribe un nuevo mensaje">
                 </div>
 
@@ -20,6 +27,7 @@
                         class="format_button">
                     <i  v-bind:class="[btnSubmit ? '' : 'green_teal', 'material-icons']">send</i>
                 </button>
+
             </form>
         </div>
 
@@ -40,6 +48,9 @@
               messageText: ''
           }
         },
+        mounted() {
+            console.log('Send ok!');
+        },
         methods: {
             showModal() {
                 this.$emit('showUpload', !this.uploadImageState);
@@ -59,11 +70,9 @@
                 this.messageText = '';
             }
         },
-        mounted() {
-            console.log('Send ok!');
-        },
         computed: {
             btnSubmit() {
+                if (this.photo) return;
                 return ( this.messageText.length < 2);
             }
         }
