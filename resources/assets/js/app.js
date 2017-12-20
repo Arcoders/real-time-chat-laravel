@@ -42,6 +42,7 @@ Vue.component('send', require('./components/right/chat/send.vue'));
 
 Vue.component('avatar', Avatar);
 Vue.component('loading', require('./components/spinner/loading.vue'));
+Vue.component('notifications', require('./components/notifications/notifications.vue'));
 
 // Define route components
 

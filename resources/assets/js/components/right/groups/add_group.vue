@@ -1,6 +1,8 @@
 <template>
     <div id="add_group_app">
 
+        <notifications></notifications>
+
         <router-link to="/groups/my">
             <i class="material-icons">arrow_back</i>
         </router-link>
