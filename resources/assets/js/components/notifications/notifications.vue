@@ -13,11 +13,11 @@
     .nortification {
         padding: 5px 10px;
         position: absolute;
-        top: 0;
+        top: 10px;
         right: 0;
         font-size: 12px;
         margin-right: 20px;
-        border-radius: 5px;
+        border-radius: 7px;
         background-color: #fff;
         color: #009688;
         font-weight: bold;
@@ -32,13 +32,13 @@
     /* Safari and Chrome */
     @-webkit-keyframes moveOpen
     {
-        from {-webkit-transform: translate(0,-100px);}
+        from {-webkit-transform: translate(0,-300px);}
         10% {-webkit-transform: translate(0,20px);}
         12% {-webkit-transform: translate(0,22px);}
         16% {-webkit-transform: translate(0,20px);}
         80% {-webkit-transform: translate(0,20px);}
         85% {-webkit-transform: translate(0,25px);}
-        to {-webkit-transform: translate(0,-100px);}
+        to {-webkit-transform: translate(0, -300px);}
     }
 
 </style>
