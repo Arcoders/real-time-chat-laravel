@@ -66,34 +66,18 @@
             show: {
                 type: String,
                 required: true,
-                default: 'default'
             },
             message: {
                 type: String,
                 required: true,
-                default: 'Default message...'
             },
             active: {
                 type: Boolean,
                 default: false
-            },
-            time: {
-                type: Number,
-                default: 4000
             }
         },
         mounted() {
-            if (this.active) this.showNotification(this.time);
             console.log('Notifications ok!');
-        },
-        methods: {
-            showNotification(time) {
-                this.active = true;
-
-                setTimeout(() => {
-                    this.active = false;
-                }, time);
-            }
         }
     }
 

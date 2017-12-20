@@ -19044,38 +19044,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         show: {
             type: String,
-            required: true,
-            default: 'default'
+            required: true
         },
         message: {
             type: String,
-            required: true,
-            default: 'Default message...'
+            required: true
         },
         active: {
             type: Boolean,
             default: false
-        },
-        time: {
-            type: Number,
-            default: 4000
         }
     },
     mounted: function mounted() {
-        if (this.active) this.showNotification(this.time);
         console.log('Notifications ok!');
-    },
-
-    methods: {
-        showNotification: function showNotification(time) {
-            var _this = this;
-
-            this.active = true;
-
-            setTimeout(function () {
-                _this.active = false;
-            }, time);
-        }
     }
 });
 
@@ -21157,9 +21138,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             groupName: '',
             avatar: null,
             loading: false,
-            status: false,
+            active: false,
             type: 'default',
-            result: 'Default message...'
+            result: 'Default message...',
+            time: 4000
         };
     },
     mounted: function mounted() {
@@ -21195,38 +21177,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.loading = false;
 
                 if (response.status == 200) {
-
-                    _this2.result = response.data;
-                    _this2.type = 'done';
-                    _this2.status = true;
-
-                    _this2.clearAvatar();
-                    _this2.groupName = '';
+                    _this2.done(response.data);
                 } else {
-                    _this2.errorMessage;
+                    _this2.error();
                 }
             }, function (response) {
 
                 _this2.loading = false;
 
                 if (response.status == 422) {
-                    _this2.result = response.data.errors.name[0];
-                    _this2.type = 'validation';
-                    _this2.status = true;
+                    _this2.validation(response.data.errors.name[0]);
                 } else {
-                    _this2.errorMessage;
+                    _this2.error();
                 }
             });
+        },
+        error: function error() {
+            this.result = 'Group can not be added, try it later';
+            this.type = 'error';
+            this.active = true;
+            this.resetNotification();
+        },
+        validation: function validation(msg) {
+            this.result = msg;
+            this.type = 'validation';
+            this.active = true;
+            this.resetNotification();
+        },
+        done: function done(msg) {
+            this.result = msg;
+            this.type = 'done';
+            this.active = true;
+            this.clearAvatar();
+            this.groupName = '';
+            this.resetNotification();
+        },
+        resetNotification: function resetNotification() {
+            var _this3 = this;
+
+            setTimeout(function () {
+                _this3.active = false;
+                _this3.type = 'Default';
+                _this3.result = 'Default message';
+            }, this.time);
         }
     },
     computed: {
         btnSubmit: function btnSubmit() {
             return this.groupName.length < 3;
-        },
-        errorMessage: function errorMessage() {
-            this.result = 'Group can not be added, try it later';
-            this.type = 'error';
-            this.status = true;
         }
     }
 });
@@ -21244,7 +21242,7 @@ var render = function() {
     { attrs: { id: "add_group_app" } },
     [
       _c("notifications", {
-        attrs: { show: _vm.type, message: _vm.result, active: _vm.status }
+        attrs: { show: _vm.type, message: _vm.result, active: _vm.active }
       }),
       _vm._v(" "),
       _c("router-link", { attrs: { to: "/groups/my" } }, [

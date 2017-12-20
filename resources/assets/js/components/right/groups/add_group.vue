@@ -1,7 +1,7 @@
 <template>
     <div id="add_group_app">
 
-        <notifications :show="type" :message="result" :active="status"></notifications>
+        <notifications :show="type" :message="result" :active="active"></notifications>
 
         <router-link to="/groups/my">
             <i class="material-icons">arrow_back</i>
@@ -71,9 +71,10 @@
               groupName: '',
               avatar: null,
               loading: false,
-              status: false,
+              active: false,
               type: 'default',
               result: 'Default message...',
+              time: 4000
           }
         },
         mounted() {
@@ -105,16 +106,9 @@
                     this.loading = false;
 
                     if (response.status == 200) {
-
-                        this.result = response.data;
-                        this.type = 'done';
-                        this.status = true;
-
-                        this.clearAvatar();
-                        this.groupName = '';
-
+                        this.done(response.data);
                     } else {
-                        this.errorMessage;
+                        this.error();
                     }
 
                 }, response => {
@@ -122,24 +116,44 @@
                     this.loading = false;
 
                     if (response.status == 422) {
-                        this.result = response.data.errors.name[0];
-                        this.type= 'validation';
-                        this.status = true;
+                        this.validation(response.data.errors.name[0])
                     } else {
-                        this.errorMessage;
+                        this.error();
                     }
 
                 });
+            },
+            error() {
+                this.result = 'Group can not be added, try it later';
+                this.type = 'error';
+                this.active = true;
+                this.resetNotification();
+            },
+            validation(msg) {
+                this.result = msg;
+                this.type = 'validation';
+                this.active = true;
+                this.resetNotification();
+            },
+            done(msg) {
+                this.result = msg;
+                this.type = 'done';
+                this.active = true;
+                this.clearAvatar();
+                this.groupName = '';
+                this.resetNotification();
+            },
+            resetNotification() {
+                setTimeout(() => {
+                    this.active = false;
+                    this.type = 'Default';
+                    this.result = 'Default message';
+                }, this.time);
             }
         },
         computed: {
             btnSubmit() {
                 return ( this.groupName.length < 3);
-            },
-            errorMessage() {
-                this.result = 'Group can not be added, try it later';
-                this.type = 'error';
-                this.status = true;
             }
         }
     }
