@@ -9,7 +9,7 @@
 
         <avatar :username="groupName" color="#fff" :src="avatar"></avatar>
 
-        <h4> Add new group small</h4>
+        <h4> Add new group </h4>
 
         <hr>
 
@@ -99,14 +99,11 @@
                 this.avatar = null;
             },
             addGroup() {
+
                 if (this.btnSubmit) return;
                 this.loading = true;
 
-                let formData = new FormData();
-                formData.append('avatar', this.$refs.fileInput.files[0]);
-                formData.append('name', this.groupName);
-
-                this.$http.post('/new_group', formData).then(response => {
+                this.$http.post('/new_group', this.formData).then(response => {
 
                     this.loading = false;
 
@@ -121,7 +118,7 @@
                     this.loading = false;
 
                     if (response.status == 422) {
-                        this.validation(response.data.errors.name)
+                        this.validation(response.data.errors)
                     } else {
                         this.error();
                     }
@@ -135,7 +132,8 @@
                 this.resetNotification();
             },
             validation(msg) {
-                this.result = msg;
+                if (msg.name) this.result = msg.name[0];
+                if (msg.avatar) this.result = msg.avatar[0];
                 this.type = 'validation';
                 this.active = true;
                 this.resetNotification();
@@ -159,6 +157,14 @@
         computed: {
             btnSubmit() {
                 return ( this.groupName.length < 3);
+            },
+            formData() {
+                let formData = new FormData();
+
+                formData.append('name', this.groupName);
+                if (this.avatar) formData.append('avatar', this.$refs.fileInput.files[0]);
+
+                return formData;
             }
         }
     }

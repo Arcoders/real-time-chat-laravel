@@ -21173,11 +21173,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.btnSubmit) return;
             this.loading = true;
 
-            var formData = new FormData();
-            formData.append('avatar', this.$refs.fileInput.files[0]);
-            formData.append('name', this.groupName);
-
-            this.$http.post('/new_group', formData).then(function (response) {
+            this.$http.post('/new_group', this.formData).then(function (response) {
 
                 _this2.loading = false;
 
@@ -21191,7 +21187,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.loading = false;
 
                 if (response.status == 422) {
-                    _this2.validation(response.data.errors.name);
+                    _this2.validation(response.data.errors);
                 } else {
                     _this2.error();
                 }
@@ -21204,7 +21200,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.resetNotification();
         },
         validation: function validation(msg) {
-            this.result = msg;
+            if (msg.name) this.result = msg.name[0];
+            if (msg.avatar) this.result = msg.avatar[0];
             this.type = 'validation';
             this.active = true;
             this.resetNotification();
@@ -21230,6 +21227,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         btnSubmit: function btnSubmit() {
             return this.groupName.length < 3;
+        },
+        formData: function formData() {
+            var formData = new FormData();
+
+            formData.append('name', this.groupName);
+            if (this.avatar) formData.append('avatar', this.$refs.fileInput.files[0]);
+
+            return formData;
         }
     }
 });
@@ -21258,7 +21263,7 @@ var render = function() {
         attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
       }),
       _vm._v(" "),
-      _c("h4", [_vm._v(" Add new group small")]),
+      _c("h4", [_vm._v(" Add new group ")]),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),

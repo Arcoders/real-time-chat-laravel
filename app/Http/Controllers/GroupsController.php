@@ -18,6 +18,7 @@ class GroupsController extends Controller
             'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
         ]);
 
+        $avatar_name = null;
         $user = Auth::user();
 
         if ($request->file('avatar')) {
@@ -26,11 +27,11 @@ class GroupsController extends Controller
             $data = $request->file('avatar');
 
             $avatar = Image::make($data);
-            $avatar->fit(200, 200);
+            $avatar->fit(300, 300);
 
-            $avatar_name = time() . '_' . $user->id . '_' . $data->getClientOriginalName();
+           $avatar_name = time() . '_' . $user->id . '_' . $data->getClientOriginalName();
 
-            return $avatar_name;
+            $avatar->save(public_path() . '/images/avatars/' . $avatar_name);
 
         }
 
