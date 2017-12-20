@@ -21172,7 +21172,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.btnSubmit) return;
             this.loading = true;
 
-            this.$http.post('/new_group', { name: this.groupName }).then(function (response) {
+            this.$http.post('/new_group', { name: this.groupName, avatar: this.groupAvatar }).then(function (response) {
 
                 _this2.loading = false;
 
@@ -21186,7 +21186,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.loading = false;
 
                 if (response.status == 422) {
-                    _this2.validation(response.data.errors.name[0]);
+                    _this2.validation(response.data.errors.name);
                 } else {
                     _this2.error();
                 }
@@ -21225,6 +21225,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         btnSubmit: function btnSubmit() {
             return this.groupName.length < 3;
+        },
+        groupAvatar: function groupAvatar() {
+            if (this.avatar) {
+
+                var formData = new FormData();
+                formData.append('fileInput', this.$refs.fileInput.files[0]);
+
+                return formData;
+            } else {
+                return;
+            }
         }
     }
 });
@@ -21266,6 +21277,7 @@ var render = function() {
             on: {
               submit: function($event) {
                 $event.preventDefault()
+                _vm.addGroup()
               }
             }
           },
