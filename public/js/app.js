@@ -16249,12 +16249,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user'],
     data: function data() {
         return {
-            logoutError: null
+            logoutError: null,
+            loading: false
         };
     },
     mounted: function mounted() {
@@ -16266,13 +16269,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.$http.post('/logout').then(function (response) {
+
+                _this.loading = true;
+
                 if (response.status == 200) {
-                    _this.$router.push('/');
-                    window.location.reload();
+
+                    setTimeout(function () {
+                        _this.$router.push('/');
+                        window.location.reload();
+                    }, 2000);
                 } else {
+                    _this.loading = false;
                     _this.logoutError = true;
                 }
             }, function (response) {
+                _this.loading = false;
                 _this.logoutError = true;
             });
         }
@@ -16320,13 +16331,20 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("a", { on: { click: _vm.logout } }, [
-                _c(
-                  "i",
-                  { class: [_vm.logoutError ? "error" : "", "material-icons"] },
-                  [_vm._v("fingerprint")]
-                )
-              ])
+              _vm.loading
+                ? _c("loading", { attrs: { normal: true } })
+                : _c("a", { on: { click: _vm.logout } }, [
+                    _c(
+                      "i",
+                      {
+                        class: [
+                          _vm.logoutError ? "error" : "",
+                          "material-icons"
+                        ]
+                      },
+                      [_vm._v("fingerprint")]
+                    )
+                  ])
             ],
             1
           )
@@ -20901,6 +20919,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -20908,7 +20931,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             groupName: '',
             avatar: null,
             loading: false,
-            error: false
+            result: ''
+
         };
     },
     mounted: function mounted() {
@@ -20944,22 +20968,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.loading = false;
 
                 if (response.status == 200) {
-                    console.log(_this2.groupName + ' - Groupo agregado...');
-                    console.log(_this2.avatar);
+
+                    _this2.result = response.data;
                     _this2.clearAvatar();
                     _this2.groupName = '';
                 } else {
-                    _this2.error = true;
+                    _this2.errorMessage;
                 }
             }, function (response) {
+
                 _this2.loading = false;
-                _this2.error = true;
+
+                if (response.status == 422) {
+                    _this2.result = response.data.errors.name[0];
+                } else {
+                    _this2.errorMessage;
+                }
             });
         }
     },
     computed: {
         btnSubmit: function btnSubmit() {
-            return this.groupName.length <= 3;
+            return this.groupName.length < 3;
+        },
+        errorMessage: function errorMessage() {
+            this.result = 'Group can not be added, try it later';
         }
     }
 });
@@ -20984,7 +21017,7 @@ var render = function() {
         attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
       }),
       _vm._v(" "),
-      _c("h4", [_vm._v(" Add new group ")]),
+      _c("h4", [_vm._v(" Add new group small")]),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
@@ -21076,6 +21109,8 @@ var render = function() {
           ]
         )
       ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "font-online" }, [_vm._v(_vm._s(_vm.result))]),
       _vm._v(" "),
       _vm.loading ? _c("loading") : _vm._e()
     ],

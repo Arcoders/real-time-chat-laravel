@@ -7,11 +7,12 @@
 
         <avatar :username="groupName" color="#fff" :src="avatar"></avatar>
 
-        <h4> Add new group </h4>
+        <h4> Add new group small</h4>
 
         <hr>
 
         <div class="wrap-input">
+
                 <form class="input" v-on:submit.prevent="" method="POST" enctype="multipart/form-data">
 
                     <label class="fileContainer font-online">
@@ -44,7 +45,11 @@
 
                 </form>
         </div>
+
+        <p class="font-online">{{ result }}</p>
+
         <loading v-if="loading"></loading>
+
     </div>
 </template>
 
@@ -66,7 +71,8 @@
               groupName: '',
               avatar: null,
               loading: false,
-              error: false
+              result: '',
+
           }
         },
         mounted() {
@@ -98,23 +104,34 @@
                     this.loading = false;
 
                     if (response.status == 200) {
-                        console.log(this.groupName + ' - Groupo agregado...');
-                        console.log(this.avatar);
+
+                        this.result = response.data;
                         this.clearAvatar();
                         this.groupName = '';
+
                     } else {
-                        this.error = true;
+                        this.errorMessage;
                     }
 
                 }, response => {
+
                     this.loading = false;
-                    this.error = true;
+
+                    if (response.status == 422) {
+                        this.result = response.data.errors.name[0]
+                    } else {
+                        this.errorMessage;
+                    }
+
                 });
             }
         },
         computed: {
             btnSubmit() {
-                return ( this.groupName.length <= 3);
+                return ( this.groupName.length < 3);
+            },
+            errorMessage() {
+                this.result = 'Group can not be added, try it later';
             }
         }
     }

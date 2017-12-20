@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
 
+    protected $fillable = ['name', 'user_id'];
+
     public function messages()
     {
         return $this->hasMany(Messages::class);

@@ -18,7 +18,9 @@
                     <i class="material-icons">person_add</i>
                 </router-link>
 
-                <a v-on:click="logout">
+                <loading :normal="true" v-if="loading"></loading>
+
+                <a v-else v-on:click="logout">
                     <i v-bind:class="[logoutError ? 'error' : '', 'material-icons']">fingerprint</i>
                 </a>
 
@@ -72,7 +74,8 @@
         props: ['user'],
         data() {
             return {
-                logoutError: null
+                logoutError: null,
+                loading: false
             }
         },
         mounted() {
@@ -81,15 +84,25 @@
         methods: {
             logout() {
                 this.$http.post('/logout').then(response => {
+
+                    this.loading = true;
+
                     if (response.status == 200) {
-                        this.$router.push('/');
-                        window.location.reload();
+
+                        setTimeout(()=>{
+                            this.$router.push('/');
+                            window.location.reload();
+                        }, 2000);
+
                     } else {
+                        this.loading = false;
                         this.logoutError = true;
                     }
                 }, response => {
+                    this.loading = false;
                     this.logoutError = true;
                 });
+
             }
         }
     }
