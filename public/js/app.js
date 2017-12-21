@@ -21779,8 +21779,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!files.length) return;
 
             this.createImage(files[0]);
-
-            this.avatar = this.$refs.fileInput.files[0];
         },
         createImage: function createImage(file) {
             var _this = this;
@@ -21801,9 +21799,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.btnSubmit) return;
             this.loading = true;
 
-            console.log(this.formImage);
+            var formData = new FormData();
+            formData.append('name', this.groupName);
+            formData.append('avatar', this.$refs.fileInput.files[0]);
 
-            this.$http.patch('/group/' + this.group_id, { name: this.groupName, avatar: this.avatar }).then(function (response) {
+            this.$http.patch('/group/' + this.group_id, { name: this.groupName, avatar: formData }).then(function (response) {
 
                 _this2.loading = false;
 
@@ -21875,11 +21875,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         btnSubmit: function btnSubmit() {
             return this.groupName.length < 3;
-        },
-        formImage: function formImage() {
-            if (this.$refs.fileInput.files[0]) {
-                return this.$refs.fileInput.files[0];
-            }
         }
     }
 });

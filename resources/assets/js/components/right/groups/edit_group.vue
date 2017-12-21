@@ -92,7 +92,6 @@
 
                 this.createImage(files[0]);
 
-                this.avatar = this.$refs.fileInput.files[0];
             },
             createImage(file) {
                 let reader = new FileReader();
@@ -110,9 +109,11 @@
                 if (this.btnSubmit) return;
                 this.loading = true;
 
-                console.log(this.formImage);
+                let formData = new FormData();
+                formData.append('name', this.groupName);
+                formData.append('avatar', this.$refs.fileInput.files[0]);
 
-                this.$http.patch('/group/' + this.group_id, {name: this.groupName, avatar: this.avatar}).then(response => {
+                this.$http.patch('/group/' + this.group_id, {name: this.groupName, avatar: formData}).then(response => {
 
                     this.loading = false;
 
@@ -184,11 +185,6 @@
         computed: {
             btnSubmit() {
                 return ( this.groupName.length < 3);
-            },
-            formImage() {
-                if (this.$refs.fileInput.files[0]) {
-                    return this.$refs.fileInput.files[0];
-                }
             }
         }
     }
