@@ -76,4 +76,42 @@ class GroupsController extends Controller
         if ($group) return response()->json($group, 200);
     }
 
+    public function update($group_id, Request $request)
+    {
+
+        $user = Auth::user();
+        $group = Group::find($group_id);
+
+        $request->validate([
+            'name' => 'required|min:4|max:15|unique:groups,name,'.$group->id,
+            'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
+        ]);
+
+        if ($request->file('avatar')) {
+
+            // Delete current image
+
+            $file = public_path() . '/images/avatars/' . $group->avatar;
+            if (file_exists($file)) @unlink($file);
+
+            // Create new image
+
+            $data = $request->file('avatar');
+            $avatar = Image::make($data);
+            $avatar->fit(500, 500);
+
+            $avatar_name = time() . '_' . $user->id . '_' . $data->getClientOriginalName();
+
+            $avatar->save(public_path() . '/images/avatars/' . $avatar_name);
+
+            $group->avatar = $avatar_name;
+
+        }
+
+        $group->name = $request['name'];
+        $save = $group->save();
+
+        if ($save) return response()->json('Group edited successfully', 200);
+    }
+
 }

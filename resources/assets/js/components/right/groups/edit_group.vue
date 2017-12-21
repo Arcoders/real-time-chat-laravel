@@ -15,7 +15,7 @@
 
         <div class="wrap-input">
 
-                <form class="input" v-on:submit.prevent="" method="POST" enctype="multipart/form-data">
+                <form class="input" v-on:submit.prevent="" method="PATCH" enctype="multipart/form-data">
 
                     <label class="fileContainer font-online">
 
@@ -77,7 +77,8 @@
               result: 'Default message...',
               time: 4000,
               group_id: this.$route.params.group_id,
-              showEdit: false
+              showEdit: false,
+              formData: null
           }
         },
         mounted() {
@@ -88,9 +89,12 @@
         methods: {
             onFileChange(e) {
                 let files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
-                    return;
+                if (!files.length) return;
+
                 this.createImage(files[0]);
+
+                this.formData = new FormData();
+                formData.append('avatar', this.$refs.fileInput.files[0]);
             },
             createImage(file) {
                 let reader = new FileReader();
@@ -107,7 +111,7 @@
                 if (this.btnSubmit) return;
                 this.loading = true;
 
-                this.$http.post('/new_group', this.formData).then(response => {
+                this.$http.patch('/group/' + this.group_id, {name: this.groupName, avatar: this.formData}).then(response => {
 
                     this.loading = false;
 
@@ -181,14 +185,6 @@
         computed: {
             btnSubmit() {
                 return ( this.groupName.length < 3);
-            },
-            formData() {
-                let formData = new FormData();
-
-                formData.append('name', this.groupName);
-                if (this.avatar) formData.append('avatar', this.$refs.fileInput.files[0]);
-
-                return formData;
             }
         }
     }
