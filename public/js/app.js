@@ -21764,7 +21764,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             result: 'Default message...',
             time: 4000,
             group_id: this.$route.params.group_id,
-            showEdit: false
+            showEdit: false,
+            newImage: false
         };
     },
     mounted: function mounted() {
@@ -21779,6 +21780,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!files.length) return;
 
             this.createImage(files[0]);
+            this.newImage = true;
         },
         createImage: function createImage(file) {
             var _this = this;
@@ -21799,11 +21801,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.btnSubmit) return;
             this.loading = true;
 
-            var formData = new FormData();
-            formData.append('name', this.groupName);
-            formData.append('avatar', this.$refs.fileInput.files[0]);
+            var formData = new FormData(document.getElementById("f"));
+            formData.set('avatar', this.$refs.fileInput.files[0]);
 
-            this.$http.patch('/group/' + this.group_id, { name: this.groupName, avatar: formData }).then(function (response) {
+            this.$http.post('/edit_group/' + this.group_id, this.formData).then(function (response) {
 
                 _this2.loading = false;
 
@@ -21875,6 +21876,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         btnSubmit: function btnSubmit() {
             return this.groupName.length < 3;
+        },
+        formData: function formData() {
+            var formData = new FormData();
+
+            formData.append('name', this.groupName);
+            if (this.newImage) formData.append('avatar', this.$refs.fileInput.files[0]);
+
+            return formData;
         }
     }
 });
@@ -21913,7 +21922,11 @@ var render = function() {
               "form",
               {
                 staticClass: "input",
-                attrs: { method: "PATCH", enctype: "multipart/form-data" },
+                attrs: {
+                  id: "f",
+                  method: "PATCH",
+                  enctype: "multipart/form-data"
+                },
                 on: {
                   submit: function($event) {
                     $event.preventDefault()

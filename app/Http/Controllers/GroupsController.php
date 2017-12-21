@@ -76,10 +76,8 @@ class GroupsController extends Controller
         if ($group) return response()->json($group, 200);
     }
 
-    public function update($group_id, Request $request)
+    public function editGroup($group_id, Request $request)
     {
-
-        return $request;
 
         $user = Auth::user();
         $group = Group::find($group_id);

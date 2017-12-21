@@ -24,11 +24,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     // Groups...
-    Route::post('/new_group', 'GroupsController@newGroup')->name('new_groups');
+    Route::post('/new_group', 'GroupsController@newGroup');
     Route::get('/my_groups', 'GroupsController@myGroups');
     Route::delete('/delete_group/{group_id}', 'GroupsController@deleteGroup');
     Route::get('/get_group/{group_id}', 'GroupsController@getGroup');
 
-    Route::resource('group', 'GroupsController', array('only' => array('update')));
+    Route::post('/edit_group/{group_id}', 'GroupsController@editGroup');
 
 });

@@ -15,7 +15,7 @@
 
         <div class="wrap-input">
 
-                <form class="input" v-on:submit.prevent="" method="PATCH" enctype="multipart/form-data">
+                <form class="input" id="f" v-on:submit.prevent="" method="PATCH" enctype="multipart/form-data">
 
                     <label class="fileContainer font-online">
 
@@ -77,7 +77,8 @@
               result: 'Default message...',
               time: 4000,
               group_id: this.$route.params.group_id,
-              showEdit: false
+              showEdit: false,
+              newImage: false
           }
         },
         mounted() {
@@ -91,6 +92,7 @@
                 if (!files.length) return;
 
                 this.createImage(files[0]);
+                this.newImage = true;
 
             },
             createImage(file) {
@@ -109,11 +111,10 @@
                 if (this.btnSubmit) return;
                 this.loading = true;
 
-                let formData = new FormData();
-                formData.append('name', this.groupName);
-                formData.append('avatar', this.$refs.fileInput.files[0]);
+                let formData = new FormData(document.getElementById("f"));
+                formData.set('avatar', this.$refs.fileInput.files[0]);
 
-                this.$http.patch('/group/' + this.group_id, {name: this.groupName, avatar: formData}).then(response => {
+                this.$http.post('/edit_group/' + this.group_id, this.formData).then(response => {
 
                     this.loading = false;
 
@@ -185,6 +186,14 @@
         computed: {
             btnSubmit() {
                 return ( this.groupName.length < 3);
+            },
+            formData() {
+                let formData = new FormData();
+
+                formData.append('name', this.groupName);
+                if (this.newImage) formData.append('avatar', this.$refs.fileInput.files[0]);
+
+                return formData;
             }
         }
     }
