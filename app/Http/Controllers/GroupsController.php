@@ -45,4 +45,10 @@ class GroupsController extends Controller
 
     }
 
+    public function myGroups()
+    {
+        $groups = Group::where('user_id', Auth::user()->id)->get();
+        return response()->json($groups, 200);
+    }
+
 }

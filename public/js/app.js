@@ -20746,7 +20746,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-9220cbd4] {\n    text-decoration: none;\n    color: #777777;\n}\n.add[data-v-9220cbd4] {\n    background-color: #fafafa;\n    border-radius: 50%;\n}\n.add[data-v-9220cbd4]:hover {\n    background-color: #f1f1f1;\n    color: #009688;\n}\n", ""]);
+exports.push([module.i, "\n.data a[data-v-9220cbd4] {\n    text-decoration: none;\n    color: #777777;\n}\n.add[data-v-9220cbd4] {\n    background-color: #fafafa;\n    border-radius: 50%;\n}\n.add[data-v-9220cbd4]:hover {\n    background-color: #f1f1f1;\n    color: #009688;\n}\n.group_avatar[data-v-9220cbd4] {\n    margin: auto;\n}\n.link_add[data-v-9220cbd4] {\n    text-decoration: none;\n}\n.error[data-v-9220cbd4] {\n    color: #E57373;\n}\n", ""]);
 
 // exports
 
@@ -20836,10 +20836,66 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            loading: true,
+            groups: [],
+            notFound: false,
+            error: false
+        };
+    },
     mounted: function mounted() {
+        this.myGroups();
         console.log('My groups ok!');
+    },
+
+    methods: {
+        myGroups: function myGroups() {
+            var _this = this;
+
+            this.loading = true;
+
+            this.$http.get('/my_groups').then(function (response) {
+
+                _this.loading = false;
+
+                if (response.status == 200) {
+
+                    _this.groups = response.data;
+
+                    if (_this.groups.length == 0) _this.notFound = true;
+                } else {
+                    _this.error = true;
+                }
+            }, function (response) {
+
+                _this.loading = false;
+                _this.error = true;
+            });
+        }
     }
 });
 
@@ -20859,20 +20915,101 @@ var render = function() {
         _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
       ]),
       _vm._v(" "),
-      _c(
-        "h4",
-        [
-          _vm._v("\n        My groups\n        "),
-          _c("router-link", { attrs: { to: "/groups/my/add" } }, [
-            _c("i", { staticClass: "add material-icons" }, [_vm._v("add")])
-          ])
-        ],
-        1
-      ),
+      _c("h4", [
+        _vm._v("\n        My groups\n        "),
+        _c(
+          "span",
+          { staticClass: "data" },
+          [
+            _c("router-link", { attrs: { to: "/groups/my/add" } }, [
+              _c("i", { staticClass: "add material-icons" }, [_vm._v("add")])
+            ])
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
-      _vm._m(0)
+      _c("table", [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          [
+            _vm._l(_vm.groups, function(group, index) {
+              return _c("tr", { staticClass: "data" }, [
+                _c(
+                  "td",
+                  [
+                    _c("avatar", {
+                      staticClass: "group_avatar",
+                      attrs: {
+                        size: 35,
+                        username: group.name,
+                        color: "#fff",
+                        src: group.avatar
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(group.name))]),
+                _vm._v(" "),
+                _vm._m(1, true),
+                _vm._v(" "),
+                _vm._m(2, true)
+              ])
+            }),
+            _vm._v(" "),
+            _vm.loading
+              ? _c("tr", [
+                  _c(
+                    "td",
+                    { attrs: { colspan: "4" } },
+                    [
+                      _vm.loading
+                        ? _c("loading", { attrs: { normal: true } })
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.notFound
+              ? _c("tr", [
+                  _c(
+                    "td",
+                    { attrs: { colspan: "4" } },
+                    [
+                      _vm._v(
+                        "\n                        No records found please\n                        "
+                      ),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "green_teal link_add",
+                          attrs: { to: "/groups/my/add" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Add Group\n                        "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.error ? _c("tr", [_vm._m(3)]) : _vm._e()
+          ],
+          2
+        )
+      ])
     ],
     1
   )
@@ -20882,79 +21019,49 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("table", [
-      _c("thead", [
-        _c("tr", [
-          _c("th", [_vm._v("Avatar")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Name")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Edit")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Delete")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("td", [
-            _c("img", {
-              staticClass: "group_avatar",
-              attrs: {
-                alt: "profilepicture",
-                src: "https://avatars.io/twitter/bones"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Laravel")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("button", { staticClass: "format_button" }, [
-              _c("i", { staticClass: "material-icons green_teal" }, [
-                _vm._v("mode_edit")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c("button", { staticClass: "format_button" }, [
-              _c("i", { staticClass: "material-icons cool_red" }, [
-                _vm._v("delete")
-              ])
-            ])
-          ])
-        ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Avatar")]),
         _vm._v(" "),
-        _c("tr", [
-          _c("td", [
-            _c("img", {
-              staticClass: "group_avatar",
-              attrs: {
-                alt: "profilepicture",
-                src: "https://avatars.io/twitter/adios"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Nodejs")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("button", { staticClass: "format_button" }, [
-              _c("i", { staticClass: "material-icons green_teal" }, [
-                _vm._v("mode_edit")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c("button", { staticClass: "format_button" }, [
-              _c("i", { staticClass: "material-icons cool_red" }, [
-                _vm._v("delete")
-              ])
-            ])
-          ])
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("button", { staticClass: "format_button" }, [
+        _c("i", { staticClass: "material-icons green_teal" }, [
+          _vm._v("mode_edit")
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("button", { staticClass: "format_button" }, [
+        _c("i", { staticClass: "material-icons cool_red" }, [_vm._v("delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { colspan: "4" } }, [
+      _c("p", { staticClass: "error" }, [
+        _vm._v(
+          "\n                            Sorry :( records could not be loaded\n                        "
+        )
       ])
     ])
   }

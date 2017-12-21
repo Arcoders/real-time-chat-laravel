@@ -25,5 +25,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Groups...
     Route::post('/new_group', 'GroupsController@newGroup');
+    Route::get('/my_groups', 'GroupsController@myGroups');
 
 });

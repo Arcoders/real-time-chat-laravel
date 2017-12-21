@@ -118,7 +118,7 @@
                     this.loading = false;
 
                     if (response.status == 422) {
-                        this.validation(response.data.errors)
+                        this.validation(response.data.errors);
                     } else {
                         this.error();
                     }

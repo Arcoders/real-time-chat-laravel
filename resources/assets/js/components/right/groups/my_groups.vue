@@ -7,9 +7,11 @@
 
         <h4>
             My groups
-            <router-link to="/groups/my/add">
+            <span class="data">
+                <router-link to="/groups/my/add">
                 <i class="add material-icons">add</i>
-            </router-link>
+                </router-link>
+            </span>
         </h4>
 
         <hr>
@@ -24,38 +26,48 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>
-                    <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/bones">
-                </td>
-                <td>Laravel</td>
-                <td>
-                    <button class="format_button">
-                        <i class="material-icons green_teal">mode_edit</i>
-                    </button>
-                </td>
-                <td>
-                    <button class="format_button">
-                        <i class="material-icons cool_red">delete</i>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <img class="group_avatar" alt="profilepicture" src="https://avatars.io/twitter/adios">
-                </td>
-                <td>Nodejs</td>
-                <td>
-                    <button class="format_button">
-                        <i class="material-icons green_teal">mode_edit</i>
-                    </button>
-                </td>
-                <td>
-                    <button class="format_button">
-                        <i class="material-icons cool_red">delete</i>
-                    </button>
-                </td>
-            </tr>
+                    <tr class="data" v-for="(group, index) in groups">
+                        <td>
+                            <avatar class="group_avatar" :size="35" :username="group.name" color="#fff" :src="group.avatar"></avatar>
+                        </td>
+
+                        <td>{{ group.name }}</td>
+
+                        <td>
+                            <button class="format_button">
+                                <i class="material-icons green_teal">mode_edit</i>
+                            </button>
+                        </td>
+
+                        <td>
+                            <button class="format_button">
+                                <i class="material-icons cool_red">delete</i>
+                            </button>
+                        </td>
+                </tr>
+
+                <tr v-if="loading">
+                    <td colspan="4">
+                        <loading v-if="loading" :normal="true"></loading>
+                    </td>
+                </tr>
+
+                    <tr v-if="notFound">
+                        <td colspan="4">
+                            No records found please
+                            <router-link to="/groups/my/add" class="green_teal link_add">
+                                Add Group
+                            </router-link>
+                        </td>
+                    </tr>
+
+                    <tr v-if="error">
+                        <td colspan="4">
+                            <p class="error">
+                                Sorry :( records could not be loaded
+                            </p>
+                        </td>
+                    </tr>
             </tbody>
         </table>
 
@@ -63,7 +75,7 @@
 </template>
 
 <style scoped>
-    a {
+    .data a {
         text-decoration: none;
         color: #777777;
     }
@@ -75,12 +87,57 @@
         background-color: #f1f1f1;
         color: #009688;
     }
+    .group_avatar {
+        margin: auto;
+    }
+    .link_add {
+        text-decoration: none;
+    }
+    .error {
+        color: #E57373;
+    }
 </style>
 
 <script>
     export default {
+        data() {
+            return {
+                loading: true,
+                groups: [],
+                notFound: false,
+                error: false
+            }
+        },
         mounted() {
-            console.log('My groups ok!')
+            this.myGroups();
+            console.log('My groups ok!');
+        },
+        methods: {
+            myGroups() {
+
+                this.loading = true;
+
+                this.$http.get('/my_groups').then(response => {
+
+                    this.loading = false;
+
+                    if (response.status == 200) {
+
+                        this.groups = response.data;
+
+                        if (this.groups.length == 0) this.notFound = true;
+
+                    } else {
+                        this.error = true;
+                    }
+
+                }, response => {
+
+                    this.loading = false;
+                    this.error = true;
+
+                });
+            }
         }
     }
 </script>
