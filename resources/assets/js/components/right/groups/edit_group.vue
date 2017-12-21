@@ -77,8 +77,7 @@
               result: 'Default message...',
               time: 4000,
               group_id: this.$route.params.group_id,
-              showEdit: false,
-              formData: []
+              showEdit: false
           }
         },
         mounted() {
@@ -92,6 +91,8 @@
                 if (!files.length) return;
 
                 this.createImage(files[0]);
+
+                this.avatar = this.$refs.fileInput.files[0];
             },
             createImage(file) {
                 let reader = new FileReader();
@@ -109,12 +110,9 @@
                 if (this.btnSubmit) return;
                 this.loading = true;
 
-                this.formData.push({'name': this.groupName});
-                this.formData.push({'avatar': this.$refs.fileInput.files[0]});
+                console.log(this.formImage);
 
-                console.log(this.formData);
-
-                this.$http.patch('/group/' + this.group_id, this.formData).then(response => {
+                this.$http.patch('/group/' + this.group_id, {name: this.groupName, avatar: this.avatar}).then(response => {
 
                     this.loading = false;
 
@@ -153,8 +151,6 @@
                 this.result = msg;
                 this.type = 'done';
                 this.active = true;
-                this.clearAvatar();
-                this.groupName = '';
                 this.resetNotification();
             },
             resetNotification() {
@@ -174,7 +170,6 @@
                         this.showEdit = true;
 
                         this.groupName = response.data.name;
-
                         if (response.data.avatar) this.avatar = '/images/avatars/' + response.data.avatar;
 
                     } else {
@@ -189,6 +184,11 @@
         computed: {
             btnSubmit() {
                 return ( this.groupName.length < 3);
+            },
+            formImage() {
+                if (this.$refs.fileInput.files[0]) {
+                    return this.$refs.fileInput.files[0];
+                }
             }
         }
     }

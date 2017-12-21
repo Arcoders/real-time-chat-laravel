@@ -21764,8 +21764,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             result: 'Default message...',
             time: 4000,
             group_id: this.$route.params.group_id,
-            showEdit: false,
-            formData: []
+            showEdit: false
         };
     },
     mounted: function mounted() {
@@ -21780,6 +21779,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!files.length) return;
 
             this.createImage(files[0]);
+
+            this.avatar = this.$refs.fileInput.files[0];
         },
         createImage: function createImage(file) {
             var _this = this;
@@ -21800,12 +21801,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.btnSubmit) return;
             this.loading = true;
 
-            this.formData.push({ 'name': this.groupName });
-            this.formData.push({ 'avatar': this.$refs.fileInput.files[0] });
+            console.log(this.formImage);
 
-            console.log(this.formData);
-
-            this.$http.patch('/group/' + this.group_id, this.formData).then(function (response) {
+            this.$http.patch('/group/' + this.group_id, { name: this.groupName, avatar: this.avatar }).then(function (response) {
 
                 _this2.loading = false;
 
@@ -21842,8 +21840,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.result = msg;
             this.type = 'done';
             this.active = true;
-            this.clearAvatar();
-            this.groupName = '';
             this.resetNotification();
         },
         resetNotification: function resetNotification() {
@@ -21867,7 +21863,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this4.showEdit = true;
 
                     _this4.groupName = response.data.name;
-
                     if (response.data.avatar) _this4.avatar = '/images/avatars/' + response.data.avatar;
                 } else {
                     _this4.$router.push('/groups/my');
@@ -21880,6 +21875,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         btnSubmit: function btnSubmit() {
             return this.groupName.length < 3;
+        },
+        formImage: function formImage() {
+            if (this.$refs.fileInput.files[0]) {
+                return this.$refs.fileInput.files[0];
+            }
         }
     }
 });
