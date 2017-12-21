@@ -21765,7 +21765,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             time: 4000,
             group_id: this.$route.params.group_id,
             showEdit: false,
-            formData: null
+            formData: []
         };
     },
     mounted: function mounted() {
@@ -21780,14 +21780,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!files.length) return;
 
             this.createImage(files[0]);
-
-            this.formData = new FormData();
-            formData.append('avatar', this.$refs.fileInput.files[0]);
         },
         createImage: function createImage(file) {
             var _this = this;
 
             var reader = new FileReader();
+
             reader.onload = function (e) {
                 _this.avatar = e.target.result;
             };
@@ -21802,7 +21800,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.btnSubmit) return;
             this.loading = true;
 
-            this.$http.patch('/group/' + this.group_id, { name: this.groupName, avatar: this.formData }).then(function (response) {
+            this.formData.push({ 'name': this.groupName });
+            this.formData.push({ 'avatar': this.$refs.fileInput.files[0] });
+
+            console.log(this.formData);
+
+            this.$http.patch('/group/' + this.group_id, this.formData).then(function (response) {
 
                 _this2.loading = false;
 
@@ -21864,6 +21867,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this4.showEdit = true;
 
                     _this4.groupName = response.data.name;
+
                     if (response.data.avatar) _this4.avatar = '/images/avatars/' + response.data.avatar;
                 } else {
                     _this4.$router.push('/groups/my');
