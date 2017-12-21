@@ -56,6 +56,7 @@ import groups from './components/right/groups/manage_groups.vue';
 import all_groups from './components/right/groups/all_groups.vue';
 import my_groups from './components/right/groups/my_groups.vue';
 import add_group from './components/right/groups/add_group.vue';
+import edit_group from './components/right/groups/edit_group.vue';
 
 // Define some routes
 
@@ -73,6 +74,7 @@ const router = new VueRouter({
             children: [
                 { path: 'my', component: my_groups },
                 { path: 'my/add', component: add_group },
+                { path: 'my/:group_id/:group_name', component: edit_group, name: 'edit_group' },
                 { path: 'all', component: all_groups }
             ]
         },

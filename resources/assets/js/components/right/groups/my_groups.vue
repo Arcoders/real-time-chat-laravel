@@ -1,20 +1,23 @@
 <template>
     <div id="my_groups_app">
 
-        <router-link to="/groups">
-            <i class="material-icons">arrow_back</i>
-        </router-link>
 
-        <h4>
-            My groups
-            <span class="data">
+        <notifications :show="type" :message="result" :active="active"></notifications>
+
+        <div class="data">
+            <router-link to="/groups">
+                <i class="material-icons">arrow_back</i>
+            </router-link>
+
+            <h4>
+                My groups
                 <router-link to="/groups/my/add">
-                <i class="add material-icons">add</i>
+                    <i class="add material-icons">add</i>
                 </router-link>
-            </span>
-        </h4>
+            </h4>
 
-        <hr>
+            <hr>
+        </div>
 
         <table>
             <thead>
@@ -28,19 +31,31 @@
             <tbody>
                     <tr class="data" v-for="(group, index) in groups">
                         <td>
-                            <avatar class="group_avatar" :size="35" :username="group.name" color="#fff" :src="group.avatar"></avatar>
+                            <avatar v-if="!group.avatar"
+                                    class="group_avatar"
+                                    :size="45"
+                                    :username="group.name"
+                                    color="#fff">
+                            </avatar>
+
+                            <avatar v-else
+                                    class="group_avatar"
+                                    :size="45"
+                                    :username="group.name"
+                                    :src="'/images/avatars/' + group.avatar">
+                            </avatar>
                         </td>
 
                         <td>{{ group.name }}</td>
 
                         <td>
-                            <button class="format_button">
+                            <router-link :to="{ name: 'edit_group', params: { group_id: group.id, group_name: group.name }}">
                                 <i class="material-icons green_teal">mode_edit</i>
-                            </button>
+                            </router-link>
                         </td>
 
                         <td>
-                            <button class="format_button">
+                            <button class="format_button" v-on:click="deleteGroup(group.id, index)">
                                 <i class="material-icons cool_red">delete</i>
                             </button>
                         </td>
@@ -61,7 +76,7 @@
                         </td>
                     </tr>
 
-                    <tr v-if="error">
+                    <tr v-if="errorLoad">
                         <td colspan="4">
                             <p class="error">
                                 Sorry :( records could not be loaded
@@ -105,7 +120,11 @@
                 loading: true,
                 groups: [],
                 notFound: false,
-                error: false
+                errorLoad: false,
+                active: false,
+                type: 'default',
+                result: 'Default message...',
+                time: 4000
             }
         },
         mounted() {
@@ -128,15 +147,58 @@
                         if (this.groups.length == 0) this.notFound = true;
 
                     } else {
-                        this.error = true;
+                        this.errorLoad = true;
                     }
 
-                }, response => {
+                }, () => {
 
                     this.loading = false;
-                    this.error = true;
+                    this.errorLoad = true;
 
                 });
+            },
+            deleteGroup(group_id, index) {
+
+                this.loading = true;
+
+                this.$http.delete('/delete_group/' + group_id).then(response => {
+
+                    this.loading = false;
+
+                    if (response.status == 200) {
+
+                        this.groups.splice(index, 1);
+                        this.done(response.data);
+                        this.myGroups();
+
+
+                    } else {
+                        this.error();
+                    }
+
+                }, () => {
+                    this.loading = false;
+                    this.error();
+                });
+            },
+            done(msg) {
+                this.result = msg;
+                this.type = 'done';
+                this.active = true;
+                this.resetNotification();
+            },
+            error() {
+                this.result = 'Group could not be deleted, try later';
+                this.type = 'error';
+                this.active = true;
+                this.resetNotification();
+            },
+            resetNotification() {
+                setTimeout(() => {
+                    this.active = false;
+                    this.type = 'Default';
+                    this.result = 'Default message';
+                }, this.time);
             }
         }
     }
