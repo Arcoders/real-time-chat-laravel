@@ -1,7 +1,7 @@
 <template>
     <div id="edit_group_app" v-if="showEdit">
 
-        <notifications :show="type" :message="result" :active="active"></notifications>
+        <notifications :vue_notifications="notifications"></notifications>
 
         <router-link to="/groups/my">
             <i class="material-icons">arrow_back</i>
@@ -67,25 +67,35 @@
 
 <script>
     export default {
+
+        // ---------------------------------------------------
+
         data() {
           return {
               groupName: '',
               avatar: null,
               loading: false,
-              active: false,
-              type: 'default',
-              result: 'Default message...',
+              notifications: [],
               time: 4000,
               group_id: this.$route.params.group_id,
               showEdit: false,
               newImage: false
           }
         },
+
+        // ---------------------------------------------------
+
         mounted() {
             this.getGroup();
             console.log('Edit group ok!');
         },
+
+        // ---------------------------------------------------
+
         methods: {
+
+            // ---------------------------------------------------
+
             onFileChange(e) {
                 let files = e.target.files || e.dataTransfer.files;
                 let reader = new FileReader();
@@ -96,10 +106,16 @@
                 reader.readAsDataURL(files[0]);
                 this.newImage = true;
             },
+
+            // ---------------------------------------------------
+
             clearAvatar() {
                 this.avatar = null;
                 this.editGroup('image');
-                },
+            },
+
+            // ---------------------------------------------------
+
             editGroup(type = null) {
 
                 if (this.btnSubmit) return;
@@ -135,32 +151,49 @@
 
                 });
             },
+
+            // ---------------------------------------------------
+
             error() {
-                this.result = 'Group can not be edited, try it later';
-                this.type = 'error';
-                this.active = true;
+                this.notifications.push({
+                    message: 'Group can not be edited, try it later',
+                    type: 'error'
+                });
                 this.resetNotification();
             },
+
+            // ---------------------------------------------------
+
             validation(msg) {
-                if (msg.name) this.result = msg.name[0];
-                if (msg.avatar) this.result = msg.avatar[0];
-                this.type = 'validation';
-                this.active = true;
+                if (msg.name) msg = msg.name[0];
+                if (msg.avatar) msg = msg.avatar[0];
+                this.notifications.push({
+                    message: msg,
+                    type: 'validation'
+                });
                 this.resetNotification();
             },
+
+            // ---------------------------------------------------
+
             done(msg) {
-                this.result = msg;
-                this.type = 'done';
-                this.active = true;
+                this.notifications.push({
+                    message: msg,
+                    type: 'done'
+                });
                 this.resetNotification();
             },
+
+            // ---------------------------------------------------
+
             resetNotification() {
                 setTimeout(() => {
-                    this.active = false;
-                    this.type = 'Default';
-                    this.result = 'Default message';
+                    this.notifications.shift();
                 }, this.time);
             },
+
+            // ---------------------------------------------------
+
             getGroup() {
                 this.$http.get('/get_group/' + this.group_id).then(response => {
 
@@ -181,11 +214,22 @@
                     this.$router.push('/groups/my');
                 });
             },
+
+            // ---------------------------------------------------
         },
+
+        // ---------------------------------------------------
+
         computed: {
+
+            // ---------------------------------------------------
+
             btnSubmit() {
                 return ( this.groupName.length < 3);
             },
+
+            // ---------------------------------------------------
+
             formData() {
                 let formData = new FormData();
 
@@ -194,6 +238,8 @@
 
                 return formData;
             }
+
+            // ---------------------------------------------------
         }
     }
 </script>

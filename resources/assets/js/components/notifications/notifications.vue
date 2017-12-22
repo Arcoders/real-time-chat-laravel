@@ -1,8 +1,14 @@
 <template>
-    <div v-if="active" class="global">
-        <span v-bind:class="[show , 'notification', 'animateOpen']">
-            {{ message }}
-        </span>
+    <div id="vue_notifications">
+
+        <div v-for="notification in vue_notifications" class="global">
+
+            <span v-bind:class="[notification.type , 'notification', 'animateOpen']">
+                {{ notification.message }}
+            </span>
+
+        </div>
+
     </div>
 </template>
 
@@ -63,17 +69,9 @@
 <script>
     export default {
         props: {
-            show: {
-                type: String,
+            vue_notifications: {
+                type: Array,
                 required: true,
-            },
-            message: {
-                type: String,
-                required: true,
-            },
-            active: {
-                type: Boolean,
-                default: false
             }
         },
         mounted() {

@@ -1,7 +1,7 @@
 <template>
     <div id="add_group_app">
 
-        <notifications :show="type" :message="result" :active="active"></notifications>
+        <notifications :vue_notifications="notifications"></notifications>
 
         <router-link to="/groups/my">
             <i class="material-icons">arrow_back</i>
@@ -23,7 +23,7 @@
                             <i class="material-icons">photo</i>
                         </button>
 
-                        <button v-else v-on:click="clearAvatar" type="button">
+                        <button v-else v-on:click="avatar = null" type="button">
                             <i class="material-icons">clear</i>
                         </button>
 
@@ -67,21 +67,31 @@
 
 <script>
     export default {
+
+        // ---------------------------------------------------
+
         data() {
           return {
               groupName: '',
               avatar: null,
               loading: false,
-              active: false,
-              type: 'default',
-              result: 'Default message...',
+              notifications: [],
               time: 4000
           }
         },
+
+        // ---------------------------------------------------
+
         mounted() {
             console.log('Add group ok!');
         },
+
+        // ---------------------------------------------------
+
         methods: {
+
+            // ---------------------------------------------------
+
             onFileChange(e) {
                 let files = e.target.files || e.dataTransfer.files;
                 let reader = new FileReader();
@@ -91,9 +101,16 @@
                 reader.onload = e => this.avatar = e.target.result;
                 reader.readAsDataURL(files[0]);
             },
-            clearAvatar() {
+
+            // ---------------------------------------------------
+
+            resetForm() {
                 this.avatar = null;
+                this.groupName = '';
             },
+
+            // ---------------------------------------------------
+
             addGroup() {
 
                 if (this.btnSubmit) return;
@@ -103,57 +120,61 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
-                        this.done(response.data);
-                    } else {
-                        this.error();
-                    }
+                    (response.status == 200) ? this.done(response.data) : this.error();
 
                 }, response => {
 
                     this.loading = false;
 
-                    if (response.status == 422) {
-                        this.validation(response.data.errors);
-                    } else {
-                        this.error();
-                    }
+                    (response.status == 422) ? this.validation(response.data.errors) : this.error();
 
                 });
             },
+
+            // ---------------------------------------------------
+
             error() {
-                this.result = 'Group can not be added, try it later';
-                this.type = 'error';
-                this.active = true;
-                this.resetNotification();
+                this.showNotification('Group can not be added, try it later', 'error');
             },
+
+            // ---------------------------------------------------
+
             validation(msg) {
-                if (msg.name) this.result = msg.name[0];
-                if (msg.avatar) this.result = msg.avatar[0];
-                this.type = 'validation';
-                this.active = true;
-                this.resetNotification();
+                this.showNotification(msg.name[0] || msg.avatar[0], 'validation');
             },
+
+            // ---------------------------------------------------
+
             done(msg) {
-                this.result = msg;
-                this.type = 'done';
-                this.active = true;
-                this.clearAvatar();
-                this.groupName = '';
-                this.resetNotification();
+                this.showNotification(msg, 'done');
+                this.resetForm();
             },
-            resetNotification() {
+
+            // ---------------------------------------------------
+
+            showNotification(msg, type) {
+                this.notifications.push({ message: msg, type: type });
                 setTimeout(() => {
-                    this.active = false;
-                    this.type = 'Default';
-                    this.result = 'Default message';
+                    this.notifications.shift();
                 }, this.time);
-            }
+            },
+
+            // ---------------------------------------------------
+
         },
+
+        // ---------------------------------------------------
+
         computed: {
+
+            // ---------------------------------------------------
+
             btnSubmit() {
                 return ( this.groupName.length < 3);
             },
+
+            // ---------------------------------------------------
+
             formData() {
                 let formData = new FormData();
 
@@ -162,6 +183,8 @@
 
                 return formData;
             }
+
+            // ---------------------------------------------------
         }
     }
 </script>

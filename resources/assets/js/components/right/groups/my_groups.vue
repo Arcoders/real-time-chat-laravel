@@ -2,7 +2,8 @@
     <div id="my_groups_app">
 
 
-        <notifications :show="type" :message="result" :active="active"></notifications>
+        <notifications :vue_notifications="notifications"></notifications>
+
         <loading v-if="loading"></loading>
 
         <div class="data">
@@ -112,6 +113,9 @@
 
 <script>
     export default {
+
+        // ---------------------------------------------------
+
         data() {
             return {
                 loading: true,
@@ -120,20 +124,30 @@
                 actualPage: null,
                 notFound: false,
                 errorLoad: false,
-                active: false,
-                type: 'default',
-                result: 'Default message...',
+                notifications: [],
                 time: 4000
             }
         },
+
+        // ---------------------------------------------------
+
         mounted() {
             this.myGroups('/my_groups');
             console.log('My groups ok!');
         },
+
+        // ---------------------------------------------------
+
         methods: {
+
+            // ---------------------------------------------------
+
             clickedPage(page) {
                 this.myGroups('/my_groups?page=' + page);
             },
+
+            // ---------------------------------------------------
+
             myGroups(url) {
 
                 this.loading = true;
@@ -162,6 +176,9 @@
 
                 });
             },
+
+            // ---------------------------------------------------
+
             deleteGroup(group_id, index) {
 
                 this.loading = true;
@@ -193,25 +210,36 @@
                     this.error();
                 });
             },
+
+            // ---------------------------------------------------
+
             done(msg) {
-                this.result = msg;
-                this.type = 'done';
-                this.active = true;
+                this.notifications.push({
+                    message: msg,
+                    type: 'done'
+                });
                 this.resetNotification();
             },
+
+            // ---------------------------------------------------
+
             error() {
-                this.result = 'Group could not be deleted, try later';
-                this.type = 'error';
-                this.active = true;
+                this.notifications.push({
+                    message: 'Group could not be deleted, try later',
+                    type: 'error'
+                });
                 this.resetNotification();
             },
+
+            // ---------------------------------------------------
+
             resetNotification() {
                 setTimeout(() => {
-                    this.active = false;
-                    this.type = 'Default';
-                    this.result = 'Default message';
+                    this.notifications.shift();
                 }, this.time);
             }
+
+            // ---------------------------------------------------
         }
     }
 </script>
