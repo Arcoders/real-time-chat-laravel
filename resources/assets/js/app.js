@@ -7,9 +7,10 @@
 
 window.Vue = require('vue');
 
-import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Avatar from 'vue-avatar';
+
+
 const VueResource = require('vue-resource');
 
 window.Vue.use(VueRouter);
@@ -43,6 +44,7 @@ Vue.component('send', require('./components/right/chat/send.vue'));
 Vue.component('avatar', Avatar);
 Vue.component('loading', require('./components/spinner/loading.vue'));
 Vue.component('notifications', require('./components/notifications/notifications.vue'));
+Vue.component('paginate', require('./components/right/pagination/paginate.vue'));
 
 // Define route components
 

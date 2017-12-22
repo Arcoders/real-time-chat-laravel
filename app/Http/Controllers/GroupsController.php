@@ -47,7 +47,7 @@ class GroupsController extends Controller
 
     public function myGroups()
     {
-        $groups = Group::where('user_id', Auth::user()->id)->get();
+        $groups = Group::where('user_id', Auth::user()->id)->paginate(1);
         return response()->json($groups, 200);
     }
 

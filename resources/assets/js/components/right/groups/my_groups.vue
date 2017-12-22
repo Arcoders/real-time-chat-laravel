@@ -86,6 +86,8 @@
             </tbody>
         </table>
 
+        <paginate></paginate>
+
     </div>
 </template>
 
@@ -119,6 +121,7 @@
             return {
                 loading: true,
                 groups: [],
+                pagination: {},
                 notFound: false,
                 errorLoad: false,
                 active: false,
@@ -142,7 +145,8 @@
 
                     if (response.status == 200) {
 
-                        this.groups = response.data;
+                        this.groups = response.data.data;
+                        this.pagination = response.data;
 
                         if (this.groups.length == 0) this.notFound = true;
 
