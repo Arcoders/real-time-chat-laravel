@@ -17,7 +17,7 @@
 
                     <div class="groups">
                         <div class="group">
-                            <router-link to="groups/all" exact-active-class="active">All groups</router-link>
+                            <router-link to="groups/add" exact-active-class="active">Add group</router-link>
                         </div>
                         <div class="group">
                             <router-link to="groups/my">My groups</router-link>
