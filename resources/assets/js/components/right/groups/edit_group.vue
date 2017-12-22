@@ -15,7 +15,7 @@
 
         <div class="wrap-input">
 
-                <form class="input" id="f" v-on:submit.prevent="" method="PATCH" enctype="multipart/form-data">
+                <form class="input" id="f" v-on:submit.prevent="" method="POST" enctype="multipart/form-data">
 
                     <label class="fileContainer font-online">
 
@@ -35,14 +35,14 @@
 
                     </label>
 
-                    <input @keyup.enter="addGroup"
+                    <input @keyup.enter="editGroup"
                            v-model="groupName"
                            name="name"
                            type="text"
                            class="input-global"
                            placeholder="Group name...">
 
-                    <button type="button" @click="addGroup" v-bind:disabled="btnSubmit">
+                    <button type="button" @click="editGroup" v-bind:disabled="btnSubmit">
                         <i class="material-icons">add</i>
                     </button>
 
@@ -83,7 +83,6 @@
         },
         mounted() {
             this.getGroup();
-            console.log(this.groupName);
             console.log('Edit group ok!');
         },
         methods: {
@@ -105,16 +104,22 @@
             },
             clearAvatar() {
                 this.avatar = null;
-            },
-            addGroup() {
+                this.editGroup('image');
+                },
+            editGroup(type = null) {
 
                 if (this.btnSubmit) return;
                 this.loading = true;
 
-                let formData = new FormData(document.getElementById("f"));
-                formData.set('avatar', this.$refs.fileInput.files[0]);
+                let data;
 
-                this.$http.post('/edit_group/' + this.group_id, this.formData).then(response => {
+                if (type == 'image') {
+                    data = {deleteImage: true, name: this.groupName}
+                } else {
+                    data = this.formData;
+                }
+
+                this.$http.post('/edit_group/' + this.group_id, data).then(response => {
 
                     this.loading = false;
 

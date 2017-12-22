@@ -21770,7 +21770,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         this.getGroup();
-        console.log(this.groupName);
         console.log('Edit group ok!');
     },
 
@@ -21794,17 +21793,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         clearAvatar: function clearAvatar() {
             this.avatar = null;
+            this.editGroup('image');
         },
-        addGroup: function addGroup() {
+        editGroup: function editGroup() {
             var _this2 = this;
+
+            var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
 
             if (this.btnSubmit) return;
             this.loading = true;
 
-            var formData = new FormData(document.getElementById("f"));
-            formData.set('avatar', this.$refs.fileInput.files[0]);
+            var data = void 0;
 
-            this.$http.post('/edit_group/' + this.group_id, this.formData).then(function (response) {
+            if (type == 'image') {
+                data = { deleteImage: true, name: this.groupName };
+            } else {
+                data = this.formData;
+            }
+
+            this.$http.post('/edit_group/' + this.group_id, data).then(function (response) {
 
                 _this2.loading = false;
 
@@ -21924,7 +21932,7 @@ var render = function() {
                 staticClass: "input",
                 attrs: {
                   id: "f",
-                  method: "PATCH",
+                  method: "POST",
                   enctype: "multipart/form-data"
                 },
                 on: {
@@ -21997,7 +22005,7 @@ var render = function() {
                       ) {
                         return null
                       }
-                      _vm.addGroup($event)
+                      _vm.editGroup($event)
                     },
                     input: function($event) {
                       if ($event.target.composing) {
@@ -22012,7 +22020,7 @@ var render = function() {
                   "button",
                   {
                     attrs: { type: "button", disabled: _vm.btnSubmit },
-                    on: { click: _vm.addGroup }
+                    on: { click: _vm.editGroup }
                   },
                   [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
                 )

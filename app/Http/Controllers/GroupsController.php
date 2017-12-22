@@ -29,7 +29,7 @@ class GroupsController extends Controller
             $avatar = Image::make($data);
             $avatar->fit(500, 500);
 
-           $avatar_name = time() . '_' . $user->id . '_' . $data->getClientOriginalName();
+           $avatar_name = time() . '_' . $user->id . '.' . $data->getClientOriginalExtension();
 
             $avatar->save(public_path() . '/images/avatars/' . $avatar_name);
 
@@ -82,6 +82,14 @@ class GroupsController extends Controller
         $user = Auth::user();
         $group = Group::find($group_id);
 
+        if ($request['deleteImage']) {
+
+            $file = public_path() . '/images/avatars/' . $group->avatar;
+            if (file_exists($file)) @unlink($file);
+
+            $group->avatar = null;
+        }
+
         $request->validate([
             'name' => 'required|min:4|max:15|unique:groups,name,'.$group->id,
             'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
@@ -100,7 +108,7 @@ class GroupsController extends Controller
             $avatar = Image::make($data);
             $avatar->fit(500, 500);
 
-            $avatar_name = time() . '_' . $user->id . '_' . $data->getClientOriginalName();
+            $avatar_name = time() . '_' . $user->id . '.' . $data->getClientOriginalExtension();
 
             $avatar->save(public_path() . '/images/avatars/' . $avatar_name);
 
