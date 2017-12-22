@@ -3,6 +3,7 @@
 
 
         <notifications :show="type" :message="result" :active="active"></notifications>
+        <loading v-if="loading"></loading>
 
         <div class="data">
             <router-link to="/groups">
@@ -11,7 +12,7 @@
 
             <h4>
                 My groups
-                <router-link to="/groups/my/add">
+                <router-link to="/groups/add">
                     <i class="add material-icons">add</i>
                 </router-link>
             </h4>
@@ -59,12 +60,6 @@
                                 <i class="material-icons cool_red">delete</i>
                             </button>
                         </td>
-                </tr>
-
-                <tr v-if="loading">
-                    <td colspan="4">
-                        <loading v-if="loading" :normal="true"></loading>
-                    </td>
                 </tr>
 
                     <tr v-if="notFound">
@@ -122,6 +117,7 @@
                 loading: true,
                 groups: [],
                 pagination: {},
+                actualPage: null,
                 notFound: false,
                 errorLoad: false,
                 active: false,
@@ -150,8 +146,10 @@
 
                         this.groups = response.data.data;
                         this.pagination = response.data;
+                        this.actualPage = this.pagination.current_page;
 
-                        if (this.groups.length == 0) this.notFound = true;
+                        if (!this.groups || this.groups.length == 0) this.notFound = true;
+
 
                     } else {
                         this.errorLoad = true;
@@ -176,7 +174,14 @@
 
                         this.groups.splice(index, 1);
                         this.done(response.data);
-                        this.myGroups();
+
+                        if (this.groups == 0) {
+                            this.clickedPage(this.actualPage - 1);
+                        } else {
+                            this.clickedPage(this.actualPage);
+                        }
+
+                        console.log(this.groups);
 
 
                     } else {
