@@ -307,6 +307,15 @@ i {
 
 /* chat */
 
+.complet-content {
+  height: calc(100% - 60px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  background-color: #f7f7f7;
+}
+
 .wrap-content {
   height: calc(100% - 120px);
   display: -webkit-box;
@@ -319,6 +328,12 @@ i {
   width: 100%;
   padding: 10px 100px;
   overflow-y: auto;
+}
+
+.complete_dynamic_content {
+  width: 100%;
+  overflow-y: auto;
+  padding: 10px;
 }
 
 .chat {
@@ -511,16 +526,7 @@ i {
 .information {
   width: 100%;
   height: 100%;
-  position: relative;
   background: #f7f7f7;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  overflow: auto;
 }
 
 .information h1 {
@@ -531,8 +537,8 @@ i {
 
 .information_content {
   background-color: #ffffff;
-  margin: 20px 20px 0 20px;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 /* message */
@@ -592,6 +598,8 @@ table {
   margin: auto;
   -webkit-box-shadow: 0px 0px 2px 0px rgba(119, 119, 119, 0.5);
           box-shadow: 0px 0px 2px 0px rgba(119, 119, 119, 0.5);
+  -webkit-transition: all 2s ease-out;
+  transition: all 2s ease-out;
 }
 
 /* Zebra striping */
@@ -670,6 +678,7 @@ button[disabled] {
 
 body::-webkit-scrollbar,
 .contact-list::-webkit-scrollbar,
+.complete_dynamic_content::-webkit-scrollbar,
 .dynamic_content::-webkit-scrollbar {
   width: 0.4em;
   height: 0.4em;
@@ -677,12 +686,14 @@ body::-webkit-scrollbar,
 
 body::-webkit-scrollbar-thumb,
 .contact-list::-webkit-scrollbar-thumb,
+.complete_dynamic_content::-webkit-scrollbar-thumb,
 .dynamic_content::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
 .contact-list,
-.dynamic_content {
+.dynamic_content,
+.complete_dynamic_content {
   scrollbar-arrow-color: #009688;
   scrollbar-face-color: #eeeeee;
   scrollbar-highlight-color: #eeeeee;

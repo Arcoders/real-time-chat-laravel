@@ -155,38 +155,25 @@
             // ---------------------------------------------------
 
             error() {
-                this.notifications.push({
-                    message: 'Group can not be edited, try it later',
-                    type: 'error'
-                });
-                this.resetNotification();
+                this.showNotification('Group can not be edited, try it later', 'error');
             },
 
             // ---------------------------------------------------
 
             validation(msg) {
-                if (msg.name) msg = msg.name[0];
-                if (msg.avatar) msg = msg.avatar[0];
-                this.notifications.push({
-                    message: msg,
-                    type: 'validation'
-                });
-                this.resetNotification();
+                this.showNotification(msg.name[0] || msg.avatar[0], 'validation');
             },
 
             // ---------------------------------------------------
 
             done(msg) {
-                this.notifications.push({
-                    message: msg,
-                    type: 'done'
-                });
-                this.resetNotification();
+                this.showNotification(msg, 'done');
             },
 
             // ---------------------------------------------------
 
-            resetNotification() {
+            showNotification(msg, type) {
+                this.notifications.push({ message: msg, type: type });
                 setTimeout(() => {
                     this.notifications.shift();
                 }, this.time);

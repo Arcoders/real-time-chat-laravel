@@ -1,7 +1,6 @@
 <template>
     <div id="my_groups_app">
 
-
         <notifications :vue_notifications="notifications"></notifications>
 
         <loading v-if="loading"></loading>
@@ -190,16 +189,12 @@
                     if (response.status == 200) {
 
                         this.groups.splice(index, 1);
+
                         this.done(response.data);
 
-                        if (this.groups == 0) {
-                            this.clickedPage(this.actualPage - 1);
-                        } else {
-                            this.clickedPage(this.actualPage);
-                        }
+                        if (this.groups == 0) return this.clickedPage(this.actualPage - 1);
 
-                        console.log(this.groups);
-
+                        this.clickedPage(this.actualPage);
 
                     } else {
                         this.error();
@@ -214,30 +209,23 @@
             // ---------------------------------------------------
 
             done(msg) {
-                this.notifications.push({
-                    message: msg,
-                    type: 'done'
-                });
-                this.resetNotification();
+                this.showNotification(msg, 'done');
             },
 
             // ---------------------------------------------------
 
             error() {
-                this.notifications.push({
-                    message: 'Group could not be deleted, try later',
-                    type: 'error'
-                });
-                this.resetNotification();
+                this.showNotification('Group could not be deleted, try later', 'error');
             },
 
             // ---------------------------------------------------
 
-            resetNotification() {
+            showNotification(msg, type) {
+                this.notifications.push({ message: msg, type: type });
                 setTimeout(() => {
                     this.notifications.shift();
                 }, this.time);
-            }
+            },
 
             // ---------------------------------------------------
         }

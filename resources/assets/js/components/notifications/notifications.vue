@@ -48,7 +48,7 @@
     }
 
     .animateOpen {
-        -webkit-animation: moveOpen 4s;
+        -webkit-animation: moveOpen 3s;
         -webkit-animation-iteration-count: infinite;
         -webkit-animation-fill-mode: forwards;
     }

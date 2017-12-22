@@ -1,5 +1,5 @@
 <template>
-    <div id="profile_app">
+    <div class="right" id="profile_app">
 
         <div class="chat-head">
             <avatar :username="user.name"
@@ -21,13 +21,34 @@
             </router-link>
         </div>
 
-        <div class="wrap-content">
-            <div class="dynamic_content">
+        <div class="complet-content">
+            <div class="complete_dynamic_content">
 
                 <div class="information">
+
                     <div class="information_content">
                         <h1>Name:</h1>
-                        <p class="font-preview">Ismael Haytam</p>
+                        <p class="font-preview">{{ user.name }}</p>
+                    </div>
+
+                    <div class="information_content">
+                        <h1>Statuses:</h1>
+                        <p class="font-preview">Don't you wish there were a knob on the...</p>
+                    </div>
+
+                    <div class="information_content">
+                        <h1>Statuses:</h1>
+                        <p class="font-preview">Don't you wish there were a knob on the...</p>
+                    </div>
+
+                    <div class="information_content">
+                        <h1>Statuses:</h1>
+                        <p class="font-preview">Don't you wish there were a knob on the...</p>
+                    </div>
+
+                    <div class="information_content">
+                        <h1>Statuses:</h1>
+                        <p class="font-preview">Don't you wish there were a knob on the...</p>
                     </div>
 
                     <div class="information_content">
@@ -46,16 +67,6 @@
 </template>
 
 <style scoped>
-    #profile_app {
-        background-color: #ffffff;
-        border-radius: 2px;
-        height: calc(98vh - 25px);
-    }
-    .dynamic_content {
-        padding: 0px;
-        background-color: #ffffff;
-        height: calc(98vh - 85px);
-    }
     a i {
         cursor: pointer;
         text-decoration: none;

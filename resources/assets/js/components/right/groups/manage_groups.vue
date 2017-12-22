@@ -1,5 +1,5 @@
 <template>
-    <div id="manage_groups_app">
+    <div class="right" id="manage_groups_app">
 
         <div class="chat-head">
             <i class="material-icons big_icon">group_add</i>

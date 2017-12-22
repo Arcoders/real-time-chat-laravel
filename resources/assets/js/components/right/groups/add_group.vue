@@ -119,13 +119,11 @@
                 this.$http.post('/new_group', this.formData).then(response => {
 
                     this.loading = false;
-
                     (response.status == 200) ? this.done(response.data) : this.error();
 
                 }, response => {
 
                     this.loading = false;
-
                     (response.status == 422) ? this.validation(response.data.errors) : this.error();
 
                 });

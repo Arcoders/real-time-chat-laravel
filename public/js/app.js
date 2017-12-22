@@ -19007,7 +19007,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.global[data-v-0c031926] {\n    width: 100%;\n}\n.notification[data-v-0c031926] {\n    padding: 5px 10px;\n    position: absolute;\n    top: 10px;\n    right: 0;\n    font-size: 12px;\n    margin-right: 20px;\n    border-radius: 7px;\n    background-color: #fff;\n    font-weight: bold;\n    -webkit-box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n            box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n}\n.default[data-v-0c031926] {\n    color: #777777;\n}\n.done[data-v-0c031926] {\n    color: #009688;\n}\n.validation[data-v-0c031926] {\n    color: #FF7043;\n}\n.error[data-v-0c031926] {\n    color: #E57373;\n}\n.animateOpen[data-v-0c031926] {\n    -webkit-animation: moveOpen-data-v-0c031926 4s;\n    -webkit-animation-iteration-count: infinite;\n    -webkit-animation-fill-mode: forwards;\n}\n/* Safari and Chrome */\n@-webkit-keyframes moveOpen-data-v-0c031926\n{\nfrom {-webkit-transform: translate(0,-300px);\n}\n10% {-webkit-transform: translate(0,20px);\n}\n12% {-webkit-transform: translate(0,22px);\n}\n16% {-webkit-transform: translate(0,20px);\n}\n80% {-webkit-transform: translate(0,20px);\n}\n85% {-webkit-transform: translate(0,25px);\n}\nto {-webkit-transform: translate(0, -300px);\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.global[data-v-0c031926] {\n    width: 100%;\n}\n.notification[data-v-0c031926] {\n    padding: 5px 10px;\n    position: absolute;\n    top: 10px;\n    right: 0;\n    font-size: 12px;\n    margin-right: 20px;\n    border-radius: 7px;\n    background-color: #fff;\n    font-weight: bold;\n    -webkit-box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n            box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n}\n.default[data-v-0c031926] {\n    color: #777777;\n}\n.done[data-v-0c031926] {\n    color: #009688;\n}\n.validation[data-v-0c031926] {\n    color: #FF7043;\n}\n.error[data-v-0c031926] {\n    color: #E57373;\n}\n.animateOpen[data-v-0c031926] {\n    -webkit-animation: moveOpen-data-v-0c031926 3s;\n    -webkit-animation-iteration-count: infinite;\n    -webkit-animation-fill-mode: forwards;\n}\n/* Safari and Chrome */\n@-webkit-keyframes moveOpen-data-v-0c031926\n{\nfrom {-webkit-transform: translate(0,-300px);\n}\n10% {-webkit-transform: translate(0,20px);\n}\n12% {-webkit-transform: translate(0,22px);\n}\n16% {-webkit-transform: translate(0,20px);\n}\n80% {-webkit-transform: translate(0,20px);\n}\n85% {-webkit-transform: translate(0,25px);\n}\nto {-webkit-transform: translate(0, -300px);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -20024,7 +20024,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n#profile_app[data-v-3f8256ef] {\n    background-color: #ffffff;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.dynamic_content[data-v-3f8256ef] {\n    padding: 0px;\n    background-color: #ffffff;\n    height: calc(98vh - 85px);\n}\na i[data-v-3f8256ef] {\n    cursor: pointer;\n    text-decoration: none;\n}\na i[data-v-3f8256ef]:hover {\n    color: #009688;\n}\ni_green[data-v-3f8256ef] {\n    color: #009688;\n}\n", ""]);
+exports.push([module.i, "\na i[data-v-3f8256ef] {\n    cursor: pointer;\n    text-decoration: none;\n}\na i[data-v-3f8256ef]:hover {\n    color: #009688;\n}\ni_green[data-v-3f8256ef] {\n    color: #009688;\n}\n", ""]);
 
 // exports
 
@@ -20035,6 +20035,17 @@ exports.push([module.i, "\n#profile_app[data-v-3f8256ef] {\n    background-color
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -20134,7 +20145,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "profile_app" } }, [
+  return _c("div", { staticClass: "right", attrs: { id: "profile_app" } }, [
     _c(
       "div",
       { staticClass: "chat-head" },
@@ -20167,15 +20178,29 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "wrap-content" }, [
-      _c("div", { staticClass: "dynamic_content" }, [
+    _c("div", { staticClass: "complet-content" }, [
+      _c("div", { staticClass: "complete_dynamic_content" }, [
         _c(
           "div",
           { staticClass: "information" },
           [
+            _c("div", { staticClass: "information_content" }, [
+              _c("h1", [_vm._v("Name:")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "font-preview" }, [
+                _vm._v(_vm._s(_vm.user.name))
+              ])
+            ]),
+            _vm._v(" "),
             _vm._m(0),
             _vm._v(" "),
             _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _vm._m(4),
             _vm._v(" "),
             _c("router-view", { on: { previewImage: _vm.updateImage } })
           ],
@@ -20191,9 +20216,47 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "information_content" }, [
-      _c("h1", [_vm._v("Name:")]),
+      _c("h1", [_vm._v("Statuses:")]),
       _vm._v(" "),
-      _c("p", { staticClass: "font-preview" }, [_vm._v("Ismael Haytam")])
+      _c("p", { staticClass: "font-preview" }, [
+        _vm._v("Don't you wish there were a knob on the...")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "information_content" }, [
+      _c("h1", [_vm._v("Statuses:")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "font-preview" }, [
+        _vm._v("Don't you wish there were a knob on the...")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "information_content" }, [
+      _c("h1", [_vm._v("Statuses:")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "font-preview" }, [
+        _vm._v("Don't you wish there were a knob on the...")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "information_content" }, [
+      _c("h1", [_vm._v("Statuses:")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "font-preview" }, [
+        _vm._v("Don't you wish there were a knob on the...")
+      ])
     ])
   },
   function() {
@@ -20674,55 +20737,59 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "manage_groups_app" } }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "wrap-content" }, [
-      _c(
-        "div",
-        { staticClass: "dynamic_content" },
-        [
-          _vm.$route.path == "/groups"
-            ? _c("div", [
-                _c("div", { staticClass: "groups" }, [
-                  _c(
-                    "div",
-                    { staticClass: "group" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          attrs: {
-                            to: "groups/add",
-                            "exact-active-class": "active"
-                          }
-                        },
-                        [_vm._v("Add groups")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "group" },
-                    [
-                      _c("router-link", { attrs: { to: "groups/my" } }, [
-                        _vm._v("My groups")
-                      ])
-                    ],
-                    1
-                  )
+  return _c(
+    "div",
+    { staticClass: "right", attrs: { id: "manage_groups_app" } },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "wrap-content" }, [
+        _c(
+          "div",
+          { staticClass: "dynamic_content" },
+          [
+            _vm.$route.path == "/groups"
+              ? _c("div", [
+                  _c("div", { staticClass: "groups" }, [
+                    _c(
+                      "div",
+                      { staticClass: "group" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: "groups/add",
+                              "exact-active-class": "active"
+                            }
+                          },
+                          [_vm._v("Add groups")]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "group" },
+                      [
+                        _c("router-link", { attrs: { to: "groups/my" } }, [
+                          _vm._v("My groups")
+                        ])
+                      ],
+                      1
+                    )
+                  ])
                 ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("router-view")
-        ],
-        1
-      )
-    ])
-  ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("router-view")
+          ],
+          1
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -20967,7 +21034,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -21049,15 +21115,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (response.status == 200) {
 
                     _this2.groups.splice(index, 1);
+
                     _this2.done(response.data);
 
-                    if (_this2.groups == 0) {
-                        _this2.clickedPage(_this2.actualPage - 1);
-                    } else {
-                        _this2.clickedPage(_this2.actualPage);
-                    }
+                    if (_this2.groups == 0) return _this2.clickedPage(_this2.actualPage - 1);
 
-                    console.log(_this2.groups);
+                    _this2.clickedPage(_this2.actualPage);
                 } else {
                     _this2.error();
                 }
@@ -21071,37 +21134,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         done: function done(msg) {
-            this.notifications.push({
-                message: msg,
-                type: 'done'
-            });
-            this.resetNotification();
+            this.showNotification(msg, 'done');
         },
 
 
         // ---------------------------------------------------
 
         error: function error() {
-            this.notifications.push({
-                message: 'Group could not be deleted, try later',
-                type: 'error'
-            });
-            this.resetNotification();
+            this.showNotification('Group could not be deleted, try later', 'error');
         },
 
 
         // ---------------------------------------------------
 
-        resetNotification: function resetNotification() {
+        showNotification: function showNotification(msg, type) {
             var _this3 = this;
 
+            this.notifications.push({ message: msg, type: type });
             setTimeout(function () {
                 _this3.notifications.shift();
             }, this.time);
         }
-
-        // ---------------------------------------------------
-
     }
 });
 
@@ -21533,12 +21586,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$http.post('/new_group', this.formData).then(function (response) {
 
                 _this2.loading = false;
-
                 response.status == 200 ? _this2.done(response.data) : _this2.error();
             }, function (response) {
 
                 _this2.loading = false;
-
                 response.status == 422 ? _this2.validation(response.data.errors) : _this2.error();
             });
         },
@@ -22014,43 +22065,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         error: function error() {
-            this.notifications.push({
-                message: 'Group can not be edited, try it later',
-                type: 'error'
-            });
-            this.resetNotification();
+            this.showNotification('Group can not be edited, try it later', 'error');
         },
 
 
         // ---------------------------------------------------
 
         validation: function validation(msg) {
-            if (msg.name) msg = msg.name[0];
-            if (msg.avatar) msg = msg.avatar[0];
-            this.notifications.push({
-                message: msg,
-                type: 'validation'
-            });
-            this.resetNotification();
+            this.showNotification(msg.name[0] || msg.avatar[0], 'validation');
         },
 
 
         // ---------------------------------------------------
 
         done: function done(msg) {
-            this.notifications.push({
-                message: msg,
-                type: 'done'
-            });
-            this.resetNotification();
+            this.showNotification(msg, 'done');
         },
 
 
         // ---------------------------------------------------
 
-        resetNotification: function resetNotification() {
+        showNotification: function showNotification(msg, type) {
             var _this3 = this;
 
+            this.notifications.push({ message: msg, type: type });
             setTimeout(function () {
                 _this3.notifications.shift();
             }, this.time);
