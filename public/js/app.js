@@ -20892,17 +20892,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        this.myGroups();
+        this.myGroups('/my_groups');
         console.log('My groups ok!');
     },
 
     methods: {
-        myGroups: function myGroups() {
+        clickedPage: function clickedPage(page) {
+            this.myGroups('/my_groups?page=' + page);
+        },
+        myGroups: function myGroups(url) {
             var _this = this;
 
             this.loading = true;
 
-            this.$http.get('/my_groups').then(function (response) {
+            this.$http.get(url).then(function (response) {
 
                 _this.loading = false;
 
@@ -21136,7 +21139,10 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("paginate")
+      _c("paginate", {
+        attrs: { source: _vm.pagination },
+        on: { navigate: _vm.clickedPage }
+      })
     ],
     1
   )
@@ -22141,7 +22147,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-513a7e1c] {\n  text-decoration: none;\n  -webkit-transition: all .3s ease-out;\n  transition: all .3s ease-out;\n}\n.pagination[data-v-513a7e1c] {\n  display: block;\n  margin-top: 1em;\n  color: white;\n  text-align: right;\n}\n.pagination .page-numbers li[data-v-513a7e1c] {\n    display: inline-block;\n    width: 28px;\n    height: 28px;\n}\n.pagination .page-numbers li a[data-v-513a7e1c], .pagination .page-numbers li span[data-v-513a7e1c] {\n      color: #777777;\n      background: white;\n      border: 1px solid #cccccc;\n      -webkit-box-shadow: 0px 1px 2px #fff;\n              box-shadow: 0px 1px 2px #fff;\n      padding: 5px;\n      display: block;\n      text-align: center;\n      border-radius: 2px;\n      -webkit-box-shadow: 0px 0px 1px 0px rgba(119, 119, 119, 0.5);\n              box-shadow: 0px 0px 1px 0px rgba(119, 119, 119, 0.5);\n}\n.pagination .page-numbers li a.current[data-v-513a7e1c], .pagination .page-numbers li span.current[data-v-513a7e1c] {\n        background: #f1f1f1;\n        color: #009688;\n}\n.pagination .page-numbers li a[data-v-513a7e1c]:hover {\n      background: #f1f1f1;\n      color: #009688;\n      -webkit-box-shadow: none;\n              box-shadow: none;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-513a7e1c] {\n  text-decoration: none;\n  -webkit-transition: all .3s ease-out;\n  transition: all .3s ease-out;\n}\n.pagination[data-v-513a7e1c] {\n  display: block;\n  margin-top: 1em;\n  color: white;\n  text-align: right;\n}\n.pagination .page-numbers li[data-v-513a7e1c] {\n    display: inline-block;\n    width: 28px;\n    height: 28px;\n}\n.pagination .page-numbers li .disable[data-v-513a7e1c] {\n      pointer-events: none;\n      -webkit-box-shadow: none;\n              box-shadow: none;\n      border-radius: 2px;\n      color: #aaaaaa;\n      border: 1px solid #f5f5f5;\n}\n.pagination .page-numbers li a[data-v-513a7e1c], .pagination .page-numbers li span[data-v-513a7e1c] {\n      color: #777777;\n      background: white;\n      border: 1px solid #cccccc;\n      padding: 5px;\n      display: block;\n      text-align: center;\n      border-radius: 2px;\n      margin: 2px;\n      -webkit-box-shadow: 0px 0px 1px 0px rgba(119, 119, 119, 0.5);\n              box-shadow: 0px 0px 1px 0px rgba(119, 119, 119, 0.5);\n}\n.pagination .page-numbers li a.current[data-v-513a7e1c], .pagination .page-numbers li span.current[data-v-513a7e1c] {\n        background: #f1f1f1;\n        color: #009688;\n}\n.pagination .page-numbers li a[data-v-513a7e1c]:hover {\n      background: #f1f1f1;\n      color: #009688;\n      -webkit-box-shadow: none;\n              box-shadow: none;\n}\n", ""]);
 
 // exports
 
@@ -22216,10 +22222,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['source'],
+    data: function data() {
+        return {
+            pages: []
+        };
+    },
+
+    watch: {
+        source: function source() {
+            this.pages = Array.from(new Array(this.source.last_page), function (val, index) {
+                return index + 1;
+            });
+        }
+    },
     mounted: function mounted() {
         console.log('Paginate ok!');
+    },
+
+    methods: {
+        navigate: function navigate(event, page) {
+            event.preventDefault();
+            this.$emit('navigate', page);
+        },
+        nextPrev: function nextPrev(event, page) {
+            if (page == 0 || page == this.source.last_page + 1) return;
+
+            this.navigate(event, page);
+        }
     }
 });
 
@@ -22231,42 +22290,78 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "paginate_app" } }, [
-      _c("div", { staticClass: "pagination" }, [
-        _c("ul", { staticClass: "page-numbers" }, [
+  return _c("div", { attrs: { id: "paginate_app" } }, [
+    _c("div", { staticClass: "pagination" }, [
+      _c(
+        "ul",
+        { staticClass: "page-numbers" },
+        [
           _c("li", [
-            _c("a", { staticClass: "prev", attrs: { href: "" } }, [_vm._v("«")])
+            _c(
+              "a",
+              {
+                staticClass: "prev",
+                class: { disable: _vm.source.current_page == 1 },
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    _vm.nextPrev($event, _vm.source.current_page - 1)
+                  }
+                }
+              },
+              [_vm._v("\n                    «\n                ")]
+            )
           ]),
           _vm._v(" "),
-          _c("li", [
-            _c("a", { staticClass: "current", attrs: { href: "" } }, [
-              _vm._v("1")
+          _vm._l(_vm.pages, function(page) {
+            return _c("li", [
+              _c(
+                "a",
+                {
+                  class: { current: _vm.source.current_page == page },
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      _vm.navigate($event, page)
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(page) +
+                      "\n                "
+                  )
+                ]
+              )
             ])
-          ]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("2")])]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("3")])]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("4")])]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("5")])]),
+          }),
           _vm._v(" "),
           _c("li", [
-            _c("a", { staticClass: "next", attrs: { href: "" } }, [_vm._v("»")])
+            _c(
+              "a",
+              {
+                staticClass: "next",
+                class: {
+                  disable: _vm.source.current_page == _vm.source.last_page
+                },
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    _vm.nextPrev($event, _vm.source.current_page + 1)
+                  }
+                }
+              },
+              [_vm._v("\n                    »\n                ")]
+            )
           ])
-        ])
-      ])
+        ],
+        2
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

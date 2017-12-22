@@ -3,13 +3,31 @@
 
         <div class="pagination">
             <ul class="page-numbers">
-                <li><a href="" class="prev">«</a></li>
-                <li><a href="" class="current">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
-                <li><a href="" class="next">»</a></li>
+                <li>
+                    <a href="#"
+                       @click="nextPrev($event, source.current_page - 1)"
+                       :class="{disable: source.current_page == 1}"
+                       class="prev">
+                        «
+                    </a>
+                </li>
+
+                <li v-for="page in pages">
+                    <a href="#"
+                       @click="navigate($event, page)"
+                       :class="{current: source.current_page == page}">
+                        {{ page }}
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#"
+                       @click="nextPrev($event, source.current_page + 1)"
+                       :class="{disable: source.current_page == source.last_page}"
+                       class="next">
+                        »
+                    </a>
+                </li>
             </ul>
         </div>
 
@@ -34,15 +52,23 @@
             width: 28px;
             height: 28px;
 
+            .disable {
+                pointer-events: none;
+                box-shadow: none;
+                border-radius: 2px;
+                color: #aaaaaa;
+                border: 1px solid #f5f5f5;
+            }
+
             a,span {
                 color: #777777;
                 background: white;
                 border: 1px solid #cccccc;
-                box-shadow: 0px 1px 2px #fff;
                 padding: 5px;
                 display: block;
                 text-align: center;
                 border-radius: 2px;
+                margin: 2px;
                 box-shadow: 0px 0px 1px 0px rgba(119, 119, 119, 0.5);
 
                 &.current {
@@ -60,12 +86,35 @@
         }
     }
 
+
 </style>
 
 <script>
     export default {
+        props: ['source'],
+        data() {
+            return {
+                pages: []
+            }
+        },
+        watch: {
+            source() {
+                this.pages = Array.from(new Array(this.source.last_page),(val,index)=>index+1);
+            }
+        },
         mounted() {
             console.log('Paginate ok!');
+        },
+        methods: {
+            navigate(event, page) {
+                event.preventDefault();
+                this.$emit('navigate', page);
+            },
+            nextPrev(event, page) {
+                if (page == 0 || page == this.source.last_page + 1) return;
+
+                this.navigate(event, page);
+            }
         }
     }
 </script>

@@ -86,7 +86,7 @@
             </tbody>
         </table>
 
-        <paginate></paginate>
+        <paginate :source="pagination" @navigate="clickedPage"></paginate>
 
     </div>
 </template>
@@ -131,15 +131,18 @@
             }
         },
         mounted() {
-            this.myGroups();
+            this.myGroups('/my_groups');
             console.log('My groups ok!');
         },
         methods: {
-            myGroups() {
+            clickedPage(page) {
+                this.myGroups('/my_groups?page=' + page);
+            },
+            myGroups(url) {
 
                 this.loading = true;
 
-                this.$http.get('/my_groups').then(response => {
+                this.$http.get(url).then(response => {
 
                     this.loading = false;
 
