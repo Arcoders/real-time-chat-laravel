@@ -41,6 +41,7 @@
                     <div class="widget">
                         <div class="cover">
                             <img :src="cover" />
+                            <div class="cover_effect"></div>
                         </div>
 
                         <avatar :username="user.name"
@@ -51,7 +52,7 @@
                         </avatar>
 
                         <h1>{{ user.name }}</h1>
-                        <h2>Web Developer</h2>
+                        <h2>FullStack Developer</h2>
                         <h3>Don't you wish there were a knob on the</h3>
 
 
@@ -109,9 +110,8 @@
         },
         methods: {
             updateImage(data) {
-//                if (data.avatar) this.avatar = data[0];
-//                if (data.cover) this.cover = data.cover;
-                console.log(data[0]);
+                if (data.avatar) this.avatar = data.avatar;
+                if (data.cover) this.cover = data.cover;
             }
         }
     }

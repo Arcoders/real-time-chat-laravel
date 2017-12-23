@@ -361,11 +361,21 @@ button[disabled]{
 {
     height: 300px;
     width: 100%;
+    position: relative;
 }
 
 .cover  img {
+    background-color: #777777;
     width: 100%;
     height: 100%;
+}
+
+.cover_effect {
+    background-color: rgba(255, 255, 255, .2);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
 }
 
 .widget > .photo

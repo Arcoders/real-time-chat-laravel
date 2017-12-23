@@ -20132,6 +20132,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user'],
@@ -20147,9 +20148,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         updateImage: function updateImage(data) {
-            //                if (data.avatar) this.avatar = data[0];
-            //                if (data.cover) this.cover = data.cover;
-            console.log(data[0]);
+            if (data.avatar) this.avatar = data.avatar;
+            if (data.cover) this.cover = data.cover;
         }
     }
 });
@@ -20203,7 +20203,9 @@ var render = function() {
             { staticClass: "widget" },
             [
               _c("div", { staticClass: "cover" }, [
-                _c("img", { attrs: { src: _vm.cover } })
+                _c("img", { attrs: { src: _vm.cover } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "cover_effect" })
               ]),
               _vm._v(" "),
               _c("avatar", {
@@ -20218,7 +20220,7 @@ var render = function() {
               _vm._v(" "),
               _c("h1", [_vm._v(_vm._s(_vm.user.name))]),
               _vm._v(" "),
-              _c("h2", [_vm._v("Web Developer")]),
+              _c("h2", [_vm._v("FullStack Developer")]),
               _vm._v(" "),
               _c("h3", [_vm._v("Don't you wish there were a knob on the")])
             ],
@@ -20420,7 +20422,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (type == 'avatar') _this.avatar = e.target.result;
                 if (type == 'cover') _this.cover = e.target.result;
 
-                _this.$emit('previewImage', [_this.avatar, _this.cover]);
+                _this.$emit('previewImage', {
+                    'avatar': _this.avatar,
+                    'cover': _this.cover
+                });
             };
 
             reader.readAsDataURL(files[0]);
@@ -20464,14 +20469,56 @@ var render = function() {
           [
             _c("h1", [_vm._v("Edit information")]),
             _vm._v(" "),
-            _vm._m(0),
+            _c("div", { staticClass: "edit-input" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.userName,
+                    expression: "userName"
+                  }
+                ],
+                attrs: { type: "text", placeholder: "User name" },
+                domProps: { value: _vm.userName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.userName = $event.target.value
+                  }
+                }
+              })
+            ]),
             _vm._v(" "),
-            _vm._m(1),
+            _c("div", { staticClass: "edit-input" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.userStatus,
+                    expression: "userStatus"
+                  }
+                ],
+                attrs: { type: "text", placeholder: "Status" },
+                domProps: { value: _vm.userStatus },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.userStatus = $event.target.value
+                  }
+                }
+              })
+            ]),
             _vm._v(" "),
             _c("h1", [_vm._v("Select avatar")]),
             _vm._v(" "),
             _c("label", { staticClass: "fileContainer" }, [
-              _vm._m(2),
+              _vm._m(0),
               _vm._v(" "),
               _c("input", {
                 ref: "fileInput",
@@ -20487,7 +20534,7 @@ var render = function() {
             _c("h1", [_vm._v("Select Cover")]),
             _vm._v(" "),
             _c("label", { staticClass: "fileContainer" }, [
-              _vm._m(3),
+              _vm._m(1),
               _vm._v(" "),
               _c("input", {
                 ref: "fileCover",
@@ -20506,22 +20553,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "edit-input" }, [
-      _c("input", { attrs: { type: "text", placeholder: "User name" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "edit-input" }, [
-      _c("input", { attrs: { type: "text", placeholder: "Status" } })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

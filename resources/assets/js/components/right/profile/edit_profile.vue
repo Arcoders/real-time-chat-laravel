@@ -8,11 +8,11 @@
                 <h1>Edit information</h1>
 
                 <div class="edit-input">
-                    <input type="text" placeholder="User name">
+                    <input type="text" v-model="userName" placeholder="User name">
                 </div>
 
                 <div class="edit-input">
-                    <input type="text"  placeholder="Status">
+                    <input type="text" v-model="userStatus" placeholder="Status">
                 </div>
 
                 <h1>Select avatar</h1>
@@ -73,7 +73,11 @@
                     if (type == 'avatar') this.avatar = e.target.result;
                     if (type == 'cover') this.cover = e.target.result;
 
-                    this.$emit('previewImage', [this.avatar, this.cover]);
+                    this.$emit('previewImage', {
+                        'avatar': this.avatar,
+                        'cover': this.cover
+                    });
+
 
                 };
 
