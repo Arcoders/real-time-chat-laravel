@@ -237,7 +237,10 @@
 .information {
     width: 100%;
     background: #f7f7f7;
-    height: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .information h1 {

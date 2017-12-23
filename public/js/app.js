@@ -19007,7 +19007,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.global[data-v-0c031926] {\n    width: 100%;\n}\n.notification[data-v-0c031926] {\n    padding: 5px 10px;\n    width: 30%;\n    position: absolute;\n    top: 0;\n    right: 0;\n    font-size: 14px;\n    text-align: center;\n    margin: 5px;\n    border-radius: 0;\n    background-color: #fff;\n    font-weight: bold;\n    -webkit-box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n            box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n    -webkit-animation-name: anim-data-v-0c031926;\n    -webkit-animation-duration: 4s;\n    animation-name: anim-data-v-0c031926;\n    animation-duration: 4s;\n}\n@-webkit-keyframes anim-data-v-0c031926 {\nfrom {background-color: #ffffff;\n}\nto {background-color: #fbfbfb;\n}\n}\n@keyframes anim-data-v-0c031926 {\nfrom {background-color: #ffffff;\n}\nto {background-color: #fbfbfb;\n}\n}\n.default[data-v-0c031926] {\n    color: #777777;\n}\n.done[data-v-0c031926] {\n    color: #009688;\n}\n.validation[data-v-0c031926] {\n    color: #FF7043;\n}\n.error[data-v-0c031926] {\n    color: #E57373;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.global[data-v-0c031926] {\n    width: 100%;\n}\n.notification[data-v-0c031926] {\n    padding: 5px 10px;\n    width: 30%;\n    position: absolute;\n    top: 0;\n    right: 0;\n    font-size: 14px;\n    text-align: center;\n    margin: 5px;\n    border-radius: 0;\n    background-color: #fff;\n    font-weight: bold;\n    -webkit-box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n            box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n    -webkit-animation-name: anim-data-v-0c031926;\n    -webkit-animation-duration: 4s;\n    animation-name: anim-data-v-0c031926;\n    animation-duration: 4s;\n}\n@-webkit-keyframes anim-data-v-0c031926 {\nfrom {background-color: #fbfbfb;\n}\nto {background-color: #ffffff;\n}\n}\n@keyframes anim-data-v-0c031926 {\nfrom {background-color: #fbfbfb;\n}\nto {background-color: #ffffff;\n}\n}\n.default[data-v-0c031926] {\n    color: #777777;\n}\n.done[data-v-0c031926] {\n    color: #009688;\n}\n.validation[data-v-0c031926] {\n    color: #FF7043;\n}\n.error[data-v-0c031926] {\n    color: #E57373;\n}\n\n\n", ""]);
 
 // exports
 
@@ -19334,10 +19334,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     watch: {
         source: function source() {
-            //                this.pages = Array.from(new Array(this.source.last_page),(val,index)=>index+1);
             this.pages = Array.apply(null, { length: this.source.last_page }).map(function (value, index) {
                 return index + 1;
-            });;
+            });
         }
     },
     mounted: function mounted() {
@@ -20025,7 +20024,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\na i[data-v-3f8256ef] {\n    cursor: pointer;\n    text-decoration: none;\n}\na i[data-v-3f8256ef]:hover {\n    color: #009688;\n}\ni_green[data-v-3f8256ef] {\n    color: #009688;\n}\n", ""]);
+exports.push([module.i, "\na i[data-v-3f8256ef] {\n    cursor: pointer;\n    text-decoration: none;\n}\na i[data-v-3f8256ef]:hover {\n    color: #009688;\n}\ni_green[data-v-3f8256ef] {\n    color: #009688;\n}\n.complet-content[data-v-3f8256ef] {\n    background-color: #ffffff;\n}\n.complete_dynamic_content[data-v-3f8256ef] {\n    padding: 2px;\n}\n.widget[data-v-3f8256ef]\n{\n    position: relative;\n    background: #f2dede;\n    width: 80%;\n    height: 100%;\n}\n.cover[data-v-3f8256ef]\n{\n    height: 300px;\n    width: 100%;\n}\n.cover  img[data-v-3f8256ef] {\n    width: 100%;\n    height: 100%;\n}\n.widget > .photo[data-v-3f8256ef]\n{\n    position: absolute;\n    top: 225px;\n    left: 50%;\n    width: 100px;\n    height: 100px;\n    margin: 0 0 0 -55px;\n    border: 5px solid #FFF;\n    border-radius: 50%;\n}\n.widget > h1[data-v-3f8256ef], .widget > h2[data-v-3f8256ef], .widget > h3[data-v-3f8256ef]\n{\n    display: block;\n    margin: 10px 0;\n    text-align: center;\n    font-family: 'Open Sans', sans-serif;\n    font-size: 16px;\n    font-weight: 300;\n    color: #999;\n}\n.widget > h1[data-v-3f8256ef]\n{\n    margin: 60px 0 20px;\n    font-size: 26px;\n    color: #000;\n}\n.widget > h3[data-v-3f8256ef] { font-size: 12px\n}\n.list_users[data-v-3f8256ef] {\n    background-color: #f0ad4e;\n    width: 20%;\n    height: 100%;\n    min-height: 100%;\n}\n\n\n", ""]);
 
 // exports
 
@@ -20036,6 +20035,101 @@ exports.push([module.i, "\na i[data-v-3f8256ef] {\n    cursor: pointer;\n    tex
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -20161,24 +20255,38 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "complet-content" }, [
       _c("div", { staticClass: "complete_dynamic_content" }, [
-        _c(
-          "div",
-          { staticClass: "information" },
-          [
-            _c("div", { staticClass: "information_content" }, [
-              _c("h1", [_vm._v("Name:")]),
+        _c("div", { staticClass: "information" }, [
+          _c(
+            "div",
+            { staticClass: "widget" },
+            [
+              _vm._m(0),
               _vm._v(" "),
-              _c("p", { staticClass: "font-preview" }, [
-                _vm._v(_vm._s(_vm.user.name))
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c("router-view", { on: { previewImage: _vm.updateImage } })
-          ],
-          1
-        )
+              _c("avatar", {
+                staticClass: "photo",
+                attrs: {
+                  username: _vm.user.name,
+                  color: "#fff",
+                  src: _vm.avatar,
+                  size: 100
+                }
+              }),
+              _vm._v(" "),
+              _c("h1", [_vm._v("Ryan Boylett")]),
+              _vm._v(" "),
+              _c("h2", [_vm._v("Web Developer")]),
+              _vm._v(" "),
+              _c("h3", [_vm._v("Bristol, UK")]),
+              _vm._v(" "),
+              _c("router-view", { on: { previewImage: _vm.updateImage } })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "list_users" }, [
+            _vm._v("\n                        abc\n                    ")
+          ])
+        ])
       ])
     ])
   ])
@@ -20188,12 +20296,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "information_content" }, [
-      _c("h1", [_vm._v("Statuses:")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "font-preview" }, [
-        _vm._v("Don't you wish there were a knob on the...")
-      ])
+    return _c("div", { staticClass: "cover" }, [
+      _c("img", {
+        attrs: {
+          src: "https://www.hdwallpapers.in/thumbs/2017/autumn_path_4k-t2.jpg"
+        }
+      })
     ])
   }
 ]

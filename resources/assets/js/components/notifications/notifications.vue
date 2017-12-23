@@ -38,13 +38,13 @@
     }
 
     @-webkit-keyframes anim {
-        from {background-color: #ffffff;}
-        to {background-color: #fbfbfb;}
+        from {background-color: #fbfbfb;}
+        to {background-color: #ffffff;}
     }
 
     @keyframes anim {
-        from {background-color: #ffffff;}
-        to {background-color: #fbfbfb;}
+        from {background-color: #fbfbfb;}
+        to {background-color: #ffffff;}
     }
 
     .default {

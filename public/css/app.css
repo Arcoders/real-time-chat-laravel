@@ -59,6 +59,7 @@ i {
 
 .left {
   width: 400px;
+  min-width: 400px;
   height: 100%;
 }
 
@@ -526,7 +527,16 @@ i {
 .information {
   width: 100%;
   background: #f7f7f7;
-  height: auto;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .information h1 {
