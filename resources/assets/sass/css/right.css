@@ -232,29 +232,6 @@
     margin-top: -10px;
 }
 
-/* Information */
-
-.information {
-    width: 100%;
-    background: #f7f7f7;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.information h1 {
-    color: #009688;
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-.information_content {
-    background-color: #ffffff;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
 /* message */
 
 .wrap-message {
@@ -367,4 +344,137 @@ hr {
 button:disabled,
 button[disabled]{
     display: none;
+}
+
+
+/* Profile */
+
+.widget
+{
+    position: relative;
+    background: #ffffff;
+    width: 70%;
+    height: 100%;
+}
+
+.cover
+{
+    height: 300px;
+    width: 100%;
+}
+
+.cover  img {
+    width: 100%;
+    height: 100%;
+}
+
+.widget > .photo
+{
+    position: absolute;
+    top: 225px;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 0 0 0 -55px;
+    border: 5px solid #FFF;
+    border-radius: 50%;
+}
+
+.widget > h1, .widget > h2, .widget > h3
+{
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #999;
+}
+
+.widget > h1
+{
+    margin: 60px 0 20px;
+    font-size: 26px;
+    color: #000;
+}
+
+.widget > h3 { font-size: 12px }
+
+
+/* List users */
+
+
+.manage_users {
+    background-color: #f0ad4e;
+    width: 30%;
+    height: 100%;
+    min-height: 100%;
+}
+
+/* Information */
+
+.edit_user {
+    position: relative;
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+.edit_user h1 {
+    color: #009688;
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+.edit-input {
+    width: 100%;
+}
+
+.edit-input > input {
+    width: 90%;
+    margin: auto;
+    height: 60px;
+    border: 0;
+    background-color: transparent;
+    border-bottom: 2px solid #EEEEEE;
+    outline: none;
+    transition: all .3s ease-out;
+}
+
+.edit-input > input:hover {
+    border-bottom: 2px solid #009688
+}
+
+.edit_i{
+    font-size: 25px !important;
+}
+
+.edit_i:hover{
+    color: #e1e1e1;
+}
+
+.select_image  {
+    color: transparent;
+    color: #777777;
+}
+
+/* Information */
+
+.information {
+    width: 100%;
+    background: #f7f7f7;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.information_content {
+    background-color: #fafafa;
+    max-width: 100%;
+    height: 100%;
+}
+
+.information_form {
+    padding: 20px;
 }

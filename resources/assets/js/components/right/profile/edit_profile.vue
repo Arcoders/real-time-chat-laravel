@@ -1,26 +1,37 @@
 <template>
-    <div id="edit_profile_app">
+    <div id="edit_profile_app" class="edit_user">
 
         <div class="information_content">
-            <h1>Edit information:</h1>
 
-            <form method="POST" v-on:submit.prevent="upload()" enctype="multipart/form-data">
+            <form method="POST" v-on:submit.prevent="upload()" class="information_form" enctype="multipart/form-data">
 
-                <div class="wrap-input">
-                    <input type="text" class="input-global" placeholder="User name">
+                <h1>Edit information</h1>
+
+                <div class="edit-input">
+                    <input type="text" placeholder="User name">
                 </div>
 
-                <div class="wrap-input add_padding">
-                    <input type="text" class="input-global" placeholder="Status">
+                <div class="edit-input">
+                    <input type="text"  placeholder="Status">
                 </div>
 
-                <br>
+                <h1>Select avatar</h1>
 
-                <h1>Edit avatar:</h1>
 
-                <label class="fileContainer font-online">
+                <label class="fileContainer">
                     <button>
-                        Click here to trigger the file uploader!
+                        <i class="material-icons edit_i">photo_camera</i>
+                        <span class="select_image">Change avatar</span>
+                    </button>
+                    <input type="file" name="fileInput" v-on:change="onFileChange($event)" ref="fileInput">
+                </label>
+
+                <h1>Select Cover</h1>
+
+                <label class="fileContainer">
+                    <button>
+                        <i class="material-icons edit_i">photo_size_select_actual</i>
+                        <span class="select_image">Choose Cover</span>
                     </button>
                     <input type="file" name="fileInput" v-on:change="onFileChange($event)" ref="fileInput">
                 </label>
@@ -33,18 +44,6 @@
 </template>
 
 <style scoped>
-    .green_teal {
-        color: #009688;
-    }
-    .wrap-input {
-        padding: 2px 2px 0 2px;
-    }
-    .add_padding {
-        padding-bottom: 2px;
-    }
-    button {
-        color: #444444;
-    }
 </style>
 
 <script>

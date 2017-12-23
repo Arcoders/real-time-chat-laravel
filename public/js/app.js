@@ -20024,7 +20024,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\na i[data-v-3f8256ef] {\n    cursor: pointer;\n    text-decoration: none;\n}\na i[data-v-3f8256ef]:hover {\n    color: #009688;\n}\ni_green[data-v-3f8256ef] {\n    color: #009688;\n}\n.complet-content[data-v-3f8256ef] {\n    background-color: #ffffff;\n}\n.complete_dynamic_content[data-v-3f8256ef] {\n    padding: 2px;\n}\n.widget[data-v-3f8256ef]\n{\n    position: relative;\n    background: #f2dede;\n    width: 80%;\n    height: 100%;\n}\n.cover[data-v-3f8256ef]\n{\n    height: 300px;\n    width: 100%;\n}\n.cover  img[data-v-3f8256ef] {\n    width: 100%;\n    height: 100%;\n}\n.widget > .photo[data-v-3f8256ef]\n{\n    position: absolute;\n    top: 225px;\n    left: 50%;\n    width: 100px;\n    height: 100px;\n    margin: 0 0 0 -55px;\n    border: 5px solid #FFF;\n    border-radius: 50%;\n}\n.widget > h1[data-v-3f8256ef], .widget > h2[data-v-3f8256ef], .widget > h3[data-v-3f8256ef]\n{\n    display: block;\n    margin: 10px 0;\n    text-align: center;\n    font-family: 'Open Sans', sans-serif;\n    font-size: 16px;\n    font-weight: 300;\n    color: #999;\n}\n.widget > h1[data-v-3f8256ef]\n{\n    margin: 60px 0 20px;\n    font-size: 26px;\n    color: #000;\n}\n.widget > h3[data-v-3f8256ef] { font-size: 12px\n}\n.list_users[data-v-3f8256ef] {\n    background-color: #f0ad4e;\n    width: 20%;\n    height: 100%;\n    min-height: 100%;\n}\n\n\n", ""]);
+exports.push([module.i, "\na i[data-v-3f8256ef] {\n    cursor: pointer;\n    text-decoration: none;\n}\na i[data-v-3f8256ef]:hover {\n    color: #009688;\n}\ni_green[data-v-3f8256ef] {\n    color: #009688;\n}\n.complet-content[data-v-3f8256ef] {\n    background-color: #ffffff;\n}\n.complete_dynamic_content[data-v-3f8256ef] {\n    padding: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -20035,67 +20035,6 @@ exports.push([module.i, "\na i[data-v-3f8256ef] {\n    cursor: pointer;\n    tex
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -20276,16 +20215,17 @@ var render = function() {
               _vm._v(" "),
               _c("h2", [_vm._v("Web Developer")]),
               _vm._v(" "),
-              _c("h3", [_vm._v("Bristol, UK")]),
-              _vm._v(" "),
-              _c("router-view", { on: { previewImage: _vm.updateImage } })
+              _c("h3", [_vm._v("Don't you wish there were a knob on the")])
             ],
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "list_users" }, [
-            _vm._v("\n                        abc\n                    ")
-          ])
+          _c(
+            "div",
+            { staticClass: "manage_users" },
+            [_c("router-view", { on: { previewImage: _vm.updateImage } })],
+            1
+          )
         ])
       ])
     ])
@@ -20299,7 +20239,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "cover" }, [
       _c("img", {
         attrs: {
-          src: "https://www.hdwallpapers.in/thumbs/2017/autumn_path_4k-t2.jpg"
+          src: "https://www.hdwallpapers.in/thumbs/2017/plane_mountains-t2.jpg"
         }
       })
     ])
@@ -20400,7 +20340,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.green_teal[data-v-68f6fac4] {\n    color: #009688;\n}\n.wrap-input[data-v-68f6fac4] {\n    padding: 2px 2px 0 2px;\n}\n.add_padding[data-v-68f6fac4] {\n    padding-bottom: 2px;\n}\nbutton[data-v-68f6fac4] {\n    color: #444444;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -20411,7 +20351,6 @@ exports.push([module.i, "\n.green_teal[data-v-68f6fac4] {\n    color: #009688;\n
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -20498,73 +20437,106 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "edit_profile_app" } }, [
-    _c("div", { staticClass: "information_content" }, [
-      _c("h1", [_vm._v("Edit information:")]),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          attrs: { method: "POST", enctype: "multipart/form-data" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              _vm.upload()
+  return _c(
+    "div",
+    { staticClass: "edit_user", attrs: { id: "edit_profile_app" } },
+    [
+      _c("div", { staticClass: "information_content" }, [
+        _c(
+          "form",
+          {
+            staticClass: "information_form",
+            attrs: { method: "POST", enctype: "multipart/form-data" },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                _vm.upload()
+              }
             }
-          }
-        },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("h1", [_vm._v("Edit avatar:")]),
-          _vm._v(" "),
-          _c("label", { staticClass: "fileContainer font-online" }, [
-            _c("button", [
-              _vm._v(
-                "\n                    Click here to trigger the file uploader!\n                "
-              )
+          },
+          [
+            _c("h1", [_vm._v("Edit information")]),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _c("h1", [_vm._v("Select avatar")]),
+            _vm._v(" "),
+            _c("label", { staticClass: "fileContainer" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("input", {
+                ref: "fileInput",
+                attrs: { type: "file", name: "fileInput" },
+                on: {
+                  change: function($event) {
+                    _vm.onFileChange($event)
+                  }
+                }
+              })
             ]),
             _vm._v(" "),
-            _c("input", {
-              ref: "fileInput",
-              attrs: { type: "file", name: "fileInput" },
-              on: {
-                change: function($event) {
-                  _vm.onFileChange($event)
+            _c("h1", [_vm._v("Select Cover")]),
+            _vm._v(" "),
+            _c("label", { staticClass: "fileContainer" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("input", {
+                ref: "fileInput",
+                attrs: { type: "file", name: "fileInput" },
+                on: {
+                  change: function($event) {
+                    _vm.onFileChange($event)
+                  }
                 }
-              }
-            })
-          ])
-        ]
-      )
-    ])
-  ])
+              })
+            ])
+          ]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "wrap-input" }, [
-      _c("input", {
-        staticClass: "input-global",
-        attrs: { type: "text", placeholder: "User name" }
-      })
+    return _c("div", { staticClass: "edit-input" }, [
+      _c("input", { attrs: { type: "text", placeholder: "User name" } })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "wrap-input add_padding" }, [
-      _c("input", {
-        staticClass: "input-global",
-        attrs: { type: "text", placeholder: "Status" }
-      })
+    return _c("div", { staticClass: "edit-input" }, [
+      _c("input", { attrs: { type: "text", placeholder: "Status" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", [
+      _c("i", { staticClass: "material-icons edit_i" }, [
+        _vm._v("photo_camera")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "select_image" }, [_vm._v("Change avatar")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", [
+      _c("i", { staticClass: "material-icons edit_i" }, [
+        _vm._v("photo_size_select_actual")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "select_image" }, [_vm._v("Choose Cover")])
     ])
   }
 ]
