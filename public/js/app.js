@@ -19007,7 +19007,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.global[data-v-0c031926] {\n    width: 100%;\n}\n.notification[data-v-0c031926] {\n    padding: 5px 10px;\n    position: absolute;\n    top: 10px;\n    right: 0;\n    font-size: 12px;\n    margin-right: 20px;\n    border-radius: 7px;\n    background-color: #fff;\n    font-weight: bold;\n    -webkit-box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n            box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n}\n.default[data-v-0c031926] {\n    color: #777777;\n}\n.done[data-v-0c031926] {\n    color: #009688;\n}\n.validation[data-v-0c031926] {\n    color: #FF7043;\n}\n.error[data-v-0c031926] {\n    color: #E57373;\n}\n.animateOpen[data-v-0c031926] {\n    -webkit-animation: moveOpen-data-v-0c031926 3s;\n    -webkit-animation-iteration-count: infinite;\n    -webkit-animation-fill-mode: forwards;\n}\n/* Safari and Chrome */\n@-webkit-keyframes moveOpen-data-v-0c031926\n{\nfrom {-webkit-transform: translate(0,-300px);\n}\n10% {-webkit-transform: translate(0,20px);\n}\n12% {-webkit-transform: translate(0,22px);\n}\n16% {-webkit-transform: translate(0,20px);\n}\n80% {-webkit-transform: translate(0,20px);\n}\n85% {-webkit-transform: translate(0,25px);\n}\nto {-webkit-transform: translate(0, -300px);\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.global[data-v-0c031926] {\n    width: 100%;\n}\n.notification[data-v-0c031926] {\n    padding: 5px 10px;\n    width: 30%;\n    position: absolute;\n    top: 0;\n    right: 0;\n    font-size: 14px;\n    text-align: center;\n    margin: 5px;\n    border-radius: 0;\n    background-color: #fff;\n    font-weight: bold;\n    -webkit-box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n            box-shadow: 0px 0px 6px -3px rgba(73,73,73,1);\n    -webkit-animation-name: anim-data-v-0c031926;\n    -webkit-animation-duration: 4s;\n    animation-name: anim-data-v-0c031926;\n    animation-duration: 4s;\n}\n@-webkit-keyframes anim-data-v-0c031926 {\nfrom {background-color: #ffffff;\n}\nto {background-color: #fbfbfb;\n}\n}\n@keyframes anim-data-v-0c031926 {\nfrom {background-color: #ffffff;\n}\nto {background-color: #fbfbfb;\n}\n}\n.default[data-v-0c031926] {\n    color: #777777;\n}\n.done[data-v-0c031926] {\n    color: #009688;\n}\n.validation[data-v-0c031926] {\n    color: #FF7043;\n}\n.error[data-v-0c031926] {\n    color: #E57373;\n}\n\n\n", ""]);
 
 // exports
 
@@ -20098,26 +20098,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user'],
@@ -20194,14 +20174,6 @@ var render = function() {
             _vm._v(" "),
             _vm._m(0),
             _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
-            _vm._m(4),
-            _vm._v(" "),
             _c("router-view", { on: { previewImage: _vm.updateImage } })
           ],
           1
@@ -20211,54 +20183,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "information_content" }, [
-      _c("h1", [_vm._v("Statuses:")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "font-preview" }, [
-        _vm._v("Don't you wish there were a knob on the...")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "information_content" }, [
-      _c("h1", [_vm._v("Statuses:")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "font-preview" }, [
-        _vm._v("Don't you wish there were a knob on the...")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "information_content" }, [
-      _c("h1", [_vm._v("Statuses:")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "font-preview" }, [
-        _vm._v("Don't you wish there were a knob on the...")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "information_content" }, [
-      _c("h1", [_vm._v("Statuses:")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "font-preview" }, [
-        _vm._v("Don't you wish there were a knob on the...")
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -21605,7 +21529,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         validation: function validation(msg) {
-            this.showNotification(msg.name[0] || msg.avatar[0], 'validation');
+            if (msg.avatar) msg = msg.avatar[0];
+            if (msg.name) msg = msg.name[0];
+
+            this.showNotification(msg, 'validation');
         },
 
 
@@ -22072,7 +21999,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         validation: function validation(msg) {
-            this.showNotification(msg.name[0] || msg.avatar[0], 'validation');
+            if (msg.avatar) msg = msg.avatar[0];
+            if (msg.name) msg = msg.name[0];
+
+            this.showNotification(msg, 'validation');
         },
 
 

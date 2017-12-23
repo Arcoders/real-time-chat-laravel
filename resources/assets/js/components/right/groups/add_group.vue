@@ -138,7 +138,10 @@
             // ---------------------------------------------------
 
             validation(msg) {
-                this.showNotification(msg.name[0] || msg.avatar[0], 'validation');
+                if (msg.avatar) msg = msg.avatar[0];
+                if (msg.name) msg = msg.name[0];
+
+                this.showNotification(msg, 'validation');
             },
 
             // ---------------------------------------------------

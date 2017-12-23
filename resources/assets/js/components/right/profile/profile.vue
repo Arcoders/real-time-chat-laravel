@@ -36,26 +36,6 @@
                         <p class="font-preview">Don't you wish there were a knob on the...</p>
                     </div>
 
-                    <div class="information_content">
-                        <h1>Statuses:</h1>
-                        <p class="font-preview">Don't you wish there were a knob on the...</p>
-                    </div>
-
-                    <div class="information_content">
-                        <h1>Statuses:</h1>
-                        <p class="font-preview">Don't you wish there were a knob on the...</p>
-                    </div>
-
-                    <div class="information_content">
-                        <h1>Statuses:</h1>
-                        <p class="font-preview">Don't you wish there were a knob on the...</p>
-                    </div>
-
-                    <div class="information_content">
-                        <h1>Statuses:</h1>
-                        <p class="font-preview">Don't you wish there were a knob on the...</p>
-                    </div>
-
                     <router-view @previewImage="updateImage"></router-view>
 
                 </div>
