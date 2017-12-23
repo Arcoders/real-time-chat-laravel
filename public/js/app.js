@@ -19334,9 +19334,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     watch: {
         source: function source() {
-            this.pages = Array.from(new Array(this.source.last_page), function (val, index) {
+            //                this.pages = Array.from(new Array(this.source.last_page),(val,index)=>index+1);
+            this.pages = Array.apply(null, { length: this.source.last_page }).map(function (value, index) {
                 return index + 1;
-            });
+            });;
         }
     },
     mounted: function mounted() {
