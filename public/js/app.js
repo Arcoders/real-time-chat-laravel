@@ -20137,7 +20137,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['user'],
     data: function data() {
         return {
-            avatar: this.user.avatar
+            avatar: this.user.avatar,
+            cover: "https://www.hdwallpapers.in/thumbs/2017/plane_mountains-t2.jpg"
         };
     },
     mounted: function mounted() {
@@ -20146,7 +20147,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         updateImage: function updateImage(data) {
-            this.avatar = data;
+            //                if (data.avatar) this.avatar = data[0];
+            //                if (data.cover) this.cover = data.cover;
+            console.log(data[0]);
         }
     }
 });
@@ -20199,7 +20202,9 @@ var render = function() {
             "div",
             { staticClass: "widget" },
             [
-              _vm._m(0),
+              _c("div", { staticClass: "cover" }, [
+                _c("img", { attrs: { src: _vm.cover } })
+              ]),
               _vm._v(" "),
               _c("avatar", {
                 staticClass: "photo",
@@ -20211,7 +20216,7 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("h1", [_vm._v("Ryan Boylett")]),
+              _c("h1", [_vm._v(_vm._s(_vm.user.name))]),
               _vm._v(" "),
               _c("h2", [_vm._v("Web Developer")]),
               _vm._v(" "),
@@ -20231,20 +20236,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "cover" }, [
-      _c("img", {
-        attrs: {
-          src: "https://www.hdwallpapers.in/thumbs/2017/plane_mountains-t2.jpg"
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -20403,7 +20395,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            avatar: null
+            avatar: null,
+            cover: null
         };
     },
     mounted: function mounted() {
@@ -20411,21 +20404,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        onFileChange: function onFileChange(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length) return;
-            this.createImage(files[0]);
-        },
-        createImage: function createImage(file) {
+
+        // ---------------------------------------------------
+
+        onFileChange: function onFileChange(e, type) {
             var _this = this;
 
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length) return;
+
             var reader = new FileReader();
+
             reader.onload = function (e) {
-                _this.avatar = e.target.result;
-                _this.$emit('previewImage', _this.avatar);
+
+                if (type == 'avatar') _this.avatar = e.target.result;
+                if (type == 'cover') _this.cover = e.target.result;
+
+                _this.$emit('previewImage', [_this.avatar, _this.cover]);
             };
-            reader.readAsDataURL(file);
-        }
+
+            reader.readAsDataURL(files[0]);
+        },
+
+
+        // ---------------------------------------------------
+
+        updateProfile: function updateProfile() {}
+
+        // ---------------------------------------------------
+
     }
 });
 
@@ -20450,7 +20457,7 @@ var render = function() {
             on: {
               submit: function($event) {
                 $event.preventDefault()
-                _vm.upload()
+                _vm.updateProfile()
               }
             }
           },
@@ -20471,7 +20478,7 @@ var render = function() {
                 attrs: { type: "file", name: "fileInput" },
                 on: {
                   change: function($event) {
-                    _vm.onFileChange($event)
+                    _vm.onFileChange($event, "avatar")
                   }
                 }
               })
@@ -20483,11 +20490,11 @@ var render = function() {
               _vm._m(3),
               _vm._v(" "),
               _c("input", {
-                ref: "fileInput",
-                attrs: { type: "file", name: "fileInput" },
+                ref: "fileCover",
+                attrs: { type: "file", name: "fileCover" },
                 on: {
                   change: function($event) {
-                    _vm.onFileChange($event)
+                    _vm.onFileChange($event, "cover")
                   }
                 }
               })

@@ -40,7 +40,7 @@
 
                     <div class="widget">
                         <div class="cover">
-                            <img src="https://www.hdwallpapers.in/thumbs/2017/plane_mountains-t2.jpg" />
+                            <img :src="cover" />
                         </div>
 
                         <avatar :username="user.name"
@@ -50,7 +50,7 @@
                                 class="photo">
                         </avatar>
 
-                        <h1>Ryan Boylett</h1>
+                        <h1>{{ user.name }}</h1>
                         <h2>Web Developer</h2>
                         <h3>Don't you wish there were a knob on the</h3>
 
@@ -100,7 +100,8 @@
         props: ['user'],
         data() {
             return {
-                avatar: this.user.avatar
+                avatar: this.user.avatar,
+                cover: "https://www.hdwallpapers.in/thumbs/2017/plane_mountains-t2.jpg"
             }
         },
         mounted() {
@@ -108,7 +109,9 @@
         },
         methods: {
             updateImage(data) {
-                this.avatar = data;
+//                if (data.avatar) this.avatar = data[0];
+//                if (data.cover) this.cover = data.cover;
+                console.log(data[0]);
             }
         }
     }
