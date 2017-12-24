@@ -20024,7 +20024,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.complete_dynamic_content[data-v-3f8256ef] {\n    padding: 0;\n}\n.contener_txt[data-v-3f8256ef]\n{\n    width: 100%;\n    height: auto;\n    background-color:#fbfbfb;\n    -webkit-box-shadow:1px 1px 2px #777777;\n            box-shadow:1px 1px 2px #777777;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    text-align: left;\n}\n.name > button[data-v-3f8256ef] {\n    color: #777777;\n    font-size: 14px;\n}\n\n", ""]);
+exports.push([module.i, "\n.complete_dynamic_content[data-v-3f8256ef] {\n    padding: 0;\n}\n.big_icon[data-v-3f8256ef] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\n.contener_txt[data-v-3f8256ef]\n{\n    width: 100%;\n    height: auto;\n    background-color:#fbfbfb;\n    -webkit-box-shadow:1px 1px 2px #777777;\n            box-shadow:1px 1px 2px #777777;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    text-align: left;\n}\n.name > button[data-v-3f8256ef] {\n    color: #777777;\n    font-size: 14px;\n}\n\n", ""]);
 
 // exports
 
@@ -20035,6 +20035,15 @@ exports.push([module.i, "\n.complete_dynamic_content[data-v-3f8256ef] {\n    pad
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -20247,10 +20256,7 @@ var render = function() {
       "div",
       { staticClass: "chat-head" },
       [
-        _c("avatar", {
-          staticClass: "img-head",
-          attrs: { username: _vm.userName, color: "#fff", src: _vm.avatar }
-        }),
+        _c("i", { staticClass: "material-icons big_icon" }, [_vm._v("person")]),
         _vm._v(" "),
         _c("div", { staticClass: "chat-name" }, [
           _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
@@ -20281,7 +20287,9 @@ var render = function() {
               _c("div", { staticClass: "cover" }, [
                 _c("img", { attrs: { src: _vm.cover } }),
                 _vm._v(" "),
-                _vm._m(0)
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1)
               ]),
               _vm._v(" "),
               _c("avatar", {
@@ -20341,9 +20349,9 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                        " +
+                                "\n                                " +
                                   _vm._s(user.name) +
-                                  "\n                                    "
+                                  "\n                            "
                               )
                             ]
                           )
@@ -20366,9 +20374,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "add_friend" }, [
+    return _c("div", { staticClass: "add_friend style_friend" }, [
       _c("button", [
-        _c("i", { staticClass: "material-icons" }, [_vm._v("access_time")])
+        _c("i", { staticClass: "material-icons" }, [_vm._v("done_all")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "delete_friend style_friend" }, [
+      _c("button", [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("clear")])
       ])
     ])
   }

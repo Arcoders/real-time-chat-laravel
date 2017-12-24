@@ -2,11 +2,7 @@
     <div class="right" id="profile_app">
 
         <div class="chat-head">
-            <avatar :username="userName"
-                    color="#fff"
-                    :src="avatar"
-                    class="img-head">
-            </avatar>
+            <i class="material-icons big_icon">person</i>
             <div class="chat-name">
                 <h1 class="font-name">Profile</h1>
                 <p class="font-online">{{ userName }}...</p>
@@ -30,13 +26,19 @@
                     <div class="widget">
                         <div class="cover">
                             <img :src="cover" />
-                            <div class="add_friend">
+                            <div class="add_friend style_friend">
                                 <button>
                                     <!--<i class="material-icons">person_add</i>-->
                                     <!--<i class="material-icons">people</i>-->
                                     <!--<i class="material-icons">sentiment_very_dissatisfied</i>-->
                                     <!--<i class="material-icons">done_all</i>-->
-                                    <i class="material-icons">access_time</i>
+                                    <!--<i class="material-icons">access_time</i>-->
+                                    <i class="material-icons">done_all</i>
+                                </button>
+                            </div>
+                            <div class="delete_friend style_friend">
+                                <button>
+                                    <i class="material-icons">clear</i>
                                 </button>
                             </div>
                         </div>
@@ -62,18 +64,18 @@
                         <router-view @previewImage="updateImage" @modelInfo="updateInfo"></router-view>
 
                         <div v-if="pathEdit" class="contener_txt" v-for="user in users">
-                                    <avatar :username="user.name"
-                                            color="#fff"
-                                            :src="user.avatar"
-                                            :size="50"
-                                            class="img-head">
-                                    </avatar>
-                                    <div class="name">
-                                        <button v-on:click="getProfile(user.id)">
-                                            {{user.name}}
-                                        </button>
-                                    </div>
-                                </div>
+                            <avatar :username="user.name"
+                                    color="#fff"
+                                    :src="user.avatar"
+                                    :size="50"
+                                    class="img-head">
+                            </avatar>
+                            <div class="name">
+                                <button v-on:click="getProfile(user.id)">
+                                    {{user.name}}
+                                </button>
+                            </div>
+                        </div>
 
                     </div>
 
@@ -89,6 +91,13 @@
 
     .complete_dynamic_content {
         padding: 0;
+    }
+
+    .big_icon {
+        margin: 10px 20px;
+        border-radius: 50%;
+        font-size: 40px;
+        color: #777777;
     }
 
     .contener_txt
