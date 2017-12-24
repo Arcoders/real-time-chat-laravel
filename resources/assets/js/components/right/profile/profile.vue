@@ -2,14 +2,14 @@
     <div class="right" id="profile_app">
 
         <div class="chat-head">
-            <avatar :username="user.name"
+            <avatar :username="userName"
                     color="#fff"
                     :src="avatar"
                     class="img-head">
             </avatar>
             <div class="chat-name">
                 <h1 class="font-name">Profile</h1>
-                <p class="font-online">{{ user.name }}...</p>
+                <p class="font-online">{{ userName }}...</p>
             </div>
 
             <router-link v-if="$route.path == '/profile'" to="/profile/edit">
@@ -44,16 +44,16 @@
                             <div class="cover_effect"></div>
                         </div>
 
-                        <avatar :username="user.name"
+                        <avatar :username="userName"
                                 color="#fff"
                                 :src="avatar"
                                 :size="100"
                                 class="photo">
                         </avatar>
 
-                        <h1>{{ user.name }}</h1>
+                        <h1>{{ userName }}</h1>
                         <h2>FullStack Developer</h2>
-                        <h3>Don't you wish there were a knob on the</h3>
+                        <h3>{{ userStatus }}</h3>
 
 
 
@@ -61,7 +61,7 @@
 
 
                     <div class="manage_users">
-                        <router-view @previewImage="updateImage"></router-view>
+                        <router-view @previewImage="updateImage" @modelInfo="updateInfo"></router-view>
                     </div>
 
                 </div>
@@ -101,6 +101,8 @@
         props: ['user'],
         data() {
             return {
+                userName: this.user.name,
+                userStatus: "Don\'t you wish there were a knob on the",
                 avatar: this.user.avatar,
                 cover: "https://www.hdwallpapers.in/thumbs/2017/plane_mountains-t2.jpg"
             }
@@ -112,6 +114,10 @@
             updateImage(data) {
                 if (data.avatar) this.avatar = data.avatar;
                 if (data.cover) this.cover = data.cover;
+            },
+            updateInfo(data) {
+                if (data.user) this.userName = data.user;
+                if (data.status) this.userStatus = data.status;
             }
         }
     }

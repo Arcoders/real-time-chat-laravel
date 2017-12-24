@@ -8,11 +8,17 @@
                 <h1>Edit information</h1>
 
                 <div class="edit-input">
-                    <input type="text" v-model="userName" placeholder="User name">
+                    <input type="text"
+                           v-on:keyup="onInputChange($event, 'name')"
+                           v-model="userName"
+                           placeholder="User name">
                 </div>
 
                 <div class="edit-input">
-                    <input type="text" v-model="userStatus" placeholder="Status">
+                    <input type="text"
+                           v-on:keyup="onInputChange($event, 'status')"
+                           v-model="userStatus"
+                           placeholder="Status">
                 </div>
 
                 <h1>Select avatar</h1>
@@ -51,7 +57,9 @@
         data() {
             return {
                 avatar: null,
-                cover: null
+                cover: null,
+                userName: '',
+                userStatus: ''
             }
         },
         mounted() {
@@ -82,6 +90,15 @@
                 };
 
                 reader.readAsDataURL(files[0]);
+            },
+
+            // ---------------------------------------------------
+
+            onInputChange() {
+                this.$emit('modelInfo', {
+                    'user': this.userName,
+                    'status': this.userStatus
+                });
             },
 
             // ---------------------------------------------------

@@ -20138,6 +20138,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['user'],
     data: function data() {
         return {
+            userName: this.user.name,
+            userStatus: "Don\'t you wish there were a knob on the",
             avatar: this.user.avatar,
             cover: "https://www.hdwallpapers.in/thumbs/2017/plane_mountains-t2.jpg"
         };
@@ -20150,6 +20152,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateImage: function updateImage(data) {
             if (data.avatar) this.avatar = data.avatar;
             if (data.cover) this.cover = data.cover;
+        },
+        updateInfo: function updateInfo(data) {
+            if (data.user) this.userName = data.user;
+            if (data.status) this.userStatus = data.status;
         }
     }
 });
@@ -20169,14 +20175,14 @@ var render = function() {
       [
         _c("avatar", {
           staticClass: "img-head",
-          attrs: { username: _vm.user.name, color: "#fff", src: _vm.avatar }
+          attrs: { username: _vm.userName, color: "#fff", src: _vm.avatar }
         }),
         _vm._v(" "),
         _c("div", { staticClass: "chat-name" }, [
           _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
           _vm._v(" "),
           _c("p", { staticClass: "font-online" }, [
-            _vm._v(_vm._s(_vm.user.name) + "...")
+            _vm._v(_vm._s(_vm.userName) + "...")
           ])
         ]),
         _vm._v(" "),
@@ -20211,18 +20217,18 @@ var render = function() {
               _c("avatar", {
                 staticClass: "photo",
                 attrs: {
-                  username: _vm.user.name,
+                  username: _vm.userName,
                   color: "#fff",
                   src: _vm.avatar,
                   size: 100
                 }
               }),
               _vm._v(" "),
-              _c("h1", [_vm._v(_vm._s(_vm.user.name))]),
+              _c("h1", [_vm._v(_vm._s(_vm.userName))]),
               _vm._v(" "),
               _c("h2", [_vm._v("FullStack Developer")]),
               _vm._v(" "),
-              _c("h3", [_vm._v("Don't you wish there were a knob on the")])
+              _c("h3", [_vm._v(_vm._s(_vm.userStatus))])
             ],
             1
           ),
@@ -20230,7 +20236,11 @@ var render = function() {
           _c(
             "div",
             { staticClass: "manage_users" },
-            [_c("router-view", { on: { previewImage: _vm.updateImage } })],
+            [
+              _c("router-view", {
+                on: { previewImage: _vm.updateImage, modelInfo: _vm.updateInfo }
+              })
+            ],
             1
           )
         ])
@@ -20334,7 +20344,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -20393,12 +20403,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             avatar: null,
-            cover: null
+            cover: null,
+            userName: '',
+            userStatus: ''
         };
     },
     mounted: function mounted() {
@@ -20429,6 +20447,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
 
             reader.readAsDataURL(files[0]);
+        },
+
+
+        // ---------------------------------------------------
+
+        onInputChange: function onInputChange() {
+            this.$emit('modelInfo', {
+                'user': this.userName,
+                'status': this.userStatus
+            });
         },
 
 
@@ -20482,6 +20510,9 @@ var render = function() {
                 attrs: { type: "text", placeholder: "User name" },
                 domProps: { value: _vm.userName },
                 on: {
+                  keyup: function($event) {
+                    _vm.onInputChange($event, "name")
+                  },
                   input: function($event) {
                     if ($event.target.composing) {
                       return
@@ -20505,6 +20536,9 @@ var render = function() {
                 attrs: { type: "text", placeholder: "Status" },
                 domProps: { value: _vm.userStatus },
                 on: {
+                  keyup: function($event) {
+                    _vm.onInputChange($event, "status")
+                  },
                   input: function($event) {
                     if ($event.target.composing) {
                       return
