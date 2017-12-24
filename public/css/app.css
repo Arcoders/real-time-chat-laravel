@@ -704,13 +704,13 @@ button[disabled] {
 .add_friend {
   position: absolute;
   top: 15px;
-  left: 15px;
+  left: 22px;
 }
 
 .delete_friend {
   position: absolute;
   top: 70px;
-  left: 15px;
+  left: 22px;
 }
 
 .cover i {

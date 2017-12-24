@@ -3,6 +3,8 @@
 
         <div class="information_content">
 
+            <notifications :vue_notifications="notifications" :width="100"></notifications>
+
             <form method="POST" v-on:submit.prevent="updateProfile()" class="information_form" enctype="multipart/form-data">
 
                 <h1>Edit information</h1>
@@ -43,11 +45,13 @@
                 </label>
 
 
-                <button class="save">
+                <button class="save" v-if="btnSubmit">
                     Save
                 </button>
 
             </form>
+
+            <loading v-if="loading" :normal="true"></loading>
 
         </div>
 
@@ -59,17 +63,34 @@
 
 <script>
     export default {
+        // ---------------------------------------------------
+
+        props: ['user'],
+
+        // ---------------------------------------------------
+
         data() {
             return {
-                avatar: null,
-                cover: null,
-                userName: '',
-                userStatus: ''
+                avatar: this.user.avatar,
+                cover: this.user.cover,
+                userName: this.user.name,
+                userStatus: this.user.status,
+                newAvatar: false,
+                newCover: false,
+                notifications: [],
+                loading: false,
+                time: 4000
             }
         },
+
+        // ---------------------------------------------------
+
         mounted() {
             console.log('Update profile ok!')
         },
+
+        // ---------------------------------------------------
+
         methods: {
 
             // ---------------------------------------------------
@@ -83,8 +104,18 @@
 
                 reader.onload = (e) => {
 
-                    if (type == 'avatar') this.avatar = e.target.result;
-                    if (type == 'cover') this.cover = e.target.result;
+                    if (type == 'avatar')
+                    {
+                        this.avatar = e.target.result;
+                        this.newAvatar = true;
+                    }
+
+
+                    if (type == 'cover')
+                    {
+                        this.cover = e.target.result;
+                        this.newCover = true;
+                    }
 
                     this.$emit('previewImage', {
                         'avatar': this.avatar,
@@ -110,7 +141,91 @@
 
             updateProfile() {
 
-            }
+                if (!this.btnSubmit) return;
+                this.loading = true;
+
+                this.$http.post('/edit_profile', this.formData).then(response => {
+
+                    this.loading = false;
+
+                    if (response.status == 200) {
+                        this.done(response.data);
+                    } else {
+                         this.error();
+                    }
+
+                }, response => {
+
+                    this.loading = false;
+                    this.test = response.data;
+
+                    if (response.status == 422) {
+                        this.validation(response.data.errors);
+                    } else {
+                        this.error();
+                    }
+
+                });
+            },
+
+            // ---------------------------------------------------
+
+            error() {
+                this.showNotification('Group can not be edited, try it later', 'error');
+            },
+
+            // ---------------------------------------------------
+
+            validation(msg) {
+                if (msg.avatar) msg = msg.avatar[0];
+                if (msg.cover) msg = msg.cover[0];
+                if (msg.name) msg = msg.name[0];
+
+                this.showNotification(msg, 'validation');
+            },
+
+            // ---------------------------------------------------
+
+            done(msg) {
+                this.showNotification(msg, 'done');
+            },
+
+            // ---------------------------------------------------
+
+            showNotification(msg, type) {
+                this.notifications.push({ message: msg, type: type });
+
+                setTimeout(() => {
+                    this.notifications.shift();
+                }, this.time);
+
+                this.newAvatar = false;
+                this.newCover = false;
+            },
+
+            // ---------------------------------------------------
+
+        },
+        computed: {
+
+            // ---------------------------------------------------
+
+            btnSubmit() {
+                return ( this.userName.length >= 3 && this.userStatus.length >= 3);
+            },
+
+            // ---------------------------------------------------
+
+            formData() {
+                let formData = new FormData();
+
+                formData.append('name', this.userName);
+                formData.append('status', this.userStatus);
+                if (this.newAvatar) formData.append('avatar', this.$refs.fileInput.files[0]);
+                if (this.newCover) formData.append('cover', this.$refs.fileCover.files[0]);
+
+                return formData;
+            },
 
             // ---------------------------------------------------
 

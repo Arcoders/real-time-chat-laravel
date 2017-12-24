@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class profileController extends Controller
 {
@@ -23,36 +24,51 @@ class profileController extends Controller
         if ($users) return response()->json($users, 200);
     }
 
-    public function editGroup($profile_id, Request $request)
+    public function editProfile(Request $request)
     {
 
-        $user= User::find($profile_id);
+        $user= Auth::user();
 
         $request->validate([
             'name' => 'required|min:4|max:15',
-            'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
+            'status' => 'required|min:4|max:30',
+            'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000',
+            'cover' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
         ]);
 
         if ($request->file('avatar')) {
 
-            // Create new image
-
-            $data = $request->file('avatar');
-            $avatar = Image::make($data);
-            $avatar->fit(500, 500);
-
-            $avatar_name = time() . '_' . $user->id . '.' . $data->getClientOriginalExtension();
-
-            $avatar->save(public_path() . '/images/avatars/' . $avatar_name);
-
-            $user->avatar = $avatar_name;
+            $user->avatar = $this->processImage($request->file('avatar'), $user->id,'/images/profiles/');
 
         }
 
-        $group->name = $request['name'];
-        $save = $group->save();
+        if ($request->file('cover')) {
 
-        if ($save) return response()->json('Group edited successfully', 200);
+            $user->cover = $this->processImage($request->file('cover'), $user->id,'/images/profiles/', false);
+
+        }
+
+        $user->name = $request['name'];
+        $user->status = $request['status'];
+        $save = $user->save();
+
+        if ($save) return response()->json('User edited successfully', 200);
+    }
+
+    protected function processImage($requestFile, $userId, $folder, $avatar = true)
+    {
+
+            $data = $requestFile;
+            $image = Image::make($data);
+
+            if ($avatar) $image->fit(500, 500);
+
+            $image_name = time() . '_' . $userId . '.' . $data->getClientOriginalExtension();
+
+            $image->save(public_path() . $folder . $image_name);
+
+            return $folder.$image_name;
+
     }
 
 }

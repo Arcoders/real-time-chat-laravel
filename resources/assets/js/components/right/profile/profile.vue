@@ -53,7 +53,6 @@
                         <h1>{{ userName }}</h1>
                         <h2>FullStack Developer</h2>
                         <h3>{{ userStatus }}</h3>
-                        <h3>{{profile_id}}</h3>
 
 
                     </div>
@@ -61,7 +60,7 @@
 
                     <div class="manage_users">
 
-                        <router-view @previewImage="updateImage" @modelInfo="updateInfo"></router-view>
+                        <router-view :user="user" @previewImage="updateImage" @modelInfo="updateInfo"></router-view>
 
                         <div v-if="pathEdit" class="contener_txt" v-for="user in users">
                             <avatar :username="user.name"
@@ -138,11 +137,10 @@
             return {
                 users: [],
                 records: true,
-                profile_id: this.$route.params.profile_id,
                 userName: this.user.name,
                 userStatus: this.user.status,
                 avatar: this.user.avatar,
-                cover: "https://www.hdwallpapers.in/thumbs/2017/plane_mountains-t2.jpg"
+                cover: this.checkCover()
             }
         },
         mounted() {
@@ -176,6 +174,8 @@
 
                         this.userName = response.data.name;
                         this.userStatus = response.data.status;
+                        this.avatar = response.data.avatar;
+                        this.cover = response.data.cover;
 
                     } else {
                         this.$router.push('/profile');
@@ -208,6 +208,13 @@
 
             // ---------------------------------------------------
 
+            checkCover() {
+                return (this.user.cover) ? this.user.cover : '/images/profiles/default_cover.jpg';
+            }
+
+            // ---------------------------------------------------
+
+
         },
         computed: {
 
@@ -215,7 +222,7 @@
 
             pathEdit() {
                 return (this.$route.path == '/profile');
-            }
+            },
 
             // ---------------------------------------------------
         }

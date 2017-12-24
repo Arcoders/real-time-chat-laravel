@@ -3,7 +3,7 @@
 
         <div v-for="notification in vue_notifications" class="global">
 
-            <span v-bind:class="[notification.type , 'notification', 'animateOpen']">
+            <span v-bind:class="[notification.type , 'notification', 'animateOpen', 'width_' + width]">
                 {{ notification.message }}
             </span>
 
@@ -18,15 +18,28 @@
         width: 100%;
     }
 
+    .width_30 {
+        width: 30%;
+    }
+
+    .width_90 {
+        width: 90%;
+    }
+
+    .width_100 {
+        width: 100%;
+    }
+
+    .width_50 {
+        width: 50%;
+    }
     .notification {
         padding: 5px 10px;
-        width: 30%;
         position: absolute;
         top: 0;
         right: 0;
         font-size: 14px;
         text-align: center;
-        margin: 5px;
         border-radius: 0;
         background-color: #fff;
         font-weight: bold;
@@ -72,6 +85,10 @@
             vue_notifications: {
                 type: Array,
                 required: true,
+            },
+            width: {
+                type: Number,
+                default: 30
             }
         },
         mounted() {
