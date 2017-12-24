@@ -12,31 +12,20 @@
                 <p class="font-online">{{ userName }}...</p>
             </div>
 
-            <router-link v-if="$route.path == '/profile'" to="/profile/edit">
+            <router-link v-if="pathEdit" to="/profile/edit">
                 <i class="material-icons">edit</i>
             </router-link>
 
-            <router-link v-if="$route.path == '/profile/edit'" to="/profile">
+            <router-link v-else to="/profile">
                 <i class="material-icons">arrow_back</i>
             </router-link>
+
         </div>
 
         <div class="complet-content">
             <div class="complete_dynamic_content">
 
                 <div class="information">
-
-<!--                    <div class="information_content">
-                        <h1>Name:</h1>
-                        <p class="font-preview">{{ user.name }}</p>
-                    </div>
-
-                    <div class="information_content">
-                        <h1>Statuses:</h1>
-                        <p class="font-preview">Don't you wish there were a knob on the...</p>
-                    </div>-->
-
-
 
                     <div class="widget">
                         <div class="cover">
@@ -62,13 +51,30 @@
                         <h1>{{ userName }}</h1>
                         <h2>FullStack Developer</h2>
                         <h3>{{ userStatus }}</h3>
+                        <h3>{{profile_id}}</h3>
 
 
                     </div>
 
 
                     <div class="manage_users">
+
                         <router-view @previewImage="updateImage" @modelInfo="updateInfo"></router-view>
+
+                        <div v-if="pathEdit" class="contener_txt" v-for="user in users">
+                                    <avatar :username="user.name"
+                                            color="#fff"
+                                            :src="user.avatar"
+                                            :size="50"
+                                            class="img-head">
+                                    </avatar>
+                                    <div class="name">
+                                        <button v-on:click="getProfile(user.id)">
+                                            {{user.name}}
+                                        </button>
+                                    </div>
+                                </div>
+
                     </div>
 
                 </div>
@@ -80,25 +86,24 @@
 </template>
 
 <style scoped>
-    a i {
-        cursor: pointer;
-        text-decoration: none;
-    }
-
-    a i:hover {
-        color: #009688;
-    }
-
-    i_green {
-        color: #009688;
-    }
-
-    .complet-content {
-        background-color: #ffffff;
-    }
 
     .complete_dynamic_content {
         padding: 0;
+    }
+
+    .contener_txt
+    {
+        width: 100%;
+        height: auto;
+        background-color:#fbfbfb;
+        box-shadow:1px 1px 2px #777777;
+        display: flex;
+        text-align: left;
+    }
+
+    .name > button {
+        color: #777777;
+        font-size: 14px;
     }
 
 </style>
@@ -108,24 +113,85 @@
         props: ['user'],
         data() {
             return {
+                users: [],
+                profile_id: this.$route.params.profile_id,
                 userName: this.user.name,
-                userStatus: "Don\'t you wish there were a knob on the",
+                userStatus: this.user.status,
                 avatar: this.user.avatar,
                 cover: "https://www.hdwallpapers.in/thumbs/2017/plane_mountains-t2.jpg"
             }
         },
         mounted() {
+            this.getUsers();
             console.log('Profile ok!');
         },
         methods: {
+
+            // ---------------------------------------------------
+
             updateImage(data) {
                 if (data.avatar) this.avatar = data.avatar;
                 if (data.cover) this.cover = data.cover;
             },
+
+            // ---------------------------------------------------
+
             updateInfo(data) {
                 if (data.user) this.userName = data.user;
                 if (data.status) this.userStatus = data.status;
+            },
+
+            // ---------------------------------------------------
+
+            getProfile(id) {
+                this.$http.get('/get_profile/' + id).then(response => {
+
+                    if (response.status == 200) {
+
+                        if (response.data == 0) return this.$router.push('/profile');
+
+                        this.userName = response.data.name;
+                        this.userStatus = response.data.status;
+
+                    } else {
+                        this.$router.push('/profile');
+                    }
+
+                }, () => {
+                    this.$router.push('/profile');
+                });
+            },
+
+            // ---------------------------------------------------
+
+            getUsers() {
+                this.$http.get('/get_users/').then(response => {
+
+                    if (response.status == 200) {
+
+                        this.users = response.data;
+
+                    } else {
+                        // error
+                    }
+
+                }, () => {
+                    // error
+                });
+            },
+
+            // ---------------------------------------------------
+
+        },
+        computed: {
+
+            // ---------------------------------------------------
+
+            pathEdit() {
+                return (this.$route.path == '/profile');
             }
+
+            // ---------------------------------------------------
         }
     }
 </script>

@@ -28,7 +28,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/my_groups', 'GroupsController@myGroups');
     Route::delete('/delete_group/{group_id}', 'GroupsController@deleteGroup');
     Route::get('/get_group/{group_id}', 'GroupsController@getGroup');
-
     Route::post('/edit_group/{group_id}', 'GroupsController@editGroup');
+
+    // Profile...
+    Route::get('/get_profile/{profile_id}', 'ProfileController@getProfile');
+    Route::get('/get_users', 'ProfileController@getUsers');
 
 });

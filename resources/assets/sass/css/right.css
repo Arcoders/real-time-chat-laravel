@@ -431,10 +431,12 @@ button[disabled]{
 
 
 .manage_users {
-    background-color: #f0ad4e;
+    position: relative;
+    background-color: #fafafa;
     width: 30%;
     height: 100%;
     min-height: 100%;
+    overflow-y: auto;
 }
 
 /* Information */

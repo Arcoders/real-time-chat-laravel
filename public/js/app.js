@@ -20024,7 +20024,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\na i[data-v-3f8256ef] {\n    cursor: pointer;\n    text-decoration: none;\n}\na i[data-v-3f8256ef]:hover {\n    color: #009688;\n}\ni_green[data-v-3f8256ef] {\n    color: #009688;\n}\n.complet-content[data-v-3f8256ef] {\n    background-color: #ffffff;\n}\n.complete_dynamic_content[data-v-3f8256ef] {\n    padding: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n.complete_dynamic_content[data-v-3f8256ef] {\n    padding: 0;\n}\n.contener_txt[data-v-3f8256ef]\n{\n    width: 100%;\n    height: auto;\n    background-color:#fbfbfb;\n    -webkit-box-shadow:1px 1px 2px #777777;\n            box-shadow:1px 1px 2px #777777;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    text-align: left;\n}\n.name > button[data-v-3f8256ef] {\n    color: #777777;\n    font-size: 14px;\n}\n\n", ""]);
 
 // exports
 
@@ -20140,30 +20140,97 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user'],
     data: function data() {
         return {
+            users: [],
+            profile_id: this.$route.params.profile_id,
             userName: this.user.name,
-            userStatus: "Don\'t you wish there were a knob on the",
+            userStatus: this.user.status,
             avatar: this.user.avatar,
             cover: "https://www.hdwallpapers.in/thumbs/2017/plane_mountains-t2.jpg"
         };
     },
     mounted: function mounted() {
+        this.getUsers();
         console.log('Profile ok!');
     },
 
     methods: {
+
+        // ---------------------------------------------------
+
         updateImage: function updateImage(data) {
             if (data.avatar) this.avatar = data.avatar;
             if (data.cover) this.cover = data.cover;
         },
+
+
+        // ---------------------------------------------------
+
         updateInfo: function updateInfo(data) {
             if (data.user) this.userName = data.user;
             if (data.status) this.userStatus = data.status;
+        },
+
+
+        // ---------------------------------------------------
+
+        getProfile: function getProfile(id) {
+            var _this = this;
+
+            this.$http.get('/get_profile/' + id).then(function (response) {
+
+                if (response.status == 200) {
+
+                    if (response.data == 0) return _this.$router.push('/profile');
+
+                    _this.userName = response.data.name;
+                    _this.userStatus = response.data.status;
+                } else {
+                    _this.$router.push('/profile');
+                }
+            }, function () {
+                _this.$router.push('/profile');
+            });
+        },
+
+
+        // ---------------------------------------------------
+
+        getUsers: function getUsers() {
+            var _this2 = this;
+
+            this.$http.get('/get_users/').then(function (response) {
+
+                if (response.status == 200) {
+
+                    _this2.users = response.data;
+                } else {
+                    // error
+                }
+            }, function () {
+                // error
+            });
         }
+    },
+    computed: {
+
+        // ---------------------------------------------------
+
+        pathEdit: function pathEdit() {
+            return this.$route.path == '/profile';
+        }
+
+        // ---------------------------------------------------
+
     }
 });
 
@@ -20193,17 +20260,13 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm.$route.path == "/profile"
+        _vm.pathEdit
           ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
               _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
             ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.$route.path == "/profile/edit"
-          ? _c("router-link", { attrs: { to: "/profile" } }, [
+          : _c("router-link", { attrs: { to: "/profile" } }, [
               _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
             ])
-          : _vm._e()
       ],
       1
     ),
@@ -20235,7 +20298,9 @@ var render = function() {
               _vm._v(" "),
               _c("h2", [_vm._v("FullStack Developer")]),
               _vm._v(" "),
-              _c("h3", [_vm._v(_vm._s(_vm.userStatus))])
+              _c("h3", [_vm._v(_vm._s(_vm.userStatus))]),
+              _vm._v(" "),
+              _c("h3", [_vm._v(_vm._s(_vm.profile_id))])
             ],
             1
           ),
@@ -20246,9 +20311,50 @@ var render = function() {
             [
               _c("router-view", {
                 on: { previewImage: _vm.updateImage, modelInfo: _vm.updateInfo }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.users, function(user) {
+                return _vm.pathEdit
+                  ? _c(
+                      "div",
+                      { staticClass: "contener_txt" },
+                      [
+                        _c("avatar", {
+                          staticClass: "img-head",
+                          attrs: {
+                            username: user.name,
+                            color: "#fff",
+                            src: user.avatar,
+                            size: 50
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "name" }, [
+                          _c(
+                            "button",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.getProfile(user.id)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        " +
+                                  _vm._s(user.name) +
+                                  "\n                                    "
+                              )
+                            ]
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  : _vm._e()
               })
             ],
-            1
+            2
           )
         ])
       ])

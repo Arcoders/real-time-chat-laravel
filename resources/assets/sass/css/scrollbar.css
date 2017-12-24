@@ -1,6 +1,7 @@
 body::-webkit-scrollbar,
 .contact-list::-webkit-scrollbar,
 .complete_dynamic_content::-webkit-scrollbar,
+.manage_users::-webkit-scrollbar,
 .dynamic_content::-webkit-scrollbar{
 		width: 0.4em;
 		height: 0.4em;
@@ -9,11 +10,12 @@ body::-webkit-scrollbar,
 body::-webkit-scrollbar-thumb,
 .contact-list::-webkit-scrollbar-thumb,
 .complete_dynamic_content::-webkit-scrollbar-thumb,
+.manage_users::-webkit-scrollbar-thumb,
 .dynamic_content::-webkit-scrollbar-thumb {
 		background-color: rgba(0,0,0,0.2);
 }
 
-.contact-list, .dynamic_content, .complete_dynamic_content {
+.contact-list, .dynamic_content, .complete_dynamic_content, .manage_users {
       scrollbar-arrow-color: #009688;
       scrollbar-face-color: #eeeeee;
       scrollbar-highlight-color: #eeeeee;
