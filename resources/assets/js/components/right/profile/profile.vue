@@ -41,7 +41,15 @@
                     <div class="widget">
                         <div class="cover">
                             <img :src="cover" />
-                            <div class="cover_effect"></div>
+                            <div class="add_friend">
+                                <button>
+                                    <!--<i class="material-icons">person_add</i>-->
+                                    <!--<i class="material-icons">people</i>-->
+                                    <!--<i class="material-icons">sentiment_very_dissatisfied</i>-->
+                                    <!--<i class="material-icons">done_all</i>-->
+                                    <i class="material-icons">access_time</i>
+                                </button>
+                            </div>
                         </div>
 
                         <avatar :username="userName"
@@ -54,7 +62,6 @@
                         <h1>{{ userName }}</h1>
                         <h2>FullStack Developer</h2>
                         <h3>{{ userStatus }}</h3>
-
 
 
                     </div>
