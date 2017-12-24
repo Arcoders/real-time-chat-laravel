@@ -500,6 +500,22 @@ button[disabled]{
     color: #777777;
 }
 
+
+.save {
+    line-height: 30px;
+    width: 100%;
+    background-color: transparent;
+    border: solid 2px #EEEEEE;
+    color: #777777;
+    margin-top: 25px;
+    transition: all .3s ease-out;
+}
+
+.save:hover {
+    border: solid 2px #EEEEEE;
+    font-weight: bold;
+}
+
 /* Information */
 
 .information {

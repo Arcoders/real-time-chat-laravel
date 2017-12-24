@@ -42,6 +42,11 @@
                     <input type="file" name="fileCover" v-on:change="onFileChange($event, 'cover')" ref="fileCover">
                 </label>
 
+
+                <button class="save">
+                    Save
+                </button>
+
             </form>
 
         </div>
