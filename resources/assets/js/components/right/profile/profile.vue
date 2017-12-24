@@ -77,6 +77,20 @@
                             </div>
                         </div>
 
+                        <div v-if="!records && pathEdit" class="contener_txt">
+                            <avatar username="!"
+                                    color="#fff"
+                                    :size="50"
+                                    backgroundColor="#E57373"
+                                    class="img-head">
+                            </avatar>
+                            <div class="name">
+                                <button>
+                                    You are the first user
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -123,6 +137,7 @@
         data() {
             return {
                 users: [],
+                records: true,
                 profile_id: this.$route.params.profile_id,
                 userName: this.user.name,
                 userStatus: this.user.status,
@@ -177,6 +192,8 @@
                 this.$http.get('/get_users/').then(response => {
 
                     if (response.status == 200) {
+
+                        if (response.data.length == 0) this.records = false;
 
                         this.users = response.data;
 

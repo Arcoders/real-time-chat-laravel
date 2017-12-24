@@ -20154,12 +20154,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user'],
     data: function data() {
         return {
             users: [],
+            records: true,
             profile_id: this.$route.params.profile_id,
             userName: this.user.name,
             userStatus: this.user.status,
@@ -20220,6 +20235,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$http.get('/get_users/').then(function (response) {
 
                 if (response.status == 200) {
+
+                    if (response.data.length == 0) _this2.records = false;
 
                     _this2.users = response.data;
                 } else {
@@ -20360,7 +20377,28 @@ var render = function() {
                       1
                     )
                   : _vm._e()
-              })
+              }),
+              _vm._v(" "),
+              !_vm.records && _vm.pathEdit
+                ? _c(
+                    "div",
+                    { staticClass: "contener_txt" },
+                    [
+                      _c("avatar", {
+                        staticClass: "img-head",
+                        attrs: {
+                          username: "!",
+                          color: "#fff",
+                          size: 50,
+                          backgroundColor: "#E57373"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(2)
+                    ],
+                    1
+                  )
+                : _vm._e()
             ],
             2
           )
@@ -20387,6 +20425,18 @@ var staticRenderFns = [
     return _c("div", { staticClass: "delete_friend style_friend" }, [
       _c("button", [
         _c("i", { staticClass: "material-icons" }, [_vm._v("clear")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "name" }, [
+      _c("button", [
+        _vm._v(
+          "\n                                You are the first user\n                            "
+        )
       ])
     ])
   }
