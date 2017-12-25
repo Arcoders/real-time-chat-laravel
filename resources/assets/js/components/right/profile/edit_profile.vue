@@ -197,6 +197,7 @@
 
                 setTimeout(() => {
                     this.notifications.shift();
+                    if (type == 'done') this.$router.go(this.$router.currentRoute);
                 }, this.time);
 
                 this.newAvatar = false;

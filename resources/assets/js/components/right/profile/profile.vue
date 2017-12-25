@@ -140,7 +140,7 @@
                 userName: this.user.name,
                 userStatus: this.user.status,
                 avatar: this.user.avatar,
-                cover: this.checkCover()
+                cover: this.checkCover(this.user.cover)
             }
         },
         mounted() {
@@ -175,7 +175,7 @@
                         this.userName = response.data.name;
                         this.userStatus = response.data.status;
                         this.avatar = response.data.avatar;
-                        this.cover = response.data.cover;
+                        this.cover = this.checkCover(response.data.cover);
 
                     } else {
                         this.$router.push('/profile');
@@ -208,8 +208,8 @@
 
             // ---------------------------------------------------
 
-            checkCover() {
-                return (this.user.cover) ? this.user.cover : '/images/profiles/default_cover.jpg';
+            checkCover(cover) {
+                return (cover) ? cover : '/images/profiles/default_cover.jpg';
             }
 
             // ---------------------------------------------------

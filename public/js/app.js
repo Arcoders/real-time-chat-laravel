@@ -20201,7 +20201,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             userName: this.user.name,
             userStatus: this.user.status,
             avatar: this.user.avatar,
-            cover: this.checkCover()
+            cover: this.checkCover(this.user.cover)
         };
     },
     mounted: function mounted() {
@@ -20241,7 +20241,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.userName = response.data.name;
                     _this.userStatus = response.data.status;
                     _this.avatar = response.data.avatar;
-                    _this.cover = response.data.cover;
+                    _this.cover = _this.checkCover(response.data.cover);
                 } else {
                     _this.$router.push('/profile');
                 }
@@ -20274,8 +20274,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ---------------------------------------------------
 
-        checkCover: function checkCover() {
-            return this.user.cover ? this.user.cover : '/images/profiles/default_cover.jpg';
+        checkCover: function checkCover(cover) {
+            return cover ? cover : '/images/profiles/default_cover.jpg';
         }
 
         // ---------------------------------------------------
@@ -20782,6 +20782,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             setTimeout(function () {
                 _this3.notifications.shift();
+                if (type == 'done') _this3.$router.go(_this3.$router.currentRoute);
             }, this.time);
 
             this.newAvatar = false;
