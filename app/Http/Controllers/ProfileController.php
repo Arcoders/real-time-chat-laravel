@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\UploadFiles;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 
 class profileController extends Controller
 {
+    use UploadFiles;
+
+    protected $folder = '/images/profiles/';
 
     public function getProfile($profile_id)
     {
@@ -27,10 +30,7 @@ class profileController extends Controller
     public function editProfile(Request $request)
     {
 
-//        return $request->file('avatar')->getClientOriginalName() . ' ------- ' .$request->file('cover')->getClientOriginalName();
-
         $user= Auth::user();
-        $folder = '/images/profiles/';
 
         $request->validate([
             'name' => 'required|min:4|max:15',
@@ -43,7 +43,7 @@ class profileController extends Controller
 
             $this->deleteImage($user->avatar);
 
-            $user->avatar = $this->processImage($request->file('avatar'), $user->id, $folder);
+            $user->avatar = $this->processImage($request->file('avatar'), $user->id, $this->folder);
 
         }
 
@@ -51,7 +51,7 @@ class profileController extends Controller
 
             $this->deleteImage($user->cover);
 
-            $user->cover = $this->processImage($request->file('cover'), $user->id, $folder, false);
+            $user->cover = $this->processImage($request->file('cover'), $user->id, $this->folder, false);
 
         }
 
@@ -61,31 +61,6 @@ class profileController extends Controller
         $save = $user->save();
 
         if ($save) return response()->json('User edited successfully', 200);
-    }
-
-    protected function processImage($requestFile, $userId, $folder, $avatar = true)
-    {
-
-        $data = $requestFile;
-        $name = $data->getClientOriginalName();
-        $ext = $data->getClientOriginalExtension();
-
-        $image = Image::make($data);
-
-        if ($avatar) $image->fit(500, 500);
-
-        $image_name = rand(0, time()) . '_' . $userId . str_shuffle(md5($name)) . '.' . $ext;
-
-        $image->save(public_path() . $folder . $image_name);
-
-        return $folder.$image_name;
-
-    }
-
-    protected function deleteImage($name)
-    {
-        $file = public_path() . $name;
-        if (file_exists($file)) @unlink($file);
     }
 
 }

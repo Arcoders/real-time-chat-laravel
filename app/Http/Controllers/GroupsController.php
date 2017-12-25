@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Traits\UploadFiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 
 class GroupsController extends Controller
 {
+
+    use UploadFiles;
+
+    protected $folder = '/images/avatars/';
+
     public function newGroup(Request $request)
     {
         $request->validate([
@@ -21,14 +26,7 @@ class GroupsController extends Controller
 
         if ($request->file('avatar')) {
 
-            $data = $request->file('avatar');
-
-            $avatar = Image::make($data);
-            $avatar->fit(500, 500);
-
-            $avatar_name = time() . '_' . $user->id . '.' . $data->getClientOriginalExtension();
-
-            $avatar->save(public_path() . '/images/avatars/' . $avatar_name);
+            $avatar_name = $this->processImage($request->file('avatar'), $user->id, $this->folder);
         }
 
         $create = Group::create([
@@ -52,10 +50,7 @@ class GroupsController extends Controller
         $query = Group::where('id', $group_id)->where('user_id', Auth::user()->id);
         $group = $query->first();
 
-        if ($group->avatar) {
-            $file = public_path() . '/images/avatars/' . $group->avatar;
-            if (file_exists($file)) @unlink($file);
-        }
+        if ($group->avatar) $this->deleteImage($group->avatar);
 
         $delete = $query->delete();
 
@@ -73,7 +68,6 @@ class GroupsController extends Controller
     {
         $user = Auth::user();
         $group = Group::find($group_id);
-        $folder = '/images/avatars/';
 
         if ($request['deleteImage']) {
 
@@ -91,7 +85,7 @@ class GroupsController extends Controller
 
             $this->deleteImage($group->avatar);
 
-            $group->avatar = $this->processImage($request->file('avatar'), $user->id, $folder);
+            $group->avatar = $this->processImage($request->file('avatar'), $user->id, $this->folder);
 
         }
 
@@ -100,31 +94,6 @@ class GroupsController extends Controller
         $save = $group->save();
 
         if ($save) return response()->json('Group edited successfully', 200);
-    }
-
-    protected function processImage($requestFile, $userId, $folder, $avatar = true)
-    {
-
-        $data = $requestFile;
-        $name = $data->getClientOriginalName();
-        $ext = $data->getClientOriginalExtension();
-
-        $image = Image::make($data);
-
-        if ($avatar) $image->fit(500, 500);
-
-        $image_name = rand(0, time()) . '_' . $userId . str_shuffle(md5($name)) . '.' . $ext;
-
-        $image->save(public_path() . $folder . $image_name);
-
-        return $folder.$image_name;
-
-    }
-
-    protected function deleteImage($name)
-    {
-        $file = public_path() . $name;
-        if (file_exists($file)) @unlink($file);
     }
 
 }
