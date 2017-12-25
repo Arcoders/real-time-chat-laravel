@@ -26,7 +26,7 @@
             </div>
 
             <div v-if="status == 'pending'" class="delete_friend style_friend">
-                <button>
+                <button @click="reject_friendship">
                     <i class="material-icons">clear</i>
                 </button>
             </div>
@@ -89,6 +89,19 @@
                     if (response.status == 200) {
                         if (response.body == 1) this.status = 'friends';
                         if (response.body == 0) this.status = 'pending';
+                        this.loading = false;
+                    } else {
+                        // ...
+                    }
+                }, response => {
+                    // ...
+                });
+            },
+            reject_friendship() {
+                this.loading = true;
+                this.$http.put('/reject_friendship/'+this.profile_user_id).then(response => {
+                    if (response.status == 200) {
+                        if (response.body ==3) this.status = 0;
                         this.loading = false;
                     } else {
                         // ...

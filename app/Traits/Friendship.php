@@ -54,6 +54,19 @@ trait Friendship
         return 0;
     }
 
+    public function reject_friendships($requester)
+    {
+        if ($this->has_pending_friend_request_from($requester) === 0) return 0;
+        $Friendship = ModelFriends::where('requester', $requester)
+            ->where('user_requested', $this->id)
+            ->first();
+        if ($Friendship)
+        {
+            if ($Friendship->delete()) return 3;
+        }
+        return 0;
+    }
+
     public function friends()
     {
         $friends1 = array();

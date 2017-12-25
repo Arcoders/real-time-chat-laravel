@@ -23153,6 +23153,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, function (response) {
                 // ...
             });
+        },
+        reject_friendship: function reject_friendship() {
+            var _this5 = this;
+
+            this.loading = true;
+            this.$http.put('/reject_friendship/' + this.profile_user_id).then(function (response) {
+                if (response.status == 200) {
+                    if (response.body == 3) _this5.status = 0;
+                    _this5.loading = false;
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
+            });
         }
     }
 });
@@ -23210,23 +23225,16 @@ var render = function() {
           _vm._v(" "),
           _vm.status == "pending"
             ? _c("div", { staticClass: "delete_friend style_friend" }, [
-                _vm._m(0)
+                _c("button", { on: { click: _vm.reject_friendship } }, [
+                  _c("i", { staticClass: "material-icons" }, [_vm._v("clear")])
+                ])
               ])
             : _vm._e()
         ])
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [
-      _c("i", { staticClass: "material-icons" }, [_vm._v("clear")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

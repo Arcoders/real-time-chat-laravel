@@ -39,5 +39,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/check_relationship_status/{user_id}', 'FriendshipsController@check');
     Route::post('/add_friend/{user_id}', 'FriendshipsController@add_friend');
     Route::patch('/accept_friend/{user_id}', 'FriendshipsController@accept_friend');
+    Route::put('/reject_friendship/{user_id}', 'FriendshipsController@reject_friendship');
 
 });
