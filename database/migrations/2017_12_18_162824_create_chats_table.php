@@ -20,7 +20,7 @@ class CreateChatsTable extends Migration
             $table->integer('friend_id')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('friend_id')->references('id')->on('friend_ships');
+            $table->foreign('friend_id')->references('id')->on('friendships');
 
             $table->timestamps();
         });

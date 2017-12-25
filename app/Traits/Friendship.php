@@ -1,6 +1,8 @@
 <?php
 
+namespace App\Traits;
 use App\User;
+use App\Friendship as ModelFriends;
 
 trait Friendship
 {
@@ -10,6 +12,10 @@ trait Friendship
         return User::all();
     }
 
+    /**
+     * @param $user_requested_id
+     * @return int|string
+     */
     public function add_friend($user_requested_id)
     {
         if ($this->id === $user_requested_id) return 0;
@@ -19,7 +25,7 @@ trait Friendship
         {
             return $this->accept_friends($user_requested_id);
         }
-        $Friendship = Friendship::create([
+        $Friendship = ModelFriends::create([
             'requester' => $this->id,
             'user_requested' => $user_requested_id
         ]);
@@ -35,7 +41,7 @@ trait Friendship
     public function accept_friends($requester)
     {
         if ($this->has_pending_friend_request_from($requester) === 0) return 0;
-        $Friendship = Friendship::where('requester', $requester)
+        $Friendship = ModelFriends::where('requester', $requester)
             ->where('user_requested', $this->id)
             ->first();
         if ($Friendship)
@@ -51,14 +57,14 @@ trait Friendship
     public function friends()
     {
         $friends1 = array();
-        $f1 = Friendship::where('status', 1)
+        $f1 = ModelFriends::where('status', 1)
             ->where('requester', $this->id)
             ->get();
         foreach ($f1 as $friendship):
             array_push($friends1, User::find($friendship->user_requested));
         endforeach;
         $friends2 = array();
-        $f2 = Friendship::where('status', 1)
+        $f2 = ModelFriends::where('status', 1)
             ->where('user_requested', $this->id)
             ->get();
         foreach ($f2 as $friendship):
@@ -75,7 +81,7 @@ trait Friendship
     public function pending_friend_requests()
     {
         $users = array();
-        $Friendships = Friendship::where('status', 0)
+        $Friendships = ModelFriends::where('status', 0)
             ->where('user_requested', $this->id)
             ->get();
         foreach ($Friendships as $friendship):
@@ -104,7 +110,7 @@ trait Friendship
     public function pending_friend_requests_sent()
     {
         $users = array();
-        $Friendships = Friendship::where('status', 0)
+        $Friendships = ModelFriends::where('status', 0)
             ->where('requester', $this->id)
             ->get();
         foreach ($Friendships as $friendship):

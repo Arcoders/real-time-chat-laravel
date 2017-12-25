@@ -26,21 +26,9 @@
                     <div class="widget">
                         <div class="cover">
                             <img :src="cover" />
-                            <div class="add_friend style_friend">
-                                <button>
-                                    <!--<i class="material-icons">person_add</i>-->
-                                    <!--<i class="material-icons">people</i>-->
-                                    <!--<i class="material-icons">sentiment_very_dissatisfied</i>-->
-                                    <!--<i class="material-icons">done_all</i>-->
-                                    <!--<i class="material-icons">access_time</i>-->
-                                    <i class="material-icons">done_all</i>
-                                </button>
-                            </div>
-                            <div class="delete_friend style_friend">
-                                <button>
-                                    <i class="material-icons">clear</i>
-                                </button>
-                            </div>
+
+                            <friendship v-if="user.id != userId" :my_id="user.id" :profile_user_id="userId"></friendship>
+
                         </div>
 
                         <avatar :username="userName"
@@ -53,6 +41,7 @@
                         <h1>{{ userName }}</h1>
                         <h2>FullStack Developer</h2>
                         <h3>{{ userStatus }}</h3>
+                        <h3>{{ userId }}</h3>
 
 
                     </div>
@@ -139,6 +128,7 @@
                 records: true,
                 userName: this.user.name,
                 userStatus: this.user.status,
+                userId: this.user.id,
                 avatar: this.user.avatar,
                 cover: this.checkCover(this.user.cover)
             }
@@ -172,6 +162,7 @@
 
                         if (response.data == 0) return this.$router.push('/profile');
 
+                        this.userId = response.data.id;
                         this.userName = response.data.name;
                         this.userStatus = response.data.status;
                         this.avatar = response.data.avatar;

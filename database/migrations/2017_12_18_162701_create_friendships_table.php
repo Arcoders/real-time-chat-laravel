@@ -13,11 +13,12 @@ class CreateFriendshipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('friend_ships', function (Blueprint $table) {
+        Schema::create('friendships', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('requester')->unsigned();
             $table->integer('user_requested')->unsigned();
+
             $table->boolean('status')->default(0);
 
             $table->foreign('requester')->references('id')->on('users');

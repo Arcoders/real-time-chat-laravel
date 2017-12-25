@@ -12,9 +12,18 @@ import Avatar from 'vue-avatar';
 
 
 const VueResource = require('vue-resource');
+const VuePusher = require('vue-pusher');
 
 window.Vue.use(VueRouter);
 window.Vue.use(VueResource);
+
+window.Vue.use(VuePusher, {
+    api_key: '60efd870de38efff2291',
+    options: {
+        cluster: 'eu',
+        encrypted: true,
+    }
+});
 
 // headers
 
@@ -38,6 +47,7 @@ Vue.component('search', require('./components/left/sections/search.vue'));
 Vue.component('bar', require('./components/right/chat/bar.vue'));
 Vue.component('messages', require('./components/right/chat/messages.vue'));
 Vue.component('send', require('./components/right/chat/send.vue'));
+Vue.component('friendship', require('./components/right/friends/friendship.vue'));
 
 // Global components
 

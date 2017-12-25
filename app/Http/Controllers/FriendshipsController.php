@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Traits\TriggerPusher;
+use Illuminate\Support\Facades\Auth;
 
 class FriendshipsController extends Controller
 {
