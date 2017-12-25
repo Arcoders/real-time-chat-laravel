@@ -35,4 +35,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/get_users', 'ProfileController@getUsers');
     Route::post('/edit_profile', 'ProfileController@editProfile');
 
+    // Friendships
+    Route::get('/check_relationship_status/{user_id}', 'FriendshipsController@check');
+    Route::post('/add_friend/{user_id}', 'FriendshipsController@add_friend');
+    Route::patch('/accept_friend/{user_id}', 'FriendshipsController@accept_friend');
+
 });
