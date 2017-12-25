@@ -209,7 +209,7 @@
             // ---------------------------------------------------
 
             checkCover(cover) {
-                return (cover) ? cover : '/images/profiles/default_cover.jpg';
+                return (cover) ? cover : '/images/default/default_cover.jpg';
             }
 
             // ---------------------------------------------------

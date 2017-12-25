@@ -27,7 +27,10 @@ class profileController extends Controller
     public function editProfile(Request $request)
     {
 
+//        return $request->file('avatar')->getClientOriginalName() . ' ------- ' .$request->file('cover')->getClientOriginalName();
+
         $user= Auth::user();
+        $folder = '/images/profiles/';
 
         $request->validate([
             'name' => 'required|min:4|max:15',
@@ -38,18 +41,23 @@ class profileController extends Controller
 
         if ($request->file('avatar')) {
 
-            $user->avatar = $this->processImage($request->file('avatar'), $user->id,'/images/profiles/');
+            $this->deleteImage($user->avatar);
+
+            $user->avatar = $this->processImage($request->file('avatar'), $user->id, $folder);
 
         }
 
         if ($request->file('cover')) {
 
-            $user->cover = $this->processImage($request->file('cover'), $user->id,'/images/profiles/', false);
+            $this->deleteImage($user->cover);
+
+            $user->cover = $this->processImage($request->file('cover'), $user->id, $folder, false);
 
         }
 
         $user->name = $request['name'];
         $user->status = $request['status'];
+
         $save = $user->save();
 
         if ($save) return response()->json('User edited successfully', 200);
@@ -58,17 +66,26 @@ class profileController extends Controller
     protected function processImage($requestFile, $userId, $folder, $avatar = true)
     {
 
-            $data = $requestFile;
-            $image = Image::make($data);
+        $data = $requestFile;
+        $name = $data->getClientOriginalName();
+        $ext = $data->getClientOriginalExtension();
 
-            if ($avatar) $image->fit(500, 500);
+        $image = Image::make($data);
 
-            $image_name = time() . '_' . $userId . '.' . $data->getClientOriginalExtension();
+        if ($avatar) $image->fit(500, 500);
 
-            $image->save(public_path() . $folder . $image_name);
+        $image_name = rand(0, time()) . '_' . $userId . str_shuffle(md5($name)) . '.' . $ext;
 
-            return $folder.$image_name;
+        $image->save(public_path() . $folder . $image_name);
 
+        return $folder.$image_name;
+
+    }
+
+    protected function deleteImage($name)
+    {
+        $file = public_path() . $name;
+        if (file_exists($file)) @unlink($file);
     }
 
 }

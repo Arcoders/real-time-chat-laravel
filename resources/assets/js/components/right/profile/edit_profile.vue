@@ -51,7 +51,7 @@
 
             </form>
 
-            <loading v-if="loading" :normal="true"></loading>
+            <loading v-if="loading"></loading>
 
         </div>
 
@@ -157,7 +157,6 @@
                 }, response => {
 
                     this.loading = false;
-                    this.test = response.data;
 
                     if (response.status == 422) {
                         this.validation(response.data.errors);
@@ -171,7 +170,7 @@
             // ---------------------------------------------------
 
             error() {
-                this.showNotification('Group can not be edited, try it later', 'error');
+                this.showNotification('User can not be edited, try it later', 'error');
             },
 
             // ---------------------------------------------------
@@ -197,7 +196,11 @@
 
                 setTimeout(() => {
                     this.notifications.shift();
-                    if (type == 'done') this.$router.go(this.$router.currentRoute);
+                    if (type == 'done')
+                    {
+                        this.$router.go(this.$router.currentRoute);
+                        window.location.reload();
+                    }
                 }, this.time);
 
                 this.newAvatar = false;

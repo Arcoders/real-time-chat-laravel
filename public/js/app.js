@@ -19670,7 +19670,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 text: 'Hola muy buenas lorem ipsum dolor set amet',
                 time: '15:20'
             }, {
-                id: 2,
+                id: 562,
                 name: 'Berto Romero',
                 avatar: 'https://avatars.io/twitter/maryam',
                 photo: null,
@@ -20275,7 +20275,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         checkCover: function checkCover(cover) {
-            return cover ? cover : '/images/profiles/default_cover.jpg';
+            return cover ? cover : '/images/default/default_cover.jpg';
         }
 
         // ---------------------------------------------------
@@ -20737,7 +20737,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, function (response) {
 
                 _this2.loading = false;
-                _this2.test = response.data;
 
                 if (response.status == 422) {
                     _this2.validation(response.data.errors);
@@ -20751,7 +20750,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         error: function error() {
-            this.showNotification('Group can not be edited, try it later', 'error');
+            this.showNotification('User can not be edited, try it later', 'error');
         },
 
 
@@ -20782,7 +20781,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             setTimeout(function () {
                 _this3.notifications.shift();
-                if (type == 'done') _this3.$router.go(_this3.$router.currentRoute);
+                if (type == 'done') {
+                    _this3.$router.go(_this3.$router.currentRoute);
+                    window.location.reload();
+                }
             }, this.time);
 
             this.newAvatar = false;
@@ -20940,7 +20942,7 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e()
+          _vm.loading ? _c("loading") : _vm._e()
         ],
         1
       )
@@ -21661,7 +21663,7 @@ var render = function() {
                           attrs: {
                             size: 45,
                             username: group.name,
-                            src: "/images/avatars/" + group.avatar
+                            src: group.avatar
                           }
                         })
                   ],
@@ -22553,7 +22555,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this4.showEdit = true;
 
                     _this4.groupName = response.data.name;
-                    if (response.data.avatar) _this4.avatar = '/images/avatars/' + response.data.avatar;
+                    if (response.data.avatar) _this4.avatar = response.data.avatar;
                 } else {
                     _this4.$router.push('/groups/my');
                 }

@@ -194,7 +194,7 @@
                         this.showEdit = true;
 
                         this.groupName = response.data.name;
-                        if (response.data.avatar) this.avatar = '/images/avatars/' + response.data.avatar;
+                        if (response.data.avatar) this.avatar = response.data.avatar;
 
                     } else {
                         this.$router.push('/groups/my');

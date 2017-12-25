@@ -43,7 +43,7 @@
                                     class="group_avatar"
                                     :size="45"
                                     :username="group.name"
-                                    :src="'/images/avatars/' + group.avatar">
+                                    :src="group.avatar">
                             </avatar>
                         </td>
 
