@@ -23082,11 +23082,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+
+    // ---------------------------------------------------
+
     props: ['my_id', 'profile_user_id'],
+
+    // ---------------------------------------------------
+
+    watch: {
+        profile_user_id: function profile_user_id() {
+            this.relationShipStatus();
+        }
+    },
+
+    // ---------------------------------------------------
+
     data: function data() {
         return {
             status: '',
@@ -23094,27 +23106,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             changeStatus: []
         };
     },
+
+
+    // ---------------------------------------------------
+
     mounted: function mounted() {
         this.relationShipStatus();
         this.updtateStatus();
     },
 
+
+    // ---------------------------------------------------
+
     methods: {
+
+        // ---------------------------------------------------
+
         updtateStatus: function updtateStatus() {
             var _this = this;
 
             this.channel = this.$pusher.subscribe('user' + this.my_id);
-            this.channel.bind('updateStatus', function (data) {
+            this.channel.bind('updateStatus', function () {
                 _this.relationShipStatus();
             });
         },
+
+
+        // ---------------------------------------------------
+
         relationShipStatus: function relationShipStatus() {
             var _this2 = this;
 
             this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (response) {
+
+                _this2.loading = false;
+
                 if (response.status == 200) {
                     _this2.status = response.body.status;
-                    _this2.loading = false;
                 } else {
                     // ...
                 }
@@ -23122,15 +23150,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // ...
             });
         },
+
+
+        // ---------------------------------------------------
+
         add_friend: function add_friend() {
             var _this3 = this;
 
             this.loading = true;
+
             this.$http.post('/add_friend/' + this.profile_user_id).then(function (response) {
+
+                _this3.loading = false;
+
                 if (response.status == 200) {
                     if (response.body == 1) _this3.status = 'waiting';
                     if (response.body == 0) _this3.status = 0;
-                    _this3.loading = false;
                 } else {
                     // ...
                 }
@@ -23138,15 +23173,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // ...
             });
         },
+
+
+        // ---------------------------------------------------
+
         accept_friend: function accept_friend() {
             var _this4 = this;
 
             this.loading = true;
+
             this.$http.patch('/accept_friend/' + this.profile_user_id).then(function (response) {
+
+                _this4.loading = false;
+
                 if (response.status == 200) {
                     if (response.body == 1) _this4.status = 'friends';
                     if (response.body == 0) _this4.status = 'pending';
-                    _this4.loading = false;
                 } else {
                     // ...
                 }
@@ -23154,14 +23196,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // ...
             });
         },
+
+
+        // ---------------------------------------------------
+
         reject_friendship: function reject_friendship() {
             var _this5 = this;
 
             this.loading = true;
+
             this.$http.put('/reject_friendship/' + this.profile_user_id).then(function (response) {
+
+                _this5.loading = false;
+
                 if (response.status == 200) {
                     if (response.body == 3) _this5.status = 0;
-                    _this5.loading = false;
                 } else {
                     // ...
                 }
@@ -23169,6 +23218,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // ...
             });
         }
+
+        // ---------------------------------------------------
+
     }
 });
 
@@ -23180,59 +23232,62 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "friends" }, [
-    _vm.loading
-      ? _c("p", { staticClass: "text-center" }, [
-          _vm._v("\n        Loading\n    ")
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    !_vm.loading
-      ? _c("div", [
-          _c("div", { staticClass: "add_friend style_friend" }, [
-            _vm.status == 0
-              ? _c("button", { on: { click: _vm.add_friend } }, [
-                  _c("i", { staticClass: "material-icons" }, [
-                    _vm._v("person_add")
+  return _c(
+    "div",
+    { staticClass: "friends" },
+    [
+      !_vm.loading
+        ? _c("div", [
+            _c("div", { staticClass: "add_friend style_friend" }, [
+              _vm.status == 0
+                ? _c("button", { on: { click: _vm.add_friend } }, [
+                    _c("i", { staticClass: "material-icons" }, [
+                      _vm._v("person_add")
+                    ])
                   ])
-                ])
-              : _vm._e(),
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.status == "pending"
+                ? _c("button", { on: { click: _vm.accept_friend } }, [
+                    _c("i", { staticClass: "material-icons" }, [
+                      _vm._v("done_all")
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.status == "waiting"
+                ? _c("button", [
+                    _c("i", { staticClass: "material-icons" }, [
+                      _vm._v("near_me")
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.status == "friends"
+                ? _c("button", [
+                    _c("i", { staticClass: "material-icons" }, [
+                      _vm._v("favorite")
+                    ])
+                  ])
+                : _vm._e()
+            ]),
             _vm._v(" "),
             _vm.status == "pending"
-              ? _c("button", { on: { click: _vm.accept_friend } }, [
-                  _c("i", { staticClass: "material-icons" }, [
-                    _vm._v("done_all")
-                  ])
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.status == "waiting"
-              ? _c("button", [
-                  _c("i", { staticClass: "material-icons" }, [
-                    _vm._v("near_me")
-                  ])
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.status == "friends"
-              ? _c("button", [
-                  _c("i", { staticClass: "material-icons" }, [
-                    _vm._v("favorite")
+              ? _c("div", { staticClass: "delete_friend style_friend" }, [
+                  _c("button", { on: { click: _vm.reject_friendship } }, [
+                    _c("i", { staticClass: "material-icons" }, [
+                      _vm._v("clear")
+                    ])
                   ])
                 ])
               : _vm._e()
-          ]),
-          _vm._v(" "),
-          _vm.status == "pending"
-            ? _c("div", { staticClass: "delete_friend style_friend" }, [
-                _c("button", { on: { click: _vm.reject_friendship } }, [
-                  _c("i", { staticClass: "material-icons" }, [_vm._v("clear")])
-                ])
-              ])
-            : _vm._e()
-        ])
-      : _vm._e()
-  ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.loading ? _c("loading") : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -24691,7 +24746,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+
+    // ---------------------------------------------------
+
     props: ['user'],
+
+    // ---------------------------------------------------
+
     data: function data() {
         return {
             users: [],
@@ -24703,10 +24764,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             cover: this.checkCover(this.user.cover)
         };
     },
+
+
+    // ---------------------------------------------------
+
     mounted: function mounted() {
         this.getUsers();
         console.log('Profile ok!');
     },
+
+
+    // ---------------------------------------------------
 
     methods: {
 

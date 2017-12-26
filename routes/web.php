@@ -41,4 +41,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/accept_friend/{user_id}', 'FriendshipsController@accept_friend');
     Route::put('/reject_friendship/{user_id}', 'FriendshipsController@reject_friendship');
 
+
+
+    Route::get('/pending', 'FriendshipsController@pending');
+
 });

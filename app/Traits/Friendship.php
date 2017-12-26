@@ -21,10 +21,12 @@ trait Friendship
         if ($this->id === $user_requested_id) return 0;
         if ($this->is_friends_with($user_requested_id) === 1) return 'Already friends';
         if ($this->has_pending_friend_request_sent_to($user_requested_id) === 1) return 'Already sent';
+
         if ($this->has_pending_friend_request_from($user_requested_id) === 1)
         {
             return $this->accept_friends($user_requested_id);
         }
+
         $Friendship = ModelFriends::create([
             'requester' => $this->id,
             'user_requested' => $user_requested_id
@@ -57,60 +59,68 @@ trait Friendship
     public function reject_friendships($requester)
     {
         if ($this->has_pending_friend_request_from($requester) === 0) return 0;
+
         $Friendship = ModelFriends::where('requester', $requester)
             ->where('user_requested', $this->id)
             ->first();
+
         if ($Friendship)
         {
             if ($Friendship->delete()) return 3;
         }
+
         return 0;
     }
 
+
     public function friends()
     {
-        $friends1 = array();
-        $f1 = ModelFriends::where('status', 1)
-            ->where('requester', $this->id)
-            ->get();
-        foreach ($f1 as $friendship):
-            array_push($friends1, User::find($friendship->user_requested));
-        endforeach;
-        $friends2 = array();
-        $f2 = ModelFriends::where('status', 1)
-            ->where('user_requested', $this->id)
-            ->get();
-        foreach ($f2 as $friendship):
-            array_push($friends2, User::find($friendship->requester));
-        endforeach;
-        return array_merge($friends1, $friends2);
-    }
+        $requester_option = array();
+        $requested_option = array();
 
-    public function friends_ids()
-    {
-        return collect($this->friends())->pluck('id')->toArray();
+        $requester = ModelFriends::where('status', 1)
+                    ->where('requester', $this->id)
+                    ->with('requester')
+                    ->get()
+                    ->toArray();
+
+        foreach ($requester as $friend):
+              array_push($requester_option, array_get($friend, 'requester.id'));
+        endforeach;
+
+        $requested = ModelFriends::where('status', 1)
+                    ->where('user_requested', $this->id)
+                    ->with('requested')
+                    ->get()
+                    ->toArray();
+
+        foreach ($requested as $friend):
+            array_push($requested_option, array_get($friend, 'requested.id'));
+        endforeach;
+
+        return array_merge($requester_option, $requested_option);
     }
 
     public function pending_friend_requests()
     {
-        $users = array();
+        $pending = array();
+
         $Friendships = ModelFriends::where('status', 0)
             ->where('user_requested', $this->id)
-            ->get();
-        foreach ($Friendships as $friendship):
-            array_push($users, User::find($friendship->requester));
-        endforeach;
-        return $users;
-    }
+            ->with('requested')
+            ->get()
+            ->toArray();
 
-    public function pending_friend_requests_ids()
-    {
-        return collect($this->pending_friend_requests())->pluck('id')->toArray();
+        foreach ($Friendships as $friend):
+            array_push($pending, array_get($friend, 'requested.id'));
+        endforeach;
+
+        return $pending;
     }
 
     public function is_friends_with($user_id)
     {
-        if (in_array($user_id, $this->friends_ids()))
+        if (in_array($user_id, $this->friends()))
         {
             return 1;
         }
@@ -139,7 +149,7 @@ trait Friendship
 
     public function has_pending_friend_request_from($user_id)
     {
-        if (in_array($user_id, $this->pending_friend_requests_ids()))
+        if (in_array($user_id, $this->pending_friend_requests()))
         {
             return 1;
         }
