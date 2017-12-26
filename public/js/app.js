@@ -27292,7 +27292,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     if (response.data.length != 0) {
                         _this4.listUsers = response.data;
-                        _this4.access = true;
                     } else {
                         _this4.$router.push('/groups/my');
                     }

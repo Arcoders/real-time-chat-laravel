@@ -223,7 +223,6 @@
 
                         if (response.data.length != 0) {
                             this.listUsers = response.data;
-                            this.access = true;
                         } else {
                             this.$router.push('/groups/my');
                         }

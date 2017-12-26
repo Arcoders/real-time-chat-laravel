@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/edit_group/{group_id}', 'GroupsController@editGroup');
     Route::get('/list_friends', 'GroupsController@listFriends');
 
+    Route::get('/list_groups_chat', 'GroupsController@listChatsGroup');
+
     // Profile...
     Route::get('/get_profile/{profile_id}', 'ProfileController@getProfile');
     Route::get('/get_users', 'ProfileController@getUsers');

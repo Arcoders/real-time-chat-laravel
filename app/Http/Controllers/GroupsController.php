@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use App\Traits\UploadFiles;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -128,6 +129,13 @@ class GroupsController extends Controller
     protected function idsToArray($request)
     {
         return $request ? explode(',', $request) : [];
+    }
+
+    public function listChatsGroup()
+    {
+        $groups = Auth::user()->groups;
+
+        if ($groups) return response()->json($groups, 200);
     }
 
 }

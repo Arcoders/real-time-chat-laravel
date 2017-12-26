@@ -16,7 +16,7 @@ class Group extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('group_id', 'user_id');
     }
 
     public function onlineGroup()
