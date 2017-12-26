@@ -51,9 +51,5 @@ class FriendshipsController extends Controller
         return $reject;
     }
 
-    public function pending()
-    {
-        return Auth::user()->pending_friend_requests_sent();
-    }
 
 }

@@ -42,7 +42,4 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/reject_friendship/{user_id}', 'FriendshipsController@reject_friendship');
 
 
-
-    Route::get('/pending', 'FriendshipsController@pending');
-
 });
