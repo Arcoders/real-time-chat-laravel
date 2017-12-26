@@ -7,15 +7,16 @@
             <i class="material-icons">arrow_back</i>
         </router-link>
 
-        <avatar :username="groupName" color="#fff" :src="avatar"></avatar>
+        <avatar v-if="access" :username="groupName" color="#fff" :src="avatar"></avatar>
 
-        <h4> Add new group </h4>
+        <h4 v-if="access"> Add new group </h4>
+        <h4 v-else>To be able to add a group you must have friends...</h4>
 
         <hr>
 
-        <div class="wrap-input">
+        <form v-if="access"  v-on:submit.prevent="" method="POST" enctype="multipart/form-data">
 
-                <form class="input" v-on:submit.prevent="" method="POST" enctype="multipart/form-data">
+            <div class="input wrap-input">
 
                     <label class="fileContainer font-online">
 
@@ -46,8 +47,16 @@
                         <i class="material-icons">add</i>
                     </button>
 
-                </form>
-        </div>
+            </div>
+
+            <select
+                    name="listUsers"
+                    v-model="selectedUsers"
+                    multiple>
+                <option v-for="user in  listUsers" :value="user.id">{{ user.name }}</option>
+            </select>
+
+        </form>
 
         <loading v-if="loading"></loading>
 
@@ -76,13 +85,17 @@
               avatar: null,
               loading: false,
               notifications: [],
-              time: 4000
+              time: 4000,
+              listUsers: null,
+              access: false,
+              selectedUsers: []
           }
         },
 
         // ---------------------------------------------------
 
         mounted() {
+            this.listFriends();
             console.log('Add group ok!');
         },
 
@@ -111,6 +124,44 @@
 
             // ---------------------------------------------------
 
+            listFriends() {
+
+                this.loading = true;
+
+                this.$http.get('/list_friends').then(response => {
+
+                    this.loading = false;
+
+                    if (response.status == 200) {
+
+                        if (response.data.length != 0) {
+                            this.listUsers = response.data;
+                            this.access = true;
+                        } else {
+                            this.error('friends');
+                            this.access = false;
+                        }
+
+                    } else {
+                        this.error('friends');
+                        this.access = false;
+                    }
+
+                }, () => {
+                    this.loading = false;
+                    this.access = false;
+                    this.error('friends');
+                });
+            },
+
+            // ---------------------------------------------------
+
+            pushSelected(user) {
+                this.selectedUsers.push(user);
+            },
+
+            // ---------------------------------------------------
+
             addGroup() {
 
                 if (this.btnSubmit) return;
@@ -131,8 +182,12 @@
 
             // ---------------------------------------------------
 
-            error() {
-                this.showNotification('Group can not be added, try it later', 'error');
+            error(type = null) {
+                if (type == 'friends') {
+                    this.showNotification('Look for new friends firstly', 'error');
+                } else {
+                    this.showNotification('Group can not be added, try it later', 'error');
+                }
             },
 
             // ---------------------------------------------------
@@ -180,6 +235,7 @@
                 let formData = new FormData();
 
                 formData.append('name', this.groupName);
+                formData.append('users', this.groupName);
                 if (this.avatar) formData.append('avatar', this.$refs.fileInput.files[0]);
 
                 return formData;

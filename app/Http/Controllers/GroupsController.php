@@ -64,6 +64,13 @@ class GroupsController extends Controller
         if ($group) return response()->json($group, 200);
     }
 
+    public function listFriends()
+    {
+        $friends = Auth::user()->friends(true);
+
+        if ($friends) return response($friends,200);
+    }
+
     public function editGroup($group_id, Request $request)
     {
         $user = Auth::user();

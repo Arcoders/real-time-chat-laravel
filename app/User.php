@@ -34,9 +34,9 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
-    public function groups()
+    public function group()
     {
-        return $this->hasMany(Groups::class);
+        return $this->belongsToMany(Groups::class);
     }
 
     public function onlineChat()

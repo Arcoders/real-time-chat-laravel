@@ -26523,6 +26523,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -26534,7 +26543,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             avatar: null,
             loading: false,
             notifications: [],
-            time: 4000
+            time: 4000,
+            listUsers: null,
+            access: false,
+            selectedUsers: []
         };
     },
 
@@ -26542,6 +26554,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ---------------------------------------------------
 
     mounted: function mounted() {
+        this.listFriends();
         console.log('Add group ok!');
     },
 
@@ -26577,20 +26590,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ---------------------------------------------------
 
-        addGroup: function addGroup() {
+        listFriends: function listFriends() {
             var _this2 = this;
+
+            this.loading = true;
+
+            this.$http.get('/list_friends').then(function (response) {
+
+                _this2.loading = false;
+
+                if (response.status == 200) {
+
+                    if (response.data.length != 0) {
+                        _this2.listUsers = response.data;
+                        _this2.access = true;
+                    } else {
+                        _this2.error('friends');
+                        _this2.access = false;
+                    }
+                } else {
+                    _this2.error('friends');
+                    _this2.access = false;
+                }
+            }, function () {
+                _this2.loading = false;
+                _this2.access = false;
+                _this2.error('friends');
+            });
+        },
+
+
+        // ---------------------------------------------------
+
+        pushSelected: function pushSelected(user) {
+            this.selectedUsers.push(user);
+        },
+
+
+        // ---------------------------------------------------
+
+        addGroup: function addGroup() {
+            var _this3 = this;
 
             if (this.btnSubmit) return;
             this.loading = true;
 
             this.$http.post('/new_group', this.formData).then(function (response) {
 
-                _this2.loading = false;
-                response.status == 200 ? _this2.done(response.data) : _this2.error();
+                _this3.loading = false;
+                response.status == 200 ? _this3.done(response.data) : _this3.error();
             }, function (response) {
 
-                _this2.loading = false;
-                response.status == 422 ? _this2.validation(response.data.errors) : _this2.error();
+                _this3.loading = false;
+                response.status == 422 ? _this3.validation(response.data.errors) : _this3.error();
             });
         },
 
@@ -26598,7 +26650,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         error: function error() {
-            this.showNotification('Group can not be added, try it later', 'error');
+            var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+            if (type == 'friends') {
+                this.showNotification('Look for new friends firstly', 'error');
+            } else {
+                this.showNotification('Group can not be added, try it later', 'error');
+            }
         },
 
 
@@ -26623,11 +26681,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         showNotification: function showNotification(msg, type) {
-            var _this3 = this;
+            var _this4 = this;
 
             this.notifications.push({ message: msg, type: type });
             setTimeout(function () {
-                _this3.notifications.shift();
+                _this4.notifications.shift();
             }, this.time);
         }
     },
@@ -26649,6 +26707,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var formData = new FormData();
 
             formData.append('name', this.groupName);
+            formData.append('users', this.groupName);
             if (this.avatar) formData.append('avatar', this.$refs.fileInput.files[0]);
 
             return formData;
@@ -26677,116 +26736,158 @@ var render = function() {
         _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
       ]),
       _vm._v(" "),
-      _c("avatar", {
-        attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
-      }),
+      _vm.access
+        ? _c("avatar", {
+            attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
+          })
+        : _vm._e(),
       _vm._v(" "),
-      _c("h4", [_vm._v(" Add new group ")]),
+      _vm.access
+        ? _c("h4", [_vm._v(" Add new group ")])
+        : _c("h4", [
+            _vm._v("To be able to add a group you must have friends...")
+          ]),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
-      _c("div", { staticClass: "wrap-input" }, [
-        _c(
-          "form",
-          {
-            staticClass: "input",
-            attrs: { method: "POST", enctype: "multipart/form-data" },
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-              }
-            }
-          },
-          [
-            _c("label", { staticClass: "fileContainer font-online" }, [
-              !_vm.avatar
-                ? _c("button", { attrs: { type: "button" } }, [
-                    _c("i", { staticClass: "material-icons" }, [
-                      _vm._v("photo")
-                    ])
-                  ])
-                : _c(
-                    "button",
-                    {
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.avatar = null
-                        }
-                      }
-                    },
-                    [
-                      _c("i", { staticClass: "material-icons" }, [
-                        _vm._v("clear")
-                      ])
-                    ]
-                  ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.avatar,
-                    expression: "!avatar"
-                  }
-                ],
-                ref: "fileInput",
-                attrs: { type: "file", name: "avatar" },
-                on: {
-                  change: function($event) {
-                    _vm.onFileChange($event)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.groupName,
-                  expression: "groupName"
-                }
-              ],
-              staticClass: "input-global",
-              attrs: {
-                name: "name",
-                type: "text",
-                placeholder: "Group name..."
-              },
-              domProps: { value: _vm.groupName },
+      _vm.access
+        ? _c(
+            "form",
+            {
+              attrs: { method: "POST", enctype: "multipart/form-data" },
               on: {
-                keyup: function($event) {
-                  if (
-                    !("button" in $event) &&
-                    _vm._k($event.keyCode, "enter", 13, $event.key)
-                  ) {
-                    return null
-                  }
-                  _vm.addGroup($event)
-                },
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.groupName = $event.target.value
+                submit: function($event) {
+                  $event.preventDefault()
                 }
               }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                attrs: { type: "button", disabled: _vm.btnSubmit },
-                on: { click: _vm.addGroup }
-              },
-              [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
-            )
-          ]
-        )
-      ]),
+            },
+            [
+              _c("div", { staticClass: "input wrap-input" }, [
+                _c("label", { staticClass: "fileContainer font-online" }, [
+                  !_vm.avatar
+                    ? _c("button", { attrs: { type: "button" } }, [
+                        _c("i", { staticClass: "material-icons" }, [
+                          _vm._v("photo")
+                        ])
+                      ])
+                    : _c(
+                        "button",
+                        {
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.avatar = null
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons" }, [
+                            _vm._v("clear")
+                          ])
+                        ]
+                      ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.avatar,
+                        expression: "!avatar"
+                      }
+                    ],
+                    ref: "fileInput",
+                    attrs: { type: "file", name: "avatar" },
+                    on: {
+                      change: function($event) {
+                        _vm.onFileChange($event)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.groupName,
+                      expression: "groupName"
+                    }
+                  ],
+                  staticClass: "input-global",
+                  attrs: {
+                    name: "name",
+                    type: "text",
+                    placeholder: "Group name..."
+                  },
+                  domProps: { value: _vm.groupName },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key)
+                      ) {
+                        return null
+                      }
+                      _vm.addGroup($event)
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.groupName = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    attrs: { type: "button", disabled: _vm.btnSubmit },
+                    on: { click: _vm.addGroup }
+                  },
+                  [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.selectedUsers,
+                      expression: "selectedUsers"
+                    }
+                  ],
+                  attrs: { name: "listUsers", multiple: "" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.selectedUsers = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                _vm._l(_vm.listUsers, function(user) {
+                  return _c("option", { domProps: { value: user.id } }, [
+                    _vm._v(_vm._s(user.name))
+                  ])
+                })
+              )
+            ]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _vm.loading ? _c("loading") : _vm._e()
     ],
