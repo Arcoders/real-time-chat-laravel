@@ -67,7 +67,7 @@ trait Friendship
         return 0;
     }
 
-    public function friends()
+    public function friends($ids = null)
     {
         $requester_option = array();
         $requested_option = array();
@@ -79,7 +79,7 @@ trait Friendship
                     ->toArray();
 
         foreach ($requester as $friend):
-              array_push($requester_option, array_get($friend, 'requester.id'));
+              array_push($requester_option, array_get($friend, $ids ? 'requester' : 'requester.id'));
         endforeach;
 
         $requested = ModelFriends::where('status', 1)
@@ -89,7 +89,7 @@ trait Friendship
                     ->toArray();
 
         foreach ($requested as $friend):
-            array_push($requested_option, array_get($friend, 'requested.id'));
+            array_push($requested_option, array_get($friend, $ids ? 'requested' : 'requested.id'));
         endforeach;
 
         return array_merge($requester_option, $requested_option);

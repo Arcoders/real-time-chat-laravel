@@ -51,5 +51,4 @@ class FriendshipsController extends Controller
         return $reject;
     }
 
-
 }
