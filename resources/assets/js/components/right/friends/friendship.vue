@@ -144,7 +144,7 @@
             reject_friendship() {
                 this.loading = true;
 
-                this.$http.put('/reject_friendship/'+this.profile_user_id).then(response => {
+                this.$http.delete('/reject_friendship/'+this.profile_user_id).then(response => {
 
                     this.loading = false;
 

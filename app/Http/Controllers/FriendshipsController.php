@@ -12,15 +12,18 @@ class FriendshipsController extends Controller
 
     public function check($id)
     {
-        if (Auth::user()->is_friends_with($id) === 1)
+
+        if (in_array($id, Auth::user()->friends()))
         {
             return ['status' => 'friends'];
         }
-        if (Auth::user()->has_pending_friend_request_from($id))
+
+        if (in_array($id, Auth::user()->pending_friend_requests()))
         {
             return ['status' => 'pending'];
         }
-        if (Auth::user()->has_pending_friend_request_sent_to($id))
+
+        if (in_array($id, Auth::user()->pending_friend_requests_sent()))
         {
             return ['status' => 'waiting'];
         }
@@ -50,7 +53,7 @@ class FriendshipsController extends Controller
 
     public function pending()
     {
-        return Auth::user()->pending_test();
+        return Auth::user()->pending_friend_requests_sent();
     }
 
 }

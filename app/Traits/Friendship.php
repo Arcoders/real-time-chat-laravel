@@ -1,35 +1,27 @@
 <?php
 
 namespace App\Traits;
-use App\User;
 use App\Friendship as ModelFriends;
 
 trait Friendship
 {
 
-    public function all_users()
+    public function add_friend($id)
     {
-        return User::all();
-    }
+        if ($this->id === $id) return 0;
 
-    /**
-     * @param $user_requested_id
-     * @return int|string
-     */
-    public function add_friend($user_requested_id)
-    {
-        if ($this->id === $user_requested_id) return 0;
-        if ($this->is_friends_with($user_requested_id) === 1) return 'Already friends';
-        if ($this->has_pending_friend_request_sent_to($user_requested_id) === 1) return 'Already sent';
+        if (in_array($id, $this->friends())) return 'Already friends';
 
-        if ($this->has_pending_friend_request_from($user_requested_id) === 1)
+        if (in_array($id, $this->pending_friend_requests_sent())) return 'Already sent';
+
+        if (in_array($id, $this->pending_friend_requests()))
         {
-            return $this->accept_friends($user_requested_id);
+            return $this->accept_friends($id);
         }
 
         $Friendship = ModelFriends::create([
             'requester' => $this->id,
-            'user_requested' => $user_requested_id
+            'user_requested' => $id
         ]);
 
         if ($Friendship)
@@ -42,10 +34,12 @@ trait Friendship
 
     public function accept_friends($requester)
     {
-        if ($this->has_pending_friend_request_from($requester) === 0) return 0;
+        if (!in_array($requester, $this->pending_friend_requests())) return 0;
+
         $Friendship = ModelFriends::where('requester', $requester)
-            ->where('user_requested', $this->id)
-            ->first();
+                                ->where('user_requested', $this->id)
+                                ->first();
+
         if ($Friendship)
         {
             $Friendship->update([
@@ -53,12 +47,13 @@ trait Friendship
             ]);
             return 1;
         }
+
         return 0;
     }
 
     public function reject_friendships($requester)
     {
-        if ($this->has_pending_friend_request_from($requester) === 0) return 0;
+        if (!in_array($requester, $this->pending_friend_requests())) return 0;
 
         $Friendship = ModelFriends::where('requester', $requester)
             ->where('user_requested', $this->id)
@@ -71,7 +66,6 @@ trait Friendship
 
         return 0;
     }
-
 
     public function friends()
     {
@@ -118,58 +112,22 @@ trait Friendship
         return $pending;
     }
 
-    public function is_friends_with($user_id)
-    {
-        if (in_array($user_id, $this->friends()))
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
     public function pending_friend_requests_sent()
     {
-        $users = array();
+        $pending = array();
+
         $Friendships = ModelFriends::where('status', 0)
-            ->where('requester', $this->id)
-            ->get();
-        foreach ($Friendships as $friendship):
-            array_push($users, User::find($friendship->user_requested));
+                    ->where('requester', $this->id)
+                    ->with('requester')
+                    ->get()
+                    ->toArray();
+
+        foreach ($Friendships as $friend):
+            array_push($pending, array_get($friend, 'requester.id'));
         endforeach;
-        return $users;
-    }
 
-    public function pending_friend_requests_sent_ids()
-    {
-        return collect($this->pending_friend_requests_sent())->pluck('id')->toArray();
-    }
+        return $pending;
 
-    public function has_pending_friend_request_from($user_id)
-    {
-        if (in_array($user_id, $this->pending_friend_requests()))
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
     }
-
-    public function has_pending_friend_request_sent_to($user_id)
-    {
-        if (in_array($user_id, $this->pending_friend_requests_sent_ids()))
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
 
 }

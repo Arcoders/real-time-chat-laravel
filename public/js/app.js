@@ -23205,7 +23205,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            this.$http.put('/reject_friendship/' + this.profile_user_id).then(function (response) {
+            this.$http.delete('/reject_friendship/' + this.profile_user_id).then(function (response) {
 
                 _this5.loading = false;
 
