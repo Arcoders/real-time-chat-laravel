@@ -9,7 +9,7 @@ window.Vue = require('vue');
 
 import VueRouter from 'vue-router';
 import Avatar from 'vue-avatar';
-
+import Multiselect from 'vue-multiselect';
 
 const VueResource = require('vue-resource');
 const VuePusher = require('vue-pusher');
@@ -55,6 +55,7 @@ Vue.component('avatar', Avatar);
 Vue.component('loading', require('./components/spinner/loading.vue'));
 Vue.component('notifications', require('./components/notifications/notifications.vue'));
 Vue.component('paginate', require('./components/pagination/paginate.vue'));
+Vue.component('multiselect', Multiselect);
 
 // Define route components
 

@@ -49,12 +49,33 @@
 
             </div>
 
-            <select
+<!--            <select
                     name="listUsers"
                     v-model="selectedUsers"
                     multiple>
                 <option v-for="user in  listUsers" :value="user.id">{{ user.name }}</option>
-            </select>
+            </select>-->
+
+            <br>
+
+            <div class="input wrap-input">
+                <multiselect v-model="selectedUsers"
+                             :multiple="true"
+                             track-by="id"
+                             label="name"
+                             :hide-selected="true"
+                             :close-on-select="false"
+                             :options="listUsers">
+
+                    <template slot="tag" slot-scope="props">
+                        <span class="custom__tag">
+                            <span> {{ props.option.name }} </span>
+                            <span class="custom__remove" @click="props.remove(props.option)"> ❌ </span>
+                        </span>
+                    </template>
+
+                </multiselect>
+            </div>
 
         </form>
 
@@ -88,7 +109,8 @@
               time: 4000,
               listUsers: null,
               access: false,
-              selectedUsers: []
+              selectedUsers: [],
+              selectedIds: []
           }
         },
 
@@ -235,8 +257,13 @@
                 let formData = new FormData();
 
                 formData.append('name', this.groupName);
-                formData.append('users', this.groupName);
                 if (this.avatar) formData.append('avatar', this.$refs.fileInput.files[0]);
+
+                this.selectedIds = Object.keys(this.selectedUsers).map(
+                    s => this.selectedUsers[s].id
+                );
+
+                formData.append('listUsers', this.selectedIds);
 
                 return formData;
             }
