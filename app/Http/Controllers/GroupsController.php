@@ -16,9 +16,16 @@ class GroupsController extends Controller
 
     public function newGroup(Request $request)
     {
+
+        $request['id'] = $this->idsToArray($request['id']);
+
         $request->validate([
             'name' => 'required|unique:groups|min:4|max:15',
-            'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
+            'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000',
+            'id'  => 'required|array|min:1'
+        ],
+        [
+            'id.required' => 'You must select at least one user'
         ]);
 
         $avatar_name = null;
@@ -29,13 +36,15 @@ class GroupsController extends Controller
             $avatar_name = $this->processImage($request->file('avatar'), $user->id, $this->folder);
         }
 
-        $create = Group::create([
+        $group = Group::create([
             'name' => $request['name'],
             'user_id' => $user->id,
             'avatar' => $avatar_name
         ]);
 
-        if ($create) return response()->json('Group created successfully', 200);
+        $group->users()->sync($request['id']);
+
+        if ($group) return response()->json("$group->name created successfully", 200);
     }
 
     public function myGroups()
@@ -52,14 +61,19 @@ class GroupsController extends Controller
 
         if ($group->avatar) $this->deleteImage($group->avatar);
 
+        $group->users()->detach();
+
         $delete = $query->delete();
 
-        if ($delete) return response()->json('Group was deleted', 200);
+        if ($delete) return response()->json("$group->name was deleted", 200);
     }
 
     public function getGroup($group_id)
     {
-        $group = Group::where('id', $group_id)->where('user_id', Auth::user()->id)->first();
+        $group = Group::where('id', $group_id)
+                ->where('user_id', Auth::user()->id)
+                ->with('users')
+                ->first();
 
         if ($group) return response()->json($group, 200);
     }
@@ -83,9 +97,15 @@ class GroupsController extends Controller
             $group->avatar = null;
         }
 
+        $request['id'] = $this->idsToArray($request['id']);
+
         $request->validate([
             'name' => 'required|min:4|max:15|unique:groups,name,'.$group->id,
-            'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
+            'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000',
+            'id'  => 'required|array|min:1'
+        ],
+        [
+            'id.required' => 'You must select at least one user'
         ]);
 
         if ($request->file('avatar')) {
@@ -100,7 +120,14 @@ class GroupsController extends Controller
 
         $save = $group->save();
 
+        $group->users()->sync($request['id']);
+
         if ($save) return response()->json('Group edited successfully', 200);
+    }
+
+    protected function idsToArray($request)
+    {
+        return $request ? explode(',', $request) : [];
     }
 
 }

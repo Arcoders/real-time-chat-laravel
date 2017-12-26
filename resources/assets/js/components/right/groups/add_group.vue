@@ -49,12 +49,6 @@
 
             </div>
 
-<!--            <select
-                    name="listUsers"
-                    v-model="selectedUsers"
-                    multiple>
-                <option v-for="user in  listUsers" :value="user.id">{{ user.name }}</option>
-            </select>-->
 
             <br>
 
@@ -142,6 +136,8 @@
             resetForm() {
                 this.avatar = null;
                 this.groupName = '';
+                this.selectedIds = [];
+                this.selectedUsers = [];
             },
 
             // ---------------------------------------------------
@@ -174,12 +170,6 @@
                     this.access = false;
                     this.error('friends');
                 });
-            },
-
-            // ---------------------------------------------------
-
-            pushSelected(user) {
-                this.selectedUsers.push(user);
             },
 
             // ---------------------------------------------------
@@ -217,6 +207,7 @@
             validation(msg) {
                 if (msg.avatar) msg = msg.avatar[0];
                 if (msg.name) msg = msg.name[0];
+                if (msg.id) msg = msg.id[0];
 
                 this.showNotification(msg, 'validation');
             },
@@ -263,7 +254,7 @@
                     s => this.selectedUsers[s].id
                 );
 
-                formData.append('listUsers', this.selectedIds);
+                formData.append('id', this.selectedIds);
 
                 return formData;
             }

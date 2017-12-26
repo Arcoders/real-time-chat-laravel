@@ -13,9 +13,9 @@
 
         <hr>
 
-        <div class="wrap-input">
+        <form v-on:submit.prevent="" method="POST" enctype="multipart/form-data">
 
-                <form class="input" id="f" v-on:submit.prevent="" method="POST" enctype="multipart/form-data">
+                <div class="input wrap-input">
 
                     <label class="fileContainer font-online">
 
@@ -46,8 +46,30 @@
                         <i class="material-icons">add</i>
                     </button>
 
-                </form>
-        </div>
+                </div>
+
+            <br>
+
+            <div class="input wrap-input">
+                <multiselect v-model="selectedUsers"
+                             :multiple="true"
+                             track-by="id"
+                             label="name"
+                             :hide-selected="true"
+                             :close-on-select="false"
+                             :options="listUsers">
+
+                    <template slot="tag" slot-scope="props">
+                        <span class="custom__tag">
+                            <span> {{ props.option.name }} </span>
+                            <span class="custom__remove" @click="props.remove(props.option)"> ❌ </span>
+                        </span>
+                    </template>
+
+                </multiselect>
+            </div>
+
+        </form>
 
         <loading v-if="loading"></loading>
 
@@ -79,13 +101,17 @@
               time: 4000,
               group_id: this.$route.params.group_id,
               showEdit: false,
-              newImage: false
+              newImage: false,
+              listUsers: null,
+              selectedUsers: [],
+              selectedIds: []
           }
         },
 
         // ---------------------------------------------------
 
         mounted() {
+            this.listFriends();
             this.getGroup();
             console.log('Edit group ok!');
         },
@@ -163,6 +189,7 @@
             validation(msg) {
                 if (msg.avatar) msg = msg.avatar[0];
                 if (msg.name) msg = msg.name[0];
+                if (msg.id) msg = msg.id[0];
 
                 this.showNotification(msg, 'validation');
             },
@@ -184,6 +211,35 @@
 
             // ---------------------------------------------------
 
+            listFriends() {
+
+                this.loading = true;
+
+                this.$http.get('/list_friends').then(response => {
+
+                    this.loading = false;
+
+                    if (response.status == 200) {
+
+                        if (response.data.length != 0) {
+                            this.listUsers = response.data;
+                            this.access = true;
+                        } else {
+                            this.$router.push('/groups/my');
+                        }
+
+                    } else {
+                        this.$router.push('/groups/my');
+                    }
+
+                }, () => {
+                    this.loading = false;
+                    this.$router.push('/groups/my');
+                });
+            },
+
+            // ---------------------------------------------------
+
             getGroup() {
                 this.$http.get('/get_group/' + this.group_id).then(response => {
 
@@ -195,6 +251,7 @@
 
                         this.groupName = response.data.name;
                         if (response.data.avatar) this.avatar = response.data.avatar;
+                        this.selectedUsers = response.data.users;
 
                     } else {
                         this.$router.push('/groups/my');
@@ -225,6 +282,12 @@
 
                 formData.append('name', this.groupName);
                 if (this.newImage) formData.append('avatar', this.$refs.fileInput.files[0]);
+
+                this.selectedIds = Object.keys(this.selectedUsers).map(
+                    s => this.selectedUsers[s].id
+                );
+
+                formData.append('id', this.selectedIds);
 
                 return formData;
             }

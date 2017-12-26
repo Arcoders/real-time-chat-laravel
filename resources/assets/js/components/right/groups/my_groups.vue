@@ -65,7 +65,7 @@
                     <tr v-if="notFound">
                         <td colspan="4">
                             No records found please
-                            <router-link to="/groups/my/add" class="green_teal link_add">
+                            <router-link to="/groups/add" class="green_teal link_add">
                                 Add Group
                             </router-link>
                         </td>
