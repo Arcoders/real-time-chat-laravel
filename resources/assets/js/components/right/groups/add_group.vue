@@ -1,30 +1,64 @@
 <template lang="pug">
+
     #add_group_app
+
         notifications(:vue_notifications='notifications')
+
         router-link(to='/groups/my')
             i.material-icons arrow_back
+
         avatar(v-if='access', :username='groupName', color='#fff', :src='avatar')
+
         h4(v-if='access')  Add new group
-        h4(v-else='') To be able to add a group you must have friends...
+        h4(v-else) To be able to add a group you must have friends...
+
         hr
+
         form(v-if='access', v-on:submit.prevent='', method='POST', enctype='multipart/form-data')
+
             .input.wrap-input
-                label.fileContainer.font-online
-                    button(v-if='!avatar', type='button')
-                        i.material-icons photo
-                    button(v-else='', v-on:click='avatar = null', type='button')
-                        i.material-icons clear
-                    input(v-show='!avatar', type='file', name='avatar', v-on:change='onFileChange($event)', ref='fileInput')
-                input.input-global(@keyup.enter='addGroup', v-model='groupName', name='name', type='text', placeholder='Group name...')
-                button(type='button', @click='addGroup', v-bind:disabled='btnSubmit')
-                    i.material-icons add
-            br
-            .input.wrap-input
-                multiselect(v-model='selectedUsers', :multiple='true', track-by='id', label='name', :hide-selected='true', :close-on-select='false', :options='listUsers')
+
+                multiselect(v-model='selectedUsers',
+                            :multiple='true',
+                            track-by='id',
+                            label='name',
+                            :hide-selected='true',
+                            :close-on-select='false',
+                            :options='listUsers')
+
                     template(slot='tag', slot-scope='props')
                         span.custom__tag
                             span  {{ props.option.name }}
                             span.custom__remove(@click='props.remove(props.option)')  ❌
+
+            br
+            br
+
+            .input.wrap-input
+
+                label.fileContainer.font-online
+
+                    button(v-if='!avatar', type='button')
+                        i.material-icons photo
+
+                    button(v-else='', v-on:click='avatar = null', type='button')
+                        i.material-icons clear
+
+                    input(v-show='!avatar',
+                            type='file',
+                            name='avatar',
+                            v-on:change='onFileChange($event)',
+                            ref='fileInput')
+
+                input.input-global(@keyup.enter='addGroup',
+                                    v-model='groupName',
+                                    name='name',
+                                    type='text',
+                                    placeholder='Group name...')
+
+                button(type='button', @click='addGroup', v-bind:disabled='btnDisabled')
+                    i.material-icons add
+
         loading(v-if='loading')
 
 </template>
@@ -189,8 +223,8 @@
 
             // ---------------------------------------------------
 
-            btnSubmit() {
-                return ( this.groupName.length < 3);
+            btnDisabled() {
+                if (this.groupName.length < 3 || this.selectedUsers.length === 0) return true;
             },
 
             // ---------------------------------------------------

@@ -5,7 +5,7 @@
         .data
             router-link(to='/groups')
                 i.material-icons arrow_back
-            h4 My groups 
+            h4 My groups
                 router-link(to='/groups/add')
                     i.add.material-icons add
             hr
@@ -19,24 +19,23 @@
             tbody
                 tr.data(v-for='(group, index) in groups')
                     td
-                        avatar.group_avatar(v-if='!group.avatar', :size='45', :username='group.name', color='#fff')
-                        avatar.group_avatar(v-else='', :size='45', :username='group.name', :src='group.avatar')
+                        avatar.group_avatar(:size='45',
+                                            :username='group.name',
+                                            :src='group.avatar',
+                                            color='#fff')
                     td {{ group.name }}
                     td
-                        router-link(:to="{ name: 'edit_group', params: { group_id: group.id, group_name: group.name }}")
+                        router-link(:to="editLink(group)")
                             i.material-icons.green_teal mode_edit
                     td
                         button.format_button(v-on:click='deleteGroup(group.id, index)')
                             i.material-icons.cool_red delete
                 tr(v-if='notFound')
-                    td(colspan='4')
-                        | No records found please
-                        router-link.green_teal.link_add(to='/groups/add')
-                            | Add Group
+                    td(colspan='4') No records found please
+                        router-link.green_teal.link_add(to='/groups/add') Add Group
                 tr(v-if='errorLoad')
                     td(colspan='4')
-                        p.error
-                            | Sorry :( records could not be loaded
+                        p.error Sorry :( records could not be loaded
         paginate(:source='pagination', @navigate='clickedPage')
 
 </template>
@@ -181,6 +180,18 @@
                     this.notifications.shift();
                 }, this.time);
             },
+
+            // ---------------------------------------------------
+
+            editLink(group) {
+                return {
+                    name: 'edit_group',
+                    params: {
+                        group_id: group.id,
+                        group_name: group.name
+                    }
+                }
+            }
 
             // ---------------------------------------------------
         }

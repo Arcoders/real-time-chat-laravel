@@ -25278,7 +25278,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -25399,7 +25398,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             setTimeout(function () {
                 _this3.notifications.shift();
             }, this.time);
+        },
+
+
+        // ---------------------------------------------------
+
+        editLink: function editLink(group) {
+            return {
+                name: 'edit_group',
+                params: {
+                    group_id: group.id,
+                    group_name: group.name
+                }
+            };
         }
+
+        // ---------------------------------------------------
+
     }
 });
 
@@ -25501,6 +25516,40 @@ exports.push([module.i, "\na[data-v-5ddffaa0] {\n    text-decoration: none;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -25704,8 +25753,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ---------------------------------------------------
 
-        btnSubmit: function btnSubmit() {
-            return this.groupName.length < 3;
+        btnDisabled: function btnDisabled() {
+            if (this.groupName.length < 3 || this.selectedUsers.length === 0) return true;
         },
 
 
@@ -26459,6 +26508,58 @@ var render = function() {
               }
             },
             [
+              _c(
+                "div",
+                { staticClass: "input wrap-input" },
+                [
+                  _c("multiselect", {
+                    attrs: {
+                      multiple: true,
+                      "track-by": "id",
+                      label: "name",
+                      "hide-selected": true,
+                      "close-on-select": false,
+                      options: _vm.listUsers
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "tag",
+                        fn: function(props) {
+                          return [
+                            _c("span", { staticClass: "custom__tag" }, [
+                              _c("span", [
+                                _vm._v(" " + _vm._s(props.option.name))
+                              ]),
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "custom__remove",
+                                  on: {
+                                    click: function($event) {
+                                      props.remove(props.option)
+                                    }
+                                  }
+                                },
+                                [_vm._v(" ❌")]
+                              )
+                            ])
+                          ]
+                        }
+                      }
+                    ]),
+                    model: {
+                      value: _vm.selectedUsers,
+                      callback: function($$v) {
+                        _vm.selectedUsers = $$v
+                      },
+                      expression: "selectedUsers"
+                    }
+                  })
+                ],
+                1
+              ),
+              _c("br"),
+              _c("br"),
               _c("div", { staticClass: "input wrap-input" }, [
                 _c("label", { staticClass: "fileContainer font-online" }, [
                   !_vm.avatar
@@ -26538,63 +26639,12 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    attrs: { type: "button", disabled: _vm.btnSubmit },
+                    attrs: { type: "button", disabled: _vm.btnDisabled },
                     on: { click: _vm.addGroup }
                   },
                   [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
                 )
-              ]),
-              _c("br"),
-              _c(
-                "div",
-                { staticClass: "input wrap-input" },
-                [
-                  _c("multiselect", {
-                    attrs: {
-                      multiple: true,
-                      "track-by": "id",
-                      label: "name",
-                      "hide-selected": true,
-                      "close-on-select": false,
-                      options: _vm.listUsers
-                    },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "tag",
-                        fn: function(props) {
-                          return [
-                            _c("span", { staticClass: "custom__tag" }, [
-                              _c("span", [
-                                _vm._v(" " + _vm._s(props.option.name))
-                              ]),
-                              _c(
-                                "span",
-                                {
-                                  staticClass: "custom__remove",
-                                  on: {
-                                    click: function($event) {
-                                      props.remove(props.option)
-                                    }
-                                  }
-                                },
-                                [_vm._v(" ❌")]
-                              )
-                            ])
-                          ]
-                        }
-                      }
-                    ]),
-                    model: {
-                      value: _vm.selectedUsers,
-                      callback: function($$v) {
-                        _vm.selectedUsers = $$v
-                      },
-                      expression: "selectedUsers"
-                    }
-                  })
-                ],
-                1
-              )
+              ])
             ]
           )
         : _vm._e(),
@@ -26822,7 +26872,7 @@ var render = function() {
           _c(
             "h4",
             [
-              _vm._v("My groups "),
+              _vm._v("My groups"),
               _c("router-link", { attrs: { to: "/groups/add" } }, [
                 _c("i", { staticClass: "add material-icons" }, [_vm._v("add")])
               ])
@@ -26843,23 +26893,15 @@ var render = function() {
                 _c(
                   "td",
                   [
-                    !group.avatar
-                      ? _c("avatar", {
-                          staticClass: "group_avatar",
-                          attrs: {
-                            size: 45,
-                            username: group.name,
-                            color: "#fff"
-                          }
-                        })
-                      : _c("avatar", {
-                          staticClass: "group_avatar",
-                          attrs: {
-                            size: 45,
-                            username: group.name,
-                            src: group.avatar
-                          }
-                        })
+                    _c("avatar", {
+                      staticClass: "group_avatar",
+                      attrs: {
+                        size: 45,
+                        username: group.name,
+                        src: group.avatar,
+                        color: "#fff"
+                      }
+                    })
                   ],
                   1
                 ),
@@ -26867,25 +26909,11 @@ var render = function() {
                 _c(
                   "td",
                   [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: {
-                          to: {
-                            name: "edit_group",
-                            params: {
-                              group_id: group.id,
-                              group_name: group.name
-                            }
-                          }
-                        }
-                      },
-                      [
-                        _c("i", { staticClass: "material-icons green_teal" }, [
-                          _vm._v("mode_edit")
-                        ])
-                      ]
-                    )
+                    _c("router-link", { attrs: { to: _vm.editLink(group) } }, [
+                      _c("i", { staticClass: "material-icons green_teal" }, [
+                        _vm._v("mode_edit")
+                      ])
+                    ])
                   ],
                   1
                 ),
