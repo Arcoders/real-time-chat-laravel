@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Chat;
 use App\Traits\TriggerPusher;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,9 +39,23 @@ class FriendshipsController extends Controller
 
     public function accept_friend($id)
     {
-        $acc = Auth::user()->accept_friends($id);
-        $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
-        return $acc;
+
+        $chat= new Chat();
+        $chat->user_id = Auth::user()->id;
+        $chat->friend_id = $id;
+
+        if ($chat->save())
+        {
+            $accept = Auth::user()->accept_friends($id);
+            if ($accept)
+            {
+                $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
+                return $accept;
+            }
+        } else {
+            return 0;
+        }
+
     }
 
     public function reject_friendship($id)
