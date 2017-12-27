@@ -1,37 +1,19 @@
-<template>
-    <div class="friends">
-
-        <div v-if="!loading">
-            <div class="add_friend style_friend">
-
-                <button v-if="status == 'add'" @click="add_friend">
-                    <i class="material-icons">person_add</i>
-                </button>
-
-                <button v-if="status == 'pending'" @click="accept_friend">
-                    <i class="material-icons">done_all</i>
-                </button>
-
-                <button v-if="status == 'waiting'">
-                    <i class="material-icons">near_me</i>
-                </button>
-
-                <button v-if="status == 'friends'">
-                    <i class="material-icons">favorite</i>
-                </button>
-
-            </div>
-
-            <div v-if="status == 'pending'" class="delete_friend style_friend">
-                <button @click="reject_friendship">
-                    <i class="material-icons">clear</i>
-                </button>
-            </div>
-        </div>
-
-        <loading v-if="loading"></loading>
-
-    </div>
+<template lang="pug">
+    .friends
+        div(v-if='!loading')
+            .add_friend.style_friend
+                button(v-if="status == 'add'", @click='add_friend')
+                    i.material-icons person_add
+                button(v-if="status == 'pending'", @click='accept_friend')
+                    i.material-icons done_all
+                button(v-if="status == 'waiting'")
+                    i.material-icons near_me
+                button(v-if="status == 'friends'")
+                    i.material-icons favorite
+            .delete_friend.style_friend(v-if="status == 'pending'")
+                button(@click='reject_friendship')
+                    i.material-icons clear
+        loading(v-if='loading')
 </template>
 
 <script>

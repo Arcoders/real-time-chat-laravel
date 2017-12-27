@@ -23074,24 +23074,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -23257,7 +23239,6 @@ var render = function() {
                     ])
                   ])
                 : _vm._e(),
-              _vm._v(" "),
               _vm.status == "pending"
                 ? _c("button", { on: { click: _vm.accept_friend } }, [
                     _c("i", { staticClass: "material-icons" }, [
@@ -23265,7 +23246,6 @@ var render = function() {
                     ])
                   ])
                 : _vm._e(),
-              _vm._v(" "),
               _vm.status == "waiting"
                 ? _c("button", [
                     _c("i", { staticClass: "material-icons" }, [
@@ -23273,7 +23253,6 @@ var render = function() {
                     ])
                   ])
                 : _vm._e(),
-              _vm._v(" "),
               _vm.status == "friends"
                 ? _c("button", [
                     _c("i", { staticClass: "material-icons" }, [
@@ -23282,7 +23261,6 @@ var render = function() {
                   ])
                 : _vm._e()
             ]),
-            _vm._v(" "),
             _vm.status == "pending"
               ? _c("div", { staticClass: "delete_friend style_friend" }, [
                   _c("button", { on: { click: _vm.reject_friendship } }, [
@@ -23294,7 +23272,6 @@ var render = function() {
               : _vm._e()
           ])
         : _vm._e(),
-      _vm._v(" "),
       _vm.loading ? _c("loading") : _vm._e()
     ],
     1
