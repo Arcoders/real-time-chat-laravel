@@ -1,61 +1,30 @@
-<template>
-    <div id="edit_profile_app" class="edit_user">
+<template lang="pug">
 
-        <div class="information_content">
+    #edit_profile_app.edit_user
+        .information_content
+            notifications(:vue_notifications='notifications', :width='100')
+            form.information_form(method='POST', v-on:submit.prevent='updateProfile()', enctype='multipart/form-data')
+                h1 Edit information
+                .edit-input
+                    input(type='text', v-on:keyup="onInputChange($event, 'name')", v-model='userName', placeholder='User name')
+                .edit-input
+                    input(type='text', v-on:keyup="onInputChange($event, 'status')", v-model='userStatus', placeholder='Status')
+                h1 Select avatar
+                label.fileContainer
+                    button
+                        i.material-icons.edit_i photo_camera
+                        span.select_image Change avatar
+                    input(type='file', name='fileInput', v-on:change="onFileChange($event, 'avatar')", ref='fileInput')
+                h1 Select Cover
+                label.fileContainer
+                    button
+                        i.material-icons.edit_i photo_size_select_actual
+                        span.select_image Choose Cover
+                    input(type='file', name='fileCover', v-on:change="onFileChange($event, 'cover')", ref='fileCover')
+                button.save(v-if='btnSubmit')
+                    | Save
+            loading(v-if='loading')
 
-            <notifications :vue_notifications="notifications" :width="100"></notifications>
-
-            <form method="POST" v-on:submit.prevent="updateProfile()" class="information_form" enctype="multipart/form-data">
-
-                <h1>Edit information</h1>
-
-                <div class="edit-input">
-                    <input type="text"
-                           v-on:keyup="onInputChange($event, 'name')"
-                           v-model="userName"
-                           placeholder="User name">
-                </div>
-
-                <div class="edit-input">
-                    <input type="text"
-                           v-on:keyup="onInputChange($event, 'status')"
-                           v-model="userStatus"
-                           placeholder="Status">
-                </div>
-
-                <h1>Select avatar</h1>
-
-
-                <label class="fileContainer">
-                    <button>
-                        <i class="material-icons edit_i">photo_camera</i>
-                        <span class="select_image">Change avatar</span>
-                    </button>
-                    <input type="file" name="fileInput" v-on:change="onFileChange($event, 'avatar')" ref="fileInput">
-                </label>
-
-                <h1>Select Cover</h1>
-
-                <label class="fileContainer">
-                    <button>
-                        <i class="material-icons edit_i">photo_size_select_actual</i>
-                        <span class="select_image">Choose Cover</span>
-                    </button>
-                    <input type="file" name="fileCover" v-on:change="onFileChange($event, 'cover')" ref="fileCover">
-                </label>
-
-
-                <button class="save" v-if="btnSubmit">
-                    Save
-                </button>
-
-            </form>
-
-            <loading v-if="loading"></loading>
-
-        </div>
-
-    </div>
 </template>
 
 <style scoped>

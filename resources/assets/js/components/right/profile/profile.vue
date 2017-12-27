@@ -1,92 +1,38 @@
-<template>
-    <div class="right" id="profile_app">
-
-        <div class="chat-head">
-            <i class="material-icons big_icon">person</i>
-            <div class="chat-name">
-                <h1 class="font-name">Profile</h1>
-                <p class="font-online">{{ userName }}...</p>
-            </div>
-
-            <router-link v-if="pathEdit" to="/profile/edit">
-                <i class="material-icons">edit</i>
-            </router-link>
-
-            <router-link v-else to="/profile">
-                <i class="material-icons">arrow_back</i>
-            </router-link>
-
-        </div>
-
-        <div class="complet-content">
-            <div class="complete_dynamic_content">
-
-                <div class="information">
-
-                    <div class="widget">
-                        <div class="cover">
-                            <img :src="cover" />
-
-                            <friendship v-if="user.id != userId" :my_id="user.id" :profile_user_id="userId"></friendship>
-
-                        </div>
-
-                        <avatar :username="userName"
-                                color="#fff"
-                                :src="avatar"
-                                :size="100"
-                                class="photo">
-                        </avatar>
-
-                        <h1>{{ userName }}</h1>
-                        <h2>FullStack Developer</h2>
-                        <h3>{{ userStatus }}</h3>
-                        <h3>{{ userId }}</h3>
-
-
-                    </div>
-
-
-                    <div class="manage_users">
-
-                        <router-view :user="user" @previewImage="updateImage" @modelInfo="updateInfo"></router-view>
-
-                        <div v-if="pathEdit" class="contener_txt" v-for="user in users">
-                            <avatar :username="user.name"
-                                    color="#fff"
-                                    :src="user.avatar"
-                                    :size="50"
-                                    class="img-head">
-                            </avatar>
-                            <div class="name">
-                                <button v-on:click="getProfile(user.id)">
-                                    {{user.name}}
-                                </button>
-                            </div>
-                        </div>
-
-                        <div v-if="!records && pathEdit" class="contener_txt">
-                            <avatar username="!"
-                                    color="#fff"
-                                    :size="50"
-                                    backgroundColor="#E57373"
-                                    class="img-head">
-                            </avatar>
-                            <div class="name">
-                                <button>
-                                    You are the first user
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-    </div>
+<template lang="pug">
+    #profile_app.right
+        .chat-head
+            i.material-icons.big_icon person
+            .chat-name
+                h1.font-name Profile
+                p.font-online {{ userName }}...
+            router-link(v-if='pathEdit', to='/profile/edit')
+                i.material-icons edit
+            router-link(v-else='', to='/profile')
+                i.material-icons arrow_back
+        .complet-content
+            .complete_dynamic_content
+                .information
+                    .widget
+                        .cover
+                            img(:src='cover')
+                            friendship(v-if='user.id != userId', :my_id='user.id', :profile_user_id='userId')
+                        avatar.photo(:username='userName', color='#fff', :src='avatar', :size='100')
+                        h1 {{ userName }}
+                        h2 FullStack Developer
+                        h3 {{ userStatus }}
+                        h3 {{ userId }}
+                    .manage_users
+                        router-view(:user='user', @previewimage='updateImage', @modelinfo='updateInfo')
+                        .contener_txt(v-if='pathEdit', v-for='user in users')
+                            avatar.img-head(:username='user.name', color='#fff', :src='user.avatar', :size='50')
+                            .name
+                                button(v-on:click='getProfile(user.id)')
+                                    | {{user.name}}
+                        .contener_txt(v-if='!records && pathEdit')
+                            avatar.img-head(username='!', color='#fff', :size='50', backgroundcolor='#E57373')
+                            .name
+                                button
+                                    | You are the first user
 </template>
 
 <style scoped>

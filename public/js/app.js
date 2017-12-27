@@ -24527,7 +24527,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(76)
 /* template */
-var __vue_template__ = __webpack_require__(77)
+var __vue_template__ = __webpack_require__(109)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -24611,60 +24611,6 @@ exports.push([module.i, "\n.complete_dynamic_content[data-v-3f8256ef] {\n    pad
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -24849,187 +24795,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "right", attrs: { id: "profile_app" } }, [
-    _c(
-      "div",
-      { staticClass: "chat-head" },
-      [
-        _c("i", { staticClass: "material-icons big_icon" }, [_vm._v("person")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "chat-name" }, [
-          _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
-          _vm._v(" "),
-          _c("p", { staticClass: "font-online" }, [
-            _vm._v(_vm._s(_vm.userName) + "...")
-          ])
-        ]),
-        _vm._v(" "),
-        _vm.pathEdit
-          ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
-              _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
-            ])
-          : _c("router-link", { attrs: { to: "/profile" } }, [
-              _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
-            ])
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "complet-content" }, [
-      _c("div", { staticClass: "complete_dynamic_content" }, [
-        _c("div", { staticClass: "information" }, [
-          _c(
-            "div",
-            { staticClass: "widget" },
-            [
-              _c(
-                "div",
-                { staticClass: "cover" },
-                [
-                  _c("img", { attrs: { src: _vm.cover } }),
-                  _vm._v(" "),
-                  _vm.user.id != _vm.userId
-                    ? _c("friendship", {
-                        attrs: {
-                          my_id: _vm.user.id,
-                          profile_user_id: _vm.userId
-                        }
-                      })
-                    : _vm._e()
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("avatar", {
-                staticClass: "photo",
-                attrs: {
-                  username: _vm.userName,
-                  color: "#fff",
-                  src: _vm.avatar,
-                  size: 100
-                }
-              }),
-              _vm._v(" "),
-              _c("h1", [_vm._v(_vm._s(_vm.userName))]),
-              _vm._v(" "),
-              _c("h2", [_vm._v("FullStack Developer")]),
-              _vm._v(" "),
-              _c("h3", [_vm._v(_vm._s(_vm.userStatus))]),
-              _vm._v(" "),
-              _c("h3", [_vm._v(_vm._s(_vm.userId))])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "manage_users" },
-            [
-              _c("router-view", {
-                attrs: { user: _vm.user },
-                on: { previewImage: _vm.updateImage, modelInfo: _vm.updateInfo }
-              }),
-              _vm._v(" "),
-              _vm._l(_vm.users, function(user) {
-                return _vm.pathEdit
-                  ? _c(
-                      "div",
-                      { staticClass: "contener_txt" },
-                      [
-                        _c("avatar", {
-                          staticClass: "img-head",
-                          attrs: {
-                            username: user.name,
-                            color: "#fff",
-                            src: user.avatar,
-                            size: 50
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "name" }, [
-                          _c(
-                            "button",
-                            {
-                              on: {
-                                click: function($event) {
-                                  _vm.getProfile(user.id)
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(user.name) +
-                                  "\n                            "
-                              )
-                            ]
-                          )
-                        ])
-                      ],
-                      1
-                    )
-                  : _vm._e()
-              }),
-              _vm._v(" "),
-              !_vm.records && _vm.pathEdit
-                ? _c(
-                    "div",
-                    { staticClass: "contener_txt" },
-                    [
-                      _c("avatar", {
-                        staticClass: "img-head",
-                        attrs: {
-                          username: "!",
-                          color: "#fff",
-                          size: 50,
-                          backgroundColor: "#E57373"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(0)
-                    ],
-                    1
-                  )
-                : _vm._e()
-            ],
-            2
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("button", [
-        _vm._v(
-          "\n                                You are the first user\n                            "
-        )
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3f8256ef", module.exports)
-  }
-}
-
-/***/ }),
+/* 77 */,
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25042,7 +24808,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(81)
 /* template */
-var __vue_template__ = __webpack_require__(82)
+var __vue_template__ = __webpack_require__(108)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25115,7 +24881,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -25126,37 +24892,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -25364,175 +25099,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "edit_user", attrs: { id: "edit_profile_app" } },
-    [
-      _c(
-        "div",
-        { staticClass: "information_content" },
-        [
-          _c("notifications", {
-            attrs: { vue_notifications: _vm.notifications, width: 100 }
-          }),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass: "information_form",
-              attrs: { method: "POST", enctype: "multipart/form-data" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  _vm.updateProfile()
-                }
-              }
-            },
-            [
-              _c("h1", [_vm._v("Edit information")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "edit-input" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.userName,
-                      expression: "userName"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "User name" },
-                  domProps: { value: _vm.userName },
-                  on: {
-                    keyup: function($event) {
-                      _vm.onInputChange($event, "name")
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.userName = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "edit-input" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.userStatus,
-                      expression: "userStatus"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "Status" },
-                  domProps: { value: _vm.userStatus },
-                  on: {
-                    keyup: function($event) {
-                      _vm.onInputChange($event, "status")
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.userStatus = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("h1", [_vm._v("Select avatar")]),
-              _vm._v(" "),
-              _c("label", { staticClass: "fileContainer" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("input", {
-                  ref: "fileInput",
-                  attrs: { type: "file", name: "fileInput" },
-                  on: {
-                    change: function($event) {
-                      _vm.onFileChange($event, "avatar")
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("h1", [_vm._v("Select Cover")]),
-              _vm._v(" "),
-              _c("label", { staticClass: "fileContainer" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("input", {
-                  ref: "fileCover",
-                  attrs: { type: "file", name: "fileCover" },
-                  on: {
-                    change: function($event) {
-                      _vm.onFileChange($event, "cover")
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _vm.btnSubmit
-                ? _c("button", { staticClass: "save" }, [
-                    _vm._v("\n                Save\n            ")
-                  ])
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _vm.loading ? _c("loading") : _vm._e()
-        ],
-        1
-      )
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [
-      _c("i", { staticClass: "material-icons edit_i" }, [
-        _vm._v("photo_camera")
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "select_image" }, [_vm._v("Change avatar")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [
-      _c("i", { staticClass: "material-icons edit_i" }, [
-        _vm._v("photo_size_select_actual")
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "select_image" }, [_vm._v("Choose Cover")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-68f6fac4", module.exports)
-  }
-}
-
-/***/ }),
+/* 82 */,
 /* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27545,6 +27112,320 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "edit_user", attrs: { id: "edit_profile_app" } },
+    [
+      _c(
+        "div",
+        { staticClass: "information_content" },
+        [
+          _c("notifications", {
+            attrs: { vue_notifications: _vm.notifications, width: 100 }
+          }),
+          _c(
+            "form",
+            {
+              staticClass: "information_form",
+              attrs: { method: "POST", enctype: "multipart/form-data" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.updateProfile()
+                }
+              }
+            },
+            [
+              _c("h1", [_vm._v("Edit information")]),
+              _c("div", { staticClass: "edit-input" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.userName,
+                      expression: "userName"
+                    }
+                  ],
+                  attrs: { type: "text", placeholder: "User name" },
+                  domProps: { value: _vm.userName },
+                  on: {
+                    keyup: function($event) {
+                      _vm.onInputChange($event, "name")
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.userName = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _c("div", { staticClass: "edit-input" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.userStatus,
+                      expression: "userStatus"
+                    }
+                  ],
+                  attrs: { type: "text", placeholder: "Status" },
+                  domProps: { value: _vm.userStatus },
+                  on: {
+                    keyup: function($event) {
+                      _vm.onInputChange($event, "status")
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.userStatus = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _c("h1", [_vm._v("Select avatar")]),
+              _c("label", { staticClass: "fileContainer" }, [
+                _vm._m(0),
+                _c("input", {
+                  ref: "fileInput",
+                  attrs: { type: "file", name: "fileInput" },
+                  on: {
+                    change: function($event) {
+                      _vm.onFileChange($event, "avatar")
+                    }
+                  }
+                })
+              ]),
+              _c("h1", [_vm._v("Select Cover")]),
+              _c("label", { staticClass: "fileContainer" }, [
+                _vm._m(1),
+                _c("input", {
+                  ref: "fileCover",
+                  attrs: { type: "file", name: "fileCover" },
+                  on: {
+                    change: function($event) {
+                      _vm.onFileChange($event, "cover")
+                    }
+                  }
+                })
+              ]),
+              _vm.btnSubmit
+                ? _c("button", { staticClass: "save" }, [_vm._v("Save")])
+                : _vm._e()
+            ]
+          ),
+          _vm.loading ? _c("loading") : _vm._e()
+        ],
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", [
+      _c("i", { staticClass: "material-icons edit_i" }, [
+        _vm._v("photo_camera")
+      ]),
+      _c("span", { staticClass: "select_image" }, [_vm._v("Change avatar")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", [
+      _c("i", { staticClass: "material-icons edit_i" }, [
+        _vm._v("photo_size_select_actual")
+      ]),
+      _c("span", { staticClass: "select_image" }, [_vm._v("Choose Cover")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-68f6fac4", module.exports)
+  }
+}
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "right", attrs: { id: "profile_app" } }, [
+    _c(
+      "div",
+      { staticClass: "chat-head" },
+      [
+        _c("i", { staticClass: "material-icons big_icon" }, [_vm._v("person")]),
+        _c("div", { staticClass: "chat-name" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
+          _c("p", { staticClass: "font-online" }, [
+            _vm._v(_vm._s(_vm.userName) + "...")
+          ])
+        ]),
+        _vm.pathEdit
+          ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
+              _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
+            ])
+          : _c("router-link", { attrs: { to: "/profile" } }, [
+              _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
+            ])
+      ],
+      1
+    ),
+    _c("div", { staticClass: "complet-content" }, [
+      _c("div", { staticClass: "complete_dynamic_content" }, [
+        _c("div", { staticClass: "information" }, [
+          _c(
+            "div",
+            { staticClass: "widget" },
+            [
+              _c(
+                "div",
+                { staticClass: "cover" },
+                [
+                  _c("img", { attrs: { src: _vm.cover } }),
+                  _vm.user.id != _vm.userId
+                    ? _c("friendship", {
+                        attrs: {
+                          my_id: _vm.user.id,
+                          profile_user_id: _vm.userId
+                        }
+                      })
+                    : _vm._e()
+                ],
+                1
+              ),
+              _c("avatar", {
+                staticClass: "photo",
+                attrs: {
+                  username: _vm.userName,
+                  color: "#fff",
+                  src: _vm.avatar,
+                  size: 100
+                }
+              }),
+              _c("h1", [_vm._v(_vm._s(_vm.userName))]),
+              _c("h2", [_vm._v("FullStack Developer")]),
+              _c("h3", [_vm._v(_vm._s(_vm.userStatus))]),
+              _c("h3", [_vm._v(_vm._s(_vm.userId))])
+            ],
+            1
+          ),
+          _c(
+            "div",
+            { staticClass: "manage_users" },
+            [
+              _c("router-view", {
+                attrs: { user: _vm.user },
+                on: { previewimage: _vm.updateImage, modelinfo: _vm.updateInfo }
+              }),
+              _vm._l(_vm.users, function(user) {
+                return _vm.pathEdit
+                  ? _c(
+                      "div",
+                      { staticClass: "contener_txt" },
+                      [
+                        _c("avatar", {
+                          staticClass: "img-head",
+                          attrs: {
+                            username: user.name,
+                            color: "#fff",
+                            src: user.avatar,
+                            size: 50
+                          }
+                        }),
+                        _c("div", { staticClass: "name" }, [
+                          _c(
+                            "button",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.getProfile(user.id)
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(user.name))]
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  : _vm._e()
+              }),
+              !_vm.records && _vm.pathEdit
+                ? _c(
+                    "div",
+                    { staticClass: "contener_txt" },
+                    [
+                      _c("avatar", {
+                        staticClass: "img-head",
+                        attrs: {
+                          username: "!",
+                          color: "#fff",
+                          size: 50,
+                          backgroundcolor: "#E57373"
+                        }
+                      }),
+                      _vm._m(0)
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ],
+            2
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "name" }, [
+      _c("button", [_vm._v("You are the first user")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3f8256ef", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
