@@ -5,8 +5,7 @@
         .data
             router-link(to='/groups')
                 i.material-icons arrow_back
-            h4
-                | My groups
+            h4 My groups 
                 router-link(to='/groups/add')
                     i.add.material-icons add
             hr

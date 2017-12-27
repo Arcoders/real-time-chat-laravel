@@ -1,5 +1,19 @@
 <template lang="pug">
-
+    #manage_groups_app.right
+        .chat-head
+            i.material-icons.big_icon group_add
+            .chat-name
+                h1.font-name Groups
+                p.font-online You can create public chat rooms for all users...
+        .wrap-content
+            .dynamic_content
+                div(v-if="$route.path == '/groups'")
+                    .groups
+                        .group
+                            router-link(to='groups/add', exact-active-class='active') Add groups
+                        .group
+                            router-link(to='groups/my') My groups
+                router-view
 </template>
 
 <style scoped>

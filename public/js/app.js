@@ -23486,7 +23486,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(56)
 /* template */
-var __vue_template__ = __webpack_require__(57)
+var __vue_template__ = __webpack_require__(115)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -23645,12 +23645,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -23669,49 +23663,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "vue_notifications" } },
-    _vm._l(_vm.vue_notifications, function(notification) {
-      return _c("div", { staticClass: "global" }, [
-        _c(
-          "span",
-          {
-            class: [
-              notification.type,
-              "notification",
-              "animateOpen",
-              "width_" + _vm.width
-            ]
-          },
-          [
-            _vm._v(
-              "\n            " + _vm._s(notification.message) + "\n        "
-            )
-          ]
-        )
-      ])
-    })
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0c031926", module.exports)
-  }
-}
-
-/***/ }),
+/* 57 */,
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23724,7 +23676,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(61)
 /* template */
-var __vue_template__ = __webpack_require__(62)
+var __vue_template__ = __webpack_require__(114)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -23797,7 +23749,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-5890a772] {\n  text-decoration: none;\n  -webkit-transition: all .3s ease-out;\n  transition: all .3s ease-out;\n}\n.pagination[data-v-5890a772] {\n  display: block;\n  margin-top: 1em;\n  color: white;\n  text-align: right;\n}\n.pagination .page-numbers li[data-v-5890a772] {\n    display: inline-block;\n    width: 28px;\n    height: 28px;\n}\n.pagination .page-numbers li .disable[data-v-5890a772] {\n      pointer-events: none;\n      -webkit-box-shadow: none;\n              box-shadow: none;\n      border-radius: 2px;\n      color: #aaaaaa;\n      border: 1px solid #f5f5f5;\n}\n.pagination .page-numbers li a[data-v-5890a772], .pagination .page-numbers li span[data-v-5890a772] {\n      color: #777777;\n      background: white;\n      border: 1px solid #cccccc;\n      padding: 5px;\n      display: block;\n      text-align: center;\n      border-radius: 2px;\n      margin: 2px;\n      -webkit-box-shadow: 0px 0px 1px 0px rgba(119, 119, 119, 0.5);\n              box-shadow: 0px 0px 1px 0px rgba(119, 119, 119, 0.5);\n}\n.pagination .page-numbers li a.current[data-v-5890a772], .pagination .page-numbers li span.current[data-v-5890a772] {\n        background: #f1f1f1;\n        color: #009688;\n}\n.pagination .page-numbers li a[data-v-5890a772]:hover {\n      background: #f1f1f1;\n      color: #009688;\n      -webkit-box-shadow: none;\n              box-shadow: none;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-5890a772] {\n  text-decoration: none;\n  -webkit-transition: all .3s ease-out;\n  transition: all .3s ease-out;\n  cursor: pointer;\n}\n.pagination[data-v-5890a772] {\n  display: block;\n  margin-top: 1em;\n  color: white;\n  text-align: right;\n}\n.pagination .page-numbers li[data-v-5890a772] {\n    display: inline-block;\n    width: 28px;\n    height: 28px;\n}\n.pagination .page-numbers li .disable[data-v-5890a772] {\n      pointer-events: none;\n      -webkit-box-shadow: none;\n              box-shadow: none;\n      border-radius: 2px;\n      color: #aaaaaa;\n      border: 1px solid #f5f5f5;\n}\n.pagination .page-numbers li a[data-v-5890a772], .pagination .page-numbers li span[data-v-5890a772] {\n      color: #777777;\n      background: white;\n      border: 1px solid #cccccc;\n      padding: 5px;\n      display: block;\n      text-align: center;\n      border-radius: 2px;\n      margin: 2px;\n      -webkit-box-shadow: 0px 0px 1px 0px rgba(119, 119, 119, 0.5);\n              box-shadow: 0px 0px 1px 0px rgba(119, 119, 119, 0.5);\n}\n.pagination .page-numbers li a.current[data-v-5890a772], .pagination .page-numbers li span.current[data-v-5890a772] {\n        background: #f1f1f1;\n        color: #009688;\n}\n.pagination .page-numbers li a[data-v-5890a772]:hover {\n      background: #f1f1f1;\n      color: #009688;\n      -webkit-box-shadow: none;\n              box-shadow: none;\n}\n", ""]);
 
 // exports
 
@@ -23808,22 +23760,6 @@ exports.push([module.i, "\na[data-v-5890a772] {\n  text-decoration: none;\n  -we
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -23933,95 +23869,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "paginate_app" } }, [
-    _c("div", { staticClass: "pagination" }, [
-      _c(
-        "ul",
-        { staticClass: "page-numbers" },
-        [
-          _c("li", [
-            _c(
-              "a",
-              {
-                staticClass: "prev",
-                class: { disable: _vm.source.current_page == 1 },
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    _vm.nextPrev($event, _vm.source.current_page - 1)
-                  }
-                }
-              },
-              [_vm._v("\n                    «\n                ")]
-            )
-          ]),
-          _vm._v(" "),
-          _vm._l(_vm.pages, function(page) {
-            return _c("li", [
-              _c(
-                "a",
-                {
-                  class: { current: _vm.source.current_page == page },
-                  attrs: { href: "#" },
-                  on: {
-                    click: function($event) {
-                      _vm.navigate($event, page)
-                    }
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(page) +
-                      "\n                "
-                  )
-                ]
-              )
-            ])
-          }),
-          _vm._v(" "),
-          _c("li", [
-            _c(
-              "a",
-              {
-                staticClass: "next",
-                class: {
-                  disable: _vm.source.current_page == _vm.source.last_page
-                },
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    _vm.nextPrev($event, _vm.source.current_page + 1)
-                  }
-                }
-              },
-              [_vm._v("\n                    »\n                ")]
-            )
-          ])
-        ],
-        2
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5890a772", module.exports)
-  }
-}
-
-/***/ }),
+/* 62 */,
 /* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25245,6 +25093,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -25350,7 +25212,6 @@ exports.push([module.i, "\n.data a[data-v-9220cbd4] {\n    text-decoration: none
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -26961,7 +26822,7 @@ var render = function() {
           _c(
             "h4",
             [
-              _vm._v("My groups"),
+              _vm._v("My groups "),
               _c("router-link", { attrs: { to: "/groups/add" } }, [
                 _c("i", { staticClass: "add material-icons" }, [_vm._v("add")])
               ])
@@ -27123,7 +26984,151 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    { staticClass: "right", attrs: { id: "manage_groups_app" } },
+    [
+      _vm._m(0),
+      _c("div", { staticClass: "wrap-content" }, [
+        _c(
+          "div",
+          { staticClass: "dynamic_content" },
+          [
+            _vm.$route.path == "/groups"
+              ? _c("div", [
+                  _c("div", { staticClass: "groups" }, [
+                    _c(
+                      "div",
+                      { staticClass: "group" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: "groups/add",
+                              "exact-active-class": "active"
+                            }
+                          },
+                          [_vm._v("Add groups")]
+                        )
+                      ],
+                      1
+                    ),
+                    _c(
+                      "div",
+                      { staticClass: "group" },
+                      [
+                        _c("router-link", { attrs: { to: "groups/my" } }, [
+                          _vm._v("My groups")
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              : _vm._e(),
+            _c("router-view")
+          ],
+          1
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-head" }, [
+      _c("i", { staticClass: "material-icons big_icon" }, [
+        _vm._v("group_add")
+      ]),
+      _c("div", { staticClass: "chat-name" }, [
+        _c("h1", { staticClass: "font-name" }, [_vm._v("Groups")]),
+        _c("p", { staticClass: "font-online" }, [
+          _vm._v("You can create public chat rooms for all users...")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d3688d86", module.exports)
+  }
+}
+
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "paginate_app" } }, [
+    _c("div", { staticClass: "pagination" }, [
+      _c(
+        "ul",
+        { staticClass: "page-numbers" },
+        [
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "prev",
+                class: { disable: _vm.source.current_page == 1 },
+                on: {
+                  click: function($event) {
+                    _vm.nextPrev($event, _vm.source.current_page - 1)
+                  }
+                }
+              },
+              [_vm._v("«")]
+            )
+          ]),
+          _vm._l(_vm.pages, function(page) {
+            return _c("li", [
+              _c(
+                "a",
+                {
+                  class: { current: _vm.source.current_page == page },
+                  on: {
+                    click: function($event) {
+                      _vm.navigate($event, page)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(page))]
+              )
+            ])
+          }),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "next",
+                class: {
+                  disable: _vm.source.current_page == _vm.source.last_page
+                },
+                on: {
+                  click: function($event) {
+                    _vm.nextPrev($event, _vm.source.current_page + 1)
+                  }
+                }
+              },
+              [_vm._v("»")]
+            )
+          ])
+        ],
+        2
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -27131,7 +27136,46 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d3688d86", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5890a772", module.exports)
+  }
+}
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "vue_notifications" } },
+    _vm._l(_vm.vue_notifications, function(notification) {
+      return _c("div", { staticClass: "global" }, [
+        _c(
+          "span",
+          {
+            class: [
+              notification.type,
+              "notification",
+              "animateOpen",
+              "width_" + _vm.width
+            ]
+          },
+          [_vm._v(_vm._s(notification.message))]
+        )
+      ])
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0c031926", module.exports)
   }
 }
 

@@ -1,15 +1,9 @@
-<template>
-    <div id="vue_notifications">
+<template lang="pug">
+    #vue_notifications
+        .global(v-for='notification in vue_notifications')
+            span(v-bind:class="[notification.type , 'notification', 'animateOpen', 'width_' + width]")
+                | {{ notification.message }}
 
-        <div v-for="notification in vue_notifications" class="global">
-
-            <span v-bind:class="[notification.type , 'notification', 'animateOpen', 'width_' + width]">
-                {{ notification.message }}
-            </span>
-
-        </div>
-
-    </div>
 </template>
 
 <style  scoped>

@@ -1,37 +1,20 @@
-<template>
-    <div id="paginate_app">
+<template lang="pug">
+    #paginate_app
+        .pagination
+            ul.page-numbers
+                li
+                    a.prev(@click='nextPrev($event, source.current_page - 1)',
+                            :class='{disable: source.current_page == 1}')
+                        | «
+                li(v-for='page in pages')
+                    a(@click='navigate($event, page)',
+                        :class='{current: source.current_page == page}')
+                        | {{ page }}
+                li
+                    a.next(@click='nextPrev($event, source.current_page + 1)',
+                            :class='{disable: source.current_page == source.last_page}')
+                        | »
 
-        <div class="pagination">
-            <ul class="page-numbers">
-                <li>
-                    <a href="#"
-                       @click="nextPrev($event, source.current_page - 1)"
-                       :class="{disable: source.current_page == 1}"
-                       class="prev">
-                        «
-                    </a>
-                </li>
-
-                <li v-for="page in pages">
-                    <a href="#"
-                       @click="navigate($event, page)"
-                       :class="{current: source.current_page == page}">
-                        {{ page }}
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#"
-                       @click="nextPrev($event, source.current_page + 1)"
-                       :class="{disable: source.current_page == source.last_page}"
-                       class="next">
-                        »
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -39,6 +22,7 @@
     a {
         text-decoration:none;
         transition: all .3s ease-out;
+        cursor: pointer;
     }
 
     .pagination {
