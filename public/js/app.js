@@ -23486,7 +23486,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(56)
 /* template */
-var __vue_template__ = __webpack_require__(115)
+var __vue_template__ = __webpack_require__(57)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -23663,7 +23663,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 57 */,
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "vue_notifications" } },
+    _vm._l(_vm.vue_notifications, function(notification) {
+      return _c("div", { staticClass: "global" }, [
+        _c(
+          "span",
+          {
+            class: [
+              notification.type,
+              "notification",
+              "animateOpen",
+              "width_" + _vm.width
+            ]
+          },
+          [_vm._v(_vm._s(notification.message))]
+        )
+      ])
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0c031926", module.exports)
+  }
+}
+
+/***/ }),
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23676,7 +23714,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(61)
 /* template */
-var __vue_template__ = __webpack_require__(114)
+var __vue_template__ = __webpack_require__(62)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -23869,7 +23907,84 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 62 */,
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "paginate_app" } }, [
+    _c("div", { staticClass: "pagination" }, [
+      _c(
+        "ul",
+        { staticClass: "page-numbers" },
+        [
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "prev",
+                class: { disable: _vm.source.current_page == 1 },
+                on: {
+                  click: function($event) {
+                    _vm.nextPrev($event, _vm.source.current_page - 1)
+                  }
+                }
+              },
+              [_vm._v("«")]
+            )
+          ]),
+          _vm._l(_vm.pages, function(page) {
+            return _c("li", [
+              _c(
+                "a",
+                {
+                  class: { current: _vm.source.current_page == page },
+                  on: {
+                    click: function($event) {
+                      _vm.navigate($event, page)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(page))]
+              )
+            ])
+          }),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "next",
+                class: {
+                  disable: _vm.source.current_page == _vm.source.last_page
+                },
+                on: {
+                  click: function($event) {
+                    _vm.nextPrev($event, _vm.source.current_page + 1)
+                  }
+                }
+              },
+              [_vm._v("»")]
+            )
+          ])
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5890a772", module.exports)
+  }
+}
+
+/***/ }),
 /* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -24375,7 +24490,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(76)
 /* template */
-var __vue_template__ = __webpack_require__(109)
+var __vue_template__ = __webpack_require__(77)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -24459,6 +24574,31 @@ exports.push([module.i, "\n.complete_dynamic_content[data-v-3f8256ef] {\n    pad
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -24643,7 +24783,162 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 77 */,
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "right", attrs: { id: "profile_app" } }, [
+    _c(
+      "div",
+      { staticClass: "chat-head" },
+      [
+        _c("i", { staticClass: "material-icons big_icon" }, [_vm._v("person")]),
+        _c("div", { staticClass: "chat-name" }, [
+          _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
+          _c("p", { staticClass: "font-online" }, [
+            _vm._v(_vm._s(_vm.userName) + "...")
+          ])
+        ]),
+        _vm.pathEdit
+          ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
+              _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
+            ])
+          : _c("router-link", { attrs: { to: "/profile" } }, [
+              _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
+            ])
+      ],
+      1
+    ),
+    _c("div", { staticClass: "complet-content" }, [
+      _c("div", { staticClass: "complete_dynamic_content" }, [
+        _c("div", { staticClass: "information" }, [
+          _c(
+            "div",
+            { staticClass: "widget" },
+            [
+              _c(
+                "div",
+                { staticClass: "cover" },
+                [
+                  _c("img", { attrs: { src: _vm.cover } }),
+                  _vm.user.id != _vm.userId
+                    ? _c("friendship", {
+                        attrs: {
+                          my_id: _vm.user.id,
+                          profile_user_id: _vm.userId
+                        }
+                      })
+                    : _vm._e()
+                ],
+                1
+              ),
+              _c("avatar", {
+                staticClass: "photo",
+                attrs: {
+                  username: _vm.userName,
+                  color: "#fff",
+                  src: _vm.avatar,
+                  size: 100
+                }
+              }),
+              _c("h1", [_vm._v(_vm._s(_vm.userName))]),
+              _c("h2", [_vm._v("FullStack Developer")]),
+              _c("h3", [_vm._v(_vm._s(_vm.userStatus))]),
+              _c("h3", [_vm._v(_vm._s(_vm.userId))])
+            ],
+            1
+          ),
+          _c(
+            "div",
+            { staticClass: "manage_users" },
+            [
+              _c("router-view", {
+                attrs: { user: _vm.user },
+                on: { previewImage: _vm.updateImage, modelinfo: _vm.updateInfo }
+              }),
+              _vm._l(_vm.users, function(user) {
+                return _vm.pathEdit
+                  ? _c(
+                      "div",
+                      { staticClass: "contener_txt" },
+                      [
+                        _c("avatar", {
+                          staticClass: "img-head",
+                          attrs: {
+                            username: user.name,
+                            color: "#fff",
+                            src: user.avatar,
+                            size: 50
+                          }
+                        }),
+                        _c("div", { staticClass: "name" }, [
+                          _c(
+                            "button",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.getProfile(user.id)
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(user.name))]
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  : _vm._e()
+              }),
+              !_vm.records && _vm.pathEdit
+                ? _c(
+                    "div",
+                    { staticClass: "contener_txt" },
+                    [
+                      _c("avatar", {
+                        staticClass: "img-head",
+                        attrs: {
+                          username: "!",
+                          color: "#fff",
+                          size: 50,
+                          backgroundcolor: "#E57373"
+                        }
+                      }),
+                      _vm._m(0)
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ],
+            2
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "name" }, [
+      _c("button", [_vm._v("You are the first user")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3f8256ef", module.exports)
+  }
+}
+
+/***/ }),
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -24656,7 +24951,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(81)
 /* template */
-var __vue_template__ = __webpack_require__(108)
+var __vue_template__ = __webpack_require__(82)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -24947,7 +25242,160 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 82 */,
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "edit_user", attrs: { id: "edit_profile_app" } },
+    [
+      _c(
+        "div",
+        { staticClass: "information_content" },
+        [
+          _c("notifications", {
+            attrs: { vue_notifications: _vm.notifications, width: 100 }
+          }),
+          _c(
+            "form",
+            {
+              staticClass: "information_form",
+              attrs: { method: "POST", enctype: "multipart/form-data" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.updateProfile()
+                }
+              }
+            },
+            [
+              _c("h1", [_vm._v("Edit information")]),
+              _c("div", { staticClass: "edit-input" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.userName,
+                      expression: "userName"
+                    }
+                  ],
+                  attrs: { type: "text", placeholder: "User name" },
+                  domProps: { value: _vm.userName },
+                  on: {
+                    keyup: function($event) {
+                      _vm.onInputChange($event, "name")
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.userName = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _c("div", { staticClass: "edit-input" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.userStatus,
+                      expression: "userStatus"
+                    }
+                  ],
+                  attrs: { type: "text", placeholder: "Status" },
+                  domProps: { value: _vm.userStatus },
+                  on: {
+                    keyup: function($event) {
+                      _vm.onInputChange($event, "status")
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.userStatus = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _c("h1", [_vm._v("Select avatar")]),
+              _c("label", { staticClass: "fileContainer" }, [
+                _vm._m(0),
+                _c("input", {
+                  ref: "fileInput",
+                  attrs: { type: "file", name: "fileInput" },
+                  on: {
+                    change: function($event) {
+                      _vm.onFileChange($event, "avatar")
+                    }
+                  }
+                })
+              ]),
+              _c("h1", [_vm._v("Select Cover")]),
+              _c("label", { staticClass: "fileContainer" }, [
+                _vm._m(1),
+                _c("input", {
+                  ref: "fileCover",
+                  attrs: { type: "file", name: "fileCover" },
+                  on: {
+                    change: function($event) {
+                      _vm.onFileChange($event, "cover")
+                    }
+                  }
+                })
+              ]),
+              _vm.btnSubmit
+                ? _c("button", { staticClass: "save" }, [_vm._v("Save")])
+                : _vm._e()
+            ]
+          ),
+          _vm.loading ? _c("loading") : _vm._e()
+        ],
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", [
+      _c("i", { staticClass: "material-icons edit_i" }, [
+        _vm._v("photo_camera")
+      ]),
+      _c("span", { staticClass: "select_image" }, [_vm._v("Change avatar")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", [
+      _c("i", { staticClass: "material-icons edit_i" }, [
+        _vm._v("photo_size_select_actual")
+      ]),
+      _c("span", { staticClass: "select_image" }, [_vm._v("Choose Cover")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-68f6fac4", module.exports)
+  }
+}
+
+/***/ }),
 /* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -24960,7 +25408,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(86)
 /* template */
-var __vue_template__ = __webpack_require__(113)
+var __vue_template__ = __webpack_require__(87)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25115,7 +25563,92 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 87 */,
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "right", attrs: { id: "manage_groups_app" } },
+    [
+      _vm._m(0),
+      _c("div", { staticClass: "wrap-content" }, [
+        _c(
+          "div",
+          { staticClass: "dynamic_content" },
+          [
+            _vm.$route.path == "/groups"
+              ? _c("div", [
+                  _c("div", { staticClass: "groups" }, [
+                    _c(
+                      "div",
+                      { staticClass: "group" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: "groups/add",
+                              "exact-active-class": "active"
+                            }
+                          },
+                          [_vm._v("Add groups")]
+                        )
+                      ],
+                      1
+                    ),
+                    _c(
+                      "div",
+                      { staticClass: "group" },
+                      [
+                        _c("router-link", { attrs: { to: "groups/my" } }, [
+                          _vm._v("My groups")
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              : _vm._e(),
+            _c("router-view")
+          ],
+          1
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-head" }, [
+      _c("i", { staticClass: "material-icons big_icon" }, [
+        _vm._v("group_add")
+      ]),
+      _c("div", { staticClass: "chat-name" }, [
+        _c("h1", { staticClass: "font-name" }, [_vm._v("Groups")]),
+        _c("p", { staticClass: "font-online" }, [
+          _vm._v("You can create public chat rooms for all users...")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d3688d86", module.exports)
+  }
+}
+
+/***/ }),
 /* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25128,7 +25661,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(91)
 /* template */
-var __vue_template__ = __webpack_require__(112)
+var __vue_template__ = __webpack_require__(92)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25419,7 +25952,162 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 92 */,
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "my_groups_app" } },
+    [
+      _c("notifications", { attrs: { vue_notifications: _vm.notifications } }),
+      _vm.loading ? _c("loading") : _vm._e(),
+      _c(
+        "div",
+        { staticClass: "data" },
+        [
+          _c("router-link", { attrs: { to: "/groups" } }, [
+            _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
+          ]),
+          _c(
+            "h4",
+            [
+              _vm._v("My groups"),
+              _c("router-link", { attrs: { to: "/groups/add" } }, [
+                _c("i", { staticClass: "add material-icons" }, [_vm._v("add")])
+              ])
+            ],
+            1
+          ),
+          _c("hr")
+        ],
+        1
+      ),
+      _c("table", [
+        _vm._m(0),
+        _c(
+          "tbody",
+          [
+            _vm._l(_vm.groups, function(group, index) {
+              return _c("tr", { staticClass: "data" }, [
+                _c(
+                  "td",
+                  [
+                    _c("avatar", {
+                      staticClass: "group_avatar",
+                      attrs: {
+                        size: 45,
+                        username: group.name,
+                        src: group.avatar,
+                        color: "#fff"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _c("td", [_vm._v(_vm._s(group.name))]),
+                _c(
+                  "td",
+                  [
+                    _c("router-link", { attrs: { to: _vm.editLink(group) } }, [
+                      _c("i", { staticClass: "material-icons green_teal" }, [
+                        _vm._v("mode_edit")
+                      ])
+                    ])
+                  ],
+                  1
+                ),
+                _c("td", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "format_button",
+                      on: {
+                        click: function($event) {
+                          _vm.deleteGroup(group.id, index)
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "material-icons cool_red" }, [
+                        _vm._v("delete")
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            }),
+            _vm.notFound
+              ? _c("tr", [
+                  _c(
+                    "td",
+                    { attrs: { colspan: "4" } },
+                    [
+                      _vm._v("No records found please"),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "green_teal link_add",
+                          attrs: { to: "/groups/add" }
+                        },
+                        [_vm._v("Add Group")]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e(),
+            _vm.errorLoad ? _c("tr", [_vm._m(1)]) : _vm._e()
+          ],
+          2
+        )
+      ]),
+      _c("paginate", {
+        attrs: { source: _vm.pagination },
+        on: { navigate: _vm.clickedPage }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Avatar")]),
+        _c("th", [_vm._v("Name")]),
+        _c("th", [_vm._v("Edit")]),
+        _c("th", [_vm._v("Delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { colspan: "4" } }, [
+      _c("p", { staticClass: "error" }, [
+        _vm._v("Sorry :( records could not be loaded")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9220cbd4", module.exports)
+  }
+}
+
+/***/ }),
 /* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25432,7 +26120,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(96)
 /* template */
-var __vue_template__ = __webpack_require__(110)
+var __vue_template__ = __webpack_require__(97)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25783,7 +26471,200 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 97 */,
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "add_group_app" } },
+    [
+      _c("notifications", { attrs: { vue_notifications: _vm.notifications } }),
+      _c("router-link", { attrs: { to: "/groups/my" } }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
+      ]),
+      _vm.access
+        ? _c("avatar", {
+            attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
+          })
+        : _vm._e(),
+      _vm.access
+        ? _c("h4", [_vm._v(" Add new group")])
+        : _c("h4", [
+            _vm._v("To be able to add a group you must have friends...")
+          ]),
+      _c("hr"),
+      _vm.access
+        ? _c(
+            "form",
+            {
+              attrs: { method: "POST", enctype: "multipart/form-data" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "input wrap-input" },
+                [
+                  _c("multiselect", {
+                    attrs: {
+                      multiple: true,
+                      "track-by": "id",
+                      label: "name",
+                      "hide-selected": true,
+                      "close-on-select": false,
+                      options: _vm.listUsers
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "tag",
+                        fn: function(props) {
+                          return [
+                            _c("span", { staticClass: "custom__tag" }, [
+                              _c("span", [
+                                _vm._v(" " + _vm._s(props.option.name))
+                              ]),
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "custom__remove",
+                                  on: {
+                                    click: function($event) {
+                                      props.remove(props.option)
+                                    }
+                                  }
+                                },
+                                [_vm._v(" ❌")]
+                              )
+                            ])
+                          ]
+                        }
+                      }
+                    ]),
+                    model: {
+                      value: _vm.selectedUsers,
+                      callback: function($$v) {
+                        _vm.selectedUsers = $$v
+                      },
+                      expression: "selectedUsers"
+                    }
+                  })
+                ],
+                1
+              ),
+              _c("br"),
+              _c("br"),
+              _c("div", { staticClass: "input wrap-input" }, [
+                _c("label", { staticClass: "fileContainer font-online" }, [
+                  !_vm.avatar
+                    ? _c("button", { attrs: { type: "button" } }, [
+                        _c("i", { staticClass: "material-icons" }, [
+                          _vm._v("photo")
+                        ])
+                      ])
+                    : _c(
+                        "button",
+                        {
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.avatar = null
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons" }, [
+                            _vm._v("clear")
+                          ])
+                        ]
+                      ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.avatar,
+                        expression: "!avatar"
+                      }
+                    ],
+                    ref: "fileInput",
+                    attrs: { type: "file", name: "avatar" },
+                    on: {
+                      change: function($event) {
+                        _vm.onFileChange($event)
+                      }
+                    }
+                  })
+                ]),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.groupName,
+                      expression: "groupName"
+                    }
+                  ],
+                  staticClass: "input-global",
+                  attrs: {
+                    name: "name",
+                    type: "text",
+                    placeholder: "Group name..."
+                  },
+                  domProps: { value: _vm.groupName },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key)
+                      ) {
+                        return null
+                      }
+                      _vm.addGroup($event)
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.groupName = $event.target.value
+                    }
+                  }
+                }),
+                _c(
+                  "button",
+                  {
+                    attrs: { type: "button", disabled: _vm.btnDisabled },
+                    on: { click: _vm.addGroup }
+                  },
+                  [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
+                )
+              ])
+            ]
+          )
+        : _vm._e(),
+      _vm.loading ? _c("loading") : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5ddffaa0", module.exports)
+  }
+}
+
+/***/ }),
 /* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25796,7 +26677,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(101)
 /* template */
-var __vue_template__ = __webpack_require__(111)
+var __vue_template__ = __webpack_require__(102)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -26149,522 +27030,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 102 */,
-/* 103 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "edit_user", attrs: { id: "edit_profile_app" } },
-    [
-      _c(
-        "div",
-        { staticClass: "information_content" },
-        [
-          _c("notifications", {
-            attrs: { vue_notifications: _vm.notifications, width: 100 }
-          }),
-          _c(
-            "form",
-            {
-              staticClass: "information_form",
-              attrs: { method: "POST", enctype: "multipart/form-data" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  _vm.updateProfile()
-                }
-              }
-            },
-            [
-              _c("h1", [_vm._v("Edit information")]),
-              _c("div", { staticClass: "edit-input" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.userName,
-                      expression: "userName"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "User name" },
-                  domProps: { value: _vm.userName },
-                  on: {
-                    keyup: function($event) {
-                      _vm.onInputChange($event, "name")
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.userName = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _c("div", { staticClass: "edit-input" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.userStatus,
-                      expression: "userStatus"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "Status" },
-                  domProps: { value: _vm.userStatus },
-                  on: {
-                    keyup: function($event) {
-                      _vm.onInputChange($event, "status")
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.userStatus = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _c("h1", [_vm._v("Select avatar")]),
-              _c("label", { staticClass: "fileContainer" }, [
-                _vm._m(0),
-                _c("input", {
-                  ref: "fileInput",
-                  attrs: { type: "file", name: "fileInput" },
-                  on: {
-                    change: function($event) {
-                      _vm.onFileChange($event, "avatar")
-                    }
-                  }
-                })
-              ]),
-              _c("h1", [_vm._v("Select Cover")]),
-              _c("label", { staticClass: "fileContainer" }, [
-                _vm._m(1),
-                _c("input", {
-                  ref: "fileCover",
-                  attrs: { type: "file", name: "fileCover" },
-                  on: {
-                    change: function($event) {
-                      _vm.onFileChange($event, "cover")
-                    }
-                  }
-                })
-              ]),
-              _vm.btnSubmit
-                ? _c("button", { staticClass: "save" }, [_vm._v("Save")])
-                : _vm._e()
-            ]
-          ),
-          _vm.loading ? _c("loading") : _vm._e()
-        ],
-        1
-      )
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [
-      _c("i", { staticClass: "material-icons edit_i" }, [
-        _vm._v("photo_camera")
-      ]),
-      _c("span", { staticClass: "select_image" }, [_vm._v("Change avatar")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [
-      _c("i", { staticClass: "material-icons edit_i" }, [
-        _vm._v("photo_size_select_actual")
-      ]),
-      _c("span", { staticClass: "select_image" }, [_vm._v("Choose Cover")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-68f6fac4", module.exports)
-  }
-}
-
-/***/ }),
-/* 109 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "right", attrs: { id: "profile_app" } }, [
-    _c(
-      "div",
-      { staticClass: "chat-head" },
-      [
-        _c("i", { staticClass: "material-icons big_icon" }, [_vm._v("person")]),
-        _c("div", { staticClass: "chat-name" }, [
-          _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
-          _c("p", { staticClass: "font-online" }, [
-            _vm._v(_vm._s(_vm.userName) + "...")
-          ])
-        ]),
-        _vm.pathEdit
-          ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
-              _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
-            ])
-          : _c("router-link", { attrs: { to: "/profile" } }, [
-              _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
-            ])
-      ],
-      1
-    ),
-    _c("div", { staticClass: "complet-content" }, [
-      _c("div", { staticClass: "complete_dynamic_content" }, [
-        _c("div", { staticClass: "information" }, [
-          _c(
-            "div",
-            { staticClass: "widget" },
-            [
-              _c(
-                "div",
-                { staticClass: "cover" },
-                [
-                  _c("img", { attrs: { src: _vm.cover } }),
-                  _vm.user.id != _vm.userId
-                    ? _c("friendship", {
-                        attrs: {
-                          my_id: _vm.user.id,
-                          profile_user_id: _vm.userId
-                        }
-                      })
-                    : _vm._e()
-                ],
-                1
-              ),
-              _c("avatar", {
-                staticClass: "photo",
-                attrs: {
-                  username: _vm.userName,
-                  color: "#fff",
-                  src: _vm.avatar,
-                  size: 100
-                }
-              }),
-              _c("h1", [_vm._v(_vm._s(_vm.userName))]),
-              _c("h2", [_vm._v("FullStack Developer")]),
-              _c("h3", [_vm._v(_vm._s(_vm.userStatus))]),
-              _c("h3", [_vm._v(_vm._s(_vm.userId))])
-            ],
-            1
-          ),
-          _c(
-            "div",
-            { staticClass: "manage_users" },
-            [
-              _c("router-view", {
-                attrs: { user: _vm.user },
-                on: { previewimage: _vm.updateImage, modelinfo: _vm.updateInfo }
-              }),
-              _vm._l(_vm.users, function(user) {
-                return _vm.pathEdit
-                  ? _c(
-                      "div",
-                      { staticClass: "contener_txt" },
-                      [
-                        _c("avatar", {
-                          staticClass: "img-head",
-                          attrs: {
-                            username: user.name,
-                            color: "#fff",
-                            src: user.avatar,
-                            size: 50
-                          }
-                        }),
-                        _c("div", { staticClass: "name" }, [
-                          _c(
-                            "button",
-                            {
-                              on: {
-                                click: function($event) {
-                                  _vm.getProfile(user.id)
-                                }
-                              }
-                            },
-                            [_vm._v(_vm._s(user.name))]
-                          )
-                        ])
-                      ],
-                      1
-                    )
-                  : _vm._e()
-              }),
-              !_vm.records && _vm.pathEdit
-                ? _c(
-                    "div",
-                    { staticClass: "contener_txt" },
-                    [
-                      _c("avatar", {
-                        staticClass: "img-head",
-                        attrs: {
-                          username: "!",
-                          color: "#fff",
-                          size: 50,
-                          backgroundcolor: "#E57373"
-                        }
-                      }),
-                      _vm._m(0)
-                    ],
-                    1
-                  )
-                : _vm._e()
-            ],
-            2
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "name" }, [
-      _c("button", [_vm._v("You are the first user")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3f8256ef", module.exports)
-  }
-}
-
-/***/ }),
-/* 110 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "add_group_app" } },
-    [
-      _c("notifications", { attrs: { vue_notifications: _vm.notifications } }),
-      _c("router-link", { attrs: { to: "/groups/my" } }, [
-        _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
-      ]),
-      _vm.access
-        ? _c("avatar", {
-            attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
-          })
-        : _vm._e(),
-      _vm.access
-        ? _c("h4", [_vm._v(" Add new group")])
-        : _c("h4", [
-            _vm._v("To be able to add a group you must have friends...")
-          ]),
-      _c("hr"),
-      _vm.access
-        ? _c(
-            "form",
-            {
-              attrs: { method: "POST", enctype: "multipart/form-data" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                }
-              }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "input wrap-input" },
-                [
-                  _c("multiselect", {
-                    attrs: {
-                      multiple: true,
-                      "track-by": "id",
-                      label: "name",
-                      "hide-selected": true,
-                      "close-on-select": false,
-                      options: _vm.listUsers
-                    },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "tag",
-                        fn: function(props) {
-                          return [
-                            _c("span", { staticClass: "custom__tag" }, [
-                              _c("span", [
-                                _vm._v(" " + _vm._s(props.option.name))
-                              ]),
-                              _c(
-                                "span",
-                                {
-                                  staticClass: "custom__remove",
-                                  on: {
-                                    click: function($event) {
-                                      props.remove(props.option)
-                                    }
-                                  }
-                                },
-                                [_vm._v(" ❌")]
-                              )
-                            ])
-                          ]
-                        }
-                      }
-                    ]),
-                    model: {
-                      value: _vm.selectedUsers,
-                      callback: function($$v) {
-                        _vm.selectedUsers = $$v
-                      },
-                      expression: "selectedUsers"
-                    }
-                  })
-                ],
-                1
-              ),
-              _c("br"),
-              _c("br"),
-              _c("div", { staticClass: "input wrap-input" }, [
-                _c("label", { staticClass: "fileContainer font-online" }, [
-                  !_vm.avatar
-                    ? _c("button", { attrs: { type: "button" } }, [
-                        _c("i", { staticClass: "material-icons" }, [
-                          _vm._v("photo")
-                        ])
-                      ])
-                    : _c(
-                        "button",
-                        {
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.avatar = null
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "material-icons" }, [
-                            _vm._v("clear")
-                          ])
-                        ]
-                      ),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: !_vm.avatar,
-                        expression: "!avatar"
-                      }
-                    ],
-                    ref: "fileInput",
-                    attrs: { type: "file", name: "avatar" },
-                    on: {
-                      change: function($event) {
-                        _vm.onFileChange($event)
-                      }
-                    }
-                  })
-                ]),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.groupName,
-                      expression: "groupName"
-                    }
-                  ],
-                  staticClass: "input-global",
-                  attrs: {
-                    name: "name",
-                    type: "text",
-                    placeholder: "Group name..."
-                  },
-                  domProps: { value: _vm.groupName },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key)
-                      ) {
-                        return null
-                      }
-                      _vm.addGroup($event)
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.groupName = $event.target.value
-                    }
-                  }
-                }),
-                _c(
-                  "button",
-                  {
-                    attrs: { type: "button", disabled: _vm.btnDisabled },
-                    on: { click: _vm.addGroup }
-                  },
-                  [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
-                )
-              ])
-            ]
-          )
-        : _vm._e(),
-      _vm.loading ? _c("loading") : _vm._e()
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5ddffaa0", module.exports)
-  }
-}
-
-/***/ }),
-/* 111 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -26849,363 +27215,10 @@ if (false) {
 }
 
 /***/ }),
-/* 112 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 103 */
+/***/ (function(module, exports) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "my_groups_app" } },
-    [
-      _c("notifications", { attrs: { vue_notifications: _vm.notifications } }),
-      _vm.loading ? _c("loading") : _vm._e(),
-      _c(
-        "div",
-        { staticClass: "data" },
-        [
-          _c("router-link", { attrs: { to: "/groups" } }, [
-            _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
-          ]),
-          _c(
-            "h4",
-            [
-              _vm._v("My groups"),
-              _c("router-link", { attrs: { to: "/groups/add" } }, [
-                _c("i", { staticClass: "add material-icons" }, [_vm._v("add")])
-              ])
-            ],
-            1
-          ),
-          _c("hr")
-        ],
-        1
-      ),
-      _c("table", [
-        _vm._m(0),
-        _c(
-          "tbody",
-          [
-            _vm._l(_vm.groups, function(group, index) {
-              return _c("tr", { staticClass: "data" }, [
-                _c(
-                  "td",
-                  [
-                    _c("avatar", {
-                      staticClass: "group_avatar",
-                      attrs: {
-                        size: 45,
-                        username: group.name,
-                        src: group.avatar,
-                        color: "#fff"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _c("td", [_vm._v(_vm._s(group.name))]),
-                _c(
-                  "td",
-                  [
-                    _c("router-link", { attrs: { to: _vm.editLink(group) } }, [
-                      _c("i", { staticClass: "material-icons green_teal" }, [
-                        _vm._v("mode_edit")
-                      ])
-                    ])
-                  ],
-                  1
-                ),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "format_button",
-                      on: {
-                        click: function($event) {
-                          _vm.deleteGroup(group.id, index)
-                        }
-                      }
-                    },
-                    [
-                      _c("i", { staticClass: "material-icons cool_red" }, [
-                        _vm._v("delete")
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            }),
-            _vm.notFound
-              ? _c("tr", [
-                  _c(
-                    "td",
-                    { attrs: { colspan: "4" } },
-                    [
-                      _vm._v("No records found please"),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "green_teal link_add",
-                          attrs: { to: "/groups/add" }
-                        },
-                        [_vm._v("Add Group")]
-                      )
-                    ],
-                    1
-                  )
-                ])
-              : _vm._e(),
-            _vm.errorLoad ? _c("tr", [_vm._m(1)]) : _vm._e()
-          ],
-          2
-        )
-      ]),
-      _c("paginate", {
-        attrs: { source: _vm.pagination },
-        on: { navigate: _vm.clickedPage }
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Avatar")]),
-        _c("th", [_vm._v("Name")]),
-        _c("th", [_vm._v("Edit")]),
-        _c("th", [_vm._v("Delete")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "4" } }, [
-      _c("p", { staticClass: "error" }, [
-        _vm._v("Sorry :( records could not be loaded")
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-9220cbd4", module.exports)
-  }
-}
-
-/***/ }),
-/* 113 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "right", attrs: { id: "manage_groups_app" } },
-    [
-      _vm._m(0),
-      _c("div", { staticClass: "wrap-content" }, [
-        _c(
-          "div",
-          { staticClass: "dynamic_content" },
-          [
-            _vm.$route.path == "/groups"
-              ? _c("div", [
-                  _c("div", { staticClass: "groups" }, [
-                    _c(
-                      "div",
-                      { staticClass: "group" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              to: "groups/add",
-                              "exact-active-class": "active"
-                            }
-                          },
-                          [_vm._v("Add groups")]
-                        )
-                      ],
-                      1
-                    ),
-                    _c(
-                      "div",
-                      { staticClass: "group" },
-                      [
-                        _c("router-link", { attrs: { to: "groups/my" } }, [
-                          _vm._v("My groups")
-                        ])
-                      ],
-                      1
-                    )
-                  ])
-                ])
-              : _vm._e(),
-            _c("router-view")
-          ],
-          1
-        )
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-head" }, [
-      _c("i", { staticClass: "material-icons big_icon" }, [
-        _vm._v("group_add")
-      ]),
-      _c("div", { staticClass: "chat-name" }, [
-        _c("h1", { staticClass: "font-name" }, [_vm._v("Groups")]),
-        _c("p", { staticClass: "font-online" }, [
-          _vm._v("You can create public chat rooms for all users...")
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d3688d86", module.exports)
-  }
-}
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "paginate_app" } }, [
-    _c("div", { staticClass: "pagination" }, [
-      _c(
-        "ul",
-        { staticClass: "page-numbers" },
-        [
-          _c("li", [
-            _c(
-              "a",
-              {
-                staticClass: "prev",
-                class: { disable: _vm.source.current_page == 1 },
-                on: {
-                  click: function($event) {
-                    _vm.nextPrev($event, _vm.source.current_page - 1)
-                  }
-                }
-              },
-              [_vm._v("«")]
-            )
-          ]),
-          _vm._l(_vm.pages, function(page) {
-            return _c("li", [
-              _c(
-                "a",
-                {
-                  class: { current: _vm.source.current_page == page },
-                  on: {
-                    click: function($event) {
-                      _vm.navigate($event, page)
-                    }
-                  }
-                },
-                [_vm._v(_vm._s(page))]
-              )
-            ])
-          }),
-          _c("li", [
-            _c(
-              "a",
-              {
-                staticClass: "next",
-                class: {
-                  disable: _vm.source.current_page == _vm.source.last_page
-                },
-                on: {
-                  click: function($event) {
-                    _vm.nextPrev($event, _vm.source.current_page + 1)
-                  }
-                }
-              },
-              [_vm._v("»")]
-            )
-          ])
-        ],
-        2
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5890a772", module.exports)
-  }
-}
-
-/***/ }),
-/* 115 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "vue_notifications" } },
-    _vm._l(_vm.vue_notifications, function(notification) {
-      return _c("div", { staticClass: "global" }, [
-        _c(
-          "span",
-          {
-            class: [
-              notification.type,
-              "notification",
-              "animateOpen",
-              "width_" + _vm.width
-            ]
-          },
-          [_vm._v(_vm._s(notification.message))]
-        )
-      ])
-    })
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0c031926", module.exports)
-  }
-}
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
