@@ -1,79 +1,31 @@
-<template>
-    <div id="edit_group_app" v-if="showEdit">
+<template lang="pug">
+    #edit_group_app(v-if='showEdit')
+        notifications(:vue_notifications='notifications')
+        router-link(to='/groups/my')
+            i.material-icons arrow_back
+        avatar(:username='groupName', color='#fff', :src='avatar')
+        h4  Edit group
+        hr
+        form(v-on:submit.prevent='', method='POST', enctype='multipart/form-data')
+            .input.wrap-input
+                label.fileContainer.font-online
+                    button(v-if='!avatar', type='button')
+                        i.material-icons photo
+                    button(v-else='', v-on:click='clearAvatar', type='button')
+                        i.material-icons clear
+                    input(v-show='!avatar', type='file', name='avatar', v-on:change='onFileChange($event)', ref='fileInput')
+                input.input-global(@keyup.enter='editGroup', v-model='groupName', name='name', type='text', placeholder='Group name...')
+                button(type='button', @click='editGroup', v-bind:disabled='btnSubmit')
+                    i.material-icons add
+            br
+            .input.wrap-input
+                multiselect(v-model='selectedUsers', :multiple='true', track-by='id', label='name', :hide-selected='true', :close-on-select='false', :options='listUsers')
+                    template(slot='tag', slot-scope='props')
+                        span.custom__tag
+                            span  {{ props.option.name }}
+                            span.custom__remove(@click='props.remove(props.option)')  ❌
+        loading(v-if='loading')
 
-        <notifications :vue_notifications="notifications"></notifications>
-
-        <router-link to="/groups/my">
-            <i class="material-icons">arrow_back</i>
-        </router-link>
-
-        <avatar :username="groupName" color="#fff" :src="avatar"></avatar>
-
-        <h4> Edit group </h4>
-
-        <hr>
-
-        <form v-on:submit.prevent="" method="POST" enctype="multipart/form-data">
-
-                <div class="input wrap-input">
-
-                    <label class="fileContainer font-online">
-
-                        <button v-if="!avatar" type="button">
-                            <i class="material-icons">photo</i>
-                        </button>
-
-                        <button v-else v-on:click="clearAvatar" type="button">
-                            <i class="material-icons">clear</i>
-                        </button>
-
-                        <input v-show="!avatar"
-                               type="file"
-                               name="avatar"
-                               v-on:change="onFileChange($event)"
-                               ref="fileInput">
-
-                    </label>
-
-                    <input @keyup.enter="editGroup"
-                           v-model="groupName"
-                           name="name"
-                           type="text"
-                           class="input-global"
-                           placeholder="Group name...">
-
-                    <button type="button" @click="editGroup" v-bind:disabled="btnSubmit">
-                        <i class="material-icons">add</i>
-                    </button>
-
-                </div>
-
-            <br>
-
-            <div class="input wrap-input">
-                <multiselect v-model="selectedUsers"
-                             :multiple="true"
-                             track-by="id"
-                             label="name"
-                             :hide-selected="true"
-                             :close-on-select="false"
-                             :options="listUsers">
-
-                    <template slot="tag" slot-scope="props">
-                        <span class="custom__tag">
-                            <span> {{ props.option.name }} </span>
-                            <span class="custom__remove" @click="props.remove(props.option)"> ❌ </span>
-                        </span>
-                    </template>
-
-                </multiselect>
-            </div>
-
-        </form>
-
-        <loading v-if="loading"></loading>
-
-    </div>
 </template>
 
 <style scoped>

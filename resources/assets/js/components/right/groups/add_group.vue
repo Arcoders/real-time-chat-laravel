@@ -1,81 +1,32 @@
-<template>
-    <div id="add_group_app">
+<template lang="pug">
+    #add_group_app
+        notifications(:vue_notifications='notifications')
+        router-link(to='/groups/my')
+            i.material-icons arrow_back
+        avatar(v-if='access', :username='groupName', color='#fff', :src='avatar')
+        h4(v-if='access')  Add new group
+        h4(v-else='') To be able to add a group you must have friends...
+        hr
+        form(v-if='access', v-on:submit.prevent='', method='POST', enctype='multipart/form-data')
+            .input.wrap-input
+                label.fileContainer.font-online
+                    button(v-if='!avatar', type='button')
+                        i.material-icons photo
+                    button(v-else='', v-on:click='avatar = null', type='button')
+                        i.material-icons clear
+                    input(v-show='!avatar', type='file', name='avatar', v-on:change='onFileChange($event)', ref='fileInput')
+                input.input-global(@keyup.enter='addGroup', v-model='groupName', name='name', type='text', placeholder='Group name...')
+                button(type='button', @click='addGroup', v-bind:disabled='btnSubmit')
+                    i.material-icons add
+            br
+            .input.wrap-input
+                multiselect(v-model='selectedUsers', :multiple='true', track-by='id', label='name', :hide-selected='true', :close-on-select='false', :options='listUsers')
+                    template(slot='tag', slot-scope='props')
+                        span.custom__tag
+                            span  {{ props.option.name }}
+                            span.custom__remove(@click='props.remove(props.option)')  ❌
+        loading(v-if='loading')
 
-        <notifications :vue_notifications="notifications"></notifications>
-
-        <router-link to="/groups/my">
-            <i class="material-icons">arrow_back</i>
-        </router-link>
-
-        <avatar v-if="access" :username="groupName" color="#fff" :src="avatar"></avatar>
-
-        <h4 v-if="access"> Add new group </h4>
-        <h4 v-else>To be able to add a group you must have friends...</h4>
-
-        <hr>
-
-        <form v-if="access"  v-on:submit.prevent="" method="POST" enctype="multipart/form-data">
-
-            <div class="input wrap-input">
-
-                    <label class="fileContainer font-online">
-
-                        <button v-if="!avatar" type="button">
-                            <i class="material-icons">photo</i>
-                        </button>
-
-                        <button v-else v-on:click="avatar = null" type="button">
-                            <i class="material-icons">clear</i>
-                        </button>
-
-                        <input v-show="!avatar"
-                               type="file"
-                               name="avatar"
-                               v-on:change="onFileChange($event)"
-                               ref="fileInput">
-
-                    </label>
-
-                    <input @keyup.enter="addGroup"
-                           v-model="groupName"
-                           name="name"
-                           type="text"
-                           class="input-global"
-                           placeholder="Group name...">
-
-                    <button type="button" @click="addGroup" v-bind:disabled="btnSubmit">
-                        <i class="material-icons">add</i>
-                    </button>
-
-            </div>
-
-
-            <br>
-
-            <div class="input wrap-input">
-                <multiselect v-model="selectedUsers"
-                             :multiple="true"
-                             track-by="id"
-                             label="name"
-                             :hide-selected="true"
-                             :close-on-select="false"
-                             :options="listUsers">
-
-                    <template slot="tag" slot-scope="props">
-                        <span class="custom__tag">
-                            <span> {{ props.option.name }} </span>
-                            <span class="custom__remove" @click="props.remove(props.option)"> ❌ </span>
-                        </span>
-                    </template>
-
-                </multiselect>
-            </div>
-
-        </form>
-
-        <loading v-if="loading"></loading>
-
-    </div>
 </template>
 
 <style scoped>

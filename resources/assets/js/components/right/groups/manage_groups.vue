@@ -1,37 +1,5 @@
-<template>
-    <div class="right" id="manage_groups_app">
+<template lang="pug">
 
-        <div class="chat-head">
-            <i class="material-icons big_icon">group_add</i>
-            <div class="chat-name">
-                <h1 class="font-name">Groups</h1>
-                <p class="font-online">You can create public chat rooms for all users...</p>
-            </div>
-            <i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i>
-        </div>
-
-        <div class="wrap-content">
-            <div class="dynamic_content">
-
-                <div v-if="$route.path == '/groups'">
-
-                    <div class="groups">
-                        <div class="group">
-                            <router-link to="groups/add" exact-active-class="active">Add groups</router-link>
-                        </div>
-                        <div class="group">
-                            <router-link to="groups/my">My groups</router-link>
-                        </div>
-                    </div>
-
-                </div>
-
-                <router-view></router-view>
-
-            </div>
-        </div>
-
-    </div>
 </template>
 
 <style scoped>

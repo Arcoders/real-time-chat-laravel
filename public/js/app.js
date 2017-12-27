@@ -25112,7 +25112,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(86)
 /* template */
-var __vue_template__ = __webpack_require__(87)
+var __vue_template__ = __webpack_require__(113)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25245,38 +25245,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -25285,102 +25253,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "right", attrs: { id: "manage_groups_app" } },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "wrap-content" }, [
-        _c(
-          "div",
-          { staticClass: "dynamic_content" },
-          [
-            _vm.$route.path == "/groups"
-              ? _c("div", [
-                  _c("div", { staticClass: "groups" }, [
-                    _c(
-                      "div",
-                      { staticClass: "group" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              to: "groups/add",
-                              "exact-active-class": "active"
-                            }
-                          },
-                          [_vm._v("Add groups")]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "group" },
-                      [
-                        _c("router-link", { attrs: { to: "groups/my" } }, [
-                          _vm._v("My groups")
-                        ])
-                      ],
-                      1
-                    )
-                  ])
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("router-view")
-          ],
-          1
-        )
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-head" }, [
-      _c("i", { staticClass: "material-icons big_icon" }, [
-        _vm._v("group_add")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "chat-name" }, [
-        _c("h1", { staticClass: "font-name" }, [_vm._v("Groups")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "font-online" }, [
-          _vm._v("You can create public chat rooms for all users...")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("i", {
-        staticClass: "fa fa-whatsapp fa-lg",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d3688d86", module.exports)
-  }
-}
-
-/***/ }),
+/* 87 */,
 /* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25393,7 +25266,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(91)
 /* template */
-var __vue_template__ = __webpack_require__(92)
+var __vue_template__ = __webpack_require__(112)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25477,50 +25350,6 @@ exports.push([module.i, "\n.data a[data-v-9220cbd4] {\n    text-decoration: none
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -25714,207 +25543,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "my_groups_app" } },
-    [
-      _c("notifications", { attrs: { vue_notifications: _vm.notifications } }),
-      _vm._v(" "),
-      _vm.loading ? _c("loading") : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "data" },
-        [
-          _c("router-link", { attrs: { to: "/groups" } }, [
-            _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
-          ]),
-          _vm._v(" "),
-          _c(
-            "h4",
-            [
-              _vm._v("\n            My groups\n            "),
-              _c("router-link", { attrs: { to: "/groups/add" } }, [
-                _c("i", { staticClass: "add material-icons" }, [_vm._v("add")])
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("hr")
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("table", [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          [
-            _vm._l(_vm.groups, function(group, index) {
-              return _c("tr", { staticClass: "data" }, [
-                _c(
-                  "td",
-                  [
-                    !group.avatar
-                      ? _c("avatar", {
-                          staticClass: "group_avatar",
-                          attrs: {
-                            size: 45,
-                            username: group.name,
-                            color: "#fff"
-                          }
-                        })
-                      : _c("avatar", {
-                          staticClass: "group_avatar",
-                          attrs: {
-                            size: 45,
-                            username: group.name,
-                            src: group.avatar
-                          }
-                        })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(group.name))]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: {
-                          to: {
-                            name: "edit_group",
-                            params: {
-                              group_id: group.id,
-                              group_name: group.name
-                            }
-                          }
-                        }
-                      },
-                      [
-                        _c("i", { staticClass: "material-icons green_teal" }, [
-                          _vm._v("mode_edit")
-                        ])
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "format_button",
-                      on: {
-                        click: function($event) {
-                          _vm.deleteGroup(group.id, index)
-                        }
-                      }
-                    },
-                    [
-                      _c("i", { staticClass: "material-icons cool_red" }, [
-                        _vm._v("delete")
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            }),
-            _vm._v(" "),
-            _vm.notFound
-              ? _c("tr", [
-                  _c(
-                    "td",
-                    { attrs: { colspan: "4" } },
-                    [
-                      _vm._v(
-                        "\n                        No records found please\n                        "
-                      ),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "green_teal link_add",
-                          attrs: { to: "/groups/add" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            Add Group\n                        "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errorLoad ? _c("tr", [_vm._m(1)]) : _vm._e()
-          ],
-          2
-        )
-      ]),
-      _vm._v(" "),
-      _c("paginate", {
-        attrs: { source: _vm.pagination },
-        on: { navigate: _vm.clickedPage }
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Avatar")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Edit")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Delete")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "4" } }, [
-      _c("p", { staticClass: "error" }, [
-        _vm._v(
-          "\n                            Sorry :( records could not be loaded\n                        "
-        )
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-9220cbd4", module.exports)
-  }
-}
-
-/***/ }),
+/* 92 */,
 /* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25927,7 +25556,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(96)
 /* template */
-var __vue_template__ = __webpack_require__(97)
+var __vue_template__ = __webpack_require__(110)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -26011,55 +25640,6 @@ exports.push([module.i, "\na[data-v-5ddffaa0] {\n    text-decoration: none;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -26293,211 +25873,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 97 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "add_group_app" } },
-    [
-      _c("notifications", { attrs: { vue_notifications: _vm.notifications } }),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/groups/my" } }, [
-        _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
-      ]),
-      _vm._v(" "),
-      _vm.access
-        ? _c("avatar", {
-            attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.access
-        ? _c("h4", [_vm._v(" Add new group ")])
-        : _c("h4", [
-            _vm._v("To be able to add a group you must have friends...")
-          ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _vm.access
-        ? _c(
-            "form",
-            {
-              attrs: { method: "POST", enctype: "multipart/form-data" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "input wrap-input" }, [
-                _c("label", { staticClass: "fileContainer font-online" }, [
-                  !_vm.avatar
-                    ? _c("button", { attrs: { type: "button" } }, [
-                        _c("i", { staticClass: "material-icons" }, [
-                          _vm._v("photo")
-                        ])
-                      ])
-                    : _c(
-                        "button",
-                        {
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.avatar = null
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "material-icons" }, [
-                            _vm._v("clear")
-                          ])
-                        ]
-                      ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: !_vm.avatar,
-                        expression: "!avatar"
-                      }
-                    ],
-                    ref: "fileInput",
-                    attrs: { type: "file", name: "avatar" },
-                    on: {
-                      change: function($event) {
-                        _vm.onFileChange($event)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.groupName,
-                      expression: "groupName"
-                    }
-                  ],
-                  staticClass: "input-global",
-                  attrs: {
-                    name: "name",
-                    type: "text",
-                    placeholder: "Group name..."
-                  },
-                  domProps: { value: _vm.groupName },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key)
-                      ) {
-                        return null
-                      }
-                      _vm.addGroup($event)
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.groupName = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    attrs: { type: "button", disabled: _vm.btnSubmit },
-                    on: { click: _vm.addGroup }
-                  },
-                  [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
-                )
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "input wrap-input" },
-                [
-                  _c("multiselect", {
-                    attrs: {
-                      multiple: true,
-                      "track-by": "id",
-                      label: "name",
-                      "hide-selected": true,
-                      "close-on-select": false,
-                      options: _vm.listUsers
-                    },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "tag",
-                        fn: function(props) {
-                          return [
-                            _c("span", { staticClass: "custom__tag" }, [
-                              _c("span", [
-                                _vm._v(" " + _vm._s(props.option.name) + " ")
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "span",
-                                {
-                                  staticClass: "custom__remove",
-                                  on: {
-                                    click: function($event) {
-                                      props.remove(props.option)
-                                    }
-                                  }
-                                },
-                                [_vm._v(" ❌ ")]
-                              )
-                            ])
-                          ]
-                        }
-                      }
-                    ]),
-                    model: {
-                      value: _vm.selectedUsers,
-                      callback: function($$v) {
-                        _vm.selectedUsers = $$v
-                      },
-                      expression: "selectedUsers"
-                    }
-                  })
-                ],
-                1
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.loading ? _c("loading") : _vm._e()
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5ddffaa0", module.exports)
-  }
-}
-
-/***/ }),
+/* 97 */,
 /* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26510,7 +25886,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(101)
 /* template */
-var __vue_template__ = __webpack_require__(102)
+var __vue_template__ = __webpack_require__(111)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -26594,54 +25970,6 @@ exports.push([module.i, "\na[data-v-3aadc94b] {\n    text-decoration: none;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -26911,203 +26239,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm.showEdit
-    ? _c(
-        "div",
-        { attrs: { id: "edit_group_app" } },
-        [
-          _c("notifications", {
-            attrs: { vue_notifications: _vm.notifications }
-          }),
-          _vm._v(" "),
-          _c("router-link", { attrs: { to: "/groups/my" } }, [
-            _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
-          ]),
-          _vm._v(" "),
-          _c("avatar", {
-            attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
-          }),
-          _vm._v(" "),
-          _c("h4", [_vm._v(" Edit group ")]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              attrs: { method: "POST", enctype: "multipart/form-data" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "input wrap-input" }, [
-                _c("label", { staticClass: "fileContainer font-online" }, [
-                  !_vm.avatar
-                    ? _c("button", { attrs: { type: "button" } }, [
-                        _c("i", { staticClass: "material-icons" }, [
-                          _vm._v("photo")
-                        ])
-                      ])
-                    : _c(
-                        "button",
-                        {
-                          attrs: { type: "button" },
-                          on: { click: _vm.clearAvatar }
-                        },
-                        [
-                          _c("i", { staticClass: "material-icons" }, [
-                            _vm._v("clear")
-                          ])
-                        ]
-                      ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: !_vm.avatar,
-                        expression: "!avatar"
-                      }
-                    ],
-                    ref: "fileInput",
-                    attrs: { type: "file", name: "avatar" },
-                    on: {
-                      change: function($event) {
-                        _vm.onFileChange($event)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.groupName,
-                      expression: "groupName"
-                    }
-                  ],
-                  staticClass: "input-global",
-                  attrs: {
-                    name: "name",
-                    type: "text",
-                    placeholder: "Group name..."
-                  },
-                  domProps: { value: _vm.groupName },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key)
-                      ) {
-                        return null
-                      }
-                      _vm.editGroup($event)
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.groupName = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    attrs: { type: "button", disabled: _vm.btnSubmit },
-                    on: { click: _vm.editGroup }
-                  },
-                  [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
-                )
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "input wrap-input" },
-                [
-                  _c("multiselect", {
-                    attrs: {
-                      multiple: true,
-                      "track-by": "id",
-                      label: "name",
-                      "hide-selected": true,
-                      "close-on-select": false,
-                      options: _vm.listUsers
-                    },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "tag",
-                        fn: function(props) {
-                          return [
-                            _c("span", { staticClass: "custom__tag" }, [
-                              _c("span", [
-                                _vm._v(" " + _vm._s(props.option.name) + " ")
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "span",
-                                {
-                                  staticClass: "custom__remove",
-                                  on: {
-                                    click: function($event) {
-                                      props.remove(props.option)
-                                    }
-                                  }
-                                },
-                                [_vm._v(" ❌ ")]
-                              )
-                            ])
-                          ]
-                        }
-                      }
-                    ]),
-                    model: {
-                      value: _vm.selectedUsers,
-                      callback: function($$v) {
-                        _vm.selectedUsers = $$v
-                      },
-                      expression: "selectedUsers"
-                    }
-                  })
-                ],
-                1
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _vm.loading ? _c("loading") : _vm._e()
-        ],
-        1
-      )
-    : _vm._e()
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3aadc94b", module.exports)
-  }
-}
-
-/***/ }),
+/* 102 */,
 /* 103 */
 /***/ (function(module, exports) {
 
@@ -27424,6 +26556,582 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-3f8256ef", module.exports)
+  }
+}
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "add_group_app" } },
+    [
+      _c("notifications", { attrs: { vue_notifications: _vm.notifications } }),
+      _c("router-link", { attrs: { to: "/groups/my" } }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
+      ]),
+      _vm.access
+        ? _c("avatar", {
+            attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
+          })
+        : _vm._e(),
+      _vm.access
+        ? _c("h4", [_vm._v(" Add new group")])
+        : _c("h4", [
+            _vm._v("To be able to add a group you must have friends...")
+          ]),
+      _c("hr"),
+      _vm.access
+        ? _c(
+            "form",
+            {
+              attrs: { method: "POST", enctype: "multipart/form-data" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "input wrap-input" }, [
+                _c("label", { staticClass: "fileContainer font-online" }, [
+                  !_vm.avatar
+                    ? _c("button", { attrs: { type: "button" } }, [
+                        _c("i", { staticClass: "material-icons" }, [
+                          _vm._v("photo")
+                        ])
+                      ])
+                    : _c(
+                        "button",
+                        {
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.avatar = null
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons" }, [
+                            _vm._v("clear")
+                          ])
+                        ]
+                      ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.avatar,
+                        expression: "!avatar"
+                      }
+                    ],
+                    ref: "fileInput",
+                    attrs: { type: "file", name: "avatar" },
+                    on: {
+                      change: function($event) {
+                        _vm.onFileChange($event)
+                      }
+                    }
+                  })
+                ]),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.groupName,
+                      expression: "groupName"
+                    }
+                  ],
+                  staticClass: "input-global",
+                  attrs: {
+                    name: "name",
+                    type: "text",
+                    placeholder: "Group name..."
+                  },
+                  domProps: { value: _vm.groupName },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key)
+                      ) {
+                        return null
+                      }
+                      _vm.addGroup($event)
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.groupName = $event.target.value
+                    }
+                  }
+                }),
+                _c(
+                  "button",
+                  {
+                    attrs: { type: "button", disabled: _vm.btnSubmit },
+                    on: { click: _vm.addGroup }
+                  },
+                  [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
+                )
+              ]),
+              _c("br"),
+              _c(
+                "div",
+                { staticClass: "input wrap-input" },
+                [
+                  _c("multiselect", {
+                    attrs: {
+                      multiple: true,
+                      "track-by": "id",
+                      label: "name",
+                      "hide-selected": true,
+                      "close-on-select": false,
+                      options: _vm.listUsers
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "tag",
+                        fn: function(props) {
+                          return [
+                            _c("span", { staticClass: "custom__tag" }, [
+                              _c("span", [
+                                _vm._v(" " + _vm._s(props.option.name))
+                              ]),
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "custom__remove",
+                                  on: {
+                                    click: function($event) {
+                                      props.remove(props.option)
+                                    }
+                                  }
+                                },
+                                [_vm._v(" ❌")]
+                              )
+                            ])
+                          ]
+                        }
+                      }
+                    ]),
+                    model: {
+                      value: _vm.selectedUsers,
+                      callback: function($$v) {
+                        _vm.selectedUsers = $$v
+                      },
+                      expression: "selectedUsers"
+                    }
+                  })
+                ],
+                1
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm.loading ? _c("loading") : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5ddffaa0", module.exports)
+  }
+}
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.showEdit
+    ? _c(
+        "div",
+        { attrs: { id: "edit_group_app" } },
+        [
+          _c("notifications", {
+            attrs: { vue_notifications: _vm.notifications }
+          }),
+          _c("router-link", { attrs: { to: "/groups/my" } }, [
+            _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
+          ]),
+          _c("avatar", {
+            attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
+          }),
+          _c("h4", [_vm._v(" Edit group")]),
+          _c("hr"),
+          _c(
+            "form",
+            {
+              attrs: { method: "POST", enctype: "multipart/form-data" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "input wrap-input" }, [
+                _c("label", { staticClass: "fileContainer font-online" }, [
+                  !_vm.avatar
+                    ? _c("button", { attrs: { type: "button" } }, [
+                        _c("i", { staticClass: "material-icons" }, [
+                          _vm._v("photo")
+                        ])
+                      ])
+                    : _c(
+                        "button",
+                        {
+                          attrs: { type: "button" },
+                          on: { click: _vm.clearAvatar }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons" }, [
+                            _vm._v("clear")
+                          ])
+                        ]
+                      ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.avatar,
+                        expression: "!avatar"
+                      }
+                    ],
+                    ref: "fileInput",
+                    attrs: { type: "file", name: "avatar" },
+                    on: {
+                      change: function($event) {
+                        _vm.onFileChange($event)
+                      }
+                    }
+                  })
+                ]),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.groupName,
+                      expression: "groupName"
+                    }
+                  ],
+                  staticClass: "input-global",
+                  attrs: {
+                    name: "name",
+                    type: "text",
+                    placeholder: "Group name..."
+                  },
+                  domProps: { value: _vm.groupName },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key)
+                      ) {
+                        return null
+                      }
+                      _vm.editGroup($event)
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.groupName = $event.target.value
+                    }
+                  }
+                }),
+                _c(
+                  "button",
+                  {
+                    attrs: { type: "button", disabled: _vm.btnSubmit },
+                    on: { click: _vm.editGroup }
+                  },
+                  [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
+                )
+              ]),
+              _c("br"),
+              _c(
+                "div",
+                { staticClass: "input wrap-input" },
+                [
+                  _c("multiselect", {
+                    attrs: {
+                      multiple: true,
+                      "track-by": "id",
+                      label: "name",
+                      "hide-selected": true,
+                      "close-on-select": false,
+                      options: _vm.listUsers
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "tag",
+                        fn: function(props) {
+                          return [
+                            _c("span", { staticClass: "custom__tag" }, [
+                              _c("span", [
+                                _vm._v(" " + _vm._s(props.option.name))
+                              ]),
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "custom__remove",
+                                  on: {
+                                    click: function($event) {
+                                      props.remove(props.option)
+                                    }
+                                  }
+                                },
+                                [_vm._v(" ❌")]
+                              )
+                            ])
+                          ]
+                        }
+                      }
+                    ]),
+                    model: {
+                      value: _vm.selectedUsers,
+                      callback: function($$v) {
+                        _vm.selectedUsers = $$v
+                      },
+                      expression: "selectedUsers"
+                    }
+                  })
+                ],
+                1
+              )
+            ]
+          ),
+          _vm.loading ? _c("loading") : _vm._e()
+        ],
+        1
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3aadc94b", module.exports)
+  }
+}
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "my_groups_app" } },
+    [
+      _c("notifications", { attrs: { vue_notifications: _vm.notifications } }),
+      _vm.loading ? _c("loading") : _vm._e(),
+      _c(
+        "div",
+        { staticClass: "data" },
+        [
+          _c("router-link", { attrs: { to: "/groups" } }, [
+            _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
+          ]),
+          _c(
+            "h4",
+            [
+              _vm._v("My groups"),
+              _c("router-link", { attrs: { to: "/groups/add" } }, [
+                _c("i", { staticClass: "add material-icons" }, [_vm._v("add")])
+              ])
+            ],
+            1
+          ),
+          _c("hr")
+        ],
+        1
+      ),
+      _c("table", [
+        _vm._m(0),
+        _c(
+          "tbody",
+          [
+            _vm._l(_vm.groups, function(group, index) {
+              return _c("tr", { staticClass: "data" }, [
+                _c(
+                  "td",
+                  [
+                    !group.avatar
+                      ? _c("avatar", {
+                          staticClass: "group_avatar",
+                          attrs: {
+                            size: 45,
+                            username: group.name,
+                            color: "#fff"
+                          }
+                        })
+                      : _c("avatar", {
+                          staticClass: "group_avatar",
+                          attrs: {
+                            size: 45,
+                            username: group.name,
+                            src: group.avatar
+                          }
+                        })
+                  ],
+                  1
+                ),
+                _c("td", [_vm._v(_vm._s(group.name))]),
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        attrs: {
+                          to: {
+                            name: "edit_group",
+                            params: {
+                              group_id: group.id,
+                              group_name: group.name
+                            }
+                          }
+                        }
+                      },
+                      [
+                        _c("i", { staticClass: "material-icons green_teal" }, [
+                          _vm._v("mode_edit")
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _c("td", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "format_button",
+                      on: {
+                        click: function($event) {
+                          _vm.deleteGroup(group.id, index)
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "material-icons cool_red" }, [
+                        _vm._v("delete")
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            }),
+            _vm.notFound
+              ? _c("tr", [
+                  _c(
+                    "td",
+                    { attrs: { colspan: "4" } },
+                    [
+                      _vm._v("No records found please"),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "green_teal link_add",
+                          attrs: { to: "/groups/add" }
+                        },
+                        [_vm._v("Add Group")]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e(),
+            _vm.errorLoad ? _c("tr", [_vm._m(1)]) : _vm._e()
+          ],
+          2
+        )
+      ]),
+      _c("paginate", {
+        attrs: { source: _vm.pagination },
+        on: { navigate: _vm.clickedPage }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Avatar")]),
+        _c("th", [_vm._v("Name")]),
+        _c("th", [_vm._v("Edit")]),
+        _c("th", [_vm._v("Delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { colspan: "4" } }, [
+      _c("p", { staticClass: "error" }, [
+        _vm._v("Sorry :( records could not be loaded")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9220cbd4", module.exports)
+  }
+}
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div")
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d3688d86", module.exports)
   }
 }
 

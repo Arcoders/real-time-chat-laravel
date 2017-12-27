@@ -1,89 +1,45 @@
-<template>
-    <div id="my_groups_app">
+<template lang="pug">
+    #my_groups_app
+        notifications(:vue_notifications='notifications')
+        loading(v-if='loading')
+        .data
+            router-link(to='/groups')
+                i.material-icons arrow_back
+            h4
+                | My groups
+                router-link(to='/groups/add')
+                    i.add.material-icons add
+            hr
+        table
+            thead
+                tr
+                    th Avatar
+                    th Name
+                    th Edit
+                    th Delete
+            tbody
+                tr.data(v-for='(group, index) in groups')
+                    td
+                        avatar.group_avatar(v-if='!group.avatar', :size='45', :username='group.name', color='#fff')
+                        avatar.group_avatar(v-else='', :size='45', :username='group.name', :src='group.avatar')
+                    td {{ group.name }}
+                    td
+                        router-link(:to="{ name: 'edit_group', params: { group_id: group.id, group_name: group.name }}")
+                            i.material-icons.green_teal mode_edit
+                    td
+                        button.format_button(v-on:click='deleteGroup(group.id, index)')
+                            i.material-icons.cool_red delete
+                tr(v-if='notFound')
+                    td(colspan='4')
+                        | No records found please
+                        router-link.green_teal.link_add(to='/groups/add')
+                            | Add Group
+                tr(v-if='errorLoad')
+                    td(colspan='4')
+                        p.error
+                            | Sorry :( records could not be loaded
+        paginate(:source='pagination', @navigate='clickedPage')
 
-        <notifications :vue_notifications="notifications"></notifications>
-
-        <loading v-if="loading"></loading>
-
-        <div class="data">
-            <router-link to="/groups">
-                <i class="material-icons">arrow_back</i>
-            </router-link>
-
-            <h4>
-                My groups
-                <router-link to="/groups/add">
-                    <i class="add material-icons">add</i>
-                </router-link>
-            </h4>
-
-            <hr>
-        </div>
-
-        <table>
-            <thead>
-            <tr>
-                <th>Avatar</th>
-                <th>Name</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-                    <tr class="data" v-for="(group, index) in groups">
-                        <td>
-                            <avatar v-if="!group.avatar"
-                                    class="group_avatar"
-                                    :size="45"
-                                    :username="group.name"
-                                    color="#fff">
-                            </avatar>
-
-                            <avatar v-else
-                                    class="group_avatar"
-                                    :size="45"
-                                    :username="group.name"
-                                    :src="group.avatar">
-                            </avatar>
-                        </td>
-
-                        <td>{{ group.name }}</td>
-
-                        <td>
-                            <router-link :to="{ name: 'edit_group', params: { group_id: group.id, group_name: group.name }}">
-                                <i class="material-icons green_teal">mode_edit</i>
-                            </router-link>
-                        </td>
-
-                        <td>
-                            <button class="format_button" v-on:click="deleteGroup(group.id, index)">
-                                <i class="material-icons cool_red">delete</i>
-                            </button>
-                        </td>
-                </tr>
-
-                    <tr v-if="notFound">
-                        <td colspan="4">
-                            No records found please
-                            <router-link to="/groups/add" class="green_teal link_add">
-                                Add Group
-                            </router-link>
-                        </td>
-                    </tr>
-
-                    <tr v-if="errorLoad">
-                        <td colspan="4">
-                            <p class="error">
-                                Sorry :( records could not be loaded
-                            </p>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
-
-        <paginate :source="pagination" @navigate="clickedPage"></paginate>
-
-    </div>
 </template>
 
 <style scoped>
