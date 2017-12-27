@@ -4,7 +4,7 @@
         <div v-if="!loading">
             <div class="add_friend style_friend">
 
-                <button v-if="status == 0" @click="add_friend">
+                <button v-if="status == 'add'" @click="add_friend">
                     <i class="material-icons">person_add</i>
                 </button>
 
@@ -107,8 +107,8 @@
                     this.loading = false;
 
                     if (response.status == 200) {
-                        if (response.body == 1) this.status = 'waiting';
-                        if (response.body == 0) this.status = 0;
+                        if (response.body == 'waiting') this.status = 'waiting';
+                        if (response.body == 'add') this.status = 'add';
                     } else {
                         // ...
                     }
@@ -128,8 +128,8 @@
                     this.loading = false;
 
                     if (response.status == 200) {
-                        if (response.body == 1) this.status = 'friends';
-                        if (response.body == 0) this.status = 'pending';
+                        if (response.body == 'friends') this.status = 'friends';
+                        if (response.body == 'pending') this.status = 'pending';
                     } else {
                         // ...
                     }
@@ -149,7 +149,8 @@
                     this.loading = false;
 
                     if (response.status == 200) {
-                        if (response.body == 3) this.status = 0;
+                        if (response.body == 'deleted') this.status = 'add';
+                        if (response.body == 'pending') this.status = 'pending';
                     } else {
                         // ...
                     }

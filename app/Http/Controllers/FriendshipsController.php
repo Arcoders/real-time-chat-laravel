@@ -15,29 +15,33 @@ class FriendshipsController extends Controller
 
         if (in_array($id, Auth::user()->friends()))
         {
-            return ['status' => 'friends'];
+            return $this->returnStatus('friends');
         }
 
         if (in_array($id, Auth::user()->pending_friend_requests()))
         {
-            return ['status' => 'pending'];
+            return $this->returnStatus('pending');
         }
 
         if (in_array($id, Auth::user()->pending_friend_requests_sent()))
         {
-            return ['status' => 'waiting'];
+            return $this->returnStatus('waiting');
         }
-        return ['status' => 0];
+        return $this->returnStatus('add');
+
     }
 
-    public function add_friend($id)
+    public function addFriend($id)
     {
         $add = Auth::user()->add_friend($id);
-        $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
-        return $add;
+        if ($add)
+        {
+            $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
+            return response()->json($add, 200);
+        }
     }
 
-    public function accept_friend($id)
+    public function acceptFriend($id)
     {
 
         $chat= new Chat();
@@ -50,19 +54,31 @@ class FriendshipsController extends Controller
             if ($accept)
             {
                 $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
-                return $accept;
+                return response()->json($accept, 200);
+            } else {
+                $chat->delete();
             }
         } else {
-            return 0;
+            return response()->json('pending', 200);
         }
 
     }
 
-    public function reject_friendship($id)
+    public function rejectFriendship($id)
     {
         $reject = Auth::user()->reject_friendships($id);
-        $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
-        return $reject;
+        if ($reject)
+        {
+            $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
+            return response()->json($reject, 200);
+        }
+    }
+
+    protected function returnStatus($type)
+    {
+        return response()->json([
+            'status' => $type
+        ], 200);
     }
 
 }

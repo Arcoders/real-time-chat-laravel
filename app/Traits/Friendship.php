@@ -8,7 +8,7 @@ trait Friendship
 
     public function add_friend($id)
     {
-        if ($this->id === $id) return 0;
+        if ($this->id == $id) return;
 
         if (in_array($id, $this->friends())) return 'Already friends';
 
@@ -24,17 +24,14 @@ trait Friendship
             'user_requested' => $id
         ]);
 
-        if ($Friendship)
-        {
-            return 1;
-        }
+        if ($Friendship) return 'waiting';
 
-        return 0;
+        return 'add';
     }
 
     public function accept_friends($requester)
     {
-        if (!in_array($requester, $this->pending_friend_requests())) return 0;
+        if (!in_array($requester, $this->pending_friend_requests())) return 'pending';
 
         $Friendship = ModelFriends::where('requester', $requester)
                                 ->where('user_requested', $this->id)
@@ -42,13 +39,11 @@ trait Friendship
 
         if ($Friendship)
         {
-            $Friendship->update([
-                'status' => 1
-            ]);
-            return 1;
+            $Friendship->update([ 'status' => 1 ]);
+            return 'friends';
         }
 
-        return 0;
+        return 'pending';
     }
 
     public function reject_friendships($requester)
@@ -61,10 +56,10 @@ trait Friendship
 
         if ($Friendship)
         {
-            if ($Friendship->delete()) return 3;
+            if ($Friendship->delete()) return 'deleted';
         }
 
-        return 0;
+        return 'pending';
     }
 
     public function friends($ids = null)

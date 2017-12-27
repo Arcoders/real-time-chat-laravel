@@ -23174,8 +23174,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this3.loading = false;
 
                 if (response.status == 200) {
-                    if (response.body == 1) _this3.status = 'waiting';
-                    if (response.body == 0) _this3.status = 0;
+                    if (response.body == 'waiting') _this3.status = 'waiting';
+                    if (response.body == 'add') _this3.status = 'add';
                 } else {
                     // ...
                 }
@@ -23197,8 +23197,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this4.loading = false;
 
                 if (response.status == 200) {
-                    if (response.body == 1) _this4.status = 'friends';
-                    if (response.body == 0) _this4.status = 'pending';
+                    if (response.body == 'friends') _this4.status = 'friends';
+                    if (response.body == 'pending') _this4.status = 'pending';
                 } else {
                     // ...
                 }
@@ -23220,7 +23220,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this5.loading = false;
 
                 if (response.status == 200) {
-                    if (response.body == 3) _this5.status = 0;
+                    if (response.body == 'deleted') _this5.status = 'add';
+                    if (response.body == 'pending') _this5.status = 'pending';
                 } else {
                     // ...
                 }
@@ -23249,7 +23250,7 @@ var render = function() {
       !_vm.loading
         ? _c("div", [
             _c("div", { staticClass: "add_friend style_friend" }, [
-              _vm.status == 0
+              _vm.status == "add"
                 ? _c("button", { on: { click: _vm.add_friend } }, [
                     _c("i", { staticClass: "material-icons" }, [
                       _vm._v("person_add")
