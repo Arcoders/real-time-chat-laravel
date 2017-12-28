@@ -1,38 +1,22 @@
-<template>
-    <div id="send_app">
+<template lang="pug">
+    #send_app
+        .wrap-message
+            form.wrap-message(method='POST', v-on:submit.prevent='', enctype='multipart/form-data')
 
-        <div class="wrap-message">
-            <form method="POST"
-                  class="wrap-message"
-                  v-on:submit.prevent=""
-                  enctype="multipart/form-data">
+                button.format_button(type='button', v-on:click='showModal')
+                    i(v-bind:class="[uploadImageState ? 'green_teal' : '', 'material-icons']")
+                        | photo_camera
 
-                <button  type="button" class="format_button" v-on:click="showModal">
-                    <i v-bind:class="[uploadImageState ? 'green_teal' : '', 'material-icons']">
-                        photo_camera
-                    </i>
-                </button>
+                .message
+                    input#inputMessage.input-message(@keyup.enter='addMessage',
+                                                        v-model='messageText',
+                                                        type='text',
+                                                        autocomplete='off',
+                                                        placeholder='Write a new message')
 
-                <div class="message">
-                    <input @keyup.enter="addMessage"
-                           v-model="messageText"
-                           type="text"
-                           class="input-message"
-                           id="inputMessage"
-                           autocomplete="off"
-                           placeholder="Escribe un nuevo mensaje">
-                </div>
+                button.format_button(type='button', @click='addMessage')
+                    i(v-bind:class="[btnSubmit ? '' : 'green_teal', 'material-icons']") send
 
-                <button type="button"
-                        @click="addMessage"
-                        class="format_button">
-                    <i  v-bind:class="[btnSubmit ? '' : 'green_teal', 'material-icons']">send</i>
-                </button>
-
-            </form>
-        </div>
-
-    </div>
 </template>
 
 <style scoped>
@@ -43,19 +27,39 @@
 
 <script>
     export default {
+
+        // ----------------------------------------------
+
         props: ['uploadImageState', 'user', 'photo'],
+
+        // ----------------------------------------------
+
         data() {
           return {
-              messageText: ''
+              groupId: this.$route.params.group_id,
+              messageText: '',
+              formData: null
           }
         },
+
+        // ----------------------------------------------
+
         mounted() {
             console.log('Send ok!');
         },
+
+        // ----------------------------------------------
+
         methods: {
+
+            // ----------------------------------------------
+
             showModal() {
                 this.$emit('showUpload', !this.uploadImageState);
             },
+
+            // ----------------------------------------------
+
             addMessage() {
                 if (this.btnSubmit) return;
 
@@ -69,13 +73,40 @@
                 });
 
                 this.messageText = '';
+
+                this.formData = {
+                    group_id: this.groupId,
+                    message: this.messageText,
+                    photo: this.photo
+                };
+
+                // ....
+
+               /* this.$http.post('/AddMessage', this.formData).then(response => {
+                    if (response.body === 200) {
+                        // ...
+                    } else {
+                        // ...
+                    }
+                }, () => {
+                    //...
+                });*/
             }
+
+            // ----------------------------------------------
+
         },
         computed: {
+
+            // ----------------------------------------------
+
             btnSubmit() {
                 if (this.photo) return;
                 return ( this.messageText.length < 2);
             }
+
+            // ----------------------------------------------
+
         }
     }
 </script>

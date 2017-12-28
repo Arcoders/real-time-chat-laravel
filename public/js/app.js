@@ -21237,7 +21237,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(43)
 /* template */
-var __vue_template__ = __webpack_require__(44)
+var __vue_template__ = __webpack_require__(121)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21348,38 +21348,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+
+    // ----------------------------------------------
+
     props: ['uploadImageState', 'user', 'photo'],
+
+    // ----------------------------------------------
+
     data: function data() {
         return {
-            messageText: ''
+            groupId: this.$route.params.group_id,
+            messageText: '',
+            formData: null
         };
     },
+
+
+    // ----------------------------------------------
+
     mounted: function mounted() {
         console.log('Send ok!');
     },
 
+
+    // ----------------------------------------------
+
     methods: {
+
+        // ----------------------------------------------
+
         showModal: function showModal() {
             this.$emit('showUpload', !this.uploadImageState);
         },
+
+
+        // ----------------------------------------------
+
         addMessage: function addMessage() {
             if (this.btnSubmit) return;
 
@@ -21393,130 +21399,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
 
             this.messageText = '';
+
+            this.formData = {
+                group_id: this.groupId,
+                message: this.messageText,
+                photo: this.photo
+            };
+
+            // ....
+
+            /* this.$http.post('/AddMessage', this.formData).then(response => {
+                 if (response.body === 200) {
+                     // ...
+                 } else {
+                     // ...
+                 }
+             }, () => {
+                 //...
+             });*/
         }
+
+        // ----------------------------------------------
+
     },
     computed: {
+
+        // ----------------------------------------------
+
         btnSubmit: function btnSubmit() {
             if (this.photo) return;
             return this.messageText.length < 2;
         }
+
+        // ----------------------------------------------
+
     }
 });
 
 /***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "send_app" } }, [
-    _c("div", { staticClass: "wrap-message" }, [
-      _c(
-        "form",
-        {
-          staticClass: "wrap-message",
-          attrs: { method: "POST", enctype: "multipart/form-data" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-            }
-          }
-        },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "format_button",
-              attrs: { type: "button" },
-              on: { click: _vm.showModal }
-            },
-            [
-              _c(
-                "i",
-                {
-                  class: [
-                    _vm.uploadImageState ? "green_teal" : "",
-                    "material-icons"
-                  ]
-                },
-                [_vm._v("\n                    photo_camera\n                ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "message" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.messageText,
-                  expression: "messageText"
-                }
-              ],
-              staticClass: "input-message",
-              attrs: {
-                type: "text",
-                id: "inputMessage",
-                autocomplete: "off",
-                placeholder: "Escribe un nuevo mensaje"
-              },
-              domProps: { value: _vm.messageText },
-              on: {
-                keyup: function($event) {
-                  if (
-                    !("button" in $event) &&
-                    _vm._k($event.keyCode, "enter", 13, $event.key)
-                  ) {
-                    return null
-                  }
-                  _vm.addMessage($event)
-                },
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.messageText = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "format_button",
-              attrs: { type: "button" },
-              on: { click: _vm.addMessage }
-            },
-            [
-              _c(
-                "i",
-                {
-                  class: [_vm.btnSubmit ? "" : "green_teal", "material-icons"]
-                },
-                [_vm._v("send")]
-              )
-            ]
-          )
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e24e3876", module.exports)
-  }
-}
-
-/***/ }),
+/* 44 */,
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26350,6 +26271,117 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-5c781822", module.exports)
+  }
+}
+
+/***/ }),
+/* 121 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "send_app" } }, [
+    _c("div", { staticClass: "wrap-message" }, [
+      _c(
+        "form",
+        {
+          staticClass: "wrap-message",
+          attrs: { method: "POST", enctype: "multipart/form-data" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+            }
+          }
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "format_button",
+              attrs: { type: "button" },
+              on: { click: _vm.showModal }
+            },
+            [
+              _c(
+                "i",
+                {
+                  class: [
+                    _vm.uploadImageState ? "green_teal" : "",
+                    "material-icons"
+                  ]
+                },
+                [_vm._v("photo_camera")]
+              )
+            ]
+          ),
+          _c("div", { staticClass: "message" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.messageText,
+                  expression: "messageText"
+                }
+              ],
+              staticClass: "input-message",
+              attrs: {
+                id: "inputMessage",
+                type: "text",
+                autocomplete: "off",
+                placeholder: "Write a new message"
+              },
+              domProps: { value: _vm.messageText },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key)
+                  ) {
+                    return null
+                  }
+                  _vm.addMessage($event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.messageText = $event.target.value
+                }
+              }
+            })
+          ]),
+          _c(
+            "button",
+            {
+              staticClass: "format_button",
+              attrs: { type: "button" },
+              on: { click: _vm.addMessage }
+            },
+            [
+              _c(
+                "i",
+                {
+                  class: [_vm.btnSubmit ? "" : "green_teal", "material-icons"]
+                },
+                [_vm._v("send")]
+              )
+            ]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e24e3876", module.exports)
   }
 }
 
