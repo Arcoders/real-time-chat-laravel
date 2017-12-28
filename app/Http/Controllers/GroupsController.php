@@ -133,11 +133,4 @@ class GroupsController extends Controller
         return $request ? explode(',', $request) : [];
     }
 
-    public function listChatsGroup()
-    {
-        $groups = Auth::user()->groups;
-
-        if ($groups) return response()->json($groups, 200);
-    }
-
 }

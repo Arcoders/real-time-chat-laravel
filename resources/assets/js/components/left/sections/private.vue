@@ -1,250 +1,25 @@
-<template>
-    <div id="private_app">
+<template lang="pug">
+    #private_app
 
-        <div class="contact">
-            <router-link exact-active-class="active_image" :to="{ name: 'private', params: { private_id: 1, user_name: 'Ismael' }}">
-                <img src="https://avatars.io/twitter/maryam" alt="profilpicture">
-            </router-link>
-            <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">
-                        <router-link exact-active-class="active_chat" :to="{ name: 'private', params: { private_id: 1, user_name: 'Ismael' }}">
-                            Hola Amigo
-                        </router-link>
-                    </h1>
-                    <p class="font-preview">
-                        <router-link exact-active-class="active_message" :to="{ name: 'private', params: { private_id: 1, user_name: 'Ismael' }}">
-                            Hola muy buenas
-                        </router-link>
-                    </p>
-                </div>
-            </div>
-            <div class="contact-time">
-                <p>00:24</p>
-            </div>
-        </div>
-        <div class="contact">
-            <router-link exact-active-class="active_image" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                <img src="https://avatars.io/twitter/maryam" alt="profilpicture">
-            </router-link>
-            <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">
-                        <router-link exact-active-class="active_chat" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola Amigo
-                        </router-link>
-                    </h1>
-                    <p class="font-preview">
-                        <router-link exact-active-class="active_message" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola muy buenas
-                        </router-link>
-                    </p>
-                </div>
-            </div>
-            <div class="contact-time">
-                <p>00:24</p>
-            </div>
-        </div>
-        <div class="contact">
-            <router-link exact-active-class="active_image" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                <img src="https://avatars.io/twitter/maryam" alt="profilpicture">
-            </router-link>
-            <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">
-                        <router-link exact-active-class="active_chat" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola Amigo
-                        </router-link>
-                    </h1>
-                    <p class="font-preview">
-                        <router-link exact-active-class="active_message" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola muy buenas
-                        </router-link>
-                    </p>
-                </div>
-            </div>
-            <div class="contact-time">
-                <p>00:24</p>
-            </div>
-        </div>
-        <div class="contact">
-            <router-link exact-active-class="active_image" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                <img src="https://avatars.io/twitter/maryam" alt="profilpicture">
-            </router-link>
-            <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">
-                        <router-link exact-active-class="active_chat" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola Amigo
-                        </router-link>
-                    </h1>
-                    <p class="font-preview">
-                        <router-link exact-active-class="active_message" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola muy buenas
-                        </router-link>
-                    </p>
-                </div>
-            </div>
-            <div class="contact-time">
-                <p>00:24</p>
-            </div>
-        </div>
-        <div class="contact">
-            <router-link exact-active-class="active_image" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                <img src="https://avatars.io/twitter/maryam" alt="profilpicture">
-            </router-link>
-            <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">
-                        <router-link exact-active-class="active_chat" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola Amigo
-                        </router-link>
-                    </h1>
-                    <p class="font-preview">
-                        <router-link exact-active-class="active_message" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola muy buenas
-                        </router-link>
-                    </p>
-                </div>
-            </div>
-            <div class="contact-time">
-                <p>00:24</p>
-            </div>
-        </div>
-        <div class="contact">
-            <router-link exact-active-class="active_image" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                <img src="https://avatars.io/twitter/maryam" alt="profilpicture">
-            </router-link>
-            <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">
-                        <router-link exact-active-class="active_chat" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola Amigo
-                        </router-link>
-                    </h1>
-                    <p class="font-preview">
-                        <router-link exact-active-class="active_message" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola muy buenas
-                        </router-link>
-                    </p>
-                </div>
-            </div>
-            <div class="contact-time">
-                <p>00:24</p>
-            </div>
-        </div>
-        <div class="contact">
-            <router-link exact-active-class="active_image" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                <img src="https://avatars.io/twitter/maryam" alt="profilpicture">
-            </router-link>
-            <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">
-                        <router-link exact-active-class="active_chat" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola Amigo
-                        </router-link>
-                    </h1>
-                    <p class="font-preview">
-                        <router-link exact-active-class="active_message" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola muy buenas
-                        </router-link>
-                    </p>
-                </div>
-            </div>
-            <div class="contact-time">
-                <p>00:24</p>
-            </div>
-        </div>
-        <div class="contact">
-            <router-link exact-active-class="active_image" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                <img src="https://avatars.io/twitter/maryam" alt="profilpicture">
-            </router-link>
-            <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">
-                        <router-link exact-active-class="active_chat" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola Amigo
-                        </router-link>
-                    </h1>
-                    <p class="font-preview">
-                        <router-link exact-active-class="active_message" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola muy buenas
-                        </router-link>
-                    </p>
-                </div>
-            </div>
-            <div class="contact-time">
-                <p>00:24</p>
-            </div>
-        </div>
-        <div class="contact">
-            <router-link exact-active-class="active_image" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                <img src="https://avatars.io/twitter/maryam" alt="profilpicture">
-            </router-link>
-            <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">
-                        <router-link exact-active-class="active_chat" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola Amigo
-                        </router-link>
-                    </h1>
-                    <p class="font-preview">
-                        <router-link exact-active-class="active_message" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola muy buenas
-                        </router-link>
-                    </p>
-                </div>
-            </div>
-            <div class="contact-time">
-                <p>00:24</p>
-            </div>
-        </div>
-        <div class="contact">
-            <router-link exact-active-class="active_image" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                <img src="https://avatars.io/twitter/maryam" alt="profilpicture">
-            </router-link>
-            <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">
-                        <router-link exact-active-class="active_chat" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola Amigo
-                        </router-link>
-                    </h1>
-                    <p class="font-preview">
-                        <router-link exact-active-class="active_message" :to="{ name: 'private', params: { private_id: 5, user_name: 'Random' }}">
-                            Hola muy buenas
-                        </router-link>
-                    </p>
-                </div>
-            </div>
-            <div class="contact-time">
-                <p>00:24</p>
-            </div>
-        </div>
-        <div class="contact">
-            <router-link exact-active-class="active_image" :to="{ name: 'private', params: { private_id: 10, user_name: 'St' }}">
-                <img src="https://avatars.io/twitter/maryam" alt="profilpicture">
-            </router-link>
-            <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">
-                        <router-link exact-active-class="active_chat" :to="{ name: 'private', params: { private_id: 10, user_name: 'St' }}">
-                            Hola Amigo
-                        </router-link>
-                    </h1>
-                    <p class="font-preview">
-                        <router-link exact-active-class="active_message" :to="{ name: 'private', params: { private_id: 10, user_name: 'St' }}">
-                            Hola muy buenas
-                        </router-link>
-                    </p>
-                </div>
-            </div>
-            <div class="contact-time">
-                <p>00:24</p>
-            </div>
-        </div>
+        loading(v-if='loading', :normal='true')
 
-    </div>
+        .contact(v-for='chat in chats')
+
+            router-link(exact-active-class='active_image', :to="chatLink(chat, 'group')")
+                avatar.chat_avatar(:username='chat.name', :src='chat.avatar', color='#fff')
+
+            .contact-preview
+                .contact-text
+                    h1.font-name
+                        router-link(exact-active-class='active_chat', :to="chatLink(chat, 'group')")
+                            | {{ chat.name }}
+                    p.font-preview
+                        router-link(exact-active-class='active_message', :to="chatLink(chat, 'group')")
+                            | Hola muy buenas
+
+            .contact-time
+                p 00:24
+
 </template>
 
 <style scoped>
@@ -263,12 +38,85 @@
     .active_image {
         box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);
     }
+    .chat_avatar {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+        margin: 12px 20px;
+        border-radius: 50%;
+    }
 </style>
 
 <script>
     export default {
+
+        // ----------------------------------------------
+
+        data() {
+            return {
+                loading: false,
+                chats: null,
+                notFound: false,
+                errorLoad: false
+            }
+        },
+
+        // ----------------------------------------------
+
         mounted() {
+            this.chatsList();
             console.log('Private ok!')
+        },
+
+        // ----------------------------------------------
+
+        methods: {
+
+            // ----------------------------------------------
+
+            chatsList() {
+
+                this.loading = true;
+
+                this.$http.get('/chats_list').then(response => {
+
+                    this.loading = false;
+
+                    if (response.status == 200) {
+
+                        if (response.data.length === 0) this.notFound = true;
+                        this.chats = response.data;
+
+                    } else {
+                        this.errorLoad = true;
+                    }
+
+                }, () => {
+
+                    this.loading = false;
+                    this.errorLoad = true;
+
+                });
+            },
+
+            // ----------------------------------------------
+
+            // ---------------------------------------------------
+
+            chatLink(chat, type) {
+                return {
+                    name: type,
+                    params: {
+                        group_id: chat.id,
+                        group_name: chat.name
+                    }
+                }
+            }
+
+            // ----------------------------------------------
+
         }
+
     }
 </script>

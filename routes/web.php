@@ -31,17 +31,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/edit_group/{group_id}', 'GroupsController@editGroup'); // edit group
     Route::get('/list_friends', 'GroupsController@listFriends'); // list all friends
 
-    Route::get('/list_groups_chat', 'GroupsController@listChatsGroup');
-
     // Profile...
     Route::get('/get_profile/{profile_id}', 'ProfileController@getProfile'); // get determinate profile
     Route::get('/get_users', 'ProfileController@getUsers'); // get all users
     Route::post('/edit_profile', 'ProfileController@editProfile'); // edit my profile
 
-    // Friendships
+    // Friendships...
     Route::get('/check_relationship_status/{user_id}', 'FriendshipsController@check'); // check relation ship status
     Route::post('/add_friend/{user_id}', 'FriendshipsController@addFriend'); // send friend request
     Route::patch('/accept_friend/{user_id}', 'FriendshipsController@acceptFriend'); // accept friend
     Route::delete('/reject_friendship/{user_id}', 'FriendshipsController@rejectFriendship'); // reject request
+
+    // Chats list...
+    Route::get('/chats_list', 'ChatsController@chatsList');
 
 });

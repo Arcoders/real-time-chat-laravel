@@ -90,6 +90,7 @@ const router = new VueRouter({
             ]
         },
         { path: '/private/:private_id/:user_name', component: right, name: 'private'},
+        { path: '/group/:group_id/:group_name', component: right, name: 'group'},
     ]
 });
 
