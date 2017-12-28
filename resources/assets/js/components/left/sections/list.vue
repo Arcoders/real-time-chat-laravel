@@ -3,18 +3,35 @@
 
         loading(v-if='loading', :normal='true')
 
-        .contact(v-for='chat in chats')
+        .contact(v-if='showChatList', v-for='friend in friends')
 
-            router-link(exact-active-class='active_image', :to="chatLink(chat, 'group')")
-                avatar.chat_avatar(:username='chat.name', :src='chat.avatar', color='#fff')
+            router-link(exact-active-class='active_image', :to="chatLink(friend, 'friend')")
+                avatar.chat_avatar(:username='friend.name', :src='friend.avatar', color='#fff')
 
             .contact-preview
                 .contact-text
                     h1.font-name
-                        router-link(exact-active-class='active_chat', :to="chatLink(chat, 'group')")
-                            | {{ chat.name }}
+                        router-link(exact-active-class='active_chat', :to="chatLink(friend, 'friend')")
+                            | {{ friend.name }}
                     p.font-preview
-                        router-link(exact-active-class='active_message', :to="chatLink(chat, 'group')")
+                        router-link(exact-active-class='active_message', :to="chatLink(friend, 'friend')")
+                            | Hola muy buenas
+
+            .contact-time
+                p 00:24
+
+        .contact(v-else, v-for='group in groups')
+
+            router-link(exact-active-class='active_image', :to="chatLink(group, 'group')")
+                avatar.chat_avatar(:username='group.name', :src='group.avatar', color='#fff')
+
+            .contact-preview
+                .contact-text
+                    h1.font-name
+                        router-link(exact-active-class='active_chat', :to="chatLink(group, 'group')")
+                            | {{ group.name }}
+                    p.font-preview
+                        router-link(exact-active-class='active_message', :to="chatLink(group, 'group')")
                             | Hola muy buenas
 
             .contact-time
@@ -53,10 +70,15 @@
 
         // ----------------------------------------------
 
+        props: ['showChatList'],
+
+        // ----------------------------------------------
+
         data() {
             return {
                 loading: false,
-                chats: null,
+                groups: null,
+                friends: null,
                 notFound: false,
                 errorLoad: false
             }
@@ -86,7 +108,8 @@
                     if (response.status == 200) {
 
                         if (response.data.length === 0) this.notFound = true;
-                        this.chats = response.data.groups;
+                        this.groups = response.data.groups;
+                        this.friends = response.data.friends;
 
                     } else {
                         this.errorLoad = true;
@@ -105,11 +128,22 @@
             // ---------------------------------------------------
 
             chatLink(chat, type) {
-                return {
-                    name: type,
-                    params: {
-                        group_id: chat.id,
-                        group_name: chat.name
+                if (type == 'group') {
+                    return {
+                        name: type,
+                        params: {
+                            group_id: chat.id,
+                            group_name: chat.name
+                        }
+                    }
+                }
+                if (type == 'friend') {
+                    return {
+                        name: type,
+                        params: {
+                            friend_id: chat.id,
+                            friend_name: chat.name
+                        }
                     }
                 }
             }

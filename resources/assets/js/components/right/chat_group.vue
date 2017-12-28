@@ -1,52 +1,41 @@
-<template>
-    <div id="right_app">
+<template lang="pug">
+    #right_app
 
-        <bar></bar>
+        .chat-head
+            img.img-head(alt='profilepicture', src='https://avatars.io/twitter/maryam')
+            .chat-name
+                h1.font-name {{ groupName }}
+                p.font-online Ismael, Fatima, Admin, Marta, victor...
+            i.fa.fa-whatsapp.fa-lg(aria-hidden='true')
 
-        <div class="wrap-content">
+        .wrap-content
 
-            <div class="dynamic_content chat">
+            .dynamic_content.chat
+                messages(:messages='messages', :user='user')
 
-                <messages :messages="messages" :user="user"></messages>
+            .upload_foto(v-if='uploadImage')
 
-            </div>
+                .container_foto.font-preview(v-if='!photo')
+                    label.fileContainer
+                        button
+                            i.material-icons file_upload
+                        input(type='file',
+                                    name='fileInput',
+                                    v-on:change='onFileChange($event)',
+                                    ref='fileInput')
 
-            <div v-if="uploadImage" class="upload_foto">
-                <div class="container_foto font-preview" v-if="!photo">
-                    <label class="fileContainer">
+                .container_foto(v-else='')
+                    .preview-image
+                        img(alt='profilepicture', :src='photo')
+                        a(v-on:click='clearImage')
+                            i.material-icons clear
 
-                        <button>
-                            <i class="material-icons">file_upload</i>
-                        </button>
+        send(:user='user',
+                :uploadImageState='uploadImage',
+                @showUpload='showImageModal',
+                :photo='photo',
+                @pushMessage='addMessage')
 
-                        <input type="file"
-                               name="fileInput"
-                               v-on:change="onFileChange($event)"
-                               ref="fileInput">
-
-                    </label>
-                </div>
-
-                <div class="container_foto" v-else>
-                    <div class="preview-image">
-                        <img alt="profilepicture" :src="photo">
-                        <a v-on:click="clearImage">
-                            <i class="material-icons">clear</i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <send :user="user"
-              :uploadImageState="uploadImage"
-              @showUpload="showImageModal"
-              :photo="photo"
-              @pushMessage="addMessage">
-        </send>
-
-    </div>
 </template>
 
 <style scoped>
@@ -57,29 +46,52 @@
 
 <script>
     export default {
+
+        // ----------------------------------------------
+
         props: ['user'],
+
+        // ----------------------------------------------
+
         data() {
             return {
+                groupName: this.$route.params.group_name,
+                groupId: this.$route.params.group_id,
                 uploadImage: false,
                 photo: null,
                 messages: [],
                 messages_ready: false
             }
         },
+
+        // ----------------------------------------------
+
         mounted() {
             this.allMessages();
             console.log('Right ok!');
         },
+
+        // ----------------------------------------------
+
         methods: {
+
+            // ----------------------------------------------
+
             showImageModal(data) {
                 this.uploadImage = data;
             },
+
+            // ----------------------------------------------
+
             onFileChange(e) {
                 let files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
                     return;
                 this.createImage(files[0]);
             },
+
+            // ----------------------------------------------
+
             createImage(file) {
                 let reader = new FileReader();
                 reader.onload = (e) => {
@@ -88,9 +100,15 @@
                 };
                 reader.readAsDataURL(file);
             },
+
+            // ----------------------------------------------
+
             clearImage() {
                 this.photo = null;
             },
+
+            // ----------------------------------------------
+
             allMessages() {
                 this.messages.push({
                         id: this.user.id,
@@ -109,11 +127,17 @@
                         time: '23:45'
                     });
             },
+
+            // ----------------------------------------------
+
             addMessage(new_message) {
                 this.messages.push(new_message);
                 this.photo = null;
                 this.uploadImage = false;
             }
+
+            // ----------------------------------------------
+
         }
     }
 </script>

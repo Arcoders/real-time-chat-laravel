@@ -19,6 +19,7 @@
                            type="text"
                            class="input-message"
                            id="inputMessage"
+                           autocomplete="off"
                            placeholder="Escribe un nuevo mensaje">
                 </div>
 

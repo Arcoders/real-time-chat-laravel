@@ -1,48 +1,25 @@
-<template>
-    <div id="left_app">
+<template lang="pug">
+    #left_app
+        .profile
+            avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
+            .name {{ user.name }}
+            .icons
+                router-link(to='/profile')
+                    i.material-icons person
+                router-link(to='/groups')
+                    i.material-icons person_add
+                loading(:normal='true', v-if='loading')
+                a(v-else, v-on:click='logout')
+                    i(v-bind:class="[logoutError ? 'error' : '', 'material-icons']") fingerprint
+        search
+        .wrap-filter
+            .link_filter
+                a(href='#', @click='changeList(true)', v-bind:class='{ active: myChatList }') Private
+            .link_filter
+                a(href='#', @click='changeList(false)', v-bind:class='{ active: !myChatList }') Groups
+        .contact-list
+            list(:showChatList='myChatList')
 
-        <div class="profile">
-            <avatar :username="user.name"
-                    color="#fff"
-                    :src="user.avatar"
-                    class="avatar">
-            </avatar>
-            <div class="name">{{ user.name }}</div>
-            <div class="icons">
-
-                <router-link to="/profile">
-                    <i class="material-icons">person</i>
-                </router-link>
-
-                <router-link to="/groups">
-                    <i class="material-icons">person_add</i>
-                </router-link>
-
-                <loading :normal="true" v-if="loading"></loading>
-
-                <a v-else v-on:click="logout">
-                    <i v-bind:class="[logoutError ? 'error' : '', 'material-icons']">fingerprint</i>
-                </a>
-
-            </div>
-        </div>
-
-        <search></search>
-
-        <div class="wrap-filter">
-            <div class="link_filter">
-                <router-link to="/">Private</router-link>
-            </div>
-            <div class="link_filter">
-                <router-link to="/">Groups</router-link>
-            </div>
-        </div>
-
-        <div class="contact-list">
-            <private></private>
-        </div>
-
-    </div>
 </template>
 
 <style scoped>
@@ -71,17 +48,39 @@
 
 <script>
     export default {
+
+        // ----------------------------------------------
+
         props: ['user'],
+
+        // ----------------------------------------------
+
         data() {
             return {
                 logoutError: null,
-                loading: false
+                loading: false,
+                myChatList: true
             }
         },
+
+        // ----------------------------------------------
+
         mounted() {
             console.log('Left ok!');
         },
+
+        // ----------------------------------------------
+
         methods: {
+
+            // ----------------------------------------------
+
+            changeList(value) {
+              this.myChatList = value;
+            },
+
+            // ----------------------------------------------
+
             logout() {
                 this.$http.post('/logout').then(response => {
 
@@ -98,12 +97,13 @@
                         this.loading = false;
                         this.logoutError = true;
                     }
-                }, response => {
+                }, () => {
                     this.loading = false;
                     this.logoutError = true;
                 });
-
             }
+
+            // ----------------------------------------------
         }
     }
 </script>

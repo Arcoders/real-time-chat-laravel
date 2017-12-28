@@ -39,7 +39,7 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf-token').
 
 Vue.component('left', require('./components/left/left.vue'));
 Vue.component('groups', require('./components/left/sections/groups.vue'));
-Vue.component('private', require('./components/left/sections/private.vue'));
+Vue.component('list', require('./components/left/sections/list.vue'));
 Vue.component('search', require('./components/left/sections/search.vue'));
 
 // Components for right side
@@ -59,7 +59,7 @@ Vue.component('multiselect', Multiselect);
 
 // Define route components
 
-import right from './components/right/right.vue';
+import chat_group from './components/right/chat_group.vue';
 import bienvenido from './components/right/bienvenido.vue';
 
 import profile from './components/right/profile/profile.vue';
@@ -89,8 +89,8 @@ const router = new VueRouter({
                 { path: 'my/:group_id/:group_name', component: edit_group, name: 'edit_group' }
             ]
         },
-        { path: '/private/:private_id/:user_name', component: right, name: 'private'},
-        { path: '/group/:group_id/:group_name', component: right, name: 'group'},
+        { path: '/friend/:friend_id/:friend_name', component: chat_group, name: 'friend'},
+        { path: '/group/:group_id/:group_name', component: chat_group, name: 'group'},
     ]
 });
 
