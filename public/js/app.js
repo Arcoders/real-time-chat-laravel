@@ -21108,7 +21108,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (response.status == 200) {
 
                     if (response.data.length === 0) _this.notFound = true;
-                    _this.chats = response.data;
+                    _this.chats = response.data.groups;
                 } else {
                     _this.errorLoad = true;
                 }

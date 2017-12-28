@@ -10,9 +10,10 @@ class ChatsController extends Controller
 
     public function chatsList()
     {
-        $groups = Auth::user()->groups;
-
-        if ($groups) return response()->json($groups, 200);
+        return response()->json([
+            'groups' => Auth::user()->groups,
+            'friends' => Auth::user()->friends(true)
+        ], 200);
     }
 
 }

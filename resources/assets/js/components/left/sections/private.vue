@@ -86,7 +86,7 @@
                     if (response.status == 200) {
 
                         if (response.data.length === 0) this.notFound = true;
-                        this.chats = response.data;
+                        this.chats = response.data.groups;
 
                     } else {
                         this.errorLoad = true;
