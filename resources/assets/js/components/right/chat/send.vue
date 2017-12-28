@@ -36,7 +36,7 @@
 
         data() {
           return {
-              groupId: this.$route.params.group_id,
+              groupId: window.atob(this.$route.params.group_id),
               messageText: '',
               formData: null
           }
@@ -63,34 +63,38 @@
             addMessage() {
                 if (this.btnSubmit) return;
 
-                this.$emit('pushMessage', this.messageText = {
-                    id: this.user.id,
-                    name: this.user.name,
-                    avatar: this.user.avatar,
-                    photo: this.photo,
-                    text: this.messageText,
-                    time: '08:32'
-                });
-
-                this.messageText = '';
-
                 this.formData = {
                     group_id: this.groupId,
                     message: this.messageText,
                     photo: this.photo
                 };
 
-                // ....
-
-               /* this.$http.post('/AddMessage', this.formData).then(response => {
-                    if (response.body === 200) {
-                        // ...
+                this.$http.post('/send_message', this.formData).then(response => {
+                    if (response.status === 200) {
+                        this.emitMessage(this.photo, response.data.body, response.data.created_at);
+                        this.messageText = '';
                     } else {
-                        // ...
+                        this.emitMessage(this.photo, this.messageText, null);
+                        this.messageText = '';
                     }
                 }, () => {
-                    //...
-                });*/
+                    this.emitMessage(this.photo, this.messageText, null);
+                    this.messageText = '';
+                });
+
+            },
+
+            // ----------------------------------------------
+
+            emitMessage(photo, message, time) {
+                return this.$emit('pushMessage', {
+                    id: this.user.id,
+                    name: this.user.name,
+                    avatar: this.user.avatar,
+                    photo: photo,
+                    text: message,
+                    time: time
+                });
             }
 
             // ----------------------------------------------

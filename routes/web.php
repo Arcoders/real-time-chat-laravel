@@ -27,7 +27,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/new_group', 'GroupsController@newGroup'); // Add new group
     Route::get('/my_groups', 'GroupsController@myGroups'); // list my groups
     Route::delete('/delete_group/{group_id}', 'GroupsController@deleteGroup'); // delete selected group
-    Route::get('/get_group/{group_id}', 'GroupsController@getGroup'); // get determinate group
+    Route::get('/get_group/{group_id}', 'GroupsController@getGroup'); // get determinate group with users
+    Route::get('/get_group_chat/{group_id}', 'GroupsController@getGroupForChat'); // get determinate just group
     Route::post('/edit_group/{group_id}', 'GroupsController@editGroup'); // edit group
     Route::get('/list_friends', 'GroupsController@listFriends'); // list all friends
 
@@ -44,5 +45,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Chats list...
     Route::get('/chats_list', 'ChatsController@chatsList');
+
+    // Send message
+    Route::Post('/send_message', 'ChatsController@sendMessage');
 
 });

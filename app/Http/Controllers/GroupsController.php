@@ -133,4 +133,11 @@ class GroupsController extends Controller
         return $request ? explode(',', $request) : [];
     }
 
+    public function getGroupForChat($group_id)
+    {
+        $group = Group::find($group_id);
+
+        if ($group) return response()->json($group, 200);
+    }
+
 }

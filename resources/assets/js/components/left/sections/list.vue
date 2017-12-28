@@ -20,7 +20,7 @@
             .contact-time
                 p 00:24
 
-        .contact(v-else, v-for='group in groups')
+        .contact(v-if='!showChatList', v-for='group in groups')
 
             router-link(exact-active-class='active_image', :to="chatLink(group, 'group')")
                 avatar.chat_avatar(:username='group.name', :src='group.avatar', color='#fff')
@@ -132,7 +132,7 @@
                     return {
                         name: type,
                         params: {
-                            group_id: chat.id,
+                            group_id: window.btoa(chat.id),
                             group_name: chat.name
                         }
                     }
@@ -141,7 +141,7 @@
                     return {
                         name: type,
                         params: {
-                            friend_id: chat.id,
+                            friend_id: window.btoa(chat.id),
                             friend_name: chat.name
                         }
                     }

@@ -1,11 +1,11 @@
 <template lang="pug">
-    #right_app
+    #right_app(v-if='showChat')
 
         .chat-head
-            img.img-head(alt='profilepicture', src='https://avatars.io/twitter/maryam')
+            avatar.img-head(:username='groupName', color='#fff', :src='avatar')
             .chat-name
                 h1.font-name {{ groupName }}
-                p.font-online Ismael, Fatima, Admin, Marta, victor...
+                p.font-online Ismael, Fatima, Admin, Marta, victor... {{ groupId }}
             i.fa.fa-whatsapp.fa-lg(aria-hidden='true')
 
         .wrap-content
@@ -31,6 +31,7 @@
                             i.material-icons clear
 
         send(:user='user',
+                v-on:pushMessage="pushMessage($event)",
                 :uploadImageState='uploadImage',
                 @showUpload='showImageModal',
                 :photo='photo',
@@ -55,8 +56,9 @@
 
         data() {
             return {
-                groupName: this.$route.params.group_name,
-                groupId: this.$route.params.group_id,
+                groupId: window.atob(this.$route.params.group_id),
+                avatar: null,
+                showChat: false,
                 uploadImage: false,
                 photo: null,
                 messages: [],
@@ -66,7 +68,14 @@
 
         // ----------------------------------------------
 
+        created() {
+            this.BindEvents('room-' + this.groupId, 'pushMessage', this.messages);
+        },
+
+        // ----------------------------------------------
+
         mounted() {
+            this.getGroup();
             this.allMessages();
             console.log('Right ok!');
         },
@@ -74,6 +83,15 @@
         // ----------------------------------------------
 
         methods: {
+
+            // ----------------------------------------------
+
+            BindEvents(name, action, array) {
+                this.channel = this.$pusher.subscribe(name);
+                this.channel.bind(action, (data) => {
+                    array.push(data);
+                });
+            },
 
             // ----------------------------------------------
 
@@ -85,8 +103,7 @@
 
             onFileChange(e) {
                 let files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
-                    return;
+                if (!files.length) return;
                 this.createImage(files[0]);
             },
 
@@ -134,7 +151,30 @@
                 this.messages.push(new_message);
                 this.photo = null;
                 this.uploadImage = false;
-            }
+            },
+
+            // ----------------------------------------------
+
+            getGroup() {
+                this.$http.get('/get_group_chat/' + this.groupId).then(response => {
+
+                    if (response.status == 200) {
+
+                        if (response.data === 0) return this.$router.push('/');
+
+                        this.showChat = true;
+
+                        this.groupName = response.data.name;
+                        if (response.data.avatar) this.avatar = response.data.avatar;
+
+                    } else {
+                        this.$router.push('/');
+                    }
+
+                }, () => {
+                    this.$router.push('/');
+                });
+            },
 
             // ----------------------------------------------
 
