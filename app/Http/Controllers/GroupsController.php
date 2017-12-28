@@ -95,6 +95,9 @@ class GroupsController extends Controller
             $this->deleteImage($group->avatar);
 
             $group->avatar = null;
+            $save = $group->save();
+
+            if ($save) return response()->json('Avatar edited successfully', 200);
         }
 
         $request['id'] = $this->idsToArray($request['id']);

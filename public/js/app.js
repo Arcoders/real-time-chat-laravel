@@ -26802,6 +26802,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -26874,13 +26899,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.btnSubmit) return;
             this.loading = true;
 
-            var data = void 0;
-
-            if (type == 'image') {
-                data = { deleteImage: true, name: this.groupName };
-            } else {
-                data = this.formData;
-            }
+            var data = type == 'image' ? { deleteImage: true } : this.formData;
 
             this.$http.post('/edit_group/' + this.group_id, data).then(function (response) {
 

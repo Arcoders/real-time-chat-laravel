@@ -1,29 +1,54 @@
 <template lang="pug">
     #edit_group_app(v-if='showEdit')
+
         notifications(:vue_notifications='notifications')
+
         router-link(to='/groups/my')
             i.material-icons arrow_back
+
         avatar(:username='groupName', color='#fff', :src='avatar')
+
         h4  Edit group
         hr
+
         form(v-on:submit.prevent='', method='POST', enctype='multipart/form-data')
             .input.wrap-input
                 label.fileContainer.font-online
+
                     button(v-if='!avatar', type='button')
                         i.material-icons photo
+
                     button(v-else='', v-on:click='clearAvatar', type='button')
                         i.material-icons clear
-                    input(v-show='!avatar', type='file', name='avatar', v-on:change='onFileChange($event)', ref='fileInput')
-                input.input-global(@keyup.enter='editGroup', v-model='groupName', name='name', type='text', placeholder='Group name...')
+
+                    input(v-show='!avatar',
+                                type='file',
+                                name='avatar',
+                                v-on:change='onFileChange($event)',
+                                ref='fileInput')
+
+                input.input-global(@keyup.enter='editGroup',
+                                    v-model='groupName',
+                                    name='name',
+                                    type='text',
+                                    placeholder='Group name...')
+
                 button(type='button', @click='editGroup', v-bind:disabled='btnSubmit')
                     i.material-icons add
             br
             .input.wrap-input
-                multiselect(v-model='selectedUsers', :multiple='true', track-by='id', label='name', :hide-selected='true', :close-on-select='false', :options='listUsers')
+                multiselect(v-model='selectedUsers',
+                                :multiple='true',
+                                track-by='id',
+                                label='name',
+                                :hide-selected='true',
+                                :close-on-select='false',
+                                :options='listUsers')
                     template(slot='tag', slot-scope='props')
                         span.custom__tag
                             span  {{ props.option.name }}
                             span.custom__remove(@click='props.remove(props.option)')  ❌
+
         loading(v-if='loading')
 
 </template>
@@ -99,13 +124,7 @@
                 if (this.btnSubmit) return;
                 this.loading = true;
 
-                let data;
-
-                if (type == 'image') {
-                    data = {deleteImage: true, name: this.groupName}
-                } else {
-                    data = this.formData;
-                }
+                let data = (type == 'image') ? {deleteImage: true} : this.formData;
 
                 this.$http.post('/edit_group/' + this.group_id, data).then(response => {
 
