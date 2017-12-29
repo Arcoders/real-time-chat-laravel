@@ -6,6 +6,7 @@
 
 body {
   background: #dbdbdb;
+  overflow: hidden;
 }
 
 i {

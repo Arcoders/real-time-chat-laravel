@@ -626,6 +626,23 @@ new Vue({
     router: router
 }).$mount(this.el);
 
+// Clear client errors
+
+(function () {
+    try {
+        var $_console$$ = console;
+        Object.defineProperty(window, "console", {
+            get: function get() {
+                if ($_console$$._commandLineAPI) throw "Sorry, for security reasons, the script console is deactivated on netflix.com";
+                return $_console$$;
+            },
+            set: function set($val$$) {
+                $_console$$ = $val$$;
+            }
+        });
+    } catch ($ignore$$) {}
+})();
+
 /***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -23160,7 +23177,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.dynamic_content[data-v-5c781822] {\n    height: calc(98vh - 165px);\n}\n", ""]);
+exports.push([module.i, "\n.dynamic_content[data-v-5c781822] {\n    height: calc(98vh - 165px);\n}\n.slide-fade-enter-active[data-v-5c781822] {\n    -webkit-transition: all .5s ease;\n    transition: all .5s ease;\n}\n.slide-fade-enter[data-v-5c781822], .slide-fade-leave-to[data-v-5c781822] {\n    -webkit-transform: translateX(5px);\n            transform: translateX(5px);\n    opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -23171,6 +23188,14 @@ exports.push([module.i, "\n.dynamic_content[data-v-5c781822] {\n    height: calc
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -23244,6 +23269,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ----------------------------------------------
 
     created: function created() {
+        this.getGroup();
         this.pushRealTimeMessage();
     },
 
@@ -23251,7 +23277,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ----------------------------------------------
 
     mounted: function mounted() {
-        this.getGroup();
         this.allMessages();
         console.log('Right ok!');
     },
@@ -23395,7 +23420,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status == 200) {
 
-                    if (response.data === 0) return _this4.$router.push('/');
+                    if (response.data === 0 || !response.data) return _this4.$router.push('/');
 
                     _this4.showChat = true;
 
@@ -23419,117 +23444,114 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.showChat
-    ? _c(
-        "div",
-        { attrs: { id: "right_app" } },
-        [
-          _c(
-            "div",
-            { staticClass: "chat-head" },
-            [
-              _c("avatar", {
-                staticClass: "img-head",
-                attrs: {
-                  username: _vm.groupName,
-                  color: "#fff",
-                  src: _vm.avatar
-                }
-              }),
-              _c("div", { staticClass: "chat-name" }, [
-                _c("h1", { staticClass: "font-name" }, [
-                  _vm._v(_vm._s(_vm.groupName))
-                ]),
-                _c("p", { staticClass: "font-online" }, [
-                  _vm._v(
-                    "Ismael, Fatima, Admin, Marta, victor... " +
-                      _vm._s(_vm.groupId)
-                  )
-                ])
-              ]),
-              _c("i", {
-                staticClass: "fa fa-whatsapp fa-lg",
-                attrs: { "aria-hidden": "true" }
-              })
-            ],
-            1
-          ),
-          _c("div", { staticClass: "wrap-content" }, [
+  return _c("transition", { attrs: { name: "slide-fade" } }, [
+    _vm.showChat
+      ? _c(
+          "div",
+          { attrs: { id: "right_app" } },
+          [
             _c(
               "div",
-              { staticClass: "dynamic_content chat" },
+              { staticClass: "chat-head" },
               [
-                _c("messages", {
-                  attrs: { messages: _vm.messages, user: _vm.user }
+                _c("avatar", {
+                  staticClass: "img-head",
+                  attrs: {
+                    username: _vm.groupName,
+                    color: "#fff",
+                    src: _vm.avatar
+                  }
+                }),
+                _c("div", { staticClass: "chat-name" }, [
+                  _c("h1", { staticClass: "font-name" }, [
+                    _vm._v(_vm._s(_vm.groupName))
+                  ]),
+                  _c("p", { staticClass: "font-online" }, [
+                    _vm._v(
+                      "Ismael, Fatima, Admin, Marta, victor... " +
+                        _vm._s(_vm.groupId)
+                    )
+                  ])
+                ]),
+                _c("i", {
+                  staticClass: "fa fa-whatsapp fa-lg",
+                  attrs: { "aria-hidden": "true" }
                 })
               ],
               1
             ),
-            _vm.uploadImage
-              ? _c("div", { staticClass: "upload_foto" }, [
-                  !_vm.photo
-                    ? _c(
-                        "div",
-                        { staticClass: "container_foto font-preview" },
-                        [
-                          _c("label", { staticClass: "fileContainer" }, [
-                            _vm._m(0),
-                            _c("input", {
-                              ref: "fileInput",
-                              attrs: { type: "file", name: "fileInput" },
-                              on: {
-                                change: function($event) {
-                                  _vm.onFileChange($event)
+            _c("div", { staticClass: "wrap-content" }, [
+              _c(
+                "div",
+                { staticClass: "dynamic_content chat" },
+                [
+                  _c("messages", {
+                    attrs: { messages: _vm.messages, user: _vm.user }
+                  })
+                ],
+                1
+              ),
+              _vm.uploadImage
+                ? _c("div", { staticClass: "upload_foto" }, [
+                    !_vm.photo
+                      ? _c(
+                          "div",
+                          { staticClass: "container_foto font-preview" },
+                          [
+                            _c("label", { staticClass: "fileContainer" }, [
+                              _c("button", [
+                                _c("i", { staticClass: "material-icons" }, [
+                                  _vm._v("file_upload")
+                                ])
+                              ]),
+                              _c("input", {
+                                ref: "fileInput",
+                                attrs: { type: "file", name: "fileInput" },
+                                on: {
+                                  change: function($event) {
+                                    _vm.onFileChange($event)
+                                  }
                                 }
-                              }
-                            })
-                          ])
-                        ]
-                      )
-                    : _c("div", { staticClass: "container_foto" }, [
-                        _c("div", { staticClass: "preview-image" }, [
-                          _c("img", {
-                            attrs: { alt: "profilepicture", src: _vm.photo }
-                          }),
-                          _c("a", { on: { click: _vm.clearImage } }, [
-                            _c("i", { staticClass: "material-icons" }, [
-                              _vm._v("clear")
+                              })
+                            ])
+                          ]
+                        )
+                      : _c("div", { staticClass: "container_foto" }, [
+                          _c("div", { staticClass: "preview-image" }, [
+                            _c("img", {
+                              attrs: { alt: "profilepicture", src: _vm.photo }
+                            }),
+                            _c("a", { on: { click: _vm.clearImage } }, [
+                              _c("i", { staticClass: "material-icons" }, [
+                                _vm._v("clear")
+                              ])
                             ])
                           ])
                         ])
-                      ])
-                ])
-              : _vm._e()
-          ]),
-          _c("send", {
-            attrs: {
-              user: _vm.user,
-              uploadImageState: _vm.uploadImage,
-              photo: _vm.photo
-            },
-            on: {
-              errorMessages: function($event) {
-                _vm.pushErrorMessage($event)
+                  ])
+                : _vm._e()
+            ]),
+            _c("send", {
+              attrs: {
+                user: _vm.user,
+                uploadImageState: _vm.uploadImage,
+                photo: _vm.photo
               },
-              showUpload: _vm.showImageModal,
-              pushMessage: _vm.addMessage
-            }
-          })
-        ],
-        1
-      )
-    : _vm._e()
+              on: {
+                errorMessages: function($event) {
+                  _vm.pushErrorMessage($event)
+                },
+                showUpload: _vm.showImageModal,
+                pushMessage: _vm.addMessage
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e()
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [
-      _c("i", { staticClass: "material-icons" }, [_vm._v("file_upload")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

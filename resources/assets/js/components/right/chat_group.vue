@@ -1,47 +1,55 @@
 <template lang="pug">
-    #right_app(v-if='showChat')
+    transition(name='slide-fade')
+        #right_app(v-if='showChat')
 
-        .chat-head
-            avatar.img-head(:username='groupName', color='#fff', :src='avatar')
-            .chat-name
-                h1.font-name {{ groupName }}
-                p.font-online Ismael, Fatima, Admin, Marta, victor... {{ groupId }}
-            i.fa.fa-whatsapp.fa-lg(aria-hidden='true')
+            .chat-head
+                avatar.img-head(:username='groupName', color='#fff', :src='avatar')
+                .chat-name
+                    h1.font-name {{ groupName }}
+                    p.font-online Ismael, Fatima, Admin, Marta, victor... {{ groupId }}
+                i.fa.fa-whatsapp.fa-lg(aria-hidden='true')
 
-        .wrap-content
+            .wrap-content
 
-            .dynamic_content.chat
-                messages(:messages='messages', :user='user')
+                .dynamic_content.chat
+                    messages(:messages='messages', :user='user')
 
-            .upload_foto(v-if='uploadImage')
+                .upload_foto(v-if='uploadImage')
 
-                .container_foto.font-preview(v-if='!photo')
-                    label.fileContainer
-                        button
-                            i.material-icons file_upload
-                        input(type='file',
-                                    name='fileInput',
-                                    v-on:change='onFileChange($event)',
-                                    ref='fileInput')
+                    .container_foto.font-preview(v-if='!photo')
+                        label.fileContainer
+                            button
+                                i.material-icons file_upload
+                            input(type='file',
+                                        name='fileInput',
+                                        v-on:change='onFileChange($event)',
+                                        ref='fileInput')
 
-                .container_foto(v-else='')
-                    .preview-image
-                        img(alt='profilepicture', :src='photo')
-                        a(v-on:click='clearImage')
-                            i.material-icons clear
+                    .container_foto(v-else='')
+                        .preview-image
+                            img(alt='profilepicture', :src='photo')
+                            a(v-on:click='clearImage')
+                                i.material-icons clear
 
-        send(:user='user',
-                v-on:errorMessages="pushErrorMessage($event)",
-                :uploadImageState='uploadImage',
-                @showUpload='showImageModal',
-                :photo='photo',
-                @pushMessage='addMessage')
+            send(:user='user',
+                    v-on:errorMessages="pushErrorMessage($event)",
+                    :uploadImageState='uploadImage',
+                    @showUpload='showImageModal',
+                    :photo='photo',
+                    @pushMessage='addMessage')
 
 </template>
 
 <style scoped>
     .dynamic_content {
         height: calc(98vh - 165px);
+    }
+    .slide-fade-enter-active {
+        transition: all .5s ease;
+    }
+    .slide-fade-enter, .slide-fade-leave-to {
+        transform: translateX(5px);
+        opacity: 0;
     }
 </style>
 
@@ -70,13 +78,13 @@
         // ----------------------------------------------
 
         created() {
+            this.getGroup();
             this.pushRealTimeMessage();
         },
 
         // ----------------------------------------------
 
         mounted() {
-            this.getGroup();
             this.allMessages();
             console.log('Right ok!');
         },
@@ -187,6 +195,7 @@
                 }, response => {
                     // ...
                 });
+
             },
 
             // ----------------------------------------------
@@ -204,7 +213,7 @@
 
                     if (response.status == 200) {
 
-                        if (response.data === 0) return this.$router.push('/');
+                        if (response.data === 0 || !response.data) return this.$router.push('/');
 
                         this.showChat = true;
 
