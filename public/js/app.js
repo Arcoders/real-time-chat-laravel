@@ -26009,7 +26009,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -26035,7 +26034,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ----------------------------------------------
 
     created: function created() {
-        this.pushMessage();
+        this.pushRealTimeMessage();
     },
 
 
@@ -26054,7 +26053,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ----------------------------------------------
 
-        pushMessage: function pushMessage() {
+        pushRealTimeMessage: function pushRealTimeMessage() {
             var _this = this;
 
             this.channel = this.$pusher.subscribe('room-' + this.groupId);
@@ -26278,9 +26277,6 @@ var render = function() {
               photo: _vm.photo
             },
             on: {
-              updateMessages: function($event) {
-                _vm.pushMessage($event)
-              },
               errorMessages: function($event) {
                 _vm.pushErrorMessage($event)
               },

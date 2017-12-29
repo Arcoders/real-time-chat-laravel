@@ -31,7 +31,6 @@
                             i.material-icons clear
 
         send(:user='user',
-                v-on:updateMessages="pushMessage($event)",
                 v-on:errorMessages="pushErrorMessage($event)",
                 :uploadImageState='uploadImage',
                 @showUpload='showImageModal',
@@ -70,7 +69,7 @@
         // ----------------------------------------------
 
         created() {
-            this.pushMessage();
+            this.pushRealTimeMessage();
         },
 
         // ----------------------------------------------
@@ -88,7 +87,7 @@
 
             // ----------------------------------------------
 
-            pushMessage() {
+            pushRealTimeMessage() {
                 this.channel = this.$pusher.subscribe('room-' + this.groupId);
                 this.channel.bind('pushMessage', (data) => {
                     this.messages.push({
