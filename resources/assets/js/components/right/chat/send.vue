@@ -71,7 +71,6 @@
 
                 this.$http.post('/send_message', this.formData).then(response => {
                     if (response.status === 200) {
-                        this.emitMessage(this.photo, response.data.message.body, response.data.message.created_at);
                         this.messageText = '';
                     } else {
                         this.emitMessage(this.photo, this.messageText, null);
@@ -87,7 +86,7 @@
             // ----------------------------------------------
 
             emitMessage(photo, message, time) {
-                return this.$emit('updateMessages', {
+                return this.$emit('errorMessages', {
                     id: this.user.id,
                     name: this.user.name,
                     avatar: this.user.avatar,

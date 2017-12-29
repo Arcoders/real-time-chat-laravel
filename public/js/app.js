@@ -21337,7 +21337,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$http.post('/send_message', this.formData).then(function (response) {
                 if (response.status === 200) {
-                    _this.emitMessage(_this.photo, response.data.message.body, response.data.message.created_at);
                     _this.messageText = '';
                 } else {
                     _this.emitMessage(_this.photo, _this.messageText, null);
@@ -21353,7 +21352,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         emitMessage: function emitMessage(photo, message, time) {
-            return this.$emit('updateMessages', {
+            return this.$emit('errorMessages', {
                 id: this.user.id,
                 name: this.user.name,
                 avatar: this.user.avatar,
@@ -26010,6 +26009,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -26068,6 +26068,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     time: data.message.created_at
                 });
             });
+        },
+
+
+        // ----------------------------------------------
+
+        pushErrorMessage: function pushErrorMessage(data) {
+            this.messages.push(data);
         },
 
 
@@ -26273,6 +26280,9 @@ var render = function() {
             on: {
               updateMessages: function($event) {
                 _vm.pushMessage($event)
+              },
+              errorMessages: function($event) {
+                _vm.pushErrorMessage($event)
               },
               showUpload: _vm.showImageModal,
               pushMessage: _vm.addMessage

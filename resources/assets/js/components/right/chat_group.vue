@@ -32,6 +32,7 @@
 
         send(:user='user',
                 v-on:updateMessages="pushMessage($event)",
+                v-on:errorMessages="pushErrorMessage($event)",
                 :uploadImageState='uploadImage',
                 @showUpload='showImageModal',
                 :photo='photo',
@@ -99,6 +100,12 @@
                         time: data.message.created_at
                     });
                 });
+            },
+
+            // ----------------------------------------------
+
+            pushErrorMessage(data) {
+                this.messages.push(data);
             },
 
             // ----------------------------------------------
