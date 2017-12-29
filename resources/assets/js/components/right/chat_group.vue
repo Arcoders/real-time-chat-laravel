@@ -31,7 +31,7 @@
                             i.material-icons clear
 
         send(:user='user',
-                v-on:pushMessage="pushMessage($event)",
+                v-on:updateMessages="pushMessage($event)",
                 :uploadImageState='uploadImage',
                 @showUpload='showImageModal',
                 :photo='photo',
@@ -83,6 +83,13 @@
         // ----------------------------------------------
 
         methods: {
+
+            // ----------------------------------------------
+
+            pushMessage(msg)
+            {
+                console.log(msg);
+            },
 
             // ----------------------------------------------
 

@@ -87,7 +87,7 @@
             // ----------------------------------------------
 
             emitMessage(photo, message, time) {
-                return this.$emit('pushMessage', {
+                return this.$emit('updateMessages', {
                     id: this.user.id,
                     name: this.user.name,
                     avatar: this.user.avatar,

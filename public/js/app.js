@@ -21352,7 +21352,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         emitMessage: function emitMessage(photo, message, time) {
-            return this.$emit('pushMessage', {
+            return this.$emit('updateMessages', {
                 id: this.user.id,
                 name: this.user.name,
                 avatar: this.user.avatar,
@@ -26053,6 +26053,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ----------------------------------------------
 
+        pushMessage: function pushMessage(msg) {
+            console.log(msg);
+        },
+
+
+        // ----------------------------------------------
+
         BindEvents: function BindEvents(name, action, array) {
             this.channel = this.$pusher.subscribe(name);
             this.channel.bind(action, function (data) {
@@ -26251,13 +26258,11 @@ var render = function() {
               photo: _vm.photo
             },
             on: {
-              pushMessage: [
-                function($event) {
-                  _vm.pushMessage($event)
-                },
-                _vm.addMessage
-              ],
-              showUpload: _vm.showImageModal
+              updateMessages: function($event) {
+                _vm.pushMessage($event)
+              },
+              showUpload: _vm.showImageModal,
+              pushMessage: _vm.addMessage
             }
           })
         ],
