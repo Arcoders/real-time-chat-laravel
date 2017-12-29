@@ -8,14 +8,13 @@ trait UploadFiles
 
     protected function processImage($requestFile, $userId, $folder, $avatar = true)
     {
+        
+        $name = $requestFile->getClientOriginalName();
+        $ext = $requestFile->getClientOriginalExtension();
 
-        $data = $requestFile;
-        $name = $data->getClientOriginalName();
-        $ext = $data->getClientOriginalExtension();
+        $image = Image::make($requestFile);
 
-        $image = Image::make($data);
-
-        if ($avatar) $image->fit(500, 500);
+        if ($avatar) $image->fit(350, 350);
 
         $image_name = rand(0, time()) . '_' . $userId . str_shuffle(md5($name)) . '.' . $ext;
 

@@ -14,6 +14,7 @@
                 div(v-if='message_user.photo')
                     img(:src='message_user.photo')
                 |  {{ message_user.text }}
+
             .time(v-if='message_user.time') {{ message_user.time }}
             .time(v-else)
                 i.material-icons.errorchat error

@@ -521,7 +521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_avatar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_avatar__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_multiselect__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_multiselect__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_chat_group_vue__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_chat_group_vue__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_right_chat_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_right_chat_group_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_bienvenido_vue__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_bienvenido_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_right_bienvenido_vue__);
@@ -578,7 +578,7 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf-token').
 
 Vue.component('left', __webpack_require__(17));
 Vue.component('groups', __webpack_require__(23));
-Vue.component('list', __webpack_require__(109));
+Vue.component('list', __webpack_require__(26));
 Vue.component('search', __webpack_require__(31));
 
 // Components for right side
@@ -20373,7 +20373,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(21)
 /* template */
-var __vue_template__ = __webpack_require__(114)
+var __vue_template__ = __webpack_require__(22)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -20605,7 +20605,116 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 22 */,
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "left_app" } },
+    [
+      _c(
+        "div",
+        { staticClass: "profile" },
+        [
+          _c("avatar", {
+            staticClass: "avatar",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          }),
+          _c("div", { staticClass: "name" }, [_vm._v(_vm._s(_vm.user.name))]),
+          _c(
+            "div",
+            { staticClass: "icons" },
+            [
+              _c("router-link", { attrs: { to: "/profile" } }, [
+                _c("i", { staticClass: "material-icons" }, [_vm._v("person")])
+              ]),
+              _c("router-link", { attrs: { to: "/groups" } }, [
+                _c("i", { staticClass: "material-icons" }, [
+                  _vm._v("person_add")
+                ])
+              ]),
+              _vm.loading
+                ? _c("loading", { attrs: { normal: true } })
+                : _c("a", { on: { click: _vm.logout } }, [
+                    _c(
+                      "i",
+                      {
+                        class: [
+                          _vm.logoutError ? "error" : "",
+                          "material-icons"
+                        ]
+                      },
+                      [_vm._v("fingerprint")]
+                    )
+                  ])
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _c("search"),
+      _c("div", { staticClass: "wrap-filter" }, [
+        _c("div", { staticClass: "link_filter" }, [
+          _c(
+            "a",
+            {
+              class: { active: _vm.myChatList },
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  _vm.changeList(true)
+                }
+              }
+            },
+            [_vm._v("Private")]
+          )
+        ]),
+        _c("div", { staticClass: "link_filter" }, [
+          _c(
+            "a",
+            {
+              class: { active: !_vm.myChatList },
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  _vm.changeList(false)
+                }
+              }
+            },
+            [_vm._v("Groups")]
+          )
+        ])
+      ]),
+      _c(
+        "div",
+        { staticClass: "contact-list" },
+        [_c("list", { attrs: { showChatList: _vm.myChatList } })],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62e5a916", module.exports)
+  }
+}
+
+/***/ }),
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20831,11 +20940,444 @@ if (false) {
 }
 
 /***/ }),
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(27)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(29)
+/* template */
+var __vue_template__ = __webpack_require__(30)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-078cca8e"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\left\\sections\\list.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-078cca8e", Component.options)
+  } else {
+    hotAPI.reload("data-v-078cca8e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(28);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("55ed6508", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-078cca8e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./list.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-078cca8e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./list.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\na[data-v-078cca8e] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-078cca8e] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-078cca8e] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-078cca8e] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n.chat_avatar[data-v-078cca8e] {\n    width: 50px;\n    height: 50px;\n    min-width: 50px;\n    min-height: 50px;\n    margin: 12px 20px;\n    border-radius: 50%;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 29 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    // ----------------------------------------------
+
+    props: ['showChatList'],
+
+    // ----------------------------------------------
+
+    data: function data() {
+        return {
+            loading: false,
+            groups: null,
+            friends: null,
+            notFound: false,
+            errorLoad: false
+        };
+    },
+
+
+    // ----------------------------------------------
+
+    mounted: function mounted() {
+        this.chatsList();
+        console.log('Private ok!');
+    },
+
+
+    // ----------------------------------------------
+
+    methods: {
+
+        // ----------------------------------------------
+
+        chatsList: function chatsList() {
+            var _this = this;
+
+            this.loading = true;
+
+            this.$http.get('/chats_list').then(function (response) {
+
+                _this.loading = false;
+
+                if (response.status == 200) {
+
+                    if (response.data.length === 0) _this.notFound = true;
+                    _this.groups = response.data.groups;
+                    _this.friends = response.data.friends;
+                } else {
+                    _this.errorLoad = true;
+                }
+            }, function () {
+
+                _this.loading = false;
+                _this.errorLoad = true;
+            });
+        },
+
+
+        // ----------------------------------------------
+
+        // ---------------------------------------------------
+
+        chatLink: function chatLink(chat, type) {
+            if (type == 'group') {
+                return {
+                    name: type,
+                    params: {
+                        group_id: window.btoa(chat.id),
+                        group_name: chat.name
+                    }
+                };
+            }
+            if (type == 'friend') {
+                return {
+                    name: type,
+                    params: {
+                        friend_id: window.btoa(chat.id),
+                        friend_name: chat.name
+                    }
+                };
+            }
+        }
+
+        // ----------------------------------------------
+
+    }
+
+});
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "private_app" } },
+    [
+      _vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e(),
+      _vm._l(_vm.friends, function(friend) {
+        return _vm.showChatList
+          ? _c(
+              "div",
+              { staticClass: "contact" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_image",
+                      to: _vm.chatLink(friend, "friend")
+                    }
+                  },
+                  [
+                    _c("avatar", {
+                      staticClass: "chat_avatar",
+                      attrs: {
+                        username: friend.name,
+                        src: friend.avatar,
+                        color: "#fff"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _c("div", { staticClass: "contact-preview" }, [
+                  _c("div", { staticClass: "contact-text" }, [
+                    _c(
+                      "h1",
+                      { staticClass: "font-name" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              "exact-active-class": "active_chat",
+                              to: _vm.chatLink(friend, "friend")
+                            }
+                          },
+                          [_vm._v(_vm._s(friend.name))]
+                        )
+                      ],
+                      1
+                    ),
+                    _c(
+                      "p",
+                      { staticClass: "font-preview" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              "exact-active-class": "active_message",
+                              to: _vm.chatLink(friend, "friend")
+                            }
+                          },
+                          [_vm._v("Hola muy buenas")]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ]),
+                _vm._m(0, true)
+              ],
+              1
+            )
+          : _vm._e()
+      }),
+      _vm._l(_vm.groups, function(group) {
+        return !_vm.showChatList
+          ? _c(
+              "div",
+              { staticClass: "contact" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_image",
+                      to: _vm.chatLink(group, "group")
+                    }
+                  },
+                  [
+                    _c("avatar", {
+                      staticClass: "chat_avatar",
+                      attrs: {
+                        username: group.name,
+                        src: group.avatar,
+                        color: "#fff"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _c("div", { staticClass: "contact-preview" }, [
+                  _c("div", { staticClass: "contact-text" }, [
+                    _c(
+                      "h1",
+                      { staticClass: "font-name" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              "exact-active-class": "active_chat",
+                              to: _vm.chatLink(group, "group")
+                            }
+                          },
+                          [_vm._v(_vm._s(group.name))]
+                        )
+                      ],
+                      1
+                    ),
+                    _c(
+                      "p",
+                      { staticClass: "font-preview" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              "exact-active-class": "active_message",
+                              to: _vm.chatLink(group, "group")
+                            }
+                          },
+                          [_vm._v("Hola muy buenas")]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ]),
+                _vm._m(1, true)
+              ],
+              1
+            )
+          : _vm._e()
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-time" }, [
+      _c("p", [_vm._v("00:24")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-078cca8e", module.exports)
+  }
+}
+
+/***/ }),
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21081,7 +21623,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(38)
 /* template */
-var __vue_template__ = __webpack_require__(122)
+var __vue_template__ = __webpack_require__(39)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21147,6 +21689,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user', 'messages'],
@@ -21162,7 +21705,67 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 39 */,
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "messages_app" } },
+    _vm._l(_vm.messages, function(message_user) {
+      return _c(
+        "div",
+        { class: [_vm.checkId(message_user.id) ? "me" : "you", "chat-bubble"] },
+        [
+          _c(
+            "div",
+            { class: _vm.checkId(message_user.id) ? "my-mouth" : "your-mouth" },
+            [
+              _c("avatar", {
+                class: _vm.checkId(message_user.id) ? "me_img" : "you_img",
+                attrs: {
+                  username: message_user.name,
+                  color: "#fff",
+                  src: message_user.avatar
+                }
+              })
+            ],
+            1
+          ),
+          _c("div", { staticClass: "content" }, [
+            message_user.photo
+              ? _c("div", [_c("img", { attrs: { src: message_user.photo } })])
+              : _vm._e(),
+            _vm._v(" " + _vm._s(message_user.text))
+          ]),
+          message_user.time
+            ? _c("div", { staticClass: "time" }, [
+                _vm._v(_vm._s(message_user.time))
+              ])
+            : _c("div", { staticClass: "time" }, [
+                _c("i", { staticClass: "material-icons errorchat" }, [
+                  _vm._v("error")
+                ])
+              ])
+        ]
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9c878dee", module.exports)
+  }
+}
+
+/***/ }),
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21175,7 +21778,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(43)
 /* template */
-var __vue_template__ = __webpack_require__(121)
+var __vue_template__ = __webpack_require__(44)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21335,7 +21938,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 photo: this.photo
             };
 
-            this.$http.post('/send_message', this.formData).then(function (response) {
+            this.$http.post('/send_message_in_group', this.formData).then(function (response) {
                 if (response.status === 200) {
                     _this.messageText = '';
                 } else {
@@ -21380,7 +21983,117 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 44 */,
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "send_app" } }, [
+    _c("div", { staticClass: "wrap-message" }, [
+      _c(
+        "form",
+        {
+          staticClass: "wrap-message",
+          attrs: { method: "POST", enctype: "multipart/form-data" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+            }
+          }
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "format_button",
+              attrs: { type: "button" },
+              on: { click: _vm.showModal }
+            },
+            [
+              _c(
+                "i",
+                {
+                  class: [
+                    _vm.uploadImageState ? "green_teal" : "",
+                    "material-icons"
+                  ]
+                },
+                [_vm._v("photo_camera")]
+              )
+            ]
+          ),
+          _c("div", { staticClass: "message" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.messageText,
+                  expression: "messageText"
+                }
+              ],
+              staticClass: "input-message",
+              attrs: {
+                id: "inputMessage",
+                type: "text",
+                autocomplete: "off",
+                placeholder: "Write a new message"
+              },
+              domProps: { value: _vm.messageText },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key)
+                  ) {
+                    return null
+                  }
+                  _vm.addMessage($event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.messageText = $event.target.value
+                }
+              }
+            })
+          ]),
+          _c(
+            "button",
+            {
+              staticClass: "format_button",
+              attrs: { type: "button" },
+              on: { click: _vm.addMessage }
+            },
+            [
+              _c(
+                "i",
+                {
+                  class: [_vm.btnSubmit ? "" : "green_teal", "material-icons"]
+                },
+                [_vm._v("send")]
+              )
+            ]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e24e3876", module.exports)
+  }
+}
+
+/***/ }),
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22362,11 +23075,471 @@ if (false) {
 }
 
 /***/ }),
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(64)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(66)
+/* template */
+var __vue_template__ = __webpack_require__(67)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-5c781822"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\chat_group.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5c781822", Component.options)
+  } else {
+    hotAPI.reload("data-v-5c781822", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(65);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("5b2c1000", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5c781822\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./chat_group.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5c781822\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./chat_group.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.dynamic_content[data-v-5c781822] {\n    height: calc(98vh - 165px);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    // ----------------------------------------------
+
+    props: ['user'],
+
+    // ----------------------------------------------
+
+    data: function data() {
+        return {
+            groupId: window.atob(this.$route.params.group_id),
+            avatar: null,
+            showChat: false,
+            uploadImage: false,
+            photo: null,
+            messages: [],
+            messages_ready: false,
+            latest: null
+        };
+    },
+
+
+    // ----------------------------------------------
+
+    created: function created() {
+        this.pushRealTimeMessage();
+    },
+
+
+    // ----------------------------------------------
+
+    mounted: function mounted() {
+        this.getGroup();
+        this.allMessages();
+        console.log('Right ok!');
+    },
+
+
+    // ----------------------------------------------
+
+    methods: {
+
+        // ----------------------------------------------
+
+        pushRealTimeMessage: function pushRealTimeMessage() {
+            var _this = this;
+
+            this.channel = this.$pusher.subscribe('room-' + this.groupId);
+            this.channel.bind('pushMessage', function (data) {
+                _this.messages.push({
+                    id: data.user.id,
+                    name: data.user.name,
+                    avatar: data.user.avatar,
+                    photo: data.message.photo,
+                    text: data.message.body,
+                    time: data.message.created_at
+                });
+            });
+        },
+
+
+        // ----------------------------------------------
+
+        pushErrorMessage: function pushErrorMessage(data) {
+            this.messages.push(data);
+        },
+
+
+        // ----------------------------------------------
+
+        BindEvents: function BindEvents(name, action, array) {
+            this.channel = this.$pusher.subscribe(name);
+            this.channel.bind(action, function (data) {
+                array.push(data);
+            });
+        },
+
+
+        // ----------------------------------------------
+
+        showImageModal: function showImageModal(data) {
+            this.uploadImage = data;
+        },
+
+
+        // ----------------------------------------------
+
+        onFileChange: function onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length) return;
+            this.createImage(files[0]);
+        },
+
+
+        // ----------------------------------------------
+
+        createImage: function createImage(file) {
+            var _this2 = this;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                _this2.photo = e.target.result;
+                document.getElementById("inputMessage").focus();
+            };
+            reader.readAsDataURL(file);
+        },
+
+
+        // ----------------------------------------------
+
+        clearImage: function clearImage() {
+            this.photo = null;
+        },
+
+
+        // ----------------------------------------------
+
+        welcomeMessage: function welcomeMessage() {
+            this.messages.push({
+                id: this.user.id,
+                name: this.user.name,
+                avatar: this.user.avatar,
+                photo: null,
+                text: 'Be the first to send a message :)',
+                time: 'now'
+            });
+        },
+
+
+        // ----------------------------------------------
+
+        allMessages: function allMessages() {
+            var _this3 = this;
+
+            this.$http.get('/get_latest_group/' + this.groupId).then(function (response) {
+                if (response.status == 200) {
+
+                    if (response.data.length === 0) return _this3.welcomeMessage();
+
+                    for (var i = 0; i < response.data.length; i++) {
+                        _this3.messages.push({
+                            id: response.data[i].user.id,
+                            name: response.data[i].user.name,
+                            avatar: response.data[i].user.avatar,
+                            photo: response.data[i].photo,
+                            text: response.data[i].body,
+                            time: response.data[i].created_at
+                        });
+                    }
+                } else {
+                    // ...
+                }
+            }, function (response) {
+                // ...
+            });
+        },
+
+
+        // ----------------------------------------------
+
+        addMessage: function addMessage(new_message) {
+            this.messages.push(new_message);
+            this.photo = null;
+            this.uploadImage = false;
+        },
+
+
+        // ----------------------------------------------
+
+        getGroup: function getGroup() {
+            var _this4 = this;
+
+            this.$http.get('/get_group_chat/' + this.groupId).then(function (response) {
+
+                if (response.status == 200) {
+
+                    if (response.data === 0) return _this4.$router.push('/');
+
+                    _this4.showChat = true;
+
+                    _this4.groupName = response.data.name;
+                    if (response.data.avatar) _this4.avatar = response.data.avatar;
+                } else {
+                    _this4.$router.push('/');
+                }
+            }, function () {
+                _this4.$router.push('/');
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.showChat
+    ? _c(
+        "div",
+        { attrs: { id: "right_app" } },
+        [
+          _c(
+            "div",
+            { staticClass: "chat-head" },
+            [
+              _c("avatar", {
+                staticClass: "img-head",
+                attrs: {
+                  username: _vm.groupName,
+                  color: "#fff",
+                  src: _vm.avatar
+                }
+              }),
+              _c("div", { staticClass: "chat-name" }, [
+                _c("h1", { staticClass: "font-name" }, [
+                  _vm._v(_vm._s(_vm.groupName))
+                ]),
+                _c("p", { staticClass: "font-online" }, [
+                  _vm._v(
+                    "Ismael, Fatima, Admin, Marta, victor... " +
+                      _vm._s(_vm.groupId)
+                  )
+                ])
+              ]),
+              _c("i", {
+                staticClass: "fa fa-whatsapp fa-lg",
+                attrs: { "aria-hidden": "true" }
+              })
+            ],
+            1
+          ),
+          _c("div", { staticClass: "wrap-content" }, [
+            _c(
+              "div",
+              { staticClass: "dynamic_content chat" },
+              [
+                _c("messages", {
+                  attrs: { messages: _vm.messages, user: _vm.user }
+                })
+              ],
+              1
+            ),
+            _vm.uploadImage
+              ? _c("div", { staticClass: "upload_foto" }, [
+                  !_vm.photo
+                    ? _c(
+                        "div",
+                        { staticClass: "container_foto font-preview" },
+                        [
+                          _c("label", { staticClass: "fileContainer" }, [
+                            _vm._m(0),
+                            _c("input", {
+                              ref: "fileInput",
+                              attrs: { type: "file", name: "fileInput" },
+                              on: {
+                                change: function($event) {
+                                  _vm.onFileChange($event)
+                                }
+                              }
+                            })
+                          ])
+                        ]
+                      )
+                    : _c("div", { staticClass: "container_foto" }, [
+                        _c("div", { staticClass: "preview-image" }, [
+                          _c("img", {
+                            attrs: { alt: "profilepicture", src: _vm.photo }
+                          }),
+                          _c("a", { on: { click: _vm.clearImage } }, [
+                            _c("i", { staticClass: "material-icons" }, [
+                              _vm._v("clear")
+                            ])
+                          ])
+                        ])
+                      ])
+                ])
+              : _vm._e()
+          ]),
+          _c("send", {
+            attrs: {
+              user: _vm.user,
+              uploadImageState: _vm.uploadImage,
+              photo: _vm.photo
+            },
+            on: {
+              errorMessages: function($event) {
+                _vm.pushErrorMessage($event)
+              },
+              showUpload: _vm.showImageModal,
+              pushMessage: _vm.addMessage
+            }
+          })
+        ],
+        1
+      )
+    : _vm._e()
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", [
+      _c("i", { staticClass: "material-icons" }, [_vm._v("file_upload")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5c781822", module.exports)
+  }
+}
+
+/***/ }),
 /* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25311,1174 +26484,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */,
-/* 109 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(110)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(112)
-/* template */
-var __vue_template__ = __webpack_require__(113)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-078cca8e"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\left\\sections\\list.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-078cca8e", Component.options)
-  } else {
-    hotAPI.reload("data-v-078cca8e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 110 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(111);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("55ed6508", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-078cca8e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./list.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-078cca8e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./list.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 111 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\na[data-v-078cca8e] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-078cca8e] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-078cca8e] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-078cca8e] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n.chat_avatar[data-v-078cca8e] {\n    width: 50px;\n    height: 50px;\n    min-width: 50px;\n    min-height: 50px;\n    margin: 12px 20px;\n    border-radius: 50%;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 112 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    // ----------------------------------------------
-
-    props: ['showChatList'],
-
-    // ----------------------------------------------
-
-    data: function data() {
-        return {
-            loading: false,
-            groups: null,
-            friends: null,
-            notFound: false,
-            errorLoad: false
-        };
-    },
-
-
-    // ----------------------------------------------
-
-    mounted: function mounted() {
-        this.chatsList();
-        console.log('Private ok!');
-    },
-
-
-    // ----------------------------------------------
-
-    methods: {
-
-        // ----------------------------------------------
-
-        chatsList: function chatsList() {
-            var _this = this;
-
-            this.loading = true;
-
-            this.$http.get('/chats_list').then(function (response) {
-
-                _this.loading = false;
-
-                if (response.status == 200) {
-
-                    if (response.data.length === 0) _this.notFound = true;
-                    _this.groups = response.data.groups;
-                    _this.friends = response.data.friends;
-                } else {
-                    _this.errorLoad = true;
-                }
-            }, function () {
-
-                _this.loading = false;
-                _this.errorLoad = true;
-            });
-        },
-
-
-        // ----------------------------------------------
-
-        // ---------------------------------------------------
-
-        chatLink: function chatLink(chat, type) {
-            if (type == 'group') {
-                return {
-                    name: type,
-                    params: {
-                        group_id: window.btoa(chat.id),
-                        group_name: chat.name
-                    }
-                };
-            }
-            if (type == 'friend') {
-                return {
-                    name: type,
-                    params: {
-                        friend_id: window.btoa(chat.id),
-                        friend_name: chat.name
-                    }
-                };
-            }
-        }
-
-        // ----------------------------------------------
-
-    }
-
-});
-
-/***/ }),
-/* 113 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "private_app" } },
-    [
-      _vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e(),
-      _vm._l(_vm.friends, function(friend) {
-        return _vm.showChatList
-          ? _c(
-              "div",
-              { staticClass: "contact" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_image",
-                      to: _vm.chatLink(friend, "friend")
-                    }
-                  },
-                  [
-                    _c("avatar", {
-                      staticClass: "chat_avatar",
-                      attrs: {
-                        username: friend.name,
-                        src: friend.avatar,
-                        color: "#fff"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _c("div", { staticClass: "contact-preview" }, [
-                  _c("div", { staticClass: "contact-text" }, [
-                    _c(
-                      "h1",
-                      { staticClass: "font-name" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              "exact-active-class": "active_chat",
-                              to: _vm.chatLink(friend, "friend")
-                            }
-                          },
-                          [_vm._v(_vm._s(friend.name))]
-                        )
-                      ],
-                      1
-                    ),
-                    _c(
-                      "p",
-                      { staticClass: "font-preview" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              "exact-active-class": "active_message",
-                              to: _vm.chatLink(friend, "friend")
-                            }
-                          },
-                          [_vm._v("Hola muy buenas")]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ]),
-                _vm._m(0, true)
-              ],
-              1
-            )
-          : _vm._e()
-      }),
-      _vm._l(_vm.groups, function(group) {
-        return !_vm.showChatList
-          ? _c(
-              "div",
-              { staticClass: "contact" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_image",
-                      to: _vm.chatLink(group, "group")
-                    }
-                  },
-                  [
-                    _c("avatar", {
-                      staticClass: "chat_avatar",
-                      attrs: {
-                        username: group.name,
-                        src: group.avatar,
-                        color: "#fff"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _c("div", { staticClass: "contact-preview" }, [
-                  _c("div", { staticClass: "contact-text" }, [
-                    _c(
-                      "h1",
-                      { staticClass: "font-name" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              "exact-active-class": "active_chat",
-                              to: _vm.chatLink(group, "group")
-                            }
-                          },
-                          [_vm._v(_vm._s(group.name))]
-                        )
-                      ],
-                      1
-                    ),
-                    _c(
-                      "p",
-                      { staticClass: "font-preview" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              "exact-active-class": "active_message",
-                              to: _vm.chatLink(group, "group")
-                            }
-                          },
-                          [_vm._v("Hola muy buenas")]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ]),
-                _vm._m(1, true)
-              ],
-              1
-            )
-          : _vm._e()
-      })
-    ],
-    2
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-078cca8e", module.exports)
-  }
-}
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "left_app" } },
-    [
-      _c(
-        "div",
-        { staticClass: "profile" },
-        [
-          _c("avatar", {
-            staticClass: "avatar",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          }),
-          _c("div", { staticClass: "name" }, [_vm._v(_vm._s(_vm.user.name))]),
-          _c(
-            "div",
-            { staticClass: "icons" },
-            [
-              _c("router-link", { attrs: { to: "/profile" } }, [
-                _c("i", { staticClass: "material-icons" }, [_vm._v("person")])
-              ]),
-              _c("router-link", { attrs: { to: "/groups" } }, [
-                _c("i", { staticClass: "material-icons" }, [
-                  _vm._v("person_add")
-                ])
-              ]),
-              _vm.loading
-                ? _c("loading", { attrs: { normal: true } })
-                : _c("a", { on: { click: _vm.logout } }, [
-                    _c(
-                      "i",
-                      {
-                        class: [
-                          _vm.logoutError ? "error" : "",
-                          "material-icons"
-                        ]
-                      },
-                      [_vm._v("fingerprint")]
-                    )
-                  ])
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _c("search"),
-      _c("div", { staticClass: "wrap-filter" }, [
-        _c("div", { staticClass: "link_filter" }, [
-          _c(
-            "a",
-            {
-              class: { active: _vm.myChatList },
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  _vm.changeList(true)
-                }
-              }
-            },
-            [_vm._v("Private")]
-          )
-        ]),
-        _c("div", { staticClass: "link_filter" }, [
-          _c(
-            "a",
-            {
-              class: { active: !_vm.myChatList },
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  _vm.changeList(false)
-                }
-              }
-            },
-            [_vm._v("Groups")]
-          )
-        ])
-      ]),
-      _c(
-        "div",
-        { staticClass: "contact-list" },
-        [_c("list", { attrs: { showChatList: _vm.myChatList } })],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-62e5a916", module.exports)
-  }
-}
-
-/***/ }),
-/* 115 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(116)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(118)
-/* template */
-var __vue_template__ = __webpack_require__(120)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-5c781822"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\right\\chat_group.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5c781822", Component.options)
-  } else {
-    hotAPI.reload("data-v-5c781822", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 116 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(117);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("5b2c1000", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5c781822\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./chat_group.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5c781822\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./chat_group.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 117 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.dynamic_content[data-v-5c781822] {\n    height: calc(98vh - 165px);\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 118 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    // ----------------------------------------------
-
-    props: ['user'],
-
-    // ----------------------------------------------
-
-    data: function data() {
-        return {
-            groupId: window.atob(this.$route.params.group_id),
-            avatar: null,
-            showChat: false,
-            uploadImage: false,
-            photo: null,
-            messages: [],
-            messages_ready: false
-        };
-    },
-
-
-    // ----------------------------------------------
-
-    created: function created() {
-        this.pushRealTimeMessage();
-    },
-
-
-    // ----------------------------------------------
-
-    mounted: function mounted() {
-        this.getGroup();
-        this.allMessages();
-        console.log('Right ok!');
-    },
-
-
-    // ----------------------------------------------
-
-    methods: {
-
-        // ----------------------------------------------
-
-        pushRealTimeMessage: function pushRealTimeMessage() {
-            var _this = this;
-
-            this.channel = this.$pusher.subscribe('room-' + this.groupId);
-            this.channel.bind('pushMessage', function (data) {
-                _this.messages.push({
-                    id: data.user.id,
-                    name: data.user.name,
-                    avatar: data.user.avatar,
-                    photo: data.message.photo,
-                    text: data.message.body,
-                    time: data.message.created_at
-                });
-            });
-        },
-
-
-        // ----------------------------------------------
-
-        pushErrorMessage: function pushErrorMessage(data) {
-            this.messages.push(data);
-        },
-
-
-        // ----------------------------------------------
-
-        BindEvents: function BindEvents(name, action, array) {
-            this.channel = this.$pusher.subscribe(name);
-            this.channel.bind(action, function (data) {
-                array.push(data);
-            });
-        },
-
-
-        // ----------------------------------------------
-
-        showImageModal: function showImageModal(data) {
-            this.uploadImage = data;
-        },
-
-
-        // ----------------------------------------------
-
-        onFileChange: function onFileChange(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length) return;
-            this.createImage(files[0]);
-        },
-
-
-        // ----------------------------------------------
-
-        createImage: function createImage(file) {
-            var _this2 = this;
-
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                _this2.photo = e.target.result;
-                document.getElementById("inputMessage").focus();
-            };
-            reader.readAsDataURL(file);
-        },
-
-
-        // ----------------------------------------------
-
-        clearImage: function clearImage() {
-            this.photo = null;
-        },
-
-
-        // ----------------------------------------------
-
-        allMessages: function allMessages() {
-            this.messages.push({
-                id: this.user.id,
-                name: this.user.name,
-                avatar: this.user.avatar,
-                photo: 'https://avatars.io/twitter/cute',
-                text: 'Hola muy buenas lorem ipsum dolor set amet',
-                time: '15:20'
-            }, {
-                id: 562,
-                name: 'Berto Romero',
-                avatar: 'https://avatars.io/twitter/maryam',
-                photo: null,
-                text: 'قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا',
-                time: '23:45'
-            });
-        },
-
-
-        // ----------------------------------------------
-
-        addMessage: function addMessage(new_message) {
-            this.messages.push(new_message);
-            this.photo = null;
-            this.uploadImage = false;
-        },
-
-
-        // ----------------------------------------------
-
-        getGroup: function getGroup() {
-            var _this3 = this;
-
-            this.$http.get('/get_group_chat/' + this.groupId).then(function (response) {
-
-                if (response.status == 200) {
-
-                    if (response.data === 0) return _this3.$router.push('/');
-
-                    _this3.showChat = true;
-
-                    _this3.groupName = response.data.name;
-                    if (response.data.avatar) _this3.avatar = response.data.avatar;
-                } else {
-                    _this3.$router.push('/');
-                }
-            }, function () {
-                _this3.$router.push('/');
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 119 */,
-/* 120 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm.showChat
-    ? _c(
-        "div",
-        { attrs: { id: "right_app" } },
-        [
-          _c(
-            "div",
-            { staticClass: "chat-head" },
-            [
-              _c("avatar", {
-                staticClass: "img-head",
-                attrs: {
-                  username: _vm.groupName,
-                  color: "#fff",
-                  src: _vm.avatar
-                }
-              }),
-              _c("div", { staticClass: "chat-name" }, [
-                _c("h1", { staticClass: "font-name" }, [
-                  _vm._v(_vm._s(_vm.groupName))
-                ]),
-                _c("p", { staticClass: "font-online" }, [
-                  _vm._v(
-                    "Ismael, Fatima, Admin, Marta, victor... " +
-                      _vm._s(_vm.groupId)
-                  )
-                ])
-              ]),
-              _c("i", {
-                staticClass: "fa fa-whatsapp fa-lg",
-                attrs: { "aria-hidden": "true" }
-              })
-            ],
-            1
-          ),
-          _c("div", { staticClass: "wrap-content" }, [
-            _c(
-              "div",
-              { staticClass: "dynamic_content chat" },
-              [
-                _c("messages", {
-                  attrs: { messages: _vm.messages, user: _vm.user }
-                })
-              ],
-              1
-            ),
-            _vm.uploadImage
-              ? _c("div", { staticClass: "upload_foto" }, [
-                  !_vm.photo
-                    ? _c(
-                        "div",
-                        { staticClass: "container_foto font-preview" },
-                        [
-                          _c("label", { staticClass: "fileContainer" }, [
-                            _vm._m(0),
-                            _c("input", {
-                              ref: "fileInput",
-                              attrs: { type: "file", name: "fileInput" },
-                              on: {
-                                change: function($event) {
-                                  _vm.onFileChange($event)
-                                }
-                              }
-                            })
-                          ])
-                        ]
-                      )
-                    : _c("div", { staticClass: "container_foto" }, [
-                        _c("div", { staticClass: "preview-image" }, [
-                          _c("img", {
-                            attrs: { alt: "profilepicture", src: _vm.photo }
-                          }),
-                          _c("a", { on: { click: _vm.clearImage } }, [
-                            _c("i", { staticClass: "material-icons" }, [
-                              _vm._v("clear")
-                            ])
-                          ])
-                        ])
-                      ])
-                ])
-              : _vm._e()
-          ]),
-          _c("send", {
-            attrs: {
-              user: _vm.user,
-              uploadImageState: _vm.uploadImage,
-              photo: _vm.photo
-            },
-            on: {
-              errorMessages: function($event) {
-                _vm.pushErrorMessage($event)
-              },
-              showUpload: _vm.showImageModal,
-              pushMessage: _vm.addMessage
-            }
-          })
-        ],
-        1
-      )
-    : _vm._e()
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [
-      _c("i", { staticClass: "material-icons" }, [_vm._v("file_upload")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5c781822", module.exports)
-  }
-}
-
-/***/ }),
-/* 121 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "send_app" } }, [
-    _c("div", { staticClass: "wrap-message" }, [
-      _c(
-        "form",
-        {
-          staticClass: "wrap-message",
-          attrs: { method: "POST", enctype: "multipart/form-data" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-            }
-          }
-        },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "format_button",
-              attrs: { type: "button" },
-              on: { click: _vm.showModal }
-            },
-            [
-              _c(
-                "i",
-                {
-                  class: [
-                    _vm.uploadImageState ? "green_teal" : "",
-                    "material-icons"
-                  ]
-                },
-                [_vm._v("photo_camera")]
-              )
-            ]
-          ),
-          _c("div", { staticClass: "message" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.messageText,
-                  expression: "messageText"
-                }
-              ],
-              staticClass: "input-message",
-              attrs: {
-                id: "inputMessage",
-                type: "text",
-                autocomplete: "off",
-                placeholder: "Write a new message"
-              },
-              domProps: { value: _vm.messageText },
-              on: {
-                keyup: function($event) {
-                  if (
-                    !("button" in $event) &&
-                    _vm._k($event.keyCode, "enter", 13, $event.key)
-                  ) {
-                    return null
-                  }
-                  _vm.addMessage($event)
-                },
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.messageText = $event.target.value
-                }
-              }
-            })
-          ]),
-          _c(
-            "button",
-            {
-              staticClass: "format_button",
-              attrs: { type: "button" },
-              on: { click: _vm.addMessage }
-            },
-            [
-              _c(
-                "i",
-                {
-                  class: [_vm.btnSubmit ? "" : "green_teal", "material-icons"]
-                },
-                [_vm._v("send")]
-              )
-            ]
-          )
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e24e3876", module.exports)
-  }
-}
-
-/***/ }),
-/* 122 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "messages_app" } },
-    _vm._l(_vm.messages, function(message_user) {
-      return _c(
-        "div",
-        { class: [_vm.checkId(message_user.id) ? "me" : "you", "chat-bubble"] },
-        [
-          _c(
-            "div",
-            { class: _vm.checkId(message_user.id) ? "my-mouth" : "your-mouth" },
-            [
-              _c("avatar", {
-                class: _vm.checkId(message_user.id) ? "me_img" : "you_img",
-                attrs: {
-                  username: message_user.name,
-                  color: "#fff",
-                  src: message_user.avatar
-                }
-              })
-            ],
-            1
-          ),
-          _c("div", { staticClass: "content" }, [
-            message_user.photo
-              ? _c("div", [_c("img", { attrs: { src: message_user.photo } })])
-              : _vm._e(),
-            _vm._v(" " + _vm._s(message_user.text))
-          ]),
-          message_user.time
-            ? _c("div", { staticClass: "time" }, [
-                _vm._v(_vm._s(message_user.time))
-              ])
-            : _c("div", { staticClass: "time" }, [
-                _c("i", { staticClass: "material-icons errorchat" }, [
-                  _vm._v("error")
-                ])
-              ])
-        ]
-      )
-    })
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-9c878dee", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

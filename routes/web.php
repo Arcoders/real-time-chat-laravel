@@ -47,6 +47,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/chats_list', 'ChatsController@chatsList');
 
     // Send message
-    Route::Post('/send_message', 'ChatsController@sendMessage');
+    Route::Post('/send_message_in_group', 'MessagesController@sendMessageInGroup');
+
+    Route::get('/get_latest_group/{group_id}', 'MessagesController@lastMessagesGroup');
 
 });

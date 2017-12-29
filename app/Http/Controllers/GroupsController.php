@@ -130,7 +130,9 @@ class GroupsController extends Controller
 
     protected function idsToArray($request)
     {
-        return $request ? explode(',', $request) : [];
+        $usersIds = $request ? explode(',', $request) : [];
+        array_push($usersIds, Auth::user()->id);
+        return $usersIds;
     }
 
     public function getGroupForChat($group_id)

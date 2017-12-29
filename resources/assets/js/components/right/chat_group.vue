@@ -62,7 +62,8 @@
                 uploadImage: false,
                 photo: null,
                 messages: [],
-                messages_ready: false
+                messages_ready: false,
+                latest: null
             }
         },
 
@@ -149,23 +150,43 @@
 
             // ----------------------------------------------
 
-            allMessages() {
+            welcomeMessage() {
                 this.messages.push({
                         id: this.user.id,
                         name: this.user.name,
                         avatar: this.user.avatar,
-                        photo: 'https://avatars.io/twitter/cute',
-                        text: 'Hola muy buenas lorem ipsum dolor set amet',
-                        time: '15:20'
-                    },
-                    {
-                        id: 562,
-                        name: 'Berto Romero',
-                        avatar: 'https://avatars.io/twitter/maryam',
                         photo: null,
-                        text: 'قولي أحبك كي تزيد وسامتي فبغير حبك ما أكون جميلا',
-                        time: '23:45'
+                        text: 'Be the first to send a message :)',
+                        time: 'now'
                     });
+            },
+
+            // ----------------------------------------------
+
+            allMessages() {
+
+                this.$http.get('/get_latest_group/' + this.groupId).then(response => {
+                    if (response.status == 200) {
+
+                        if (response.data.length === 0) return this.welcomeMessage();
+
+                        for (let i = 0; i < response.data.length; i++) {
+                            this.messages.push({
+                                id: response.data[i].user.id,
+                                name: response.data[i].user.name,
+                                avatar: response.data[i].user.avatar,
+                                photo: response.data[i].photo,
+                                text: response.data[i].body,
+                                time: response.data[i].created_at
+                            });
+                        }
+
+                    } else {
+                        // ...
+                    }
+                }, response => {
+                    // ...
+                });
             },
 
             // ----------------------------------------------
