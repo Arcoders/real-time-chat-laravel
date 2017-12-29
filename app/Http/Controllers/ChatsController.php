@@ -28,7 +28,10 @@ class ChatsController extends Controller
         $message->group_id = $request->group_id;
 
         if ($message->save()) {
-            $this->triggerPusher('room-' . $message->group_id, 'pushMessage', $message);
+            $this->triggerPusher('room-' . $message->group_id, 'pushMessage', [
+                'message' => $message,
+                'user' => Auth::user()
+            ]);
             return response()->json($message, 200);
         }
     }

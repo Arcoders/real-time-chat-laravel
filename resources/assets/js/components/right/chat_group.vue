@@ -91,13 +91,13 @@
                 this.channel = this.$pusher.subscribe('room-' + this.groupId);
                 this.channel.bind('pushMessage', (data) => {
                     this.messages.push({
-                        id: this.user.id,
-                        name: this.user.name,
-                        avatar: this.user.avatar,
-                        photo: data.photo,
-                        text: data.body,
-                        time: data.created_at
-                    })
+                        id: data.user.id,
+                        name: data.user.name,
+                        avatar: data.user.avatar,
+                        photo: data.message.photo,
+                        text: data.message.body,
+                        time: data.message.created_at
+                    });
                 });
             },
 

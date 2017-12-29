@@ -21337,7 +21337,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$http.post('/send_message', this.formData).then(function (response) {
                 if (response.status === 200) {
-                    _this.emitMessage(_this.photo, response.data.body, response.data.created_at);
+                    _this.emitMessage(_this.photo, response.data.message.body, response.data.message.created_at);
                     _this.messageText = '';
                 } else {
                     _this.emitMessage(_this.photo, _this.messageText, null);
@@ -26060,12 +26060,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.channel = this.$pusher.subscribe('room-' + this.groupId);
             this.channel.bind('pushMessage', function (data) {
                 _this.messages.push({
-                    id: _this.user.id,
-                    name: _this.user.name,
-                    avatar: _this.user.avatar,
-                    photo: data.photo,
-                    text: data.body,
-                    time: data.created_at
+                    id: data.user.id,
+                    name: data.user.name,
+                    avatar: data.user.avatar,
+                    photo: data.message.photo,
+                    text: data.message.body,
+                    time: data.message.created_at
                 });
             });
         },
