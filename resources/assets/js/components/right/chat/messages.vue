@@ -1,5 +1,6 @@
 <template lang="pug">
     #messages_app
+
         div(v-for='message_user in messages',
                 v-bind:class="[checkId(message_user.id) ? 'me' : 'you', 'chat-bubble']")
 

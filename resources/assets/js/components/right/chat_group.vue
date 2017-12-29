@@ -69,7 +69,7 @@
         // ----------------------------------------------
 
         created() {
-            this.BindEvents('room-' + this.groupId, 'pushMessage', this.messages);
+            this.pushMessage();
         },
 
         // ----------------------------------------------
@@ -84,11 +84,21 @@
 
         methods: {
 
+
             // ----------------------------------------------
 
-            pushMessage(msg)
-            {
-                console.log(msg);
+            pushMessage() {
+                this.channel = this.$pusher.subscribe('room-' + this.groupId);
+                this.channel.bind('pushMessage', (data) => {
+                    this.messages.push({
+                        id: this.user.id,
+                        name: this.user.name,
+                        avatar: this.user.avatar,
+                        photo: data.photo,
+                        text: data.body,
+                        time: data.created_at
+                    })
+                });
             },
 
             // ----------------------------------------------

@@ -21146,6 +21146,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user', 'messages'],
@@ -26034,7 +26035,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ----------------------------------------------
 
     created: function created() {
-        this.BindEvents('room-' + this.groupId, 'pushMessage', this.messages);
+        this.pushMessage();
     },
 
 
@@ -26053,8 +26054,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ----------------------------------------------
 
-        pushMessage: function pushMessage(msg) {
-            console.log(msg);
+        pushMessage: function pushMessage() {
+            var _this = this;
+
+            this.channel = this.$pusher.subscribe('room-' + this.groupId);
+            this.channel.bind('pushMessage', function (data) {
+                _this.messages.push({
+                    id: _this.user.id,
+                    name: _this.user.name,
+                    avatar: _this.user.avatar,
+                    photo: data.photo,
+                    text: data.body,
+                    time: data.created_at
+                });
+            });
         },
 
 
@@ -26087,11 +26100,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         createImage: function createImage(file) {
-            var _this = this;
+            var _this2 = this;
 
             var reader = new FileReader();
             reader.onload = function (e) {
-                _this.photo = e.target.result;
+                _this2.photo = e.target.result;
                 document.getElementById("inputMessage").focus();
             };
             reader.readAsDataURL(file);
@@ -26138,23 +26151,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         getGroup: function getGroup() {
-            var _this2 = this;
+            var _this3 = this;
 
             this.$http.get('/get_group_chat/' + this.groupId).then(function (response) {
 
                 if (response.status == 200) {
 
-                    if (response.data === 0) return _this2.$router.push('/');
+                    if (response.data === 0) return _this3.$router.push('/');
 
-                    _this2.showChat = true;
+                    _this3.showChat = true;
 
-                    _this2.groupName = response.data.name;
-                    if (response.data.avatar) _this2.avatar = response.data.avatar;
+                    _this3.groupName = response.data.name;
+                    if (response.data.avatar) _this3.avatar = response.data.avatar;
                 } else {
-                    _this2.$router.push('/');
+                    _this3.$router.push('/');
                 }
             }, function () {
-                _this2.$router.push('/');
+                _this3.$router.push('/');
             });
         }
     }
