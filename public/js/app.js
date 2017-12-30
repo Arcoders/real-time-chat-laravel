@@ -23243,6 +23243,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -23261,7 +23262,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             photo: null,
             messages: [],
             messages_ready: false,
-            latest: null
+            latest: null,
+            typing: []
         };
     },
 
@@ -23271,6 +23273,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         this.getGroup();
         this.pushRealTimeMessage();
+        this.BindEvents('room-' + this.groupId, 'userTyping', this.typing);
     },
 
 
@@ -23364,8 +23367,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         welcomeMessage: function welcomeMessage() {
             this.messages.push({
                 id: this.user.id,
-                name: this.user.name,
-                avatar: this.user.avatar,
+                name: 'h i...',
+                avatar: null,
                 photo: null,
                 text: 'Be the first to send a message :)',
                 time: 'now'
@@ -23432,7 +23435,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, function () {
                 _this4.$router.push('/');
             });
-        }
+        },
+
+
+        // ----------------------------------------------
+
+        userTyping: function userTyping() {}
     }
 });
 
@@ -23486,7 +23494,11 @@ var render = function() {
                 { staticClass: "dynamic_content chat" },
                 [
                   _c("messages", {
-                    attrs: { messages: _vm.messages, user: _vm.user }
+                    attrs: {
+                      messages: _vm.messages,
+                      user: _vm.user,
+                      usersTyping: _vm.typing
+                    }
                   })
                 ],
                 1
@@ -23540,6 +23552,9 @@ var render = function() {
               on: {
                 errorMessages: function($event) {
                   _vm.pushErrorMessage($event)
+                },
+                typing: function($event) {
+                  _vm.userTyping($event)
                 },
                 showUpload: _vm.showImageModal,
                 pushMessage: _vm.addMessage

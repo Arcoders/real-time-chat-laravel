@@ -12,7 +12,7 @@
             .wrap-content
 
                 .dynamic_content.chat
-                    messages(:messages='messages', :user='user')
+                    messages(:messages='messages', :user='user', :usersTyping="typing")
 
                 .upload_foto(v-if='uploadImage')
 
@@ -33,6 +33,7 @@
 
             send(:user='user',
                     v-on:errorMessages="pushErrorMessage($event)",
+                    v-on:typing="userTyping($event)",
                     :uploadImageState='uploadImage',
                     @showUpload='showImageModal',
                     :photo='photo',
@@ -71,7 +72,8 @@
                 photo: null,
                 messages: [],
                 messages_ready: false,
-                latest: null
+                latest: null,
+                typing: []
             }
         },
 
@@ -80,6 +82,7 @@
         created() {
             this.getGroup();
             this.pushRealTimeMessage();
+            this.BindEvents('room-' + this.groupId, 'userTyping', this.typing);
         },
 
         // ----------------------------------------------
@@ -161,8 +164,8 @@
             welcomeMessage() {
                 this.messages.push({
                         id: this.user.id,
-                        name: this.user.name,
-                        avatar: this.user.avatar,
+                        name: 'h i...',
+                        avatar: null,
                         photo: null,
                         text: 'Be the first to send a message :)',
                         time: 'now'
@@ -228,6 +231,10 @@
                     this.$router.push('/');
                 });
             },
+
+            // ----------------------------------------------
+
+            userTyping() {},
 
             // ----------------------------------------------
 
