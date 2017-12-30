@@ -10,6 +10,7 @@
                 .message
                     input#inputMessage.input-message(@keyup.enter='addMessage',
                                                         v-model='messageText',
+                                                        @focus="typingUsers()",
                                                         type='text',
                                                         autocomplete='off',
                                                         placeholder='Write a new message')
@@ -94,7 +95,15 @@
                     text: message,
                     time: time
                 });
-            }
+            },
+
+            // ----------------------------------------------
+
+            typingUsers() {
+                this.$http.get('/user_typing/' + this.groupId).then(response => {
+                    if (response.status == 200) this.$emit('typing', response.data);
+                });
+            },
 
             // ----------------------------------------------
 

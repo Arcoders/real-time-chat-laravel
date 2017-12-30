@@ -21906,6 +21906,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -21980,10 +21981,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 text: message,
                 time: time
             });
-        }
+        },
+
 
         // ----------------------------------------------
 
+        typingUsers: function typingUsers() {
+            var _this2 = this;
+
+            this.$http.get('/user_typing/' + this.groupId).then(function (response) {
+                if (response.status == 200) _this2.$emit('typing', response.data);
+            });
+        }
     },
     computed: {
 
@@ -22068,6 +22077,9 @@ var render = function() {
                     return null
                   }
                   _vm.addMessage($event)
+                },
+                focus: function($event) {
+                  _vm.typingUsers()
                 },
                 input: function($event) {
                   if ($event.target.composing) {

@@ -38,4 +38,11 @@ class MessagesController extends Controller
                         ->get();
     }
 
+    public function usersTyping(Request $request)
+    {
+        $user = Auth::user()->pluck('name', 'avatar');
+        trigger_pusher('room-' . $request->group_id, 'userTyping', ['userName' => $user]);
+        return response()->json($user, 200);
+    }
+
 }
