@@ -102,7 +102,6 @@
             typingUsers() {
                 this.$http.get('/user_typing/' + this.groupId).then(response => {
                     if (response.status == 200) this.$emit('typing', response.data);
-                    console.log(response.data);
                 });
             },
 
