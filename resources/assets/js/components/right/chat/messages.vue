@@ -19,11 +19,23 @@
             .time(v-else)
                 i.material-icons.errorchat error
 
+        div(v-for='userTyping in usersTyping', class="you chat-bubble")
+
+            div(class="your-mouth")
+                avatar(:username='userTyping.name',
+                color='#fff',
+                :src='userTyping.avatar',
+                class="you_img")
+
+            .content
+                div ...
+
+
 </template>
 
 <script>
     export default {
-        props: ['user', 'messages'],
+        props: ['user', 'messages', 'usersTyping'],
         mounted() {
             console.log('Messages ok!');
         },

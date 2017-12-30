@@ -21707,9 +21707,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['user', 'messages'],
+    props: ['user', 'messages', 'usersTyping'],
     mounted: function mounted() {
         console.log('Messages ok!');
     },
@@ -21732,47 +21744,81 @@ var render = function() {
   return _c(
     "div",
     { attrs: { id: "messages_app" } },
-    _vm._l(_vm.messages, function(message_user) {
-      return _c(
-        "div",
-        { class: [_vm.checkId(message_user.id) ? "me" : "you", "chat-bubble"] },
-        [
+    [
+      _vm._l(_vm.messages, function(message_user) {
+        return _c(
+          "div",
+          {
+            class: [_vm.checkId(message_user.id) ? "me" : "you", "chat-bubble"]
+          },
+          [
+            _c(
+              "div",
+              {
+                class: _vm.checkId(message_user.id) ? "my-mouth" : "your-mouth"
+              },
+              [
+                _c("avatar", {
+                  class: _vm.checkId(message_user.id) ? "me_img" : "you_img",
+                  attrs: {
+                    username: message_user.name,
+                    color: "#fff",
+                    src: message_user.avatar
+                  }
+                })
+              ],
+              1
+            ),
+            _c("div", { staticClass: "content" }, [
+              message_user.photo
+                ? _c("div", [_c("img", { attrs: { src: message_user.photo } })])
+                : _vm._e(),
+              _vm._v(" " + _vm._s(message_user.text))
+            ]),
+            message_user.time
+              ? _c("div", { staticClass: "time" }, [
+                  _vm._v(_vm._s(message_user.time))
+                ])
+              : _c("div", { staticClass: "time" }, [
+                  _c("i", { staticClass: "material-icons errorchat" }, [
+                    _vm._v("error")
+                  ])
+                ])
+          ]
+        )
+      }),
+      _vm._l(_vm.usersTyping, function(userTyping) {
+        return _c("div", { staticClass: "you chat-bubble" }, [
           _c(
             "div",
-            { class: _vm.checkId(message_user.id) ? "my-mouth" : "your-mouth" },
+            { staticClass: "your-mouth" },
             [
               _c("avatar", {
-                class: _vm.checkId(message_user.id) ? "me_img" : "you_img",
+                staticClass: "you_img",
                 attrs: {
-                  username: message_user.name,
+                  username: userTyping.name,
                   color: "#fff",
-                  src: message_user.avatar
+                  src: userTyping.avatar
                 }
               })
             ],
             1
           ),
-          _c("div", { staticClass: "content" }, [
-            message_user.photo
-              ? _c("div", [_c("img", { attrs: { src: message_user.photo } })])
-              : _vm._e(),
-            _vm._v(" " + _vm._s(message_user.text))
-          ]),
-          message_user.time
-            ? _c("div", { staticClass: "time" }, [
-                _vm._v(_vm._s(message_user.time))
-              ])
-            : _c("div", { staticClass: "time" }, [
-                _c("i", { staticClass: "material-icons errorchat" }, [
-                  _vm._v("error")
-                ])
-              ])
-        ]
-      )
-    })
+          _vm._m(0, true)
+        ])
+      })
+    ],
+    2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content" }, [_c("div", [_vm._v("...")])])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
