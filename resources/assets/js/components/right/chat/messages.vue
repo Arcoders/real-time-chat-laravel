@@ -7,6 +7,7 @@
             div(v-bind:class="checkId(message_user.id) ? 'my-mouth' : 'your-mouth'")
                 avatar(:username='message_user.name',
                         color='#fff',
+                        :size='45',
                         :src='message_user.avatar',
                         v-bind:class="checkId(message_user.id) ? 'me_img' : 'you_img'")
 
@@ -19,25 +20,37 @@
             .time(v-else)
                 i.material-icons.errorchat error
 
-        div(v-for='userTyping in usersTyping', class="you chat-bubble")
 
-            div(class="your-mouth")
+        div(v-for='userTyping in usersTyping', v-if="userTyping.id != user.id", class="typing-bubble")
+
+            div(class="typing-mouth")
                 avatar(:username='userTyping.name',
                 color='#fff',
+                :size='45',
                 :src='userTyping.avatar',
                 class="you_img")
 
-            .content
-                div ...
-
+            .typing-content
+                    span(class="dot")
+                    span(class="dot")
+                    span(class="dot")
 
 </template>
 
 <script>
     export default {
+
         props: ['user', 'messages', 'usersTyping'],
+
         mounted() {
             console.log('Messages ok!');
+        },
+        watch: {
+            usersTyping() {
+                setTimeout(() => {
+                    this.usersTyping.splice(0, this.usersTyping.length);
+                }, 8000);
+            }
         },
         methods: {
             checkId(message_user_id) {

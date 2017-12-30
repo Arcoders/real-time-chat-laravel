@@ -21719,13 +21719,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+
     props: ['user', 'messages', 'usersTyping'],
+
     mounted: function mounted() {
         console.log('Messages ok!');
     },
 
+    watch: {
+        usersTyping: function usersTyping() {
+            var _this = this;
+
+            setTimeout(function () {
+                _this.usersTyping.splice(0, _this.usersTyping.length);
+            }, 8000);
+        }
+    },
     methods: {
         checkId: function checkId(message_user_id) {
             return this.user.id == message_user_id;
@@ -21763,6 +21778,7 @@ var render = function() {
                   attrs: {
                     username: message_user.name,
                     color: "#fff",
+                    size: 45,
                     src: message_user.avatar
                   }
                 })
@@ -21788,24 +21804,27 @@ var render = function() {
         )
       }),
       _vm._l(_vm.usersTyping, function(userTyping) {
-        return _c("div", { staticClass: "you chat-bubble" }, [
-          _c(
-            "div",
-            { staticClass: "your-mouth" },
-            [
-              _c("avatar", {
-                staticClass: "you_img",
-                attrs: {
-                  username: userTyping.name,
-                  color: "#fff",
-                  src: userTyping.avatar
-                }
-              })
-            ],
-            1
-          ),
-          _vm._m(0, true)
-        ])
+        return userTyping.id != _vm.user.id
+          ? _c("div", { staticClass: "typing-bubble" }, [
+              _c(
+                "div",
+                { staticClass: "typing-mouth" },
+                [
+                  _c("avatar", {
+                    staticClass: "you_img",
+                    attrs: {
+                      username: userTyping.name,
+                      color: "#fff",
+                      size: 45,
+                      src: userTyping.avatar
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._m(0, true)
+            ])
+          : _vm._e()
       })
     ],
     2
@@ -21816,7 +21835,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content" }, [_c("div", [_vm._v("...")])])
+    return _c("div", { staticClass: "typing-content" }, [
+      _c("span", { staticClass: "dot" }),
+      _c("span", { staticClass: "dot" }),
+      _c("span", { staticClass: "dot" })
+    ])
   }
 ]
 render._withStripped = true
