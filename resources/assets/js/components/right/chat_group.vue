@@ -99,8 +99,7 @@
             // ----------------------------------------------
 
             pushRealTimeMessage() {
-                this.channel = this.$pusher.subscribe('room-' + this.groupId);
-                this.channel.bind('pushMessage', (data) => {
+                this.$pusher.subscribe('room-' + this.groupId).bind('pushMessage', (data) => {
                     this.messages.push({
                         id: data.user.id,
                         name: data.user.name,
@@ -114,10 +113,18 @@
 
             // ----------------------------------------------
 
+            userTyping() {
+                this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
+                    this.typing.push(data);
+                });
+            },
+
+            // ----------------------------------------------
+
             pushErrorMessage(data) {
                 this.messages.push(data);
             },
-            
+
             // ----------------------------------------------
 
             showImageModal(data) {
