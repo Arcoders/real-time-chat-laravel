@@ -22058,9 +22058,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         btnSubmit: function btnSubmit() {
             if (this.photo) return;
 
-            if (this.messageText.length === 0) {
-                this.typing = false;
-            }
+            if (this.messageText.length === 0) this.typing = false;
 
             if (this.messageText.length === 1) {
                 if (!this.typing) this.typingUsers();

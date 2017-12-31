@@ -114,9 +114,7 @@
             btnSubmit() {
                 if (this.photo) return;
 
-                if (this.messageText.length === 0) {
-                    this.typing = false;
-                }
+                if (this.messageText.length === 0) this.typing = false;
 
                 if (this.messageText.length === 1) {
                     if (!this.typing) this.typingUsers();
