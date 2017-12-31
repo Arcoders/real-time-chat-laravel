@@ -21732,15 +21732,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('Messages ok!');
     },
 
-    watch: {
-        usersTyping: function usersTyping() {
-            var _this = this;
-
-            setTimeout(function () {
-                _this.usersTyping.splice(0, _this.usersTyping.length);
-            }, 8000);
-        }
-    },
     methods: {
         checkId: function checkId(message_user_id) {
             return this.user.id == message_user_id;
@@ -21975,7 +21966,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -21989,7 +21979,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             groupId: window.atob(this.$route.params.group_id),
             messageText: '',
-            formData: null
+            formData: null,
+            typing: false
         };
     },
 
@@ -22027,6 +22018,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$http.post('/send_message_in_group', this.formData).then(function (response) {
                 if (response.status === 200) {
+                    _this.typing = false;
                     _this.messageText = '';
                 } else {
                     _this.emitMessage(_this.photo, _this.messageText, null);
@@ -22056,11 +22048,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         typingUsers: function typingUsers() {
-            var _this2 = this;
-
             this.$http.get('/user_typing/' + this.groupId).then(function (response) {
-                if (response.status == 200) _this2.$emit('typing', response.data);
-                console.log(response.data);
+                if (response.status == 200) return;
             });
         }
     },
@@ -22070,6 +22059,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         btnSubmit: function btnSubmit() {
             if (this.photo) return;
+
+            if (this.messageText.length === 0) {
+                this.typing = false;
+            }
+
+            if (this.messageText.length === 1) {
+                if (!this.typing) this.typingUsers();
+                this.typing = true;
+            }
+
             return this.messageText.length < 2;
         }
 
@@ -22147,9 +22146,6 @@ var render = function() {
                     return null
                   }
                   _vm.addMessage($event)
-                },
-                focus: function($event) {
-                  _vm.typingUsers()
                 },
                 input: function($event) {
                   if ($event.target.composing) {
@@ -23325,7 +23321,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -23355,7 +23350,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         this.getGroup();
         this.pushRealTimeMessage();
-        this.BindEvents('room-' + this.groupId, 'userTyping', this.typing);
+        this.userTyping();
     },
 
 
@@ -23399,6 +23394,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ----------------------------------------------
 
+        userTyping: function userTyping() {
+            var _this2 = this;
+
+            this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', function (data) {
+                _this2.typing.push(data);
+                setTimeout(function () {
+                    _this2.typing = [];
+                }, 80000000);
+            });
+        },
+
+
+        // ----------------------------------------------
+
         BindEvents: function BindEvents(name, action, array) {
             this.channel = this.$pusher.subscribe(name);
             this.channel.bind(action, function (data) {
@@ -23426,11 +23435,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         createImage: function createImage(file) {
-            var _this2 = this;
+            var _this3 = this;
 
             var reader = new FileReader();
             reader.onload = function (e) {
-                _this2.photo = e.target.result;
+                _this3.photo = e.target.result;
                 document.getElementById("inputMessage").focus();
             };
             reader.readAsDataURL(file);
@@ -23461,15 +23470,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         allMessages: function allMessages() {
-            var _this3 = this;
+            var _this4 = this;
 
             this.$http.get('/get_latest_group/' + this.groupId).then(function (response) {
                 if (response.status == 200) {
 
-                    if (response.data.length === 0) return _this3.welcomeMessage();
+                    if (response.data.length === 0) return _this4.welcomeMessage();
 
                     for (var i = 0; i < response.data.length; i++) {
-                        _this3.messages.push({
+                        _this4.messages.push({
                             id: response.data[i].user.id,
                             name: response.data[i].user.name,
                             avatar: response.data[i].user.avatar,
@@ -23499,30 +23508,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         getGroup: function getGroup() {
-            var _this4 = this;
+            var _this5 = this;
 
             this.$http.get('/get_group_chat/' + this.groupId).then(function (response) {
 
                 if (response.status == 200) {
 
-                    if (response.data === 0 || !response.data) return _this4.$router.push('/');
+                    if (response.data === 0 || !response.data) return _this5.$router.push('/');
 
-                    _this4.showChat = true;
+                    _this5.showChat = true;
 
-                    _this4.groupName = response.data.name;
-                    if (response.data.avatar) _this4.avatar = response.data.avatar;
+                    _this5.groupName = response.data.name;
+                    if (response.data.avatar) _this5.avatar = response.data.avatar;
                 } else {
-                    _this4.$router.push('/');
+                    _this5.$router.push('/');
                 }
             }, function () {
-                _this4.$router.push('/');
+                _this5.$router.push('/');
             });
-        },
-
-
-        // ----------------------------------------------
-
-        userTyping: function userTyping() {}
+        }
     }
 });
 
@@ -23634,9 +23638,6 @@ var render = function() {
               on: {
                 errorMessages: function($event) {
                   _vm.pushErrorMessage($event)
-                },
-                typing: function($event) {
-                  _vm.userTyping($event)
                 },
                 showUpload: _vm.showImageModal,
                 pushMessage: _vm.addMessage

@@ -33,7 +33,6 @@
 
             send(:user='user',
                     v-on:errorMessages="pushErrorMessage($event)",
-                    v-on:typing="userTyping($event)",
                     :uploadImageState='uploadImage',
                     @showUpload='showImageModal',
                     :photo='photo',
@@ -82,6 +81,7 @@
         created() {
             this.getGroup();
             this.pushRealTimeMessage();
+            this.userTyping();
         },
 
         // ----------------------------------------------
@@ -99,7 +99,8 @@
             // ----------------------------------------------
 
             pushRealTimeMessage() {
-                this.$pusher.subscribe('room-' + this.groupId).bind('pushMessage', (data) => {
+                this.channel = this.$pusher.subscribe('room-' + this.groupId);
+                this.channel.bind('pushMessage', (data) => {
                     this.messages.push({
                         id: data.user.id,
                         name: data.user.name,
@@ -113,19 +114,29 @@
 
             // ----------------------------------------------
 
+            pushErrorMessage(data) {
+                this.messages.push(data);
+            },
+
+            // ----------------------------------------------
+
             userTyping() {
                 this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
                     this.typing.push(data);
                     setTimeout(() => {
                         this.typing = [];
-                    }, 8000);
+                    }, 80000000);
                 });
             },
 
             // ----------------------------------------------
 
-            pushErrorMessage(data) {
-                this.messages.push(data);
+            BindEvents(name, action, array) {
+                this.channel = this.$pusher.subscribe(name);
+                this.channel.bind(action, (data) => {
+                    array.push(data);
+                });
+
             },
 
             // ----------------------------------------------
@@ -195,7 +206,7 @@
                     } else {
                         // ...
                     }
-                }, () => {
+                }, response => {
                     // ...
                 });
 

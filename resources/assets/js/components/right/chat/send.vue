@@ -10,7 +10,6 @@
                 .message
                     input#inputMessage.input-message(@keyup.enter='addMessage',
                                                         v-model='messageText',
-                                                        @focus="typingUsers()",
                                                         type='text',
                                                         autocomplete='off',
                                                         placeholder='Write a new message')
@@ -39,7 +38,8 @@
           return {
               groupId: window.atob(this.$route.params.group_id),
               messageText: '',
-              formData: null
+              formData: null,
+              typing: false
           }
         },
 
@@ -72,6 +72,7 @@
 
                 this.$http.post('/send_message_in_group', this.formData).then(response => {
                     if (response.status === 200) {
+                        this.typing = false;
                         this.messageText = '';
                     } else {
                         this.emitMessage(this.photo, this.messageText, null);
@@ -101,7 +102,7 @@
 
             typingUsers() {
                 this.$http.get('/user_typing/' + this.groupId).then(response => {
-                    if (response.status == 200) this.$emit('typing', response.data);
+                    if (response.status == 200) return;
                 });
             },
 
@@ -114,7 +115,17 @@
 
             btnSubmit() {
                 if (this.photo) return;
-                return ( this.messageText.length < 2);
+
+                if (this.messageText.length === 0) {
+                    this.typing = false;
+                }
+
+                if (this.messageText.length === 1) {
+                    if (!this.typing) this.typingUsers();
+                    this.typing = true;
+                }
+
+                return (this.messageText.length < 2);
             }
 
             // ----------------------------------------------
