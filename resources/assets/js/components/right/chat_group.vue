@@ -125,7 +125,7 @@
                     this.typing.push(data);
                     setTimeout(() => {
                         this.typing = [];
-                    }, 80000000);
+                    }, 8000);
                 });
             },
 

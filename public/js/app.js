@@ -23407,7 +23407,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.typing.push(data);
                 setTimeout(function () {
                     _this2.typing = [];
-                }, 80000000);
+                }, 8000);
             });
         },
 
