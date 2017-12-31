@@ -116,6 +116,9 @@
             userTyping() {
                 this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
                     this.typing.push(data);
+                    setTimeout(() => {
+                        this.typing = [];
+                    }, 8000);
                 });
             },
 

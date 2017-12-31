@@ -45,13 +45,6 @@
         mounted() {
             console.log('Messages ok!');
         },
-        watch: {
-            usersTyping() {
-                setTimeout(() => {
-                    this.usersTyping.splice(0, this.usersTyping.length);
-                }, 8000);
-            }
-        },
         methods: {
             checkId(message_user_id) {
                 return (this.user.id == message_user_id);
