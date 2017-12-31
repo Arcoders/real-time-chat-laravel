@@ -82,7 +82,6 @@
         created() {
             this.getGroup();
             this.pushRealTimeMessage();
-            this.BindEvents('room-' + this.groupId, 'userTyping', this.typing);
         },
 
         // ----------------------------------------------
@@ -118,16 +117,7 @@
             pushErrorMessage(data) {
                 this.messages.push(data);
             },
-
-            // ----------------------------------------------
-
-            BindEvents(name, action, array) {
-                this.channel = this.$pusher.subscribe(name);
-                this.channel.bind(action, (data) => {
-                    array.push(data);
-                });
-            },
-
+            
             // ----------------------------------------------
 
             showImageModal(data) {
@@ -195,7 +185,7 @@
                     } else {
                         // ...
                     }
-                }, response => {
+                }, () => {
                     // ...
                 });
 
@@ -231,10 +221,6 @@
                     this.$router.push('/');
                 });
             },
-
-            // ----------------------------------------------
-
-            userTyping() {},
 
             // ----------------------------------------------
 
