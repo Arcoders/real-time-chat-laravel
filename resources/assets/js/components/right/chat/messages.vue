@@ -40,15 +40,25 @@
 <script>
     export default {
 
+        // ----------------------------------------------
+
         props: ['user', 'messages', 'usersTyping'],
+
+        // ----------------------------------------------
 
         mounted() {
             console.log('Messages ok!');
         },
+
+        // ----------------------------------------------
+
         methods: {
             checkId(message_user_id) {
                 return (this.user.id == message_user_id);
             }
         }
+
+        // ----------------------------------------------
+
     }
 </script>

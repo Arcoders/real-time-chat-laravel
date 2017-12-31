@@ -21726,17 +21726,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
+    // ----------------------------------------------
+
     props: ['user', 'messages', 'usersTyping'],
+
+    // ----------------------------------------------
 
     mounted: function mounted() {
         console.log('Messages ok!');
     },
+
+
+    // ----------------------------------------------
 
     methods: {
         checkId: function checkId(message_user_id) {
             return this.user.id == message_user_id;
         }
     }
+
+    // ----------------------------------------------
+
 });
 
 /***/ }),
