@@ -101,9 +101,7 @@
             // ----------------------------------------------
 
             typingUsers() {
-                this.$http.get('/user_typing/' + this.groupId).then(response => {
-                    if (response.status == 200) return;
-                });
+                this.$http.get('/user_typing/' + this.groupId);
             },
 
             // ----------------------------------------------

@@ -22048,9 +22048,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         typingUsers: function typingUsers() {
-            this.$http.get('/user_typing/' + this.groupId).then(function (response) {
-                if (response.status == 200) return;
-            });
+            this.$http.get('/user_typing/' + this.groupId);
         }
     },
     computed: {
