@@ -23379,6 +23379,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.channel = this.$pusher.subscribe('room-' + this.groupId);
             this.channel.bind('pushMessage', function (data) {
+
+                _this.typing = _this.typing.filter(function (val) {
+                    return val['id'] !== data.user.id;
+                });
+
                 _this.messages.push({
                     id: data.user.id,
                     name: data.user.name,
@@ -23409,7 +23414,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.typing = _this2.typing.filter(function (val) {
                         return val['id'] !== data.id;
                     });
-                }, 8000);
+                }, 15000);
             });
         },
 

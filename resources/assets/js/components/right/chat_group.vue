@@ -101,6 +101,11 @@
             pushRealTimeMessage() {
                 this.channel = this.$pusher.subscribe('room-' + this.groupId);
                 this.channel.bind('pushMessage', (data) => {
+
+                    this.typing = this.typing.filter(function (val) {
+                        return val['id'] !== data.user.id;
+                    });
+
                     this.messages.push({
                         id: data.user.id,
                         name: data.user.name,
@@ -109,6 +114,7 @@
                         text: data.message.body,
                         time: data.message.created_at
                     });
+
                 });
             },
 
@@ -127,7 +133,7 @@
                         this.typing = this.typing.filter(function (val) {
                             return val['id'] !== data.id;
                         });
-                    }, 8000);
+                    }, 15000);
                 });
             },
 
