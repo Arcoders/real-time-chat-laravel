@@ -129,7 +129,9 @@
             userTyping() {
                 this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
 
-                    if (this.objectPropInArray(this.typing, 'id', data.id)) return;
+                    if (this.typing.length > 0 ) {
+                        for (let i in this.typing) if (this.typing[i]['id'] === data.id) return;
+                    }
 
                     this.typing.push(data);
 
@@ -141,15 +143,6 @@
 
                 });
             },
-
-            // ----------------------------------------------
-
-            objectPropInArray(list, prop, val) {
-        if (list.length > 0 ) {
-            for (let i in list) if (list[i][prop] === val) return true;
-        }
-        return false;
-    },
 
             // ----------------------------------------------
 

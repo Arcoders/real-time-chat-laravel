@@ -23410,7 +23410,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', function (data) {
 
-                if (_this2.objectPropInArray(_this2.typing, 'id', data.id)) return;
+                if (_this2.typing.length > 0) {
+                    for (var i in _this2.typing) {
+                        if (_this2.typing[i]['id'] === data.id) return;
+                    }
+                }
 
                 _this2.typing.push(data);
 
@@ -23420,18 +23424,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     });
                 }, 15000);
             });
-        },
-
-
-        // ----------------------------------------------
-
-        objectPropInArray: function objectPropInArray(list, prop, val) {
-            if (list.length > 0) {
-                for (var i in list) {
-                    if (list[i][prop] === val) return true;
-                }
-            }
-            return false;
         },
 
 
