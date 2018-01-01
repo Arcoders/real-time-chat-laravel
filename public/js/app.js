@@ -23406,7 +23406,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', function (data) {
                 _this2.typing.push(data);
                 setTimeout(function () {
-                    _this2.typing = [];
+                    _this2.typing = _this2.typing.filter(function (val) {
+                        return val['id'] !== data.id;
+                    });
                 }, 8000);
             });
         },

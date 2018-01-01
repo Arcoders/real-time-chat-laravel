@@ -124,7 +124,9 @@
                 this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
                     this.typing.push(data);
                     setTimeout(() => {
-                        this.typing = [];
+                        this.typing = this.typing.filter(function (val) {
+                            return val['id'] !== data.id;
+                        });
                     }, 8000);
                 });
             },
