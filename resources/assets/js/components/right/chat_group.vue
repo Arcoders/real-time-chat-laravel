@@ -139,16 +139,6 @@
 
             // ----------------------------------------------
 
-            BindEvents(name, action, array) {
-                this.channel = this.$pusher.subscribe(name);
-                this.channel.bind(action, (data) => {
-                    array.push(data);
-                });
-
-            },
-
-            // ----------------------------------------------
-
             showImageModal(data) {
                 this.uploadImage = data;
             },

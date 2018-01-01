@@ -23421,16 +23421,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ----------------------------------------------
 
-        BindEvents: function BindEvents(name, action, array) {
-            this.channel = this.$pusher.subscribe(name);
-            this.channel.bind(action, function (data) {
-                array.push(data);
-            });
-        },
-
-
-        // ----------------------------------------------
-
         showImageModal: function showImageModal(data) {
             this.uploadImage = data;
         },
