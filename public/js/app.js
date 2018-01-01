@@ -23410,13 +23410,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', function (data) {
 
-                console.log(_this2.typing.some(function (elem) {
-                    return elem === data.id;
-                }));
+                if (_this2.objectPropInArray(_this2.typing, 'id', data.id)) return;
 
                 _this2.typing.push(data);
-
-                _this2.typing = _this2.removeDuplicates(_this2.typing, data.name);
 
                 setTimeout(function () {
                     _this2.typing = _this2.typing.filter(function (val) {
@@ -23429,14 +23425,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ----------------------------------------------
 
-        removeDuplicates: function removeDuplicates(arr, prop) {
-            var obj = {};
-            return Object.keys(arr.reduce(function (prev, next) {
-                if (!obj[next[prop]]) obj[next[prop]] = next;
-                return obj;
-            }, obj)).map(function (i) {
-                return obj[i];
-            });
+        objectPropInArray: function objectPropInArray(list, prop, val) {
+            if (list.length > 0) {
+                for (var i in list) {
+                    if (list[i][prop] === val) return true;
+                }
+            }
+            return false;
         },
 
 

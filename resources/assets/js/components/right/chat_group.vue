@@ -129,11 +129,9 @@
             userTyping() {
                 this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
 
-                    console.log(this.typing.some(elem => elem === data.id));
+                    if (this.objectPropInArray(this.typing, 'id', data.id)) return;
 
                     this.typing.push(data);
-
-                    this.typing = this.removeDuplicates(this.typing, data.name);
 
                     setTimeout(() => {
                         this.typing = this.typing.filter(function (val) {
@@ -146,13 +144,12 @@
 
             // ----------------------------------------------
 
-            removeDuplicates( arr, prop ) {
-                let obj = {};
-                return Object.keys(arr.reduce((prev, next) => {
-                    if(!obj[next[prop]]) obj[next[prop]] = next;
-                    return obj;
-                }, obj)).map((i) => obj[i]);
-            },
+            objectPropInArray(list, prop, val) {
+        if (list.length > 0 ) {
+            for (let i in list) if (list[i][prop] === val) return true;
+        }
+        return false;
+    },
 
             // ----------------------------------------------
 
