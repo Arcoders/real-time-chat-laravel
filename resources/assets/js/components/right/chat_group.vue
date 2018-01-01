@@ -128,13 +128,30 @@
 
             userTyping() {
                 this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
+
+                    console.log(this.typing.some(elem => elem === data.id));
+
                     this.typing.push(data);
+
+                    this.typing = this.removeDuplicates(this.typing, data.name);
+
                     setTimeout(() => {
                         this.typing = this.typing.filter(function (val) {
                             return val['id'] !== data.id;
                         });
                     }, 15000);
+
                 });
+            },
+
+            // ----------------------------------------------
+
+            removeDuplicates( arr, prop ) {
+                let obj = {};
+                return Object.keys(arr.reduce((prev, next) => {
+                    if(!obj[next[prop]]) obj[next[prop]] = next;
+                    return obj;
+                }, obj)).map((i) => obj[i]);
             },
 
             // ----------------------------------------------
