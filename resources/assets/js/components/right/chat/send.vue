@@ -73,7 +73,7 @@
                     if (response.status === 200) {
                         this.typing = false;
                         this.messageText = '';
-                        console.log(response.data);
+                        this.$emit('clearPhoto');
                     } else {
                         this.emitMessage(this.photo, this.messageText, null);
                         this.messageText = '';

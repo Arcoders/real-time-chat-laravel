@@ -19,17 +19,21 @@ class MessagesController extends Controller
     public function sendMessageInGroup(Request $request)
     {
 
-        $request->validate([
-            'messageText' => 'required|min:2',
-            'photo' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
-        ]);
-
         $user = Auth::user();
         $photo= null;
 
         if ($request->file('photo')) {
 
+            $request->validate([
+                'photo' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
+            ]);
+
             $photo = $this->processImage($request->file('photo'), $user->id, $this->folder);
+
+        } else {
+
+            $request->validate(['messageText' => 'required|min:2']);
+
         }
 
         $message = new Message();

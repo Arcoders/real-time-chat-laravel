@@ -22029,7 +22029,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (response.status === 200) {
                     _this.typing = false;
                     _this.messageText = '';
-                    console.log(response.data);
+                    _this.$emit('clearPhoto');
                 } else {
                     _this.emitMessage(_this.photo, _this.messageText, null);
                     _this.messageText = '';
@@ -23341,6 +23341,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -23449,30 +23450,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         onFileChange: function onFileChange(e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length) return;
-            this.createImage(files[0]);
-        },
-
-
-        // ----------------------------------------------
-
-        createImage: function createImage(file) {
             var _this3 = this;
 
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length) return;
+
             var reader = new FileReader();
+
             reader.onload = function (e) {
                 _this3.photo = e.target.result;
                 document.getElementById("inputMessage").focus();
             };
-            reader.readAsDataURL(file);
-        },
 
-
-        // ----------------------------------------------
-
-        clearImage: function clearImage() {
-            this.photo = null;
+            reader.readAsDataURL(files[0]);
         },
 
 
@@ -23549,7 +23539,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, function () {
                 _this5.$router.push('/');
             });
+        },
+
+
+        // ----------------------------------------------
+
+        hideModal: function hideModal() {
+            this.photo = null;
+            this.uploadImage = false;
         }
+
+        // ----------------------------------------------
+
     },
     computed: {
 
@@ -23653,11 +23654,21 @@ var render = function() {
                             _c("img", {
                               attrs: { alt: "profilepicture", src: _vm.photo }
                             }),
-                            _c("a", { on: { click: _vm.clearImage } }, [
-                              _c("i", { staticClass: "material-icons" }, [
-                                _vm._v("clear")
-                              ])
-                            ])
+                            _c(
+                              "a",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    _vm.photo = null
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", { staticClass: "material-icons" }, [
+                                  _vm._v("clear")
+                                ])
+                              ]
+                            )
                           ])
                         ])
                   ])
@@ -23674,6 +23685,7 @@ var render = function() {
                 errorMessages: function($event) {
                   _vm.pushErrorMessage($event)
                 },
+                clearPhoto: _vm.hideModal,
                 showUpload: _vm.showImageModal,
                 pushMessage: _vm.addMessage
               }

@@ -28,11 +28,12 @@
                     .container_foto(v-else='')
                         .preview-image
                             img(alt='profilepicture', :src='photo')
-                            a(v-on:click='clearImage')
+                            a(v-on:click='photo = null')
                                 i.material-icons clear
 
             send(:user='user',
                     v-on:errorMessages="pushErrorMessage($event)",
+                    v-on:clearPhoto="hideModal",
                     :uploadImageState='uploadImage',
                     @showUpload='showImageModal',
                     :photo='photo',
@@ -156,24 +157,15 @@
             onFileChange(e) {
                 let files = e.target.files || e.dataTransfer.files;
                 if (!files.length) return;
-                this.createImage(files[0]);
-            },
 
-            // ----------------------------------------------
-
-            createImage(file) {
                 let reader = new FileReader();
+
                 reader.onload = (e) => {
                     this.photo = e.target.result;
                     document.getElementById("inputMessage").focus();
                 };
-                reader.readAsDataURL(file);
-            },
 
-            // ----------------------------------------------
-
-            clearImage() {
-                this.photo = null;
+                reader.readAsDataURL(files[0]);
             },
 
             // ----------------------------------------------
@@ -248,6 +240,13 @@
                     this.$router.push('/');
                 });
             },
+
+            // ----------------------------------------------
+
+            hideModal() {
+                this.photo = null;
+                this.uploadImage = false
+            }
 
             // ----------------------------------------------
 
