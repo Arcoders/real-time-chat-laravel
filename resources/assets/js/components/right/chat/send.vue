@@ -63,7 +63,7 @@
             addMessage() {
                 if (this.btnSubmit) return;
 
-                this.$http.post('/send_mmessage_in_group', this.formData).then(response => {
+                this.$http.post('/send_message_in_group', this.formData).then(response => {
                     if (response.status === 200) {
                         this.responseMessage('done');
                     } else {

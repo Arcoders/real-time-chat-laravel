@@ -22019,7 +22019,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.btnSubmit) return;
 
-            this.$http.post('/send_mmessage_in_group', this.formData).then(function (response) {
+            this.$http.post('/send_message_in_group', this.formData).then(function (response) {
                 if (response.status === 200) {
                     _this.responseMessage('done');
                 } else {
