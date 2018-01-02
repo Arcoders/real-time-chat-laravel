@@ -30,7 +30,7 @@
 
         // ----------------------------------------------
 
-        props: ['uploadImageState', 'user', 'photo'],
+        props: ['uploadImageState', 'user', 'photo', 'uploadedPhoto'],
 
         // ----------------------------------------------
 
@@ -38,7 +38,6 @@
           return {
               groupId: window.atob(this.$route.params.group_id),
               messageText: '',
-              formData: null,
               typing: false
           }
         },
@@ -64,16 +63,17 @@
             addMessage() {
                 if (this.btnSubmit) return;
 
-                this.formData = {
+/*                this.formData = {
                     group_id: this.groupId,
                     message: this.messageText,
                     photo: this.photo
-                };
+                };*/
 
                 this.$http.post('/send_message_in_group', this.formData).then(response => {
                     if (response.status === 200) {
                         this.typing = false;
                         this.messageText = '';
+                        console.log(response.data);
                     } else {
                         this.emitMessage(this.photo, this.messageText, null);
                         this.messageText = '';
@@ -122,6 +122,18 @@
                 }
 
                 return (this.messageText.length < 2);
+            },
+
+            // ----------------------------------------------
+
+            formData() {
+                let formData = new FormData();
+
+                formData.append('groupId', this.groupId);
+                formData.append('messageText', this.messageText);
+                if (this.uploadedPhoto) formData.append('photo', this.uploadedPhoto);
+
+                return formData;
             }
 
             // ----------------------------------------------

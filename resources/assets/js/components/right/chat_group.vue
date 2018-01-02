@@ -21,7 +21,7 @@
                             button
                                 i.material-icons file_upload
                             input(type='file',
-                                        name='fileInput',
+                                        name='foto',
                                         v-on:change='onFileChange($event)',
                                         ref='fileInput')
 
@@ -36,6 +36,7 @@
                     :uploadImageState='uploadImage',
                     @showUpload='showImageModal',
                     :photo='photo',
+                    :uploadedPhoto='uploadedPhoto',
                     @pushMessage='addMessage')
 
 </template>
@@ -249,6 +250,17 @@
             },
 
             // ----------------------------------------------
+
+        },
+        computed: {
+
+            // ---------------------------------------------------
+
+            uploadedPhoto() {
+                if (this.photo) return this.$refs.fileInput.files[0];
+            }
+
+            // ---------------------------------------------------
 
         }
     }

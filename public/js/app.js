@@ -21981,7 +21981,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ----------------------------------------------
 
-    props: ['uploadImageState', 'user', 'photo'],
+    props: ['uploadImageState', 'user', 'photo', 'uploadedPhoto'],
 
     // ----------------------------------------------
 
@@ -21989,7 +21989,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             groupId: window.atob(this.$route.params.group_id),
             messageText: '',
-            formData: null,
             typing: false
         };
     },
@@ -22020,16 +22019,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.btnSubmit) return;
 
-            this.formData = {
-                group_id: this.groupId,
-                message: this.messageText,
-                photo: this.photo
-            };
+            /*                this.formData = {
+                                group_id: this.groupId,
+                                message: this.messageText,
+                                photo: this.photo
+                            };*/
 
             this.$http.post('/send_message_in_group', this.formData).then(function (response) {
                 if (response.status === 200) {
                     _this.typing = false;
                     _this.messageText = '';
+                    console.log(response.data);
                 } else {
                     _this.emitMessage(_this.photo, _this.messageText, null);
                     _this.messageText = '';
@@ -22076,6 +22076,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             return this.messageText.length < 2;
+        },
+
+
+        // ----------------------------------------------
+
+        formData: function formData() {
+            var formData = new FormData();
+
+            formData.append('groupId', this.groupId);
+            formData.append('messageText', this.messageText);
+            if (this.uploadedPhoto) formData.append('photo', this.uploadedPhoto);
+
+            return formData;
         }
 
         // ----------------------------------------------
@@ -23327,6 +23340,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -23536,6 +23550,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this5.$router.push('/');
             });
         }
+    },
+    computed: {
+
+        // ---------------------------------------------------
+
+        uploadedPhoto: function uploadedPhoto() {
+            if (this.photo) return this.$refs.fileInput.files[0];
+        }
+
+        // ---------------------------------------------------
+
     }
 });
 
@@ -23613,7 +23638,7 @@ var render = function() {
                               ]),
                               _c("input", {
                                 ref: "fileInput",
-                                attrs: { type: "file", name: "fileInput" },
+                                attrs: { type: "file", name: "foto" },
                                 on: {
                                   change: function($event) {
                                     _vm.onFileChange($event)
@@ -23642,7 +23667,8 @@ var render = function() {
               attrs: {
                 user: _vm.user,
                 uploadImageState: _vm.uploadImage,
-                photo: _vm.photo
+                photo: _vm.photo,
+                uploadedPhoto: _vm.uploadedPhoto
               },
               on: {
                 errorMessages: function($event) {

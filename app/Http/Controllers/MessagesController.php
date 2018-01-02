@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use App\Traits\UploadFiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\TriggerPusher;
@@ -10,14 +11,32 @@ use App\Traits\TriggerPusher;
 class MessagesController extends Controller
 {
 
+    use UploadFiles;
     use TriggerPusher;
+
+    protected $folder = '/images/messages/';
 
     public function sendMessageInGroup(Request $request)
     {
+
+        $request->validate([
+            'messageText' => 'required|min:2',
+            'photo' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
+        ]);
+
+        $user = Auth::user();
+        $photo= null;
+
+        if ($request->file('photo')) {
+
+            $photo = $this->processImage($request->file('photo'), $user->id, $this->folder);
+        }
+
         $message = new Message();
-        $message->body = $request->message;
-        $message->user_id = Auth::user()->id;
-        $message->group_id = $request->group_id;
+        $message->body = $request->messageText;
+        $message->user_id = $user->id;
+        $message->group_id = $request->groupId;
+        $message->photo = $photo;
 
         if ($message->save()) {
             $this->triggerPusher('room-' . $message->group_id, 'pushMessage', [
