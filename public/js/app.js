@@ -22019,25 +22019,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.btnSubmit) return;
 
-            /*                this.formData = {
-                                group_id: this.groupId,
-                                message: this.messageText,
-                                photo: this.photo
-                            };*/
-
-            this.$http.post('/send_message_in_group', this.formData).then(function (response) {
+            this.$http.post('/send_mmessage_in_group', this.formData).then(function (response) {
                 if (response.status === 200) {
-                    _this.typing = false;
-                    _this.messageText = '';
-                    _this.$emit('clearPhoto');
+                    _this.responseMessage('done');
                 } else {
-                    _this.emitMessage(_this.photo, _this.messageText, null);
-                    _this.messageText = '';
+                    _this.responseMessage('error');
                 }
             }, function () {
-                _this.emitMessage(_this.photo, _this.messageText, null);
-                _this.messageText = '';
+                _this.responseMessage('error');
             });
+        },
+
+
+        // ----------------------------------------------
+
+        responseMessage: function responseMessage(type) {
+            if (type === 'error') this.emitMessage(this.photo, this.messageText, null);
+            this.$emit('clearPhoto');
+            this.messageText = '';
+            this.typing = false;
         },
 
 

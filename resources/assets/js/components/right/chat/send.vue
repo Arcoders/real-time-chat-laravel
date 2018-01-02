@@ -63,26 +63,25 @@
             addMessage() {
                 if (this.btnSubmit) return;
 
-/*                this.formData = {
-                    group_id: this.groupId,
-                    message: this.messageText,
-                    photo: this.photo
-                };*/
-
-                this.$http.post('/send_message_in_group', this.formData).then(response => {
+                this.$http.post('/send_mmessage_in_group', this.formData).then(response => {
                     if (response.status === 200) {
-                        this.typing = false;
-                        this.messageText = '';
-                        this.$emit('clearPhoto');
+                        this.responseMessage('done');
                     } else {
-                        this.emitMessage(this.photo, this.messageText, null);
-                        this.messageText = '';
+                        this.responseMessage('error');
                     }
                 }, () => {
-                    this.emitMessage(this.photo, this.messageText, null);
-                    this.messageText = '';
+                    this.responseMessage('error');
                 });
 
+            },
+
+            // ----------------------------------------------
+
+            responseMessage(type) {
+                if (type === 'error') this.emitMessage(this.photo, this.messageText, null);
+                this.$emit('clearPhoto');
+                this.messageText = '';
+                this.typing = false;
             },
 
             // ----------------------------------------------
