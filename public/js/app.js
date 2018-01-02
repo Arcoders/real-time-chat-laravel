@@ -23410,10 +23410,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', function (data) {
 
-                if (_this2.typing.length > 0) {
-                    for (var i in _this2.typing) {
-                        if (_this2.typing[i]['id'] === data.id) return;
-                    }
+                for (var i in _this2.typing) {
+                    if (_this2.typing[i]['id'] === data.id) return;
                 }
 
                 _this2.typing.push(data);
@@ -24234,7 +24232,7 @@ var render = function() {
             [
               _c("router-view", {
                 attrs: { user: _vm.user },
-                on: { previewImage: _vm.updateImage, modelinfo: _vm.updateInfo }
+                on: { previewImage: _vm.updateImage, modelInfo: _vm.updateInfo }
               }),
               _vm._l(_vm.users, function(user) {
                 return _vm.pathEdit

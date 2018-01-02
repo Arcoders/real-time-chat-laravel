@@ -37,7 +37,7 @@
 
                     .manage_users
 
-                        router-view(:user='user', @previewImage='updateImage', @modelinfo='updateInfo')
+                        router-view(:user='user', @previewImage='updateImage', @modelInfo='updateInfo')
 
                         .contener_txt(v-if='pathEdit', v-for='user in users')
 
