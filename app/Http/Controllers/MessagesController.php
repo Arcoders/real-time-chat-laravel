@@ -31,7 +31,7 @@ class MessagesController extends Controller
             $photo = $this->processImage($request->file('photo'), $user->id, $this->folder, false);
 
         } else {
-g
+
             $request->validate(['messageText' => 'required|min:2']);
 
         }
