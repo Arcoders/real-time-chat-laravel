@@ -28,10 +28,10 @@ class MessagesController extends Controller
                 'photo' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
             ]);
 
-            $photo = $this->processImage($request->file('photo'), $user->id, $this->folder);
+            $photo = $this->processImage($request->file('photo'), $user->id, $this->folder, false);
 
         } else {
-
+g
             $request->validate(['messageText' => 'required|min:2']);
 
         }
