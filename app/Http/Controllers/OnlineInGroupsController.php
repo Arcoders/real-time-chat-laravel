@@ -22,10 +22,13 @@ class OnlineInGroupsController extends Controller
 
         } else {
 
+            $leaveGroup = OnlineGroup::where('user_id', $user->id)->get()[0];
             OnlineGroup::where('user_id', $user->id)->delete();
 
-            $this->insertOnlineGroup($user->id, $request->group_id);
+            $onlineUsers = OnlineGroup::where('group_id', $leaveGroup->group_id)->with('user')->get()->pluck('user');
+            $this->triggerPusher('room-' . $leaveGroup->group_id, 'onlineUsers', $onlineUsers);
 
+            $this->insertOnlineGroup($user->id, $request->group_id);
         }
 
         $onlineUsers = OnlineGroup::where('group_id', $request->group_id)->with('user')->get()->pluck('user');
