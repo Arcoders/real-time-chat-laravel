@@ -14,6 +14,7 @@ import Multiselect from 'vue-multiselect';
 const VueResource = require('vue-resource');
 const VuePusher = require('vue-pusher');
 const VueMoment = require('vue-moment');
+const CSRF = document.getElementById('csrf-token').getAttribute('content');
 
 window.Vue.use(VueRouter);
 window.Vue.use(VueResource);
@@ -29,7 +30,7 @@ window.Vue.use(VuePusher, {
 
 // headers
 
-Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf-token').getAttribute('content');
+Vue.http.headers.common['X-CSRF-TOKEN'] = CSRF;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -98,6 +99,7 @@ const router = new VueRouter({
 
 
 new Vue({
+    props:['user'],
     el: '#app',
     router
 }).$mount(this.el);

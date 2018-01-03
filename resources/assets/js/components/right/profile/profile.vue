@@ -55,7 +55,7 @@
                             avatar.img-head(username='!',
                                             color='#fff',
                                             :size='50',
-                                            backgroundcolor='#E57373')
+                                            backgroundColor='#E57373')
                             .name
                                 button You are the first user
 </template>

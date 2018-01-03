@@ -22,7 +22,7 @@ class CreateOnlineGroupsTable extends Migration
             $table->string('timelogout')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('group_id')->references('id')->on('groups');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');;
 
             $table->timestamps();
         });

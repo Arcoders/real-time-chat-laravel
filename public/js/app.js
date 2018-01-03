@@ -16756,6 +16756,7 @@ window.Vue = __webpack_require__(126);
 var VueResource = __webpack_require__(133);
 var VuePusher = __webpack_require__(135);
 var VueMoment = __webpack_require__(137);
+var CSRF = document.getElementById('csrf-token').getAttribute('content');
 
 window.Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 window.Vue.use(VueResource);
@@ -16771,7 +16772,7 @@ window.Vue.use(VuePusher, {
 
 // headers
 
-Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf-token').getAttribute('content');
+Vue.http.headers.common['X-CSRF-TOKEN'] = CSRF;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16827,6 +16828,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
 });
 
 new Vue({
+    props: ['user'],
     el: '#app',
     router: router
 }).$mount(this.el);
@@ -41026,7 +41028,7 @@ var render = function() {
                           username: "!",
                           color: "#fff",
                           size: 50,
-                          backgroundcolor: "#E57373"
+                          backgroundColor: "#E57373"
                         }
                       }),
                       _vm._m(0)

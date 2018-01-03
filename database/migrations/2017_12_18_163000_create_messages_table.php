@@ -19,11 +19,12 @@ class CreateMessagesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('group_id')->unsigned()->nullable();
             $table->integer('chat_id')->unsigned()->nullable();
-            $table->string('body', 500);
+            $table->string('body', 500)->nullable();
+            $table->string('photo')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('group_id')->references('id')->on('groups');
-            $table->foreign('chat_id')->references('id')->on('chats');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->foreign('chat_id')->references('id')->on('chats')->onDelete('cascade');
 
             $table->timestamps();
         });

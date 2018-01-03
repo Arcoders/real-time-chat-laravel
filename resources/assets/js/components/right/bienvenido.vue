@@ -35,7 +35,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Bienvenido ok!')
+            console.log('Bienvenido ok!');
         }
     }
 </script>
