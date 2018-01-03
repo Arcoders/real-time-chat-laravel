@@ -13,9 +13,11 @@ import Multiselect from 'vue-multiselect';
 
 const VueResource = require('vue-resource');
 const VuePusher = require('vue-pusher');
+const VueMoment = require('vue-moment');
 
 window.Vue.use(VueRouter);
 window.Vue.use(VueResource);
+window.Vue.use(VueMoment);
 
 window.Vue.use(VuePusher, {
     api_key: '60efd870de38efff2291',
