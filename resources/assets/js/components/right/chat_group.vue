@@ -6,7 +6,10 @@
                 avatar.img-head(:username='groupName', color='#fff', :src='avatar')
                 .chat-name
                     h1.font-name {{ groupName }}
-                    p.font-online Ismael, Fatima, Admin, Marta, victor... {{ groupId }}
+                    p.font-online
+                        span(v-for='onlineUser in onlineUsers')
+                            | {{ onlineUser.name }}
+                            span.green_font &#8226;
                 i.fa.fa-whatsapp.fa-lg(aria-hidden='true')
 
             .wrap-content
@@ -53,6 +56,12 @@
         transform: translateX(5px);
         opacity: 0;
     }
+    .green_font {
+        color: #009688;
+        margin: 0 7px;
+        font-weight: bold;
+    }
+
 </style>
 
 <script>
@@ -74,7 +83,8 @@
                 messages: [],
                 messages_ready: false,
                 latest: null,
-                typing: []
+                typing: [],
+                onlineUsers: null
             }
         },
 
@@ -83,6 +93,7 @@
         created() {
             this.getGroup();
             this.pushRealTimeMessage();
+            this.UpdateOnlineUsers();
             this.userTyping();
         },
 
@@ -90,6 +101,7 @@
 
         mounted() {
             this.allMessages();
+            this.GetOnlineUsers();
             console.log('Right ok!');
         },
 
@@ -144,6 +156,27 @@
                     }, 15000);
 
                 });
+            },
+
+            // ----------------------------------------------
+
+            UpdateOnlineUsers() {
+                this.channel = this.$pusher.subscribe('room-' + this.groupId);
+                this.channel.bind('onlineUsers', (data) => {
+                    this.onlineUsers = data;
+                });
+            },
+
+            // ----------------------------------------------
+
+            GetOnlineUsers() {
+                this.$http.get('/get_online_group_users/' + this.groupId);
+/*                    .then(response => {
+                    this.onlineUsers = response.data;
+                    console.log(response);
+                }, response =>{
+                    //...
+                });*/
             },
 
             // ----------------------------------------------
@@ -246,7 +279,7 @@
             hideModal() {
                 this.photo = null;
                 this.uploadImage = false
-            }
+            },
 
             // ----------------------------------------------
 

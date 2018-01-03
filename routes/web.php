@@ -51,4 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/get_latest_group/{group_id}', 'MessagesController@lastMessagesGroup');
     Route::get('/user_typing/{group_id}', 'MessagesController@usersTyping');
 
+    // Online users in group
+    Route::get('/get_online_group_users/{group_id}', 'OnlineInGroupsController@OnlineGroupUsers');
+
 });
