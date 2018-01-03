@@ -22,23 +22,26 @@ class OnlineInGroupsController extends Controller
 
         } else {
 
-            $leaveGroup = OnlineGroup::where('user_id', $user->id)->get()[0];
-            OnlineGroup::where('user_id', $user->id)->delete();
+            $lastGroup = OnlineGroup::where('user_id', $user->id);
+            $lastGroupInfo = $lastGroup->first();
 
-            $onlineUsers = OnlineGroup::where('group_id', $leaveGroup->group_id)->with('user')->get()->pluck('user');
-            $this->triggerPusher('room-' . $leaveGroup->group_id, 'onlineUsers', $onlineUsers);
+            $lastGroup->delete();
+
+            $this->updateOnlineUsers($lastGroupInfo->group_id);
 
             $this->insertOnlineGroup($user->id, $request->group_id);
         }
 
-        $onlineUsers = OnlineGroup::where('group_id', $request->group_id)->with('user')->get()->pluck('user');
-
-        $this->triggerPusher('room-' . $request->group_id, 'onlineUsers', $onlineUsers);
-
-        return response()->json($onlineUsers, 200);
+        $this->updateOnlineUsers($request->group_id);
 
     }
 
+    protected function updateOnlineUsers($group_id)
+    {
+        $onlineUsers = OnlineGroup::where('group_id', $group_id)->with('user')->get()->pluck('user');
+
+        $this->triggerPusher('room-' . $group_id, 'onlineUsers', $onlineUsers);
+    }
 
     protected function insertOnlineGroup($user, $room)
     {
@@ -48,5 +51,6 @@ class OnlineInGroupsController extends Controller
         $online->timelogin = time();
         $online->save();
     }
+
 
 }

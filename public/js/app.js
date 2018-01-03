@@ -40141,12 +40141,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         GetOnlineUsers: function GetOnlineUsers() {
             this.$http.get('/get_online_group_users/' + this.groupId);
-            /*                    .then(response => {
-                                this.onlineUsers = response.data;
-                                console.log(response);
-                            }, response =>{
-                                //...
-                            });*/
         },
 
 
