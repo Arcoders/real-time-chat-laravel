@@ -16,21 +16,16 @@ class OnlineInGroupsController extends Controller
 
         $user = Auth::user();
 
-        if (OnlineGroup::where('user_id', $user->id)->count() === 0) {
-
-            $this->insertOnlineGroup($user->id, $request->group_id);
-
-        } else {
+        if (OnlineGroup::where('user_id', $user->id)->count() !== 0) {
 
             $lastGroup = OnlineGroup::where('user_id', $user->id);
             $lastGroupInfo = $lastGroup->first();
-
             $lastGroup->delete();
 
             $this->updateOnlineUsers($lastGroupInfo->group_id);
-
-            $this->insertOnlineGroup($user->id, $request->group_id);
         }
+
+        $this->insertOnlineGroup($user->id, $request->group_id);
 
         $this->updateOnlineUsers($request->group_id);
 

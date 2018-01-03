@@ -38463,7 +38463,7 @@ var render = function() {
                 : _vm._e(),
               _vm._v(" " + _vm._s(message_user.text))
             ]),
-            message_user.time
+            !message_user.error
               ? _c("div", { staticClass: "time" }, [
                   _vm._v(
                     _vm._s(_vm._f("moment")(message_user.time, "from", "now"))
@@ -38707,7 +38707,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         responseMessage: function responseMessage(type) {
-            if (type === 'error') this.emitMessage(this.photo, this.messageText, null);
+            if (type === 'error') this.emitMessage(this.photo, this.messageText);
             this.$emit('clearPhoto');
             this.messageText = '';
             this.typing = false;
@@ -38716,14 +38716,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ----------------------------------------------
 
-        emitMessage: function emitMessage(photo, message, time) {
+        emitMessage: function emitMessage(photo, message) {
             return this.$emit('errorMessages', {
                 id: this.user.id,
                 name: this.user.name,
                 avatar: this.user.avatar,
                 photo: photo,
                 text: message,
-                time: time
+                error: true
             });
         },
 
@@ -40024,6 +40024,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -40084,6 +40085,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return val['id'] !== data.user.id;
                 });
 
+                if (_this.messages[0]['welcome']) _this.messages.shift();
+
                 _this.messages.push({
                     id: data.user.id,
                     name: data.user.name,
@@ -40112,9 +40115,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 for (var i in _this2.typing) {
                     if (_this2.typing[i]['id'] === data.id) return;
-                }
-
-                _this2.typing.push(data);
+                }_this2.typing.push(data);
 
                 setTimeout(function () {
                     _this2.typing = _this2.typing.filter(function (val) {
@@ -40140,7 +40141,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         GetOnlineUsers: function GetOnlineUsers() {
-            this.$http.get('/get_online_group_users/' + this.groupId);
+            var _this4 = this;
+
+            this.$http.get('/get_online_group_users/' + this.groupId).then(function (response) {
+                if (response.status !== 200) _this4.onlineUsers = null;
+            }, function () {
+                _this4.onlineUsers = null;
+            });
         },
 
 
@@ -40154,7 +40161,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         onFileChange: function onFileChange(e) {
-            var _this4 = this;
+            var _this5 = this;
 
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
@@ -40162,7 +40169,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                _this4.photo = e.target.result;
+                _this5.photo = e.target.result;
                 document.getElementById("inputMessage").focus();
             };
 
@@ -40174,12 +40181,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         welcomeMessage: function welcomeMessage() {
             this.messages.push({
+                welcome: true,
                 id: this.user.id,
                 name: 'h i...',
                 avatar: null,
                 photo: null,
-                text: 'Be the first to send a message :)',
-                time: 'now'
+                text: 'Be the first person to send a message :)',
+                time: new Date()
             });
         },
 
@@ -40187,15 +40195,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         allMessages: function allMessages() {
-            var _this5 = this;
+            var _this6 = this;
 
             this.$http.get('/get_latest_group/' + this.groupId).then(function (response) {
                 if (response.status == 200) {
 
-                    if (response.data.length === 0) return _this5.welcomeMessage();
+                    if (response.data.length === 0) return _this6.welcomeMessage();
 
                     for (var i = 0; i < response.data.length; i++) {
-                        _this5.messages.push({
+                        _this6.messages.push({
                             id: response.data[i].user.id,
                             name: response.data[i].user.name,
                             avatar: response.data[i].user.avatar,
@@ -40207,7 +40215,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else {
                     // ...
                 }
-            }, function (response) {
+            }, function () {
                 // ...
             });
         },
@@ -40215,33 +40223,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ----------------------------------------------
 
-        addMessage: function addMessage(new_message) {
-            this.messages.push(new_message);
-            this.photo = null;
-            this.uploadImage = false;
-        },
-
-
-        // ----------------------------------------------
-
         getGroup: function getGroup() {
-            var _this6 = this;
+            var _this7 = this;
 
             this.$http.get('/get_group_chat/' + this.groupId).then(function (response) {
 
                 if (response.status == 200) {
 
-                    if (response.data === 0 || !response.data) return _this6.$router.push('/');
+                    if (response.data === 0 || !response.data) return _this7.$router.push('/');
 
-                    _this6.showChat = true;
+                    _this7.showChat = true;
 
-                    _this6.groupName = response.data.name;
-                    if (response.data.avatar) _this6.avatar = response.data.avatar;
+                    _this7.groupName = response.data.name;
+                    if (response.data.avatar) _this7.avatar = response.data.avatar;
                 } else {
-                    _this6.$router.push('/');
+                    _this7.$router.push('/');
                 }
             }, function () {
-                _this6.$router.push('/');
+                _this7.$router.push('/');
             });
         },
 
@@ -40296,16 +40295,23 @@ var render = function() {
                   _c("h1", { staticClass: "font-name" }, [
                     _vm._v(_vm._s(_vm.groupName))
                   ]),
-                  _c(
-                    "p",
-                    { staticClass: "font-online" },
-                    _vm._l(_vm.onlineUsers, function(onlineUser) {
-                      return _c("span", [
-                        _vm._v(_vm._s(onlineUser.name)),
+                  _vm.onlineUsers !== null
+                    ? _c(
+                        "p",
+                        { staticClass: "font-online" },
+                        _vm._l(_vm.onlineUsers, function(onlineUser) {
+                          return _c("span", [
+                            _vm._v(_vm._s(onlineUser.name)),
+                            _c("span", { staticClass: "green_font" }, [
+                              _vm._v("•")
+                            ])
+                          ])
+                        })
+                      )
+                    : _c("p", { staticClass: "font-online" }, [
+                        _vm._v("Online"),
                         _c("span", { staticClass: "green_font" }, [_vm._v("•")])
                       ])
-                    })
-                  )
                 ]),
                 _c("i", {
                   staticClass: "fa fa-whatsapp fa-lg",
@@ -40391,8 +40397,7 @@ var render = function() {
                   _vm.pushErrorMessage($event)
                 },
                 clearPhoto: _vm.hideModal,
-                showUpload: _vm.showImageModal,
-                pushMessage: _vm.addMessage
+                showUpload: _vm.showImageModal
               }
             })
           ],

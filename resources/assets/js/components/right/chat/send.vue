@@ -78,7 +78,7 @@
             // ----------------------------------------------
 
             responseMessage(type) {
-                if (type === 'error') this.emitMessage(this.photo, this.messageText, null);
+                if (type === 'error') this.emitMessage(this.photo, this.messageText);
                 this.$emit('clearPhoto');
                 this.messageText = '';
                 this.typing = false;
@@ -86,14 +86,14 @@
 
             // ----------------------------------------------
 
-            emitMessage(photo, message, time) {
+            emitMessage(photo, message) {
                 return this.$emit('errorMessages', {
                     id: this.user.id,
                     name: this.user.name,
                     avatar: this.user.avatar,
                     photo: photo,
                     text: message,
-                    time: time
+                    error: true
                 });
             },
 

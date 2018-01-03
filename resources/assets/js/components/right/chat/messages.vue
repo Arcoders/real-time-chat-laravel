@@ -16,7 +16,7 @@
                     img(:src='message_user.photo')
                 |  {{ message_user.text }}
 
-            .time(v-if='message_user.time') {{ message_user.time | moment("from", "now") }}
+            .time(v-if='!message_user.error') {{ message_user.time | moment("from", "now") }}
             .time(v-else)
                 i.material-icons.errorchat error
 

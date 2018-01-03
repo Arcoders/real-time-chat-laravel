@@ -6,10 +6,12 @@
                 avatar.img-head(:username='groupName', color='#fff', :src='avatar')
                 .chat-name
                     h1.font-name {{ groupName }}
-                    p.font-online
+                    p.font-online(v-if='onlineUsers !== null')
                         span(v-for='onlineUser in onlineUsers')
                             | {{ onlineUser.name }}
                             span.green_font &#8226;
+                    p.font-online(v-else) Online
+                        span.green_font &#8226;
                 i.fa.fa-whatsapp.fa-lg(aria-hidden='true')
 
             .wrap-content
@@ -40,8 +42,7 @@
                     :uploadImageState='uploadImage',
                     @showUpload='showImageModal',
                     :photo='photo',
-                    :uploadedPhoto='uploadedPhoto',
-                    @pushMessage='addMessage')
+                    :uploadedPhoto='uploadedPhoto')
 
 </template>
 
@@ -116,9 +117,9 @@
                 this.channel = this.$pusher.subscribe('room-' + this.groupId);
                 this.channel.bind('pushMessage', (data) => {
 
-                    this.typing = this.typing.filter(function (val) {
-                        return val['id'] !== data.user.id;
-                    });
+                    this.typing = this.typing.filter(val => val['id'] !== data.user.id);
+
+                    if (this.messages[0]['welcome']) this.messages.shift();
 
                     this.messages.push({
                         id: data.user.id,
@@ -143,16 +144,12 @@
             userTyping() {
                 this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
 
-                    for (let i in this.typing) {
-                        if (this.typing[i]['id'] === data.id) return;
-                    }
+                    for (let i in this.typing) if (this.typing[i]['id'] === data.id) return;
 
                     this.typing.push(data);
 
                     setTimeout(() => {
-                        this.typing = this.typing.filter(function (val) {
-                            return val['id'] !== data.id;
-                        });
+                        this.typing = this.typing.filter(val => val['id'] !== data.id);
                     }, 15000);
 
                 });
@@ -170,7 +167,11 @@
             // ----------------------------------------------
 
             GetOnlineUsers() {
-                this.$http.get('/get_online_group_users/' + this.groupId);
+                this.$http.get('/get_online_group_users/' + this.groupId).then(response => {
+                    if (response.status !== 200) this.onlineUsers = null;
+                }, () => {
+                    this.onlineUsers = null;
+                });
             },
 
             // ----------------------------------------------
@@ -199,12 +200,13 @@
 
             welcomeMessage() {
                 this.messages.push({
+                        welcome: true,
                         id: this.user.id,
                         name: 'h i...',
                         avatar: null,
                         photo: null,
-                        text: 'Be the first to send a message :)',
-                        time: 'now'
+                        text: 'Be the first person to send a message :)',
+                        time: new Date()
                     });
             },
 
@@ -231,18 +233,10 @@
                     } else {
                         // ...
                     }
-                }, response => {
+                }, () => {
                     // ...
                 });
 
-            },
-
-            // ----------------------------------------------
-
-            addMessage(new_message) {
-                this.messages.push(new_message);
-                this.photo = null;
-                this.uploadImage = false;
             },
 
             // ----------------------------------------------
