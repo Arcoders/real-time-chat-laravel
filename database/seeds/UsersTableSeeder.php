@@ -17,18 +17,21 @@ class UsersTableSeeder extends Seeder
             'name' => 'Ismael Haytam',
             'status' => 'Full Stack developer todo terreno',
             'email' => 'anonismaa@gmail.com',
+            'avatar' =>  null,
             'password' => bcrypt('secret')
         ]);
 
         factory(User::class)->create([
             'name' => 'Victor crack',
             'status' => 'Soy un amante de los juegos',
+            'avatar' =>  null,
             'email' => 'victor@gmail.com'
         ]);
 
         factory(User::class)->create([
             'name' => 'Marta Lopez',
             'status' => 'Lorem ipsum dolor set amet',
+            'avatar' =>  null,
             'email' => 'marta@gmail.com'
         ]);
 

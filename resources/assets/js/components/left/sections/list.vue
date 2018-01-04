@@ -32,7 +32,11 @@
                             | {{ group.name }}
                     p.font-preview
                         router-link(exact-active-class='active_message', :to="chatLink(group, 'group')")
-                            span(v-if='group[0]') {{ group[0].body | truncate(35) }}
+                            span(v-if='group[0]')
+                                span(v-if='group[0].body') {{ group[0].body | truncate(35) }}
+                                span(v-else-if='group[0].photo')
+                                    i.material-icons.photo photo
+                                    | a photo has been shared
                             span(v-else) Empty group...
 
 
@@ -64,6 +68,11 @@
         min-height: 50px;
         margin: 12px 20px;
         border-radius: 50%;
+    }
+    .photo {
+        margin-right: 5px;
+        color: #eeeeee;
+        font-size: 15px;
     }
 </style>
 
