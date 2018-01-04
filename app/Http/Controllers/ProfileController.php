@@ -33,8 +33,8 @@ class profileController extends Controller
         $user= Auth::user();
 
         $request->validate([
-            'name' => 'required|min:4|max:15',
-            'status' => 'required|min:4|max:30',
+            'name' => 'required|min:4|max:25',
+            'status' => 'required|min:4|max:70',
             'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000',
             'cover' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
         ]);

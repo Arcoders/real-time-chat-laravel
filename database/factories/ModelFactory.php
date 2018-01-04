@@ -17,12 +17,24 @@ $factory->define(App\User::class, function (Faker $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
+        'name' => $faker->firstName . ' ' . $faker->lastName,
         'email' => $faker->unique()->safeEmail,
         'status' => $faker->text(70),
-        'avatar' => $faker->imageUrl(640, 480),
-        'cover' => $faker->imageUrl(800, 400),
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10)
+    ];
+});
+
+$factory->define(App\Friendship::class, function (Faker $faker) {
+    return [
+        'requester' =>  function ()
+                        {
+                            return factory(\App\User::class)->create()->id;
+                        },
+        'user_requested' => function ()
+                            {
+                                return factory(\App\User::class)->create()->id;
+                            },
+        'status' => 0
     ];
 });
