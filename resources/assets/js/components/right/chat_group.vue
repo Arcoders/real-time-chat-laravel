@@ -1,17 +1,17 @@
 <template lang="pug">
     transition(name='slide-fade')
-        #right_app(v-if='showChat')
+        #right_app(v-if='showChat', @mouseleave="mouseLeave", @mouseout="mouseOut")
 
             .chat-head
                 avatar.img-head(:username='groupName', color='#fff', :src='avatar')
                 .chat-name
                     h1.font-name {{ groupName }}
-                    p.font-online(v-if='onlineUsers !== null')
+                    p.font-online(v-if='onlineUsers')
                         span(v-for='onlineUser in onlineUsers')
                             | {{ onlineUser.name }}
                             span.green_font &#8226;
                     p.font-online(v-else) Online
-                        span.green_font &#8226;
+                        span.red_font &#8226;
                 i.fa.fa-whatsapp.fa-lg(aria-hidden='true')
 
             .wrap-content
@@ -62,6 +62,11 @@
         margin: 0 7px;
         font-weight: bold;
     }
+    .red_font {
+        color: #E57373;
+        margin: 0 7px;
+        font-weight: bold;
+    }
 
 </style>
 
@@ -85,6 +90,7 @@
                 messages_ready: false,
                 latest: null,
                 typing: [],
+                hover: true,
                 onlineUsers: null
             }
         },
@@ -160,6 +166,7 @@
             UpdateOnlineUsers() {
                 this.channel = this.$pusher.subscribe('room-' + this.groupId);
                 this.channel.bind('onlineUsers', (data) => {
+                    if (data.length === 0) return this.onlineUsers = null;
                     this.onlineUsers = data;
                 });
             },
@@ -169,9 +176,22 @@
             GetOnlineUsers() {
                 this.$http.get('/get_online_group_users/' + this.groupId).then(response => {
                     if (response.status !== 200) this.onlineUsers = null;
-                }, () => {
-                    this.onlineUsers = null;
-                });
+                }, () => this.onlineUsers = null);
+            },
+
+            // ----------------------------------------------
+
+            mouseLeave() {
+                this.$http.get('/disconnect_user/' + this.groupId).then(this.hover = true);
+            },
+
+            // ----------------------------------------------
+
+            mouseOut() {
+                if (this.hover) {
+                    this.GetOnlineUsers();
+                    this.hover = false;
+                }
             },
 
             // ----------------------------------------------

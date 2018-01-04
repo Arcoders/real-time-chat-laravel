@@ -37768,7 +37768,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-078cca8e] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-078cca8e] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-078cca8e] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-078cca8e] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n.chat_avatar[data-v-078cca8e] {\n    width: 50px;\n    height: 50px;\n    min-width: 50px;\n    min-height: 50px;\n    margin: 12px 20px;\n    border-radius: 50%;\n}\n.photo[data-v-078cca8e] {\n    margin-right: 5px;\n    color: #eeeeee;\n    font-size: 15px;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-078cca8e] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-078cca8e] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-078cca8e] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-078cca8e] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n.chat_avatar[data-v-078cca8e] {\n    width: 50px;\n    height: 50px;\n    min-width: 50px;\n    min-height: 50px;\n    margin: 12px 20px;\n    border-radius: 50%;\n}\n.photo[data-v-078cca8e] {\n    margin-right: 5px;\n    color: #eeeeee;\n    font-size: 15px;\n}\n.time[data-v-078cca8e] {\n    margin-left: 5px;\n    color: #eeeeee;\n    font-size: 25px;\n}\n", ""]);
 
 // exports
 
@@ -37779,6 +37779,16 @@ exports.push([module.i, "\na[data-v-078cca8e] {\n    text-decoration: none;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -38090,8 +38100,15 @@ var render = function() {
                           [
                             group[0]
                               ? _c("span", [
-                                  group[0].body
+                                  group[0].body && group[0].photo
                                     ? _c("span", [
+                                        _c(
+                                          "i",
+                                          {
+                                            staticClass: "material-icons photo"
+                                          },
+                                          [_vm._v("photo")]
+                                        ),
                                         _vm._v(
                                           _vm._s(
                                             _vm._f("truncate")(
@@ -38101,19 +38118,30 @@ var render = function() {
                                           )
                                         )
                                       ])
-                                    : group[0].photo
+                                    : group[0].body
                                       ? _c("span", [
-                                          _c(
-                                            "i",
-                                            {
-                                              staticClass:
-                                                "material-icons photo"
-                                            },
-                                            [_vm._v("photo")]
-                                          ),
-                                          _vm._v("a photo has been shared")
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("truncate")(
+                                                group[0].body,
+                                                20
+                                              )
+                                            )
+                                          )
                                         ])
-                                      : _vm._e()
+                                      : group[0].photo
+                                        ? _c("span", [
+                                            _c(
+                                              "i",
+                                              {
+                                                staticClass:
+                                                  "material-icons photo"
+                                              },
+                                              [_vm._v("photo")]
+                                            ),
+                                            _vm._v("a photo has been shared")
+                                          ])
+                                        : _vm._e()
                                 ])
                               : _c("span", [_vm._v("Empty group...")])
                           ]
@@ -38123,7 +38151,19 @@ var render = function() {
                     )
                   ])
                 ]),
-                _vm._m(1, true)
+                _c("div", { staticClass: "contact-time" }, [
+                  group[0]
+                    ? _c("p", [
+                        _vm._v(
+                          _vm._s(_vm._f("moment")(group[0].created_at, "H:mm"))
+                        )
+                      ])
+                    : _c("p", [
+                        _c("i", { staticClass: "material-icons time" }, [
+                          _vm._v("access_time")
+                        ])
+                      ])
+                ])
               ],
               1
             )
@@ -38134,14 +38174,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -38556,7 +38588,7 @@ var render = function() {
               message_user.photo
                 ? _c("div", [_c("img", { attrs: { src: message_user.photo } })])
                 : _vm._e(),
-              _vm._v(" " + _vm._s(message_user.text))
+              _c("p", [_vm._v(" " + _vm._s(message_user.text))])
             ]),
             !message_user.error
               ? _c("div", { staticClass: "time" }, [
@@ -40042,7 +40074,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.dynamic_content[data-v-5c781822] {\n    height: calc(98vh - 165px);\n}\n.slide-fade-enter-active[data-v-5c781822] {\n    -webkit-transition: all .5s ease;\n    transition: all .5s ease;\n}\n.slide-fade-enter[data-v-5c781822], .slide-fade-leave-to[data-v-5c781822] {\n    -webkit-transform: translateX(5px);\n            transform: translateX(5px);\n    opacity: 0;\n}\n.green_font[data-v-5c781822] {\n    color: #009688;\n    margin: 0 7px;\n    font-weight: bold;\n}\n\n", ""]);
+exports.push([module.i, "\n.dynamic_content[data-v-5c781822] {\n    height: calc(98vh - 165px);\n}\n.slide-fade-enter-active[data-v-5c781822] {\n    -webkit-transition: all .5s ease;\n    transition: all .5s ease;\n}\n.slide-fade-enter[data-v-5c781822], .slide-fade-leave-to[data-v-5c781822] {\n    -webkit-transform: translateX(5px);\n            transform: translateX(5px);\n    opacity: 0;\n}\n.green_font[data-v-5c781822] {\n    color: #009688;\n    margin: 0 7px;\n    font-weight: bold;\n}\n.red_font[data-v-5c781822] {\n    color: #E57373;\n    margin: 0 7px;\n    font-weight: bold;\n}\n\n", ""]);
 
 // exports
 
@@ -40053,6 +40085,11 @@ exports.push([module.i, "\n.dynamic_content[data-v-5c781822] {\n    height: calc
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -40140,6 +40177,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             messages_ready: false,
             latest: null,
             typing: [],
+            hover: true,
             onlineUsers: null
         };
     },
@@ -40228,6 +40266,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.channel = this.$pusher.subscribe('room-' + this.groupId);
             this.channel.bind('onlineUsers', function (data) {
+                if (data.length === 0) return _this3.onlineUsers = null;
                 _this3.onlineUsers = data;
             });
         },
@@ -40241,8 +40280,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$http.get('/get_online_group_users/' + this.groupId).then(function (response) {
                 if (response.status !== 200) _this4.onlineUsers = null;
             }, function () {
-                _this4.onlineUsers = null;
+                return _this4.onlineUsers = null;
             });
+        },
+
+
+        // ----------------------------------------------
+
+        mouseLeave: function mouseLeave() {
+            this.$http.get('/disconnect_user/' + this.groupId).then(this.hover = true);
+        },
+
+
+        // ----------------------------------------------
+
+        mouseOut: function mouseOut() {
+            if (this.hover) {
+                this.GetOnlineUsers();
+                this.hover = false;
+            }
         },
 
 
@@ -40372,7 +40428,10 @@ var render = function() {
     _vm.showChat
       ? _c(
           "div",
-          { attrs: { id: "right_app" } },
+          {
+            attrs: { id: "right_app" },
+            on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
+          },
           [
             _c(
               "div",
@@ -40390,7 +40449,7 @@ var render = function() {
                   _c("h1", { staticClass: "font-name" }, [
                     _vm._v(_vm._s(_vm.groupName))
                   ]),
-                  _vm.onlineUsers !== null
+                  _vm.onlineUsers
                     ? _c(
                         "p",
                         { staticClass: "font-online" },
@@ -40405,7 +40464,7 @@ var render = function() {
                       )
                     : _c("p", { staticClass: "font-online" }, [
                         _vm._v("Online"),
-                        _c("span", { staticClass: "green_font" }, [_vm._v("•")])
+                        _c("span", { staticClass: "red_font" }, [_vm._v("•")])
                       ])
                 ]),
                 _c("i", {

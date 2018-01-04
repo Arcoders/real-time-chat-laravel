@@ -14,7 +14,7 @@
             .content
                 div(v-if='message_user.photo')
                     img(:src='message_user.photo')
-                |  {{ message_user.text }}
+                p  {{ message_user.text }}
 
             .time(v-if='!message_user.error') {{ message_user.time | moment("from", "now") }}
             .time(v-else)

@@ -11,7 +11,7 @@ class OnlineInGroupsController extends Controller
 {
     use TriggerPusher;
 
-    public function OnlineGroupUsers(Request $request)
+    public function onlineGroupUsers(Request $request)
     {
 
         $user = Auth::user();
@@ -29,6 +29,12 @@ class OnlineInGroupsController extends Controller
 
         $this->updateOnlineUsers($request->group_id);
 
+    }
+
+    public function disconnectUser(Request $request)
+    {
+        OnlineGroup::where('user_id', Auth::user()->id)->delete();
+        $this->updateOnlineUsers($request->group_id);
     }
 
     protected function updateOnlineUsers($group_id)
