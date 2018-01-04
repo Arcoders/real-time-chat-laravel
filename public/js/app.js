@@ -37793,6 +37793,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -38023,7 +38025,11 @@ var render = function() {
                               to: _vm.chatLink(group, "group")
                             }
                           },
-                          [_vm._v("Hola muy buenas")]
+                          [
+                            group[0]
+                              ? _c("span", [_vm._v(_vm._s(group[0].body))])
+                              : _c("span", [_vm._v("Empty group...")])
+                          ]
                         )
                       ],
                       1
