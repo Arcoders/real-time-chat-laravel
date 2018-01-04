@@ -30,14 +30,5 @@ class FriendsTableSeeder extends Seeder
             'status' => 1
         ]);
 
-
-        foreach(range(4, 20) as $i) {
-            factory(\App\Friendship::class)->create([
-                'requester' =>  rand(1, 20),
-                'user_requested' => $i,
-                'status' => rand(0, 1)
-            ]);
-        }
-
     }
 }

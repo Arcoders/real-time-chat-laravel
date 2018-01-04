@@ -38,3 +38,13 @@ $factory->define(App\Friendship::class, function (Faker $faker) {
         'status' => 0
     ];
 });
+
+$factory->define(App\Group::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'user_id' => function ()
+                     {
+                        return factory(\App\User::class)->create()->id;
+                     },
+    ];
+});

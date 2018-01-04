@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'marta@gmail.com'
         ]);
 
-        factory(User::class, 20)->create();
+        factory(User::class, 12)->create();
 
     }
 }
