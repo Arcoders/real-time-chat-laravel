@@ -32,7 +32,7 @@
                             | {{ group.name }}
                     p.font-preview
                         router-link(exact-active-class='active_message', :to="chatLink(group, 'group')")
-                            span(v-if='group[0]') {{ group[0].body }}
+                            span(v-if='group[0]') {{ group[0].body | truncate(35) }}
                             span(v-else) Empty group...
 
 
