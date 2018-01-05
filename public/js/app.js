@@ -16726,22 +16726,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_multiselect__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_chat_scroll__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_chat_scroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_chat_scroll__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_chat_group_vue__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_right_chat_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_right_chat_group_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_right_bienvenido_vue__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_right_bienvenido_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_right_bienvenido_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_right_profile_profile_vue__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_right_profile_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_right_profile_profile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_right_profile_edit_profile__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_right_profile_edit_profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_right_profile_edit_profile__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_groups_manage_groups_vue__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_groups_manage_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_right_groups_manage_groups_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_groups_my_groups_vue__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_groups_my_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_right_groups_my_groups_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_right_groups_add_group_vue__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_right_groups_add_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_right_groups_add_group_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_right_groups_edit_group_vue__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_right_groups_edit_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_right_groups_edit_group_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_resource__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_pusher__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_pusher___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_pusher__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_moment__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_truncate_filter__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_truncate_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vue_truncate_filter__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_chat_group_vue__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_right_chat_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_right_chat_group_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_bienvenido_vue__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_bienvenido_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_right_bienvenido_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_right_profile_profile_vue__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_right_profile_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_right_profile_profile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_right_profile_edit_profile__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_right_profile_edit_profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_right_profile_edit_profile__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_right_groups_manage_groups_vue__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_right_groups_manage_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_right_groups_manage_groups_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_right_groups_my_groups_vue__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_right_groups_my_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_right_groups_my_groups_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_right_groups_add_group_vue__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_right_groups_add_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_right_groups_add_group_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_right_groups_edit_group_vue__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_right_groups_edit_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__components_right_groups_edit_group_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -16756,19 +16763,20 @@ window.Vue = __webpack_require__(126);
 
 
 
-var VueResource = __webpack_require__(134);
-var VuePusher = __webpack_require__(136);
-var VueMoment = __webpack_require__(138);
-var VueTruncate = __webpack_require__(141);
+
+
+
+
+
 var CSRF = document.getElementById('csrf-token').getAttribute('content');
 
 window.Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
-window.Vue.use(VueResource);
-window.Vue.use(VueMoment);
-window.Vue.use(VueTruncate);
+window.Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_resource__["a" /* default */]);
+window.Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_moment___default.a);
+window.Vue.use(__WEBPACK_IMPORTED_MODULE_7_vue_truncate_filter___default.a);
 window.Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_chat_scroll___default.a);
 
-window.Vue.use(VuePusher, {
+window.Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_pusher___default.a, {
     api_key: '60efd870de38efff2291',
     options: {
         cluster: 'eu',
@@ -16824,13 +16832,13 @@ Vue.component('multiselect', __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___defau
 // Define some routes
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_5__components_right_bienvenido_vue___default.a }, {
-        path: '/profile', component: __WEBPACK_IMPORTED_MODULE_6__components_right_profile_profile_vue___default.a,
-        children: [{ path: 'edit', component: __WEBPACK_IMPORTED_MODULE_7__components_right_profile_edit_profile___default.a }]
+    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_9__components_right_bienvenido_vue___default.a }, {
+        path: '/profile', component: __WEBPACK_IMPORTED_MODULE_10__components_right_profile_profile_vue___default.a,
+        children: [{ path: 'edit', component: __WEBPACK_IMPORTED_MODULE_11__components_right_profile_edit_profile___default.a }]
     }, {
-        path: '/groups', component: __WEBPACK_IMPORTED_MODULE_8__components_right_groups_manage_groups_vue___default.a,
-        children: [{ path: 'my', component: __WEBPACK_IMPORTED_MODULE_9__components_right_groups_my_groups_vue___default.a }, { path: 'add', component: __WEBPACK_IMPORTED_MODULE_10__components_right_groups_add_group_vue___default.a }, { path: 'my/:group_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_11__components_right_groups_edit_group_vue___default.a, name: 'edit_group' }]
-    }, { path: '/friend/:friend_id/:friend_name', component: __WEBPACK_IMPORTED_MODULE_4__components_right_chat_group_vue___default.a, name: 'friend' }, { path: '/group/:group_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_4__components_right_chat_group_vue___default.a, name: 'group' }]
+        path: '/groups', component: __WEBPACK_IMPORTED_MODULE_12__components_right_groups_manage_groups_vue___default.a,
+        children: [{ path: 'my', component: __WEBPACK_IMPORTED_MODULE_13__components_right_groups_my_groups_vue___default.a }, { path: 'add', component: __WEBPACK_IMPORTED_MODULE_14__components_right_groups_add_group_vue___default.a }, { path: 'my/:group_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_15__components_right_groups_edit_group_vue___default.a, name: 'edit_group' }]
+    }, { path: '/friend/:friend_id/:friend_name', component: __WEBPACK_IMPORTED_MODULE_8__components_right_chat_group_vue___default.a, name: 'friend' }, { path: '/group/:group_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_8__components_right_chat_group_vue___default.a, name: 'group' }]
 });
 
 new Vue({
@@ -30810,10 +30818,9 @@ return VueChatScroll;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Url", function() { return Url; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Http", function() { return Http; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Resource", function() { return Resource; });
+/* unused harmony export Url */
+/* unused harmony export Http */
+/* unused harmony export Resource */
 /*!
  * vue-resource v1.3.5
  * https://github.com/pagekit/vue-resource
@@ -32380,7 +32387,7 @@ if (typeof window !== 'undefined' && window.Vue) {
     window.Vue.use(plugin);
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (plugin);
+/* harmony default export */ __webpack_exports__["a"] = (plugin);
 
 
 

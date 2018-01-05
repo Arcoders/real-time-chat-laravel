@@ -12,10 +12,11 @@ import Avatar from 'vue-avatar';
 import Multiselect from 'vue-multiselect';
 import VueChatScroll from 'vue-chat-scroll';
 
-const VueResource = require('vue-resource');
-const VuePusher = require('vue-pusher');
-const VueMoment = require('vue-moment');
-const VueTruncate = require('vue-truncate-filter');
+import VueResource from 'vue-resource';
+import VuePusher from 'vue-pusher';
+import VueMoment from 'vue-moment';
+import VueTruncate from 'vue-truncate-filter';
+
 const CSRF = document.getElementById('csrf-token').getAttribute('content');
 
 window.Vue.use(VueRouter);
