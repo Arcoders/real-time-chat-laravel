@@ -136,10 +136,7 @@
                         time: data.message.created_at
                     });
 
-                    window.setTimeout( () => {
-                        let elem = window.document.getElementById('chat');
-                        elem.scrollTop = elem.scrollHeight;
-                    }, 500);
+                    this.scrollDown('chat');
 
                 });
             },
@@ -148,6 +145,7 @@
 
             pushErrorMessage(data) {
                 this.messages.push(data);
+                this.scrollDown('chat');
             },
 
             // ----------------------------------------------
@@ -293,6 +291,15 @@
                 this.photo = null;
                 this.uploadImage = false
             },
+
+            // ----------------------------------------------
+
+            scrollDown(id) {
+                window.setTimeout( () => {
+                    let elem = window.document.getElementById(id);
+                    elem.scrollTop = elem.scrollHeight;
+                }, 500);
+            }
 
             // ----------------------------------------------
 
