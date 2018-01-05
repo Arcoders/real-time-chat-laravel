@@ -10,17 +10,19 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router';
 import Avatar from 'vue-avatar';
 import Multiselect from 'vue-multiselect';
+import VueChatScroll from 'vue-chat-scroll';
 
 const VueResource = require('vue-resource');
 const VuePusher = require('vue-pusher');
 const VueMoment = require('vue-moment');
-const VueTruncate = require('vue-truncate-filter')
+const VueTruncate = require('vue-truncate-filter');
 const CSRF = document.getElementById('csrf-token').getAttribute('content');
 
 window.Vue.use(VueRouter);
 window.Vue.use(VueResource);
 window.Vue.use(VueMoment);
 window.Vue.use(VueTruncate);
+window.Vue.use(VueChatScroll);
 
 window.Vue.use(VuePusher, {
     api_key: '60efd870de38efff2291',

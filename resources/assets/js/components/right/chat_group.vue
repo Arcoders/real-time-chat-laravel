@@ -16,7 +16,7 @@
 
             .wrap-content
 
-                .dynamic_content.chat
+                .dynamic_content.chat(v-chat-scroll='')
                     messages(:messages='messages', :user='user', :usersTyping="typing")
 
                 .upload_foto(v-if='uploadImage')
