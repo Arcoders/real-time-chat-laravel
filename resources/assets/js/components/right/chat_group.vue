@@ -16,7 +16,7 @@
 
             .wrap-content
 
-                .dynamic_content.chat(v-chat-scroll='')
+                .dynamic_content.chat#chat(v-chat-scroll='')
                     messages(:messages='messages', :user='user', :usersTyping="typing")
 
                 .upload_foto(v-if='uploadImage')
@@ -135,6 +135,11 @@
                         text: data.message.body,
                         time: data.message.created_at
                     });
+
+                    window.setTimeout( () => {
+                        let elem = window.document.getElementById('chat');
+                        elem.scrollTop = elem.scrollHeight;
+                    }, 500);
 
                 });
             },
