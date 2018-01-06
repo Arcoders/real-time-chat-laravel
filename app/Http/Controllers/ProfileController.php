@@ -22,7 +22,12 @@ class profileController extends Controller
 
     public function getUsers()
     {
-        $users = User::all()->except(Auth::id());
+        $friends = Auth::user()->friends();
+        $myId = Auth::id();
+
+        array_push($friends, $myId);
+
+        $users = User::all()->except($friends);
 
         if ($users) return response()->json($users, 200);
     }
