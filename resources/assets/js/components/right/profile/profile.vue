@@ -33,7 +33,6 @@
                         h1 {{ userName }}
                         h2 FullStack Developer
                         h3 {{ userStatus }}
-                        h3 {{ userId }}
 
                     .manage_users(v-if='!profileId')
 
