@@ -77,7 +77,7 @@
     {
         width: 100%;
         height: auto;
-        background-color:#fbfbfb;
+        background-color:#ffffff;
         box-shadow:1px 1px 2px #777777;
         display: flex;
         text-align: left;

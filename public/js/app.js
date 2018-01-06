@@ -40934,7 +40934,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.complete_dynamic_content[data-v-3f8256ef] {\n    padding: 0;\n}\n.big_icon[data-v-3f8256ef] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\n.contener_txt[data-v-3f8256ef]\n{\n    width: 100%;\n    height: auto;\n    background-color:#fbfbfb;\n    -webkit-box-shadow:1px 1px 2px #777777;\n            box-shadow:1px 1px 2px #777777;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    text-align: left;\n}\n.name > button[data-v-3f8256ef] {\n    color: #777777;\n    font-size: 14px;\n}\n\n", ""]);
+exports.push([module.i, "\n.complete_dynamic_content[data-v-3f8256ef] {\n    padding: 0;\n}\n.big_icon[data-v-3f8256ef] {\n    margin: 10px 20px;\n    border-radius: 50%;\n    font-size: 40px;\n    color: #777777;\n}\n.contener_txt[data-v-3f8256ef]\n{\n    width: 100%;\n    height: auto;\n    background-color:#ffffff;\n    -webkit-box-shadow:1px 1px 2px #777777;\n            box-shadow:1px 1px 2px #777777;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    text-align: left;\n}\n.name > button[data-v-3f8256ef] {\n    color: #777777;\n    font-size: 14px;\n}\n\n", ""]);
 
 // exports
 
