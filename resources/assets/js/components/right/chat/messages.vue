@@ -5,6 +5,7 @@
                     v-bind:class="[checkId(message_user.id) ? 'me' : 'you', 'chat-bubble']")
 
                 div(v-bind:class="checkId(message_user.id) ? 'my-mouth' : 'your-mouth'")
+
                     avatar(:username='message_user.name',
                             color='#fff',
                             :size='45',
@@ -46,6 +47,14 @@
 
         // ----------------------------------------------
 
+        data() {
+            return {
+                messagesIds: []
+            }
+        },
+
+        // ----------------------------------------------
+
         mounted() {
             console.log('Messages ok!');
         },
@@ -53,9 +62,15 @@
         // ----------------------------------------------
 
         methods: {
+
+            // ----------------------------------------------
+
             checkId(message_user_id) {
                 return (this.user.id == message_user_id);
-            }
+            },
+
+            // ----------------------------------------------
+
         }
 
         // ----------------------------------------------

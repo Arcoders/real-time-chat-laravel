@@ -38580,12 +38580,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     // ----------------------------------------------
 
     props: ['user', 'messages', 'usersTyping'],
+
+    // ----------------------------------------------
+
+    data: function data() {
+        return {
+            messagesIds: []
+        };
+    },
+
 
     // ----------------------------------------------
 
@@ -38597,6 +38607,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ----------------------------------------------
 
     methods: {
+
+        // ----------------------------------------------
+
         checkId: function checkId(message_user_id) {
             return this.user.id == message_user_id;
         }
