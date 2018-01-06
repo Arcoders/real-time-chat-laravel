@@ -115,7 +115,7 @@
         // ---------------------------------------------------
 
         mounted() {
-            this.getUsers();
+            this.profileByParameter();
             console.log('Profile ok!');
         },
 
@@ -185,6 +185,13 @@
 
             checkCover(cover) {
                 return (cover) ? cover : '/images/default/default_cover.jpg';
+            },
+
+            // ---------------------------------------------------
+
+            profileByParameter() {
+                if (this.profileId) return this.getProfile(this.profileId);
+                this.getUsers();
             }
 
             // ---------------------------------------------------

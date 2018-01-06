@@ -41063,7 +41063,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ---------------------------------------------------
 
     mounted: function mounted() {
-        this.getUsers();
+        this.profileByParameter();
         console.log('Profile ok!');
     },
 
@@ -41138,6 +41138,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         checkCover: function checkCover(cover) {
             return cover ? cover : '/images/default/default_cover.jpg';
+        },
+
+
+        // ---------------------------------------------------
+
+        profileByParameter: function profileByParameter() {
+            if (this.profileId) return this.getProfile(this.profileId);
+            this.getUsers();
         }
 
         // ---------------------------------------------------
