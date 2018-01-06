@@ -420,6 +420,11 @@ button[disabled]{
     height: 100%;
 }
 
+.widget_100
+{
+    width: 100% !important;
+}
+
 .cover
 {
     height: 300px;

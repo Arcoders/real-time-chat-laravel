@@ -17,7 +17,7 @@
         .complet-content
             .complete_dynamic_content
                 .information
-                    .widget
+                    .widget(v-bind:class="{ widget_100: profileId }")
                         .cover
                             img(:src='cover')
 
@@ -35,7 +35,7 @@
                         h3 {{ userStatus }}
                         h3 {{ userId }}
 
-                    .manage_users
+                    .manage_users(v-if='!profileId')
 
                         router-view(:user='user', @previewImage='updateImage', @modelInfo='updateInfo')
 

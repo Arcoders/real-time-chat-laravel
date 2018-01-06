@@ -41197,7 +41197,7 @@ var render = function() {
         _c("div", { staticClass: "information" }, [
           _c(
             "div",
-            { staticClass: "widget" },
+            { staticClass: "widget", class: { widget_100: _vm.profileId } },
             [
               _c(
                 "div",
@@ -41231,69 +41231,74 @@ var render = function() {
             ],
             1
           ),
-          _c(
-            "div",
-            { staticClass: "manage_users" },
-            [
-              _c("router-view", {
-                attrs: { user: _vm.user },
-                on: { previewImage: _vm.updateImage, modelInfo: _vm.updateInfo }
-              }),
-              _vm._l(_vm.users, function(user) {
-                return _vm.pathEdit
-                  ? _c(
-                      "div",
-                      { staticClass: "contener_txt" },
-                      [
-                        _c("avatar", {
-                          staticClass: "img-head",
-                          attrs: {
-                            username: user.name,
-                            color: "#fff",
-                            src: user.avatar,
-                            size: 50
-                          }
-                        }),
-                        _c("div", { staticClass: "name" }, [
-                          _c(
-                            "button",
-                            {
-                              on: {
-                                click: function($event) {
-                                  _vm.getProfile(user.id)
-                                }
+          !_vm.profileId
+            ? _c(
+                "div",
+                { staticClass: "manage_users" },
+                [
+                  _c("router-view", {
+                    attrs: { user: _vm.user },
+                    on: {
+                      previewImage: _vm.updateImage,
+                      modelInfo: _vm.updateInfo
+                    }
+                  }),
+                  _vm._l(_vm.users, function(user) {
+                    return _vm.pathEdit
+                      ? _c(
+                          "div",
+                          { staticClass: "contener_txt" },
+                          [
+                            _c("avatar", {
+                              staticClass: "img-head",
+                              attrs: {
+                                username: user.name,
+                                color: "#fff",
+                                src: user.avatar,
+                                size: 50
                               }
-                            },
-                            [_vm._v(_vm._s(user.name))]
-                          )
-                        ])
-                      ],
-                      1
-                    )
-                  : _vm._e()
-              }),
-              !_vm.records && _vm.pathEdit
-                ? _c(
-                    "div",
-                    { staticClass: "contener_txt" },
-                    [
-                      _c("avatar", {
-                        staticClass: "img-head",
-                        attrs: {
-                          username: "!",
-                          color: "#fff",
-                          size: 50,
-                          backgroundColor: "#E57373"
-                        }
-                      }),
-                      _vm._m(0)
-                    ],
-                    1
-                  )
-                : _vm._e()
-            ],
-            2
-          )
+                            }),
+                            _c("div", { staticClass: "name" }, [
+                              _c(
+                                "button",
+                                {
+                                  on: {
+                                    click: function($event) {
+                                      _vm.getProfile(user.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v(_vm._s(user.name))]
+                              )
+                            ])
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  }),
+                  !_vm.records && _vm.pathEdit
+                    ? _c(
+                        "div",
+                        { staticClass: "contener_txt" },
+                        [
+                          _c("avatar", {
+                            staticClass: "img-head",
+                            attrs: {
+                              username: "!",
+                              color: "#fff",
+                              size: 50,
+                              backgroundColor: "#E57373"
+                            }
+                          }),
+                          _vm._m(0)
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ],
+                2
+              )
+            : _vm._e()
         ])
       ])
     ])
