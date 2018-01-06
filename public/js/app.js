@@ -16833,7 +16833,7 @@ Vue.component('multiselect', __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___defau
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_9__components_right_bienvenido_vue___default.a }, {
-        path: '/profile', component: __WEBPACK_IMPORTED_MODULE_10__components_right_profile_profile_vue___default.a,
+        path: '/profile/:profile_id?', component: __WEBPACK_IMPORTED_MODULE_10__components_right_profile_profile_vue___default.a,
         children: [{ path: 'edit', component: __WEBPACK_IMPORTED_MODULE_11__components_right_profile_edit_profile___default.a }]
     }, {
         path: '/groups', component: __WEBPACK_IMPORTED_MODULE_12__components_right_groups_manage_groups_vue___default.a,
@@ -41053,6 +41053,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             userName: this.user.name,
             userStatus: this.user.status,
             userId: this.user.id,
+            profileId: this.$route.params.profile_id,
             avatar: this.user.avatar,
             cover: this.checkCover(this.user.cover)
         };

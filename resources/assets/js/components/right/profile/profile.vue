@@ -106,6 +106,7 @@
                 userName: this.user.name,
                 userStatus: this.user.status,
                 userId: this.user.id,
+                profileId: this.$route.params.profile_id,
                 avatar: this.user.avatar,
                 cover: this.checkCover(this.user.cover)
             }
