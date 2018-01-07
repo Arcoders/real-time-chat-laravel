@@ -46,7 +46,7 @@
             .contact-time
                 p(v-if='group[0]') {{ group[0].created_at | moment('H:mm') }}
                 p(v-else)
-                    i.material-icons.time access_time
+                    i.material-icons.time fiber_new
 
 </template>
 

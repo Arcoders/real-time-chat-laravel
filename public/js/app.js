@@ -38219,7 +38219,7 @@ var render = function() {
                       ])
                     : _c("p", [
                         _c("i", { staticClass: "material-icons time" }, [
-                          _vm._v("access_time")
+                          _vm._v("fiber_new")
                         ])
                       ])
                 ])
@@ -41035,7 +41035,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -41224,8 +41223,7 @@ var render = function() {
                 }
               }),
               _c("h1", [_vm._v(_vm._s(_vm.userName))]),
-              _c("h2", [_vm._v("FullStack Developer")]),
-              _c("h3", [_vm._v(_vm._s(_vm.userStatus))])
+              _c("h2", [_vm._v(_vm._s(_vm.userStatus))])
             ],
             1
           ),

@@ -31,8 +31,7 @@
                                         :size='100')
 
                         h1 {{ userName }}
-                        h2 FullStack Developer
-                        h3 {{ userStatus }}
+                        h2 {{ userStatus }}
 
                     .manage_users(v-if='!profileId')
 
