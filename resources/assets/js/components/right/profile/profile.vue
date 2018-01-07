@@ -16,6 +16,7 @@
 
         .complet-content
             .complete_dynamic_content
+                loading(v-if='loading')
                 .information
                     .widget(v-bind:class="{ widget_100: profileId }")
                         .cover
@@ -101,12 +102,13 @@
             return {
                 users: [],
                 records: true,
-                userName: this.user.name,
-                userStatus: this.user.status,
-                userId: this.user.id,
+                userName: '',
+                userStatus: '',
+                userId: null,
                 profileId: this.$route.params.profile_id,
-                avatar: this.user.avatar,
-                cover: this.checkCover(this.user.cover)
+                avatar: null,
+                cover: null,
+                loading: false
             }
         },
 
@@ -120,6 +122,19 @@
         // ---------------------------------------------------
 
         methods: {
+
+            // ---------------------------------------------------
+
+            setUserInfo() {
+                if (this.profileId) return;
+
+                this.userName = this.user.name;
+                this.userStatus = this.user.status;
+                this.userId = this.user.id;
+                this.profileId = this.$route.params.profile_id;
+                this.avatar = this.user.avatar;
+                this.cover = this.checkCover(this.user.cover);
+            },
 
             // ---------------------------------------------------
 
@@ -138,11 +153,12 @@
             // ---------------------------------------------------
 
             getProfile(id) {
+                this.loading = true;
                 this.$http.get('/get_profile/' + id).then(response => {
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
 
-                        if (response.data == 0) return this.$router.push('/profile');
+                        if (response.data === 0 || response.data === '') return this.$router.push('/profile');
 
                         this.userId = response.data.id;
                         this.userName = response.data.name;
@@ -154,7 +170,10 @@
                         this.$router.push('/profile');
                     }
 
+                    this.loading = false;
+
                 }, () => {
+                    this.loading = false;
                     this.$router.push('/profile');
                 });
             },
@@ -188,8 +207,13 @@
             // ---------------------------------------------------
 
             profileByParameter() {
-                if (this.profileId) return this.getProfile(this.profileId);
-                this.getUsers();
+                if (this.profileId) {
+                    if (!isNaN(this.profileId)) return this.getProfile(this.profileId);
+                    this.$router.push('/profile');
+                } else {
+                    this.setUserInfo();
+                    this.getUsers();
+                }
             }
 
             // ---------------------------------------------------

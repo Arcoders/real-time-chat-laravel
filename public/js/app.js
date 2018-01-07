@@ -41035,6 +41035,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -41048,12 +41049,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             users: [],
             records: true,
-            userName: this.user.name,
-            userStatus: this.user.status,
-            userId: this.user.id,
+            userName: '',
+            userStatus: '',
+            userId: null,
             profileId: this.$route.params.profile_id,
-            avatar: this.user.avatar,
-            cover: this.checkCover(this.user.cover)
+            avatar: null,
+            cover: null,
+            loading: false
         };
     },
 
@@ -41069,6 +41071,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ---------------------------------------------------
 
     methods: {
+
+        // ---------------------------------------------------
+
+        setUserInfo: function setUserInfo() {
+            if (this.profileId) return;
+
+            this.userName = this.user.name;
+            this.userStatus = this.user.status;
+            this.userId = this.user.id;
+            this.profileId = this.$route.params.profile_id;
+            this.avatar = this.user.avatar;
+            this.cover = this.checkCover(this.user.cover);
+        },
+
 
         // ---------------------------------------------------
 
@@ -41091,11 +41107,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getProfile: function getProfile(id) {
             var _this = this;
 
+            this.loading = true;
             this.$http.get('/get_profile/' + id).then(function (response) {
 
-                if (response.status == 200) {
+                if (response.status === 200) {
 
-                    if (response.data == 0) return _this.$router.push('/profile');
+                    if (response.data === 0 || response.data === '') return _this.$router.push('/profile');
 
                     _this.userId = response.data.id;
                     _this.userName = response.data.name;
@@ -41105,7 +41122,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else {
                     _this.$router.push('/profile');
                 }
+
+                _this.loading = false;
             }, function () {
+                _this.loading = false;
                 _this.$router.push('/profile');
             });
         },
@@ -41142,8 +41162,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         profileByParameter: function profileByParameter() {
-            if (this.profileId) return this.getProfile(this.profileId);
-            this.getUsers();
+            if (this.profileId) {
+                if (!isNaN(this.profileId)) return this.getProfile(this.profileId);
+                this.$router.push('/profile');
+            } else {
+                this.setUserInfo();
+                this.getUsers();
+            }
         }
 
         // ---------------------------------------------------
@@ -41191,56 +41216,92 @@ var render = function() {
       1
     ),
     _c("div", { staticClass: "complet-content" }, [
-      _c("div", { staticClass: "complete_dynamic_content" }, [
-        _c("div", { staticClass: "information" }, [
-          _c(
-            "div",
-            { staticClass: "widget", class: { widget_100: _vm.profileId } },
-            [
-              _c(
-                "div",
-                { staticClass: "cover" },
-                [
-                  _c("img", { attrs: { src: _vm.cover } }),
-                  _vm.user.id != _vm.userId
-                    ? _c("friendship", {
-                        attrs: {
-                          my_id: _vm.user.id,
-                          profile_user_id: _vm.userId
-                        }
-                      })
-                    : _vm._e()
-                ],
-                1
-              ),
-              _c("avatar", {
-                staticClass: "photo",
-                attrs: {
-                  username: _vm.userName,
-                  color: "#fff",
-                  src: _vm.avatar,
-                  size: 100
-                }
-              }),
-              _c("h1", [_vm._v(_vm._s(_vm.userName))]),
-              _c("h2", [_vm._v(_vm._s(_vm.userStatus))])
-            ],
-            1
-          ),
-          !_vm.profileId
-            ? _c(
-                "div",
-                { staticClass: "manage_users" },
-                [
-                  _c("router-view", {
-                    attrs: { user: _vm.user },
-                    on: {
-                      previewImage: _vm.updateImage,
-                      modelInfo: _vm.updateInfo
-                    }
-                  }),
-                  _vm._l(_vm.users, function(user) {
-                    return _vm.pathEdit
+      _c(
+        "div",
+        { staticClass: "complete_dynamic_content" },
+        [
+          _vm.loading ? _c("loading") : _vm._e(),
+          _c("div", { staticClass: "information" }, [
+            _c(
+              "div",
+              { staticClass: "widget", class: { widget_100: _vm.profileId } },
+              [
+                _c(
+                  "div",
+                  { staticClass: "cover" },
+                  [
+                    _c("img", { attrs: { src: _vm.cover } }),
+                    _vm.user.id != _vm.userId
+                      ? _c("friendship", {
+                          attrs: {
+                            my_id: _vm.user.id,
+                            profile_user_id: _vm.userId
+                          }
+                        })
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _c("avatar", {
+                  staticClass: "photo",
+                  attrs: {
+                    username: _vm.userName,
+                    color: "#fff",
+                    src: _vm.avatar,
+                    size: 100
+                  }
+                }),
+                _c("h1", [_vm._v(_vm._s(_vm.userName))]),
+                _c("h2", [_vm._v(_vm._s(_vm.userStatus))])
+              ],
+              1
+            ),
+            !_vm.profileId
+              ? _c(
+                  "div",
+                  { staticClass: "manage_users" },
+                  [
+                    _c("router-view", {
+                      attrs: { user: _vm.user },
+                      on: {
+                        previewImage: _vm.updateImage,
+                        modelInfo: _vm.updateInfo
+                      }
+                    }),
+                    _vm._l(_vm.users, function(user) {
+                      return _vm.pathEdit
+                        ? _c(
+                            "div",
+                            { staticClass: "contener_txt" },
+                            [
+                              _c("avatar", {
+                                staticClass: "img-head",
+                                attrs: {
+                                  username: user.name,
+                                  color: "#fff",
+                                  src: user.avatar,
+                                  size: 50
+                                }
+                              }),
+                              _c("div", { staticClass: "name" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    on: {
+                                      click: function($event) {
+                                        _vm.getProfile(user.id)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(user.name))]
+                                )
+                              ])
+                            ],
+                            1
+                          )
+                        : _vm._e()
+                    }),
+                    !_vm.records && _vm.pathEdit
                       ? _c(
                           "div",
                           { staticClass: "contener_txt" },
@@ -41248,55 +41309,25 @@ var render = function() {
                             _c("avatar", {
                               staticClass: "img-head",
                               attrs: {
-                                username: user.name,
+                                username: "!",
                                 color: "#fff",
-                                src: user.avatar,
-                                size: 50
+                                size: 50,
+                                backgroundColor: "#E57373"
                               }
                             }),
-                            _c("div", { staticClass: "name" }, [
-                              _c(
-                                "button",
-                                {
-                                  on: {
-                                    click: function($event) {
-                                      _vm.getProfile(user.id)
-                                    }
-                                  }
-                                },
-                                [_vm._v(_vm._s(user.name))]
-                              )
-                            ])
+                            _vm._m(0)
                           ],
                           1
                         )
                       : _vm._e()
-                  }),
-                  !_vm.records && _vm.pathEdit
-                    ? _c(
-                        "div",
-                        { staticClass: "contener_txt" },
-                        [
-                          _c("avatar", {
-                            staticClass: "img-head",
-                            attrs: {
-                              username: "!",
-                              color: "#fff",
-                              size: 50,
-                              backgroundColor: "#E57373"
-                            }
-                          }),
-                          _vm._m(0)
-                        ],
-                        1
-                      )
-                    : _vm._e()
-                ],
-                2
-              )
-            : _vm._e()
-        ])
-      ])
+                  ],
+                  2
+                )
+              : _vm._e()
+          ])
+        ],
+        1
+      )
     ])
   ])
 }
