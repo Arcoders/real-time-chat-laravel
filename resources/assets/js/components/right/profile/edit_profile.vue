@@ -37,7 +37,6 @@
 
         data() {
             return {
-                user: this.$store.state.user,
                 avatar: this.$store.state.user.avatar,
                 cover: this.$store.state.user.cover,
                 userName: this.$store.state.user.name,
@@ -115,8 +114,10 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
-                        this.done(response.data);
+                    if (response.status === 200) {
+                        this.showNotification(response.data.info, 'done');
+                        this.$store.commit('updateUser', response.data.user);
+                        //this.$store.state.user = response.data.user;
                     } else {
                          this.error();
                     }
@@ -152,22 +153,11 @@
 
             // ---------------------------------------------------
 
-            done(msg) {
-                this.showNotification(msg, 'done');
-            },
-
-            // ---------------------------------------------------
-
             showNotification(msg, type) {
                 this.notifications.push({ message: msg, type: type });
 
                 setTimeout(() => {
                     this.notifications.shift();
-                    if (type == 'done')
-                    {
-                        this.$router.go(this.$router.currentRoute);
-                        window.location.reload();
-                    }
                 }, this.time);
 
                 this.newAvatar = false;

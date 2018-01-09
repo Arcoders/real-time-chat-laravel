@@ -65,7 +65,10 @@ class profileController extends Controller
 
         $save = $user->save();
 
-        if ($save) return response()->json('User edited successfully', 200);
+        if ($save) return response()->json([
+            'user' => $user,
+            'info' => 'User edited successfully'
+        ], 200);
     }
 
 }

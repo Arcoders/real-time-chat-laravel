@@ -37183,6 +37183,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 
     state: {
         user: null
+    },
+
+    mutations: {
+        updateUser: function updateUser(state, user) {
+            return state.user = user;
+        }
     }
 
 });
@@ -42272,7 +42278,7 @@ var render = function() {
                                     attrs: {
                                       username: user.name,
                                       color: "#fff",
-                                      src: user.avatar,
+                                      src: null,
                                       size: 50
                                     }
                                   }),
@@ -42480,7 +42486,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            user: this.$store.state.user,
             avatar: this.$store.state.user.avatar,
             cover: this.$store.state.user.cover,
             userName: this.$store.state.user.name,
@@ -42559,8 +42564,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this2.loading = false;
 
-                if (response.status == 200) {
-                    _this2.done(response.data);
+                if (response.status === 200) {
+                    _this2.showNotification(response.data.info, 'done');
+                    _this2.$store.commit('updateUser', response.data.user);
+                    //this.$store.state.user = response.data.user;
                 } else {
                     _this2.error();
                 }
@@ -42597,13 +42604,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ---------------------------------------------------
 
-        done: function done(msg) {
-            this.showNotification(msg, 'done');
-        },
-
-
-        // ---------------------------------------------------
-
         showNotification: function showNotification(msg, type) {
             var _this3 = this;
 
@@ -42611,10 +42611,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             setTimeout(function () {
                 _this3.notifications.shift();
-                if (type == 'done') {
-                    _this3.$router.go(_this3.$router.currentRoute);
-                    window.location.reload();
-                }
             }, this.time);
 
             this.newAvatar = false;

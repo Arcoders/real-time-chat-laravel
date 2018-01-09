@@ -42,7 +42,7 @@
 
                             avatar.img-head(:username='user.name',
                                             color='#fff',
-                                            :src='user.avatar',
+                                            :src='null',
                                             :size='50')
 
                             .name
