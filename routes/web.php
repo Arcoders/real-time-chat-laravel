@@ -12,6 +12,9 @@
 */
 
 // Auth...
+use App\User;
+
+
 Auth::routes();
 
 // Welcome
@@ -22,6 +25,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Home...
     Route::get('/home', 'HomeController@index')->name('home');
+
+    // User..
+    Route::get('/get_user',  function () { return Auth::user(); });
 
     // Groups...
     Route::post('/new_group', 'GroupsController@newGroup'); // Add new group

@@ -16,6 +16,7 @@ import VueResource from 'vue-resource';
 import VuePusher from 'vue-pusher';
 import VueMoment from 'vue-moment';
 import VueTruncate from 'vue-truncate-filter';
+import {store} from './store/store';
 
 const CSRF = document.getElementById('csrf-token').getAttribute('content');
 
@@ -106,5 +107,6 @@ const router = new VueRouter({
 new Vue({
     props:['user'],
     el: '#app',
-    router
+    router,
+    store
 }).$mount(this.el);

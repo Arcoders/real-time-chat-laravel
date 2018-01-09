@@ -25,6 +25,7 @@
         "vue-multiselect": "^2.0.8",
         "vue-pusher": "^0.2.1",
         "vue-router": "^3.0.1",
-        "vue-truncate-filter": "^1.1.7"
+        "vue-truncate-filter": "^1.1.7",
+        "vuex": "^3.0.1"
     }
 }
