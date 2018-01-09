@@ -38350,7 +38350,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         userInfo: function userInfo() {
-            this.$store.state.user = this.auth_user;
+            this.$store.commit('updateUser', this.auth_user);
             this.user = this.$store.state.user;
             this.showUser = true;
         },
@@ -42565,7 +42565,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this2.loading = false;
 
-                if (response.status == 200) {
+                if (response.status === 200) {
                     _this2.done(response.data);
                 } else {
                     _this2.error();
@@ -42604,8 +42604,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         done: function done(msg) {
-            this.showNotification(response.data.info, 'done');
-            this.$store.commit('updateUser', response.data.user);
+            this.showNotification(msg.info, 'done');
+            this.$store.commit('updateUser', msg.user);
         },
 
 

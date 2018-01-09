@@ -78,7 +78,7 @@
             // ----------------------------------------------
 
             userInfo() {
-                this.$store.state.user = this.auth_user;
+                this.$store.commit('updateUser', this.auth_user);
                 this.user = this.$store.state.user;
                 this.showUser = true;
             },

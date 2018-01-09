@@ -115,7 +115,7 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
                         this.done(response.data);
                     } else {
                          this.error();
@@ -153,8 +153,8 @@
             // ---------------------------------------------------
 
             done(msg) {
-                this.showNotification(response.data.info, 'done');
-                this.$store.commit('updateUser', response.data.user);
+                this.showNotification(msg.info, 'done');
+                this.$store.commit('updateUser', msg.user);
             },
 
             // ---------------------------------------------------
