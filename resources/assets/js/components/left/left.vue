@@ -66,6 +66,7 @@
         // ----------------------------------------------
 
         mounted() {
+            this.$store.state.user =  this.user;
             console.log('Left ok!');
         },
 

@@ -37364,6 +37364,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ----------------------------------------------
 
     mounted: function mounted() {
+        this.$store.state.user = this.user;
         console.log('Left ok!');
     },
 
@@ -43667,8 +43668,6 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(234);
-var _this = this;
-
 
 
 
@@ -43678,42 +43677,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 
     state: {
         user: null
-    },
-
-    getters: {
-
-        // tareasCompletadas: state => state.tareas.filter(tarea => tarea.completado).length
-
-    },
-
-    mutations: {
-
-        updateUser: function updateUser(state, user) {
-            return state.user = user;
-        }
-
-    },
-
-    actions: {
-
-        getUsers: function getUsers(_ref) {
-            var commit = _ref.commit;
-
-            _this.$http.get('/get_user').then(function (response) {
-
-                if (response.status == 200) {
-
-                    if (response.data.length === 0) return;
-
-                    commit('updateUser', response.data);
-                } else {
-                    // error
-                }
-            }, function () {
-                // error
-            });
-        }
-
     }
 
 });

@@ -108,5 +108,5 @@ new Vue({
     props:['user'],
     el: '#app',
     router,
-    store
+    store,
 }).$mount(this.el);
