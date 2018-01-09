@@ -37,6 +37,7 @@
 
         data() {
             return {
+                user: this.$store.state.user,
                 avatar: this.$store.state.user.avatar,
                 cover: this.$store.state.user.cover,
                 userName: this.$store.state.user.name,
@@ -114,10 +115,8 @@
 
                     this.loading = false;
 
-                    if (response.status === 200) {
-                        this.showNotification(response.data.info, 'done');
-                        this.$store.commit('updateUser', response.data.user);
-                        //this.$store.state.user = response.data.user;
+                    if (response.status == 200) {
+                        this.done(response.data);
                     } else {
                          this.error();
                     }
@@ -149,6 +148,13 @@
                 if (msg.name) msg = msg.name[0];
 
                 this.showNotification(msg, 'validation');
+            },
+
+            // ---------------------------------------------------
+
+            done(msg) {
+                this.showNotification(response.data.info, 'done');
+                this.$store.commit('updateUser', response.data.user);
             },
 
             // ---------------------------------------------------

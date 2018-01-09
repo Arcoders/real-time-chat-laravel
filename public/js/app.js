@@ -42486,6 +42486,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
+            user: this.$store.state.user,
             avatar: this.$store.state.user.avatar,
             cover: this.$store.state.user.cover,
             userName: this.$store.state.user.name,
@@ -42564,10 +42565,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this2.loading = false;
 
-                if (response.status === 200) {
-                    _this2.showNotification(response.data.info, 'done');
-                    _this2.$store.commit('updateUser', response.data.user);
-                    //this.$store.state.user = response.data.user;
+                if (response.status == 200) {
+                    _this2.done(response.data);
                 } else {
                     _this2.error();
                 }
@@ -42599,6 +42598,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (msg.name) msg = msg.name[0];
 
             this.showNotification(msg, 'validation');
+        },
+
+
+        // ---------------------------------------------------
+
+        done: function done(msg) {
+            this.showNotification(response.data.info, 'done');
+            this.$store.commit('updateUser', response.data.user);
         },
 
 
