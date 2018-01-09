@@ -75,12 +75,9 @@
 
         // ----------------------------------------------
 
-        props: ['user'],
-
-        // ----------------------------------------------
-
         data() {
             return {
+                user: this.$store.state.user,
                 groupId: window.atob(this.$route.params.group_id),
                 avatar: null,
                 showChat: false,

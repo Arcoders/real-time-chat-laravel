@@ -43,12 +43,13 @@
 
         // ----------------------------------------------
 
-        props: ['user', 'messages', 'usersTyping'],
+        props: ['messages', 'usersTyping'],
 
         // ----------------------------------------------
 
         data() {
             return {
+                user: this.$store.state.user,
                 messagesIds: []
             }
         },

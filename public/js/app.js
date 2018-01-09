@@ -39573,12 +39573,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ----------------------------------------------
 
-    props: ['user', 'messages', 'usersTyping'],
+    props: ['messages', 'usersTyping'],
 
     // ----------------------------------------------
 
     data: function data() {
         return {
+            user: this.$store.state.user,
             messagesIds: []
         };
     },
@@ -41221,12 +41222,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ----------------------------------------------
 
-    props: ['user'],
-
-    // ----------------------------------------------
-
     data: function data() {
         return {
+            user: this.$store.state.user,
             groupId: window.atob(this.$route.params.group_id),
             avatar: null,
             showChat: false,
