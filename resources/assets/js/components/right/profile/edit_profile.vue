@@ -32,18 +32,16 @@
 
 <script>
     export default {
-        // ---------------------------------------------------
-
-        props: ['user'],
 
         // ---------------------------------------------------
 
         data() {
             return {
-                avatar: this.user.avatar,
-                cover: this.user.cover,
-                userName: this.user.name,
-                userStatus: this.user.status,
+                user: this.$store.state.user,
+                avatar: this.$store.state.user.avatar,
+                cover: this.$store.state.user.cover,
+                userName: this.$store.state.user.name,
+                userStatus: this.$store.state.user.status,
                 newAvatar: false,
                 newCover: false,
                 notifications: [],

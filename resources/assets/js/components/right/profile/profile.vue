@@ -1,5 +1,5 @@
 <template lang="pug">
-    #profile_app.right
+    #profile_app.right(v-if="showProfile")
         .chat-head
 
             i.material-icons.big_icon person
@@ -36,7 +36,7 @@
 
                     .manage_users(v-if='!profileId')
 
-                        router-view(:user='user', @previewImage='updateImage', @modelInfo='updateInfo')
+                        router-view(@previewImage='updateImage', @modelInfo='updateInfo')
 
                         .contener_txt(v-if='pathEdit', v-for='user in users')
 
@@ -94,12 +94,10 @@
 
         // ---------------------------------------------------
 
-        props: ['user'],
-
-        // ---------------------------------------------------
-
         data() {
             return {
+                user: null,
+                showProfile: false,
                 users: [],
                 records: true,
                 userName: '',
@@ -128,12 +126,15 @@
             setUserInfo() {
                 if (this.profileId) return;
 
+                this.user = this.$store.state.user;
                 this.userName = this.user.name;
                 this.userStatus = this.user.status;
                 this.userId = this.user.id;
                 this.profileId = this.$route.params.profile_id;
                 this.avatar = this.user.avatar;
                 this.cover = this.checkCover(this.user.cover);
+
+                if (this.user) this.showProfile = true;
             },
 
             // ---------------------------------------------------

@@ -42026,12 +42026,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ---------------------------------------------------
 
-    props: ['user'],
-
-    // ---------------------------------------------------
-
     data: function data() {
         return {
+            user: null,
+            showProfile: false,
             users: [],
             records: true,
             userName: '',
@@ -42062,12 +42060,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         setUserInfo: function setUserInfo() {
             if (this.profileId) return;
 
+            this.user = this.$store.state.user;
             this.userName = this.user.name;
             this.userStatus = this.user.status;
             this.userId = this.user.id;
             this.profileId = this.$route.params.profile_id;
             this.avatar = this.user.avatar;
             this.cover = this.checkCover(this.user.cover);
+
+            if (this.user) this.showProfile = true;
         },
 
 
@@ -42178,143 +42179,151 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "right", attrs: { id: "profile_app" } }, [
-    _c(
-      "div",
-      { staticClass: "chat-head" },
-      [
-        _c("i", { staticClass: "material-icons big_icon" }, [_vm._v("person")]),
-        _c("div", { staticClass: "chat-name" }, [
-          _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
-          _c("p", { staticClass: "font-online" }, [
-            _vm._v(_vm._s(_vm.userName) + "...")
-          ])
-        ]),
-        _vm.pathEdit
-          ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
-              _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
-            ])
-          : _c("router-link", { attrs: { to: "/profile" } }, [
-              _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
-            ])
-      ],
-      1
-    ),
-    _c("div", { staticClass: "complet-content" }, [
-      _c(
-        "div",
-        { staticClass: "complete_dynamic_content" },
-        [
-          _vm.loading ? _c("loading") : _vm._e(),
-          _c("div", { staticClass: "information" }, [
-            _c(
-              "div",
-              { staticClass: "widget", class: { widget_100: _vm.profileId } },
-              [
+  return _vm.showProfile
+    ? _c("div", { staticClass: "right", attrs: { id: "profile_app" } }, [
+        _c(
+          "div",
+          { staticClass: "chat-head" },
+          [
+            _c("i", { staticClass: "material-icons big_icon" }, [
+              _vm._v("person")
+            ]),
+            _c("div", { staticClass: "chat-name" }, [
+              _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
+              _c("p", { staticClass: "font-online" }, [
+                _vm._v(_vm._s(_vm.userName) + "...")
+              ])
+            ]),
+            _vm.pathEdit
+              ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
+                  _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
+                ])
+              : _c("router-link", { attrs: { to: "/profile" } }, [
+                  _c("i", { staticClass: "material-icons" }, [
+                    _vm._v("arrow_back")
+                  ])
+                ])
+          ],
+          1
+        ),
+        _c("div", { staticClass: "complet-content" }, [
+          _c(
+            "div",
+            { staticClass: "complete_dynamic_content" },
+            [
+              _vm.loading ? _c("loading") : _vm._e(),
+              _c("div", { staticClass: "information" }, [
                 _c(
                   "div",
-                  { staticClass: "cover" },
+                  {
+                    staticClass: "widget",
+                    class: { widget_100: _vm.profileId }
+                  },
                   [
-                    _c("img", { attrs: { src: _vm.cover } }),
-                    _vm.user.id != _vm.userId
-                      ? _c("friendship", {
-                          attrs: {
-                            my_id: _vm.user.id,
-                            profile_user_id: _vm.userId
-                          }
-                        })
-                      : _vm._e()
+                    _c(
+                      "div",
+                      { staticClass: "cover" },
+                      [
+                        _c("img", { attrs: { src: _vm.cover } }),
+                        _vm.user.id != _vm.userId
+                          ? _c("friendship", {
+                              attrs: {
+                                my_id: _vm.user.id,
+                                profile_user_id: _vm.userId
+                              }
+                            })
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _c("avatar", {
+                      staticClass: "photo",
+                      attrs: {
+                        username: _vm.userName,
+                        color: "#fff",
+                        src: _vm.avatar,
+                        size: 100
+                      }
+                    }),
+                    _c("h1", [_vm._v(_vm._s(_vm.userName))]),
+                    _c("h2", [_vm._v(_vm._s(_vm.userStatus))])
                   ],
                   1
                 ),
-                _c("avatar", {
-                  staticClass: "photo",
-                  attrs: {
-                    username: _vm.userName,
-                    color: "#fff",
-                    src: _vm.avatar,
-                    size: 100
-                  }
-                }),
-                _c("h1", [_vm._v(_vm._s(_vm.userName))]),
-                _c("h2", [_vm._v(_vm._s(_vm.userStatus))])
-              ],
-              1
-            ),
-            !_vm.profileId
-              ? _c(
-                  "div",
-                  { staticClass: "manage_users" },
-                  [
-                    _c("router-view", {
-                      attrs: { user: _vm.user },
-                      on: {
-                        previewImage: _vm.updateImage,
-                        modelInfo: _vm.updateInfo
-                      }
-                    }),
-                    _vm._l(_vm.users, function(user) {
-                      return _vm.pathEdit
-                        ? _c(
-                            "div",
-                            { staticClass: "contener_txt" },
-                            [
-                              _c("avatar", {
-                                staticClass: "img-head",
-                                attrs: {
-                                  username: user.name,
-                                  color: "#fff",
-                                  src: user.avatar,
-                                  size: 50
-                                }
-                              }),
-                              _c("div", { staticClass: "name" }, [
-                                _c(
-                                  "button",
-                                  {
-                                    on: {
-                                      click: function($event) {
-                                        _vm.getProfile(user.id)
-                                      }
+                !_vm.profileId
+                  ? _c(
+                      "div",
+                      { staticClass: "manage_users" },
+                      [
+                        _c("router-view", {
+                          on: {
+                            previewImage: _vm.updateImage,
+                            modelInfo: _vm.updateInfo
+                          }
+                        }),
+                        _vm._l(_vm.users, function(user) {
+                          return _vm.pathEdit
+                            ? _c(
+                                "div",
+                                { staticClass: "contener_txt" },
+                                [
+                                  _c("avatar", {
+                                    staticClass: "img-head",
+                                    attrs: {
+                                      username: user.name,
+                                      color: "#fff",
+                                      src: user.avatar,
+                                      size: 50
                                     }
-                                  },
-                                  [_vm._v(_vm._s(user.name))]
-                                )
-                              ])
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    }),
-                    !_vm.records && _vm.pathEdit
-                      ? _c(
-                          "div",
-                          { staticClass: "contener_txt" },
-                          [
-                            _c("avatar", {
-                              staticClass: "img-head",
-                              attrs: {
-                                username: "!",
-                                color: "#fff",
-                                size: 50,
-                                backgroundColor: "#E57373"
-                              }
-                            }),
-                            _vm._m(0)
-                          ],
-                          1
-                        )
-                      : _vm._e()
-                  ],
-                  2
-                )
-              : _vm._e()
-          ])
-        ],
-        1
-      )
-    ])
-  ])
+                                  }),
+                                  _c("div", { staticClass: "name" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        on: {
+                                          click: function($event) {
+                                            _vm.getProfile(user.id)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(user.name))]
+                                    )
+                                  ])
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        }),
+                        !_vm.records && _vm.pathEdit
+                          ? _c(
+                              "div",
+                              { staticClass: "contener_txt" },
+                              [
+                                _c("avatar", {
+                                  staticClass: "img-head",
+                                  attrs: {
+                                    username: "!",
+                                    color: "#fff",
+                                    size: 50,
+                                    backgroundColor: "#E57373"
+                                  }
+                                }),
+                                _vm._m(0)
+                              ],
+                              1
+                            )
+                          : _vm._e()
+                      ],
+                      2
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          )
+        ])
+      ])
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {
@@ -42466,18 +42475,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    // ---------------------------------------------------
-
-    props: ['user'],
 
     // ---------------------------------------------------
 
     data: function data() {
         return {
-            avatar: this.user.avatar,
-            cover: this.user.cover,
-            userName: this.user.name,
-            userStatus: this.user.status,
+            user: this.$store.state.user,
+            avatar: this.$store.state.user.avatar,
+            cover: this.$store.state.user.cover,
+            userName: this.$store.state.user.name,
+            userStatus: this.$store.state.user.status,
             newAvatar: false,
             newCover: false,
             notifications: [],
