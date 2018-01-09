@@ -8,7 +8,7 @@
 
         <section class="left">
 
-            <left :user="{{ Auth::user() }}"></left>
+            <left :auth_user="{{ Auth::user() }}"></left>
 
         </section>
 
@@ -16,7 +16,7 @@
         <section class="right">
 
 
-            <router-view :user="{{ Auth::user() }}" :key="$route.fullPath"></router-view>
+            {{--<router-view :key="$route.fullPath"></router-view>--}}
 
 
         </section>

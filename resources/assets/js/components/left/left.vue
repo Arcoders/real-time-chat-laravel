@@ -1,6 +1,6 @@
 <template lang="pug">
     #left_app
-        .profile
+        .profile(v-if='showUser')
             avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
             .name {{ user.name }}
             .icons
@@ -51,12 +51,14 @@
 
         // ----------------------------------------------
 
-        props: ['user'],
+        props: ['auth_user'],
 
         // ----------------------------------------------
 
         data() {
             return {
+                showUser: false,
+                user: null,
                 logoutError: null,
                 loading: false,
                 myChatList: true
@@ -66,13 +68,20 @@
         // ----------------------------------------------
 
         mounted() {
-            this.$store.state.user =  this.user;
-            console.log('Left ok!');
+            this.userInfo();
         },
 
         // ----------------------------------------------
 
         methods: {
+
+            // ----------------------------------------------
+
+            userInfo() {
+                this.$store.state.user = this.auth_user;
+                this.user = this.$store.state.user;
+                this.showUser = true;
+            },
 
             // ----------------------------------------------
 

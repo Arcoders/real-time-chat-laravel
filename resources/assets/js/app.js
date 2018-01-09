@@ -105,7 +105,7 @@ const router = new VueRouter({
 
 
 new Vue({
-    props:['user'],
+    props:['auth_user'],
     el: '#app',
     router,
     store,
