@@ -31,6 +31,7 @@
 </style>
 
 <script>
+
     export default {
 
         // ---------------------------------------------------
@@ -155,6 +156,7 @@
             done(msg) {
                 this.showNotification(msg.info, 'done');
                 this.$store.commit('updateUser', msg.user);
+                this.$eventBus.$emit('update');
             },
 
             // ---------------------------------------------------

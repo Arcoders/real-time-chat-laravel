@@ -1,22 +1,35 @@
 <template lang="pug">
     #left_app
+
         .profile(v-if='showUser')
+
             avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
+
             .name {{ user.name }}
+
             .icons
+
                 router-link(to='/profile')
                     i.material-icons person
+
                 router-link(to='/groups')
                     i.material-icons person_add
+
                 loading(:normal='true', v-if='loading')
+
                 a(v-else, v-on:click='logout')
                     i(v-bind:class="[logoutError ? 'error' : '', 'material-icons']") fingerprint
+
         search
+
         .wrap-filter
+
             .link_filter
                 a(href='#', @click='changeList(true)', v-bind:class='{ active: myChatList }') Private
+
             .link_filter
                 a(href='#', @click='changeList(false)', v-bind:class='{ active: !myChatList }') Groups
+
         .contact-list
             list(:showChatList='myChatList')
 
@@ -47,6 +60,7 @@
 </style>
 
 <script>
+
     export default {
 
         // ----------------------------------------------
@@ -63,6 +77,14 @@
                 loading: false,
                 myChatList: true
             }
+        },
+
+        // ----------------------------------------------
+
+        created() {
+            this.$eventBus.$on('update' , () => {
+                this.user = this.$store.state.user;
+            });
         },
 
         // ----------------------------------------------

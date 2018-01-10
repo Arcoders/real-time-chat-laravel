@@ -27660,6 +27660,8 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     }, { path: '/friend/:friend_id/:friend_name', component: __WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue___default.a, name: 'friend' }, { path: '/group/:group_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue___default.a, name: 'group' }, { path: '/*', component: __WEBPACK_IMPORTED_MODULE_10__components_right_bienvenido_vue___default.a }]
 });
 
+Vue.prototype.$eventBus = new Vue();
+
 new Vue({
     props: ['auth_user'],
     el: '#app',
@@ -38316,6 +38318,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -38333,6 +38349,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             loading: false,
             myChatList: true
         };
+    },
+
+
+    // ----------------------------------------------
+
+    created: function created() {
+        var _this = this;
+
+        this.$eventBus.$on('update', function () {
+            _this.user = _this.$store.state.user;
+        });
     },
 
 
@@ -38366,25 +38393,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         logout: function logout() {
-            var _this = this;
+            var _this2 = this;
 
             this.$http.post('/logout').then(function (response) {
 
-                _this.loading = true;
+                _this2.loading = true;
 
                 if (response.status == 200) {
 
                     setTimeout(function () {
-                        _this.$router.push('/');
+                        _this2.$router.push('/');
                         window.location.reload();
                     }, 2000);
                 } else {
-                    _this.loading = false;
-                    _this.logoutError = true;
+                    _this2.loading = false;
+                    _this2.logoutError = true;
                 }
             }, function () {
-                _this.loading = false;
-                _this.logoutError = true;
+                _this2.loading = false;
+                _this2.logoutError = true;
             });
         }
 
@@ -42494,6 +42521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     // ---------------------------------------------------
@@ -42620,6 +42648,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         done: function done(msg) {
             this.showNotification(msg.info, 'done');
             this.$store.commit('updateUser', msg.user);
+            this.$eventBus.$emit('update');
         },
 
 

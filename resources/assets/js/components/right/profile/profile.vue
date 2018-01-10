@@ -57,7 +57,7 @@
                                     color='#fff',
                                     :size='50',
                                     backgroundColor='#E57373')
-                                    
+
                                     .name
                                         button You are the first user
 </template>

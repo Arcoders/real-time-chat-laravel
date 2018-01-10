@@ -104,9 +104,10 @@ const router = new VueRouter({
     ]
 });
 
+Vue.prototype.$eventBus = new Vue();
 
 new Vue({
-    props:['auth_user'],
+    props: ['auth_user'],
     el: '#app',
     router,
     store,
