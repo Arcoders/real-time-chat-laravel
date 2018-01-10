@@ -42069,7 +42069,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 status: this.user.status,
                 id: this.user.id,
                 avatar: this.user.avatar,
-                cover: this.user.cover
+                cover: this.checkCover(this.user.cover)
             };
 
             if (this.userInfo) this.showProfile = true;
@@ -42079,16 +42079,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         updateImage: function updateImage(data) {
-            if (data.avatar) this.avatar = data.avatar;
-            if (data.cover) this.cover = data.cover;
-        },
-
-
-        // ---------------------------------------------------
-
-        updateInfo: function updateInfo(data) {
-            if (data.user) this.userName = data.user;
-            if (data.status) this.userStatus = data.status;
+            if (data.avatar) this.userInfo.avatar = data.avatar;
+            if (data.cover) this.userInfo.cover = data.cover;
         },
 
 
@@ -42098,17 +42090,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.loading = true;
-            this.$http.get('/get_profile/' + id).then(function (response) {
+            this.$http.get('/get_profile/' + id).then(function (res) {
 
-                if (response.status === 200) {
+                if (res.status === 200) {
 
-                    if (response.data === 0 || response.data === '') return _this.$router.push('/profile');
+                    if (res.data === 0 || res.data === '') return _this.$router.push('/profile');
 
-                    _this.userId = response.data.id;
-                    _this.userName = response.data.name;
-                    _this.userStatus = response.data.status;
-                    _this.avatar = response.data.avatar;
-                    _this.cover = _this.checkCover(response.data.cover);
+                    _this.userInfo = {
+                        name: res.data.name,
+                        status: res.data.status,
+                        id: res.data.id,
+                        avatar: res.data.avatar,
+                        cover: _this.checkCover(res.data.cover)
+                    };
 
                     _this.showProfile = true;
                 } else {
@@ -42263,10 +42257,7 @@ var render = function() {
                       [
                         _c("router-view", {
                           attrs: { userInfo: _vm.userInfo },
-                          on: {
-                            previewImage: _vm.updateImage,
-                            modelInfo: _vm.updateInfo
-                          }
+                          on: { previewImage: _vm.updateImage }
                         }),
                         _vm._l(_vm.users, function(user) {
                           return _vm.pathEdit

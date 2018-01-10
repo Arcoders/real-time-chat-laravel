@@ -36,7 +36,7 @@
 
                     .manage_users(v-if='!profileId')
 
-                        router-view(@previewImage='updateImage', @modelInfo='updateInfo', :userInfo='userInfo')
+                        router-view(@previewImage='updateImage', :userInfo='userInfo')
 
                         .contener_txt(v-if='pathEdit', v-for='user in users')
 
@@ -129,7 +129,7 @@
                     status: this.user.status,
                     id: this.user.id,
                     avatar: this.user.avatar,
-                    cover: this.user.cover,
+                    cover: this.checkCover(this.user.cover),
                 };
 
                 if (this.userInfo) this.showProfile = true;
@@ -138,32 +138,27 @@
             // ---------------------------------------------------
 
             updateImage(data) {
-                if (data.avatar) this.avatar = data.avatar;
-                if (data.cover) this.cover = data.cover;
-            },
-
-            // ---------------------------------------------------
-
-            updateInfo(data) {
-                if (data.user) this.userName = data.user;
-                if (data.status) this.userStatus = data.status;
+                if (data.avatar) this.userInfo.avatar = data.avatar;
+                if (data.cover) this.userInfo.cover = data.cover;
             },
 
             // ---------------------------------------------------
 
             getProfile(id) {
                 this.loading = true;
-                this.$http.get('/get_profile/' + id).then(response => {
+                this.$http.get('/get_profile/' + id).then(res => {
 
-                    if (response.status === 200) {
+                    if (res.status === 200) {
 
-                        if (response.data === 0 || response.data === '') return this.$router.push('/profile');
+                        if (res.data === 0 || res.data === '') return this.$router.push('/profile');
 
-                        this.userId = response.data.id;
-                        this.userName = response.data.name;
-                        this.userStatus = response.data.status;
-                        this.avatar = response.data.avatar;
-                        this.cover = this.checkCover(response.data.cover);
+                        this.userInfo = {
+                            name: res.data.name,
+                            status: res.data.status,
+                            id: res.data.id,
+                            avatar: res.data.avatar,
+                            cover: this.checkCover(res.data.cover),
+                        };
 
                         this.showProfile = true;
 
