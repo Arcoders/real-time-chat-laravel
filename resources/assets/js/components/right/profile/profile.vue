@@ -1,62 +1,63 @@
 <template lang="pug">
-    #profile_app.right(v-if="showProfile")
-        .chat-head
+    transition(name='fade')
+        #profile_app.right(v-if="showProfile")
+            .chat-head
 
-            i.material-icons.big_icon person
+                i.material-icons.big_icon person
 
-            .chat-name
-                h1.font-name Profile
-                p.font-online {{ userInfo.name }}
+                .chat-name
+                    h1.font-name Profile
+                    p.font-online {{ userInfo.name }}
 
-            router-link(v-if='pathEdit', to='/profile/edit')
-                i.material-icons edit
+                router-link(v-if='pathEdit', to='/profile/edit')
+                    i.material-icons edit
 
-            router-link(v-else, to='/profile')
-                i.material-icons arrow_back
+                router-link(v-if='pathReturn', to='/profile')
+                    i.material-icons arrow_back
 
-        .complet-content
-            .complete_dynamic_content
-                loading(v-if='loading')
-                .information
-                    .widget(v-bind:class="{ widget_100: profileId }")
-                        .cover
-                            img(:src='userInfo.cover')
+            .complet-content
+                .complete_dynamic_content
+                    loading(v-if='loading')
+                    .information
+                        .widget(v-bind:class="{ widget_100: profileId }")
+                            .cover
+                                img(:src='userInfo.cover')
 
-                            friendship(v-if='user.id != userInfo.id',
-                                        :my_id='user.id',
-                                        :profile_user_id='userInfo.id')
+                                friendship(v-if='user.id != userInfo.id',
+                                            :my_id='user.id',
+                                            :profile_user_id='userInfo.id')
 
-                        avatar.photo(:username='userInfo.name',
-                                        color='#fff',
-                                        :src='userInfo.avatar',
-                                        :size='100')
-
-                        h1 {{ userInfo.name }}
-                        h2 {{ userInfo.status }}
-
-                    .manage_users(v-if='!profileId')
-
-                        router-view(@previewImage='updateImage', :userInfo='userInfo')
-
-                        .contener_txt(v-if='pathEdit', v-for='user in users')
-
-                            avatar.img-head(:username='user.name',
+                            avatar.photo(:username='userInfo.name',
                                             color='#fff',
-                                            :src='user.avatar',
-                                            :size='50')
+                                            :src='userInfo.avatar',
+                                            :size='100')
 
-                            .name
-                                button(v-on:click='getProfile(user.id)')
-                                    | {{user.name}}
+                            h1 {{ userInfo.name }}
+                            h2 {{ userInfo.status }}
 
-                        .contener_txt(v-if='!records && pathEdit')
+                        .manage_users(v-if='!profileId')
 
-                            avatar.img-head(username='!',
-                                            color='#fff',
-                                            :size='50',
-                                            backgroundColor='#E57373')
-                            .name
-                                button You are the first user
+                            router-view(@previewImage='updateImage', :userInfo='userInfo')
+
+                            .contener_txt(v-if='pathEdit', v-for='user in users')
+
+                                avatar.img-head(:username='user.name',
+                                                color='#fff',
+                                                :src='user.avatar',
+                                                :size='50')
+
+                                .name
+                                    button(v-on:click='getProfile(user.id)')
+                                        | {{user.name}}
+
+                            .contener_txt(v-if='!records && pathEdit')
+
+                                avatar.img-head(username='!',
+                                                color='#fff',
+                                                :size='50',
+                                                backgroundColor='#E57373')
+                                .name
+                                    button You are the first user
 </template>
 
 <style scoped>
@@ -87,6 +88,13 @@
         font-size: 14px;
     }
 
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 1s;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+
 </style>
 
 <script>
@@ -110,7 +118,6 @@
 
         mounted() {
             this.profileByParameter();
-            console.log('Profile ok!');
         },
 
         // ---------------------------------------------------
@@ -221,7 +228,13 @@
             // ---------------------------------------------------
 
             pathEdit() {
-                return (this.$route.path == '/profile');
+                return (this.$route.path == '/profile' || this.$route.path == '/profile/');
+            },
+
+            // ---------------------------------------------------
+
+            pathReturn() {
+                return (this.$route.path == '/profile/edit' || this.$route.path == '/profile/edit/');
             },
 
             // ---------------------------------------------------

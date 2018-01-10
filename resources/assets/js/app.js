@@ -100,6 +100,7 @@ const router = new VueRouter({
         },
         { path: '/friend/:friend_id/:friend_name', component: chat_group, name: 'friend'},
         { path: '/group/:group_id/:group_name', component: chat_group, name: 'group'},
+        { path: '/*', component: bienvenido }
     ]
 });
 
