@@ -107,6 +107,14 @@
 
         // ----------------------------------------------
 
+        created() {
+            this.$eventBus.$on('update' , (data) => {
+                if (data.type == 'group') this.chatsList();
+            });
+        },
+
+        // ----------------------------------------------
+
         mounted() {
             this.chatsList();
             console.log('Private ok!')

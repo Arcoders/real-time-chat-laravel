@@ -68,8 +68,9 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
                         this.status = response.body.status;
+                        if (this.status == 'friends') this.$eventBus.$emit('update', {type: 'friend'});
                     } else {
                         // ...
                     }
@@ -109,9 +110,15 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
-                        if (response.body == 'friends') this.status = 'friends';
+                    if (response.status === 200) {
+
+                        if (response.body == 'friends') {
+                            this.status = 'friends';
+                            this.$eventBus.$emit('update', {type: 'new-friend'});
+                        }
+
                         if (response.body == 'pending') this.status = 'pending';
+
                     } else {
                         // ...
                     }

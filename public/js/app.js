@@ -38357,8 +38357,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        this.$eventBus.$on('update', function () {
-            _this.user = _this.$store.state.user;
+        this.$eventBus.$on('update', function (data) {
+            if (data.type == 'profile') _this.user = _this.$store.state.user;
+            if (data.type == 'group') _this.changeList(false);
+            if (data.type == 'friend') _this.changeList(true);
         });
     },
 
@@ -38968,6 +38970,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ----------------------------------------------
 
+    created: function created() {
+        var _this = this;
+
+        this.$eventBus.$on('update', function (data) {
+            if (data.type == 'group') _this.chatsList();
+        });
+    },
+
+
+    // ----------------------------------------------
+
     mounted: function mounted() {
         this.chatsList();
         console.log('Private ok!');
@@ -38981,26 +38994,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         chatsList: function chatsList() {
-            var _this = this;
+            var _this2 = this;
 
             this.loading = true;
 
             this.$http.get('/chats_list').then(function (response) {
 
-                _this.loading = false;
+                _this2.loading = false;
 
                 if (response.status == 200) {
 
-                    if (response.data.length === 0) _this.notFound = true;
-                    _this.groups = response.data.groups;
-                    _this.friends = response.data.friends;
+                    if (response.data.length === 0) _this2.notFound = true;
+                    _this2.groups = response.data.groups;
+                    _this2.friends = response.data.friends;
                 } else {
-                    _this.errorLoad = true;
+                    _this2.errorLoad = true;
                 }
             }, function () {
 
-                _this.loading = false;
-                _this.errorLoad = true;
+                _this2.loading = false;
+                _this2.errorLoad = true;
             });
         },
 
@@ -40230,8 +40243,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this2.loading = false;
 
-                if (response.status == 200) {
+                if (response.status === 200) {
                     _this2.status = response.body.status;
+                    if (_this2.status == 'friends') _this2.$eventBus.$emit('update', { type: 'friend' });
                 } else {
                     // ...
                 }
@@ -40275,8 +40289,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this4.loading = false;
 
-                if (response.status == 200) {
-                    if (response.body == 'friends') _this4.status = 'friends';
+                if (response.status === 200) {
+
+                    if (response.body == 'friends') {
+                        _this4.status = 'friends';
+                        _this4.$eventBus.$emit('update', { type: 'new-friend' });
+                    }
+
                     if (response.body == 'pending') _this4.status = 'pending';
                 } else {
                     // ...
@@ -42648,7 +42667,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         done: function done(msg) {
             this.showNotification(msg.info, 'done');
             this.$store.commit('updateUser', msg.user);
-            this.$eventBus.$emit('update');
+            this.$eventBus.$emit('update', { type: 'profile' });
         },
 
 
@@ -43362,6 +43381,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         done: function done(msg) {
             this.showNotification(msg, 'done');
+            this.$eventBus.$emit('update', { type: 'group' });
         },
 
 
@@ -43870,6 +43890,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         done: function done(msg) {
             this.showNotification(msg, 'done');
             this.resetForm();
+            this.$eventBus.$emit('update', { type: 'group' });
         },
 
 
@@ -44395,6 +44416,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         done: function done(msg) {
             this.showNotification(msg, 'done');
+            this.$eventBus.$emit('update', { type: 'group' });
         },
 
 

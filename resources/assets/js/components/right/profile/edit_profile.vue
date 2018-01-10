@@ -156,7 +156,7 @@
             done(msg) {
                 this.showNotification(msg.info, 'done');
                 this.$store.commit('updateUser', msg.user);
-                this.$eventBus.$emit('update');
+                this.$eventBus.$emit('update', {type: 'profile'});
             },
 
             // ---------------------------------------------------

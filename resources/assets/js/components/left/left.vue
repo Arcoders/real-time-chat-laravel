@@ -82,9 +82,13 @@
         // ----------------------------------------------
 
         created() {
-            this.$eventBus.$on('update' , () => {
-                this.user = this.$store.state.user;
+
+            this.$eventBus.$on('update' , (data) => {
+                if (data.type == 'profile') this.user = this.$store.state.user;
+                if (data.type == 'group') this.changeList(false);
+                if (data.type == 'friend') this.changeList(true);
             });
+
         },
 
         // ----------------------------------------------

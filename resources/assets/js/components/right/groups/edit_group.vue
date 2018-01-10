@@ -169,6 +169,7 @@
 
             done(msg) {
                 this.showNotification(msg, 'done');
+                this.$eventBus.$emit('update', {type: 'group'});
             },
 
             // ---------------------------------------------------
