@@ -6,9 +6,9 @@
             form.information_form(method='POST', v-on:submit.prevent='updateProfile()', enctype='multipart/form-data')
                 h1 Edit information
                 .edit-input
-                    input(type='text', v-on:keyup="onInputChange($event, 'name')", v-model='userName', placeholder='User name')
+                    input(type='text', v-on:keyup="onInputChange($event, 'name')", v-model='userInfo.name', placeholder='User name')
                 .edit-input
-                    input(type='text', v-on:keyup="onInputChange($event, 'status')", v-model='userStatus', placeholder='Status')
+                    input(type='text', v-on:keyup="onInputChange($event, 'status')", v-model='userInfo.status', placeholder='Status')
                 h1 Select avatar
                 label.fileContainer
                     button
@@ -35,13 +35,13 @@
 
         // ---------------------------------------------------
 
+        props: ['userInfo'],
+
+        // ---------------------------------------------------
+
         data() {
             return {
                 user: this.$store.state.user,
-                avatar: this.$store.state.user.avatar,
-                cover: this.$store.state.user.cover,
-                userName: this.$store.state.user.name,
-                userStatus: this.$store.state.user.status,
                 newAvatar: false,
                 newCover: false,
                 notifications: [],
@@ -99,8 +99,8 @@
 
             onInputChange() {
                 this.$emit('modelInfo', {
-                    'user': this.userName,
-                    'status': this.userStatus
+                    'user': this.userInfo.name,
+                    'status': this.userInfo.status
                 });
             },
 
@@ -178,7 +178,7 @@
             // ---------------------------------------------------
 
             btnSubmit() {
-                return ( this.userName.length >= 3 && this.userStatus.length >= 3);
+                return ( this.userInfo.name.length >= 3 && this.userInfo.status.length >= 3);
             },
 
             // ---------------------------------------------------
@@ -186,8 +186,8 @@
             formData() {
                 let formData = new FormData();
 
-                formData.append('name', this.userName);
-                formData.append('status', this.userStatus);
+                formData.append('name', this.userInfo.name);
+                formData.append('status', this.userInfo.status);
                 if (this.newAvatar) formData.append('avatar', this.$refs.fileInput.files[0]);
                 if (this.newCover) formData.append('cover', this.$refs.fileCover.files[0]);
 

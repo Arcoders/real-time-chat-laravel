@@ -42038,12 +42038,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             showProfile: false,
             users: [],
             records: true,
-            userName: '',
-            userStatus: '',
-            userId: null,
+            userInfo: {},
             profileId: this.$route.params.profile_id,
-            avatar: null,
-            cover: null,
             loading: false
         };
     },
@@ -42068,14 +42064,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.profileId) return;
 
-            this.userName = this.user.name;
-            this.userStatus = this.user.status;
-            this.userId = this.user.id;
-            this.profileId = this.$route.params.profile_id;
-            this.avatar = this.user.avatar;
-            this.cover = this.checkCover(this.user.cover);
+            this.userInfo = {
+                name: this.user.name,
+                status: this.user.status,
+                id: this.user.id,
+                avatar: this.user.avatar,
+                cover: this.user.cover
+            };
 
-            if (this.user) this.showProfile = true;
+            if (this.userInfo) this.showProfile = true;
         },
 
 
@@ -42200,7 +42197,7 @@ var render = function() {
             _c("div", { staticClass: "chat-name" }, [
               _c("h1", { staticClass: "font-name" }, [_vm._v("Profile")]),
               _c("p", { staticClass: "font-online" }, [
-                _vm._v(_vm._s(_vm.userName) + "...")
+                _vm._v(_vm._s(_vm.userInfo.name))
               ])
             ]),
             _vm.pathEdit
@@ -42233,12 +42230,12 @@ var render = function() {
                       "div",
                       { staticClass: "cover" },
                       [
-                        _c("img", { attrs: { src: _vm.cover } }),
-                        _vm.user.id != _vm.userId
+                        _c("img", { attrs: { src: _vm.userInfo.cover } }),
+                        _vm.user.id != _vm.userInfo.id
                           ? _c("friendship", {
                               attrs: {
                                 my_id: _vm.user.id,
-                                profile_user_id: _vm.userId
+                                profile_user_id: _vm.userInfo.id
                               }
                             })
                           : _vm._e()
@@ -42248,14 +42245,14 @@ var render = function() {
                     _c("avatar", {
                       staticClass: "photo",
                       attrs: {
-                        username: _vm.userName,
+                        username: _vm.userInfo.name,
                         color: "#fff",
-                        src: _vm.avatar,
+                        src: _vm.userInfo.avatar,
                         size: 100
                       }
                     }),
-                    _c("h1", [_vm._v(_vm._s(_vm.userName))]),
-                    _c("h2", [_vm._v(_vm._s(_vm.userStatus))])
+                    _c("h1", [_vm._v(_vm._s(_vm.userInfo.name))]),
+                    _c("h2", [_vm._v(_vm._s(_vm.userInfo.status))])
                   ],
                   1
                 ),
@@ -42265,6 +42262,7 @@ var render = function() {
                       { staticClass: "manage_users" },
                       [
                         _c("router-view", {
+                          attrs: { userInfo: _vm.userInfo },
                           on: {
                             previewImage: _vm.updateImage,
                             modelInfo: _vm.updateInfo
@@ -42487,13 +42485,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ---------------------------------------------------
 
+    props: ['userInfo'],
+
+    // ---------------------------------------------------
+
     data: function data() {
         return {
             user: this.$store.state.user,
-            avatar: this.$store.state.user.avatar,
-            cover: this.$store.state.user.cover,
-            userName: this.$store.state.user.name,
-            userStatus: this.$store.state.user.status,
             newAvatar: false,
             newCover: false,
             notifications: [],
@@ -42550,8 +42548,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         onInputChange: function onInputChange() {
             this.$emit('modelInfo', {
-                'user': this.userName,
-                'status': this.userStatus
+                'user': this.userInfo.name,
+                'status': this.userInfo.status
             });
         },
 
@@ -42632,7 +42630,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         btnSubmit: function btnSubmit() {
-            return this.userName.length >= 3 && this.userStatus.length >= 3;
+            return this.userInfo.name.length >= 3 && this.userInfo.status.length >= 3;
         },
 
 
@@ -42641,8 +42639,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         formData: function formData() {
             var formData = new FormData();
 
-            formData.append('name', this.userName);
-            formData.append('status', this.userStatus);
+            formData.append('name', this.userInfo.name);
+            formData.append('status', this.userInfo.status);
             if (this.newAvatar) formData.append('avatar', this.$refs.fileInput.files[0]);
             if (this.newCover) formData.append('cover', this.$refs.fileCover.files[0]);
 
@@ -42690,12 +42688,12 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.userName,
-                      expression: "userName"
+                      value: _vm.userInfo.name,
+                      expression: "userInfo.name"
                     }
                   ],
                   attrs: { type: "text", placeholder: "User name" },
-                  domProps: { value: _vm.userName },
+                  domProps: { value: _vm.userInfo.name },
                   on: {
                     keyup: function($event) {
                       _vm.onInputChange($event, "name")
@@ -42704,7 +42702,7 @@ var render = function() {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.userName = $event.target.value
+                      _vm.$set(_vm.userInfo, "name", $event.target.value)
                     }
                   }
                 })
@@ -42715,12 +42713,12 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.userStatus,
-                      expression: "userStatus"
+                      value: _vm.userInfo.status,
+                      expression: "userInfo.status"
                     }
                   ],
                   attrs: { type: "text", placeholder: "Status" },
-                  domProps: { value: _vm.userStatus },
+                  domProps: { value: _vm.userInfo.status },
                   on: {
                     keyup: function($event) {
                       _vm.onInputChange($event, "status")
@@ -42729,7 +42727,7 @@ var render = function() {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.userStatus = $event.target.value
+                      _vm.$set(_vm.userInfo, "status", $event.target.value)
                     }
                   }
                 })

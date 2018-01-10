@@ -6,7 +6,7 @@
 
             .chat-name
                 h1.font-name Profile
-                p.font-online {{ userName }}...
+                p.font-online {{ userInfo.name }}
 
             router-link(v-if='pathEdit', to='/profile/edit')
                 i.material-icons edit
@@ -20,23 +20,23 @@
                 .information
                     .widget(v-bind:class="{ widget_100: profileId }")
                         .cover
-                            img(:src='cover')
+                            img(:src='userInfo.cover')
 
-                            friendship(v-if='user.id != userId',
+                            friendship(v-if='user.id != userInfo.id',
                                         :my_id='user.id',
-                                        :profile_user_id='userId')
+                                        :profile_user_id='userInfo.id')
 
-                        avatar.photo(:username='userName',
+                        avatar.photo(:username='userInfo.name',
                                         color='#fff',
-                                        :src='avatar',
+                                        :src='userInfo.avatar',
                                         :size='100')
 
-                        h1 {{ userName }}
-                        h2 {{ userStatus }}
+                        h1 {{ userInfo.name }}
+                        h2 {{ userInfo.status }}
 
                     .manage_users(v-if='!profileId')
 
-                        router-view(@previewImage='updateImage', @modelInfo='updateInfo')
+                        router-view(@previewImage='updateImage', @modelInfo='updateInfo', :userInfo='userInfo')
 
                         .contener_txt(v-if='pathEdit', v-for='user in users')
 
@@ -100,12 +100,8 @@
                 showProfile: false,
                 users: [],
                 records: true,
-                userName: '',
-                userStatus: '',
-                userId: null,
+                userInfo: {},
                 profileId: this.$route.params.profile_id,
-                avatar: null,
-                cover: null,
                 loading: false
             }
         },
@@ -128,14 +124,15 @@
 
                 if (this.profileId) return;
 
-                this.userName = this.user.name;
-                this.userStatus = this.user.status;
-                this.userId = this.user.id;
-                this.profileId = this.$route.params.profile_id;
-                this.avatar = this.user.avatar;
-                this.cover = this.checkCover(this.user.cover);
+                this.userInfo = {
+                    name: this.user.name,
+                    status: this.user.status,
+                    id: this.user.id,
+                    avatar: this.user.avatar,
+                    cover: this.user.cover,
+                };
 
-                if (this.user) this.showProfile = true;
+                if (this.userInfo) this.showProfile = true;
             },
 
             // ---------------------------------------------------
