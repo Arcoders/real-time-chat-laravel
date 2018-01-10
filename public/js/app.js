@@ -42035,6 +42035,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -42172,14 +42174,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ---------------------------------------------------
 
-        pathEdit: function pathEdit() {
+        pathProfile: function pathProfile() {
             return this.$route.path == '/profile' || this.$route.path == '/profile/';
         },
 
 
         // ---------------------------------------------------
 
-        pathReturn: function pathReturn() {
+        pathEdit: function pathEdit() {
             return this.$route.path == '/profile/edit' || this.$route.path == '/profile/edit/';
         }
     }
@@ -42209,12 +42211,12 @@ var render = function() {
                   _vm._v(_vm._s(_vm.userInfo.name))
                 ])
               ]),
-              _vm.pathEdit
+              _vm.pathProfile
                 ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
                     _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
                   ])
                 : _vm._e(),
-              _vm.pathReturn
+              _vm.pathEdit
                 ? _c("router-link", { attrs: { to: "/profile" } }, [
                     _c("i", { staticClass: "material-icons" }, [
                       _vm._v("arrow_back")
@@ -42277,64 +42279,70 @@ var render = function() {
                             attrs: { userInfo: _vm.userInfo },
                             on: { previewImage: _vm.updateImage }
                           }),
-                          _vm._l(_vm.users, function(user) {
-                            return _vm.pathEdit
-                              ? _c(
-                                  "div",
-                                  { staticClass: "contener_txt" },
-                                  [
-                                    _c("avatar", {
-                                      staticClass: "img-head",
-                                      attrs: {
-                                        username: user.name,
-                                        color: "#fff",
-                                        src: user.avatar,
-                                        size: 50
-                                      }
-                                    }),
-                                    _c("div", { staticClass: "name" }, [
-                                      _c(
-                                        "button",
-                                        {
-                                          on: {
-                                            click: function($event) {
-                                              _vm.getProfile(user.id)
-                                            }
-                                          }
-                                        },
-                                        [_vm._v(_vm._s(user.name))]
-                                      )
-                                    ])
-                                  ],
-                                  1
-                                )
-                              : _vm._e()
-                          }),
-                          !_vm.records && _vm.pathEdit
+                          _vm.pathProfile
                             ? _c(
                                 "div",
-                                { staticClass: "contener_txt" },
                                 [
-                                  _c("avatar", {
-                                    staticClass: "img-head",
-                                    attrs: {
-                                      username: "!",
-                                      color: "#fff",
-                                      size: 50,
-                                      backgroundColor: "#E57373"
-                                    }
+                                  _vm._l(_vm.users, function(user) {
+                                    return _c(
+                                      "div",
+                                      { staticClass: "contener_txt" },
+                                      [
+                                        _c("avatar", {
+                                          staticClass: "img-head",
+                                          attrs: {
+                                            username: user.name,
+                                            color: "#fff",
+                                            src: user.avatar,
+                                            size: 50
+                                          }
+                                        }),
+                                        _c("div", { staticClass: "name" }, [
+                                          _c(
+                                            "button",
+                                            {
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.getProfile(user.id)
+                                                }
+                                              }
+                                            },
+                                            [_vm._v(_vm._s(user.name))]
+                                          )
+                                        ])
+                                      ],
+                                      1
+                                    )
                                   }),
-                                  _c("div", { staticClass: "name" }, [
-                                    _c("button", [
-                                      _vm._v("You are the first user")
-                                    ])
-                                  ])
+                                  !_vm.records
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "contener_txt" },
+                                        [
+                                          _c("avatar", {
+                                            staticClass: "img-head",
+                                            attrs: {
+                                              username: "!",
+                                              color: "#fff",
+                                              size: 50,
+                                              backgroundColor: "#E57373"
+                                            }
+                                          }),
+                                          _c("div", { staticClass: "name" }, [
+                                            _c("button", [
+                                              _vm._v("You are the first user")
+                                            ])
+                                          ])
+                                        ],
+                                        1
+                                      )
+                                    : _vm._e()
                                 ],
-                                1
+                                2
                               )
                             : _vm._e()
                         ],
-                        2
+                        1
                       )
                     : _vm._e()
                 ])

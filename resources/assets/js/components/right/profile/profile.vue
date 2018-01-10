@@ -9,10 +9,10 @@
                     h1.font-name Profile
                     p.font-online {{ userInfo.name }}
 
-                router-link(v-if='pathEdit', to='/profile/edit')
+                router-link(v-if='pathProfile', to='/profile/edit')
                     i.material-icons edit
 
-                router-link(v-if='pathReturn', to='/profile')
+                router-link(v-if='pathEdit', to='/profile')
                     i.material-icons arrow_back
 
             .complet-content
@@ -39,25 +39,27 @@
 
                             router-view(@previewImage='updateImage', :userInfo='userInfo')
 
-                            .contener_txt(v-if='pathEdit', v-for='user in users')
+                            div(v-if='pathProfile')
+                                .contener_txt(v-for='user in users')
 
-                                avatar.img-head(:username='user.name',
-                                                color='#fff',
-                                                :src='user.avatar',
-                                                :size='50')
+                                    avatar.img-head(:username='user.name',
+                                    color='#fff',
+                                    :src='user.avatar',
+                                    :size='50')
 
-                                .name
-                                    button(v-on:click='getProfile(user.id)')
-                                        | {{user.name}}
+                                    .name
+                                        button(v-on:click='getProfile(user.id)')
+                                            | {{user.name}}
 
-                            .contener_txt(v-if='!records && pathEdit')
+                                .contener_txt(v-if='!records')
 
-                                avatar.img-head(username='!',
-                                                color='#fff',
-                                                :size='50',
-                                                backgroundColor='#E57373')
-                                .name
-                                    button You are the first user
+                                    avatar.img-head(username='!',
+                                    color='#fff',
+                                    :size='50',
+                                    backgroundColor='#E57373')
+                                    
+                                    .name
+                                        button You are the first user
 </template>
 
 <style scoped>
@@ -227,13 +229,13 @@
 
             // ---------------------------------------------------
 
-            pathEdit() {
+            pathProfile() {
                 return (this.$route.path == '/profile' || this.$route.path == '/profile/');
             },
 
             // ---------------------------------------------------
 
-            pathReturn() {
+            pathEdit() {
                 return (this.$route.path == '/profile/edit' || this.$route.path == '/profile/edit/');
             },
 
