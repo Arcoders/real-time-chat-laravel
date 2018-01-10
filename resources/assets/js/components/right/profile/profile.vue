@@ -42,7 +42,7 @@
 
                             avatar.img-head(:username='user.name',
                                             color='#fff',
-                                            :src='null',
+                                            :src='user.avatar',
                                             :size='50')
 
                             .name
@@ -124,9 +124,10 @@
             // ---------------------------------------------------
 
             setUserInfo() {
+                this.user = this.$store.state.user;
+
                 if (this.profileId) return;
 
-                this.user = this.$store.state.user;
                 this.userName = this.user.name;
                 this.userStatus = this.user.status;
                 this.userId = this.user.id;
@@ -166,6 +167,8 @@
                         this.userStatus = response.data.status;
                         this.avatar = response.data.avatar;
                         this.cover = this.checkCover(response.data.cover);
+
+                        this.showProfile = true;
 
                     } else {
                         this.$router.push('/profile');
@@ -208,11 +211,11 @@
             // ---------------------------------------------------
 
             profileByParameter() {
+                this.setUserInfo();
                 if (this.profileId) {
                     if (!isNaN(this.profileId)) return this.getProfile(this.profileId);
                     this.$router.push('/profile');
                 } else {
-                    this.setUserInfo();
                     this.getUsers();
                 }
             }

@@ -42064,9 +42064,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         setUserInfo: function setUserInfo() {
+            this.user = this.$store.state.user;
+
             if (this.profileId) return;
 
-            this.user = this.$store.state.user;
             this.userName = this.user.name;
             this.userStatus = this.user.status;
             this.userId = this.user.id;
@@ -42111,6 +42112,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.userStatus = response.data.status;
                     _this.avatar = response.data.avatar;
                     _this.cover = _this.checkCover(response.data.cover);
+
+                    _this.showProfile = true;
                 } else {
                     _this.$router.push('/profile');
                 }
@@ -42154,11 +42157,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         profileByParameter: function profileByParameter() {
+            this.setUserInfo();
             if (this.profileId) {
                 if (!isNaN(this.profileId)) return this.getProfile(this.profileId);
                 this.$router.push('/profile');
             } else {
-                this.setUserInfo();
                 this.getUsers();
             }
         }
@@ -42278,7 +42281,7 @@ var render = function() {
                                     attrs: {
                                       username: user.name,
                                       color: "#fff",
-                                      src: null,
+                                      src: user.avatar,
                                       size: 50
                                     }
                                   }),
