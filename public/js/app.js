@@ -38978,11 +38978,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (data.type == 'group' && !data.groupId) _this.chatsList();
 
             if (data.groupId) {
-                for (var i in _this.groups) {
-                    if (_this.groups[i].id === data.groupId) {
-                        _this.groups[i][0] = data.message;
-                    }
-                }
+                var group = _this.groups.findIndex(function (g) {
+                    return g.id === data.groupId;
+                });
+                _this.groups[group][0] = data.message;
             }
         });
     },

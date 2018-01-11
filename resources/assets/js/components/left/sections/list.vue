@@ -113,11 +113,8 @@
                 if (data.type == 'group' && !data.groupId) this.chatsList();
 
                 if (data.groupId) {
-                    for (let i in this.groups) {
-                        if (this.groups[i].id === data.groupId) {
-                            this.groups[i][0] = data.message;
-                        }
-                    }
+                    let group = this.groups.findIndex(g => g.id === data.groupId);
+                    this.groups[group][0] = data.message;
                 }
 
             });
