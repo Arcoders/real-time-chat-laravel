@@ -114,7 +114,13 @@
 
                 if (data.groupId) {
                     let group = this.groups.findIndex(g => g.id === data.groupId);
-                    this.groups[group][0] = data.message;
+                    let up = this.groups[group];
+                    up[0] = data.message;
+
+                    console.log(this.groups[group]);
+
+                    this.groups.splice(group, 1);
+                    this.groups.unshift(up);
                 }
 
             });

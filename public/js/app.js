@@ -38981,7 +38981,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var group = _this.groups.findIndex(function (g) {
                     return g.id === data.groupId;
                 });
-                _this.groups[group][0] = data.message;
+                var up = _this.groups[group];
+                up[0] = data.message;
+
+                console.log(_this.groups[group]);
+
+                _this.groups.splice(group, 1);
+                _this.groups.unshift(up);
             }
         });
     },
@@ -41372,8 +41378,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.typing.push(data);
 
                 setTimeout(function () {
-                    _this2.typing = _this2.typing.filter(function (val) {
-                        return val['id'] !== data.id;
+                    _this2.typing = _this2.typing.filter(function (t) {
+                        return t.id !== data.id;
                     });
                 }, 15000);
             });

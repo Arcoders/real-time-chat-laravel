@@ -157,7 +157,7 @@
                     this.typing.push(data);
 
                     setTimeout(() => {
-                        this.typing = this.typing.filter(val => val['id'] !== data.id);
+                        this.typing = this.typing.filter(t => t.id !== data.id);
                     }, 15000);
 
                 });
