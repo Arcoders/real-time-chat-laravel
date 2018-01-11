@@ -87,6 +87,9 @@
 </style>
 
 <script>
+
+    const arraySort = require('array-sort');
+
     export default {
 
         // ----------------------------------------------
@@ -99,6 +102,7 @@
             return {
                 loading: false,
                 groups: null,
+                newGroups: 0,
                 friends: null,
                 notFound: false,
                 errorLoad: false
@@ -114,13 +118,12 @@
 
                 if (data.groupId) {
                     let group = this.groups.findIndex(g => g.id === data.groupId);
+
                     let up = this.groups[group];
                     up[0] = data.message;
 
-                    console.log(this.groups[group]);
-
                     this.groups.splice(group, 1);
-                    this.groups.unshift(up);
+                    this.groups.splice(this.newGroups, 0, up);
                 }
 
             });
@@ -151,6 +154,8 @@
                         if (response.data.length === 0) this.notFound = true;
                         this.groups = response.data.groups;
                         this.friends = response.data.friends;
+                        this.newGroups = this.groups.filter(g => !g['0']).length;
+                        arraySort(this.groups, "0.created_at").reverse();
 
                     } else {
                         this.errorLoad = true;

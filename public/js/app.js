@@ -38949,6 +38949,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+var arraySort = __webpack_require__(235);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     // ----------------------------------------------
@@ -38961,6 +38964,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             loading: false,
             groups: null,
+            newGroups: 0,
             friends: null,
             notFound: false,
             errorLoad: false
@@ -38981,13 +38985,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var group = _this.groups.findIndex(function (g) {
                     return g.id === data.groupId;
                 });
+
                 var up = _this.groups[group];
                 up[0] = data.message;
 
-                console.log(_this.groups[group]);
-
                 _this.groups.splice(group, 1);
-                _this.groups.unshift(up);
+                _this.groups.splice(_this.newGroups, 0, up);
             }
         });
     },
@@ -39020,6 +39023,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     if (response.data.length === 0) _this2.notFound = true;
                     _this2.groups = response.data.groups;
                     _this2.friends = response.data.friends;
+                    _this2.newGroups = _this2.groups.filter(function (g) {
+                        return !g['0'];
+                    }).length;
+                    arraySort(_this2.groups, "0.created_at").reverse();
                 } else {
                     _this2.errorLoad = true;
                 }
@@ -44725,6 +44732,535 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * array-sort <https://github.com/jonschlinkert/array-sort>
+ *
+ * Copyright (c) 2015-2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+
+
+var defaultCompare = __webpack_require__(236);
+var typeOf = __webpack_require__(238);
+var get = __webpack_require__(239);
+
+/**
+ * Sort an array of objects by one or more properties.
+ *
+ * @param  {Array} `arr` The Array to sort.
+ * @param  {String|Array|Function} `props` One or more object paths or comparison functions.
+ * @param  {Object} `opts` Pass `{ reverse: true }` to reverse the sort order.
+ * @return {Array} Returns a sorted array.
+ * @api public
+ */
+
+function arraySort(arr, props, opts) {
+  if (arr == null) {
+    return [];
+  }
+
+  if (!Array.isArray(arr)) {
+    throw new TypeError('array-sort expects an array.');
+  }
+
+  if (arguments.length === 1) {
+    return arr.sort();
+  }
+
+  var args = flatten([].slice.call(arguments, 1));
+
+  // if the last argument appears to be a plain object,
+  // it's not a valid `compare` arg, so it must be options.
+  if (typeOf(args[args.length - 1]) === 'object') {
+    opts = args.pop();
+  }
+  return arr.sort(sortBy(args, opts));
+}
+
+/**
+ * Iterate over each comparison property or function until `1` or `-1`
+ * is returned.
+ *
+ * @param  {String|Array|Function} `props` One or more object paths or comparison functions.
+ * @param  {Object} `opts` Pass `{ reverse: true }` to reverse the sort order.
+ * @return {Array}
+ */
+
+function sortBy(props, opts) {
+  opts = opts || {};
+
+  return function compareFn(a, b) {
+    var len = props.length, i = -1;
+    var result;
+
+    while (++i < len) {
+      result = compare(props[i], a, b);
+      if (result !== 0) {
+        break;
+      }
+    }
+    if (opts.reverse === true) {
+      return result * -1;
+    }
+    return result;
+  };
+}
+
+/**
+ * Compare `a` to `b`. If an object `prop` is passed, then
+ * `a[prop]` is compared to `b[prop]`
+ */
+
+function compare(prop, a, b) {
+  if (typeof prop === 'function') {
+    // expose `compare` to custom function
+    return prop(a, b, compare.bind(null, null));
+  }
+  // compare object values
+  if (prop && typeof a === 'object' && typeof b === 'object') {
+    return compare(null, get(a, prop), get(b, prop));
+  }
+  return defaultCompare(a, b);
+}
+
+/**
+ * Flatten the given array.
+ */
+
+function flatten(arr) {
+  return [].concat.apply([], arr);
+}
+
+/**
+ * Expose `arraySort`
+ */
+
+module.exports = arraySort;
+
+
+/***/ }),
+/* 236 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var typeOf = __webpack_require__(237);
+
+/**
+ * Basic sort algorithm that has similar behavior to `Array.prototype.sort`
+ * for null and undefined, but also allows sorting by an object property.
+ *
+ * @param {Mixed} `a` First value to compare.
+ * @param {Mixed} `b` Second value to compare.
+ * @param {String} `prop` Optional property to use when comparing objects. If specified must be a string.
+ * @return {Number} Returns 1 when `a` should come after `b`, -1 when `a` should come before `b`, and 0 when `a` and `b` are equal.
+ * @api public
+ */
+
+module.exports = function defaultCompare(a, b, prop) {
+  if (prop != null && typeOf(prop) !== 'string') {
+    throw new TypeError('expected "prop" to be undefined or a string');
+  }
+
+  var typeA = typeOf(a);
+  var typeB = typeOf(b);
+
+  if (prop) {
+    if (typeA === 'object') {
+      a = a[prop];
+      typeA = typeOf(a);
+    }
+    if (typeB === 'object') {
+      b = b[prop];
+      typeB = typeOf(b);
+    }
+  }
+
+  if (typeA === 'null') {
+    return typeB === 'null' ? 0 : (typeB === 'undefined' ? -1 : 1);
+  } else if (typeA === 'undefined') {
+    return typeB === 'null' ? 1 : (typeB === 'undefined' ? 0 : 1);
+  } else if (typeB === 'null' || typeB === 'undefined') {
+    return -1;
+  } else {
+    return a < b ? -1 : (a > b ? 1 : 0);
+  }
+};
+
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports) {
+
+var toString = Object.prototype.toString;
+
+/**
+ * Get the native `typeof` a value.
+ *
+ * @param  {*} `val`
+ * @return {*} Native javascript type
+ */
+
+module.exports = function kindOf(val) {
+  var type = typeof val;
+
+  // primitivies
+  if (type === 'undefined') {
+    return 'undefined';
+  }
+  if (val === null) {
+    return 'null';
+  }
+  if (val === true || val === false || val instanceof Boolean) {
+    return 'boolean';
+  }
+  if (type === 'string' || val instanceof String) {
+    return 'string';
+  }
+  if (type === 'number' || val instanceof Number) {
+    return 'number';
+  }
+
+  // functions
+  if (type === 'function' || val instanceof Function) {
+    if (typeof val.constructor.name !== 'undefined' && val.constructor.name.slice(0, 9) === 'Generator') {
+      return 'generatorfunction';
+    }
+    return 'function';
+  }
+
+  // array
+  if (typeof Array.isArray !== 'undefined' && Array.isArray(val)) {
+    return 'array';
+  }
+
+  // check for instances of RegExp and Date before calling `toString`
+  if (val instanceof RegExp) {
+    return 'regexp';
+  }
+  if (val instanceof Date) {
+    return 'date';
+  }
+
+  // other objects
+  type = toString.call(val);
+
+  if (type === '[object RegExp]') {
+    return 'regexp';
+  }
+  if (type === '[object Date]') {
+    return 'date';
+  }
+  if (type === '[object Arguments]') {
+    return 'arguments';
+  }
+  if (type === '[object Error]') {
+    return 'error';
+  }
+  if (type === '[object Promise]') {
+    return 'promise';
+  }
+
+  // buffer
+  if (isBuffer(val)) {
+    return 'buffer';
+  }
+
+  // es6: Map, WeakMap, Set, WeakSet
+  if (type === '[object Set]') {
+    return 'set';
+  }
+  if (type === '[object WeakSet]') {
+    return 'weakset';
+  }
+  if (type === '[object Map]') {
+    return 'map';
+  }
+  if (type === '[object WeakMap]') {
+    return 'weakmap';
+  }
+  if (type === '[object Symbol]') {
+    return 'symbol';
+  }
+  
+  if (type === '[object Map Iterator]') {
+    return 'mapiterator';
+  }
+  if (type === '[object Set Iterator]') {
+    return 'setiterator';
+  }
+  if (type === '[object String Iterator]') {
+    return 'stringiterator';
+  }
+  if (type === '[object Array Iterator]') {
+    return 'arrayiterator';
+  }
+  
+  // typed arrays
+  if (type === '[object Int8Array]') {
+    return 'int8array';
+  }
+  if (type === '[object Uint8Array]') {
+    return 'uint8array';
+  }
+  if (type === '[object Uint8ClampedArray]') {
+    return 'uint8clampedarray';
+  }
+  if (type === '[object Int16Array]') {
+    return 'int16array';
+  }
+  if (type === '[object Uint16Array]') {
+    return 'uint16array';
+  }
+  if (type === '[object Int32Array]') {
+    return 'int32array';
+  }
+  if (type === '[object Uint32Array]') {
+    return 'uint32array';
+  }
+  if (type === '[object Float32Array]') {
+    return 'float32array';
+  }
+  if (type === '[object Float64Array]') {
+    return 'float64array';
+  }
+
+  // must be a plain object
+  return 'object';
+};
+
+/**
+ * If you need to support Safari 5-7 (8-10 yr-old browser),
+ * take a look at https://github.com/feross/is-buffer
+ */
+
+function isBuffer(val) {
+  return val.constructor
+    && typeof val.constructor.isBuffer === 'function'
+    && val.constructor.isBuffer(val);
+}
+
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports) {
+
+var toString = Object.prototype.toString;
+
+/**
+ * Get the native `typeof` a value.
+ *
+ * @param  {*} `val`
+ * @return {*} Native javascript type
+ */
+
+module.exports = function kindOf(val) {
+  var type = typeof val;
+
+  // primitivies
+  if (type === 'undefined') {
+    return 'undefined';
+  }
+  if (val === null) {
+    return 'null';
+  }
+  if (val === true || val === false || val instanceof Boolean) {
+    return 'boolean';
+  }
+  if (type === 'string' || val instanceof String) {
+    return 'string';
+  }
+  if (type === 'number' || val instanceof Number) {
+    return 'number';
+  }
+
+  // functions
+  if (type === 'function' || val instanceof Function) {
+    if (typeof val.constructor.name !== 'undefined' && val.constructor.name.slice(0, 9) === 'Generator') {
+      return 'generatorfunction';
+    }
+    return 'function';
+  }
+
+  // array
+  if (typeof Array.isArray !== 'undefined' && Array.isArray(val)) {
+    return 'array';
+  }
+
+  // check for instances of RegExp and Date before calling `toString`
+  if (val instanceof RegExp) {
+    return 'regexp';
+  }
+  if (val instanceof Date) {
+    return 'date';
+  }
+
+  // other objects
+  type = toString.call(val);
+
+  if (type === '[object RegExp]') {
+    return 'regexp';
+  }
+  if (type === '[object Date]') {
+    return 'date';
+  }
+  if (type === '[object Arguments]') {
+    return 'arguments';
+  }
+  if (type === '[object Error]') {
+    return 'error';
+  }
+  if (type === '[object Promise]') {
+    return 'promise';
+  }
+
+  // buffer
+  if (isBuffer(val)) {
+    return 'buffer';
+  }
+
+  // es6: Map, WeakMap, Set, WeakSet
+  if (type === '[object Set]') {
+    return 'set';
+  }
+  if (type === '[object WeakSet]') {
+    return 'weakset';
+  }
+  if (type === '[object Map]') {
+    return 'map';
+  }
+  if (type === '[object WeakMap]') {
+    return 'weakmap';
+  }
+  if (type === '[object Symbol]') {
+    return 'symbol';
+  }
+  
+  if (type === '[object Map Iterator]') {
+    return 'mapiterator';
+  }
+  if (type === '[object Set Iterator]') {
+    return 'setiterator';
+  }
+  if (type === '[object String Iterator]') {
+    return 'stringiterator';
+  }
+  if (type === '[object Array Iterator]') {
+    return 'arrayiterator';
+  }
+  
+  // typed arrays
+  if (type === '[object Int8Array]') {
+    return 'int8array';
+  }
+  if (type === '[object Uint8Array]') {
+    return 'uint8array';
+  }
+  if (type === '[object Uint8ClampedArray]') {
+    return 'uint8clampedarray';
+  }
+  if (type === '[object Int16Array]') {
+    return 'int16array';
+  }
+  if (type === '[object Uint16Array]') {
+    return 'uint16array';
+  }
+  if (type === '[object Int32Array]') {
+    return 'int32array';
+  }
+  if (type === '[object Uint32Array]') {
+    return 'uint32array';
+  }
+  if (type === '[object Float32Array]') {
+    return 'float32array';
+  }
+  if (type === '[object Float64Array]') {
+    return 'float64array';
+  }
+
+  // must be a plain object
+  return 'object';
+};
+
+/**
+ * If you need to support Safari 5-7 (8-10 yr-old browser),
+ * take a look at https://github.com/feross/is-buffer
+ */
+
+function isBuffer(val) {
+  return val.constructor
+    && typeof val.constructor.isBuffer === 'function'
+    && val.constructor.isBuffer(val);
+}
+
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports) {
+
+/*!
+ * get-value <https://github.com/jonschlinkert/get-value>
+ *
+ * Copyright (c) 2014-2015, Jon Schlinkert.
+ * Licensed under the MIT License.
+ */
+
+module.exports = function(obj, prop, a, b, c) {
+  if (!isObject(obj) || !prop) {
+    return obj;
+  }
+
+  prop = toString(prop);
+
+  // allowing for multiple properties to be passed as
+  // a string or array, but much faster (3-4x) than doing
+  // `[].slice.call(arguments)`
+  if (a) prop += '.' + toString(a);
+  if (b) prop += '.' + toString(b);
+  if (c) prop += '.' + toString(c);
+
+  if (prop in obj) {
+    return obj[prop];
+  }
+
+  var segs = prop.split('.');
+  var len = segs.length;
+  var i = -1;
+
+  while (obj && (++i < len)) {
+    var key = segs[i];
+    while (key[key.length - 1] === '\\') {
+      key = key.slice(0, -1) + '.' + segs[++i];
+    }
+    obj = obj[key];
+  }
+  return obj;
+};
+
+function isObject(val) {
+  return val !== null && (typeof val === 'object' || typeof val === 'function');
+}
+
+function toString(val) {
+  if (!val) return '';
+  if (Array.isArray(val)) {
+    return val.join('.');
+  }
+  return val;
+}
+
 
 /***/ })
 /******/ ]);
