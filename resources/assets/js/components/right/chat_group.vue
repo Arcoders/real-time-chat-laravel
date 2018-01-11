@@ -152,7 +152,7 @@
             userTyping() {
                 this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
 
-                    for (let i in this.typing) if (this.typing[i]['id'] === data.id) return;
+                    if (this.typing[this.typing.findIndex(t => t.id === data.id)]) return;
 
                     this.typing.push(data);
 

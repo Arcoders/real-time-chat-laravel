@@ -38991,7 +38991,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted: function mounted() {
         this.chatsList();
-        console.log('Private ok!');
     },
 
 
@@ -39025,8 +39024,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
 
-
-        // ----------------------------------------------
 
         // ---------------------------------------------------
 
@@ -41368,9 +41365,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', function (data) {
 
-                for (var i in _this2.typing) {
-                    if (_this2.typing[i]['id'] === data.id) return;
-                }_this2.typing.push(data);
+                if (_this2.typing[_this2.typing.findIndex(function (t) {
+                    return t.id === data.id;
+                })]) return;
+
+                _this2.typing.push(data);
 
                 setTimeout(function () {
                     _this2.typing = _this2.typing.filter(function (val) {
