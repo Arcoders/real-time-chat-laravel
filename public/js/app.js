@@ -38974,7 +38974,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         this.$eventBus.$on('update', function (data) {
-            if (data.type == 'group') _this.chatsList();
+
+            if (data.type == 'group' && !data.groupId) _this.chatsList();
+
+            if (data.groupId) {
+                for (var i in _this.groups) {
+                    if (_this.groups[i].id === data.groupId) {
+                        console.log(_this.groups[i].id);
+                    }
+                }
+            }
         });
     },
 
@@ -41277,7 +41286,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             user: this.$store.state.user,
-            groupId: window.atob(this.$route.params.group_id),
+            groupId: parseInt(window.atob(this.$route.params.group_id)),
             avatar: null,
             showChat: false,
             uploadImage: false,
@@ -41329,16 +41338,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (_this.messages[0]['welcome']) _this.messages.shift();
 
-                _this.messages.push({
+                var message = {
                     id: data.user.id,
                     name: data.user.name,
                     avatar: data.user.avatar,
                     photo: data.message.photo,
                     text: data.message.body,
                     time: data.message.created_at
-                });
+                };
+
+                _this.messages.push(message);
 
                 _this.scrollDown('chat');
+
+                _this.$eventBus.$emit('update', { type: 'group', groupId: _this.groupId, message: message });
             });
         },
 
@@ -42635,7 +42648,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this2.loading = false;
 
-                if (response.status == 422) {
+                if (response.status === 422) {
                     _this2.validation(response.data.errors);
                 } else {
                     _this2.error();

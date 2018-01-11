@@ -109,7 +109,17 @@
 
         created() {
             this.$eventBus.$on('update' , (data) => {
-                if (data.type == 'group') this.chatsList();
+
+                if (data.type == 'group' && !data.groupId) this.chatsList();
+
+                if (data.groupId) {
+                    for (let i in this.groups) {
+                        if (this.groups[i].id === data.groupId) {
+                            console.log(this.groups[i].id);
+                        }
+                    }
+                }
+
             });
         },
 

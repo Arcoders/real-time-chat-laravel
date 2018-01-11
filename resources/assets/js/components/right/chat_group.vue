@@ -78,7 +78,7 @@
         data() {
             return {
                 user: this.$store.state.user,
-                groupId: window.atob(this.$route.params.group_id),
+                groupId:parseInt( window.atob(this.$route.params.group_id)),
                 avatar: null,
                 showChat: false,
                 uploadImage: false,
@@ -124,16 +124,20 @@
 
                     if (this.messages[0]['welcome']) this.messages.shift();
 
-                    this.messages.push({
+                    let message = {
                         id: data.user.id,
                         name: data.user.name,
                         avatar: data.user.avatar,
                         photo: data.message.photo,
                         text: data.message.body,
                         time: data.message.created_at
-                    });
+                    };
+
+                    this.messages.push(message);
 
                     this.scrollDown('chat');
+
+                    this.$eventBus.$emit('update', {type: 'group', groupId: this.groupId, message: message});
 
                 });
             },
