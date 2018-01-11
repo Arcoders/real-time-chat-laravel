@@ -115,7 +115,7 @@
                 if (data.groupId) {
                     for (let i in this.groups) {
                         if (this.groups[i].id === data.groupId) {
-                            console.log(this.groups[i].id);
+                            this.groups[i][0] = data.message;
                         }
                     }
                 }

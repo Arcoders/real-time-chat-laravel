@@ -38980,7 +38980,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (data.groupId) {
                 for (var i in _this.groups) {
                     if (_this.groups[i].id === data.groupId) {
-                        console.log(_this.groups[i].id);
+                        _this.groups[i][0] = data.message;
                     }
                 }
             }
@@ -41338,20 +41338,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (_this.messages[0]['welcome']) _this.messages.shift();
 
-                var message = {
+                _this.messages.push({
                     id: data.user.id,
                     name: data.user.name,
                     avatar: data.user.avatar,
                     photo: data.message.photo,
                     text: data.message.body,
                     time: data.message.created_at
-                };
-
-                _this.messages.push(message);
+                });
 
                 _this.scrollDown('chat');
 
-                _this.$eventBus.$emit('update', { type: 'group', groupId: _this.groupId, message: message });
+                _this.$eventBus.$emit('update', { type: 'group', groupId: _this.groupId, message: data.message });
             });
         },
 
