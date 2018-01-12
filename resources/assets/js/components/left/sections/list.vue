@@ -48,6 +48,12 @@
                 p(v-else)
                     i.material-icons.time fiber_new
 
+        div(v-if='groups')
+            .contact(v-if='groups.length === 0')
+                .contact-preview
+                    p.middle Not found
+
+
 </template>
 
 <style scoped>
@@ -83,6 +89,11 @@
         margin-left: 5px;
         color: #009688;
         font-size: 25px;
+    }
+
+    .middle {
+        margin: auto;
+        color: #aaaaaa;
     }
 </style>
 

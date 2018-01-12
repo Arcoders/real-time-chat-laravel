@@ -36,7 +36,7 @@
                     return g.name.match(rgx);
                 });
 
-                if (group.length > 0) this.$eventBus.$emit('update', {type: 'group', filtred: group});
+                this.$eventBus.$emit('update', {type: 'group', filtred: group});
 
             }
 
