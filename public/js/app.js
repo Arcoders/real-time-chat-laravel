@@ -38849,7 +38849,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-078cca8e] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-078cca8e] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-078cca8e] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-078cca8e] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n.chat_avatar[data-v-078cca8e] {\n    width: 50px;\n    height: 50px;\n    min-width: 50px;\n    min-height: 50px;\n    margin: 12px 20px;\n    border-radius: 50%;\n}\n.photo[data-v-078cca8e] {\n    margin-right: 5px;\n    color: #eeeeee;\n    font-size: 15px;\n}\n.time[data-v-078cca8e] {\n    margin-left: 5px;\n    color: #eeeeee;\n    font-size: 25px;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-078cca8e] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-078cca8e] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-078cca8e] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-078cca8e] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n.chat_avatar[data-v-078cca8e] {\n    width: 50px;\n    height: 50px;\n    min-width: 50px;\n    min-height: 50px;\n    margin: 12px 20px;\n    border-radius: 50%;\n}\n.photo[data-v-078cca8e] {\n    margin-right: 5px;\n    color: #eeeeee;\n    font-size: 15px;\n}\n.time[data-v-078cca8e] {\n    margin-left: 5px;\n    color: #009688;\n    font-size: 25px;\n}\n", ""]);
 
 // exports
 
@@ -38979,7 +38979,7 @@ var arraySort = __webpack_require__(235);
 
         this.$eventBus.$on('update', function (data) {
 
-            if (data.type == 'group' && !data.groupId) _this.chatsList();
+            if (data.type == 'group' && data.refresh) _this.chatsList();
 
             if (data.groupId) {
                 var group = _this.groups.findIndex(function (g) {
@@ -41358,7 +41358,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this.scrollDown('chat');
 
-                _this.$eventBus.$emit('update', { type: 'group', groupId: _this.groupId, message: data.message });
+                //                    this.$eventBus.$emit('update', {type: 'group', groupId: this.groupId, message: data.message});
+            });
+
+            this.channel = this.$pusher.subscribe('room-group');
+            this.channel.bind('updateList', function (data) {
+
+                _this.$eventBus.$emit('update', {
+                    type: 'group',
+                    refresh: false,
+                    groupId: _this.groupId,
+                    message: data.message });
             });
         },
 

@@ -135,9 +135,19 @@
 
                     this.scrollDown('chat');
 
-                    this.$eventBus.$emit('update', {type: 'group', groupId: this.groupId, message: data.message});
-
+//                    this.$eventBus.$emit('update', {type: 'group', groupId: this.groupId, message: data.message});
                 });
+
+                this.channel = this.$pusher.subscribe('room-group');
+                this.channel.bind('updateList', (data) => {
+
+                    this.$eventBus.$emit('update', {
+                        type: 'group',
+                        refresh: false,
+                        groupId: this.groupId,
+                        message: data.message});
+                    });
+
             },
 
             // ----------------------------------------------

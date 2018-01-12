@@ -45,8 +45,9 @@ class MessagesController extends Controller
         if ($message->save()) {
             $this->triggerPusher('room-' . $message->group_id, 'pushMessage', [
                 'message' => $message,
-                'user' => Auth::user()
+                'user' => $user
             ]);
+            $this->triggerPusher('room-group', 'updateList', ['message' => $message]);
             return response()->json($message, 200);
         }
     }
