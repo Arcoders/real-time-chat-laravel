@@ -39049,20 +39049,14 @@ var arraySort = __webpack_require__(157);
 
             this.loading = true;
 
-            this.$http.get('/chats_list').then(function (response) {
+            this.$http.get('/chats_list').then(function (res) {
 
                 _this3.loading = false;
 
-                if (response.status === 200) {
+                if (res.status === 200) {
 
-                    if (response.data.length === 0) _this3.notFound = true;
-                    _this3.groups = response.data.groups;
-                    _this3.friends = response.data.friends;
-                    _this3.newGroups = _this3.groups.filter(function (g) {
-                        return !g[0];
-                    }).length;
-                    arraySort(_this3.groups, "0.created_at").reverse();
-                    _this3.$store.commit('updateGroups', _this3.groups);
+                    if (res.data.length === 0) _this3.notFound = true;
+                    _this3.done(res.data.groups, res.data.friends);
                 } else {
                     _this3.errorLoad = true;
                 }
@@ -39071,6 +39065,21 @@ var arraySort = __webpack_require__(157);
                 _this3.loading = false;
                 _this3.errorLoad = true;
             });
+        },
+
+
+        // ---------------------------------------------------
+
+        done: function done(groups, friends) {
+
+            this.groups = groups;
+            this.friends = friends;
+
+            this.newGroups = this.groups.filter(function (g) {
+                return !g[0];
+            }).length;
+
+            this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
         },
 
 
@@ -39945,13 +39954,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
-        return {
-            groups: null,
-            name: ''
-        };
-    },
-    mounted: function mounted() {
-        console.log('Search ok!');
+        return { groups: null, name: '' };
     },
 
 
@@ -39966,9 +39969,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 })
             });
         }
-    },
-
-    computed: {}
+    }
 
 });
 

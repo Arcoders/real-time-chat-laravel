@@ -13,14 +13,7 @@
     export default {
 
         data() {
-            return {
-                groups: null,
-                name: ''
-            }
-        },
-
-        mounted() {
-            console.log('Search ok!');
+            return {groups: null, name: ''}
         },
 
         methods: {
@@ -35,12 +28,6 @@
             }
 
         },
-
-        computed: {
-
-
-
-        }
 
     }
 </script>

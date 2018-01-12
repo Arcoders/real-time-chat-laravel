@@ -176,18 +176,14 @@
 
                 this.loading = true;
 
-                this.$http.get('/chats_list').then(response => {
+                this.$http.get('/chats_list').then(res => {
 
                     this.loading = false;
 
-                    if (response.status === 200) {
+                    if (res.status === 200) {
 
-                        if (response.data.length === 0) this.notFound = true;
-                        this.groups = response.data.groups;
-                        this.friends = response.data.friends;
-                        this.newGroups = this.groups.filter(g => !g[0]).length;
-                        arraySort(this.groups, "0.created_at").reverse();
-                        this.$store.commit('updateGroups', this.groups);
+                        if (res.data.length === 0) this.notFound = true;
+                        this.done(res.data.groups, res.data.friends);
 
                     } else {
                         this.errorLoad = true;
@@ -199,6 +195,18 @@
                     this.errorLoad = true;
 
                 });
+            },
+
+            // ---------------------------------------------------
+
+            done(groups, friends) {
+
+                this.groups = groups;
+                this.friends = friends;
+
+                this.newGroups = this.groups.filter(g => !g[0]).length;
+
+                this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
             },
 
             // ---------------------------------------------------
