@@ -39918,9 +39918,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            groups: null,
+            name: ''
+        };
+    },
     mounted: function mounted() {
         console.log('Search ok!');
-    }
+    },
+
+
+    methods: {
+        updateGroups: function updateGroups() {
+
+            this.groups = this.$store.state.groups;
+
+            var hola = this.groups.filter(function (g) {
+                return g.name.match("/arco/i");
+            });
+
+            console.log(hola);
+
+            //this.$store.commit('updateGroups', this.groups);
+        }
+    },
+
+    computed: {}
+
 });
 
 /***/ }),
@@ -39931,27 +39956,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "search_app" } }, [
-      _c("div", { staticClass: "wrap-input" }, [
-        _c("div", { staticClass: "input" }, [
-          _c("i", { staticClass: "material-icons" }, [_vm._v("search")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "input-global",
-            attrs: { type: "text", placeholder: "Search contact..." }
-          })
-        ])
+  return _c("div", { attrs: { id: "search_app" } }, [
+    _c("div", { staticClass: "wrap-input" }, [
+      _c("div", { staticClass: "input" }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("search")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.name,
+              expression: "name"
+            }
+          ],
+          staticClass: "input-global",
+          attrs: { type: "text", placeholder: "Search contact..." },
+          domProps: { value: _vm.name },
+          on: {
+            keyup: _vm.updateGroups,
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.name = $event.target.value
+            }
+          }
+        })
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
