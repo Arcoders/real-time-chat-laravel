@@ -127,6 +127,8 @@
                     }
                 }
 
+                if (data.filtred) this.groups = data.filtred;
+
             });
             this.updateList();
         },

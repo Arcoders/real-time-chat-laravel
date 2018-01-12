@@ -38995,6 +38995,8 @@ var arraySort = __webpack_require__(157);
                     _this.groups.splice(_this.newGroups, 0, up);
                 }
             }
+
+            if (data.filtred) _this.groups = data.filtred;
         });
         this.updateList();
     },
@@ -39940,9 +39942,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return g.name.match(rgx);
             });
 
-            console.log(group);
-
-            //this.$store.commit('updateGroups', this.groups);
+            if (group.length > 0) this.$eventBus.$emit('update', { type: 'group', filtred: group });
         }
     },
 

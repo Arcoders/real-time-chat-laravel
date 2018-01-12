@@ -36,9 +36,7 @@
                     return g.name.match(rgx);
                 });
 
-                console.log(group);
-
-                //this.$store.commit('updateGroups', this.groups);
+                if (group.length > 0) this.$eventBus.$emit('update', {type: 'group', filtred: group});
 
             }
 
