@@ -202,7 +202,7 @@
             done(msg) {
                 this.showNotification(msg, 'done');
                 this.resetForm();
-                this.$eventBus.$emit('update', {type: 'group'});
+                this.$eventBus.$emit('update', {type: 'group', refresh: true});
             },
 
             // ---------------------------------------------------

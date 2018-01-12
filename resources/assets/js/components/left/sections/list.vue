@@ -119,14 +119,16 @@
                 if (data.groupId) {
                     let group = this.groups.findIndex(g => g.id === data.groupId);
 
-                    let up = this.groups[group];
-                    up[0] = data.message;
-
-                    this.groups.splice(group, 1);
-                    this.groups.splice(this.newGroups, 0, up);
+                    if (group >= 0) {
+                        let up = this.groups[group];
+                        up[0] = data.message;
+                        this.groups.splice(group, 1);
+                        this.groups.splice(this.newGroups, 0, up);
+                    }
                 }
 
             });
+            this.updateList();
         },
 
         // ----------------------------------------------
@@ -138,6 +140,22 @@
         // ----------------------------------------------
 
         methods: {
+
+            // ----------------------------------------------
+
+            updateList() {
+                this.channel = this.$pusher.subscribe('room-group');
+                this.channel.bind('updateList', (data) => {
+
+                    this.$eventBus.$emit('update', {
+                        type: 'group',
+                        refresh: false,
+                        groupId: parseInt(data.message.group_id),
+                        message: data.message
+                    });
+
+                });
+            },
 
             // ----------------------------------------------
 

@@ -38359,8 +38359,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.$eventBus.$on('update', function (data) {
             if (data.type == 'profile') _this.user = _this.$store.state.user;
-            if (data.type == 'group') _this.changeList(false);
-            if (data.type == 'friend') _this.changeList(true);
         });
     },
 
@@ -38986,13 +38984,15 @@ var arraySort = __webpack_require__(235);
                     return g.id === data.groupId;
                 });
 
-                var up = _this.groups[group];
-                up[0] = data.message;
-
-                _this.groups.splice(group, 1);
-                _this.groups.splice(_this.newGroups, 0, up);
+                if (group >= 0) {
+                    var up = _this.groups[group];
+                    up[0] = data.message;
+                    _this.groups.splice(group, 1);
+                    _this.groups.splice(_this.newGroups, 0, up);
+                }
             }
         });
+        this.updateList();
     },
 
 
@@ -39009,31 +39009,49 @@ var arraySort = __webpack_require__(235);
 
         // ----------------------------------------------
 
-        chatsList: function chatsList() {
+        updateList: function updateList() {
             var _this2 = this;
+
+            this.channel = this.$pusher.subscribe('room-group');
+            this.channel.bind('updateList', function (data) {
+
+                _this2.$eventBus.$emit('update', {
+                    type: 'group',
+                    refresh: false,
+                    groupId: parseInt(data.message.group_id),
+                    message: data.message
+                });
+            });
+        },
+
+
+        // ----------------------------------------------
+
+        chatsList: function chatsList() {
+            var _this3 = this;
 
             this.loading = true;
 
             this.$http.get('/chats_list').then(function (response) {
 
-                _this2.loading = false;
+                _this3.loading = false;
 
                 if (response.status == 200) {
 
-                    if (response.data.length === 0) _this2.notFound = true;
-                    _this2.groups = response.data.groups;
-                    _this2.friends = response.data.friends;
-                    _this2.newGroups = _this2.groups.filter(function (g) {
+                    if (response.data.length === 0) _this3.notFound = true;
+                    _this3.groups = response.data.groups;
+                    _this3.friends = response.data.friends;
+                    _this3.newGroups = _this3.groups.filter(function (g) {
                         return !g['0'];
                     }).length;
-                    arraySort(_this2.groups, "0.created_at").reverse();
+                    arraySort(_this3.groups, "0.created_at").reverse();
                 } else {
-                    _this2.errorLoad = true;
+                    _this3.errorLoad = true;
                 }
             }, function () {
 
-                _this2.loading = false;
-                _this2.errorLoad = true;
+                _this3.loading = false;
+                _this3.errorLoad = true;
             });
         },
 
@@ -41357,18 +41375,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
 
                 _this.scrollDown('chat');
-
-                //                    this.$eventBus.$emit('update', {type: 'group', groupId: this.groupId, message: data.message});
-            });
-
-            this.channel = this.$pusher.subscribe('room-group');
-            this.channel.bind('updateList', function (data) {
-
-                _this.$eventBus.$emit('update', {
-                    type: 'group',
-                    refresh: false,
-                    groupId: _this.groupId,
-                    message: data.message });
             });
         },
 
@@ -43413,7 +43419,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         done: function done(msg) {
             this.showNotification(msg, 'done');
-            this.$eventBus.$emit('update', { type: 'group' });
+            this.$eventBus.$emit('update', { type: 'group', refresh: true });
         },
 
 
@@ -43922,7 +43928,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         done: function done(msg) {
             this.showNotification(msg, 'done');
             this.resetForm();
-            this.$eventBus.$emit('update', { type: 'group' });
+            this.$eventBus.$emit('update', { type: 'group', refresh: true });
         },
 
 
@@ -44448,7 +44454,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         done: function done(msg) {
             this.showNotification(msg, 'done');
-            this.$eventBus.$emit('update', { type: 'group' });
+            this.$eventBus.$emit('update', { type: 'group', refresh: true });
         },
 
 
