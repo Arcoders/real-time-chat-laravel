@@ -120,7 +120,7 @@
 
                     this.loading = true;
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
 
                         setTimeout(()=>{
                             this.$router.push('/');

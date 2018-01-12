@@ -167,13 +167,14 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
 
                         if (response.data.length === 0) this.notFound = true;
                         this.groups = response.data.groups;
                         this.friends = response.data.friends;
-                        this.newGroups = this.groups.filter(g => !g['0']).length;
+                        this.newGroups = this.groups.filter(g => !g[0]).length;
                         arraySort(this.groups, "0.created_at").reverse();
+                        this.$store.commit('updateGroups', this.groups);
 
                     } else {
                         this.errorLoad = true;
