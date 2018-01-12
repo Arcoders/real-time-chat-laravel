@@ -39931,14 +39931,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         updateGroups: function updateGroups() {
+            var _this = this;
 
             this.groups = this.$store.state.groups;
 
-            var hola = this.groups.filter(function (g) {
-                return g.name.match("/arco/i");
+            var group = this.groups.filter(function (g) {
+                var rgx = new RegExp(_this.name, 'i');
+                return g.name.match(rgx);
             });
 
-            console.log(hola);
+            console.log(group);
 
             //this.$store.commit('updateGroups', this.groups);
         }

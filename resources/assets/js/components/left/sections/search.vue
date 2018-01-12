@@ -31,9 +31,12 @@
 
                 this.groups = this.$store.state.groups;
 
-                let hola = this.groups.filter(g => g.name.match("/arco/i"));
+                let group = this.groups.filter(g => {
+                    let rgx = new RegExp(this.name, 'i');
+                    return g.name.match(rgx);
+                });
 
-                console.log(hola);
+                console.log(group);
 
                 //this.$store.commit('updateGroups', this.groups);
 
