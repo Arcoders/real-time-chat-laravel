@@ -39007,7 +39007,7 @@ var arraySort = __webpack_require__(157);
                 }
             }
 
-            if (data.filtred) _this.groups = data.filtred;
+            if (data.filtered) _this.groups = data.filtered;
         });
         this.updateList();
     },
@@ -39887,7 +39887,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(164)
 /* template */
-var __vue_template__ = __webpack_require__(165)
+var __vue_template__ = __webpack_require__(240)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -39942,8 +39942,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -39961,14 +39959,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateGroups: function updateGroups() {
             var _this = this;
 
-            this.groups = this.$store.state.groups;
-
-            var group = this.groups.filter(function (g) {
-                var rgx = new RegExp(_this.name, 'i');
-                return g.name.match(rgx);
+            this.$eventBus.$emit('update', {
+                type: 'group',
+                filtered: this.$store.state.groups.filter(function (g) {
+                    return g.name.match(new RegExp(_this.name, 'i'));
+                })
             });
-
-            this.$eventBus.$emit('update', { type: 'group', filtred: group });
         }
     },
 
@@ -39977,55 +39973,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 165 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "search_app" } }, [
-    _c("div", { staticClass: "wrap-input" }, [
-      _c("div", { staticClass: "input" }, [
-        _c("i", { staticClass: "material-icons" }, [_vm._v("search")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.name,
-              expression: "name"
-            }
-          ],
-          staticClass: "input-global",
-          attrs: { type: "text", placeholder: "Search contact..." },
-          domProps: { value: _vm.name },
-          on: {
-            keyup: _vm.updateGroups,
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.name = $event.target.value
-            }
-          }
-        })
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-565eb498", module.exports)
-  }
-}
-
-/***/ }),
+/* 165 */,
 /* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45342,6 +45290,58 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "search_app" } }, [
+    _c("div", { staticClass: "wrap-input" }, [
+      _c("div", { staticClass: "input" }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("search")]),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.name,
+              expression: "name"
+            }
+          ],
+          staticClass: "input-global",
+          attrs: { type: "text", placeholder: "Search..." },
+          domProps: { value: _vm.name },
+          on: {
+            keyup: _vm.updateGroups,
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.name = $event.target.value
+            }
+          }
+        })
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-565eb498", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

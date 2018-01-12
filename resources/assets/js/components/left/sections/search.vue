@@ -1,14 +1,12 @@
-<template>
-    <div id="search_app">
+<template lang="pug">
 
-        <div class="wrap-input">
-            <div class="input">
-                <i class="material-icons">search</i>
-                <input type="text" v-model='name' v-on:keyup="updateGroups" class="input-global" placeholder="Search contact...">
-            </div>
-        </div>
+    #search_app
+        .wrap-input
+            .input
+                i.material-icons search
+                input.input-global(type='text', v-model='name', v-on:keyup='updateGroups', placeholder='Search...')
 
-    </div>
+
 </template>
 
 <script>
@@ -29,14 +27,10 @@
 
             updateGroups() {
 
-                this.groups = this.$store.state.groups;
-
-                let group = this.groups.filter(g => {
-                    let rgx = new RegExp(this.name, 'i');
-                    return g.name.match(rgx);
+                this.$eventBus.$emit('update', {
+                    type: 'group',
+                    filtered: this.$store.state.groups.filter(g => g.name.match(new RegExp(this.name, 'i')))
                 });
-
-                this.$eventBus.$emit('update', {type: 'group', filtred: group});
 
             }
 

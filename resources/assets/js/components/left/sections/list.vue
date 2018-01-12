@@ -138,7 +138,7 @@
                     }
                 }
 
-                if (data.filtred) this.groups = data.filtred;
+                if (data.filtered) this.groups = data.filtered;
 
             });
             this.updateList();
