@@ -114,7 +114,7 @@
         created() {
             this.$eventBus.$on('update' , (data) => {
 
-                if (data.type == 'group' && data.refresh) this.chatsList();
+                if (data.refresh) this.chatsList();
 
                 if (data.groupId) {
                     let group = this.groups.findIndex(g => g.id === data.groupId);

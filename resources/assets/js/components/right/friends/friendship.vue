@@ -70,7 +70,7 @@
 
                     if (response.status === 200) {
                         this.status = response.body.status;
-                        if (this.status == 'friends') this.$eventBus.$emit('update', {type: 'friend'});
+                        if (this.status == 'friends') this.$eventBus.$emit('update', {type: 'friend', refresh: true,});
                     } else {
                         // ...
                     }
@@ -114,7 +114,7 @@
 
                         if (response.body == 'friends') {
                             this.status = 'friends';
-                            this.$eventBus.$emit('update', {type: 'new-friend'});
+                            this.$eventBus.$emit('update', {type: 'friend', refresh: true,});
                         }
 
                         if (response.body == 'pending') this.status = 'pending';

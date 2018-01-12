@@ -38979,7 +38979,7 @@ var arraySort = __webpack_require__(235);
 
         this.$eventBus.$on('update', function (data) {
 
-            if (data.type == 'group' && data.refresh) _this.chatsList();
+            if (data.refresh) _this.chatsList();
 
             if (data.groupId) {
                 var group = _this.groups.findIndex(function (g) {
@@ -40263,7 +40263,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status === 200) {
                     _this2.status = response.body.status;
-                    if (_this2.status == 'friends') _this2.$eventBus.$emit('update', { type: 'friend' });
+                    if (_this2.status == 'friends') _this2.$eventBus.$emit('update', { type: 'friend', refresh: true });
                 } else {
                     // ...
                 }
@@ -40311,7 +40311,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     if (response.body == 'friends') {
                         _this4.status = 'friends';
-                        _this4.$eventBus.$emit('update', { type: 'new-friend' });
+                        _this4.$eventBus.$emit('update', { type: 'friend', refresh: true });
                     }
 
                     if (response.body == 'pending') _this4.status = 'pending';
