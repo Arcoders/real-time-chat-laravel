@@ -37189,12 +37189,15 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     },
 
     mutations: {
+
         updateUser: function updateUser(state, user) {
             return state.user = user;
         },
+
         updateGroups: function updateGroups(state, groups) {
             return state.groups = groups;
         }
+
     }
 
 });
@@ -38362,7 +38365,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         this.$eventBus.$on('update', function (data) {
-            if (data.type == 'profile') _this.user = _this.$store.state.user;
+            if (data.type === 'profile') _this.user = _this.$store.state.user;
         });
     },
 
@@ -38992,6 +38995,11 @@ var arraySort = __webpack_require__(157);
         this.$eventBus.$on('update', function (data) {
 
             if (data.refresh) _this.chatsList();
+
+            if (data.updated) {
+                _this.$store.commit('updateGroup', data.updated);
+                _this.groups = _this.$store.state.groups;
+            }
 
             if (data.groupId) {
                 var group = _this.groups.findIndex(function (g) {
@@ -44947,13 +44955,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.btnSubmit) return;
             this.loading = true;
 
-            var data = type == 'image' ? { deleteImage: true } : this.formData;
+            var data = type === 'image' ? { deleteImage: true } : this.formData;
 
             this.$http.post('/edit_group/' + this.group_id, data).then(function (response) {
 
                 _this2.loading = false;
 
-                if (response.status == 200) {
+                if (response.status === 200) {
                     _this2.done(response.data);
                 } else {
                     _this2.error();
@@ -44962,7 +44970,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this2.loading = false;
 
-                if (response.status == 422) {
+                if (response.status === 422) {
                     _this2.validation(response.data.errors);
                 } else {
                     _this2.error();
@@ -45020,9 +45028,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this4.loading = false;
 
-                if (response.status == 200) {
+                if (response.status === 200) {
 
-                    if (response.data.length != 0) {
+                    if (response.data.length !== 0) {
                         _this4.listUsers = response.data;
                     } else {
                         _this4.$router.push('/groups/my');
@@ -45044,9 +45052,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$http.get('/get_group/' + this.group_id).then(function (response) {
 
-                if (response.status == 200) {
+                if (response.status === 200) {
 
-                    if (response.data == 0) return _this5.$router.push('/groups/my');
+                    if (response.data === 0) return _this5.$router.push('/groups/my');
 
                     _this5.showEdit = true;
 

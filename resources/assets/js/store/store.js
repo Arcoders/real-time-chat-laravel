@@ -11,8 +11,11 @@ export const store = new Vuex.Store({
     },
 
     mutations: {
+
         updateUser: (state, user) => state.user = user,
+
         updateGroups: (state, groups) => state.groups = groups
+
     }
 
 });

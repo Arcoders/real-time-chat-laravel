@@ -124,13 +124,13 @@
                 if (this.btnSubmit) return;
                 this.loading = true;
 
-                let data = (type == 'image') ? {deleteImage: true} : this.formData;
+                let data = (type === 'image') ? {deleteImage: true} : this.formData;
 
                 this.$http.post('/edit_group/' + this.group_id, data).then(response => {
 
                     this.loading = false;
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
                         this.done(response.data);
                     } else {
                         this.error();
@@ -140,7 +140,7 @@
 
                     this.loading = false;
 
-                    if (response.status == 422) {
+                    if (response.status === 422) {
                         this.validation(response.data.errors);
                     } else {
                         this.error();
@@ -191,9 +191,9 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
 
-                        if (response.data.length != 0) {
+                        if (response.data.length !== 0) {
                             this.listUsers = response.data;
                         } else {
                             this.$router.push('/groups/my');
@@ -214,9 +214,9 @@
             getGroup() {
                 this.$http.get('/get_group/' + this.group_id).then(response => {
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
 
-                        if (response.data == 0) return this.$router.push('/groups/my');
+                        if (response.data === 0) return this.$router.push('/groups/my');
 
                         this.showEdit = true;
 
