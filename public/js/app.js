@@ -38977,7 +38977,6 @@ var arraySort = __webpack_require__(157);
         return {
             loading: false,
             groups: null,
-            newGroups: 0,
             friends: null,
             notFound: false,
             errorLoad: false
@@ -39003,7 +39002,9 @@ var arraySort = __webpack_require__(157);
                     var up = _this.groups[group];
                     up[0] = data.message;
                     _this.groups.splice(group, 1);
-                    _this.groups.splice(_this.newGroups, 0, up);
+                    _this.groups.splice(_this.groups.filter(function (g) {
+                        return !g[0];
+                    }).length, 0, up);
                 }
             }
 
@@ -39074,11 +39075,6 @@ var arraySort = __webpack_require__(157);
 
             this.groups = groups;
             this.friends = friends;
-
-            this.newGroups = this.groups.filter(function (g) {
-                return !g[0];
-            }).length;
-
             this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
         },
 

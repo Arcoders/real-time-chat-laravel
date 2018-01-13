@@ -113,7 +113,6 @@
             return {
                 loading: false,
                 groups: null,
-                newGroups: 0,
                 friends: null,
                 notFound: false,
                 errorLoad: false
@@ -134,7 +133,7 @@
                         let up = this.groups[group];
                         up[0] = data.message;
                         this.groups.splice(group, 1);
-                        this.groups.splice(this.newGroups, 0, up);
+                        this.groups.splice(this.groups.filter(g => !g[0]).length, 0, up);
                     }
                 }
 
@@ -203,9 +202,6 @@
 
                 this.groups = groups;
                 this.friends = friends;
-
-                this.newGroups = this.groups.filter(g => !g[0]).length;
-
                 this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
             },
 
