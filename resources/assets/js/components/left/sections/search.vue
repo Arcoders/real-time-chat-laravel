@@ -22,6 +22,7 @@
 
                 this.$eventBus.$emit('update', {
                     type: 'group',
+                    action: 'filter',
                     filtered: this.$store.state.groups.filter(g => g.name.match(new RegExp(this.name, 'i')))
                 });
 

@@ -124,20 +124,27 @@
         created() {
             this.$eventBus.$on('update' , (data) => {
 
-                if (data.refresh) this.chatsList();
-                
-                if (data.groupId) {
-                    let group = this.groups.findIndex(g => g.id === data.groupId);
+                switch (data.action) {
 
-                    if (group >= 0) {
+                    case 'filter':
+                        this.groups = data.filtered;
+                        break;
+
+                    case 'up':
+                        let group = this.groups.findIndex(g => g.id === data.groupId);
+                        if (group < 0) break;
+
                         let up = this.groups[group];
                         up[0] = data.message;
+
                         this.groups.splice(group, 1);
                         this.groups.splice(this.groups.filter(g => !g[0]).length, 0, up);
-                    }
+
+                        break;
                 }
 
-                if (data.filtered) this.groups = data.filtered;
+                if (data.refresh) this.chatsList();
+
 
             });
             this.updateList();
@@ -161,7 +168,7 @@
 
                     this.$eventBus.$emit('update', {
                         type: 'group',
-                        refresh: false,
+                        action: 'up',
                         groupId: parseInt(data.message.group_id),
                         message: data.message
                     });

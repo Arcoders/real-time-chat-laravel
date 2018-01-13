@@ -38994,24 +38994,30 @@ var arraySort = __webpack_require__(157);
 
         this.$eventBus.$on('update', function (data) {
 
-            if (data.refresh) _this.chatsList();
+            switch (data.action) {
 
-            if (data.groupId) {
-                var group = _this.groups.findIndex(function (g) {
-                    return g.id === data.groupId;
-                });
+                case 'filter':
+                    _this.groups = data.filtered;
+                    break;
 
-                if (group >= 0) {
+                case 'up':
+                    var group = _this.groups.findIndex(function (g) {
+                        return g.id === data.groupId;
+                    });
+                    if (group < 0) break;
+
                     var up = _this.groups[group];
                     up[0] = data.message;
+
                     _this.groups.splice(group, 1);
                     _this.groups.splice(_this.groups.filter(function (g) {
                         return !g[0];
                     }).length, 0, up);
-                }
+
+                    break;
             }
 
-            if (data.filtered) _this.groups = data.filtered;
+            if (data.refresh) _this.chatsList();
         });
         this.updateList();
     },
@@ -39038,7 +39044,7 @@ var arraySort = __webpack_require__(157);
 
                 _this2.$eventBus.$emit('update', {
                     type: 'group',
-                    refresh: false,
+                    action: 'up',
                     groupId: parseInt(data.message.group_id),
                     message: data.message
                 });
@@ -39963,6 +39969,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$eventBus.$emit('update', {
                 type: 'group',
+                action: 'filter',
                 filtered: this.$store.state.groups.filter(function (g) {
                     return g.name.match(new RegExp(_this.name, 'i'));
                 })
