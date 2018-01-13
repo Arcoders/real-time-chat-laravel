@@ -38996,11 +38996,6 @@ var arraySort = __webpack_require__(157);
 
             if (data.refresh) _this.chatsList();
 
-            if (data.updated) {
-                _this.$store.commit('updateGroup', data.updated);
-                _this.groups = _this.$store.state.groups;
-            }
-
             if (data.groupId) {
                 var group = _this.groups.findIndex(function (g) {
                     return g.id === data.groupId;

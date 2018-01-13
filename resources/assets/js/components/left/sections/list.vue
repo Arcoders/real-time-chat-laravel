@@ -125,12 +125,7 @@
             this.$eventBus.$on('update' , (data) => {
 
                 if (data.refresh) this.chatsList();
-
-                if (data.updated) {
-                    this.$store.commit('updateGroup', data.updated);
-                    this.groups = this.$store.state.groups;
-                }
-
+                
                 if (data.groupId) {
                     let group = this.groups.findIndex(g => g.id === data.groupId);
 
@@ -208,7 +203,6 @@
                 this.groups = groups;
                 this.friends = friends;
                 this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
-
             },
 
             // ---------------------------------------------------
