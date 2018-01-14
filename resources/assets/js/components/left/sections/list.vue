@@ -48,11 +48,11 @@
                 p(v-else)
                     i.material-icons.time fiber_new
 
-        .contact(v-if='showChatList && groups && groups.length === 0')
+        .contact(v-if='!showChatList && groups && groups.length === 0')
                 .contact-preview
                     p.middle group not found
 
-        .contact(v-if='!showChatList && friends && friends.length === 0')
+        .contact(v-if='showChatList && friends && friends.length === 0')
             .contact-preview
                 p.middle friend not found
 

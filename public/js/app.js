@@ -39863,10 +39863,10 @@ var render = function() {
             )
           : _vm._e()
       }),
-      _vm.showChatList && _vm.groups && _vm.groups.length === 0
+      !_vm.showChatList && _vm.groups && _vm.groups.length === 0
         ? _c("div", { staticClass: "contact" }, [_vm._m(1)])
         : _vm._e(),
-      !_vm.showChatList && _vm.friends && _vm.friends.length === 0
+      _vm.showChatList && _vm.friends && _vm.friends.length === 0
         ? _c("div", { staticClass: "contact" }, [_vm._m(2)])
         : _vm._e()
     ],
