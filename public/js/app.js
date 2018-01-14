@@ -38969,6 +38969,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 var arraySort = __webpack_require__(157);
@@ -39860,12 +39863,11 @@ var render = function() {
             )
           : _vm._e()
       }),
-      _vm.groups
-        ? _c("div", [
-            _vm.groups.length === 0
-              ? _c("div", { staticClass: "contact" }, [_vm._m(1)])
-              : _vm._e()
-          ])
+      _vm.showChatList && _vm.groups && _vm.groups.length === 0
+        ? _c("div", { staticClass: "contact" }, [_vm._m(1)])
+        : _vm._e(),
+      !_vm.showChatList && _vm.friends && _vm.friends.length === 0
+        ? _c("div", { staticClass: "contact" }, [_vm._m(2)])
         : _vm._e()
     ],
     2
@@ -39885,7 +39887,15 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "contact-preview" }, [
-      _c("p", { staticClass: "middle" }, [_vm._v("Not found")])
+      _c("p", { staticClass: "middle" }, [_vm._v("group not found")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-preview" }, [
+      _c("p", { staticClass: "middle" }, [_vm._v("friend not found")])
     ])
   }
 ]
