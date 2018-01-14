@@ -48,11 +48,11 @@
                 p(v-else)
                     i.material-icons.time fiber_new
 
-        .contact(v-if='!showChatList && groups && groups.length === 0')
+        .contact(v-if='notFoundGroups')
                 .contact-preview
                     p.middle group not found
 
-        .contact(v-if='showChatList && friends && friends.length === 0')
+        .contact(v-if='notFoundFriends')
             .contact-preview
                 p.middle friend not found
 
@@ -242,6 +242,22 @@
 
             // ----------------------------------------------
 
+        },
+
+        computed: {
+            // ----------------------------------------------
+
+            notFoundGroups() {
+                return (!this.showChatList && this.groups && this.groups.length === 0);
+            },
+
+            // ----------------------------------------------
+
+            notFoundFriends() {
+                return (this.showChatList && this.friends && this.friends.length === 0);
+            }
+
+            // ----------------------------------------------
         }
 
     }
