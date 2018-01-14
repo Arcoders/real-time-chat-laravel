@@ -109,13 +109,13 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
 
                         this.groups = response.data.data;
                         this.pagination = response.data;
                         this.actualPage = this.pagination.current_page;
 
-                        if (!this.groups || this.groups.length == 0) this.notFound = true;
+                        if (!this.groups || this.groups.length === 0) this.notFound = true;
 
 
                     } else {
@@ -140,13 +140,13 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
 
                         this.groups.splice(index, 1);
 
                         this.done(response.data);
 
-                        if (this.groups == 0) return this.clickedPage(this.actualPage - 1);
+                        if (this.groups === 0) return this.clickedPage(this.actualPage - 1);
 
                         this.clickedPage(this.actualPage);
 

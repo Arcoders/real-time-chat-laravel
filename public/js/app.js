@@ -44002,13 +44002,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this.loading = false;
 
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     _this.groups = response.data.data;
                     _this.pagination = response.data;
                     _this.actualPage = _this.pagination.current_page;
 
-                    if (!_this.groups || _this.groups.length == 0) _this.notFound = true;
+                    if (!_this.groups || _this.groups.length === 0) _this.notFound = true;
                 } else {
                     _this.errorLoad = true;
                 }
@@ -44031,13 +44031,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this2.loading = false;
 
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     _this2.groups.splice(index, 1);
 
                     _this2.done(response.data);
 
-                    if (_this2.groups == 0) return _this2.clickedPage(_this2.actualPage - 1);
+                    if (_this2.groups === 0) return _this2.clickedPage(_this2.actualPage - 1);
 
                     _this2.clickedPage(_this2.actualPage);
                 } else {
