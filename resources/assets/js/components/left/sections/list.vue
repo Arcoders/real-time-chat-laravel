@@ -124,10 +124,13 @@
         created() {
             this.$eventBus.$on('update' , (data) => {
 
+
+
                 switch (data.action) {
 
                     case 'filter':
-                        this.groups = data.filtered;
+                        this.groups = data.filtered.groups;
+                        this.friends = data.filtered.friends;
                         break;
 
                     case 'up':

@@ -13,7 +13,7 @@
     export default {
 
         data() {
-            return {groups: null, name: ''}
+            return {friends: null, groups: null, name: ''}
         },
 
         methods: {
@@ -23,7 +23,10 @@
                 this.$eventBus.$emit('update', {
                     type: 'group',
                     action: 'filter',
-                    filtered: this.$store.state.groups.filter(g => g.name.match(new RegExp(this.name, 'i')))
+                    filtered: {
+                        friends: this.$store.state.friends.filter(g => g.name.match(new RegExp(this.name, 'i'))),
+                        groups: this.$store.state.groups.filter(g => g.name.match(new RegExp(this.name, 'i')))
+                    }
                 });
 
             }

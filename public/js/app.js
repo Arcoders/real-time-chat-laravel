@@ -39002,7 +39002,8 @@ var arraySort = __webpack_require__(157);
             switch (data.action) {
 
                 case 'filter':
-                    _this.groups = data.filtered;
+                    _this.groups = data.filtered.groups;
+                    _this.friends = data.filtered.friends;
                     break;
 
                 case 'up':
@@ -39964,7 +39965,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
-        return { groups: null, name: '' };
+        return { friends: null, groups: null, name: '' };
     },
 
 
@@ -39975,9 +39976,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$eventBus.$emit('update', {
                 type: 'group',
                 action: 'filter',
-                filtered: this.$store.state.groups.filter(function (g) {
-                    return g.name.match(new RegExp(_this.name, 'i'));
-                })
+                filtered: {
+                    friends: this.$store.state.friends.filter(function (g) {
+                        return g.name.match(new RegExp(_this.name, 'i'));
+                    }),
+                    groups: this.$store.state.groups.filter(function (g) {
+                        return g.name.match(new RegExp(_this.name, 'i'));
+                    })
+                }
             });
         }
     }
