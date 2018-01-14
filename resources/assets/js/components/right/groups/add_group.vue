@@ -9,14 +9,12 @@
 
         avatar(v-if='access', :username='groupName', color='#fff', :src='avatar')
 
-        h4(v-if='access')  Add new group
-        h4(v-else) To be able to add a group you must have friends...
-
+        h4 Add new group
         hr
 
-        form(v-if='access', v-on:submit.prevent='', method='POST', enctype='multipart/form-data')
+        form(v-on:submit.prevent='', method='POST', enctype='multipart/form-data')
 
-            .input.wrap-input
+            .input.wrap-input(v-if='access')
 
                 multiselect(v-model='selectedUsers',
                             :multiple='true',
@@ -135,14 +133,13 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
 
-                        if (response.data.length != 0) {
+                        if (response.data.length !== 0) {
                             this.listUsers = response.data;
                             this.access = true;
                         } else {
                             this.error('friends');
-                            this.access = false;
                         }
 
                     } else {
@@ -167,12 +164,12 @@
                 this.$http.post('/new_group', this.formData).then(response => {
 
                     this.loading = false;
-                    (response.status == 200) ? this.done(response.data) : this.error();
+                    (response.status === 200) ? this.done(response.data) : this.error();
 
                 }, response => {
 
                     this.loading = false;
-                    (response.status == 422) ? this.validation(response.data.errors) : this.error();
+                    (response.status === 422) ? this.validation(response.data.errors) : this.error();
 
                 });
             },
@@ -180,7 +177,7 @@
             // ---------------------------------------------------
 
             error(type = null) {
-                if (type == 'friends') {
+                if (type === 'friends') {
                     this.showNotification('Look for new friends firstly', 'error');
                 } else {
                     this.showNotification('Group can not be added, try it later', 'error');
@@ -225,7 +222,7 @@
             // ---------------------------------------------------
 
             btnDisabled() {
-                if (this.groupName.length < 3 || this.selectedUsers.length === 0) return true;
+                if (this.groupName.length < 3) return true;
             },
 
             // ---------------------------------------------------

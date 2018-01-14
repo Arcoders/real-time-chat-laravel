@@ -44421,8 +44421,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -44493,14 +44491,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this2.loading = false;
 
-                if (response.status == 200) {
+                if (response.status === 200) {
 
-                    if (response.data.length != 0) {
+                    if (response.data.length !== 0) {
                         _this2.listUsers = response.data;
                         _this2.access = true;
                     } else {
                         _this2.error('friends');
-                        _this2.access = false;
                     }
                 } else {
                     _this2.error('friends');
@@ -44525,11 +44522,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$http.post('/new_group', this.formData).then(function (response) {
 
                 _this3.loading = false;
-                response.status == 200 ? _this3.done(response.data) : _this3.error();
+                response.status === 200 ? _this3.done(response.data) : _this3.error();
             }, function (response) {
 
                 _this3.loading = false;
-                response.status == 422 ? _this3.validation(response.data.errors) : _this3.error();
+                response.status === 422 ? _this3.validation(response.data.errors) : _this3.error();
             });
         },
 
@@ -44539,7 +44536,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         error: function error() {
             var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-            if (type == 'friends') {
+            if (type === 'friends') {
                 this.showNotification('Look for new friends firstly', 'error');
             } else {
                 this.showNotification('Group can not be added, try it later', 'error');
@@ -44586,7 +44583,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         btnDisabled: function btnDisabled() {
-            if (this.groupName.length < 3 || this.selectedUsers.length === 0) return true;
+            if (this.groupName.length < 3) return true;
         },
 
 
@@ -44635,25 +44632,21 @@ var render = function() {
             attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
           })
         : _vm._e(),
-      _vm.access
-        ? _c("h4", [_vm._v(" Add new group")])
-        : _c("h4", [
-            _vm._v("To be able to add a group you must have friends...")
-          ]),
+      _c("h4", [_vm._v("Add new group")]),
       _c("hr"),
-      _vm.access
-        ? _c(
-            "form",
-            {
-              attrs: { method: "POST", enctype: "multipart/form-data" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                }
-              }
-            },
-            [
-              _c(
+      _c(
+        "form",
+        {
+          attrs: { method: "POST", enctype: "multipart/form-data" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+            }
+          }
+        },
+        [
+          _vm.access
+            ? _c(
                 "div",
                 { staticClass: "input wrap-input" },
                 [
@@ -44702,97 +44695,97 @@ var render = function() {
                   })
                 ],
                 1
-              ),
-              _c("br"),
-              _c("br"),
-              _c("div", { staticClass: "input wrap-input" }, [
-                _c("label", { staticClass: "fileContainer font-online" }, [
-                  !_vm.avatar
-                    ? _c("button", { attrs: { type: "button" } }, [
-                        _c("i", { staticClass: "material-icons" }, [
-                          _vm._v("photo")
-                        ])
-                      ])
-                    : _c(
-                        "button",
-                        {
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.avatar = null
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "material-icons" }, [
-                            _vm._v("clear")
-                          ])
-                        ]
-                      ),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: !_vm.avatar,
-                        expression: "!avatar"
-                      }
-                    ],
-                    ref: "fileInput",
-                    attrs: { type: "file", name: "avatar" },
-                    on: {
-                      change: function($event) {
-                        _vm.onFileChange($event)
-                      }
-                    }
-                  })
-                ]),
-                _c("input", {
-                  directives: [
+              )
+            : _vm._e(),
+          _c("br"),
+          _c("br"),
+          _c("div", { staticClass: "input wrap-input" }, [
+            _c("label", { staticClass: "fileContainer font-online" }, [
+              !_vm.avatar
+                ? _c("button", { attrs: { type: "button" } }, [
+                    _c("i", { staticClass: "material-icons" }, [
+                      _vm._v("photo")
+                    ])
+                  ])
+                : _c(
+                    "button",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.groupName,
-                      expression: "groupName"
-                    }
-                  ],
-                  staticClass: "input-global",
-                  attrs: {
-                    name: "name",
-                    type: "text",
-                    placeholder: "Group name..."
-                  },
-                  domProps: { value: _vm.groupName },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key)
-                      ) {
-                        return null
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.avatar = null
+                        }
                       }
-                      _vm.addGroup($event)
                     },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.groupName = $event.target.value
-                    }
-                  }
-                }),
-                _c(
-                  "button",
+                    [
+                      _c("i", { staticClass: "material-icons" }, [
+                        _vm._v("clear")
+                      ])
+                    ]
+                  ),
+              _c("input", {
+                directives: [
                   {
-                    attrs: { type: "button", disabled: _vm.btnDisabled },
-                    on: { click: _vm.addGroup }
-                  },
-                  [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
-                )
-              ])
-            ]
-          )
-        : _vm._e(),
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.avatar,
+                    expression: "!avatar"
+                  }
+                ],
+                ref: "fileInput",
+                attrs: { type: "file", name: "avatar" },
+                on: {
+                  change: function($event) {
+                    _vm.onFileChange($event)
+                  }
+                }
+              })
+            ]),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.groupName,
+                  expression: "groupName"
+                }
+              ],
+              staticClass: "input-global",
+              attrs: {
+                name: "name",
+                type: "text",
+                placeholder: "Group name..."
+              },
+              domProps: { value: _vm.groupName },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key)
+                  ) {
+                    return null
+                  }
+                  _vm.addGroup($event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.groupName = $event.target.value
+                }
+              }
+            }),
+            _c(
+              "button",
+              {
+                attrs: { type: "button", disabled: _vm.btnDisabled },
+                on: { click: _vm.addGroup }
+              },
+              [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
+            )
+          ])
+        ]
+      ),
       _vm.loading ? _c("loading") : _vm._e()
     ],
     1
