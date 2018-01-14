@@ -139,12 +139,10 @@
 
                         this.groups.splice(group, 1);
                         this.groups.splice(this.groups.filter(g => !g[0]).length, 0, up);
-
                         break;
                 }
 
                 if (data.refresh) this.chatsList();
-
 
             });
             this.updateList();
@@ -210,6 +208,7 @@
                 this.groups = groups;
                 this.friends = friends;
                 this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
+                this.$store.commit('updateFriends', arraySort(this.friends, "created_at").reverse());
             },
 
             // ---------------------------------------------------
