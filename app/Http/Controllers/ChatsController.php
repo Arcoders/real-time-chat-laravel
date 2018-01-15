@@ -40,33 +40,19 @@ class ChatsController extends Controller
 
         $user = Auth::user();
 
-        $chats = Chat::with('user')
+        $a = Chat::where('friend_id', $user->id)
+            ->select('id', 'user_id')
+            ->with('user')
+            ->get()
+            ->toArray();
+
+        $b = Chat::where('user_id', $user->id)
+            ->select('id', 'friend_id')
             ->with('friend')
-            ->where('user_id', $user->id)
-            ->orWhere('friend_id', $user->id)
-            ->get();
+            ->get()
+            ->toArray();
 
-        return $this->filterUsers($chats);
-
-    }
-
-    protected function filterUsers($chats) {
-
-        $a = $chats->filter(function ($value) {
-
-            return $value->user_id === Auth::id();
-
-        })->pluck('id', 'friend')->toArray();
-
-        // ....
-
-        $b = $chats->filter(function ($value) {
-
-            return $value->friend_id === Auth::id();
-
-        })->pluck('id', 'user')->toArray();
-
-        return $a + $b;
+        return array_merge($a, $b);
 
     }
 
