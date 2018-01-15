@@ -31,12 +31,24 @@ class ChatsController extends Controller
                     ->with('friend')
                     ->where('user_id', $user->id)
                     ->orWhere('friend_id', $user->id)
-                    ->get()
-                    ->toArray();
+                    ->get();
+
+        $o1 = $friends->filter(function ($value) {
+            return $value->user_id === Auth::id();
+        });
+
+        $o2 = $friends->filter(function ($value) {
+            return $value->friend_id === Auth::id();
+        });
+
+        $o1 = $o1->pluck('id', 'friend')->toArray();
+        $o2 = $o2->pluck('id', 'user')->toArray();
+
+        $o3 = array_merge($o1,$o2);
 
         return response()->json([
             'groups' => $allGroups,
-            'friends' => $friends
+            'friends' => $o3
         ], 200);
     }
 
