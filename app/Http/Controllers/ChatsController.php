@@ -13,7 +13,6 @@ class ChatsController extends Controller
     {
         $user = Auth::user();
         $allGroups = array();
-        $allFriends = array();
 
         $groups = $user->groups;
 
@@ -27,11 +26,13 @@ class ChatsController extends Controller
 
         endforeach;
 
-        $friend_op1 = Chat::with('friend')->where('user_id', $user->id)->get()->pluck('id', 'friend');
 
-        $friend_op2 = Chat::with('user')->where('friend_id', $user->id)->get()->pluck('id', 'user');
-
-        $friends = $friend_op1->push($friend_op2);
+        $friends = Chat::with('user')
+                    ->with('friend')
+                    ->where('user_id', $user->id)
+                    ->orWhere('friend_id', $user->id)
+                    ->get()
+                    ->toArray();
 
         return response()->json([
             'groups' => $allGroups,
