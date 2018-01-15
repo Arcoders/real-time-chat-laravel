@@ -53,12 +53,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/chats_list', 'ChatsController@chatsList');
 
     // Send message
-    Route::Post('/send_message_in_group', 'MessagesController@sendMessageInGroup');
+    Route::Post('/send_message', 'MessagesController@sendMessage');
     Route::get('/get_latest_group/{group_id}', 'MessagesController@lastMessagesGroup');
     Route::get('/user_typing/{group_id}', 'MessagesController@usersTyping');
 
     // Online users in group
     Route::get('/get_online_group_users/{group_id}', 'OnlineInGroupsController@onlineGroupUsers');
     Route::get('/disconnect_user/{group_id}', 'OnlineInGroupsController@disconnectUser');
+
+    // Get friend info for chat
+    Route::get('/get_friend_chat/{friend_id}', 'FriendshipsController@getFriendForChat');
 
 });

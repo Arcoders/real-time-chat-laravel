@@ -16,7 +16,7 @@ class MessagesController extends Controller
 
     protected $folder = '/images/messages/';
 
-    public function sendMessageInGroup(Request $request)
+    public function sendMessage(Request $request)
     {
 
         $user = Auth::user();

@@ -36,7 +36,7 @@
 
         data() {
           return {
-              groupId: window.atob(this.$route.params.group_id),
+              chatId: window.atob(this.$route.params.chat_id),
               messageText: '',
               typing: false
           }
@@ -63,7 +63,7 @@
             addMessage() {
                 if (this.btnSubmit) return;
 
-                this.$http.post('/send_message_in_group', this.formData).then(response => {
+                this.$http.post('/send_message', this.formData).then(response => {
                     if (response.status === 200) {
                         this.responseMessage('done');
                     } else {
@@ -100,7 +100,7 @@
             // ----------------------------------------------
 
             typingUsers() {
-                this.$http.get('/user_typing/' + this.groupId);
+                this.$http.get('/user_typing/' + this.chatId);
             },
 
             // ----------------------------------------------
@@ -128,7 +128,7 @@
             formData() {
                 let formData = new FormData();
 
-                formData.append('groupId', this.groupId);
+                formData.append('groupId', this.chatId);
                 formData.append('messageText', this.messageText);
                 if (this.uploadedPhoto) formData.append('photo', this.uploadedPhoto);
 

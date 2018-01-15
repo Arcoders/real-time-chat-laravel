@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Chat;
 use App\Traits\TriggerPusher;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class FriendshipsController extends Controller
@@ -79,6 +80,13 @@ class FriendshipsController extends Controller
         return response()->json([
             'status' => $type
         ], 200);
+    }
+
+    public function getFriendForChat($friend_id)
+    {
+        $friend = User::find($friend_id);
+
+        if ($friend) return response()->json($friend, 200);
     }
 
 }

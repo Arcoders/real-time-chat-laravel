@@ -3,9 +3,9 @@
         #right_app(v-if='showChat', @mouseleave="mouseLeave", @mouseout="mouseOut")
 
             .chat-head
-                avatar.img-head(:username='groupName', color='#fff', :src='avatar')
+                avatar.img-head(:username='friendName', color='#fff', :src='avatar')
                 .chat-name
-                    h1.font-name {{ groupName }}
+                    h1.font-name {{ friendName }}
                     p.font-online(v-if='onlineUsers')
                         span(v-for='onlineUser in onlineUsers')
                             | {{ onlineUser.name }}
@@ -78,7 +78,7 @@
         data() {
             return {
                 user: this.$store.state.user,
-                groupId:parseInt(window.atob(this.$route.params.chat_id)),
+                friendId: parseInt(window.atob(this.$route.params.chat_id)),
                 avatar: null,
                 showChat: false,
                 uploadImage: false,
@@ -95,17 +95,17 @@
         // ----------------------------------------------
 
         created() {
-            this.getGroup();
-            this.pushRealTimeMessage();
-            this.UpdateOnlineUsers();
-            this.userTyping();
+            this.getFriend();
+            //this.pushRealTimeMessage();
+            //this.UpdateOnlineUsers();
+            //this.userTyping();
         },
 
         // ----------------------------------------------
 
         mounted() {
-            this.allMessages();
-            this.GetOnlineUsers();
+            //this.allMessages();
+            //this.GetOnlineUsers();
             console.log('Right ok!');
         },
 
@@ -182,12 +182,13 @@
             // ----------------------------------------------
 
             mouseLeave() {
-                this.$http.get('/disconnect_user/' + this.groupId).then(this.hover = true);
+                // this.$http.get('/disconnect_user/' + this.groupId).then(this.hover = true);
             },
 
             // ----------------------------------------------
 
             mouseOut() {
+                return;
                 if (this.hover) {
                     this.GetOnlineUsers();
                     this.hover = false;
@@ -261,16 +262,16 @@
 
             // ----------------------------------------------
 
-            getGroup() {
-                this.$http.get('/get_group_chat/' + this.groupId).then(response => {
+            getFriend() {
+                this.$http.get('/get_friend_chat/' + this.friendId).then(response => {
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
 
                         if (response.data === 0 || !response.data) return this.$router.push('/');
 
                         this.showChat = true;
 
-                        this.groupName = response.data.name;
+                        this.friendName = response.data.name;
                         if (response.data.avatar) this.avatar = response.data.avatar;
 
                     } else {

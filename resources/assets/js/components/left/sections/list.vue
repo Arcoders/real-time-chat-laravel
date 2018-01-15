@@ -220,20 +220,20 @@
             // ---------------------------------------------------
 
             chatLink(chat, type) {
-                if (type == 'group') {
+                if (type === 'group') {
                     return {
                         name: type,
                         params: {
-                            group_id: window.btoa(chat.id),
+                            chat_id: window.btoa(chat.id),
                             group_name: chat.name
                         }
                     }
                 }
-                if (type == 'friend') {
+                if (type === 'friend') {
                     return {
                         name: type,
                         params: {
-                            friend_id: window.btoa(chat.id),
+                            chat_id: window.btoa(chat.id),
                             friend_name: chat.name
                         }
                     }

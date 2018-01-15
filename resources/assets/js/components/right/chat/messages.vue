@@ -67,7 +67,7 @@
             // ----------------------------------------------
 
             checkId(message_user_id) {
-                return (this.user.id == message_user_id);
+                return (this.user.id === message_user_id);
             },
 
             // ----------------------------------------------
