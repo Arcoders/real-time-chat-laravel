@@ -215,7 +215,7 @@
                 this.friends = friends;
                 this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
                 //this.$store.commit('updateFriends', arraySort(this.friends, "created_at").reverse());
-                console.log(this.friends);
+                console.log(this.friends.user);
             },
 
             // ---------------------------------------------------

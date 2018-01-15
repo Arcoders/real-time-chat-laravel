@@ -24,4 +24,5 @@ class Chat extends Model
         return $this->hasMany(OnlineChat::class);
     }
 
+
 }
