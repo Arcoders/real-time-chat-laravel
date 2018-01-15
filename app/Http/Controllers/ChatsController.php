@@ -11,6 +11,13 @@ class ChatsController extends Controller
 
     public function chatsList()
     {
+        return response()->json([
+            'groups' => $this->chatGroups(),
+            'friends' => $this->chatFriends()
+        ], 200);
+    }
+
+    protected function chatGroups() {
         $user = Auth::user();
         $allGroups = array();
 
@@ -26,30 +33,41 @@ class ChatsController extends Controller
 
         endforeach;
 
+        return $allGroups;
+    }
 
-        $friends = Chat::with('user')
-                    ->with('friend')
-                    ->where('user_id', $user->id)
-                    ->orWhere('friend_id', $user->id)
-                    ->get();
+    protected function chatFriends() {
 
-        $o1 = $friends->filter(function ($value) {
+        $user = Auth::user();
+
+        $chats = Chat::with('user')
+            ->with('friend')
+            ->where('user_id', $user->id)
+            ->orWhere('friend_id', $user->id)
+            ->get();
+
+        return $this->filterUsers($chats);
+
+    }
+
+    protected function filterUsers($chats) {
+
+        $a = $chats->filter(function ($value) {
+
             return $value->user_id === Auth::id();
-        });
 
-        $o2 = $friends->filter(function ($value) {
+        })->pluck('id', 'friend')->toArray();
+
+        // ....
+
+        $b = $chats->filter(function ($value) {
+
             return $value->friend_id === Auth::id();
-        });
 
-        $o1 = $o1->pluck('id', 'friend')->toArray();
-        $o2 = $o2->pluck('id', 'user')->toArray();
+        })->pluck('id', 'user')->toArray();
 
-        $o3 = array_merge($o1,$o2);
+        return $a + $b;
 
-        return response()->json([
-            'groups' => $allGroups,
-            'friends' => $o3
-        ], 200);
     }
 
 }
