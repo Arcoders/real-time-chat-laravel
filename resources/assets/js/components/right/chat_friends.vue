@@ -104,6 +104,7 @@
         // ----------------------------------------------
 
         mounted() {
+
             //this.allMessages();
             //this.GetOnlineUsers();
             console.log('Right ok!');
@@ -221,7 +222,7 @@
             welcomeMessage() {
                 this.messages.push({
                         welcome: true,
-                        id: this.user.id,
+                        id: this.$store.state.user.id,
                         name: 'h i...',
                         avatar: null,
                         photo: null,

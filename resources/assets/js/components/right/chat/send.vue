@@ -128,8 +128,9 @@
             formData() {
                 let formData = new FormData();
 
-                formData.append('groupId', this.chatId);
+                formData.append('chatId', this.chatId);
                 formData.append('messageText', this.messageText);
+                formData.append('roomName', this.$route.name);
                 if (this.uploadedPhoto) formData.append('photo', this.uploadedPhoto);
 
                 return formData;

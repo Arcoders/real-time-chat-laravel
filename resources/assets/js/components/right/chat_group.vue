@@ -78,7 +78,7 @@
         data() {
             return {
                 user: this.$store.state.user,
-                groupId:parseInt(window.atob(this.$route.params._id)),
+                groupId:parseInt(window.atob(this.$route.params.chat_id)),
                 avatar: null,
                 showChat: false,
                 uploadImage: false,
@@ -221,7 +221,7 @@
             welcomeMessage() {
                 this.messages.push({
                         welcome: true,
-                        id: this.user.id,
+                        id: this.$store.state.user.id,
                         name: 'h i...',
                         avatar: null,
                         photo: null,

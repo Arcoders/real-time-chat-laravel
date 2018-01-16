@@ -215,15 +215,12 @@
                 this.groups = groups;
 
                 this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
-                //this.$store.commit('updateFriends', arraySort(this.friends, "created_at").reverse());
 
                 this.friends = friends.map(u => {
-
-                    return renameKeys(u, function(key) {
-                        return (key === 'friend') ? 'user' : key;
-                    });
-
+                    return renameKeys(u, key =>  (key === 'friend') ? 'user' : key);
                 });
+
+                this.$store.commit('updateFriends', arraySort(this.friends, "user.created_at").reverse());
 
             },
 

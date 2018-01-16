@@ -39097,14 +39097,14 @@ var renameKeys = __webpack_require__(245);
             this.groups = groups;
 
             this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
-            //this.$store.commit('updateFriends', arraySort(this.friends, "created_at").reverse());
 
             this.friends = friends.map(function (u) {
-
                 return renameKeys(u, function (key) {
                     return key === 'friend' ? 'user' : key;
                 });
             });
+
+            this.$store.commit('updateFriends', arraySort(this.friends, "user.created_at").reverse());
         },
 
 
@@ -40672,8 +40672,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         formData: function formData() {
             var formData = new FormData();
 
-            formData.append('groupId', this.chatId);
+            formData.append('chatId', this.chatId);
             formData.append('messageText', this.messageText);
+            formData.append('roomName', this.$route.name);
             if (this.uploadedPhoto) formData.append('photo', this.uploadedPhoto);
 
             return formData;
@@ -41959,7 +41960,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             user: this.$store.state.user,
-            groupId: parseInt(window.atob(this.$route.params._id)),
+            groupId: parseInt(window.atob(this.$route.params.chat_id)),
             avatar: null,
             showChat: false,
             uploadImage: false,
@@ -42129,7 +42130,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         welcomeMessage: function welcomeMessage() {
             this.messages.push({
                 welcome: true,
-                id: this.user.id,
+                id: this.$store.state.user.id,
                 name: 'h i...',
                 avatar: null,
                 photo: null,
@@ -45597,6 +45598,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ----------------------------------------------
 
     mounted: function mounted() {
+
         //this.allMessages();
         //this.GetOnlineUsers();
         console.log('Right ok!');
@@ -45739,7 +45741,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         welcomeMessage: function welcomeMessage() {
             this.messages.push({
                 welcome: true,
-                id: this.user.id,
+                id: this.$store.state.user.id,
                 name: 'h i...',
                 avatar: null,
                 photo: null,

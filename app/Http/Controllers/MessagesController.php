@@ -37,9 +37,13 @@ class MessagesController extends Controller
         }
 
         $message = new Message();
+
         $message->body = $request->messageText;
         $message->user_id = $user->id;
-        $message->group_id = $request->groupId;
+
+        if ($request->roomName === 'friend') $message->chat_id = $request->chatId;
+        if ($request->roomName === 'group') $message->group_id = $request->chatId;
+
         $message->photo = $photo;
 
         if ($message->save()) {
