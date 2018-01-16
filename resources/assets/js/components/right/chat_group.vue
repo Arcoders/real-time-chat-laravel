@@ -117,7 +117,7 @@
             // ----------------------------------------------
 
             pushRealTimeMessage() {
-                this.channel = this.$pusher.subscribe('room-' + this.groupId);
+                this.channel = this.$pusher.subscribe('group-' + this.groupId);
                 this.channel.bind('pushMessage', (data) => {
 
                     this.typing = this.typing.filter(t => t.id !== data.user.id);

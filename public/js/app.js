@@ -27660,7 +27660,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     }, {
         path: '/groups', component: __WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue___default.a,
         children: [{ path: 'my', component: __WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue___default.a }, { path: 'add', component: __WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue___default.a }, { path: 'my/:group_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue___default.a, name: 'edit_group' }]
-    }, { path: '/friend/:chat_id/:friend_id/:friend_name', component: __WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue___default.a, name: 'friend' }, { path: '/group/:chat_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue___default.a, name: 'group' }, { path: '/*', component: __WEBPACK_IMPORTED_MODULE_11__components_right_bienvenido_vue___default.a }]
+    }, { path: '/friend/:chat_id/:friend_name/:friend_id', component: __WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue___default.a, name: 'friend' }, { path: '/group/:chat_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue___default.a, name: 'group' }, { path: '/*', component: __WEBPACK_IMPORTED_MODULE_11__components_right_bienvenido_vue___default.a }]
 });
 
 Vue.prototype.$eventBus = new Vue();
@@ -39061,6 +39061,12 @@ var renameKeys = __webpack_require__(162);
                     message: data.message
                 });
             });
+
+            this.channel = this.$pusher.subscribe('chat-' + parseInt(window.atob(this.$route.params.chat_id)));
+            this.channel.bind('updateList', function (data) {
+
+                console.log('done');
+            });
         },
 
 
@@ -42077,7 +42083,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         pushRealTimeMessage: function pushRealTimeMessage() {
             var _this = this;
 
-            this.channel = this.$pusher.subscribe('room-' + this.groupId);
+            this.channel = this.$pusher.subscribe('group-' + this.groupId);
             this.channel.bind('pushMessage', function (data) {
 
                 _this.typing = _this.typing.filter(function (t) {
@@ -42657,7 +42663,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     created: function created() {
         this.getFriend();
-        //this.pushRealTimeMessage();
+        this.pushRealTimeMessage();
         //this.UpdateOnlineUsers();
         //this.userTyping();
     },
@@ -42682,7 +42688,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         pushRealTimeMessage: function pushRealTimeMessage() {
             var _this = this;
 
-            this.channel = this.$pusher.subscribe('room-' + this.groupId);
+            this.channel = this.$pusher.subscribe('friend-' + this.chatId);
             this.channel.bind('pushMessage', function (data) {
 
                 _this.typing = _this.typing.filter(function (t) {
@@ -42823,8 +42829,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         allMessages: function allMessages() {
             var _this6 = this;
-
-            console.log(this.chatId);
 
             this.$http.get('/get_latest_messages/' + this.chatId + '/' + this.$route.name).then(function (response) {
                 if (response.status === 200) {

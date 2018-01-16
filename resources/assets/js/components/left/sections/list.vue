@@ -179,6 +179,13 @@
                     });
 
                 });
+
+                this.channel = this.$pusher.subscribe('chat-'+parseInt(window.atob(this.$route.params.chat_id)));
+                this.channel.bind('updateList', (data) => {
+
+                    console.log('done');
+
+                });
             },
 
             // ----------------------------------------------

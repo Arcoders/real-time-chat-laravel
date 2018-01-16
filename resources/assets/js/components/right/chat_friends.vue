@@ -97,7 +97,7 @@
 
         created() {
             this.getFriend();
-            //this.pushRealTimeMessage();
+            this.pushRealTimeMessage();
             //this.UpdateOnlineUsers();
             //this.userTyping();
         },
@@ -119,7 +119,7 @@
             // ----------------------------------------------
 
             pushRealTimeMessage() {
-                this.channel = this.$pusher.subscribe('room-' + this.groupId);
+                this.channel = this.$pusher.subscribe('friend-' + this.chatId);
                 this.channel.bind('pushMessage', (data) => {
 
                     this.typing = this.typing.filter(t => t.id !== data.user.id);
@@ -235,8 +235,6 @@
             // ----------------------------------------------
 
             allMessages() {
-
-                console.log(this.chatId);
 
                 this.$http.get(`/get_latest_messages/${this.chatId}/${this.$route.name}`).then(response => {
                     if (response.status === 200) {

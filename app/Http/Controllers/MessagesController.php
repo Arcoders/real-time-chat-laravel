@@ -41,17 +41,29 @@ class MessagesController extends Controller
         $message->body = $request->messageText;
         $message->user_id = $user->id;
 
-        if ($request->roomName === 'friend') $message->chat_id = $request->chatId;
-        if ($request->roomName === 'group') $message->group_id = $request->chatId;
+        $messageRoom = 'all';
+        $updateMessage = 'all';
+
+        if ($request->roomName === 'friend') {
+            $message->chat_id = $request->chatId;
+            $messageRoom = "friend-$request->chatId";
+            $updateMessage = "chat-$request->chatId";
+        }
+
+        if ($request->roomName === 'group') {
+            $message->group_id = $request->chatId;
+            $messageRoom = "group-$request->chatId";
+            $updateMessage = 'room-group';
+        }
 
         $message->photo = $photo;
 
         if ($message->save()) {
-            $this->triggerPusher('room-' . $message->group_id, 'pushMessage', [
+            $this->triggerPusher($messageRoom, 'pushMessage', [
                 'message' => $message,
                 'user' => $user
             ]);
-            $this->triggerPusher('room-group', 'updateList', ['message' => $message]);
+            $this->triggerPusher($updateMessage, 'updateList', ['message' => $message]);
             return response()->json($message, 200);
         }
     }
