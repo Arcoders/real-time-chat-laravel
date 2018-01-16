@@ -149,26 +149,11 @@
                         break;
 
                     case 'up':
-                        let group = arrayFindIndex(this.groups, g => g.id === data.groupId);
-                        if (group < 0) break;
-
-                        let up = this.groups[group];
-                        up[0] = data.message;
-
-                        this.groups.splice(group, 1);
-                        this.groups.splice(this.groups.filter(g => !g[0]).length, 0, up);
+                        this.updatePreview(this.groups, data.groupId, data.message);
                         break;
 
                     case 'up-chat':
-                        let chat = arrayFindIndex(this.friends, f => f.id === data.chatId);
-                        console.log(chat);
-                        if (chat < 0) break;
-
-                        let up_chat = this.friends[chat];
-                        up_chat[0] = data.message;
-
-                        this.friends.splice(chat, 1);
-                        this.friends.splice(this.friends.filter(f => !f[0]).length, 0, up_chat);
+                        this.updatePreview(this.friends, data.chatId, data.message);
                         break;
                 }
 
@@ -187,6 +172,20 @@
         // ----------------------------------------------
 
         methods: {
+
+            // ----------------------------------------------
+
+            updatePreview(object, id, message) {
+                let chat = arrayFindIndex(object, f => f.id === id);
+
+                if (chat === -1) return;
+
+                let up = object[chat];
+                up[0] = message;
+
+                object.splice(chat, 1);
+                object.splice(object.filter(f => !f[0]).length, 0, up);
+            },
 
             // ----------------------------------------------
 

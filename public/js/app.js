@@ -39025,34 +39025,11 @@ var arrayFindIndex = __webpack_require__(247);
                     break;
 
                 case 'up':
-                    var group = arrayFindIndex(_this.groups, function (g) {
-                        return g.id === data.groupId;
-                    });
-                    if (group < 0) break;
-
-                    var up = _this.groups[group];
-                    up[0] = data.message;
-
-                    _this.groups.splice(group, 1);
-                    _this.groups.splice(_this.groups.filter(function (g) {
-                        return !g[0];
-                    }).length, 0, up);
+                    _this.updatePreview(_this.groups, data.groupId, data.message);
                     break;
 
                 case 'up-chat':
-                    var chat = arrayFindIndex(_this.friends, function (f) {
-                        return f.id === data.chatId;
-                    });
-                    console.log(chat);
-                    if (chat < 0) break;
-
-                    var up_chat = _this.friends[chat];
-                    up_chat[0] = data.message;
-
-                    _this.friends.splice(chat, 1);
-                    _this.friends.splice(_this.friends.filter(function (f) {
-                        return !f[0];
-                    }).length, 0, up_chat);
+                    _this.updatePreview(_this.friends, data.chatId, data.message);
                     break;
             }
 
@@ -39072,6 +39049,25 @@ var arrayFindIndex = __webpack_require__(247);
     // ----------------------------------------------
 
     methods: {
+
+        // ----------------------------------------------
+
+        updatePreview: function updatePreview(object, id, message) {
+            var chat = arrayFindIndex(object, function (f) {
+                return f.id === id;
+            });
+
+            if (chat === -1) return;
+
+            var up = object[chat];
+            up[0] = message;
+
+            object.splice(chat, 1);
+            object.splice(object.filter(function (f) {
+                return !f[0];
+            }).length, 0, up);
+        },
+
 
         // ----------------------------------------------
 
