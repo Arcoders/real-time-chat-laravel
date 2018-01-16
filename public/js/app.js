@@ -38989,6 +38989,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 var arraySort = __webpack_require__(157);
 var renameKeys = __webpack_require__(162);
+var arrayFindIndex = __webpack_require__(247);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -39024,7 +39025,7 @@ var renameKeys = __webpack_require__(162);
                     break;
 
                 case 'up':
-                    var group = _this.groups.findIndex(function (g) {
+                    var group = arrayFindIndex(_this.groups, function (g) {
                         return g.id === data.groupId;
                     });
                     if (group < 0) break;
@@ -39039,9 +39040,10 @@ var renameKeys = __webpack_require__(162);
                     break;
 
                 case 'up-chat':
-                    var chat = _this.friends.findIndex(function (f) {
+                    var chat = arrayFindIndex(_this.friends, function (f) {
                         return f.id === data.chatId;
                     });
+                    console.log(chat);
                     if (chat < 0) break;
 
                     var up_chat = _this.friends[chat];
@@ -42114,6 +42116,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+var arrayFindIndex = __webpack_require__(247);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     // ----------------------------------------------
@@ -42202,7 +42207,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', function (data) {
 
-                if (_this2.typing[_this2.typing.findIndex(function (t) {
+                if (_this2.typing[arrayFindIndex(_this2.typing, function (t) {
                     return t.id === data.id;
                 })]) return;
 
@@ -46154,6 +46159,42 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function (arr, predicate, ctx) {
+	if (typeof Array.prototype.findIndex === 'function') {
+		return arr.findIndex(predicate, ctx);
+	}
+
+	if (typeof predicate !== 'function') {
+		throw new TypeError('predicate must be a function');
+	}
+
+	var list = Object(arr);
+	var len = list.length;
+
+	if (len === 0) {
+		return -1;
+	}
+
+	for (var i = 0; i < len; i++) {
+		if (predicate.call(ctx, list[i], i, list)) {
+			return i;
+		}
+	}
+
+	return -1;
+};
+
 
 /***/ })
 /******/ ]);

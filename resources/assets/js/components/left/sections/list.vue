@@ -114,6 +114,7 @@
 
     const arraySort = require('array-sort');
     const renameKeys = require('rename-keys');
+    const arrayFindIndex = require('array-find-index');
 
     export default {
 
@@ -148,7 +149,7 @@
                         break;
 
                     case 'up':
-                        let group = this.groups.findIndex(g => g.id === data.groupId);
+                        let group = arrayFindIndex(this.groups, g => g.id === data.groupId);
                         if (group < 0) break;
 
                         let up = this.groups[group];
@@ -159,7 +160,8 @@
                         break;
 
                     case 'up-chat':
-                        let chat = this.friends.findIndex(f => f.id === data.chatId);
+                        let chat = arrayFindIndex(this.friends, f => f.id === data.chatId);
+                        console.log(chat);
                         if (chat < 0) break;
 
                         let up_chat = this.friends[chat];

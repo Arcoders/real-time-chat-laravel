@@ -71,6 +71,9 @@
 </style>
 
 <script>
+
+    const arrayFindIndex = require('array-find-index');
+
     export default {
 
         // ----------------------------------------------
@@ -150,7 +153,7 @@
             userTyping() {
                 this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
 
-                    if (this.typing[this.typing.findIndex(t => t.id === data.id)]) return;
+                    if (this.typing[arrayFindIndex(this.typing, t => t.id === data.id)]) return;
 
                     this.typing.push(data);
 
