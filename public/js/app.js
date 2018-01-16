@@ -38975,6 +38975,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var arraySort = __webpack_require__(157);
@@ -39062,7 +39072,7 @@ var renameKeys = __webpack_require__(162);
                 });
             });
 
-            this.channel = this.$pusher.subscribe('chat-' + parseInt(window.atob(this.$route.params.chat_id)));
+            this.channel = this.$pusher.subscribe('chat');
             this.channel.bind('updateList', function (data) {
 
                 console.log('done');
@@ -39110,7 +39120,7 @@ var renameKeys = __webpack_require__(162);
                 });
             });
 
-            this.$store.commit('updateFriends', arraySort(this.friends, "user.created_at").reverse());
+            this.$store.commit('updateFriends', arraySort(this.friends, "0.created_at").reverse());
         },
 
 
@@ -39830,14 +39840,73 @@ var render = function() {
                               to: _vm.chatLink(friend, "friend")
                             }
                           },
-                          [_vm._v("Hola muy buenas")]
+                          [
+                            friend[0]
+                              ? _c("span", [
+                                  friend[0].body && friend[0].photo
+                                    ? _c("span", [
+                                        _c(
+                                          "i",
+                                          {
+                                            staticClass: "material-icons photo"
+                                          },
+                                          [_vm._v("photo")]
+                                        ),
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm._f("truncate")(
+                                              friend[0].body,
+                                              35
+                                            )
+                                          )
+                                        )
+                                      ])
+                                    : friend[0].body
+                                      ? _c("span", [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("truncate")(
+                                                friend[0].body,
+                                                20
+                                              )
+                                            )
+                                          )
+                                        ])
+                                      : friend[0].photo
+                                        ? _c("span", [
+                                            _c(
+                                              "i",
+                                              {
+                                                staticClass:
+                                                  "material-icons photo"
+                                              },
+                                              [_vm._v("photo")]
+                                            ),
+                                            _vm._v("a photo has been shared")
+                                          ])
+                                        : _vm._e()
+                                ])
+                              : _c("span", [_vm._v("Empty chat...")])
+                          ]
                         )
                       ],
                       1
                     )
                   ])
                 ]),
-                _vm._m(0, true)
+                _c("div", { staticClass: "contact-time" }, [
+                  friend[0]
+                    ? _c("p", [
+                        _vm._v(
+                          _vm._s(_vm._f("moment")(friend[0].created_at, "H:mm"))
+                        )
+                      ])
+                    : _c("p", [
+                        _c("i", { staticClass: "material-icons time" }, [
+                          _vm._v("fiber_new")
+                        ])
+                      ])
+                ])
               ],
               1
             )
@@ -39973,24 +40042,16 @@ var render = function() {
           : _vm._e()
       }),
       _vm.notFoundGroups
-        ? _c("div", { staticClass: "contact" }, [_vm._m(1)])
+        ? _c("div", { staticClass: "contact" }, [_vm._m(0)])
         : _vm._e(),
       _vm.notFoundFriends
-        ? _c("div", { staticClass: "contact" }, [_vm._m(2)])
+        ? _c("div", { staticClass: "contact" }, [_vm._m(1)])
         : _vm._e()
     ],
     2
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-time" }, [
-      _c("p", [_vm._v("00:24")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

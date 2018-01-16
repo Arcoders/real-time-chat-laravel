@@ -39,6 +39,7 @@ class ChatsController extends Controller
     protected function chatFriends() {
 
         $user = Auth::user();
+        $allChats = array();
 
         $a = Chat::where('friend_id', $user->id)
             ->select('id', 'user_id')
@@ -52,7 +53,19 @@ class ChatsController extends Controller
             ->get()
             ->toArray();
 
-        return array_merge($a, $b);
+        $c = array_merge($a, $b);
+
+        foreach ($c as $chat):
+
+            $message = Message::where('chat_id', $chat['id'])->get()->last();
+
+            $chat = collect($chat);
+
+            array_push($allChats, $chat->push($message));
+
+        endforeach;
+
+        return $allChats;
 
     }
 

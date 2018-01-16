@@ -15,10 +15,20 @@
                             | {{ friend.user.name }}
                     p.font-preview
                         router-link(exact-active-class='active_message', :to="chatLink(friend, 'friend')")
-                            | Hola muy buenas
+                            span(v-if='friend[0]')
+                                span(v-if='friend[0].body && friend[0].photo')
+                                    i.material-icons.photo photo
+                                    | {{ friend[0].body | truncate(35) }}
+                                span(v-else-if='friend[0].body') {{ friend[0].body | truncate(20) }}
+                                span(v-else-if='friend[0].photo')
+                                    i.material-icons.photo photo
+                                    | a photo has been shared
+                            span(v-else) Empty chat...
 
             .contact-time
-                p 00:24
+                p(v-if='friend[0]') {{ friend[0].created_at | moment('H:mm') }}
+                p(v-else)
+                    i.material-icons.time fiber_new
 
         .contact(v-if='!showChatList', v-for='group in groups')
 
@@ -180,7 +190,7 @@
 
                 });
 
-                this.channel = this.$pusher.subscribe('chat-'+parseInt(window.atob(this.$route.params.chat_id)));
+                this.channel = this.$pusher.subscribe('chat');
                 this.channel.bind('updateList', (data) => {
 
                     console.log('done');
@@ -227,7 +237,7 @@
                     return renameKeys(u, key =>  (key === 'friend') ? 'user' : key);
                 });
 
-                this.$store.commit('updateFriends', arraySort(this.friends, "user.created_at").reverse());
+                this.$store.commit('updateFriends', arraySort(this.friends, "0.created_at").reverse());
 
             },
 
