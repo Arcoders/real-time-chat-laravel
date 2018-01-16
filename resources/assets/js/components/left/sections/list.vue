@@ -165,7 +165,8 @@
                         let up_chat = this.friends[chat];
                         up_chat[0] = data.message;
 
-                        console.log(chat);
+                        this.friends.splice(chat, 1);
+                        this.friends.splice(this.friends.filter(f => !f[0]).length, 0, up_chat);
                         break;
                 }
 
@@ -199,8 +200,6 @@
                     });
 
                 });
-
-                console.log(this.user);
 
                 this.channel = this.$pusher.subscribe('chat');
                 this.channel.bind('updateList', (data) => {

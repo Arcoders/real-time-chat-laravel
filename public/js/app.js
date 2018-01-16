@@ -39047,7 +39047,10 @@ var renameKeys = __webpack_require__(162);
                     var up_chat = _this.friends[chat];
                     up_chat[0] = data.message;
 
-                    console.log(chat);
+                    _this.friends.splice(chat, 1);
+                    _this.friends.splice(_this.friends.filter(function (f) {
+                        return !f[0];
+                    }).length, 0, up_chat);
                     break;
             }
 
@@ -39083,8 +39086,6 @@ var renameKeys = __webpack_require__(162);
                     message: data.message
                 });
             });
-
-            console.log(this.user);
 
             this.channel = this.$pusher.subscribe('chat');
             this.channel.bind('updateList', function (data) {
