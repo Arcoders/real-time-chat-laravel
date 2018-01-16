@@ -188,9 +188,9 @@
             getUsers() {
                 this.$http.get('/get_users/').then(response => {
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
 
-                        if (response.data.length == 0) this.records = false;
+                        if (response.data.length === 0) this.records = false;
 
                         this.users = response.data;
 
@@ -230,13 +230,13 @@
             // ---------------------------------------------------
 
             pathProfile() {
-                return (this.$route.path == '/profile' || this.$route.path == '/profile/');
+                return (this.$route.path === '/profile' || this.$route.path === '/profile/');
             },
 
             // ---------------------------------------------------
 
             pathEdit() {
-                return (this.$route.path == '/profile/edit' || this.$route.path == '/profile/edit/');
+                return (this.$route.path === '/profile/edit' || this.$route.path === '/profile/edit/');
             },
 
             // ---------------------------------------------------

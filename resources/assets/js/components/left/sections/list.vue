@@ -119,15 +119,15 @@
 
         // ----------------------------------------------
 
-        props: ['showChatList'],
+        props: ['showChatList', 'my_id'],
 
         // ----------------------------------------------
 
         data() {
             return {
                 loading: false,
-                groups: null,
-                friends: null,
+                groups: this.$store.state.groups,
+                friends: this.$store.state.friends,
                 notFound: false,
                 errorLoad: false
             }
@@ -200,9 +200,11 @@
 
                 });
 
+                console.log(this.user);
+
                 this.channel = this.$pusher.subscribe('chat');
                 this.channel.bind('updateList', (data) => {
-                    
+
                     this.$eventBus.$emit('update', {
                         type: 'group',
                         action: 'up-chat',

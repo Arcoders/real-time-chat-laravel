@@ -38994,15 +38994,15 @@ var renameKeys = __webpack_require__(162);
 
     // ----------------------------------------------
 
-    props: ['showChatList'],
+    props: ['showChatList', 'my_id'],
 
     // ----------------------------------------------
 
     data: function data() {
         return {
             loading: false,
-            groups: null,
-            friends: null,
+            groups: this.$store.state.groups,
+            friends: this.$store.state.friends,
             notFound: false,
             errorLoad: false
         };
@@ -39083,6 +39083,8 @@ var renameKeys = __webpack_require__(162);
                     message: data.message
                 });
             });
+
+            console.log(this.user);
 
             this.channel = this.$pusher.subscribe('chat');
             this.channel.bind('updateList', function (data) {
@@ -41055,7 +41057,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted: function mounted() {
         this.relationShipStatus();
-        this.updtateStatus();
+        this.updateStatus();
     },
 
 
@@ -41065,7 +41067,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ---------------------------------------------------
 
-        updtateStatus: function updtateStatus() {
+        updateStatus: function updateStatus() {
             var _this = this;
 
             this.channel = this.$pusher.subscribe('user' + this.my_id);
@@ -41086,7 +41088,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status === 200) {
                     _this2.status = response.body.status;
-                    if (_this2.status == 'friends') _this2.$eventBus.$emit('update', { type: 'friend', refresh: true });
+                    if (_this2.status === 'friends') _this2.$eventBus.$emit('update', { type: 'friend', refresh: true });
                 } else {
                     // ...
                 }
@@ -41107,9 +41109,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this3.loading = false;
 
-                if (response.status == 200) {
-                    if (response.body == 'waiting') _this3.status = 'waiting';
-                    if (response.body == 'add') _this3.status = 'add';
+                if (response.status === 200) {
+                    if (response.body === 'waiting') _this3.status = 'waiting';
+                    if (response.body === 'add') _this3.status = 'add';
                 } else {
                     // ...
                 }
@@ -41132,12 +41134,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status === 200) {
 
-                    if (response.body == 'friends') {
+                    if (response.body === 'friends') {
                         _this4.status = 'friends';
                         _this4.$eventBus.$emit('update', { type: 'friend', refresh: true });
                     }
 
-                    if (response.body == 'pending') _this4.status = 'pending';
+                    if (response.body === 'pending') _this4.status = 'pending';
                 } else {
                     // ...
                 }
@@ -41158,9 +41160,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this5.loading = false;
 
-                if (response.status == 200) {
-                    if (response.body == 'deleted') _this5.status = 'add';
-                    if (response.body == 'pending') _this5.status = 'pending';
+                if (response.status === 200) {
+                    if (response.body === 'deleted') _this5.status = 'add';
+                    if (response.body === 'pending') _this5.status = 'pending';
                 } else {
                     // ...
                 }
@@ -43627,9 +43629,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$http.get('/get_users/').then(function (response) {
 
-                if (response.status == 200) {
+                if (response.status === 200) {
 
-                    if (response.data.length == 0) _this2.records = false;
+                    if (response.data.length === 0) _this2.records = false;
 
                     _this2.users = response.data;
                 } else {
@@ -43669,14 +43671,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         pathProfile: function pathProfile() {
-            return this.$route.path == '/profile' || this.$route.path == '/profile/';
+            return this.$route.path === '/profile' || this.$route.path === '/profile/';
         },
 
 
         // ---------------------------------------------------
 
         pathEdit: function pathEdit() {
-            return this.$route.path == '/profile/edit' || this.$route.path == '/profile/edit/';
+            return this.$route.path === '/profile/edit' || this.$route.path === '/profile/edit/';
         }
     }
 });

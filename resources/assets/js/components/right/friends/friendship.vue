@@ -45,7 +45,7 @@
 
         mounted() {
             this.relationShipStatus();
-            this.updtateStatus();
+            this.updateStatus();
         },
 
         // ---------------------------------------------------
@@ -54,7 +54,7 @@
 
             // ---------------------------------------------------
 
-            updtateStatus() {
+            updateStatus() {
                 this.channel = this.$pusher.subscribe('user' + this.my_id);
                 this.channel.bind('updateStatus', () => {
                     this.relationShipStatus();
@@ -70,7 +70,7 @@
 
                     if (response.status === 200) {
                         this.status = response.body.status;
-                        if (this.status == 'friends') this.$eventBus.$emit('update', {type: 'friend', refresh: true,});
+                        if (this.status === 'friends') this.$eventBus.$emit('update', {type: 'friend', refresh: true,});
                     } else {
                         // ...
                     }
@@ -89,9 +89,9 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
-                        if (response.body == 'waiting') this.status = 'waiting';
-                        if (response.body == 'add') this.status = 'add';
+                    if (response.status === 200) {
+                        if (response.body === 'waiting') this.status = 'waiting';
+                        if (response.body === 'add') this.status = 'add';
                     } else {
                         // ...
                     }
@@ -112,12 +112,12 @@
 
                     if (response.status === 200) {
 
-                        if (response.body == 'friends') {
+                        if (response.body === 'friends') {
                             this.status = 'friends';
                             this.$eventBus.$emit('update', {type: 'friend', refresh: true,});
                         }
 
-                        if (response.body == 'pending') this.status = 'pending';
+                        if (response.body === 'pending') this.status = 'pending';
 
                     } else {
                         // ...
@@ -137,9 +137,9 @@
 
                     this.loading = false;
 
-                    if (response.status == 200) {
-                        if (response.body == 'deleted') this.status = 'add';
-                        if (response.body == 'pending') this.status = 'pending';
+                    if (response.status === 200) {
+                        if (response.body === 'deleted') this.status = 'add';
+                        if (response.body === 'pending') this.status = 'pending';
                     } else {
                         // ...
                     }
