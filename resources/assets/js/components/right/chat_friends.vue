@@ -188,9 +188,8 @@
             // ----------------------------------------------
 
             mouseOut() {
-                return;
                 if (this.hover) {
-                    this.GetOnlineUsers();
+                   // this.GetOnlineUsers();
                     this.hover = false;
                 }
             },

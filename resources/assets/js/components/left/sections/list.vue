@@ -5,16 +5,16 @@
 
         .contact(v-if='showChatList', v-for='friend in friends')
 
-            router-link(exact-active-class='active_image', :to="chatLink(friend, 'friend')")
-                avatar.chat_avatar(:username='friend.name', :src='friend.avatar', color='#fff')
+            router-link(exact-active-class='active_image', :to="chatLink(friend.user, 'friend')")
+                avatar.chat_avatar(:username='friend.user.name', :src='friend.user.avatar', color='#fff')
 
             .contact-preview
                 .contact-text
                     h1.font-name
-                        router-link(exact-active-class='active_chat', :to="chatLink(friend, 'friend')")
-                            | {{ friend.name }}
+                        router-link(exact-active-class='active_chat', :to="chatLink(friend.user, 'friend')")
+                            | {{ friend.user.name }}
                     p.font-preview
-                        router-link(exact-active-class='active_message', :to="chatLink(friend, 'friend')")
+                        router-link(exact-active-class='active_message', :to="chatLink(friend.user, 'friend')")
                             | Hola muy buenas
 
             .contact-time
@@ -103,6 +103,7 @@
 <script>
 
     const arraySort = require('array-sort');
+    const renameKeys = require('rename-keys');
 
     export default {
 
@@ -212,10 +213,18 @@
             done(groups, friends) {
 
                 this.groups = groups;
-                this.friends = friends;
+
                 this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
                 //this.$store.commit('updateFriends', arraySort(this.friends, "created_at").reverse());
-                console.log(this.friends.user);
+
+                this.friends = friends.map(u => {
+
+                    return renameKeys(u, function(key) {
+                        return (key === 'friend') ? 'user' : key;
+                    });
+
+                });
+
             },
 
             // ---------------------------------------------------

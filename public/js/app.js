@@ -38978,6 +38978,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 var arraySort = __webpack_require__(157);
+var renameKeys = __webpack_require__(245);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -39094,10 +39095,16 @@ var arraySort = __webpack_require__(157);
         done: function done(groups, friends) {
 
             this.groups = groups;
-            this.friends = friends;
+
             this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
             //this.$store.commit('updateFriends', arraySort(this.friends, "created_at").reverse());
-            console.log(this.friends.user);
+
+            this.friends = friends.map(function (u) {
+
+                return renameKeys(u, function (key) {
+                    return key === 'friend' ? 'user' : key;
+                });
+            });
         },
 
 
@@ -39697,15 +39704,15 @@ var render = function() {
                   {
                     attrs: {
                       "exact-active-class": "active_image",
-                      to: _vm.chatLink(friend, "friend")
+                      to: _vm.chatLink(friend.user, "friend")
                     }
                   },
                   [
                     _c("avatar", {
                       staticClass: "chat_avatar",
                       attrs: {
-                        username: friend.name,
-                        src: friend.avatar,
+                        username: friend.user.name,
+                        src: friend.user.avatar,
                         color: "#fff"
                       }
                     })
@@ -39723,10 +39730,10 @@ var render = function() {
                           {
                             attrs: {
                               "exact-active-class": "active_chat",
-                              to: _vm.chatLink(friend, "friend")
+                              to: _vm.chatLink(friend.user, "friend")
                             }
                           },
-                          [_vm._v(_vm._s(friend.name))]
+                          [_vm._v(_vm._s(friend.user.name))]
                         )
                       ],
                       1
@@ -39740,7 +39747,7 @@ var render = function() {
                           {
                             attrs: {
                               "exact-active-class": "active_message",
-                              to: _vm.chatLink(friend, "friend")
+                              to: _vm.chatLink(friend.user, "friend")
                             }
                           },
                           [_vm._v("Hola muy buenas")]
@@ -41952,7 +41959,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             user: this.$store.state.user,
-            groupId: parseInt(window.atob(this.$route.params.chat_id)),
+            groupId: parseInt(window.atob(this.$route.params._id)),
             avatar: null,
             showChat: false,
             uploadImage: false,
@@ -45694,9 +45701,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         mouseOut: function mouseOut() {
-            return;
             if (this.hover) {
-                this.GetOnlineUsers();
+                // this.GetOnlineUsers();
                 this.hover = false;
             }
         },
@@ -45988,6 +45994,79 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-53d8d3f6", module.exports)
   }
 }
+
+/***/ }),
+/* 245 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isObject = __webpack_require__(246);
+
+/**
+ * Rename the keys on the given `object` using a renaming `fn`. The
+ * renaming function receives the `key` and `value` of each property
+ * in the object. If the renaming function returns a _non-empty string_
+ * it will be used to rename the key, otherwise the original key is
+ * retained.
+ *
+ * ```js
+ * var obj = renameKeys({a: 1, b: 2, c: 3}, function(key, val) {
+ *   return '--' + key;
+ * });
+ * console.log(obj);
+ * //=> { '--a': 1, '--b': 2, '--c': 3}
+ * ```
+ * @param {Object} `object` The object with keys to rename.
+ * @param {Function} `fn` Renaming function to use on each key in the object.
+ * @return {Object} Returns a new object with renamed keys.
+ * @api public
+ */
+
+module.exports = function(obj, fn) {
+  if (!isObject(obj)) {
+    throw new TypeError('expected an object');
+  }
+
+  if (typeof fn !== 'function') {
+    return obj;
+  }
+
+  var keys = Object.keys(obj);
+  var result = {};
+
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    var val = obj[key];
+    var str = fn(key, val);
+    if (typeof str === 'string' && str !== '') {
+      key = str;
+    }
+    result[key] = val;
+  }
+  return result;
+};
+
+
+/***/ }),
+/* 246 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * isobject <https://github.com/jonschlinkert/isobject>
+ *
+ * Copyright (c) 2014-2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+
+
+module.exports = function isObject(val) {
+  return val != null && typeof val === 'object' && Array.isArray(val) === false;
+};
+
 
 /***/ })
 /******/ ]);

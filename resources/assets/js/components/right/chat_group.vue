@@ -78,7 +78,7 @@
         data() {
             return {
                 user: this.$store.state.user,
-                groupId:parseInt(window.atob(this.$route.params.chat_id)),
+                groupId:parseInt(window.atob(this.$route.params._id)),
                 avatar: null,
                 showChat: false,
                 uploadImage: false,
