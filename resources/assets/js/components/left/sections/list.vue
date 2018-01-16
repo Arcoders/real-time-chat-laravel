@@ -5,16 +5,16 @@
 
         .contact(v-if='showChatList', v-for='friend in friends')
 
-            router-link(exact-active-class='active_image', :to="chatLink(friend.user, 'friend')")
+            router-link(exact-active-class='active_image', :to="chatLink(friend, 'friend')")
                 avatar.chat_avatar(:username='friend.user.name', :src='friend.user.avatar', color='#fff')
 
             .contact-preview
                 .contact-text
                     h1.font-name
-                        router-link(exact-active-class='active_chat', :to="chatLink(friend.user, 'friend')")
+                        router-link(exact-active-class='active_chat', :to="chatLink(friend, 'friend')")
                             | {{ friend.user.name }}
                     p.font-preview
-                        router-link(exact-active-class='active_message', :to="chatLink(friend.user, 'friend')")
+                        router-link(exact-active-class='active_message', :to="chatLink(friend, 'friend')")
                             | Hola muy buenas
 
             .contact-time
@@ -241,7 +241,8 @@
                         name: type,
                         params: {
                             chat_id: window.btoa(chat.id),
-                            friend_name: chat.name
+                            friend_id: window.btoa(chat.user.id),
+                            friend_name: chat.user.name
                         }
                     }
                 }

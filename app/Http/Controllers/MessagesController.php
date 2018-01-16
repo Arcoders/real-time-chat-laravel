@@ -58,9 +58,11 @@ class MessagesController extends Controller
 
     public function lastMessagesGroup(Request $request)
     {
-        $count =  Message::where('group_id', $request->group_id)->count();
-        return Message::where('group_id', $request->group_id)
-                        ->with('user', 'group')
+        $column = ($request->room_name === 'friend') ? 'chat_id' : 'group_id';
+
+        $count =  Message::where($column, $request->chat_id)->count();
+        return Message::where($column, $request->chat_id)
+                        ->with('user')
                         ->skip($count - 5)
                         ->take(5)
                         ->get();

@@ -233,9 +233,8 @@
             // ----------------------------------------------
 
             allMessages() {
-
-                this.$http.get('/get_latest_group/' + this.groupId).then(response => {
-                    if (response.status == 200) {
+                this.$http.get(`/get_latest_messages/${this.groupId}/${this.$route.name}`).then(response => {
+                    if (response.status === 200) {
 
                         if (response.data.length === 0) return this.welcomeMessage();
 

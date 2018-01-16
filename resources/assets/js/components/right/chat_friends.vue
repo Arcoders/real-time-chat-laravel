@@ -78,7 +78,8 @@
         data() {
             return {
                 user: this.$store.state.user,
-                friendId: parseInt(window.atob(this.$route.params.chat_id)),
+                chatId: parseInt(window.atob(this.$route.params.chat_id)),
+                friendId: parseInt(window.atob(this.$route.params.friend_id)),
                 avatar: null,
                 showChat: false,
                 uploadImage: false,
@@ -105,7 +106,7 @@
 
         mounted() {
 
-            //this.allMessages();
+            this.allMessages();
             //this.GetOnlineUsers();
             console.log('Right ok!');
         },
@@ -235,8 +236,10 @@
 
             allMessages() {
 
-                this.$http.get('/get_latest_group/' + this.groupId).then(response => {
-                    if (response.status == 200) {
+                console.log(this.chatId);
+
+                this.$http.get(`/get_latest_messages/${this.chatId}/${this.$route.name}`).then(response => {
+                    if (response.status === 200) {
 
                         if (response.data.length === 0) return this.welcomeMessage();
 
