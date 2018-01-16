@@ -39037,6 +39037,18 @@ var renameKeys = __webpack_require__(162);
                         return !g[0];
                     }).length, 0, up);
                     break;
+
+                case 'up-chat':
+                    var chat = _this.friends.findIndex(function (f) {
+                        return f.id === data.chatId;
+                    });
+                    if (chat < 0) break;
+
+                    var up_chat = _this.friends[chat];
+                    up_chat[0] = data.message;
+
+                    console.log(chat);
+                    break;
             }
 
             if (data.refresh) _this.chatsList();
@@ -39075,7 +39087,12 @@ var renameKeys = __webpack_require__(162);
             this.channel = this.$pusher.subscribe('chat');
             this.channel.bind('updateList', function (data) {
 
-                console.log('done');
+                _this2.$eventBus.$emit('update', {
+                    type: 'group',
+                    action: 'up-chat',
+                    chatId: parseInt(data.message.chat_id),
+                    message: data.message
+                });
             });
         },
 

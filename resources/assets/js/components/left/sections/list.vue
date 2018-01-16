@@ -157,6 +157,16 @@
                         this.groups.splice(group, 1);
                         this.groups.splice(this.groups.filter(g => !g[0]).length, 0, up);
                         break;
+
+                    case 'up-chat':
+                        let chat = this.friends.findIndex(f => f.id === data.chatId);
+                        if (chat < 0) break;
+
+                        let up_chat = this.friends[chat];
+                        up_chat[0] = data.message;
+
+                        console.log(chat);
+                        break;
                 }
 
                 if (data.refresh) this.chatsList();
@@ -192,8 +202,13 @@
 
                 this.channel = this.$pusher.subscribe('chat');
                 this.channel.bind('updateList', (data) => {
-
-                    console.log('done');
+                    
+                    this.$eventBus.$emit('update', {
+                        type: 'group',
+                        action: 'up-chat',
+                        chatId: parseInt(data.message.chat_id),
+                        message: data.message
+                    });
 
                 });
             },
