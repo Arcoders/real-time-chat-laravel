@@ -47,7 +47,7 @@ class MessagesController extends Controller
         if ($request->roomName === 'friend') {
             $message->chat_id = $request->chatId;
             $messageRoom = "friend-$request->chatId";
-            $updateMessage = "chat";
+            $updateMessage = "chat-$request->chatId";
         }
 
         if ($request->roomName === 'group') {

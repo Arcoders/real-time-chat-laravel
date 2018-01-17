@@ -17,7 +17,8 @@ class ChatsController extends Controller
         ], 200);
     }
 
-    protected function chatGroups() {
+    protected function chatGroups()
+    {
         $user = Auth::user();
         $allGroups = array();
 
@@ -36,7 +37,8 @@ class ChatsController extends Controller
         return $allGroups;
     }
 
-    protected function chatFriends() {
+    protected function chatFriends()
+    {
 
         $user = Auth::user();
         $allChats = array();
@@ -66,6 +68,16 @@ class ChatsController extends Controller
         endforeach;
 
         return $allChats;
+
+    }
+
+    public function myChats()
+    {
+        $user_id = Auth::user()->id;
+
+        $chat = Chat::where('user_id', $user_id)->orWhere('friend_id', $user_id)->pluck('id');
+
+        return response()->json($chat, 200);
 
     }
 

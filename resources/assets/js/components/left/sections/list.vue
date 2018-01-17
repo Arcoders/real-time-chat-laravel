@@ -202,17 +202,26 @@
 
                 });
 
-                this.channel = this.$pusher.subscribe('chat');
-                this.channel.bind('updateList', (data) => {
+                this.$http.get('/get_chats_ids').then(res => {
 
-                    this.$eventBus.$emit('update', {
-                        type: 'group',
-                        action: 'up-chat',
-                        chatId: parseInt(data.message.chat_id),
-                        message: data.message
+                    res.data.forEach(id => {
+
+                        this.channel = this.$pusher.subscribe('chat-'+id);
+                        this.channel.bind('updateList', (data) => {
+
+                            this.$eventBus.$emit('update', {
+                                type: 'group',
+                                action: 'up-chat',
+                                chatId: parseInt(data.message.chat_id),
+                                message: data.message
+                            });
+
+                        });
+
                     });
 
                 });
+
             },
 
             // ----------------------------------------------

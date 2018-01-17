@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Chats list...
     Route::get('/chats_list', 'ChatsController@chatsList');
+    Route::get('/get_chats_ids/', 'ChatsController@myChats');
 
     // Send message
     Route::Post('/send_message', 'MessagesController@sendMessage');
