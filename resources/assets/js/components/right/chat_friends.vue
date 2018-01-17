@@ -241,16 +241,16 @@
 
                         if (response.data.length === 0) return this.welcomeMessage();
 
-                        for (let i = 0; i < response.data.length; i++) {
+                        response.data.forEach(data => {
                             this.messages.push({
-                                id: response.data[i].user.id,
-                                name: response.data[i].user.name,
-                                avatar: response.data[i].user.avatar,
-                                photo: response.data[i].photo,
-                                text: response.data[i].body,
-                                time: response.data[i].created_at
+                                id: data.user.id,
+                                name: data.user.name,
+                                avatar: data.user.avatar,
+                                photo: data.photo,
+                                text: data.body,
+                                time: data.created_at
                             });
-                        }
+                        });
 
                     } else {
                         // ...
