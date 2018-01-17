@@ -40843,7 +40843,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         typingUsers: function typingUsers() {
-            this.$http.get('/user_typing/' + this.chatId);
+            this.$http.get('/user_typing/' + this.chatId + '/' + this.$route.name);
         }
     },
     computed: {
@@ -42239,7 +42239,7 @@ var arrayFindIndex = __webpack_require__(125);
         userTyping: function userTyping() {
             var _this2 = this;
 
-            this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', function (data) {
+            this.$pusher.subscribe('typing-group-' + this.groupId).bind('userTyping', function (data) {
 
                 if (_this2.typing[arrayFindIndex(_this2.typing, function (t) {
                     return t.id === data.id;
@@ -42360,11 +42360,7 @@ var arrayFindIndex = __webpack_require__(125);
                             time: data.created_at
                         });
                     });
-                } else {
-                    // ...
                 }
-            }, function () {
-                // ...
             });
         },
 
@@ -42376,7 +42372,7 @@ var arrayFindIndex = __webpack_require__(125);
 
             this.$http.get('/get_group_chat/' + this.groupId).then(function (response) {
 
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     if (response.data === 0 || !response.data) return _this7.$router.push('/');
 
@@ -42785,7 +42781,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.getFriend();
         this.pushRealTimeMessage();
         //this.UpdateOnlineUsers();
-        //this.userTyping();
+        this.userTyping();
     },
 
 
@@ -42844,7 +42840,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         userTyping: function userTyping() {
             var _this2 = this;
 
-            this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', function (data) {
+            this.$pusher.subscribe('typing-chat-' + this.chatId).bind('userTyping', function (data) {
 
                 if (_this2.typing[_this2.typing.findIndex(function (t) {
                     return t.id === data.id;
@@ -42965,11 +42961,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             time: data.created_at
                         });
                     });
-                } else {
-                    // ...
                 }
-            }, function () {
-                // ...
             });
         },
 

@@ -56,7 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Send message
     Route::Post('/send_message', 'MessagesController@sendMessage');
     Route::get('/get_latest_messages/{chat_id}/{room_name}', 'MessagesController@lastMessagesGroup');
-    Route::get('/user_typing/{group_id}', 'MessagesController@usersTyping');
+    Route::get('/user_typing/{chat_id}/{room_name}', 'MessagesController@usersTyping');
 
     // Online users in group
     Route::get('/get_online_group_users/{group_id}', 'OnlineInGroupsController@onlineGroupUsers');

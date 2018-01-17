@@ -151,7 +151,7 @@
             // ----------------------------------------------
 
             userTyping() {
-                this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
+                this.$pusher.subscribe('typing-group-' + this.groupId).bind('userTyping', (data) => {
 
                     if (this.typing[arrayFindIndex(this.typing, t => t.id === data.id)]) return;
 
@@ -252,11 +252,7 @@
                             });
                         });
 
-                    } else {
-                        // ...
                     }
-                }, () => {
-                    // ...
                 });
 
             },
@@ -266,7 +262,7 @@
             getGroup() {
                 this.$http.get('/get_group_chat/' + this.groupId).then(response => {
 
-                    if (response.status == 200) {
+                    if (response.status === 200) {
 
                         if (response.data === 0 || !response.data) return this.$router.push('/');
 

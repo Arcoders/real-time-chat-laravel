@@ -100,7 +100,7 @@
             // ----------------------------------------------
 
             typingUsers() {
-                this.$http.get('/user_typing/' + this.chatId);
+                this.$http.get(`/user_typing/${this.chatId}/${this.$route.name}`);
             },
 
             // ----------------------------------------------

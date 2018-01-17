@@ -99,7 +99,7 @@
             this.getFriend();
             this.pushRealTimeMessage();
             //this.UpdateOnlineUsers();
-            //this.userTyping();
+            this.userTyping();
         },
 
         // ----------------------------------------------
@@ -150,7 +150,7 @@
             // ----------------------------------------------
 
             userTyping() {
-                this.$pusher.subscribe('room-' + this.groupId).bind('userTyping', (data) => {
+                this.$pusher.subscribe('typing-chat-' + this.chatId).bind('userTyping', (data) => {
 
                     if (this.typing[this.typing.findIndex(t => t.id === data.id)]) return;
 
@@ -252,11 +252,7 @@
                             });
                         });
 
-                    } else {
-                        // ...
                     }
-                }, () => {
-                    // ...
                 });
 
             },
