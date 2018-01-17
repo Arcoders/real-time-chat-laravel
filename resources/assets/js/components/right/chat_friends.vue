@@ -98,7 +98,7 @@
         created() {
             this.getFriend();
             this.pushRealTimeMessage();
-            //this.UpdateOnlineUsers();
+            this.UpdateOnlineUsers();
             this.userTyping();
         },
 
@@ -107,7 +107,7 @@
         mounted() {
 
             this.allMessages();
-            //this.GetOnlineUsers();
+            this.GetOnlineUsers();
             console.log('Right ok!');
         },
 
@@ -166,7 +166,7 @@
             // ----------------------------------------------
 
             UpdateOnlineUsers() {
-                this.channel = this.$pusher.subscribe('room-' + this.groupId);
+                this.channel = this.$pusher.subscribe('onlineChat-' + this.chatId);
                 this.channel.bind('onlineUsers', (data) => {
                     if (data.length === 0) return this.onlineUsers = null;
                     this.onlineUsers = data;
@@ -176,7 +176,7 @@
             // ----------------------------------------------
 
             GetOnlineUsers() {
-                this.$http.get('/get_online_group_users/' + this.groupId).then(response => {
+                this.$http.get(`/get_online_group_users/${this.chatId}/${this.$route.name}`).then(response => {
                     if (response.status !== 200) this.onlineUsers = null;
                 }, () => this.onlineUsers = null);
             },
@@ -184,14 +184,14 @@
             // ----------------------------------------------
 
             mouseLeave() {
-                // this.$http.get('/disconnect_user/' + this.groupId).then(this.hover = true);
+                 this.$http.get(`/disconnect_user/${this.chatId}/${this.$route.name}`).then(this.hover = true);
             },
 
             // ----------------------------------------------
 
             mouseOut() {
                 if (this.hover) {
-                   // this.GetOnlineUsers();
+                    this.GetOnlineUsers();
                     this.hover = false;
                 }
             },

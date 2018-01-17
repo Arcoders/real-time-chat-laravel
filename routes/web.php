@@ -59,8 +59,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/user_typing/{chat_id}/{room_name}', 'MessagesController@usersTyping');
 
     // Online users in group
-    Route::get('/get_online_group_users/{group_id}', 'OnlineInGroupsController@onlineGroupUsers');
-    Route::get('/disconnect_user/{group_id}', 'OnlineInGroupsController@disconnectUser');
+    Route::get('/get_online_group_users/{chat_id}/{room_name}', 'OnlineInGroupsController@onlineGroupUsers');
+    Route::get('/disconnect_user/{chat_id}/{room_name}', 'OnlineInGroupsController@disconnectUser');
 
     // Get friend info for chat
     Route::get('/get_friend_chat/{friend_id}', 'FriendshipsController@getFriendForChat');

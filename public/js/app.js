@@ -42261,7 +42261,7 @@ var arrayFindIndex = __webpack_require__(125);
         UpdateOnlineUsers: function UpdateOnlineUsers() {
             var _this3 = this;
 
-            this.channel = this.$pusher.subscribe('room-' + this.groupId);
+            this.channel = this.$pusher.subscribe('onlineGroup-' + this.groupId);
             this.channel.bind('onlineUsers', function (data) {
                 if (data.length === 0) return _this3.onlineUsers = null;
                 _this3.onlineUsers = data;
@@ -42274,7 +42274,7 @@ var arrayFindIndex = __webpack_require__(125);
         GetOnlineUsers: function GetOnlineUsers() {
             var _this4 = this;
 
-            this.$http.get('/get_online_group_users/' + this.groupId).then(function (response) {
+            this.$http.get('/get_online_group_users/' + this.groupId + '/' + this.$route.name).then(function (response) {
                 if (response.status !== 200) _this4.onlineUsers = null;
             }, function () {
                 return _this4.onlineUsers = null;
@@ -42285,7 +42285,7 @@ var arrayFindIndex = __webpack_require__(125);
         // ----------------------------------------------
 
         mouseLeave: function mouseLeave() {
-            this.$http.get('/disconnect_user/' + this.groupId).then(this.hover = true);
+            this.$http.get('/disconnect_user/' + this.groupId + '/' + this.$route.name).then(this.hover = true);
         },
 
 
@@ -42780,7 +42780,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         this.getFriend();
         this.pushRealTimeMessage();
-        //this.UpdateOnlineUsers();
+        this.UpdateOnlineUsers();
         this.userTyping();
     },
 
@@ -42790,7 +42790,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
 
         this.allMessages();
-        //this.GetOnlineUsers();
+        this.GetOnlineUsers();
         console.log('Right ok!');
     },
 
@@ -42862,7 +42862,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         UpdateOnlineUsers: function UpdateOnlineUsers() {
             var _this3 = this;
 
-            this.channel = this.$pusher.subscribe('room-' + this.groupId);
+            this.channel = this.$pusher.subscribe('onlineChat-' + this.chatId);
             this.channel.bind('onlineUsers', function (data) {
                 if (data.length === 0) return _this3.onlineUsers = null;
                 _this3.onlineUsers = data;
@@ -42875,7 +42875,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         GetOnlineUsers: function GetOnlineUsers() {
             var _this4 = this;
 
-            this.$http.get('/get_online_group_users/' + this.groupId).then(function (response) {
+            this.$http.get('/get_online_group_users/' + this.chatId + '/' + this.$route.name).then(function (response) {
                 if (response.status !== 200) _this4.onlineUsers = null;
             }, function () {
                 return _this4.onlineUsers = null;
@@ -42886,7 +42886,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         mouseLeave: function mouseLeave() {
-            // this.$http.get('/disconnect_user/' + this.groupId).then(this.hover = true);
+            this.$http.get('/disconnect_user/' + this.chatId + '/' + this.$route.name).then(this.hover = true);
         },
 
 
@@ -42894,7 +42894,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         mouseOut: function mouseOut() {
             if (this.hover) {
-                // this.GetOnlineUsers();
+                this.GetOnlineUsers();
                 this.hover = false;
             }
         },

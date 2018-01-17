@@ -167,7 +167,7 @@
             // ----------------------------------------------
 
             UpdateOnlineUsers() {
-                this.channel = this.$pusher.subscribe('room-' + this.groupId);
+                this.channel = this.$pusher.subscribe('onlineGroup-' + this.groupId);
                 this.channel.bind('onlineUsers', (data) => {
                     if (data.length === 0) return this.onlineUsers = null;
                     this.onlineUsers = data;
@@ -177,7 +177,7 @@
             // ----------------------------------------------
 
             GetOnlineUsers() {
-                this.$http.get('/get_online_group_users/' + this.groupId).then(response => {
+                this.$http.get(`/get_online_group_users/${this.groupId}/${this.$route.name}`).then(response => {
                     if (response.status !== 200) this.onlineUsers = null;
                 }, () => this.onlineUsers = null);
             },
@@ -185,7 +185,7 @@
             // ----------------------------------------------
 
             mouseLeave() {
-                this.$http.get('/disconnect_user/' + this.groupId).then(this.hover = true);
+                this.$http.get(`/disconnect_user/${this.groupId}/${this.$route.name}`).then(this.hover = true);
             },
 
             // ----------------------------------------------

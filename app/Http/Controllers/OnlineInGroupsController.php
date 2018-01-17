@@ -22,33 +22,37 @@ class OnlineInGroupsController extends Controller
             $lastGroupInfo = $lastGroup->first();
             $lastGroup->delete();
 
-            $this->updateOnlineUsers($lastGroupInfo->group_id);
+            $this->updateOnlineUsers($lastGroupInfo->chat_id, $request->room_name);
         }
 
-        $this->insertOnlineGroup($user->id, $request->group_id);
+        $this->insertOnlineGroup($user->id, $request->chat_id, $request->room_name);
 
-        $this->updateOnlineUsers($request->group_id);
+        $this->updateOnlineUsers($request->chat_id, $request->room_name);
 
     }
 
     public function disconnectUser(Request $request)
     {
         OnlineGroup::where('user_id', Auth::user()->id)->delete();
-        $this->updateOnlineUsers($request->group_id);
+        $this->updateOnlineUsers($request->chat_id, $request->room_name);
     }
 
-    protected function updateOnlineUsers($group_id)
+    protected function updateOnlineUsers($chat_id, $room_name)
     {
-        $onlineUsers = OnlineGroup::where('group_id', $group_id)->with('user')->get()->pluck('user');
+        $column = ($room_name === 'friend') ? 'chat_id' : 'group_id';
+        $room = ($room_name === 'friend') ? "onlineChat-$chat_id" : "onlineGroup-$chat_id";
 
-        $this->triggerPusher('room-' . $group_id, 'onlineUsers', $onlineUsers);
+        $onlineUsers = OnlineGroup::where($column, $chat_id)->with('user')->get()->pluck('user');
+
+        $this->triggerPusher($room, 'onlineUsers', $onlineUsers);
     }
 
-    protected function insertOnlineGroup($user, $room)
+    protected function insertOnlineGroup($user, $room, $room_name)
     {
         $online = new OnlineGroup();
         $online->user_id = $user;
-        $online->group_id = $room;
+        if ($room_name === 'friend') $online->chat_id = $room;
+        if ($room_name === 'group') $online->group_id = $room;
         $online->timelogin = time();
         $online->save();
     }
