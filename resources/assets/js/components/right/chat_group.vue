@@ -3,9 +3,9 @@
         #right_app(v-if='showChat', @mouseleave="mouseLeave", @mouseout="mouseOut")
 
             .chat-head
-                avatar.img-head(:username='groupName', color='#fff', :src='avatar')
+                avatar.img-head(:username='chatName', color='#fff', :src='avatar')
                 .chat-name
-                    h1.font-name {{ groupName }}
+                    h1.font-name {{ chatName }}
                     p.font-online(v-if='onlineUsers')
                         span(v-for='onlineUser in onlineUsers')
                             | {{ onlineUser.name }}
@@ -78,33 +78,6 @@
         // ----------------------------------------------
 
         mixins: [mixin],
-
-        // ----------------------------------------------
-
-        methods: {
-            // ----------------------------------------------
-            getFriend() {
-                this.$http.get('/get_group_chat/' + this.chatId).then(response => {
-
-                    if (response.status === 200) {
-
-                        if (response.data === 0 || !response.data) return this.$router.push('/');
-
-                        this.showChat = true;
-                        this.groupName = response.data.name;
-
-                        if (response.data.avatar) this.avatar = response.data.avatar;
-
-                    } else {
-                        this.$router.push('/');
-                    }
-
-                }, () => {
-                    this.$router.push('/');
-                });
-            }
-            // ----------------------------------------------
-        }
 
         // ----------------------------------------------
 

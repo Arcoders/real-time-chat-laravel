@@ -9,6 +9,7 @@ export const mixin = {
             user: this.$store.state.user,
             chatId: parseInt(window.atob(this.$route.params.chat_id)),
             friendId: (this.$route.name === 'friend') ? parseInt(window.atob(this.$route.params.friend_id)) : null,
+            chatName: null,
             avatar: null,
             showChat: false,
             uploadImage: false,
@@ -25,7 +26,7 @@ export const mixin = {
     // ----------------------------------------------
 
     created() {
-        this.getFriend();
+        this.getData();
         this.pushRealTimeMessage();
         this.UpdateOnlineUsers();
         this.userTyping();
@@ -188,8 +189,8 @@ export const mixin = {
 
         // ----------------------------------------------
 
-        /*getFriend() {
-            this.$http.get('/get_friend_chat/' + this.friendId).then(response => {
+        getData() {
+            this.$http.get((this.$route.name === 'group') ? '/get_group_chat/' + this.chatId : '/get_friend_chat/' + this.friendId).then(response => {
 
                 if (response.status === 200) {
 
@@ -197,7 +198,7 @@ export const mixin = {
 
                     this.showChat = true;
 
-                    this.friendName = response.data.name;
+                    this.chatName = response.data.name;
                     if (response.data.avatar) this.avatar = response.data.avatar;
 
                 } else {
@@ -207,7 +208,7 @@ export const mixin = {
             }, () => {
                 this.$router.push('/');
             });
-        },*/
+        },
 
         // ----------------------------------------------
 

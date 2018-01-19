@@ -42157,35 +42157,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ----------------------------------------------
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__chat_mixins__["a" /* mixin */]],
-
-    // ----------------------------------------------
-
-    methods: {
-        // ----------------------------------------------
-        getFriend: function getFriend() {
-            var _this = this;
-
-            this.$http.get('/get_group_chat/' + this.chatId).then(function (response) {
-
-                if (response.status === 200) {
-
-                    if (response.data === 0 || !response.data) return _this.$router.push('/');
-
-                    _this.showChat = true;
-                    _this.groupName = response.data.name;
-
-                    if (response.data.avatar) _this.avatar = response.data.avatar;
-                } else {
-                    _this.$router.push('/');
-                }
-            }, function () {
-                _this.$router.push('/');
-            });
-        }
-        // ----------------------------------------------
-
-    }
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__chat_mixins__["a" /* mixin */]]
 
     // ----------------------------------------------
 
@@ -42215,14 +42187,14 @@ var render = function() {
                 _c("avatar", {
                   staticClass: "img-head",
                   attrs: {
-                    username: _vm.groupName,
+                    username: _vm.chatName,
                     color: "#fff",
                     src: _vm.avatar
                   }
                 }),
                 _c("div", { staticClass: "chat-name" }, [
                   _c("h1", { staticClass: "font-name" }, [
-                    _vm._v(_vm._s(_vm.groupName))
+                    _vm._v(_vm._s(_vm.chatName))
                   ]),
                   _vm.onlineUsers
                     ? _c(
@@ -42528,35 +42500,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ----------------------------------------------
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__chat_mixins__["a" /* mixin */]],
-
-    // ----------------------------------------------
-
-    methods: {
-        // ----------------------------------------------
-        getFriend: function getFriend() {
-            var _this = this;
-
-            this.$http.get('/get_friend_chat/' + this.friendId).then(function (response) {
-
-                if (response.status === 200) {
-
-                    if (response.data === 0 || !response.data) return _this.$router.push('/');
-
-                    _this.showChat = true;
-
-                    _this.friendName = response.data.name;
-                    if (response.data.avatar) _this.avatar = response.data.avatar;
-                } else {
-                    _this.$router.push('/');
-                }
-            }, function () {
-                _this.$router.push('/');
-            });
-        }
-        // ----------------------------------------------
-
-    }
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__chat_mixins__["a" /* mixin */]]
 
     // ----------------------------------------------
 
@@ -42586,14 +42530,14 @@ var render = function() {
                 _c("avatar", {
                   staticClass: "img-head",
                   attrs: {
-                    username: _vm.friendName,
+                    username: _vm.chatName,
                     color: "#fff",
                     src: _vm.avatar
                   }
                 }),
                 _c("div", { staticClass: "chat-name" }, [
                   _c("h1", { staticClass: "font-name" }, [
-                    _vm._v(_vm._s(_vm.friendName))
+                    _vm._v(_vm._s(_vm.chatName))
                   ]),
                   _vm.onlineUsers
                     ? _c(
@@ -45746,6 +45690,7 @@ var mixin = {
             user: this.$store.state.user,
             chatId: parseInt(window.atob(this.$route.params.chat_id)),
             friendId: this.$route.name === 'friend' ? parseInt(window.atob(this.$route.params.friend_id)) : null,
+            chatName: null,
             avatar: null,
             showChat: false,
             uploadImage: false,
@@ -45763,7 +45708,7 @@ var mixin = {
     // ----------------------------------------------
 
     created: function created() {
-        this.getFriend();
+        this.getData();
         this.pushRealTimeMessage();
         this.UpdateOnlineUsers();
         this.userTyping();
@@ -45953,20 +45898,27 @@ var mixin = {
 
         // ----------------------------------------------
 
-        /*getFriend() {
-            this.$http.get('/get_friend_chat/' + this.friendId).then(response => {
-                  if (response.status === 200) {
-                      if (response.data === 0 || !response.data) return this.$router.push('/');
-                      this.showChat = true;
-                      this.friendName = response.data.name;
-                    if (response.data.avatar) this.avatar = response.data.avatar;
-                  } else {
-                    this.$router.push('/');
+        getData: function getData() {
+            var _this7 = this;
+
+            this.$http.get(this.$route.name === 'group' ? '/get_group_chat/' + this.chatId : '/get_friend_chat/' + this.friendId).then(function (response) {
+
+                if (response.status === 200) {
+
+                    if (response.data === 0 || !response.data) return _this7.$router.push('/');
+
+                    _this7.showChat = true;
+
+                    _this7.chatName = response.data.name;
+                    if (response.data.avatar) _this7.avatar = response.data.avatar;
+                } else {
+                    _this7.$router.push('/');
                 }
-              }, () => {
-                this.$router.push('/');
+            }, function () {
+                _this7.$router.push('/');
             });
-        },*/
+        },
+
 
         // ----------------------------------------------
 
