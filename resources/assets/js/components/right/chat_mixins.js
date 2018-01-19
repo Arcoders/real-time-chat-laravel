@@ -45,11 +45,10 @@ export const mixin = {
 
     methods: {
 
-
         // ----------------------------------------------
 
         pushRealTimeMessage() {
-            this.channel = this.$pusher.subscribe((this.$route.name === 'group') ? 'group-' + this.chatId : 'friend-' + this.chatId);
+            this.channel = this.$pusher.subscribe(this.pushType + this.chatId);
             this.channel.bind('pushMessage', (data) => {
 
                 this.typing = this.typing.filter(t => t.id !== data.user.id);
@@ -80,7 +79,7 @@ export const mixin = {
         // ----------------------------------------------
 
         userTyping() {
-            this.$pusher.subscribe((this.$route.name === 'group') ? 'typing-group-' + this.chatId : 'typing-chat-' + this.chatId).bind('userTyping', (data) => {
+            this.$pusher.subscribe(this.typingType + this.chatId).bind('userTyping', (data) => {
 
                 if (this.typing[arrayFindIndex(this.typing, t => t.id === data.id)]) return;
 
@@ -96,7 +95,7 @@ export const mixin = {
         // ----------------------------------------------
 
         UpdateOnlineUsers() {
-            this.channel = this.$pusher.subscribe((this.$route.name === 'group') ? 'onlineGroup-' + this.chatId : 'onlineChat-' + this.chatId);
+            this.channel = this.$pusher.subscribe( + this.chatId);
             this.channel.bind('onlineUsers', (data) => {
                 if (data.length === 0) return this.onlineUsers = null;
                 this.onlineUsers = data;
@@ -235,6 +234,18 @@ export const mixin = {
 
         uploadedPhoto() {
             if (this.photo) return this.$refs.fileInput.files[0];
+        },
+
+        // ---------------------------------------------------
+
+        pushType() {
+            return (this.$route.name === 'group') ? 'group-' : 'friend-';
+        },
+
+        // ---------------------------------------------------
+
+        typingType() {
+            return (this.$route.name === 'group') ? 'typing-group-' : 'typing-chat-';
         }
 
         // ---------------------------------------------------

@@ -45734,7 +45734,7 @@ var mixin = {
         pushRealTimeMessage: function pushRealTimeMessage() {
             var _this = this;
 
-            this.channel = this.$pusher.subscribe(this.$route.name === 'group' ? 'group-' + this.chatId : 'friend-' + this.chatId);
+            this.channel = this.$pusher.subscribe(this.pushType + this.chatId);
             this.channel.bind('pushMessage', function (data) {
 
                 _this.typing = _this.typing.filter(function (t) {
@@ -45770,7 +45770,7 @@ var mixin = {
         userTyping: function userTyping() {
             var _this2 = this;
 
-            this.$pusher.subscribe(this.$route.name === 'group' ? 'typing-group-' + this.chatId : 'typing-chat-' + this.chatId).bind('userTyping', function (data) {
+            this.$pusher.subscribe(this.typingType + this.chatId).bind('userTyping', function (data) {
 
                 if (_this2.typing[arrayFindIndex(_this2.typing, function (t) {
                     return t.id === data.id;
@@ -45792,7 +45792,7 @@ var mixin = {
         UpdateOnlineUsers: function UpdateOnlineUsers() {
             var _this3 = this;
 
-            this.channel = this.$pusher.subscribe(this.$route.name === 'group' ? 'onlineGroup-' + this.chatId : 'onlineChat-' + this.chatId);
+            this.channel = this.$pusher.subscribe(+this.chatId);
             this.channel.bind('onlineUsers', function (data) {
                 if (data.length === 0) return _this3.onlineUsers = null;
                 _this3.onlineUsers = data;
@@ -45946,6 +45946,20 @@ var mixin = {
 
         uploadedPhoto: function uploadedPhoto() {
             if (this.photo) return this.$refs.fileInput.files[0];
+        },
+
+
+        // ---------------------------------------------------
+
+        pushType: function pushType() {
+            return this.$route.name === 'group' ? 'group-' : 'friend-';
+        },
+
+
+        // ---------------------------------------------------
+
+        typingType: function typingType() {
+            return this.$route.name === 'group' ? 'typing-group-' : 'typing-chat-';
         }
 
         // ---------------------------------------------------
