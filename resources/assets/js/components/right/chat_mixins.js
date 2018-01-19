@@ -8,7 +8,6 @@ export const mixin = {
         return {
             user: this.$store.state.user,
             chatId: parseInt(window.atob(this.$route.params.chat_id)),
-            friendId: (this.$route.name === 'friend') ? parseInt(window.atob(this.$route.params.friend_id)) : null,
             chatName: null,
             avatar: null,
             showChat: false,
@@ -238,6 +237,12 @@ export const mixin = {
 
         // ---------------------------------------------------
 
+        friendIdType() {
+            return (this.$route.name === 'friend') ? parseInt(window.atob(this.$route.params.friend_id)) : null
+        },
+
+        // ---------------------------------------------------
+
         pushType() {
             return (this.$route.name === 'group') ? 'group-' : 'friend-';
         },
@@ -257,7 +262,7 @@ export const mixin = {
         // ---------------------------------------------------
 
         dataType() {
-            return (this.$route.name === 'group') ? '/get_group_chat/' + this.chatId : '/get_friend_chat/' + this.friendId
+            return (this.$route.name === 'group') ? '/get_group_chat/' + this.chatId : '/get_friend_chat/' + this.friendIdType
         }
 
         // ---------------------------------------------------
