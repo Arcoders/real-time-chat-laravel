@@ -71,14 +71,40 @@
 </style>
 
 <script>
-
     import {mixin} from './chat_mixins';
 
     export default {
 
         // ----------------------------------------------
 
-        mixins: [mixin]
+        mixins: [mixin],
+
+        // ----------------------------------------------
+
+        methods: {
+            // ----------------------------------------------
+            getFriend() {
+                this.$http.get('/get_friend_chat/' + this.friendId).then(response => {
+
+                    if (response.status === 200) {
+
+                        if (response.data === 0 || !response.data) return this.$router.push('/');
+
+                        this.showChat = true;
+
+                        this.friendName = response.data.name;
+                        if (response.data.avatar) this.avatar = response.data.avatar;
+
+                    } else {
+                        this.$router.push('/');
+                    }
+
+                }, () => {
+                    this.$router.push('/');
+                });
+            }
+            // ----------------------------------------------
+        }
 
         // ----------------------------------------------
 

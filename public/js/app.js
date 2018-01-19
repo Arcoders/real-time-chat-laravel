@@ -42077,6 +42077,7 @@ exports.push([module.i, "\n.dynamic_content[data-v-5c781822] {\n    height: calc
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__chat_mixins__ = __webpack_require__(248);
 //
 //
 //
@@ -42151,275 +42152,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-var arrayFindIndex = __webpack_require__(125);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     // ----------------------------------------------
 
-    data: function data() {
-        return {
-            user: this.$store.state.user,
-            groupId: parseInt(window.atob(this.$route.params.chat_id)),
-            avatar: null,
-            showChat: false,
-            uploadImage: false,
-            photo: null,
-            messages: [],
-            messages_ready: false,
-            latest: null,
-            typing: [],
-            hover: true,
-            onlineUsers: null
-        };
-    },
-
-
-    // ----------------------------------------------
-
-    created: function created() {
-        this.getGroup();
-        this.pushRealTimeMessage();
-        this.UpdateOnlineUsers();
-        this.userTyping();
-    },
-
-
-    // ----------------------------------------------
-
-    mounted: function mounted() {
-        this.allMessages();
-        this.GetOnlineUsers();
-        console.log('Right ok!');
-    },
-
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__chat_mixins__["a" /* mixin */]],
 
     // ----------------------------------------------
 
     methods: {
-
         // ----------------------------------------------
-
-        pushRealTimeMessage: function pushRealTimeMessage() {
+        getFriend: function getFriend() {
             var _this = this;
 
-            this.channel = this.$pusher.subscribe('group-' + this.groupId);
-            this.channel.bind('pushMessage', function (data) {
-
-                _this.typing = _this.typing.filter(function (t) {
-                    return t.id !== data.user.id;
-                });
-
-                if (_this.messages[0]['welcome']) _this.messages.shift();
-
-                _this.messages.push({
-                    id: data.user.id,
-                    name: data.user.name,
-                    avatar: data.user.avatar,
-                    photo: data.message.photo,
-                    text: data.message.body,
-                    time: data.message.created_at
-                });
-
-                _this.scrollDown('chat');
-            });
-        },
-
-
-        // ----------------------------------------------
-
-        pushErrorMessage: function pushErrorMessage(data) {
-            this.messages.push(data);
-            this.scrollDown('chat');
-        },
-
-
-        // ----------------------------------------------
-
-        userTyping: function userTyping() {
-            var _this2 = this;
-
-            this.$pusher.subscribe('typing-group-' + this.groupId).bind('userTyping', function (data) {
-
-                if (_this2.typing[arrayFindIndex(_this2.typing, function (t) {
-                    return t.id === data.id;
-                })]) return;
-
-                _this2.typing.push(data);
-
-                setTimeout(function () {
-                    _this2.typing = _this2.typing.filter(function (t) {
-                        return t.id !== data.id;
-                    });
-                }, 15000);
-            });
-        },
-
-
-        // ----------------------------------------------
-
-        UpdateOnlineUsers: function UpdateOnlineUsers() {
-            var _this3 = this;
-
-            this.channel = this.$pusher.subscribe('onlineGroup-' + this.groupId);
-            this.channel.bind('onlineUsers', function (data) {
-                if (data.length === 0) return _this3.onlineUsers = null;
-                _this3.onlineUsers = data;
-            });
-        },
-
-
-        // ----------------------------------------------
-
-        GetOnlineUsers: function GetOnlineUsers() {
-            var _this4 = this;
-
-            this.$http.get('/get_online_group_users/' + this.groupId + '/' + this.$route.name).then(function (response) {
-                if (response.status !== 200) _this4.onlineUsers = null;
-            }, function () {
-                return _this4.onlineUsers = null;
-            });
-        },
-
-
-        // ----------------------------------------------
-
-        mouseLeave: function mouseLeave() {
-            this.$http.get('/disconnect_user/' + this.groupId + '/' + this.$route.name).then(this.hover = true);
-        },
-
-
-        // ----------------------------------------------
-
-        mouseOut: function mouseOut() {
-            if (this.hover) {
-                this.GetOnlineUsers();
-                this.hover = false;
-            }
-        },
-
-
-        // ----------------------------------------------
-
-        showImageModal: function showImageModal(data) {
-            this.uploadImage = data;
-        },
-
-
-        // ----------------------------------------------
-
-        onFileChange: function onFileChange(e) {
-            var _this5 = this;
-
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length) return;
-
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                _this5.photo = e.target.result;
-                document.getElementById("inputMessage").focus();
-            };
-
-            reader.readAsDataURL(files[0]);
-        },
-
-
-        // ----------------------------------------------
-
-        welcomeMessage: function welcomeMessage() {
-            this.messages.push({
-                welcome: true,
-                id: this.$store.state.user.id,
-                name: 'h i...',
-                avatar: null,
-                photo: null,
-                text: 'Be the first person to send a message :)',
-                time: new Date()
-            });
-        },
-
-
-        // ----------------------------------------------
-
-        allMessages: function allMessages() {
-            var _this6 = this;
-
-            this.$http.get('/get_latest_messages/' + this.groupId + '/' + this.$route.name).then(function (response) {
-                if (response.status === 200) {
-
-                    if (response.data.length === 0) return _this6.welcomeMessage();
-
-                    response.data.forEach(function (data) {
-                        _this6.messages.push({
-                            id: data.user.id,
-                            name: data.user.name,
-                            avatar: data.user.avatar,
-                            photo: data.photo,
-                            text: data.body,
-                            time: data.created_at
-                        });
-                    });
-                }
-            });
-        },
-
-
-        // ----------------------------------------------
-
-        getGroup: function getGroup() {
-            var _this7 = this;
-
-            this.$http.get('/get_group_chat/' + this.groupId).then(function (response) {
+            this.$http.get('/get_group_chat/' + this.chatId).then(function (response) {
 
                 if (response.status === 200) {
 
-                    if (response.data === 0 || !response.data) return _this7.$router.push('/');
+                    if (response.data === 0 || !response.data) return _this.$router.push('/');
 
-                    _this7.showChat = true;
+                    _this.showChat = true;
+                    _this.groupName = response.data.name;
 
-                    _this7.groupName = response.data.name;
-                    if (response.data.avatar) _this7.avatar = response.data.avatar;
+                    if (response.data.avatar) _this.avatar = response.data.avatar;
                 } else {
-                    _this7.$router.push('/');
+                    _this.$router.push('/');
                 }
             }, function () {
-                _this7.$router.push('/');
+                _this.$router.push('/');
             });
-        },
-
-
-        // ----------------------------------------------
-
-        hideModal: function hideModal() {
-            this.photo = null;
-            this.uploadImage = false;
-        },
-
-
-        // ----------------------------------------------
-
-        scrollDown: function scrollDown(id) {
-            window.setTimeout(function () {
-                var elem = window.document.getElementById(id);
-                elem.scrollTop = elem.scrollHeight;
-            }, 500);
         }
-
         // ----------------------------------------------
-
-    },
-    computed: {
-
-        // ---------------------------------------------------
-
-        uploadedPhoto: function uploadedPhoto() {
-            if (this.photo) return this.$refs.fileInput.files[0];
-        }
-
-        // ---------------------------------------------------
 
     }
+
+    // ----------------------------------------------
+
 });
 
 /***/ }),
@@ -42755,12 +42524,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     // ----------------------------------------------
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__chat_mixins__["a" /* mixin */]]
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__chat_mixins__["a" /* mixin */]],
+
+    // ----------------------------------------------
+
+    methods: {
+        // ----------------------------------------------
+        getFriend: function getFriend() {
+            var _this = this;
+
+            this.$http.get('/get_friend_chat/' + this.friendId).then(function (response) {
+
+                if (response.status === 200) {
+
+                    if (response.data === 0 || !response.data) return _this.$router.push('/');
+
+                    _this.showChat = true;
+
+                    _this.friendName = response.data.name;
+                    if (response.data.avatar) _this.avatar = response.data.avatar;
+                } else {
+                    _this.$router.push('/');
+                }
+            }, function () {
+                _this.$router.push('/');
+            });
+        }
+        // ----------------------------------------------
+
+    }
 
     // ----------------------------------------------
 
@@ -45949,7 +45745,7 @@ var mixin = {
         return {
             user: this.$store.state.user,
             chatId: parseInt(window.atob(this.$route.params.chat_id)),
-            friendId: parseInt(window.atob(this.$route.params.friend_id)),
+            friendId: this.$route.name === 'friend' ? parseInt(window.atob(this.$route.params.friend_id)) : null,
             avatar: null,
             showChat: false,
             uploadImage: false,
@@ -45993,7 +45789,7 @@ var mixin = {
         pushRealTimeMessage: function pushRealTimeMessage() {
             var _this = this;
 
-            this.channel = this.$pusher.subscribe(this.$route.name === 'group' ? 'group-' : 'friend-' + this.chatId);
+            this.channel = this.$pusher.subscribe(this.$route.name === 'group' ? 'group-' + this.chatId : 'friend-' + this.chatId);
             this.channel.bind('pushMessage', function (data) {
 
                 _this.typing = _this.typing.filter(function (t) {
@@ -46029,7 +45825,7 @@ var mixin = {
         userTyping: function userTyping() {
             var _this2 = this;
 
-            this.$pusher.subscribe(this.$route.name === 'group' ? 'typing-group-' : 'typing-chat-' + this.chatId).bind('userTyping', function (data) {
+            this.$pusher.subscribe(this.$route.name === 'group' ? 'typing-group-' + this.chatId : 'typing-chat-' + this.chatId).bind('userTyping', function (data) {
 
                 if (_this2.typing[arrayFindIndex(_this2.typing, function (t) {
                     return t.id === data.id;
@@ -46051,7 +45847,7 @@ var mixin = {
         UpdateOnlineUsers: function UpdateOnlineUsers() {
             var _this3 = this;
 
-            this.channel = this.$pusher.subscribe(this.$route.name === 'group' ? 'onlineGroup-' : 'onlineChat-' + this.chatId);
+            this.channel = this.$pusher.subscribe(this.$route.name === 'group' ? 'onlineGroup-' + this.chatId : 'onlineChat-' + this.chatId);
             this.channel.bind('onlineUsers', function (data) {
                 if (data.length === 0) return _this3.onlineUsers = null;
                 _this3.onlineUsers = data;
@@ -46157,27 +45953,20 @@ var mixin = {
 
         // ----------------------------------------------
 
-        getFriend: function getFriend() {
-            var _this7 = this;
-
-            this.$http.get('/get_friend_chat/' + this.friendId).then(function (response) {
-
-                if (response.status === 200) {
-
-                    if (response.data === 0 || !response.data) return _this7.$router.push('/');
-
-                    _this7.showChat = true;
-
-                    _this7.friendName = response.data.name;
-                    if (response.data.avatar) _this7.avatar = response.data.avatar;
-                } else {
-                    _this7.$router.push('/');
+        /*getFriend() {
+            this.$http.get('/get_friend_chat/' + this.friendId).then(response => {
+                  if (response.status === 200) {
+                      if (response.data === 0 || !response.data) return this.$router.push('/');
+                      this.showChat = true;
+                      this.friendName = response.data.name;
+                    if (response.data.avatar) this.avatar = response.data.avatar;
+                  } else {
+                    this.$router.push('/');
                 }
-            }, function () {
-                _this7.$router.push('/');
+              }, () => {
+                this.$router.push('/');
             });
-        },
-
+        },*/
 
         // ----------------------------------------------
 

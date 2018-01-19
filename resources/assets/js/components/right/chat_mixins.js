@@ -8,7 +8,7 @@ export const mixin = {
         return {
             user: this.$store.state.user,
             chatId: parseInt(window.atob(this.$route.params.chat_id)),
-            friendId: parseInt(window.atob(this.$route.params.friend_id)),
+            friendId: (this.$route.name === 'friend') ? parseInt(window.atob(this.$route.params.friend_id)) : null,
             avatar: null,
             showChat: false,
             uploadImage: false,
@@ -48,7 +48,7 @@ export const mixin = {
         // ----------------------------------------------
 
         pushRealTimeMessage() {
-            this.channel = this.$pusher.subscribe((this.$route.name === 'group') ? 'group-' : 'friend-' + this.chatId);
+            this.channel = this.$pusher.subscribe((this.$route.name === 'group') ? 'group-' + this.chatId : 'friend-' + this.chatId);
             this.channel.bind('pushMessage', (data) => {
 
                 this.typing = this.typing.filter(t => t.id !== data.user.id);
@@ -79,7 +79,7 @@ export const mixin = {
         // ----------------------------------------------
 
         userTyping() {
-            this.$pusher.subscribe((this.$route.name === 'group') ? 'typing-group-' : 'typing-chat-' + this.chatId).bind('userTyping', (data) => {
+            this.$pusher.subscribe((this.$route.name === 'group') ? 'typing-group-' + this.chatId : 'typing-chat-' + this.chatId).bind('userTyping', (data) => {
 
                 if (this.typing[arrayFindIndex(this.typing, t => t.id === data.id)]) return;
 
@@ -95,7 +95,7 @@ export const mixin = {
         // ----------------------------------------------
 
         UpdateOnlineUsers() {
-            this.channel = this.$pusher.subscribe((this.$route.name === 'group') ? 'onlineGroup-' : 'onlineChat-' + this.chatId);
+            this.channel = this.$pusher.subscribe((this.$route.name === 'group') ? 'onlineGroup-' + this.chatId : 'onlineChat-' + this.chatId);
             this.channel.bind('onlineUsers', (data) => {
                 if (data.length === 0) return this.onlineUsers = null;
                 this.onlineUsers = data;
@@ -188,7 +188,7 @@ export const mixin = {
 
         // ----------------------------------------------
 
-        getFriend() {
+        /*getFriend() {
             this.$http.get('/get_friend_chat/' + this.friendId).then(response => {
 
                 if (response.status === 200) {
@@ -207,7 +207,7 @@ export const mixin = {
             }, () => {
                 this.$router.push('/');
             });
-        },
+        },*/
 
         // ----------------------------------------------
 
