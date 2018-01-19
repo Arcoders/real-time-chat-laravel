@@ -45792,7 +45792,7 @@ var mixin = {
         UpdateOnlineUsers: function UpdateOnlineUsers() {
             var _this3 = this;
 
-            this.channel = this.$pusher.subscribe(+this.chatId);
+            this.channel = this.$pusher.subscribe(this.onlineType + this.chatId);
             this.channel.bind('onlineUsers', function (data) {
                 if (data.length === 0) return _this3.onlineUsers = null;
                 _this3.onlineUsers = data;
@@ -45901,7 +45901,7 @@ var mixin = {
         getData: function getData() {
             var _this7 = this;
 
-            this.$http.get(this.$route.name === 'group' ? '/get_group_chat/' + this.chatId : '/get_friend_chat/' + this.friendId).then(function (response) {
+            this.$http.get(this.dataType).then(function (response) {
 
                 if (response.status === 200) {
 
@@ -45960,6 +45960,20 @@ var mixin = {
 
         typingType: function typingType() {
             return this.$route.name === 'group' ? 'typing-group-' : 'typing-chat-';
+        },
+
+
+        // ---------------------------------------------------
+
+        onlineType: function onlineType() {
+            return this.$route.name === 'group' ? 'onlineGroup-' : 'onlineChat-';
+        },
+
+
+        // ---------------------------------------------------
+
+        dataType: function dataType() {
+            return this.$route.name === 'group' ? '/get_group_chat/' + this.chatId : '/get_friend_chat/' + this.friendId;
         }
 
         // ---------------------------------------------------

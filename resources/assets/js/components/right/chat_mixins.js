@@ -95,7 +95,7 @@ export const mixin = {
         // ----------------------------------------------
 
         UpdateOnlineUsers() {
-            this.channel = this.$pusher.subscribe( + this.chatId);
+            this.channel = this.$pusher.subscribe(this.onlineType + this.chatId);
             this.channel.bind('onlineUsers', (data) => {
                 if (data.length === 0) return this.onlineUsers = null;
                 this.onlineUsers = data;
@@ -189,7 +189,7 @@ export const mixin = {
         // ----------------------------------------------
 
         getData() {
-            this.$http.get((this.$route.name === 'group') ? '/get_group_chat/' + this.chatId : '/get_friend_chat/' + this.friendId).then(response => {
+            this.$http.get(this.dataType).then(response => {
 
                 if (response.status === 200) {
 
@@ -246,6 +246,18 @@ export const mixin = {
 
         typingType() {
             return (this.$route.name === 'group') ? 'typing-group-' : 'typing-chat-';
+        },
+
+        // ---------------------------------------------------
+
+        onlineType() {
+            return (this.$route.name === 'group') ? 'onlineGroup-' : 'onlineChat-'
+        },
+
+        // ---------------------------------------------------
+
+        dataType() {
+            return (this.$route.name === 'group') ? '/get_group_chat/' + this.chatId : '/get_friend_chat/' + this.friendId
         }
 
         // ---------------------------------------------------
