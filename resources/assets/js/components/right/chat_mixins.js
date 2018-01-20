@@ -25,7 +25,7 @@ export const mixin = {
     // ----------------------------------------------
 
     created() {
-        this.getData();
+        this.getInformation();
         this.pushRealTimeMessage();
         this.UpdateOnlineUsers();
         this.userTyping();
@@ -47,7 +47,7 @@ export const mixin = {
         // ----------------------------------------------
 
         pushRealTimeMessage() {
-            this.channel = this.$pusher.subscribe(this.pushType + this.chatId);
+            this.channel = this.$pusher.subscribe(this.dataType.push + this.chatId);
             this.channel.bind('pushMessage', (data) => {
 
                 this.typing = this.typing.filter(t => t.id !== data.user.id);
@@ -78,7 +78,7 @@ export const mixin = {
         // ----------------------------------------------
 
         userTyping() {
-            this.$pusher.subscribe(this.typingType + this.chatId).bind('userTyping', (data) => {
+            this.$pusher.subscribe(this.dataType.typing + this.chatId).bind('userTyping', (data) => {
 
                 if (this.typing[arrayFindIndex(this.typing, t => t.id === data.id)]) return;
 
@@ -94,7 +94,7 @@ export const mixin = {
         // ----------------------------------------------
 
         UpdateOnlineUsers() {
-            this.channel = this.$pusher.subscribe(this.onlineType + this.chatId);
+            this.channel = this.$pusher.subscribe(this.dataType.online + this.chatId);
             this.channel.bind('onlineUsers', (data) => {
                 if (data.length === 0) return this.onlineUsers = null;
                 this.onlineUsers = data;
@@ -187,8 +187,8 @@ export const mixin = {
 
         // ----------------------------------------------
 
-        getData() {
-            this.$http.get(this.dataType).then(response => {
+        getInformation() {
+            this.$http.get(this.dataType.information).then(response => {
 
                 if (response.status === 200) {
 
@@ -237,33 +237,29 @@ export const mixin = {
 
         // ---------------------------------------------------
 
-        friendIdType() {
-            return (this.$route.name === 'friend') ? parseInt(window.atob(this.$route.params.friend_id)) : null
-        },
-
-        // ---------------------------------------------------
-
-        pushType() {
-            return (this.$route.name === 'group') ? 'group-' : 'friend-';
-        },
-
-        // ---------------------------------------------------
-
-        typingType() {
-            return (this.$route.name === 'group') ? 'typing-group-' : 'typing-chat-';
-        },
-
-        // ---------------------------------------------------
-
-        onlineType() {
-            return (this.$route.name === 'group') ? 'onlineGroup-' : 'onlineChat-'
+        friendId() {
+            if (this.$route.params.friend_id) return parseInt(window.atob(this.$route.params.friend_id));
         },
 
         // ---------------------------------------------------
 
         dataType() {
-            return (this.$route.name === 'group') ? '/get_group_chat/' + this.chatId : '/get_friend_chat/' + this.friendIdType
-        }
+            let group = {
+                push: 'group-',
+                typing: 'typing-group-',
+                online: 'onlineGroup-',
+                information: `/get_group_chat/${this.chatId}`
+            };
+
+            let friend = {
+                push: 'friend-',
+                typing: 'typing-chat-',
+                online: 'onlineChat-',
+                information: `/get_friend_chat/${this.friendId}`
+            };
+
+            return (this.$route.name === 'group') ? group : friend;
+        },
 
         // ---------------------------------------------------
 
