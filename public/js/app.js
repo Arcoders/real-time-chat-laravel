@@ -27839,21 +27839,17 @@ var mixin = {
         // ---------------------------------------------------
 
         dataType: function dataType() {
-            var group = {
+            return this.$route.name === 'group' ? {
                 push: 'group-',
                 typing: 'typing-group-',
                 online: 'onlineGroup-',
                 information: '/get_group_chat/' + this.chatId
-            };
-
-            var friend = {
+            } : {
                 push: 'friend-',
                 typing: 'typing-chat-',
                 online: 'onlineChat-',
                 information: '/get_friend_chat/' + this.friendId
             };
-
-            return this.$route.name === 'group' ? group : friend;
         }
     }
 

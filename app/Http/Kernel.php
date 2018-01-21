@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\groupMember;
+use App\Http\Middleware\isFriend;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -58,6 +59,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'groupMember' => groupMember::class
+        'groupMember' => groupMember::class,
+        'isFriend' => isFriend::class
     ];
 }
