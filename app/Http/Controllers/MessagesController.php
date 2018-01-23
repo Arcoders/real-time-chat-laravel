@@ -36,36 +36,28 @@ class MessagesController extends Controller
 
         }
 
-        $message = new Message();
-
-        $message->body = $request->messageText;
-        $message->user_id = $user->id;
-
-        $messageRoom = 'all';
-        $updateMessage = 'all';
-
         if ($request->roomName === 'friend') {
-            $message->chat_id = $request->chatId;
-            $messageRoom = "friend-$request->chatId";
-            $updateMessage = "chat-$request->chatId";
+
+            $this->pushMessage([
+                'message' => $this->saveMessages($request, 'chat_id', $photo, $user),
+                'room_message' => "friend-$request->chatId",
+                'user' => $user,
+                'room_list' => "chat-$request->chatId"
+            ]);
+
         }
 
         if ($request->roomName === 'group') {
-            $message->group_id = $request->chatId;
-            $messageRoom = "group-$request->chatId";
-            $updateMessage = 'room-group';
-        }
 
-        $message->photo = $photo;
-
-        if ($message->save()) {
-            $this->triggerPusher($messageRoom, 'pushMessage', [
-                'message' => $message,
-                'user' => $user
+            $this->pushMessage([
+                'message' => $this->saveMessages($request, 'group_id', $photo, $user),
+                'room_message' => "group-$request->chatId",
+                'user' => $user,
+                'room_list' => "room-group"
             ]);
-            $this->triggerPusher($updateMessage, 'updateList', ['message' => $message]);
-            return response()->json($message, 200);
+
         }
+
     }
 
     public function lastMessagesGroup(Request $request)
@@ -94,6 +86,33 @@ class MessagesController extends Controller
         $this->triggerPusher($room, 'userTyping', $data);
 
         return response()->json($data, 200);
+    }
+
+    protected function saveMessages($request, $type, $photo, $user) {
+        $message = new Message();
+
+        $message->body = $request->messageText;
+        $message->user_id = $user->id;
+        $message->$type = $request->chatId;
+        $message->photo = $photo;
+
+        return $message;
+    }
+
+
+    protected function pushMessage(array $data)
+    {
+        if ($data['message']->save()) {
+
+            $this->triggerPusher($data['room_message'], 'pushMessage', [
+                'message' => $data['message'],
+                'user' => $data['user']
+            ]);
+
+            $this->triggerPusher($data['room_list'], 'updateList', ['message' => $data['message']]);
+
+            return response()->json($data['message'], 200);
+        }
     }
 
 }

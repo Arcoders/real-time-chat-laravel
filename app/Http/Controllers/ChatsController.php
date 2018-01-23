@@ -55,9 +55,7 @@ class ChatsController extends Controller
             ->get()
             ->toArray();
 
-        $c = array_merge($a, $b);
-
-        foreach ($c as $chat):
+        foreach (array_merge($a, $b) as $chat):
 
             $message = Message::where('chat_id', $chat['id'])->get()->last();
 
