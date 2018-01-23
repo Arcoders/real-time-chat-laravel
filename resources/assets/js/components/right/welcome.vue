@@ -9,7 +9,6 @@
                     <p>Real-time chat app</p>
                 </div>
 
-
             </div>
         </div>
 
