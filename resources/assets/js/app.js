@@ -70,7 +70,7 @@ Vue.component('multiselect', Multiselect);
 
 import chat_group from './components/right/chat_group.vue';
 import chat_friends from './components/right/chat_friends.vue';
-import bienvenido from './components/right/bienvenido.vue';
+import welcome from './components/right/welcome.vue';
 
 import profile from './components/right/profile/profile.vue';
 import edit_profile from './components/right/profile/edit_profile';
@@ -84,7 +84,7 @@ import edit_group from './components/right/groups/edit_group.vue';
 
 const router = new VueRouter({
     routes: [
-        { path: '/', component: bienvenido},
+        { path: '/', component: welcome},
         {
             path: '/profile/:profile_id?', component: profile,
             children: [
@@ -101,7 +101,7 @@ const router = new VueRouter({
         },
         { path: '/friend/:chat_id/:friend_name/:friend_id', component: chat_friends, name: 'friend'},
         { path: '/group/:chat_id/:group_name', component: chat_group, name: 'group'},
-        { path: '/*', component: bienvenido }
+        { path: '/*', component: welcome }
     ]
 });
 
