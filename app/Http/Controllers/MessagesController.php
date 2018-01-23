@@ -20,7 +20,7 @@ class MessagesController extends Controller
     {
 
         $user = Auth::user();
-        $photo= null;
+        $photo = null;
 
         if ($request->file('photo')) {
 
