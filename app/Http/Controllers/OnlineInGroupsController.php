@@ -40,6 +40,7 @@ class OnlineInGroupsController extends Controller
     protected function updateOnlineUsers($chat_id, $room_name)
     {
         $column = ($room_name === 'friend') ? 'chat_id' : 'group_id';
+
         $room = ($room_name === 'friend') ? "onlineChat-$chat_id" : "onlineGroup-$chat_id";
 
         $onlineUsers = OnlineGroup::where($column, $chat_id)->with('user')->get()->pluck('user');

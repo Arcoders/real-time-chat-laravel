@@ -34,7 +34,6 @@ export const mixin = {
     // ----------------------------------------------
 
     mounted() {
-
         this.allMessages();
         this.GetOnlineUsers();
         console.log('Right ok!');

@@ -78,10 +78,10 @@ class MessagesController extends Controller
         $data = ['id' => $user->id, 'name' => $user->name, 'avatar' => $user->avatar];
 
         $room = ($request->room_name === 'friend')
-            ?
-            "typing-chat-$request->chat_id"
-            :
-            "typing-group-$request->chat_id";
+                ?
+                "typing-chat-$request->chat_id"
+                :
+                "typing-group-$request->chat_id";
 
         $this->triggerPusher($room, 'userTyping', $data);
 

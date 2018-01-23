@@ -27598,7 +27598,6 @@ var mixin = {
     // ----------------------------------------------
 
     mounted: function mounted() {
-
         this.allMessages();
         this.GetOnlineUsers();
         console.log('Right ok!');
@@ -40510,12 +40509,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateGroups: function updateGroups() {
             var _this = this;
 
+            console.log(this.name);
+
             this.$eventBus.$emit('update', {
                 type: 'group',
                 action: 'filter',
                 filtered: {
                     friends: this.$store.state.friends.filter(function (g) {
-                        return g.name.match(new RegExp(_this.name, 'i'));
+                        return g.user.name.match(new RegExp(_this.name, 'i'));
                     }),
                     groups: this.$store.state.groups.filter(function (g) {
                         return g.name.match(new RegExp(_this.name, 'i'));
