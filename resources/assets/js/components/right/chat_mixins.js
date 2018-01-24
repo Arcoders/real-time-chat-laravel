@@ -25,7 +25,6 @@ export const mixin = {
     // ----------------------------------------------
 
     created() {
-        this.getInformation();
         this.pushRealTimeMessage();
         this.UpdateOnlineUsers();
         this.userTyping();
@@ -34,9 +33,7 @@ export const mixin = {
     // ----------------------------------------------
 
     mounted() {
-        this.allMessages();
-        this.GetOnlineUsers();
-        console.log('Right ok!');
+        this.getInformation();
     },
 
     // ----------------------------------------------
@@ -187,16 +184,13 @@ export const mixin = {
         // ----------------------------------------------
 
         getInformation() {
-            this.$http.get(this.dataType.information).then(response => {
+            this.$http.get(this.dataType.information).then(res => {
 
-                if (response.status === 200) {
+                if (res.status === 200) {
 
-                    if (response.data === 0 || !response.data) return this.$router.push('/');
+                    if (res.data === 0 || !res.data) return this.$router.push('/');
 
-                    this.showChat = true;
-
-                    this.chatName = response.data.name;
-                    if (response.data.avatar) this.avatar = response.data.avatar;
+                    this.done(res.data);
 
                 } else {
                     this.$router.push('/');
@@ -205,6 +199,18 @@ export const mixin = {
             }, () => {
                 this.$router.push('/');
             });
+        },
+
+        // ----------------------------------------------
+
+        done(data) {
+            this.showChat = true;
+
+            this.chatName = data.name;
+            if (data.avatar) this.avatar = data.avatar;
+
+            this.allMessages();
+            this.GetOnlineUsers();
         },
 
         // ----------------------------------------------

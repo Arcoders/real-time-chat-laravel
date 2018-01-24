@@ -27588,7 +27588,6 @@ var mixin = {
     // ----------------------------------------------
 
     created: function created() {
-        this.getInformation();
         this.pushRealTimeMessage();
         this.UpdateOnlineUsers();
         this.userTyping();
@@ -27598,9 +27597,7 @@ var mixin = {
     // ----------------------------------------------
 
     mounted: function mounted() {
-        this.allMessages();
-        this.GetOnlineUsers();
-        console.log('Right ok!');
+        this.getInformation();
     },
 
 
@@ -27780,22 +27777,32 @@ var mixin = {
         getInformation: function getInformation() {
             var _this7 = this;
 
-            this.$http.get(this.dataType.information).then(function (response) {
+            this.$http.get(this.dataType.information).then(function (res) {
 
-                if (response.status === 200) {
+                if (res.status === 200) {
 
-                    if (response.data === 0 || !response.data) return _this7.$router.push('/');
+                    if (res.data === 0 || !res.data) return _this7.$router.push('/');
 
-                    _this7.showChat = true;
-
-                    _this7.chatName = response.data.name;
-                    if (response.data.avatar) _this7.avatar = response.data.avatar;
+                    _this7.done(res.data);
                 } else {
                     _this7.$router.push('/');
                 }
             }, function () {
                 _this7.$router.push('/');
             });
+        },
+
+
+        // ----------------------------------------------
+
+        done: function done(data) {
+            this.showChat = true;
+
+            this.chatName = data.name;
+            if (data.avatar) this.avatar = data.avatar;
+
+            this.allMessages();
+            this.GetOnlineUsers();
         },
 
 
@@ -27887,7 +27894,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue__);
@@ -42880,11 +42887,190 @@ if (false) {
 }
 
 /***/ }),
-/* 209 */,
-/* 210 */,
-/* 211 */,
-/* 212 */,
-/* 213 */,
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(210)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(212)
+/* template */
+var __vue_template__ = __webpack_require__(213)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-16c192db"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\right\\welcome.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-16c192db", Component.options)
+  } else {
+    hotAPI.reload("data-v-16c192db", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(211);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("3cb7f56e", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-16c192db\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./welcome.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-16c192db\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./welcome.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 211 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n#bienvenido_app[data-v-16c192db] {\n    background-color: #f7f9fa;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.dynamic_content[data-v-16c192db] {\n    padding: 10px;\n    background-color: #f7f9fa;\n    height: calc(98vh - 50px);\n    border-bottom: 5px solid #25D366;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.welcome[data-v-16c192db] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.welcome p[data-v-16c192db] {\n    color: #777777;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 212 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Bienvenido ok!');
+    }
+});
+
+/***/ }),
+/* 213 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "bienvenido_app" } }, [
+      _c("div", { staticClass: "wrap-content" }, [
+        _c("div", { staticClass: "dynamic_content" }, [
+          _c("div", { staticClass: "welcome" }, [
+            _c("img", {
+              attrs: { src: "images/default/udemy.png", alt: "udemy" }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Real-time chat app")])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-16c192db", module.exports)
+  }
+}
+
+/***/ }),
 /* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45702,194 +45888,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(250)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(252)
-/* template */
-var __vue_template__ = __webpack_require__(253)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-16c192db"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\right\\welcome.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-16c192db", Component.options)
-  } else {
-    hotAPI.reload("data-v-16c192db", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 250 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(251);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("3cb7f56e", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-16c192db\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./welcome.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-16c192db\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./welcome.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 251 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n#bienvenido_app[data-v-16c192db] {\n    background-color: #f7f9fa;\n    border-radius: 2px;\n    height: calc(98vh - 25px);\n}\n.dynamic_content[data-v-16c192db] {\n    padding: 10px;\n    background-color: #f7f9fa;\n    height: calc(98vh - 50px);\n    border-bottom: 5px solid #25D366;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.welcome[data-v-16c192db] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.welcome p[data-v-16c192db] {\n    color: #777777;\n}\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 252 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Bienvenido ok!');
-    }
-});
-
-/***/ }),
-/* 253 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "bienvenido_app" } }, [
-      _c("div", { staticClass: "wrap-content" }, [
-        _c("div", { staticClass: "dynamic_content" }, [
-          _c("div", { staticClass: "welcome" }, [
-            _c("img", {
-              attrs: { src: "images/default/udemy.png", alt: "udemy" }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Real-time chat app")])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-16c192db", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

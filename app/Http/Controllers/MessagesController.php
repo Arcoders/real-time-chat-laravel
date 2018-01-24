@@ -41,7 +41,6 @@ class MessagesController extends Controller
             $this->pushMessage([
                 'message' => $this->saveMessages($request, 'chat_id', $photo, $user),
                 'room_message' => "friend-$request->chatId",
-                'user' => $user,
                 'room_list' => "chat-$request->chatId"
             ]);
 
@@ -52,7 +51,6 @@ class MessagesController extends Controller
             $this->pushMessage([
                 'message' => $this->saveMessages($request, 'group_id', $photo, $user),
                 'room_message' => "group-$request->chatId",
-                'user' => $user,
                 'room_list' => "room-group"
             ]);
 
@@ -106,7 +104,7 @@ class MessagesController extends Controller
 
             $this->triggerPusher($data['room_message'], 'pushMessage', [
                 'message' => $data['message'],
-                'user' => $data['user']
+                'user' => Auth::user()
             ]);
 
             $this->triggerPusher($data['room_list'], 'updateList', ['message' => $data['message']]);
