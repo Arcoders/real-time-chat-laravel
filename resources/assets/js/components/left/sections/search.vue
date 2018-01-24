@@ -13,7 +13,7 @@
     export default {
 
         data() {
-            return {friends: null, groups: null, name: ''}
+            return {name: ''}
         },
 
         methods: {
