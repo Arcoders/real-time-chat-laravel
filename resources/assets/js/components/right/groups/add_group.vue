@@ -95,7 +95,6 @@
 
         mounted() {
             this.listFriends();
-            console.log('Add group ok!');
         },
 
         // ---------------------------------------------------
@@ -161,15 +160,15 @@
                 if (this.btnSubmit) return;
                 this.loading = true;
 
-                this.$http.post('/new_group', this.formData).then(response => {
+                this.$http.post('/new_group', this.formData).then(res => {
 
                     this.loading = false;
-                    (response.status === 200) ? this.done(response.data) : this.error();
+                    (res.status === 200) ? this.done(res.data) : this.error();
 
-                }, response => {
+                }, res => {
 
                     this.loading = false;
-                    (response.status === 422) ? this.validation(response.data.errors) : this.error();
+                    (res.status === 422) ? this.validation(res.data.errors) : this.error();
 
                 });
             },
@@ -233,9 +232,7 @@
                 formData.append('name', this.groupName);
                 if (this.avatar) formData.append('avatar', this.$refs.fileInput.files[0]);
 
-                this.selectedIds = Object.keys(this.selectedUsers).map(
-                    s => this.selectedUsers[s].id
-                );
+                this.selectedIds = Object.keys(this.selectedUsers).map(s => this.selectedUsers[s].id);
 
                 formData.append('id', this.selectedIds);
 

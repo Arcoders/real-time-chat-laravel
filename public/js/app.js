@@ -41117,7 +41117,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.btnSubmit) return;
 
-            this.$http.post('/send_messañge', this.formData).then(function (response) {
+            this.$http.post('/send_message', this.formData).then(function (response) {
 
                 response.status === 200 ? _this.resMessage('done') : _this.resMessage('error');
             }, function () {
@@ -44958,7 +44958,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted: function mounted() {
         this.listFriends();
-        console.log('Add group ok!');
     },
 
 
@@ -45032,14 +45031,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.btnSubmit) return;
             this.loading = true;
 
-            this.$http.post('/new_group', this.formData).then(function (response) {
+            this.$http.post('/new_group', this.formData).then(function (res) {
 
                 _this3.loading = false;
-                response.status === 200 ? _this3.done(response.data) : _this3.error();
-            }, function (response) {
+                res.status === 200 ? _this3.done(res.data) : _this3.error();
+            }, function (res) {
 
                 _this3.loading = false;
-                response.status === 422 ? _this3.validation(response.data.errors) : _this3.error();
+                res.status === 422 ? _this3.validation(res.data.errors) : _this3.error();
             });
         },
 
