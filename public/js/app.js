@@ -40513,10 +40513,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     methods: {
+
+        // ----------------------------------------------
+
         updateGroups: function updateGroups() {
             var _this = this;
-
-            console.log(this.name);
 
             this.$eventBus.$emit('update', {
                 type: 'group',
@@ -40532,6 +40533,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         }
     }
+
+    // ----------------------------------------------
 
 });
 
@@ -41075,13 +41078,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ----------------------------------------------
 
-    props: ['uploadImageState', 'user', 'photo', 'uploadedPhoto'],
+    props: ['uploadImageState', 'photo', 'uploadedPhoto'],
 
     // ----------------------------------------------
 
     data: function data() {
         return {
             chatId: window.atob(this.$route.params.chat_id),
+            user: this.$store.state.user,
             messageText: '',
             typing: false
         };
@@ -41113,21 +41117,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.btnSubmit) return;
 
-            this.$http.post('/send_message', this.formData).then(function (response) {
-                if (response.status === 200) {
-                    _this.responseMessage('done');
-                } else {
-                    _this.responseMessage('error');
-                }
+            this.$http.post('/send_messañge', this.formData).then(function (response) {
+
+                response.status === 200 ? _this.resMessage('done') : _this.resMessage('error');
             }, function () {
-                _this.responseMessage('error');
+                _this.resMessage('error');
             });
         },
 
 
         // ----------------------------------------------
 
-        responseMessage: function responseMessage(type) {
+        resMessage: function resMessage(type) {
             if (type === 'error') this.emitMessage(this.photo, this.messageText);
             this.$emit('clearPhoto');
             this.messageText = '';

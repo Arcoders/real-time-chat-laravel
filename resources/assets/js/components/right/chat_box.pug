@@ -35,10 +35,9 @@ transition(name='slide-fade')
                         a(v-on:click='photo = null')
                             i.material-icons clear
 
-        send(:user='user',
-        v-on:errorMessages="pushErrorMessage($event)",
-        v-on:clearPhoto="hideModal",
-        :uploadImageState='uploadImage',
-        @showUpload='showImageModal',
-        :photo='photo',
-        :uploadedPhoto='uploadedPhoto')
+        send(v-on:errorMessages="pushErrorMessage($event)",
+            v-on:clearPhoto="hideModal",
+            :uploadImageState='uploadImage',
+            @showUpload='showImageModal',
+            :photo='photo',
+            :uploadedPhoto='uploadedPhoto')

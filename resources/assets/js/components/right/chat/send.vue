@@ -30,13 +30,14 @@
 
         // ----------------------------------------------
 
-        props: ['uploadImageState', 'user', 'photo', 'uploadedPhoto'],
+        props: ['uploadImageState', 'photo', 'uploadedPhoto'],
 
         // ----------------------------------------------
 
         data() {
           return {
               chatId: window.atob(this.$route.params.chat_id),
+              user: this.$store.state.user,
               messageText: '',
               typing: false
           }
@@ -63,21 +64,19 @@
             addMessage() {
                 if (this.btnSubmit) return;
 
-                this.$http.post('/send_message', this.formData).then(response => {
-                    if (response.status === 200) {
-                        this.responseMessage('done');
-                    } else {
-                        this.responseMessage('error');
-                    }
+                this.$http.post('/send_messañge', this.formData).then(response => {
+
+                    (response.status === 200) ? this.resMessage('done') : this.resMessage('error');
+
                 }, () => {
-                    this.responseMessage('error');
+                    this.resMessage('error');
                 });
 
             },
 
             // ----------------------------------------------
 
-            responseMessage(type) {
+            resMessage(type) {
                 if (type === 'error') this.emitMessage(this.photo, this.messageText);
                 this.$emit('clearPhoto');
                 this.messageText = '';

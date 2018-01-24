@@ -18,9 +18,9 @@
 
         methods: {
 
-            updateGroups() {
+            // ----------------------------------------------
 
-                console.log(this.name);
+            updateGroups() {
 
                 this.$eventBus.$emit('update', {
                     type: 'group',
@@ -34,6 +34,8 @@
             }
 
         },
+
+        // ----------------------------------------------
 
     }
 </script>
