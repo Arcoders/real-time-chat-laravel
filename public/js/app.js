@@ -42560,7 +42560,6 @@ var render = function() {
             ]),
             _c("send", {
               attrs: {
-                user: _vm.user,
                 uploadImageState: _vm.uploadImage,
                 photo: _vm.photo,
                 uploadedPhoto: _vm.uploadedPhoto
@@ -42858,7 +42857,6 @@ var render = function() {
             ]),
             _c("send", {
               attrs: {
-                user: _vm.user,
                 uploadImageState: _vm.uploadImage,
                 photo: _vm.photo,
                 uploadedPhoto: _vm.uploadedPhoto
@@ -44860,6 +44858,7 @@ exports.push([module.i, "\na[data-v-5ddffaa0] {\n    text-decoration: none;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__group_mixins__ = __webpack_require__(249);
 //
 //
 //
@@ -44934,6 +44933,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -44956,6 +44958,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ---------------------------------------------------
 
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__group_mixins__["a" /* mixin */]],
+
+    // ---------------------------------------------------
+
     mounted: function mounted() {
         this.listFriends();
     },
@@ -44964,23 +44970,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ---------------------------------------------------
 
     methods: {
-
-        // ---------------------------------------------------
-
-        onFileChange: function onFileChange(e) {
-            var _this = this;
-
-            var files = e.target.files || e.dataTransfer.files;
-            var reader = new FileReader();
-
-            if (!files.length) return;
-
-            reader.onload = function (e) {
-                return _this.avatar = e.target.result;
-            };
-            reader.readAsDataURL(files[0]);
-        },
-
 
         // ---------------------------------------------------
 
@@ -44995,30 +44984,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         listFriends: function listFriends() {
-            var _this2 = this;
+            var _this = this;
 
             this.loading = true;
 
             this.$http.get('/list_friends').then(function (response) {
 
-                _this2.loading = false;
+                _this.loading = false;
 
                 if (response.status === 200) {
 
                     if (response.data.length !== 0) {
-                        _this2.listUsers = response.data;
-                        _this2.access = true;
+                        _this.listUsers = response.data;
+                        _this.access = true;
                     } else {
-                        _this2.error('friends');
+                        _this.error('friends');
                     }
                 } else {
-                    _this2.error('friends');
-                    _this2.access = false;
+                    _this.error('friends');
+                    _this.access = false;
                 }
             }, function () {
-                _this2.loading = false;
-                _this2.access = false;
-                _this2.error('friends');
+                _this.loading = false;
+                _this.access = false;
+                _this.error('friends');
             });
         },
 
@@ -45026,101 +45015,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         addGroup: function addGroup() {
-            var _this3 = this;
+            var _this2 = this;
 
             if (this.btnSubmit) return;
             this.loading = true;
 
             this.$http.post('/new_group', this.formData).then(function (res) {
 
-                _this3.loading = false;
-                res.status === 200 ? _this3.done(res.data) : _this3.error();
+                _this2.loading = false;
+                res.status === 200 ? _this2.done(res.data) : _this2.error();
             }, function (res) {
 
-                _this3.loading = false;
-                res.status === 422 ? _this3.validation(res.data.errors) : _this3.error();
+                _this2.loading = false;
+                res.status === 422 ? _this2.validation(res.data.errors) : _this2.error();
             });
-        },
-
-
-        // ---------------------------------------------------
-
-        error: function error() {
-            var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-            if (type === 'friends') {
-                this.showNotification('Look for new friends firstly', 'error');
-            } else {
-                this.showNotification('Group can not be added, try it later', 'error');
-            }
-        },
-
-
-        // ---------------------------------------------------
-
-        validation: function validation(msg) {
-            if (msg.avatar) msg = msg.avatar[0];
-            if (msg.name) msg = msg.name[0];
-            if (msg.id) msg = msg.id[0];
-
-            this.showNotification(msg, 'validation');
-        },
-
-
-        // ---------------------------------------------------
-
-        done: function done(msg) {
-            this.showNotification(msg, 'done');
-            this.resetForm();
-            this.$eventBus.$emit('update', { type: 'group', refresh: true });
-        },
-
-
-        // ---------------------------------------------------
-
-        showNotification: function showNotification(msg, type) {
-            var _this4 = this;
-
-            this.notifications.push({ message: msg, type: type });
-            setTimeout(function () {
-                _this4.notifications.shift();
-            }, this.time);
         }
-    },
-
-    // ---------------------------------------------------
-
-    computed: {
-
-        // ---------------------------------------------------
-
-        btnDisabled: function btnDisabled() {
-            if (this.groupName.length < 3) return true;
-        },
-
-
-        // ---------------------------------------------------
-
-        formData: function formData() {
-            var _this5 = this;
-
-            var formData = new FormData();
-
-            formData.append('name', this.groupName);
-            if (this.avatar) formData.append('avatar', this.$refs.fileInput.files[0]);
-
-            this.selectedIds = Object.keys(this.selectedUsers).map(function (s) {
-                return _this5.selectedUsers[s].id;
-            });
-
-            formData.append('id', this.selectedIds);
-
-            return formData;
-        }
-
-        // ---------------------------------------------------
-
     }
+
 });
 
 /***/ }),
@@ -45888,6 +45799,115 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mixin; });
+var mixin = {
+
+    // ---------------------------------------------------
+
+    methods: {
+        onFileChange: function onFileChange(e) {
+            var _this = this;
+
+            var files = e.target.files || e.dataTransfer.files;
+            var reader = new FileReader();
+
+            if (!files.length) return;
+
+            reader.onload = function (e) {
+                return _this.avatar = e.target.result;
+            };
+            reader.readAsDataURL(files[0]);
+        },
+
+
+        // ---------------------------------------------------
+
+        error: function error() {
+            var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+            if (type === 'friends') {
+                this.showNotification('Look for new friends firstly', 'error');
+            } else {
+                this.showNotification('Group can not be added, try it later', 'error');
+            }
+        },
+
+
+        // ---------------------------------------------------
+
+        validation: function validation(msg) {
+            if (msg.avatar) msg = msg.avatar[0];
+            if (msg.name) msg = msg.name[0];
+            if (msg.id) msg = msg.id[0];
+
+            this.showNotification(msg, 'validation');
+        },
+
+
+        // ---------------------------------------------------
+
+        done: function done(msg) {
+            this.showNotification(msg, 'done');
+            this.resetForm();
+            this.$eventBus.$emit('update', { type: 'group', refresh: true });
+        },
+
+
+        // ---------------------------------------------------
+
+        showNotification: function showNotification(msg, type) {
+            var _this2 = this;
+
+            this.notifications.push({ message: msg, type: type });
+            setTimeout(function () {
+                _this2.notifications.shift();
+            }, this.time);
+        }
+    },
+
+    computed: {
+
+        // ---------------------------------------------------
+
+        btnDisabled: function btnDisabled() {
+            if (this.groupName.length < 3) return true;
+        },
+
+
+        // ---------------------------------------------------
+
+        formData: function formData() {
+            var _this3 = this;
+
+            var formData = new FormData();
+
+            formData.append('name', this.groupName);
+            if (this.avatar) formData.append('avatar', this.$refs.fileInput.files[0]);
+
+            this.selectedIds = Object.keys(this.selectedUsers).map(function (s) {
+                return _this3.selectedUsers[s].id;
+            });
+
+            formData.append('id', this.selectedIds);
+
+            return formData;
+        }
+
+        // ---------------------------------------------------
+
+    }
+
+};
 
 /***/ })
 /******/ ]);
