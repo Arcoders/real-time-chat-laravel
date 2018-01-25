@@ -2,6 +2,26 @@ export const mixin = {
 
     // ---------------------------------------------------
 
+    data() {
+        return {
+            groupName: '',
+            groupAvatar: null,
+            avatar: null,
+            loading: false,
+            notifications: [],
+            time: 4000,
+            group_id: this.$route.params.group_id,
+            showEdit: false,
+            newImage: false,
+            listUsers: null,
+            access: false,
+            selectedUsers: [],
+            selectedIds: []
+        }
+    },
+
+    // ---------------------------------------------------
+
     methods: {
         onFileChange(e) {
             let files = e.target.files || e.dataTransfer.files;

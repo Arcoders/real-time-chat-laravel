@@ -44941,23 +44941,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ---------------------------------------------------
 
-    data: function data() {
-        return {
-            groupName: '',
-            avatar: null,
-            loading: false,
-            notifications: [],
-            time: 4000,
-            listUsers: null,
-            access: false,
-            selectedUsers: [],
-            selectedIds: []
-        };
-    },
-
-
-    // ---------------------------------------------------
-
     mixins: [__WEBPACK_IMPORTED_MODULE_0__group_mixins__["a" /* mixin */]],
 
     // ---------------------------------------------------
@@ -45396,25 +45379,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ---------------------------------------------------
 
-    data: function data() {
-        return {
-            groupName: '',
-            groupAvatar: null,
-            loading: false,
-            notifications: [],
-            time: 4000,
-            group_id: this.$route.params.group_id,
-            showEdit: false,
-            newImage: false,
-            listUsers: null,
-            selectedUsers: [],
-            selectedIds: []
-        };
-    },
-
-
-    // ---------------------------------------------------
-
     mixins: [__WEBPACK_IMPORTED_MODULE_0__group_mixins__["a" /* mixin */]],
 
     // ---------------------------------------------------
@@ -45737,108 +45701,129 @@ if (false) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mixin; });
 var mixin = {
 
-        // ---------------------------------------------------
+    // ---------------------------------------------------
 
-        methods: {
-                onFileChange: function onFileChange(e) {
-                        var _this = this;
-
-                        var files = e.target.files || e.dataTransfer.files;
-                        var reader = new FileReader();
-
-                        if (!files.length) return;
-
-                        reader.onload = function (e) {
-                                _this.avatar = e.target.result;
-                                _this.groupAvatar = e.target.result;
-                        };
-
-                        reader.readAsDataURL(files[0]);
-
-                        if (this.$route.name === 'edit_group') this.newImage = true;
-                },
-
-
-                // ---------------------------------------------------
-
-                error: function error() {
-                        var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-                        if (type === 'friends') {
-
-                                this.showNotification('Look for new friends firstly', 'error');
-                        } else {
-
-                                var vrb = this.$route.name === 'edit_group' ? 'edited' : 'added';
-
-                                this.showNotification('Group can not be ' + vrb + ', try it later', 'error');
-                        }
-                },
+    data: function data() {
+        return {
+            groupName: '',
+            groupAvatar: null,
+            avatar: null,
+            loading: false,
+            notifications: [],
+            time: 4000,
+            group_id: this.$route.params.group_id,
+            showEdit: false,
+            newImage: false,
+            listUsers: null,
+            access: false,
+            selectedUsers: [],
+            selectedIds: []
+        };
+    },
 
 
-                // ---------------------------------------------------
+    // ---------------------------------------------------
 
-                validation: function validation(msg) {
-                        if (msg.avatar) msg = msg.avatar[0];
-                        if (msg.name) msg = msg.name[0];
-                        if (msg.id) msg = msg.id[0];
+    methods: {
+        onFileChange: function onFileChange(e) {
+            var _this = this;
 
-                        this.showNotification(msg, 'validation');
-                },
+            var files = e.target.files || e.dataTransfer.files;
+            var reader = new FileReader();
 
+            if (!files.length) return;
 
-                // ---------------------------------------------------
+            reader.onload = function (e) {
+                _this.avatar = e.target.result;
+                _this.groupAvatar = e.target.result;
+            };
 
-                done: function done(msg) {
-                        this.showNotification(msg, 'done');
-                        if (this.$route.name === 'add_group') this.resetForm();
-                        this.$eventBus.$emit('update', { type: 'group', refresh: true });
-                },
+            reader.readAsDataURL(files[0]);
 
-
-                // ---------------------------------------------------
-
-                showNotification: function showNotification(msg, type) {
-                        var _this2 = this;
-
-                        this.notifications.push({ message: msg, type: type });
-                        setTimeout(function () {
-                                _this2.notifications.shift();
-                        }, this.time);
-                }
+            if (this.$route.name === 'edit_group') this.newImage = true;
         },
 
-        computed: {
 
-                // ---------------------------------------------------
+        // ---------------------------------------------------
 
-                btnDisabled: function btnDisabled() {
-                        if (this.groupName.length < 3) return true;
-                },
+        error: function error() {
+            var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+            if (type === 'friends') {
+
+                this.showNotification('Look for new friends firstly', 'error');
+            } else {
+
+                var vrb = this.$route.name === 'edit_group' ? 'edited' : 'added';
+
+                this.showNotification('Group can not be ' + vrb + ', try it later', 'error');
+            }
+        },
 
 
-                // ---------------------------------------------------
+        // ---------------------------------------------------
 
-                formData: function formData() {
-                        var _this3 = this;
+        validation: function validation(msg) {
+            if (msg.avatar) msg = msg.avatar[0];
+            if (msg.name) msg = msg.name[0];
+            if (msg.id) msg = msg.id[0];
 
-                        var formData = new FormData();
+            this.showNotification(msg, 'validation');
+        },
 
-                        formData.append('name', this.groupName);
-                        if (this.avatar || this.newImage) formData.append('avatar', this.$refs.fileInput.files[0]);
 
-                        this.selectedIds = Object.keys(this.selectedUsers).map(function (s) {
-                                return _this3.selectedUsers[s].id;
-                        });
+        // ---------------------------------------------------
 
-                        formData.append('id', this.selectedIds);
+        done: function done(msg) {
+            this.showNotification(msg, 'done');
+            if (this.$route.name === 'add_group') this.resetForm();
+            this.$eventBus.$emit('update', { type: 'group', refresh: true });
+        },
 
-                        return formData;
-                }
 
-                // ---------------------------------------------------
+        // ---------------------------------------------------
 
+        showNotification: function showNotification(msg, type) {
+            var _this2 = this;
+
+            this.notifications.push({ message: msg, type: type });
+            setTimeout(function () {
+                _this2.notifications.shift();
+            }, this.time);
         }
+    },
+
+    computed: {
+
+        // ---------------------------------------------------
+
+        btnDisabled: function btnDisabled() {
+            if (this.groupName.length < 3) return true;
+        },
+
+
+        // ---------------------------------------------------
+
+        formData: function formData() {
+            var _this3 = this;
+
+            var formData = new FormData();
+
+            formData.append('name', this.groupName);
+            if (this.avatar || this.newImage) formData.append('avatar', this.$refs.fileInput.files[0]);
+
+            this.selectedIds = Object.keys(this.selectedUsers).map(function (s) {
+                return _this3.selectedUsers[s].id;
+            });
+
+            formData.append('id', this.selectedIds);
+
+            return formData;
+        }
+
+        // ---------------------------------------------------
+
+    }
 
 };
 

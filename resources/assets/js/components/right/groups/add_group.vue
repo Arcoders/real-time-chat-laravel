@@ -80,22 +80,6 @@
 
         // ---------------------------------------------------
 
-        data() {
-          return {
-              groupName: '',
-              avatar: null,
-              loading: false,
-              notifications: [],
-              time: 4000,
-              listUsers: null,
-              access: false,
-              selectedUsers: [],
-              selectedIds: []
-          }
-        },
-
-        // ---------------------------------------------------
-
         mixins: [mixin],
 
         // ---------------------------------------------------

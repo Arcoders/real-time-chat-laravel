@@ -72,24 +72,6 @@
 
         // ---------------------------------------------------
 
-        data() {
-          return {
-              groupName: '',
-              groupAvatar: null,
-              loading: false,
-              notifications: [],
-              time: 4000,
-              group_id: this.$route.params.group_id,
-              showEdit: false,
-              newImage: false,
-              listUsers: null,
-              selectedUsers: [],
-              selectedIds: []
-          }
-        },
-
-        // ---------------------------------------------------
-
         mixins: [mixin],
 
         // ---------------------------------------------------
