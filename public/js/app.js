@@ -27752,12 +27752,12 @@ var mixin = {
         allMessages: function allMessages() {
             var _this6 = this;
 
-            this.$http.get('/get_latest_messages/' + this.chatId + '/' + this.$route.name).then(function (response) {
-                if (response.status === 200) {
+            this.$http.get('/get_latest_messages/' + this.chatId + '/' + this.$route.name).then(function (res) {
+                if (res.status === 200) {
 
-                    if (response.data.length === 0) return _this6.welcomeMessage();
+                    if (res.data.length === 0) return _this6.welcomeMessage();
 
-                    response.data.forEach(function (data) {
+                    res.data.forEach(function (data) {
                         _this6.messages.push({
                             id: data.user.id,
                             name: data.user.name,

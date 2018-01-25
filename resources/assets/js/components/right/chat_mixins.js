@@ -160,12 +160,12 @@ export const mixin = {
 
         allMessages() {
 
-            this.$http.get(`/get_latest_messages/${this.chatId}/${this.$route.name}`).then(response => {
-                if (response.status === 200) {
+            this.$http.get(`/get_latest_messages/${this.chatId}/${this.$route.name}`).then(res => {
+                if (res.status === 200) {
 
-                    if (response.data.length === 0) return this.welcomeMessage();
+                    if (res.data.length === 0) return this.welcomeMessage();
 
-                    response.data.forEach(data => {
+                    res.data.forEach(data => {
                         this.messages.push({
                             id: data.user.id,
                             name: data.user.name,
