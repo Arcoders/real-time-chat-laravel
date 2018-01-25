@@ -146,7 +146,7 @@
 
                         this.done(response.data);
 
-                        if (this.groups === 0) return this.clickedPage(this.actualPage - 1);
+                        if (this.groups.length === 0) return this.clickedPage(this.actualPage - 1);
 
                         this.clickedPage(this.actualPage);
 

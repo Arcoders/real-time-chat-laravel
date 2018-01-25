@@ -44548,7 +44548,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     _this2.done(response.data);
 
-                    if (_this2.groups === 0) return _this2.clickedPage(_this2.actualPage - 1);
+                    if (_this2.groups.length === 0) return _this2.clickedPage(_this2.actualPage - 1);
 
                     _this2.clickedPage(_this2.actualPage);
                 } else {
