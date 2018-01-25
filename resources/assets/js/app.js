@@ -95,7 +95,7 @@ const router = new VueRouter({
             path: '/groups', component: groups,
             children: [
                 { path: 'my', component: my_groups },
-                { path: 'add', component: add_group },
+                { path: 'add', component: add_group, name: 'add_group' },
                 { path: 'my/:group_id/:group_name', component: edit_group, name: 'edit_group' }
             ]
         },

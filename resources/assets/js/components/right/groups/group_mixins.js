@@ -9,17 +9,30 @@ export const mixin = {
 
             if (!files.length) return;
 
-            reader.onload = e => this.avatar = e.target.result;
+            reader.onload = e => {
+                this.avatar = e.target.result;
+                this.groupAvatar = e.target.result;
+            };
+
             reader.readAsDataURL(files[0]);
+
+            if (this.$route.name === 'edit_group') this.newImage = true;
+
+
         },
 
         // ---------------------------------------------------
 
         error(type = null) {
             if (type === 'friends') {
+
                 this.showNotification('Look for new friends firstly', 'error');
+
             } else {
-                this.showNotification('Group can not be added, try it later', 'error');
+
+                let vrb = (this.$route.name === 'edit_group') ? 'edited' : 'added';
+
+                this.showNotification(`Group can not be ${vrb}, try it later`, 'error');
             }
         },
 
@@ -37,7 +50,7 @@ export const mixin = {
 
         done(msg) {
             this.showNotification(msg, 'done');
-            this.resetForm();
+            if (this.$route.name === 'add_group') this.resetForm();
             this.$eventBus.$emit('update', {type: 'group', refresh: true});
         },
 
@@ -67,7 +80,7 @@ export const mixin = {
             let formData = new FormData();
 
             formData.append('name', this.groupName);
-            if (this.avatar) formData.append('avatar', this.$refs.fileInput.files[0]);
+            if (this.avatar || this.newImage) formData.append('avatar', this.$refs.fileInput.files[0]);
 
             this.selectedIds = Object.keys(this.selectedUsers).map(s => this.selectedUsers[s].id);
 

@@ -27998,7 +27998,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         children: [{ path: 'edit', component: __WEBPACK_IMPORTED_MODULE_13__components_right_profile_edit_profile___default.a }]
     }, {
         path: '/groups', component: __WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue___default.a,
-        children: [{ path: 'my', component: __WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue___default.a }, { path: 'add', component: __WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue___default.a }, { path: 'my/:group_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue___default.a, name: 'edit_group' }]
+        children: [{ path: 'my', component: __WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue___default.a }, { path: 'add', component: __WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue___default.a, name: 'add_group' }, { path: 'my/:group_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue___default.a, name: 'edit_group' }]
     }, { path: '/friend/:chat_id/:friend_name/:friend_id', component: __WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue___default.a, name: 'friend' }, { path: '/group/:chat_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue___default.a, name: 'group' }, { path: '/*', component: __WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue___default.a }]
 });
 
@@ -45321,6 +45321,7 @@ exports.push([module.i, "\na[data-v-3aadc94b] {\n    text-decoration: none;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__group_mixins__ = __webpack_require__(249);
 //
 //
 //
@@ -45387,6 +45388,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -45395,7 +45399,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             groupName: '',
-            avatar: null,
+            groupAvatar: null,
             loading: false,
             notifications: [],
             time: 4000,
@@ -45408,6 +45412,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+
+    // ---------------------------------------------------
+
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__group_mixins__["a" /* mixin */]],
 
     // ---------------------------------------------------
 
@@ -45424,26 +45432,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ---------------------------------------------------
 
-        onFileChange: function onFileChange(e) {
-            var _this = this;
-
-            var files = e.target.files || e.dataTransfer.files;
-            var reader = new FileReader();
-
-            if (!files.length) return;
-
-            reader.onload = function (e) {
-                return _this.avatar = e.target.result;
-            };
-            reader.readAsDataURL(files[0]);
-            this.newImage = true;
-        },
-
-
-        // ---------------------------------------------------
-
         clearAvatar: function clearAvatar() {
-            this.avatar = null;
+            this.groupAvatar = null;
             this.editGroup('image');
         },
 
@@ -45451,7 +45441,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         editGroup: function editGroup() {
-            var _this2 = this;
+            var _this = this;
 
             var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
@@ -45463,21 +45453,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$http.post('/edit_group/' + this.group_id, data).then(function (response) {
 
-                _this2.loading = false;
+                _this.loading = false;
 
                 if (response.status === 200) {
-                    _this2.done(response.data);
+                    _this.done(response.data);
                 } else {
-                    _this2.error();
+                    _this.error();
                 }
             }, function (response) {
 
-                _this2.loading = false;
+                _this.loading = false;
 
                 if (response.status === 422) {
-                    _this2.validation(response.data.errors);
+                    _this.validation(response.data.errors);
                 } else {
-                    _this2.error();
+                    _this.error();
                 }
             });
         },
@@ -45485,66 +45475,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ---------------------------------------------------
 
-        error: function error() {
-            this.showNotification('Group can not be edited, try it later', 'error');
-        },
-
-
-        // ---------------------------------------------------
-
-        validation: function validation(msg) {
-            if (msg.avatar) msg = msg.avatar[0];
-            if (msg.name) msg = msg.name[0];
-            if (msg.id) msg = msg.id[0];
-
-            this.showNotification(msg, 'validation');
-        },
-
-
-        // ---------------------------------------------------
-
-        done: function done(msg) {
-            this.showNotification(msg, 'done');
-            this.$eventBus.$emit('update', { type: 'group', refresh: true });
-        },
-
-
-        // ---------------------------------------------------
-
-        showNotification: function showNotification(msg, type) {
-            var _this3 = this;
-
-            this.notifications.push({ message: msg, type: type });
-            setTimeout(function () {
-                _this3.notifications.shift();
-            }, this.time);
-        },
-
-
-        // ---------------------------------------------------
-
         listFriends: function listFriends() {
-            var _this4 = this;
+            var _this2 = this;
 
             this.loading = true;
 
             this.$http.get('/list_friends').then(function (response) {
 
-                _this4.loading = false;
+                _this2.loading = false;
 
                 if (response.status === 200) {
 
                     if (response.data.length !== 0) {
-                        _this4.listUsers = response.data;
+                        _this2.listUsers = response.data;
                     } else {
-                        _this4.$router.push('/groups/my');
+                        _this2.$router.push('/groups/my');
                     }
                 } else {
-                    _this4.$router.push('/groups/my');
+                    _this2.$router.push('/groups/my');
                 }
             }, function () {
-                _this4.loading = false;
-                _this4.$router.push('/groups/my');
+                _this2.loading = false;
+                _this2.$router.push('/groups/my');
             });
         },
 
@@ -45552,61 +45504,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         getGroup: function getGroup() {
-            var _this5 = this;
+            var _this3 = this;
 
             this.$http.get('/get_group/' + this.group_id).then(function (response) {
 
                 if (response.status === 200) {
 
-                    if (response.data === 0) return _this5.$router.push('/groups/my');
+                    if (response.data === 0) return _this3.$router.push('/groups/my');
 
-                    _this5.showEdit = true;
+                    _this3.showEdit = true;
 
-                    _this5.groupName = response.data.name;
-                    if (response.data.avatar) _this5.avatar = response.data.avatar;
-                    _this5.selectedUsers = response.data.users;
+                    _this3.groupName = response.data.name;
+                    if (response.data.avatar) _this3.groupAvatar = response.data.avatar;
+                    _this3.selectedUsers = response.data.users;
                 } else {
-                    _this5.$router.push('/groups/my');
+                    _this3.$router.push('/groups/my');
                 }
             }, function () {
-                _this5.$router.push('/groups/my');
+                _this3.$router.push('/groups/my');
             });
         }
-    },
+    }
 
     // ---------------------------------------------------
 
-    computed: {
-
-        // ---------------------------------------------------
-
-        btnSubmit: function btnSubmit() {
-            return this.groupName.length < 3;
-        },
-
-
-        // ---------------------------------------------------
-
-        formData: function formData() {
-            var _this6 = this;
-
-            var formData = new FormData();
-
-            formData.append('name', this.groupName);
-            if (this.newImage) formData.append('avatar', this.$refs.fileInput.files[0]);
-
-            this.selectedIds = Object.keys(this.selectedUsers).map(function (s) {
-                return _this6.selectedUsers[s].id;
-            });
-
-            formData.append('id', this.selectedIds);
-
-            return formData;
-        }
-
-        // ---------------------------------------------------
-
-    }
 });
 
 /***/ }),
@@ -45629,7 +45550,11 @@ var render = function() {
             _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
           ]),
           _c("avatar", {
-            attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
+            attrs: {
+              username: _vm.groupName,
+              color: "#fff",
+              src: _vm.groupAvatar
+            }
           }),
           _c("h4", [_vm._v(" Edit group")]),
           _c("hr"),
@@ -45646,7 +45571,7 @@ var render = function() {
             [
               _c("div", { staticClass: "input wrap-input" }, [
                 _c("label", { staticClass: "fileContainer font-online" }, [
-                  !_vm.avatar
+                  !_vm.groupAvatar
                     ? _c("button", { attrs: { type: "button" } }, [
                         _c("i", { staticClass: "material-icons" }, [
                           _vm._v("photo")
@@ -45669,8 +45594,8 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: !_vm.avatar,
-                        expression: "!avatar"
+                        value: !_vm.groupAvatar,
+                        expression: "!groupAvatar"
                       }
                     ],
                     ref: "fileInput",
@@ -45719,7 +45644,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    attrs: { type: "button", disabled: _vm.btnSubmit },
+                    attrs: { type: "button", disabled: _vm.btnDisabled },
                     on: { click: _vm.editGroup }
                   },
                   [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
@@ -45812,100 +45737,108 @@ if (false) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mixin; });
 var mixin = {
 
-    // ---------------------------------------------------
-
-    methods: {
-        onFileChange: function onFileChange(e) {
-            var _this = this;
-
-            var files = e.target.files || e.dataTransfer.files;
-            var reader = new FileReader();
-
-            if (!files.length) return;
-
-            reader.onload = function (e) {
-                return _this.avatar = e.target.result;
-            };
-            reader.readAsDataURL(files[0]);
-        },
-
-
         // ---------------------------------------------------
 
-        error: function error() {
-            var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+        methods: {
+                onFileChange: function onFileChange(e) {
+                        var _this = this;
 
-            if (type === 'friends') {
-                this.showNotification('Look for new friends firstly', 'error');
-            } else {
-                this.showNotification('Group can not be added, try it later', 'error');
-            }
+                        var files = e.target.files || e.dataTransfer.files;
+                        var reader = new FileReader();
+
+                        if (!files.length) return;
+
+                        reader.onload = function (e) {
+                                _this.avatar = e.target.result;
+                                _this.groupAvatar = e.target.result;
+                        };
+
+                        reader.readAsDataURL(files[0]);
+
+                        if (this.$route.name === 'edit_group') this.newImage = true;
+                },
+
+
+                // ---------------------------------------------------
+
+                error: function error() {
+                        var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+                        if (type === 'friends') {
+
+                                this.showNotification('Look for new friends firstly', 'error');
+                        } else {
+
+                                var vrb = this.$route.name === 'edit_group' ? 'edited' : 'added';
+
+                                this.showNotification('Group can not be ' + vrb + ', try it later', 'error');
+                        }
+                },
+
+
+                // ---------------------------------------------------
+
+                validation: function validation(msg) {
+                        if (msg.avatar) msg = msg.avatar[0];
+                        if (msg.name) msg = msg.name[0];
+                        if (msg.id) msg = msg.id[0];
+
+                        this.showNotification(msg, 'validation');
+                },
+
+
+                // ---------------------------------------------------
+
+                done: function done(msg) {
+                        this.showNotification(msg, 'done');
+                        if (this.$route.name === 'add_group') this.resetForm();
+                        this.$eventBus.$emit('update', { type: 'group', refresh: true });
+                },
+
+
+                // ---------------------------------------------------
+
+                showNotification: function showNotification(msg, type) {
+                        var _this2 = this;
+
+                        this.notifications.push({ message: msg, type: type });
+                        setTimeout(function () {
+                                _this2.notifications.shift();
+                        }, this.time);
+                }
         },
 
+        computed: {
 
-        // ---------------------------------------------------
+                // ---------------------------------------------------
 
-        validation: function validation(msg) {
-            if (msg.avatar) msg = msg.avatar[0];
-            if (msg.name) msg = msg.name[0];
-            if (msg.id) msg = msg.id[0];
-
-            this.showNotification(msg, 'validation');
-        },
+                btnDisabled: function btnDisabled() {
+                        if (this.groupName.length < 3) return true;
+                },
 
 
-        // ---------------------------------------------------
+                // ---------------------------------------------------
 
-        done: function done(msg) {
-            this.showNotification(msg, 'done');
-            this.resetForm();
-            this.$eventBus.$emit('update', { type: 'group', refresh: true });
-        },
+                formData: function formData() {
+                        var _this3 = this;
 
+                        var formData = new FormData();
 
-        // ---------------------------------------------------
+                        formData.append('name', this.groupName);
+                        if (this.avatar || this.newImage) formData.append('avatar', this.$refs.fileInput.files[0]);
 
-        showNotification: function showNotification(msg, type) {
-            var _this2 = this;
+                        this.selectedIds = Object.keys(this.selectedUsers).map(function (s) {
+                                return _this3.selectedUsers[s].id;
+                        });
 
-            this.notifications.push({ message: msg, type: type });
-            setTimeout(function () {
-                _this2.notifications.shift();
-            }, this.time);
+                        formData.append('id', this.selectedIds);
+
+                        return formData;
+                }
+
+                // ---------------------------------------------------
+
         }
-    },
-
-    computed: {
-
-        // ---------------------------------------------------
-
-        btnDisabled: function btnDisabled() {
-            if (this.groupName.length < 3) return true;
-        },
-
-
-        // ---------------------------------------------------
-
-        formData: function formData() {
-            var _this3 = this;
-
-            var formData = new FormData();
-
-            formData.append('name', this.groupName);
-            if (this.avatar) formData.append('avatar', this.$refs.fileInput.files[0]);
-
-            this.selectedIds = Object.keys(this.selectedUsers).map(function (s) {
-                return _this3.selectedUsers[s].id;
-            });
-
-            formData.append('id', this.selectedIds);
-
-            return formData;
-        }
-
-        // ---------------------------------------------------
-
-    }
 
 };
 

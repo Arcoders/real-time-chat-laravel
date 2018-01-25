@@ -6,7 +6,7 @@
         router-link(to='/groups/my')
             i.material-icons arrow_back
 
-        avatar(:username='groupName', color='#fff', :src='avatar')
+        avatar(:username='groupName', color='#fff', :src='groupAvatar')
 
         h4  Edit group
         hr
@@ -15,13 +15,13 @@
             .input.wrap-input
                 label.fileContainer.font-online
 
-                    button(v-if='!avatar', type='button')
+                    button(v-if='!groupAvatar', type='button')
                         i.material-icons photo
 
                     button(v-else='', v-on:click='clearAvatar', type='button')
                         i.material-icons clear
 
-                    input(v-show='!avatar',
+                    input(v-show='!groupAvatar',
                                 type='file',
                                 name='avatar',
                                 v-on:change='onFileChange($event)',
@@ -33,7 +33,7 @@
                                     type='text',
                                     placeholder='Group name...')
 
-                button(type='button', @click='editGroup', v-bind:disabled='btnSubmit')
+                button(type='button', @click='editGroup', v-bind:disabled='btnDisabled')
                     i.material-icons add
             br
             .input.wrap-input
@@ -65,6 +65,9 @@
 </style>
 
 <script>
+
+    import {mixin} from './group_mixins';
+
     export default {
 
         // ---------------------------------------------------
@@ -72,7 +75,7 @@
         data() {
           return {
               groupName: '',
-              avatar: null,
+              groupAvatar: null,
               loading: false,
               notifications: [],
               time: 4000,
@@ -84,6 +87,10 @@
               selectedIds: []
           }
         },
+
+        // ---------------------------------------------------
+
+        mixins: [mixin],
 
         // ---------------------------------------------------
 
@@ -99,21 +106,8 @@
 
             // ---------------------------------------------------
 
-            onFileChange(e) {
-                let files = e.target.files || e.dataTransfer.files;
-                let reader = new FileReader();
-
-                if (!files.length) return;
-
-                reader.onload = e => this.avatar = e.target.result;
-                reader.readAsDataURL(files[0]);
-                this.newImage = true;
-            },
-
-            // ---------------------------------------------------
-
             clearAvatar() {
-                this.avatar = null;
+                this.groupAvatar = null;
                 this.editGroup('image');
             },
 
@@ -147,38 +141,6 @@
                     }
 
                 });
-            },
-
-            // ---------------------------------------------------
-
-            error() {
-                this.showNotification('Group can not be edited, try it later', 'error');
-            },
-
-            // ---------------------------------------------------
-
-            validation(msg) {
-                if (msg.avatar) msg = msg.avatar[0];
-                if (msg.name) msg = msg.name[0];
-                if (msg.id) msg = msg.id[0];
-
-                this.showNotification(msg, 'validation');
-            },
-
-            // ---------------------------------------------------
-
-            done(msg) {
-                this.showNotification(msg, 'done');
-                this.$eventBus.$emit('update', {type: 'group', refresh: true});
-            },
-
-            // ---------------------------------------------------
-
-            showNotification(msg, type) {
-                this.notifications.push({ message: msg, type: type });
-                setTimeout(() => {
-                    this.notifications.shift();
-                }, this.time);
             },
 
             // ---------------------------------------------------
@@ -221,7 +183,7 @@
                         this.showEdit = true;
 
                         this.groupName = response.data.name;
-                        if (response.data.avatar) this.avatar = response.data.avatar;
+                        if (response.data.avatar) this.groupAvatar = response.data.avatar;
                         this.selectedUsers = response.data.users;
 
                     } else {
@@ -238,32 +200,5 @@
 
         // ---------------------------------------------------
 
-        computed: {
-
-            // ---------------------------------------------------
-
-            btnSubmit() {
-                return ( this.groupName.length < 3);
-            },
-
-            // ---------------------------------------------------
-
-            formData() {
-                let formData = new FormData();
-
-                formData.append('name', this.groupName);
-                if (this.newImage) formData.append('avatar', this.$refs.fileInput.files[0]);
-
-                this.selectedIds = Object.keys(this.selectedUsers).map(
-                    s => this.selectedUsers[s].id
-                );
-
-                formData.append('id', this.selectedIds);
-
-                return formData;
-            }
-
-            // ---------------------------------------------------
-        }
     }
 </script>
