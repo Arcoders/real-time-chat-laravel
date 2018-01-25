@@ -45415,21 +45415,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var data = type === 'image' ? { deleteImage: true } : this.formData;
 
-            this.$http.post('/edit_group/' + this.group_id, data).then(function (response) {
+            this.$http.post('/edit_group/' + this.group_id, data).then(function (res) {
 
                 _this.loading = false;
 
-                if (response.status === 200) {
-                    _this.done(response.data);
+                if (res.status === 200) {
+                    _this.done(res.data);
                 } else {
                     _this.error();
                 }
-            }, function (response) {
+            }, function (res) {
 
                 _this.loading = false;
 
-                if (response.status === 422) {
-                    _this.validation(response.data.errors);
+                if (res.status === 422) {
+                    _this.validation(res.data.errors);
                 } else {
                     _this.error();
                 }
@@ -45444,14 +45444,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            this.$http.get('/list_friends').then(function (response) {
+            this.$http.get('/list_friends').then(function (res) {
 
                 _this2.loading = false;
 
-                if (response.status === 200) {
+                if (res.status === 200) {
 
-                    if (response.data.length !== 0) {
-                        _this2.listUsers = response.data;
+                    if (res.data.length !== 0) {
+                        _this2.listUsers = res.data;
                     } else {
                         _this2.$router.push('/groups/my');
                     }
@@ -45470,17 +45470,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getGroup: function getGroup() {
             var _this3 = this;
 
-            this.$http.get('/get_group/' + this.group_id).then(function (response) {
+            this.$http.get('/get_group/' + this.group_id).then(function (res) {
 
-                if (response.status === 200) {
+                if (res.status === 200) {
 
-                    if (response.data === 0) return _this3.$router.push('/groups/my');
+                    if (res.data === 0) return _this3.$router.push('/groups/my');
 
                     _this3.showEdit = true;
 
-                    _this3.groupName = response.data.name;
-                    if (response.data.avatar) _this3.groupAvatar = response.data.avatar;
-                    _this3.selectedUsers = response.data.users;
+                    _this3.groupName = res.data.name;
+                    if (res.data.avatar) _this3.groupAvatar = res.data.avatar;
+                    _this3.selectedUsers = res.data.users;
                 } else {
                     _this3.$router.push('/groups/my');
                 }
@@ -45810,6 +45810,7 @@ var mixin = {
             var formData = new FormData();
 
             formData.append('name', this.groupName);
+
             if (this.avatar || this.newImage) formData.append('avatar', this.$refs.fileInput.files[0]);
 
             this.selectedIds = Object.keys(this.selectedUsers).map(function (s) {

@@ -37,8 +37,6 @@ export const mixin = {
             reader.readAsDataURL(files[0]);
 
             if (this.$route.name === 'edit_group') this.newImage = true;
-
-
         },
 
         // ---------------------------------------------------
@@ -100,6 +98,7 @@ export const mixin = {
             let formData = new FormData();
 
             formData.append('name', this.groupName);
+
             if (this.avatar || this.newImage) formData.append('avatar', this.$refs.fileInput.files[0]);
 
             this.selectedIds = Object.keys(this.selectedUsers).map(s => this.selectedUsers[s].id);

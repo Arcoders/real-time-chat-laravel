@@ -102,22 +102,22 @@
 
                 let data = (type === 'image') ? {deleteImage: true} : this.formData;
 
-                this.$http.post('/edit_group/' + this.group_id, data).then(response => {
+                this.$http.post('/edit_group/' + this.group_id, data).then(res => {
 
                     this.loading = false;
 
-                    if (response.status === 200) {
-                        this.done(response.data);
+                    if (res.status === 200) {
+                        this.done(res.data);
                     } else {
                         this.error();
                     }
 
-                }, response => {
+                }, res => {
 
                     this.loading = false;
 
-                    if (response.status === 422) {
-                        this.validation(response.data.errors);
+                    if (res.status === 422) {
+                        this.validation(res.data.errors);
                     } else {
                         this.error();
                     }
@@ -131,14 +131,14 @@
 
                 this.loading = true;
 
-                this.$http.get('/list_friends').then(response => {
+                this.$http.get('/list_friends').then(res => {
 
                     this.loading = false;
 
-                    if (response.status === 200) {
+                    if (res.status === 200) {
 
-                        if (response.data.length !== 0) {
-                            this.listUsers = response.data;
+                        if (res.data.length !== 0) {
+                            this.listUsers = res.data;
                         } else {
                             this.$router.push('/groups/my');
                         }
@@ -156,17 +156,17 @@
             // ---------------------------------------------------
 
             getGroup() {
-                this.$http.get('/get_group/' + this.group_id).then(response => {
+                this.$http.get('/get_group/' + this.group_id).then(res => {
 
-                    if (response.status === 200) {
+                    if (res.status === 200) {
 
-                        if (response.data === 0) return this.$router.push('/groups/my');
+                        if (res.data === 0) return this.$router.push('/groups/my');
 
                         this.showEdit = true;
 
-                        this.groupName = response.data.name;
-                        if (response.data.avatar) this.groupAvatar = response.data.avatar;
-                        this.selectedUsers = response.data.users;
+                        this.groupName = res.data.name;
+                        if (res.data.avatar) this.groupAvatar = res.data.avatar;
+                        this.selectedUsers = res.data.users;
 
                     } else {
                         this.$router.push('/groups/my');
