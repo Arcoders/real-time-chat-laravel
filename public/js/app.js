@@ -44971,14 +44971,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            this.$http.get('/list_friends').then(function (response) {
+            this.$http.get('/list_friends').then(function (res) {
 
                 _this.loading = false;
 
-                if (response.status === 200) {
+                if (res.status === 200) {
 
-                    if (response.data.length !== 0) {
-                        _this.listUsers = response.data;
+                    if (res.data.length !== 0) {
+                        _this.listUsers = res.data;
                         _this.access = true;
                     } else {
                         _this.error('friends');

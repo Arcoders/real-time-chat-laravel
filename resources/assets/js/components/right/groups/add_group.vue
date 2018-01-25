@@ -107,14 +107,14 @@
 
                 this.loading = true;
 
-                this.$http.get('/list_friends').then(response => {
+                this.$http.get('/list_friends').then(res => {
 
                     this.loading = false;
 
-                    if (response.status === 200) {
+                    if (res.status === 200) {
 
-                        if (response.data.length !== 0) {
-                            this.listUsers = response.data;
+                        if (res.data.length !== 0) {
+                            this.listUsers = res.data;
                             this.access = true;
                         } else {
                             this.error('friends');
