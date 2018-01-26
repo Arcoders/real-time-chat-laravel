@@ -27878,7 +27878,7 @@ var mixin = {
             avatar: null,
             loading: false,
             notifications: [],
-            time: 4000,
+            time: 6000,
             group_id: this.$route.params.group_id,
             showEdit: false,
             newImage: false,
@@ -45112,11 +45112,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (res.status === 200) {
 
-                    if (res.data.length !== 0) {
+                    if (res.data.length > 0) {
                         _this.listUsers = res.data;
                         _this.access = true;
                     } else {
-                        _this.error('friends');
+                        _this.showNotification('Find friends to add them to the group', 'done');
                     }
                 } else {
                     _this.error('friends');
@@ -45162,15 +45162,15 @@ var render = function() {
     "div",
     { attrs: { id: "add_group_app" } },
     [
-      _c("notifications", { attrs: { vue_notifications: _vm.notifications } }),
+      _c("notifications", {
+        attrs: { vue_notifications: _vm.notifications, width: 50 }
+      }),
       _c("router-link", { attrs: { to: "/groups/my" } }, [
         _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
       ]),
-      _vm.access
-        ? _c("avatar", {
-            attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
-          })
-        : _vm._e(),
+      _c("avatar", {
+        attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
+      }),
       _c("h4", [_vm._v("Add new group")]),
       _c("hr"),
       _c(
@@ -45576,9 +45576,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (res.status === 200) {
 
-                    res.data.length !== 0 ? _this2.listUsers = res.data : _this2.back();
-                } else {
+                    if (res.data.length > 0) {
 
+                        _this2.access = true;
+                        _this2.listUsers = res.data;
+                    } else {
+                        _this2.showNotification('Find friends to add them to the group', 'done');
+                    }
+                } else {
                     _this2.back();
                 }
             }, function () {
@@ -45610,15 +45615,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, function () {
                 _this3.back();
             });
-        }
-    },
+        },
 
-    // ---------------------------------------------------
 
-    computed: {
+        // ---------------------------------------------------
+
         back: function back() {
             return this.$router.push('/groups/my');
         }
+
+        // ---------------------------------------------------
+
     }
 
     // ---------------------------------------------------
@@ -45639,7 +45646,7 @@ var render = function() {
         { attrs: { id: "edit_group_app" } },
         [
           _c("notifications", {
-            attrs: { vue_notifications: _vm.notifications }
+            attrs: { vue_notifications: _vm.notifications, width: 50 }
           }),
           _c("router-link", { attrs: { to: "/groups/my" } }, [
             _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
@@ -45746,56 +45753,58 @@ var render = function() {
                 )
               ]),
               _c("br"),
-              _c(
-                "div",
-                { staticClass: "input wrap-input" },
-                [
-                  _c("multiselect", {
-                    attrs: {
-                      multiple: true,
-                      "track-by": "id",
-                      label: "name",
-                      "hide-selected": true,
-                      "close-on-select": false,
-                      options: _vm.listUsers
-                    },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "tag",
-                        fn: function(props) {
-                          return [
-                            _c("span", { staticClass: "custom__tag" }, [
-                              _c("span", [
-                                _vm._v(" " + _vm._s(props.option.name))
-                              ]),
-                              _c(
-                                "span",
-                                {
-                                  staticClass: "custom__remove",
-                                  on: {
-                                    click: function($event) {
-                                      props.remove(props.option)
-                                    }
-                                  }
-                                },
-                                [_vm._v(" ❌")]
-                              )
-                            ])
-                          ]
+              _vm.access
+                ? _c(
+                    "div",
+                    { staticClass: "input wrap-input" },
+                    [
+                      _c("multiselect", {
+                        attrs: {
+                          multiple: true,
+                          "track-by": "id",
+                          label: "name",
+                          "hide-selected": true,
+                          "close-on-select": false,
+                          options: _vm.listUsers
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "tag",
+                            fn: function(props) {
+                              return [
+                                _c("span", { staticClass: "custom__tag" }, [
+                                  _c("span", [
+                                    _vm._v(" " + _vm._s(props.option.name))
+                                  ]),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "custom__remove",
+                                      on: {
+                                        click: function($event) {
+                                          props.remove(props.option)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v(" ❌")]
+                                  )
+                                ])
+                              ]
+                            }
+                          }
+                        ]),
+                        model: {
+                          value: _vm.selectedUsers,
+                          callback: function($$v) {
+                            _vm.selectedUsers = $$v
+                          },
+                          expression: "selectedUsers"
                         }
-                      }
-                    ]),
-                    model: {
-                      value: _vm.selectedUsers,
-                      callback: function($$v) {
-                        _vm.selectedUsers = $$v
-                      },
-                      expression: "selectedUsers"
-                    }
-                  })
-                ],
-                1
-              )
+                      })
+                    ],
+                    1
+                  )
+                : _vm._e()
             ]
           ),
           _vm.loading ? _c("loading") : _vm._e()

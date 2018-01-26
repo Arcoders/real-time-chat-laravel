@@ -9,7 +9,7 @@ export const mixin = {
             avatar: null,
             loading: false,
             notifications: [],
-            time: 4000,
+            time: 6000,
             group_id: this.$route.params.group_id,
             showEdit: false,
             newImage: false,

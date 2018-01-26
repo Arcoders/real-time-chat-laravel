@@ -1,7 +1,7 @@
 <template lang="pug">
     #edit_group_app(v-if='showEdit')
 
-        notifications(:vue_notifications='notifications')
+        notifications(:vue_notifications='notifications', :width='50')
 
         router-link(to='/groups/my')
             i.material-icons arrow_back
@@ -36,7 +36,7 @@
                 button(type='button', @click='editGroup', v-bind:disabled='btnDisabled')
                     i.material-icons add
             br
-            .input.wrap-input
+            .input.wrap-input(v-if='access')
                 multiselect(v-model='selectedUsers',
                                 :multiple='true',
                                 track-by='id',
@@ -130,12 +130,17 @@
 
                     if (res.status === 200) {
 
-                        (res.data.length !== 0) ? this.listUsers = res.data : this.back();
+                        if (res.data.length > 0) {
+
+                            this.access = true;
+                            this.listUsers = res.data;
+
+                        } else {
+                            this.showNotification('Find friends to add them to the group', 'done');
+                        }
 
                     } else {
-
                         this.back();
-
                     }
 
                 }, () => {
@@ -169,17 +174,13 @@
             },
 
             // ---------------------------------------------------
-        },
-
-        // ---------------------------------------------------
-
-        computed: {
 
             back() {
                 return this.$router.push('/groups/my');
             }
 
-        }
+            // ---------------------------------------------------
+        },
 
         // ---------------------------------------------------
 

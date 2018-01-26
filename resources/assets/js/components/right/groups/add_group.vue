@@ -2,12 +2,12 @@
 
     #add_group_app
 
-        notifications(:vue_notifications='notifications')
+        notifications(:vue_notifications='notifications', :width='50')
 
         router-link(to='/groups/my')
             i.material-icons arrow_back
 
-        avatar(v-if='access', :username='groupName', color='#fff', :src='avatar')
+        avatar(:username='groupName', color='#fff', :src='avatar')
 
         h4 Add new group
         hr
@@ -113,11 +113,11 @@
 
                     if (res.status === 200) {
 
-                        if (res.data.length !== 0) {
+                        if (res.data.length > 0) {
                             this.listUsers = res.data;
                             this.access = true;
                         } else {
-                            this.error('friends');
+                            this.showNotification('Find friends to add them to the group', 'done')
                         }
 
                     } else {
