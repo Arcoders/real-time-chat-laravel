@@ -122,12 +122,10 @@
 
                     } else {
                         this.error('friends');
-                        this.access = false;
                     }
 
                 }, () => {
                     this.loading = false;
-                    this.access = false;
                     this.error('friends');
                 });
             },

@@ -98,29 +98,22 @@
             editGroup(type = null) {
 
                 if (this.btnSubmit) return;
+
                 this.loading = true;
 
                 let data = (type === 'image') ? {deleteImage: true} : this.formData;
 
-                this.$http.post('/edit_group/' + this.group_id, data).then(res => {
+                this.$http.post(`/edit_group/${this.group_id}`, data).then(res => {
 
                     this.loading = false;
 
-                    if (res.status === 200) {
-                        this.done(res.data);
-                    } else {
-                        this.error();
-                    }
+                    (res.status === 200) ? this.done(res.data) : this.error();
 
                 }, res => {
 
                     this.loading = false;
 
-                    if (res.status === 422) {
-                        this.validation(res.data.errors);
-                    } else {
-                        this.error();
-                    }
+                    (res.status === 422) ? this.validation(res.data.errors) : this.error();
 
                 });
             },
@@ -137,30 +130,28 @@
 
                     if (res.status === 200) {
 
-                        if (res.data.length !== 0) {
-                            this.listUsers = res.data;
-                        } else {
-                            this.$router.push('/groups/my');
-                        }
+                        (res.data.length !== 0) ? this.listUsers = res.data : this.back();
 
                     } else {
-                        this.$router.push('/groups/my');
+
+                        this.back();
+
                     }
 
                 }, () => {
                     this.loading = false;
-                    this.$router.push('/groups/my');
+                    this.back();
                 });
             },
 
             // ---------------------------------------------------
 
             getGroup() {
-                this.$http.get('/get_group/' + this.group_id).then(res => {
+                this.$http.get(`/get_group/${this.group_id}`).then(res => {
 
                     if (res.status === 200) {
 
-                        if (res.data === 0) return this.$router.push('/groups/my');
+                        if (res.data === 0) return this.back();
 
                         this.showEdit = true;
 
@@ -169,16 +160,26 @@
                         this.selectedUsers = res.data.users;
 
                     } else {
-                        this.$router.push('/groups/my');
+                        this.back();
                     }
 
                 }, () => {
-                    this.$router.push('/groups/my');
+                    this.back();
                 });
             },
 
             // ---------------------------------------------------
         },
+
+        // ---------------------------------------------------
+
+        computed: {
+
+            back() {
+                return this.$router.push('/groups/my');
+            }
+
+        }
 
         // ---------------------------------------------------
 
