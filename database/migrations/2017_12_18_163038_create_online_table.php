@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOnlineChatsTable extends Migration
+class CreateOnlineTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateOnlineChatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('online_chats', function (Blueprint $table) {
+        Schema::create('onlines', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('user_id')->unsigned();
-            $table->integer('chat_id')->unsigned();
+            $table->integer('group_id')->nullable();
+            $table->integer('chat_id')->nullable();
             $table->string('timelogin');
             $table->string('timelogout')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('chat_id')->references('id')->on('chats');
 
             $table->timestamps();
         });
@@ -35,6 +35,6 @@ class CreateOnlineChatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('online_chats');
+        Schema::dropIfExists('online_groups');
     }
 }

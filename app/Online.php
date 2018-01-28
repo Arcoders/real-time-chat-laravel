@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OnlineGroup extends Model
+class Online extends Model
 {
 
     public function user()
@@ -17,9 +17,9 @@ class OnlineGroup extends Model
         return $this->belongsTo(Group::class);
     }
 
-    public function onlineGroup()
+    public function online()
     {
-        return $this->hasOne(OnlineGroup::class);
+        return $this->hasOne(Online::class);
     }
 
 }

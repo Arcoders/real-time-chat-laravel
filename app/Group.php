@@ -19,9 +19,4 @@ class Group extends Model
         return $this->belongsToMany(User::class)->withPivot('group_id', 'user_id');
     }
 
-    public function onlineGroup()
-    {
-        return $this->hasMany(OnlineGroup::class);
-    }
-
 }

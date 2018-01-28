@@ -22,10 +22,5 @@ class Chat extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function onlineChat()
-    {
-        return $this->hasMany(OnlineChat::class);
-    }
-
 
 }

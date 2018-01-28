@@ -189,17 +189,10 @@
                 this.$http.get('/get_users/').then(response => {
 
                     if (response.status === 200) {
-
                         if (response.data.length === 0) this.records = false;
-
                         this.users = response.data;
-
-                    } else {
-                        // error
                     }
 
-                }, () => {
-                    // error
                 });
             },
 
@@ -212,13 +205,18 @@
             // ---------------------------------------------------
 
             profileByParameter() {
+
                 this.setUserInfo();
+
                 if (this.profileId) {
+
                     if (!isNaN(this.profileId)) return this.getProfile(this.profileId);
                     this.$router.push('/profile');
+
                 } else {
                     this.getUsers();
                 }
+
             }
 
             // ---------------------------------------------------

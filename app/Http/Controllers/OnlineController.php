@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\OnlineGroup;
+use App\Online;
 use App\Traits\TriggerPusher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class OnlineInGroupsController extends Controller
+class OnlineController extends Controller
 {
     use TriggerPusher;
 
@@ -16,9 +16,9 @@ class OnlineInGroupsController extends Controller
 
         $user = Auth::user();
 
-        if (OnlineGroup::where('user_id', $user->id)->count() !== 0) {
+        if (Online::where('user_id', $user->id)->count() !== 0) {
 
-            $lastGroup = OnlineGroup::where('user_id', $user->id);
+            $lastGroup = Online::where('user_id', $user->id);
             $lastGroupInfo = $lastGroup->first();
             $lastGroup->delete();
 
@@ -33,7 +33,7 @@ class OnlineInGroupsController extends Controller
 
     public function disconnectUser(Request $request)
     {
-        OnlineGroup::where('user_id', Auth::user()->id)->delete();
+        Online::where('user_id', Auth::user()->id)->delete();
         $this->updateOnlineUsers($request->chat_id, $request->room_name);
     }
 
@@ -43,14 +43,14 @@ class OnlineInGroupsController extends Controller
 
         $room = ($room_name === 'friend') ? "onlineChat-$chat_id" : "onlineGroup-$chat_id";
 
-        $onlineUsers = OnlineGroup::where($column, $chat_id)->with('user')->get()->pluck('user');
+        $onlineUsers = Online::where($column, $chat_id)->with('user')->get()->pluck('user');
 
         $this->triggerPusher($room, 'onlineUsers', $onlineUsers);
     }
 
     protected function insertOnlineGroup($user, $room, $room_name)
     {
-        $online = new OnlineGroup();
+        $online = new Online();
         $online->user_id = $user;
         if ($room_name === 'friend') $online->chat_id = $room;
         if ($room_name === 'group') $online->group_id = $room;

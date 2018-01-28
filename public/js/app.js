@@ -43499,15 +43499,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$http.get('/get_users/').then(function (response) {
 
                 if (response.status === 200) {
-
                     if (response.data.length === 0) _this2.records = false;
-
                     _this2.users = response.data;
-                } else {
-                    // error
                 }
-            }, function () {
-                // error
             });
         },
 
@@ -43522,8 +43516,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         profileByParameter: function profileByParameter() {
+
             this.setUserInfo();
+
             if (this.profileId) {
+
                 if (!isNaN(this.profileId)) return this.getProfile(this.profileId);
                 this.$router.push('/profile');
             } else {
