@@ -11,21 +11,14 @@ class OnlineController extends Controller
 {
     use TriggerPusher;
 
-    public function onlineGroupUsers(Request $rqt)
+    public function onlineGroupUsers(Request $request)
     {
 
         $user = Auth::user();
-        $roomName = $rqt['room_name'];
-        $chatId = $rqt['chat_id'];
+        $roomName = $request['room_name'];
+        $chatId = $request['chat_id'];
 
-        if (Online::where('user_id', $user->id)->count() !== 0) {
-
-            $lastGroup = Online::where('user_id', $user->id);
-            $lastGroupInfo = $lastGroup->first();
-            $lastGroup->delete();
-
-            $this->updateOnlineUsers($lastGroupInfo->chat_id, $roomName);
-        }
+        if ($user->online()->count() > 0) return;
 
         $this->insertOnlineGroup($user->id, $chatId, $roomName);
 
@@ -35,7 +28,7 @@ class OnlineController extends Controller
 
     public function disconnectUser(Request $request)
     {
-        Online::where('user_id', Auth::user()->id)->delete();
+        Auth::user()->online()->delete();
         $this->updateOnlineUsers($request->chat_id, $request->room_name);
     }
 
