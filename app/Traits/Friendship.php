@@ -14,10 +14,7 @@ trait Friendship
 
         if (in_array($id, $this->pending_friend_requests_sent())) return 'Already sent';
 
-        if (in_array($id, $this->pending_friend_requests()))
-        {
-            return $this->accept_friends($id);
-        }
+        if (in_array($id, $this->pending_friend_requests())) return $this->accept_friends($id);
 
         $Friendship = ModelFriends::create([
             'requester' => $this->id,
@@ -65,15 +62,15 @@ trait Friendship
 
     protected function filter($status, $type, $data)
     {
-        $pending = array();
+        $result = array();
 
         $Friendships = ModelFriends::where('status', $status)->where($type, $this->id)->with($type)->get()->toArray();
 
         foreach ($Friendships as $friend):
-            array_push($pending, array_get($friend, $data));
+            array_push($result, array_get($friend, $data));
         endforeach;
 
-        return $pending;
+        return $result;
     }
 
 }
