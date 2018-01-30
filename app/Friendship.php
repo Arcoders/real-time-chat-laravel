@@ -11,7 +11,7 @@ class Friendship extends Model
 
     public function requester()
     {
-        return $this->belongsTo(User::class, 'user_requested');
+        return $this->belongsTo(User::class, 'requested');
     }
 
     public function requested()

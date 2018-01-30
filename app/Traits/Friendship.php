@@ -21,7 +21,7 @@ trait Friendship
 
         $Friendship = ModelFriends::create([
             'requester' => $this->id,
-            'user_requested' => $id
+            'requested' => $id
         ]);
 
         return ($Friendship) ? 'waiting' : 'add';
@@ -31,7 +31,7 @@ trait Friendship
     {
         if (!in_array($requester, $this->pending_friend_requests())) return 'pending';
 
-        $Friendship = ModelFriends::where('requester', $requester)->where('user_requested', $this->id)->update([ 'status' => 1 ]);
+        $Friendship = ModelFriends::where('requester', $requester)->where('requested', $this->id)->update([ 'status' => 1 ]);
 
         return ($Friendship) ? 'friends' : 'pending';
     }
@@ -40,7 +40,7 @@ trait Friendship
     {
         if (!in_array($requester, $this->pending_friend_requests())) return 0;
 
-        $Friendship = ModelFriends::where('requester', $requester)->where('user_requested', $this->id)->delete();
+        $Friendship = ModelFriends::where('requester', $requester)->where('requested', $this->id)->delete();
 
         return ($Friendship) ? 'deleted' : 'pending';
     }
@@ -61,7 +61,7 @@ trait Friendship
         endforeach;
 
         $requested = ModelFriends::where('status', 1)
-                    ->where('user_requested', $this->id)
+                    ->where('requested', $this->id)
                     ->with('requested')
                     ->get()
                     ->toArray();
@@ -75,37 +75,29 @@ trait Friendship
 
     public function pending_friend_requests()
     {
-        $pending = array();
-
-        $Friendships = ModelFriends::where('status', 0)
-            ->where('user_requested', $this->id)
-            ->with('requested')
-            ->get()
-            ->toArray();
-
-        foreach ($Friendships as $friend):
-            array_push($pending, array_get($friend, 'requested.id'));
-        endforeach;
-
-        return $pending;
+        return $this->getPending('requested', 'requested', 'requested.id');
     }
 
     public function pending_friend_requests_sent()
     {
+        return $this->getPending('requester', 'requester', 'requester.id');
+    }
+
+    protected function getPending($where, $with, $key)
+    {
         $pending = array();
 
         $Friendships = ModelFriends::where('status', 0)
-                    ->where('requester', $this->id)
-                    ->with('requester')
-                    ->get()
-                    ->toArray();
+            ->where($where, $this->id)
+            ->with($with)
+            ->get()
+            ->toArray();
 
         foreach ($Friendships as $friend):
-            array_push($pending, array_get($friend, 'requester.id'));
+            array_push($pending, array_get($friend, $key));
         endforeach;
 
         return $pending;
-
     }
 
 }

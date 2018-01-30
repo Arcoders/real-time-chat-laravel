@@ -14,19 +14,19 @@ class FriendsTableSeeder extends Seeder
 
         factory(\App\Friendship::class)->create([
             'requester' =>  2,
-            'user_requested' => 1,
+            'requested' => 1,
             'status' => 0
         ]);
 
         factory(\App\Friendship::class)->create([
             'requester' =>  2,
-            'user_requested' => 3,
+            'requested' => 3,
             'status' => 0
         ]);
 
         factory(\App\Friendship::class)->create([
             'requester' =>  3,
-            'user_requested' => 1,
+            'requested' => 1,
             'status' => 0
         ]);
 

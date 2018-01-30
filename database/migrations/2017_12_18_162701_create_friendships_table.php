@@ -17,12 +17,12 @@ class CreateFriendshipsTable extends Migration
             $table->increments('id');
 
             $table->integer('requester')->unsigned();
-            $table->integer('user_requested')->unsigned();
+            $table->integer('requested')->unsigned();
 
             $table->boolean('status')->default(0);
 
             $table->foreign('requester')->references('id')->on('users');
-            $table->foreign('user_requested')->references('id')->on('users');
+            $table->foreign('requested')->references('id')->on('users');
 
             $table->timestamps();
         });

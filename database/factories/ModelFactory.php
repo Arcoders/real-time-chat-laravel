@@ -33,7 +33,7 @@ $factory->define(App\Friendship::class, function (Faker $faker) {
                         {
                             return factory(\App\User::class)->create()->id;
                         },
-        'user_requested' => function ()
+        'requested' => function ()
                             {
                                 return factory(\App\User::class)->create()->id;
                             },
