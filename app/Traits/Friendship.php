@@ -8,7 +8,7 @@ trait Friendship
 
     public function add_friend($id)
     {
-        if ($this->id == $id) return;
+        if ($this->id === $id) return 0;
 
         if (in_array($id, $this->friends())) return 'Already friends';
 
@@ -24,42 +24,25 @@ trait Friendship
             'user_requested' => $id
         ]);
 
-        if ($Friendship) return 'waiting';
-
-        return 'add';
+        return ($Friendship) ? 'waiting' : 'add';
     }
 
     public function accept_friends($requester)
     {
         if (!in_array($requester, $this->pending_friend_requests())) return 'pending';
 
-        $Friendship = ModelFriends::where('requester', $requester)
-                                ->where('user_requested', $this->id)
-                                ->first();
+        $Friendship = ModelFriends::where('requester', $requester)->where('user_requested', $this->id)->update([ 'status' => 1 ]);
 
-        if ($Friendship)
-        {
-            $Friendship->update([ 'status' => 1 ]);
-            return 'friends';
-        }
-
-        return 'pending';
+        return ($Friendship) ? 'friends' : 'pending';
     }
 
     public function reject_friendships($requester)
     {
         if (!in_array($requester, $this->pending_friend_requests())) return 0;
 
-        $Friendship = ModelFriends::where('requester', $requester)
-            ->where('user_requested', $this->id)
-            ->first();
+        $Friendship = ModelFriends::where('requester', $requester)->where('user_requested', $this->id)->delete();
 
-        if ($Friendship)
-        {
-            if ($Friendship->delete()) return 'deleted';
-        }
-
-        return 'pending';
+        return ($Friendship) ? 'deleted' : 'pending';
     }
 
     public function friends($ids = null)
