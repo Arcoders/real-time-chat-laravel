@@ -47,50 +47,30 @@ trait Friendship
 
     public function friends($ids = null)
     {
-        $requester_option = array();
-        $requested_option = array();
-
-        $requester = ModelFriends::where('status', 1)
-                    ->where('requester', $this->id)
-                    ->with('requester')
-                    ->get()
-                    ->toArray();
-
-        foreach ($requester as $friend):
-              array_push($requester_option, array_get($friend, $ids ? 'requester' : 'requester.id'));
-        endforeach;
-
-        $requested = ModelFriends::where('status', 1)
-                    ->where('requested', $this->id)
-                    ->with('requested')
-                    ->get()
-                    ->toArray();
-
-        foreach ($requested as $friend):
-            array_push($requested_option, array_get($friend, $ids ? 'requested' : 'requested.id'));
-        endforeach;
-
-        return array_merge($requester_option, $requested_option);
+        return array_merge(
+            $this->filter(1, 'requester', $ids ? 'requester' : 'requester.id'),
+            $this->filter(1, 'requested', $ids ? 'requested' : 'requested.id')
+        );
     }
 
     public function pending_friend_requests()
     {
-        return $this->getPending('requested');
+        return $this->filter(0, 'requested', 'requested.id');
     }
 
     public function pending_friend_requests_sent()
     {
-        return $this->getPending('requester');
+        return $this->filter(0, 'requester', 'requester.id');
     }
 
-    protected function getPending($type)
+    protected function filter($status, $type, $data)
     {
         $pending = array();
 
-        $Friendships = ModelFriends::where('status', 0)->where($type, $this->id)->with($type)->get()->toArray();
+        $Friendships = ModelFriends::where('status', $status)->where($type, $this->id)->with($type)->get()->toArray();
 
         foreach ($Friendships as $friend):
-            array_push($pending, array_get($friend, "$type.id"));
+            array_push($pending, array_get($friend, $data));
         endforeach;
 
         return $pending;
