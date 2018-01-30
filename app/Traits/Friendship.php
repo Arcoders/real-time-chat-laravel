@@ -8,7 +8,7 @@ trait Friendship
 
     public function add_friend($id)
     {
-        if ($this->id === $id) return 0;
+        if ($this->id === $id) return false;
 
         if (in_array($id, $this->friends())) return 'Already friends';
 
