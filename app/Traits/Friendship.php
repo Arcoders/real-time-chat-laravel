@@ -75,26 +75,22 @@ trait Friendship
 
     public function pending_friend_requests()
     {
-        return $this->getPending('requested', 'requested', 'requested.id');
+        return $this->getPending('requested');
     }
 
     public function pending_friend_requests_sent()
     {
-        return $this->getPending('requester', 'requester', 'requester.id');
+        return $this->getPending('requester');
     }
 
-    protected function getPending($where, $with, $key)
+    protected function getPending($type)
     {
         $pending = array();
 
-        $Friendships = ModelFriends::where('status', 0)
-            ->where($where, $this->id)
-            ->with($with)
-            ->get()
-            ->toArray();
+        $Friendships = ModelFriends::where('status', 0)->where($type, $this->id)->with($type)->get()->toArray();
 
         foreach ($Friendships as $friend):
-            array_push($pending, array_get($friend, $key));
+            array_push($pending, array_get($friend, "$type.id"));
         endforeach;
 
         return $pending;
