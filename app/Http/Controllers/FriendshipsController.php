@@ -14,21 +14,15 @@ class FriendshipsController extends Controller
     public function check($id)
     {
 
-        if (in_array($id, Auth::user()->friends()))
-        {
-            return $this->returnStatus('friends');
-        }
+        $user = Auth::user();
 
-        if (in_array($id, Auth::user()->pending_friend_requests()))
-        {
-            return $this->returnStatus('pending');
-        }
+        if (in_array($id, $user->friends())) return $this->status('friends');
 
-        if (in_array($id, Auth::user()->pending_friend_requests_sent()))
-        {
-            return $this->returnStatus('waiting');
-        }
-        return $this->returnStatus('add');
+        if (in_array($id, $user->pending_friend_requests())) return $this->status('pending');
+
+        if (in_array($id, $user->pending_friend_requests_sent())) return $this->status('waiting');
+
+        return $this->status('add');
 
     }
 
@@ -75,7 +69,7 @@ class FriendshipsController extends Controller
         }
     }
 
-    protected function returnStatus($type)
+    protected function status($type)
     {
         return response()->json([
             'status' => $type
