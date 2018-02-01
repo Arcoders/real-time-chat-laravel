@@ -64,19 +64,15 @@
             // ---------------------------------------------------
 
             relationShipStatus() {
-                this.$http.get('/check_relationship_status/'+this.profile_user_id).then(response => {
+                this.$http.get(`/check_relationship_status/${this.profile_user_id}`).then(response => {
 
                     this.loading = false;
 
                     if (response.status === 200) {
                         this.status = response.body.status;
-                        if (this.status === 'friends') this.$eventBus.$emit('update', {type: 'friend', refresh: true,});
-                    } else {
-                        // ...
+                        if (this.status === 'friends') this.$eventBus.$emit('update', {type: 'friend', refresh: true});
                     }
 
-                }, response => {
-                    // ...
                 });
             },
 
@@ -92,12 +88,8 @@
                     if (response.status === 200) {
                         if (response.body === 'waiting') this.status = 'waiting';
                         if (response.body === 'add') this.status = 'add';
-                    } else {
-                        // ...
                     }
 
-                }, response => {
-                    // ...
                 });
             },
 
@@ -106,7 +98,7 @@
             accept_friend() {
                 this.loading = true;
 
-                this.$http.patch('/accept_friend/'+this.profile_user_id).then(response => {
+                this.$http.patch(`/accept_friend/${this.profile_user_id}`).then(response => {
 
                     this.loading = false;
 
@@ -114,17 +106,13 @@
 
                         if (response.body === 'friends') {
                             this.status = 'friends';
-                            this.$eventBus.$emit('update', {type: 'friend', refresh: true,});
+                            this.$eventBus.$emit('update', {type: 'friend', refresh: true, profileId: this.profile_user_id});
                         }
 
                         if (response.body === 'pending') this.status = 'pending';
 
-                    } else {
-                        // ...
                     }
 
-                }, response => {
-                    // ...
                 });
             },
 
@@ -140,12 +128,8 @@
                     if (response.status === 200) {
                         if (response.body === 'deleted') this.status = 'add';
                         if (response.body === 'pending') this.status = 'pending';
-                    } else {
-                        // ...
                     }
 
-                }, response => {
-                    // ...
                 });
             }
 

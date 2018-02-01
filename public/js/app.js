@@ -41571,11 +41571,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (response.status === 200) {
                     _this2.status = response.body.status;
                     if (_this2.status === 'friends') _this2.$eventBus.$emit('update', { type: 'friend', refresh: true });
-                } else {
-                    // ...
                 }
-            }, function (response) {
-                // ...
             });
         },
 
@@ -41594,11 +41590,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (response.status === 200) {
                     if (response.body === 'waiting') _this3.status = 'waiting';
                     if (response.body === 'add') _this3.status = 'add';
-                } else {
-                    // ...
                 }
-            }, function (response) {
-                // ...
             });
         },
 
@@ -41618,15 +41610,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     if (response.body === 'friends') {
                         _this4.status = 'friends';
-                        _this4.$eventBus.$emit('update', { type: 'friend', refresh: true });
+                        _this4.$eventBus.$emit('update', { type: 'friend', refresh: true, profileId: _this4.profile_user_id });
                     }
 
                     if (response.body === 'pending') _this4.status = 'pending';
-                } else {
-                    // ...
                 }
-            }, function (response) {
-                // ...
             });
         },
 
@@ -41645,11 +41633,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (response.status === 200) {
                     if (response.body === 'deleted') _this5.status = 'add';
                     if (response.body === 'pending') _this5.status = 'pending';
-                } else {
-                    // ...
                 }
-            }, function (response) {
-                // ...
             });
         }
 
@@ -43422,6 +43406,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ---------------------------------------------------
 
+    created: function created() {
+        var _this = this;
+
+        this.$eventBus.$on('update', function (data) {
+
+            if (data.profileId) _this.users = _this.users.filter(function (u) {
+                return u.id !== data.profileId;
+            });
+        });
+    },
+
+
+    // ---------------------------------------------------
+
     mounted: function mounted() {
         this.profileByParameter();
     },
@@ -43461,32 +43459,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         getProfile: function getProfile(id) {
-            var _this = this;
+            var _this2 = this;
 
             this.loading = true;
             this.$http.get('/get_profile/' + id).then(function (res) {
 
                 if (res.status === 200) {
 
-                    if (res.data === 0 || res.data === '') return _this.$router.push('/profile');
+                    if (res.data === 0 || res.data === '') return _this2.$router.push('/profile');
 
-                    _this.userInfo = {
+                    _this2.userInfo = {
                         name: res.data.name,
                         status: res.data.status,
                         id: res.data.id,
                         avatar: res.data.avatar,
-                        cover: _this.checkCover(res.data.cover)
+                        cover: _this2.checkCover(res.data.cover)
                     };
 
-                    _this.showProfile = true;
+                    _this2.showProfile = true;
                 } else {
-                    _this.$router.push('/profile');
+                    _this2.$router.push('/profile');
                 }
 
-                _this.loading = false;
+                _this2.loading = false;
             }, function () {
-                _this.loading = false;
-                _this.$router.push('/profile');
+                _this2.loading = false;
+                _this2.$router.push('/profile');
             });
         },
 
@@ -43494,13 +43492,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         getUsers: function getUsers() {
-            var _this2 = this;
+            var _this3 = this;
 
             this.$http.get('/get_users/').then(function (response) {
 
                 if (response.status === 200) {
-                    if (response.data.length === 0) _this2.records = false;
-                    _this2.users = response.data;
+                    if (response.data.length === 0) _this3.records = false;
+                    _this3.users = response.data;
                 }
             });
         },

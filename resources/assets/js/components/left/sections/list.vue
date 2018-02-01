@@ -139,8 +139,6 @@
         created() {
             this.$eventBus.$on('update' , (data) => {
 
-
-
                 switch (data.action) {
 
                     case 'filter':

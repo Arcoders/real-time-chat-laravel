@@ -12,7 +12,7 @@ trait Friendship
 
         if (in_array($id, $this->friends())) return 'friends';
 
-        if (in_array($id, $this->pending_friend_requests_sent())) return 'wait';
+        if (in_array($id, $this->pending_friend_requests_sent())) return 'waiting';
 
         if (in_array($id, $this->pending_friend_requests())) return $this->accept_friends($id);
 

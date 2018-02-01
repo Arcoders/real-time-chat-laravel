@@ -118,6 +118,16 @@
 
         // ---------------------------------------------------
 
+        created() {
+            this.$eventBus.$on('update' , (data) => {
+
+                if (data.profileId) this.users = this.users.filter(u => u.id !== data.profileId);
+
+            });
+        },
+
+        // ---------------------------------------------------
+
         mounted() {
             this.profileByParameter();
         },
