@@ -10,9 +10,9 @@ trait Friendship
     {
         if ($this->id === $id) return false;
 
-        if (in_array($id, $this->friends())) return 'Already friends';
+        if (in_array($id, $this->friends())) return 'friends';
 
-        if (in_array($id, $this->pending_friend_requests_sent())) return 'Already sent';
+        if (in_array($id, $this->pending_friend_requests_sent())) return 'wait';
 
         if (in_array($id, $this->pending_friend_requests())) return $this->accept_friends($id);
 
@@ -42,11 +42,11 @@ trait Friendship
         return ($Friendship) ? 'deleted' : 'pending';
     }
 
-    public function friends($ids = null)
+    public function friends($user = null)
     {
         return array_merge(
-            $this->filter(1, 'requester', $ids ? 'requester' : 'requester.id'),
-            $this->filter(1, 'requested', $ids ? 'requested' : 'requested.id')
+            $this->filter(1, 'requester', $user ? 'requester' : 'requester.id'),
+            $this->filter(1, 'requested', $user ? 'requested' : 'requested.id')
         );
     }
 
