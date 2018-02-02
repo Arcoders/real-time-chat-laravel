@@ -19,12 +19,9 @@ class ChatsController extends Controller
 
     protected function chatGroups()
     {
-        $user = Auth::user();
         $allGroups = array();
 
-        $groups = $user->groups;
-
-        foreach ($groups as $group):
+        foreach (Auth::user()->groups as $group):
 
             array_push($allGroups, collect($group)->push(Message::where('group_id', $group->id)->get()->last()));
 
@@ -40,18 +37,15 @@ class ChatsController extends Controller
         $allChats = array();
 
         $a = Chat::where('friend_id', $user->id)
-            ->select('id', 'user_id')
-            ->with('user')
-            ->get()
-            ->toArray();
+                    ->select('id', 'user_id')
+                    ->with('user')
+                    ->orWhere('user_id', $user->id)
+                    ->select('id', 'friend_id')
+                    ->with('friend')
+                    ->get()
+                    ->toArray();
 
-        $b = Chat::where('user_id', $user->id)
-            ->select('id', 'friend_id')
-            ->with('friend')
-            ->get()
-            ->toArray();
-
-        foreach (array_merge($a, $b) as $chat):
+        foreach ($a as $chat):
 
             array_push($allChats, collect($chat)->push(Message::where('chat_id', $chat['id'])->get()->last()));
 
@@ -67,7 +61,7 @@ class ChatsController extends Controller
 
         $chat = Chat::where('user_id', $user_id)->orWhere('friend_id', $user_id)->pluck('id');
 
-        return response()->json($chat, 200);
+        if ($chat) return response()->json($chat, 200);
 
     }
 
