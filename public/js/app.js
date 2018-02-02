@@ -43466,8 +43466,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (res.status === 200) {
 
-                    if (res.data === 0 || res.data === '') return _this2.$router.push('/profile');
-
                     _this2.userInfo = {
                         name: res.data.name,
                         status: res.data.status,

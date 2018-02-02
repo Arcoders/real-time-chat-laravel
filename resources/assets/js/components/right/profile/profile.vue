@@ -168,9 +168,7 @@
                 this.$http.get('/get_profile/' + id).then(res => {
 
                     if (res.status === 200) {
-
-                        if (res.data === 0 || res.data === '') return this.$router.push('/profile');
-
+                        
                         this.userInfo = {
                             name: res.data.name,
                             status: res.data.status,
