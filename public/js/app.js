@@ -28129,8 +28129,8 @@ Vue.component('multiselect', __WEBPACK_IMPORTED_MODULE_2_vue_multiselect___defau
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue___default.a }, {
-        path: '/profile/:profile_id?', component: __WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue___default.a,
-        children: [{ path: 'edit', component: __WEBPACK_IMPORTED_MODULE_13__components_right_profile_edit_profile___default.a }]
+        path: '/profile/:profile_id?', component: __WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue___default.a, name: 'profile',
+        children: [{ path: 'edit', component: __WEBPACK_IMPORTED_MODULE_13__components_right_profile_edit_profile___default.a, name: 'edit_profile' }]
     }, {
         path: '/groups', component: __WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue___default.a,
         children: [{ path: 'my', component: __WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue___default.a }, { path: 'add', component: __WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue___default.a, name: 'add_group' }, { path: 'my/:group_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue___default.a, name: 'edit_group' }]
@@ -43535,14 +43535,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         pathProfile: function pathProfile() {
-            return this.$route.path === '/profile' || this.$route.path === '/profile/';
+            return this.$route.name === 'profile';
         },
 
 
         // ---------------------------------------------------
 
         pathEdit: function pathEdit() {
-            return this.$route.path === '/profile/edit' || this.$route.path === '/profile/edit/';
+            return this.$route.name === 'edit_profile';
         }
     }
 });

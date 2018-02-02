@@ -238,13 +238,13 @@
             // ---------------------------------------------------
 
             pathProfile() {
-                return (this.$route.path === '/profile' || this.$route.path === '/profile/');
+                return (this.$route.name === 'profile');
             },
 
             // ---------------------------------------------------
 
             pathEdit() {
-                return (this.$route.path === '/profile/edit' || this.$route.path === '/profile/edit/');
+                return (this.$route.name === 'edit_profile');
             },
 
             // ---------------------------------------------------

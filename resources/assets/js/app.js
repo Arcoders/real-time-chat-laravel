@@ -86,9 +86,9 @@ const router = new VueRouter({
     routes: [
         { path: '/', component: welcome},
         {
-            path: '/profile/:profile_id?', component: profile,
+            path: '/profile/:profile_id?', component: profile, name: 'profile',
             children: [
-                { path: 'edit', component: edit_profile }
+                { path: 'edit', component: edit_profile, name: 'edit_profile' }
             ]
         },
         {
