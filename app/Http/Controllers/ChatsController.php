@@ -26,11 +26,7 @@ class ChatsController extends Controller
 
         foreach ($groups as $group):
 
-            $message = Message::where('group_id', $group->id)->get()->last();
-
-            $group = collect($group);
-
-            array_push($allGroups, $group->push($message));
+            array_push($allGroups, collect($group)->push(Message::where('group_id', $group->id)->get()->last()));
 
         endforeach;
 
@@ -57,11 +53,7 @@ class ChatsController extends Controller
 
         foreach (array_merge($a, $b) as $chat):
 
-            $message = Message::where('chat_id', $chat['id'])->get()->last();
-
-            $chat = collect($chat);
-
-            array_push($allChats, $chat->push($message));
+            array_push($allChats, collect($chat)->push(Message::where('chat_id', $chat['id'])->get()->last()));
 
         endforeach;
 

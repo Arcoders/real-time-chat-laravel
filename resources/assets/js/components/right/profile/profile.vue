@@ -168,7 +168,7 @@
                 this.$http.get('/get_profile/' + id).then(res => {
 
                     if (res.status === 200) {
-                        
+
                         this.userInfo = {
                             name: res.data.name,
                             status: res.data.status,
