@@ -270,7 +270,7 @@
             chatLink(chat, type) {
                 if (type === 'group') {
                     return {
-                        name: type,
+                        name: 'group_chat',
                         params: {
                             chat_id: window.btoa(chat.id),
                             group_name: chat.name
@@ -279,7 +279,7 @@
                 }
                 if (type === 'friend') {
                     return {
-                        name: type,
+                        name: 'friend_chat',
                         params: {
                             chat_id: window.btoa(chat.id),
                             friend_id: window.btoa(chat.user.id),

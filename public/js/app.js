@@ -27598,6 +27598,7 @@ var mixin = {
 
     mounted: function mounted() {
         this.getInformation();
+        console.log(this.chatId);
     },
 
 
@@ -27610,7 +27611,7 @@ var mixin = {
         pushRealTimeMessage: function pushRealTimeMessage() {
             var _this = this;
 
-            this.channel = this.$pusher.subscribe(this.dataType.push + this.chatId);
+            this.channel = this.$pusher.subscribe(this.dataType.push);
             this.channel.bind('pushMessage', function (data) {
 
                 _this.typing = _this.typing.filter(function (t) {
@@ -27646,7 +27647,7 @@ var mixin = {
         userTyping: function userTyping() {
             var _this2 = this;
 
-            this.$pusher.subscribe(this.dataType.typing + this.chatId).bind('userTyping', function (data) {
+            this.$pusher.subscribe(this.dataType.typing).bind('userTyping', function (data) {
 
                 if (_this2.typing[arrayFindIndex(_this2.typing, function (t) {
                     return t.id === data.id;
@@ -27668,7 +27669,7 @@ var mixin = {
         UpdateOnlineUsers: function UpdateOnlineUsers() {
             var _this3 = this;
 
-            this.channel = this.$pusher.subscribe(this.dataType.online + this.chatId);
+            this.channel = this.$pusher.subscribe(this.dataType.online);
             this.channel.bind('onlineUsers', function (data) {
                 if (data.length === 0) return _this3.onlineUsers = null;
                 _this3.onlineUsers = data;
@@ -27837,24 +27838,19 @@ var mixin = {
 
         // ---------------------------------------------------
 
-        friendId: function friendId() {
-            if (this.$route.params.friend_id) return parseInt(window.atob(this.$route.params.friend_id));
+        roomId: function roomId() {
+            return this.$route.params.friend_id ? parseInt(window.atob(this.$route.params.friend_id)) : this.chatId;
         },
 
 
         // ---------------------------------------------------
 
         dataType: function dataType() {
-            return this.$route.name === 'group' ? {
-                push: 'group-',
-                typing: 'typing-group-',
-                online: 'onlineGroup-',
-                information: '/get_group_chat/' + this.chatId
-            } : {
-                push: 'friend-',
-                typing: 'typing-chat-',
-                online: 'onlineChat-',
-                information: '/get_friend_chat/' + this.friendId
+            return {
+                push: this.$route.name + '-' + this.chatId,
+                typing: 'typing-' + this.$route.name + '-' + this.chatId,
+                online: 'online-' + this.$route.name + '-' + this.chatId,
+                information: '/get_' + this.$route.name + '/' + this.roomId
             };
         }
     }
@@ -28134,7 +28130,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     }, {
         path: '/groups', component: __WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue___default.a,
         children: [{ path: 'my', component: __WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue___default.a }, { path: 'add', component: __WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue___default.a, name: 'add_group' }, { path: 'my/:group_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue___default.a, name: 'edit_group' }]
-    }, { path: '/friend/:chat_id/:friend_name/:friend_id', component: __WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue___default.a, name: 'friend' }, { path: '/group/:chat_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue___default.a, name: 'group' }, { path: '/*', component: __WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue___default.a }]
+    }, { path: '/friend/:chat_id/:friend_name/:friend_id', component: __WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue___default.a, name: 'friend_chat' }, { path: '/group/:chat_id/:group_name', component: __WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue___default.a, name: 'group_chat' }, { path: '/*', component: __WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue___default.a }]
 });
 
 Vue.prototype.$eventBus = new Vue();
@@ -39627,7 +39623,7 @@ var arrayFindIndex = __webpack_require__(125);
         chatLink: function chatLink(chat, type) {
             if (type === 'group') {
                 return {
-                    name: type,
+                    name: 'group_chat',
                     params: {
                         chat_id: window.btoa(chat.id),
                         group_name: chat.name
@@ -39636,7 +39632,7 @@ var arrayFindIndex = __webpack_require__(125);
             }
             if (type === 'friend') {
                 return {
-                    name: type,
+                    name: 'friend_chat',
                     params: {
                         chat_id: window.btoa(chat.id),
                         friend_id: window.btoa(chat.user.id),

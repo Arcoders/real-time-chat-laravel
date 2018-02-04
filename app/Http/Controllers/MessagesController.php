@@ -16,58 +16,45 @@ class MessagesController extends Controller
 
     protected $folder = '/images/messages/';
 
-    public function sendMessage(Request $request)
+    public function sendMessage(Request $r)
     {
 
         $user = Auth::user();
         $photo = null;
 
-        if ($request->file('photo')) {
+        if ($r->file('photo')) {
 
-            $request->validate([
+            $r->validate([
                 'photo' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
             ]);
 
-            $photo = $this->processImage($request->file('photo'), $user->id, $this->folder, false);
+            $photo = $this->processImage($r->file('photo'), $user->id, $this->folder, false);
 
         } else {
 
-            $request->validate(['messageText' => 'required|min:2']);
+            $r->validate(['messageText' => 'required|min:2']);
 
         }
 
-        if ($request->roomName === 'friend') {
+        $roomName = ($r->room_name === 'group_chat') ? "$r->roomName-$r->chatId" : 'room-group';
 
-            $this->pushMessage([
-                'message' => $this->saveMessages($request, 'chat_id', $photo, $user),
-                'room_message' => "friend-$request->chatId",
-                'room_list' => "chat-$request->chatId"
-            ]);
-
-        }
-
-        if ($request->roomName === 'group') {
-
-            $this->pushMessage([
-                'message' => $this->saveMessages($request, 'group_id', $photo, $user),
-                'room_message' => "group-$request->chatId",
-                'room_list' => "room-group"
-            ]);
-
-        }
+        $this->pushMessage([
+            'message' => $this->saveMessages($r, $photo, $user),
+            'room_message' => "$r->roomName-$r->chatId",
+            'room_list' => $roomName
+        ]);
 
     }
 
     public function lastMessagesGroup(Request $request)
     {
-        $column = ($request->room_name === 'friend') ? 'chat_id' : 'group_id';
+        $count =  Message::where($request->room_name, $request->chat_id)->count();
 
-        $count =  Message::where($column, $request->chat_id)->count();
-        return Message::where($column, $request->chat_id)
-                        ->with('user')
-                        ->skip($count - 5)
-                        ->take(5)
-                        ->get();
+        return Message::where($request->room_name, $request->chat_id)
+                ->with('user')
+                ->skip($count - 5)
+                ->take(5)
+                ->get();
     }
 
     public function usersTyping(Request $request)
@@ -75,28 +62,23 @@ class MessagesController extends Controller
         $user = Auth::user();
         $data = ['id' => $user->id, 'name' => $user->name, 'avatar' => $user->avatar];
 
-        $room = ($request->room_name === 'friend')
-                ?
-                "typing-chat-$request->chat_id"
-                :
-                "typing-group-$request->chat_id";
-
-        $this->triggerPusher($room, 'userTyping', $data);
+        $this->triggerPusher("typing-$request->room_name-$request->chat_id", 'userTyping', $data);
 
         return response()->json($data, 200);
     }
 
-    protected function saveMessages($request, $type, $photo, $user) {
-        $message = new Message();
+    protected function saveMessages($r, $photo, $user) {
 
-        $message->body = $request->messageText;
+        $message = new Message();
+        $roomName = $r->roomName;
+
+        $message->body = $r->messageText;
         $message->user_id = $user->id;
-        $message->$type = $request->chatId;
+        $message->$roomName = $r->chatId;
         $message->photo = $photo;
 
         return $message;
     }
-
 
     protected function pushMessage(array $data)
     {

@@ -34,21 +34,18 @@ class OnlineController extends Controller
 
     protected function updateOnlineUsers($chat_id, $room_name)
     {
-        $column = ($room_name === 'friend') ? 'chat_id' : 'group_id';
-
-        $room = ($room_name === 'friend') ? "onlineChat-$chat_id" : "onlineGroup-$chat_id";
-
-        $onlineUsers = Online::where($column, $chat_id)->with('user')->get()->pluck('user');
-
-        $this->triggerPusher($room, 'onlineUsers', $onlineUsers);
+        $this->triggerPusher(
+            "online-$room_name-$chat_id",
+            'onlineUsers',
+            Online::where($room_name, $chat_id)->with('user')->get()->pluck('user')
+        );
     }
 
     protected function insertOnlineGroup($user, $room, $room_name)
     {
         $online = new Online();
         $online->user_id = $user;
-        if ($room_name === 'friend') $online->chat_id = $room;
-        if ($room_name === 'group') $online->group_id = $room;
+        $online->$room_name = $room;
         $online->timelogin = time();
         $online->save();
     }

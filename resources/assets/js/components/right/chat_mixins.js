@@ -34,6 +34,7 @@ export const mixin = {
 
     mounted() {
         this.getInformation();
+        console.log(this.chatId);
     },
 
     // ----------------------------------------------
@@ -43,7 +44,7 @@ export const mixin = {
         // ----------------------------------------------
 
         pushRealTimeMessage() {
-            this.channel = this.$pusher.subscribe(this.dataType.push + this.chatId);
+            this.channel = this.$pusher.subscribe(this.dataType.push);
             this.channel.bind('pushMessage', (data) => {
 
                 this.typing = this.typing.filter(t => t.id !== data.user.id);
@@ -74,7 +75,7 @@ export const mixin = {
         // ----------------------------------------------
 
         userTyping() {
-            this.$pusher.subscribe(this.dataType.typing + this.chatId).bind('userTyping', (data) => {
+            this.$pusher.subscribe(this.dataType.typing).bind('userTyping', (data) => {
 
                 if (this.typing[arrayFindIndex(this.typing, t => t.id === data.id)]) return;
 
@@ -90,7 +91,7 @@ export const mixin = {
         // ----------------------------------------------
 
         UpdateOnlineUsers() {
-            this.channel = this.$pusher.subscribe(this.dataType.online + this.chatId);
+            this.channel = this.$pusher.subscribe(this.dataType.online);
             this.channel.bind('onlineUsers', (data) => {
                 if (data.length === 0) return this.onlineUsers = null;
                 this.onlineUsers = data;
@@ -242,27 +243,18 @@ export const mixin = {
 
         // ---------------------------------------------------
 
-        friendId() {
-            if (this.$route.params.friend_id) return parseInt(window.atob(this.$route.params.friend_id));
+        roomId() {
+            return (this.$route.params.friend_id) ? parseInt(window.atob(this.$route.params.friend_id)) : this.chatId;
         },
 
         // ---------------------------------------------------
 
         dataType() {
-            return (this.$route.name === 'group')
-                ?
-                {
-                    push: 'group-',
-                    typing: 'typing-group-',
-                    online: 'onlineGroup-',
-                    information: `/get_group_chat/${this.chatId}`
-                }
-                :
-                {
-                    push: 'friend-',
-                    typing: 'typing-chat-',
-                    online: 'onlineChat-',
-                    information: `/get_friend_chat/${this.friendId}`
+            return {
+                    push: `${this.$route.name}-${this.chatId}`,
+                    typing: `typing-${this.$route.name}-${this.chatId}`,
+                    online: `online-${this.$route.name}-${this.chatId}`,
+                    information: `/get_${this.$route.name}/${this.roomId}`
                 };
         },
 
