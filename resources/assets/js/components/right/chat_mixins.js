@@ -34,7 +34,6 @@ export const mixin = {
 
     mounted() {
         this.getInformation();
-        console.log(this.chatId);
     },
 
     // ----------------------------------------------

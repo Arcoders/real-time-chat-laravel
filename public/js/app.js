@@ -27598,7 +27598,6 @@ var mixin = {
 
     mounted: function mounted() {
         this.getInformation();
-        console.log(this.chatId);
     },
 
 
@@ -39544,13 +39543,13 @@ var arrayFindIndex = __webpack_require__(125);
         updateList: function updateList() {
             var _this2 = this;
 
-            this.channel = this.$pusher.subscribe('room-group');
+            this.channel = this.$pusher.subscribe('group_chat');
             this.channel.bind('updateList', function (data) {
 
                 _this2.$eventBus.$emit('update', {
                     type: 'group',
                     action: 'up',
-                    groupId: parseInt(data.message.group_id),
+                    groupId: parseInt(data.message.group_chat),
                     message: data.message
                 });
             });
@@ -39559,13 +39558,13 @@ var arrayFindIndex = __webpack_require__(125);
 
                 res.data.forEach(function (id) {
 
-                    _this2.channel = _this2.$pusher.subscribe('chat-' + id);
+                    _this2.channel = _this2.$pusher.subscribe('friend_chat-' + id);
                     _this2.channel.bind('updateList', function (data) {
 
                         _this2.$eventBus.$emit('update', {
                             type: 'group',
                             action: 'up-chat',
-                            chatId: parseInt(data.message.chat_id),
+                            chatId: parseInt(data.message.friend_chat),
                             message: data.message
                         });
                     });

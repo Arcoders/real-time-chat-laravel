@@ -188,13 +188,14 @@
             // ----------------------------------------------
 
             updateList() {
-                this.channel = this.$pusher.subscribe('room-group');
-                this.channel.bind('updateList', (data) => {
 
+                this.channel = this.$pusher.subscribe('group_chat');
+                this.channel.bind('updateList', (data) => {
+                    
                     this.$eventBus.$emit('update', {
                         type: 'group',
                         action: 'up',
-                        groupId: parseInt(data.message.group_id),
+                        groupId: parseInt(data.message.group_chat),
                         message: data.message
                     });
 
@@ -204,13 +205,13 @@
 
                     res.data.forEach(id => {
 
-                        this.channel = this.$pusher.subscribe('chat-'+id);
+                        this.channel = this.$pusher.subscribe(`friend_chat-${id}`);
                         this.channel.bind('updateList', (data) => {
 
                             this.$eventBus.$emit('update', {
                                 type: 'group',
                                 action: 'up-chat',
-                                chatId: parseInt(data.message.chat_id),
+                                chatId: parseInt(data.message.friend_chat),
                                 message: data.message
                             });
 

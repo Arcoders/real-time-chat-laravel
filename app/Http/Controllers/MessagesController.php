@@ -36,7 +36,7 @@ class MessagesController extends Controller
 
         }
 
-        $roomName = ($r->room_name === 'group_chat') ? "$r->roomName-$r->chatId" : 'room-group';
+        $roomName = ($r->roomName === 'group_chat') ? $r->roomName : "$r->roomName-$r->chatId";
 
         $this->pushMessage([
             'message' => $this->saveMessages($r, $photo, $user),
@@ -46,25 +46,20 @@ class MessagesController extends Controller
 
     }
 
-    public function lastMessagesGroup(Request $request)
+    public function lastMessagesGroup(Request $r)
     {
-        $count =  Message::where($request->room_name, $request->chat_id)->count();
+        $count =  Message::where($r->room_name, $r->chat_id)->count();
 
-        return Message::where($request->room_name, $request->chat_id)
-                ->with('user')
-                ->skip($count - 5)
-                ->take(5)
-                ->get();
+        return Message::where($r->room_name, $r->chat_id)->with('user')->skip($count - 5)->take(5)->get();
     }
 
     public function usersTyping(Request $request)
     {
-        $user = Auth::user();
-        $data = ['id' => $user->id, 'name' => $user->name, 'avatar' => $user->avatar];
-
-        $this->triggerPusher("typing-$request->room_name-$request->chat_id", 'userTyping', $data);
-
-        return response()->json($data, 200);
+        $this->triggerPusher(
+            "typing-$request->room_name-$request->chat_id",
+            'userTyping',
+            Auth::user()
+        );
     }
 
     protected function saveMessages($r, $photo, $user) {
