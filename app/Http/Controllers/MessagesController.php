@@ -53,10 +53,10 @@ class MessagesController extends Controller
         return Message::where($r->room_name, $r->chat_id)->with('user')->skip($count - 5)->take(5)->get();
     }
 
-    public function usersTyping(Request $request)
+    public function usersTyping(Request $r)
     {
         $this->triggerPusher(
-            "typing-$request->room_name-$request->chat_id",
+            "typing-$r->room_name-$r->chat_id",
             'userTyping',
             Auth::user()
         );

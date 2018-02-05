@@ -15,18 +15,18 @@
                             | {{ friend.user.name }}
                     p.font-preview
                         router-link(exact-active-class='active_message', :to="chatLink(friend, 'friend')")
-                            span(v-if='friend[0]')
-                                span(v-if='friend[0].body && friend[0].photo')
+                            span(v-if="friend.msg")
+                                span(v-if="friend.msg.body && friend.msg.photo")
                                     i.material-icons.photo photo
-                                    | {{ friend[0].body | truncate(35) }}
-                                span(v-else-if='friend[0].body') {{ friend[0].body | truncate(20) }}
-                                span(v-else-if='friend[0].photo')
+                                    | {{ friend.msg.body | truncate(35) }}
+                                span(v-else-if="friend.msg.body") {{ friend.msg.body | truncate(20) }}
+                                span(v-else-if="friend.msg.photo")
                                     i.material-icons.photo photo
                                     | a photo has been shared
                             span(v-else) Empty chat...
 
             .contact-time
-                p(v-if='friend[0]') {{ friend[0].created_at | moment('H:mm') }}
+                p(v-if="friend.msg") {{ friend.msg.created_at | moment('H:mm') }}
                 p(v-else)
                     i.material-icons.time fiber_new
 
@@ -42,19 +42,19 @@
                             | {{ group.name }}
                     p.font-preview
                         router-link(exact-active-class='active_message', :to="chatLink(group, 'group')")
-                            span(v-if='group[0]')
-                                span(v-if='group[0].body && group[0].photo')
+                            span(v-if='group.msg')
+                                span(v-if='group.msg.body && group.msg.photo')
                                     i.material-icons.photo photo
                                     | {{ group[0].body | truncate(35) }}
-                                span(v-else-if='group[0].body') {{ group[0].body | truncate(20) }}
-                                span(v-else-if='group[0].photo')
+                                span(v-else-if='group.msg.body') {{ group.msg.body | truncate(20) }}
+                                span(v-else-if='group.msg.photo')
                                     i.material-icons.photo photo
                                     | a photo has been shared
                             span(v-else) Empty group...
 
 
             .contact-time
-                p(v-if='group[0]') {{ group[0].created_at | moment('H:mm') }}
+                p(v-if='group.msg') {{ group.msg.created_at | moment('H:mm') }}
                 p(v-else)
                     i.material-icons.time fiber_new
 
@@ -179,10 +179,10 @@
                 if (chat === -1) return;
 
                 let up = object[chat];
-                up[0] = message;
+                up.msg = message;
 
                 object.splice(chat, 1);
-                object.splice(object.filter(f => !f[0]).length, 0, up);
+                object.splice(object.filter(f => !f.msg).length, 0, up);
             },
 
             // ----------------------------------------------
@@ -191,7 +191,7 @@
 
                 this.channel = this.$pusher.subscribe('group_chat');
                 this.channel.bind('updateList', (data) => {
-                    
+
                     this.$eventBus.$emit('update', {
                         type: 'group',
                         action: 'up',
@@ -256,13 +256,13 @@
 
                 this.groups = groups;
 
-                this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
+                this.$store.commit('updateGroups', arraySort(this.groups, "msg.created_at").reverse());
 
                 this.friends = friends.map(u => {
                     return renameKeys(u, key =>  (key === 'friend') ? 'user' : key);
                 });
 
-                this.$store.commit('updateFriends', arraySort(this.friends, "0.created_at").reverse());
+                this.$store.commit('updateFriends', arraySort(this.friends, "msg.created_at").reverse());
 
             },
 

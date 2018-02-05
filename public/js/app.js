@@ -39529,11 +39529,11 @@ var arrayFindIndex = __webpack_require__(125);
             if (chat === -1) return;
 
             var up = object[chat];
-            up[0] = message;
+            up.msg = message;
 
             object.splice(chat, 1);
             object.splice(object.filter(function (f) {
-                return !f[0];
+                return !f.msg;
             }).length, 0, up);
         },
 
@@ -39605,7 +39605,7 @@ var arrayFindIndex = __webpack_require__(125);
 
             this.groups = groups;
 
-            this.$store.commit('updateGroups', arraySort(this.groups, "0.created_at").reverse());
+            this.$store.commit('updateGroups', arraySort(this.groups, "msg.created_at").reverse());
 
             this.friends = friends.map(function (u) {
                 return renameKeys(u, function (key) {
@@ -39613,7 +39613,7 @@ var arrayFindIndex = __webpack_require__(125);
                 });
             });
 
-            this.$store.commit('updateFriends', arraySort(this.friends, "0.created_at").reverse());
+            this.$store.commit('updateFriends', arraySort(this.friends, "msg.created_at").reverse());
         },
 
 
@@ -40334,9 +40334,9 @@ var render = function() {
                             }
                           },
                           [
-                            friend[0]
+                            friend.msg
                               ? _c("span", [
-                                  friend[0].body && friend[0].photo
+                                  friend.msg.body && friend.msg.photo
                                     ? _c("span", [
                                         _c(
                                           "i",
@@ -40348,24 +40348,24 @@ var render = function() {
                                         _vm._v(
                                           _vm._s(
                                             _vm._f("truncate")(
-                                              friend[0].body,
+                                              friend.msg.body,
                                               35
                                             )
                                           )
                                         )
                                       ])
-                                    : friend[0].body
+                                    : friend.msg.body
                                       ? _c("span", [
                                           _vm._v(
                                             _vm._s(
                                               _vm._f("truncate")(
-                                                friend[0].body,
+                                                friend.msg.body,
                                                 20
                                               )
                                             )
                                           )
                                         ])
-                                      : friend[0].photo
+                                      : friend.msg.photo
                                         ? _c("span", [
                                             _c(
                                               "i",
@@ -40388,10 +40388,12 @@ var render = function() {
                   ])
                 ]),
                 _c("div", { staticClass: "contact-time" }, [
-                  friend[0]
+                  friend.msg
                     ? _c("p", [
                         _vm._v(
-                          _vm._s(_vm._f("moment")(friend[0].created_at, "H:mm"))
+                          _vm._s(
+                            _vm._f("moment")(friend.msg.created_at, "H:mm")
+                          )
                         )
                       ])
                     : _c("p", [
@@ -40463,9 +40465,9 @@ var render = function() {
                             }
                           },
                           [
-                            group[0]
+                            group.msg
                               ? _c("span", [
-                                  group[0].body && group[0].photo
+                                  group.msg.body && group.msg.photo
                                     ? _c("span", [
                                         _c(
                                           "i",
@@ -40483,18 +40485,18 @@ var render = function() {
                                           )
                                         )
                                       ])
-                                    : group[0].body
+                                    : group.msg.body
                                       ? _c("span", [
                                           _vm._v(
                                             _vm._s(
                                               _vm._f("truncate")(
-                                                group[0].body,
+                                                group.msg.body,
                                                 20
                                               )
                                             )
                                           )
                                         ])
-                                      : group[0].photo
+                                      : group.msg.photo
                                         ? _c("span", [
                                             _c(
                                               "i",
@@ -40517,10 +40519,10 @@ var render = function() {
                   ])
                 ]),
                 _c("div", { staticClass: "contact-time" }, [
-                  group[0]
+                  group.msg
                     ? _c("p", [
                         _vm._v(
-                          _vm._s(_vm._f("moment")(group[0].created_at, "H:mm"))
+                          _vm._s(_vm._f("moment")(group.msg.created_at, "H:mm"))
                         )
                       ])
                     : _c("p", [

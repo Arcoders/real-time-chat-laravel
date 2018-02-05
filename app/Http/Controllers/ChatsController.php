@@ -23,7 +23,7 @@ class ChatsController extends Controller
 
         foreach (Auth::user()->groups as $group):
 
-            array_push($allGroups, collect($group)->push(Message::where('group_chat', $group->id)->get()->last()));
+            array_push($allGroups, collect($group)->prepend(Message::where('group_chat', $group->id)->get()->last(), 'msg'));
 
         endforeach;
 
@@ -36,21 +36,13 @@ class ChatsController extends Controller
         $user = Auth::user();
         $allChats = array();
 
-        $a = Chat::where('friend_id', $user->id)
-            ->select('id', 'user_id')
-            ->with('user')
-            ->get()
-            ->toArray();
+        $a = Chat::where('friend_id', $user->id)->select('id', 'user_id')->with('user')->get()->toArray();
 
-        $b = Chat::where('user_id', $user->id)
-            ->select('id', 'friend_id')
-            ->with('friend')
-            ->get()
-            ->toArray();
+        $b = Chat::where('user_id', $user->id)->select('id', 'friend_id')->with('friend')->get()->toArray();
 
         foreach (array_merge($a, $b) as $chat):
 
-            array_push($allChats, collect($chat)->push(Message::where('friend_chat', $chat['id'])->get()->last()));
+            array_push($allChats, collect($chat)->prepend(Message::where('friend_chat', $chat['id'])->get()->last(), 'msg'));
 
         endforeach;
 
