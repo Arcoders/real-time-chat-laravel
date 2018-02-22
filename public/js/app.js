@@ -28090,6 +28090,7 @@ Vue.component('left', __webpack_require__(147));
 Vue.component('groups', __webpack_require__(153));
 Vue.component('list', __webpack_require__(156));
 Vue.component('search', __webpack_require__(168));
+Vue.component('allnotifications', __webpack_require__(250));
 
 // Components for right side
 
@@ -38710,7 +38711,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n.icons a[data-v-62e5a916] {\n    display: inline-block;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    text-decoration: none;\n}\n.router-link-active[data-v-62e5a916] {\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n            box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n}\n.avatar[data-v-62e5a916] {\n    margin: 5px 20px;\n}\n.error[data-v-62e5a916] {\n    color: #E57373;\n}\n.notif[data-v-62e5a916] {\n    position: relative;\n}\n.notif[data-badge][data-v-62e5a916]:after {\n    content: attr(data-badge);\n    position:absolute;\n    top: 10px;\n    right: 5px;\n    font-size: 12px;\n    background: white;\n    color: #009688;\n    width: 20px;\n    height: 20px;\n    text-align: center;\n    border-radius: 50%;\n    -webkit-box-shadow: 0 0 1px #fff;\n            box-shadow: 0 0 1px #fff;\n    font-weight: bold;\n    line-height: 20px;\n}\n", ""]);
+exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n.icons a[data-v-62e5a916] {\n    display: inline-block;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    text-decoration: none;\n}\n.router-link-active[data-v-62e5a916] {\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n            box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n}\n.avatar[data-v-62e5a916] {\n    margin: 5px 20px;\n}\n.error[data-v-62e5a916] {\n    color: #E57373;\n}\n.notif[data-v-62e5a916] {\n    position: relative;\n}\n.notif[data-badge][data-v-62e5a916]:after {\n    content: attr(data-badge);\n    position:absolute;\n    top: 10px;\n    right: 5px;\n    font-size: 12px;\n    background: white;\n    color: #009688;\n    width: 20px;\n    height: 20px;\n    text-align: center;\n    border-radius: 50%;\n    -webkit-box-shadow: 0 0 1px #fff;\n            box-shadow: 0 0 1px #fff;\n    font-weight: bold;\n    line-height: 22px;\n}\n", ""]);
 
 // exports
 
@@ -45851,6 +45852,171 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(251)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(253)
+/* template */
+var __vue_template__ = __webpack_require__(254)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-5d6741d4"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\left\\sections\\show_notifications.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5d6741d4", Component.options)
+  } else {
+    hotAPI.reload("data-v-5d6741d4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 251 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(252);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("4b36dd40", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5d6741d4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./show_notifications.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5d6741d4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./show_notifications.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 252 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 253 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    // ----------------------------------------------
+
+    data: function data() {
+        return {
+            loading: false
+        };
+    },
+
+
+    // ----------------------------------------------
+
+    mounted: function mounted() {},
+
+
+    // ----------------------------------------------
+
+    methods: {
+
+        // ----------------------------------------------
+
+    }
+
+});
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "private_app" } },
+    [_vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e()],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5d6741d4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

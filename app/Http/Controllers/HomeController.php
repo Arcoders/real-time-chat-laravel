@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,4 +26,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function myNotifications()
+    {
+        foreach (Auth::user()->unreadnotifications as $n):
+            return $n->data ;
+        endforeach;
+    }
+
 }

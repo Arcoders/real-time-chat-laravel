@@ -78,7 +78,7 @@
         border-radius: 50%;
         box-shadow: 0 0 1px #fff;
         font-weight: bold;
-        line-height: 20px;
+        line-height: 22px;
     }
 </style>
 

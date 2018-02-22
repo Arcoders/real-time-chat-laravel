@@ -65,4 +65,8 @@ Route::group(['middleware' => ['auth']], function () {
     // Get friend info for chat
     Route::get('/get_friend_chat/{friend_id}', 'FriendshipsController@getFriendForChat')->middleware('isFriend');
 
+    // Get notifications that belong to the current user
+
+    Route::get('/notifications', 'HomeController@myNotifications');
+
 });
