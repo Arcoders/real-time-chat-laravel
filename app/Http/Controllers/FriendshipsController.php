@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Chat;
+use App\Notifications\NewFriendRequest;
 use App\Traits\TriggerPusher;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,7 @@ class FriendshipsController extends Controller
         if ($add)
         {
             $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
+            User::find($id)->notify(new NewFriendRequest());
             return response()->json($add, 200);
         }
     }
