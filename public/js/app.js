@@ -38710,7 +38710,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n.icons a[data-v-62e5a916] {\n    display: inline-block;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    text-decoration: none;\n}\n.router-link-active[data-v-62e5a916] {\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n            box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n}\n.avatar[data-v-62e5a916] {\n    margin: 5px 20px;\n}\n.error[data-v-62e5a916] {\n    color: #E57373;\n}\n", ""]);
+exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n.icons a[data-v-62e5a916] {\n    display: inline-block;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    text-decoration: none;\n}\n.router-link-active[data-v-62e5a916] {\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n            box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n}\n.avatar[data-v-62e5a916] {\n    margin: 5px 20px;\n}\n.error[data-v-62e5a916] {\n    color: #E57373;\n}\n.notif[data-v-62e5a916] {\n    position: relative;\n}\n.notif[data-badge][data-v-62e5a916]:after {\n    content: attr(data-badge);\n    position:absolute;\n    top: 10px;\n    right: 5px;\n    font-size: 12px;\n    background: white;\n    color: #009688;\n    width: 20px;\n    height: 20px;\n    text-align: center;\n    border-radius: 50%;\n    -webkit-box-shadow: 0 0 1px #fff;\n            box-shadow: 0 0 1px #fff;\n    font-weight: bold;\n    line-height: 20px;\n}\n", ""]);
 
 // exports
 
@@ -38754,6 +38754,29 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -38929,9 +38952,6 @@ var render = function() {
                   src: _vm.user.avatar
                 }
               }),
-              _c("div", { staticClass: "name" }, [
-                _vm._v(_vm._s(_vm.user.name))
-              ]),
               _c(
                 "div",
                 { staticClass: "icons" },
@@ -38944,8 +38964,21 @@ var render = function() {
                   _c("router-link", { attrs: { to: "/groups" } }, [
                     _c("i", { staticClass: "material-icons" }, [
                       _vm._v("person_add")
-                    ])
+                    ]),
+                    _c("span", { staticClass: "step" })
                   ]),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "notif",
+                      attrs: { to: "/groups", "data-badge": "5" }
+                    },
+                    [
+                      _c("i", { staticClass: "material-icons" }, [
+                        _vm._v("notifications")
+                      ])
+                    ]
+                  ),
                   _vm.loading
                     ? _c("loading", { attrs: { normal: true } })
                     : _c("a", { on: { click: _vm.logout } }, [

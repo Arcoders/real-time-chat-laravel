@@ -5,7 +5,7 @@
 
             avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
 
-            .name {{ user.name }}
+            //.name {{ user.name }}
 
             .icons
 
@@ -14,6 +14,10 @@
 
                 router-link(to='/groups')
                     i.material-icons person_add
+                    span.step
+
+                router-link(to='/groups', data-badge="5").notif
+                    i.material-icons notifications
 
                 loading(:normal='true', v-if='loading')
 
@@ -56,6 +60,25 @@
     }
     .error {
         color: #E57373;
+    }
+    .notif {
+        position: relative;
+    }
+    .notif[data-badge]:after {
+        content: attr(data-badge);
+        position:absolute;
+        top: 10px;
+        right: 5px;
+        font-size: 12px;
+        background: white;
+        color: #009688;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        border-radius: 50%;
+        box-shadow: 0 0 1px #fff;
+        font-weight: bold;
+        line-height: 20px;
     }
 </style>
 
