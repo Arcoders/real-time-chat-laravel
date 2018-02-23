@@ -16,7 +16,7 @@
                     i.material-icons person_add
                     span.step
 
-                router-link(to='/groups', data-badge="5").notif
+                router-link(to='/groups', :data-badge="totalNotifications").notif
                     i.material-icons notifications
 
                 loading(:normal='true', v-if='loading')
@@ -98,7 +98,8 @@
                 user: null,
                 logoutError: null,
                 loading: false,
-                myChatList: true
+                myChatList: true,
+                totalNotifications: 0
             }
         },
 
@@ -116,6 +117,7 @@
 
         mounted() {
             this.userInfo();
+            this.getTotalNotifications();
         },
 
         // ----------------------------------------------
@@ -157,6 +159,16 @@
                 }, () => {
                     this.loading = false;
                     this.logoutError = true;
+                });
+            },
+
+            // ----------------------------------------------
+
+            getTotalNotifications() {
+                this.$http.get('/notifications').then(res => {
+
+                    if (res.status === 200) this.totalNotifications = res.data.total_notifications;
+
                 });
             }
 

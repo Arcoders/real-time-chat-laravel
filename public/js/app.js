@@ -38855,7 +38855,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             user: null,
             logoutError: null,
             loading: false,
-            myChatList: true
+            myChatList: true,
+            totalNotifications: 0
         };
     },
 
@@ -38875,6 +38876,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted: function mounted() {
         this.userInfo();
+        this.getTotalNotifications();
     },
 
 
@@ -38920,6 +38922,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, function () {
                 _this2.loading = false;
                 _this2.logoutError = true;
+            });
+        },
+
+
+        // ----------------------------------------------
+
+        getTotalNotifications: function getTotalNotifications() {
+            var _this3 = this;
+
+            this.$http.get('/notifications').then(function (res) {
+
+                if (res.status === 200) _this3.totalNotifications = res.data.total_notifications;
             });
         }
 
@@ -38972,7 +38986,10 @@ var render = function() {
                     "router-link",
                     {
                       staticClass: "notif",
-                      attrs: { to: "/groups", "data-badge": "5" }
+                      attrs: {
+                        to: "/groups",
+                        "data-badge": _vm.totalNotifications
+                      }
                     },
                     [
                       _c("i", { staticClass: "material-icons" }, [

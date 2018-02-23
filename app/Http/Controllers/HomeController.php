@@ -29,9 +29,15 @@ class HomeController extends Controller
 
     public function myNotifications()
     {
-        foreach (Auth::user()->unreadnotifications as $n):
-            return $n->data ;
-        endforeach;
+        return response()->json(
+            [
+                'total_notifications' =>Auth::user()->unreadnotifications->count()
+            ], 200);
+
+//        foreach (Auth::user()->unreadnotifications as $n):
+//            return $n->data ;
+//        endforeach;
+
     }
 
 }
