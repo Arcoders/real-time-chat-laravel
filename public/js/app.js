@@ -38949,7 +38949,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$http.get('/count_notifications').then(function (res) {
 
-                if (res.status === 200) _this3.totalNotifications = res.data.total_notifications;
+                if (res.status === 200) {
+                    _this3.totalNotifications = res.data.total_notifications;
+                    _this3.showNotification = false;
+                }
             });
         }
 
@@ -39088,7 +39091,11 @@ var render = function() {
           _c(
             "div",
             { staticClass: "contact-list" },
-            [_c("allnotifications")],
+            [
+              _c("allnotifications", {
+                on: { updateNotifications: _vm.getTotalNotifications }
+              })
+            ],
             1
           )
         ]
@@ -39109,12 +39116,7 @@ var render = function() {
           _c(
             "div",
             { staticClass: "contact-list" },
-            [
-              _c("list", {
-                attrs: { showChatList: _vm.myChatList },
-                on: { updateNotifications: _vm.getTotalNotifications }
-              })
-            ],
+            [_c("list", { attrs: { showChatList: _vm.myChatList } })],
             1
           )
         ]

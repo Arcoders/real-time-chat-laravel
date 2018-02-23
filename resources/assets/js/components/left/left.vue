@@ -37,12 +37,12 @@
 
         section(v-show="showNotification")
             .contact-list
-                allnotifications
+                allnotifications(v-on:updateNotifications="getTotalNotifications")
 
         section(v-show="!showNotification")
 
             .contact-list
-                list(:showChatList='myChatList', v-on:updateNotifications="getTotalNotifications")
+                list(:showChatList='myChatList')
 
 </template>
 
@@ -182,7 +182,10 @@
             getTotalNotifications() {
                 this.$http.get('/count_notifications').then(res => {
 
-                    if (res.status === 200) this.totalNotifications = res.data.total_notifications;
+                    if (res.status === 200) {
+                        this.totalNotifications = res.data.total_notifications;
+                        this.showNotification = false;
+                    }
 
                 });
             }
