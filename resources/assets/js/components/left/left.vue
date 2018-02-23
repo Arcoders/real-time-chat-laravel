@@ -35,11 +35,11 @@
             .link_filter
                 a(href='#', @click='changeList(false)', v-bind:class='{ active: !myChatList }') Groups
 
-        section(v-if="showNotification")
+        section(v-show="showNotification")
             .contact-list
                 allnotifications
 
-        section(v-else)
+        section(v-show="!showNotification")
 
             .contact-list
                 list(:showChatList='myChatList')
@@ -150,6 +150,7 @@
 
             changeList(value) {
               this.myChatList = value;
+              this.showNotification = false;
             },
 
             // ----------------------------------------------

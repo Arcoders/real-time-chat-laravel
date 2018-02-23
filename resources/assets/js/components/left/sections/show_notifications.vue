@@ -3,20 +3,7 @@
 
         loading(v-if='loading', :normal='true')
 
-        .contact(v-for='notification in notifications')
-
-            a
-                avatar.chat_avatar(:username='notification.info.user.name', :src='notification.info.user.avatar', color='#fff')
-
-            .contact-preview
-                .contact-text
-                    h1.font-name
-                        a {{ notification.info.user.name }}
-                    p.font-preview
-                        a {{ notification.info.msg}}
-
-            .contact-time
-                p {{ notification.data.date | moment('H:mm') }}
+        button.mark Mark all as read
 
         .contact(v-for='notification in notifications')
 
@@ -62,6 +49,22 @@
 
             .contact-time
                 p {{ notification.data.date | moment('H:mm') }}
+
+        .contact(v-for='notification in notifications')
+
+            a
+                avatar.chat_avatar(:username='notification.info.user.name', :src='notification.info.user.avatar', color='#fff')
+
+            .contact-preview
+                .contact-text
+                    h1.font-name
+                        a {{ notification.info.user.name }}
+                    p.font-preview
+                        a {{ notification.info.msg}}
+
+            .contact-time
+                p {{ notification.data.date | moment('H:mm') }}
+
 
 </template>
 
@@ -103,6 +106,21 @@
     .middle {
         margin: auto;
         color: #aaaaaa;
+    }
+    .mark {
+        line-height: 40px;
+        width: 100%;
+        background-color: #fbfbfb;
+        border: solid 1px #EEEEEE;
+        color: #777777;
+        margin-bottom: 7px;
+        -webkit-transition: all .3s ease-out;
+        transition: all .3s ease-out;
+    }
+
+    .mark:hover {
+        font-weight: bold;
+        background-color: #fbfbfb;
     }
 </style>
 
