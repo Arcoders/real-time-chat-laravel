@@ -32,8 +32,9 @@ class FriendshipsController extends Controller
         $add = Auth::user()->add_friend($id);
         if ($add)
         {
-            $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
             User::find($id)->notify(new NewFriendRequest());
+            $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
+            $this->triggerPusher('notification'.$id, 'updateNotifications', []);
             return response()->json($add, 200);
         }
     }

@@ -35,7 +35,7 @@
             .link_filter
                 a(href='#', @click='changeList(false)', v-bind:class='{ active: !myChatList }') Groups
 
-        section(v-show="showNotification")
+        section(v-if="showNotification")
             .contact-list
                 allnotifications(v-on:updateNotifications="getTotalNotifications")
 
@@ -118,6 +118,9 @@
             this.$eventBus.$on('update' , (data) => {
                 if (data.type === 'profile') this.user = this.$store.state.user;
             });
+
+            this.channel = this.$pusher.subscribe('notification' + this.auth_user.id);
+            this.channel.bind('updateNotifications', () => this.getTotalNotifications());
 
         },
 

@@ -38877,6 +38877,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$eventBus.$on('update', function (data) {
             if (data.type === 'profile') _this.user = _this.$store.state.user;
         });
+
+        this.channel = this.$pusher.subscribe('notification' + this.auth_user.id);
+        this.channel.bind('updateNotifications', function () {
+            return _this.getTotalNotifications();
+        });
     },
 
 
@@ -39075,31 +39080,20 @@ var render = function() {
           )
         ])
       ]),
-      _c(
-        "section",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.showNotification,
-              expression: "showNotification"
-            }
-          ]
-        },
-        [
-          _c(
-            "div",
-            { staticClass: "contact-list" },
-            [
-              _c("allnotifications", {
-                on: { updateNotifications: _vm.getTotalNotifications }
-              })
-            ],
-            1
-          )
-        ]
-      ),
+      _vm.showNotification
+        ? _c("section", [
+            _c(
+              "div",
+              { staticClass: "contact-list" },
+              [
+                _c("allnotifications", {
+                  on: { updateNotifications: _vm.getTotalNotifications }
+                })
+              ],
+              1
+            )
+          ])
+        : _vm._e(),
       _c(
         "section",
         {
