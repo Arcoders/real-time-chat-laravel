@@ -38839,6 +38839,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -38856,7 +38863,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             logoutError: null,
             loading: false,
             myChatList: true,
-            totalNotifications: 0
+            totalNotifications: 0,
+            showNotification: false
         };
     },
 
@@ -38890,6 +38898,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$store.commit('updateUser', this.auth_user);
             this.user = this.$store.state.user;
             this.showUser = true;
+        },
+
+
+        // ----------------------------------------------
+
+        showListNotifications: function showListNotifications() {
+            this.showNotification = !this.showNotification;
         },
 
 
@@ -38931,7 +38946,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getTotalNotifications: function getTotalNotifications() {
             var _this3 = this;
 
-            this.$http.get('/notifications').then(function (res) {
+            this.$http.get('/count_notifications').then(function (res) {
 
                 if (res.status === 200) _this3.totalNotifications = res.data.total_notifications;
             });
@@ -38967,6 +38982,11 @@ var render = function() {
                   src: _vm.user.avatar
                 }
               }),
+              _vm.totalNotifications == 0
+                ? _c("div", { staticClass: "name" }, [
+                    _vm._v(_vm._s(_vm.user.name))
+                  ])
+                : _vm._e(),
               _c(
                 "div",
                 { staticClass: "icons" },
@@ -38982,21 +39002,21 @@ var render = function() {
                     ]),
                     _c("span", { staticClass: "step" })
                   ]),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "notif",
-                      attrs: {
-                        to: "/groups",
-                        "data-badge": _vm.totalNotifications
-                      }
-                    },
-                    [
-                      _c("i", { staticClass: "material-icons" }, [
-                        _vm._v("notifications")
-                      ])
-                    ]
-                  ),
+                  _vm.totalNotifications > 0
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "notif",
+                          attrs: { "data-badge": _vm.totalNotifications },
+                          on: { click: _vm.showListNotifications }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons" }, [
+                            _vm._v("notifications")
+                          ])
+                        ]
+                      )
+                    : _vm._e(),
                   _vm.loading
                     ? _c("loading", { attrs: { normal: true } })
                     : _c("a", { on: { click: _vm.logout } }, [
@@ -39051,12 +39071,23 @@ var render = function() {
           )
         ])
       ]),
-      _c(
-        "div",
-        { staticClass: "contact-list" },
-        [_c("list", { attrs: { showChatList: _vm.myChatList } })],
-        1
-      )
+      _vm.showNotification
+        ? _c("section", [
+            _c(
+              "div",
+              { staticClass: "contact-list" },
+              [_c("allnotifications")],
+              1
+            )
+          ])
+        : _c("section", [
+            _c(
+              "div",
+              { staticClass: "contact-list" },
+              [_c("list", { attrs: { showChatList: _vm.myChatList } })],
+              1
+            )
+          ])
     ],
     1
   )
@@ -45960,7 +45991,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\na[data-v-5d6741d4] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-5d6741d4] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-5d6741d4] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-5d6741d4] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n.chat_avatar[data-v-5d6741d4] {\n    width: 50px;\n    height: 50px;\n    min-width: 50px;\n    min-height: 50px;\n    margin: 12px 20px;\n    border-radius: 50%;\n}\n.photo[data-v-5d6741d4] {\n    margin-right: 5px;\n    color: #eeeeee;\n    font-size: 15px;\n}\n.time[data-v-5d6741d4] {\n    margin-left: 5px;\n    color: #009688;\n    font-size: 25px;\n}\n.middle[data-v-5d6741d4] {\n    margin: auto;\n    color: #aaaaaa;\n}\n", ""]);
 
 // exports
 
@@ -45982,6 +46013,103 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45990,19 +46118,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            loading: false
+            loading: false,
+            notifications: null
         };
     },
 
 
     // ----------------------------------------------
 
-    mounted: function mounted() {},
+    mounted: function mounted() {
+        this.getTotalNotifications();
+    },
 
 
     // ----------------------------------------------
 
     methods: {
+
+        // ----------------------------------------------
+
+        getTotalNotifications: function getTotalNotifications() {
+            var _this = this;
+
+            this.loading = true;
+
+            this.$http.get('/show_notifications').then(function (res) {
+
+                if (res.status === 200) _this.notifications = res.data;
+                _this.loading = false;
+            });
+        }
 
         // ----------------------------------------------
 
@@ -46021,8 +46166,142 @@ var render = function() {
   return _c(
     "div",
     { attrs: { id: "private_app" } },
-    [_vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e()],
-    1
+    [
+      _vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e(),
+      _vm._l(_vm.notifications, function(notification) {
+        return _c("div", { staticClass: "contact" }, [
+          _c(
+            "a",
+            [
+              _c("avatar", {
+                staticClass: "chat_avatar",
+                attrs: {
+                  username: notification.info.user.name,
+                  src: notification.info.user.avatar,
+                  color: "#fff"
+                }
+              })
+            ],
+            1
+          ),
+          _c("div", { staticClass: "contact-preview" }, [
+            _c("div", { staticClass: "contact-text" }, [
+              _c("h1", { staticClass: "font-name" }, [
+                _c("a", [_vm._v(_vm._s(notification.info.user.name))])
+              ]),
+              _c("p", { staticClass: "font-preview" }, [
+                _c("a", [_vm._v(_vm._s(notification.info.msg))])
+              ])
+            ])
+          ]),
+          _c("div", { staticClass: "contact-time" }, [
+            _c("p", [
+              _vm._v(_vm._s(_vm._f("moment")(notification.data.date, "H:mm")))
+            ])
+          ])
+        ])
+      }),
+      _vm._l(_vm.notifications, function(notification) {
+        return _c("div", { staticClass: "contact" }, [
+          _c(
+            "a",
+            [
+              _c("avatar", {
+                staticClass: "chat_avatar",
+                attrs: {
+                  username: notification.info.user.name,
+                  src: notification.info.user.avatar,
+                  color: "#fff"
+                }
+              })
+            ],
+            1
+          ),
+          _c("div", { staticClass: "contact-preview" }, [
+            _c("div", { staticClass: "contact-text" }, [
+              _c("h1", { staticClass: "font-name" }, [
+                _c("a", [_vm._v(_vm._s(notification.info.user.name))])
+              ]),
+              _c("p", { staticClass: "font-preview" }, [
+                _c("a", [_vm._v(_vm._s(notification.info.msg))])
+              ])
+            ])
+          ]),
+          _c("div", { staticClass: "contact-time" }, [
+            _c("p", [
+              _vm._v(_vm._s(_vm._f("moment")(notification.data.date, "H:mm")))
+            ])
+          ])
+        ])
+      }),
+      _vm._l(_vm.notifications, function(notification) {
+        return _c("div", { staticClass: "contact" }, [
+          _c(
+            "a",
+            [
+              _c("avatar", {
+                staticClass: "chat_avatar",
+                attrs: {
+                  username: notification.info.user.name,
+                  src: notification.info.user.avatar,
+                  color: "#fff"
+                }
+              })
+            ],
+            1
+          ),
+          _c("div", { staticClass: "contact-preview" }, [
+            _c("div", { staticClass: "contact-text" }, [
+              _c("h1", { staticClass: "font-name" }, [
+                _c("a", [_vm._v(_vm._s(notification.info.user.name))])
+              ]),
+              _c("p", { staticClass: "font-preview" }, [
+                _c("a", [_vm._v(_vm._s(notification.info.msg))])
+              ])
+            ])
+          ]),
+          _c("div", { staticClass: "contact-time" }, [
+            _c("p", [
+              _vm._v(_vm._s(_vm._f("moment")(notification.data.date, "H:mm")))
+            ])
+          ])
+        ])
+      }),
+      _vm._l(_vm.notifications, function(notification) {
+        return _c("div", { staticClass: "contact" }, [
+          _c(
+            "a",
+            [
+              _c("avatar", {
+                staticClass: "chat_avatar",
+                attrs: {
+                  username: notification.info.user.name,
+                  src: notification.info.user.avatar,
+                  color: "#fff"
+                }
+              })
+            ],
+            1
+          ),
+          _c("div", { staticClass: "contact-preview" }, [
+            _c("div", { staticClass: "contact-text" }, [
+              _c("h1", { staticClass: "font-name" }, [
+                _c("a", [_vm._v(_vm._s(notification.info.user.name))])
+              ]),
+              _c("p", { staticClass: "font-preview" }, [
+                _c("a", [_vm._v(_vm._s(notification.info.msg))])
+              ])
+            ])
+          ]),
+          _c("div", { staticClass: "contact-time" }, [
+            _c("p", [
+              _vm._v(_vm._s(_vm._f("moment")(notification.data.date, "H:mm")))
+            ])
+          ])
+        ])
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []

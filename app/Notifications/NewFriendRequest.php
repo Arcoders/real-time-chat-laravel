@@ -59,7 +59,7 @@ class NewFriendRequest extends Notification implements ShouldQueue
         $user = Auth::user();
 
         return [
-            'id' => $user->id,
+            'user' => $user,
             'msg' => "$user->name sent you a friend request"
         ];
     }

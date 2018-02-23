@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Get notifications that belong to the current user
 
-    Route::get('/notifications', 'HomeController@myNotifications');
+    Route::get('/count_notifications', 'HomeController@countNotifications');
+    Route::get('/show_notifications', 'HomeController@showNotifications');
 
 });

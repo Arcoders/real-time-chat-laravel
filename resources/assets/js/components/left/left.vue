@@ -5,7 +5,7 @@
 
             avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
 
-            //.name {{ user.name }}
+            .name(v-if="totalNotifications == 0") {{ user.name }}
 
             .icons
 
@@ -16,13 +16,14 @@
                     i.material-icons person_add
                     span.step
 
-                router-link(to='/groups', :data-badge="totalNotifications").notif
+                a(v-if="totalNotifications > 0", :data-badge="totalNotifications" v-on:click='showListNotifications').notif
                     i.material-icons notifications
 
                 loading(:normal='true', v-if='loading')
 
                 a(v-else, v-on:click='logout')
                     i(v-bind:class="[logoutError ? 'error' : '', 'material-icons']") fingerprint
+
 
         search
 
@@ -34,8 +35,14 @@
             .link_filter
                 a(href='#', @click='changeList(false)', v-bind:class='{ active: !myChatList }') Groups
 
-        .contact-list
-            list(:showChatList='myChatList')
+        section(v-if="showNotification")
+            .contact-list
+                allnotifications
+
+        section(v-else)
+
+            .contact-list
+                list(:showChatList='myChatList')
 
 </template>
 
@@ -99,7 +106,8 @@
                 logoutError: null,
                 loading: false,
                 myChatList: true,
-                totalNotifications: 0
+                totalNotifications: 0,
+                showNotification: false
             }
         },
 
@@ -130,6 +138,12 @@
                 this.$store.commit('updateUser', this.auth_user);
                 this.user = this.$store.state.user;
                 this.showUser = true;
+            },
+
+            // ----------------------------------------------
+
+            showListNotifications() {
+                this.showNotification = !this.showNotification;
             },
 
             // ----------------------------------------------
@@ -165,7 +179,7 @@
             // ----------------------------------------------
 
             getTotalNotifications() {
-                this.$http.get('/notifications').then(res => {
+                this.$http.get('/count_notifications').then(res => {
 
                     if (res.status === 200) this.totalNotifications = res.data.total_notifications;
 
