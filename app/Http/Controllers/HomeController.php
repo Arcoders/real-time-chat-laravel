@@ -50,4 +50,15 @@ class HomeController extends Controller
 
     }
 
+    public function markAsRead()
+    {
+
+        foreach (Auth::user()->unreadnotifications as $n):
+            $n->markAsRead();
+        endforeach;
+
+        return response()->json('done', 200);
+
+    }
+
 }

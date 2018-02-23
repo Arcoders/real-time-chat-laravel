@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Auth;
 
-class NewFriendRequest extends Notification implements ShouldQueue
+class NewFriendRequest extends Notification
 {
     use Queueable;
 
@@ -53,7 +53,7 @@ class NewFriendRequest extends Notification implements ShouldQueue
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toDatabase($notifiable)
     {
 
         $user = Auth::user();
@@ -62,5 +62,10 @@ class NewFriendRequest extends Notification implements ShouldQueue
             'user' => $user,
             'msg' => "$user->name sent you a friend request"
         ];
+    }
+
+    public function toArray($notifiable)
+    {
+        return [];
     }
 }

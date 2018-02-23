@@ -3,7 +3,7 @@
 
         loading(v-if='loading', :normal='true')
 
-        button.mark Mark all as read
+        button.mark(@click="markAsRead") Mark all as read
 
         .contact(v-for='notification in notifications')
 
@@ -156,6 +156,20 @@
                 this.$http.get('/show_notifications').then(res => {
 
                     if (res.status === 200) this.notifications = res.data;
+                    this.loading = false;
+
+                });
+            },
+
+            // ----------------------------------------------
+
+            markAsRead() {
+                this.loading = true;
+
+                this.$http.get('/mark_as_read').then(res => {
+
+                    if (res.status === 200) this.$emit('updateNotifications', []);
+
                     this.loading = false;
 
                 });

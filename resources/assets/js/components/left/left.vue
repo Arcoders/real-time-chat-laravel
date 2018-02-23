@@ -42,7 +42,7 @@
         section(v-show="!showNotification")
 
             .contact-list
-                list(:showChatList='myChatList')
+                list(:showChatList='myChatList', v-on:updateNotifications="getTotalNotifications")
 
 </template>
 

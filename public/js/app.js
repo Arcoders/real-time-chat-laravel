@@ -39109,7 +39109,12 @@ var render = function() {
           _c(
             "div",
             { staticClass: "contact-list" },
-            [_c("list", { attrs: { showChatList: _vm.myChatList } })],
+            [
+              _c("list", {
+                attrs: { showChatList: _vm.myChatList },
+                on: { updateNotifications: _vm.getTotalNotifications }
+              })
+            ],
             1
           )
         ]
@@ -41086,6 +41091,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (res.status === 200) _this.notifications = res.data;
                 _this.loading = false;
             });
+        },
+
+
+        // ----------------------------------------------
+
+        markAsRead: function markAsRead() {
+            var _this2 = this;
+
+            this.loading = true;
+
+            this.$http.get('/mark_as_read').then(function (res) {
+
+                if (res.status === 200) _this2.$emit('updateNotifications', []);
+
+                _this2.loading = false;
+            });
         }
 
         // ----------------------------------------------
@@ -41107,7 +41128,9 @@ var render = function() {
     { attrs: { id: "private_app" } },
     [
       _vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e(),
-      _c("button", { staticClass: "mark" }, [_vm._v("Mark all as read")]),
+      _c("button", { staticClass: "mark", on: { click: _vm.markAsRead } }, [
+        _vm._v("Mark all as read")
+      ]),
       _vm._l(_vm.notifications, function(notification) {
         return _c("div", { staticClass: "contact" }, [
           _c(

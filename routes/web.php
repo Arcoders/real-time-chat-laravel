@@ -69,5 +69,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/count_notifications', 'HomeController@countNotifications');
     Route::get('/show_notifications', 'HomeController@showNotifications');
+    Route::get('/mark_as_read', 'HomeController@markAsRead');
 
 });
