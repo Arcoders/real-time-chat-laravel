@@ -20,51 +20,6 @@
             .contact-time
                 p {{ notification.data.date | moment('H:mm') }}
 
-        .contact(v-for='notification in notifications')
-
-            a
-                avatar.chat_avatar(:username='notification.info.user.name', :src='notification.info.user.avatar', color='#fff')
-
-            .contact-preview
-                .contact-text
-                    h1.font-name
-                        a {{ notification.info.user.name }}
-                    p.font-preview
-                        a {{ notification.info.msg}}
-
-            .contact-time
-                p {{ notification.data.date | moment('H:mm') }}
-
-        .contact(v-for='notification in notifications')
-
-            a
-                avatar.chat_avatar(:username='notification.info.user.name', :src='notification.info.user.avatar', color='#fff')
-
-            .contact-preview
-                .contact-text
-                    h1.font-name
-                        a {{ notification.info.user.name }}
-                    p.font-preview
-                        a {{ notification.info.msg}}
-
-            .contact-time
-                p {{ notification.data.date | moment('H:mm') }}
-
-        .contact(v-for='notification in notifications')
-
-            a
-                avatar.chat_avatar(:username='notification.info.user.name', :src='notification.info.user.avatar', color='#fff')
-
-            .contact-preview
-                .contact-text
-                    h1.font-name
-                        a {{ notification.info.user.name }}
-                    p.font-preview
-                        a {{ notification.info.msg}}
-
-            .contact-time
-                p {{ notification.data.date | moment('H:mm') }}
-
 
 </template>
 
