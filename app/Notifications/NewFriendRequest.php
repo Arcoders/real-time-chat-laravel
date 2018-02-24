@@ -60,7 +60,7 @@ class NewFriendRequest extends Notification
 
         return [
             'user' => $user,
-            'msg' => "$user->name sent you a friend request"
+            'msg' => "Sent you a friend request"
         ];
     }
 

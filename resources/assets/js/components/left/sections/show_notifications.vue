@@ -5,7 +5,7 @@
 
         button.mark(@click="markAsRead") Mark all as read
 
-        .contact(v-for='notification in notifications')
+        .contact(v-for='notification in notifications', v-bind:class='{ new_notification: notification.read == null }')
 
             a
                 avatar.chat_avatar(:username='notification.info.user.name', :src='notification.info.user.avatar', color='#fff')
@@ -68,7 +68,6 @@
         background-color: #fbfbfb;
         border: solid 1px #EEEEEE;
         color: #777777;
-        margin-bottom: 7px;
         -webkit-transition: all .3s ease-out;
         transition: all .3s ease-out;
     }
@@ -76,6 +75,10 @@
     .mark:hover {
         font-weight: bold;
         background-color: #fbfbfb;
+    }
+
+    .new_notification {
+        background-color: #FBFCFC;
     }
 </style>
 

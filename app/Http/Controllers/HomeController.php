@@ -39,26 +39,22 @@ class HomeController extends Controller
 
     public function showNotifications()
     {
-
         $notification = Array();
 
-        foreach (Auth::user()->unreadnotifications as $n):
-            array_push($notification, ['info' => $n->data, 'data' => $n->created_at]);
+        foreach (Auth::user()->notifications as $n):
+            array_push($notification, ['info' => $n->data, 'data' => $n->created_at, 'read' => $n->read_at]);
         endforeach;
 
         return response()->json($notification, 200);
-
     }
 
     public function markAsRead()
     {
-
         foreach (Auth::user()->unreadnotifications as $n):
             $n->markAsRead();
         endforeach;
 
         return response()->json('done', 200);
-
     }
 
 }
