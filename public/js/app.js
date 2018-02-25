@@ -41081,10 +41081,10 @@ var render = function() {
     "div",
     { attrs: { id: "private_app" } },
     [
-      _vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e(),
       _c("button", { staticClass: "mark", on: { click: _vm.markAsRead } }, [
         _vm._v("Mark all as read")
       ]),
+      _vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e(),
       _vm._l(_vm.notifications, function(notification) {
         return _c(
           "div",

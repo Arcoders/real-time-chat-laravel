@@ -32,7 +32,7 @@ class HomeController extends Controller
     {
         return response()->json(
             [
-                'total_notifications' =>Auth::user()->unreadnotifications->count()
+                'total_notifications' => Auth::user()->unreadnotifications->count()
             ],
             200);
     }
@@ -50,9 +50,13 @@ class HomeController extends Controller
 
     public function markAsRead()
     {
-        foreach (Auth::user()->unreadnotifications as $n):
+        $user = Auth::user();
+
+        foreach ($user->unreadnotifications as $n):
             $n->markAsRead();
         endforeach;
+
+        if ($user->notifications->count() >= 10) $user->notifications()->delete();
 
         return response()->json('done', 200);
     }

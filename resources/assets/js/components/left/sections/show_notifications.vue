@@ -1,9 +1,9 @@
 <template lang="pug">
     #private_app
 
-        loading(v-if='loading', :normal='true')
-
         button.mark(@click="markAsRead") Mark all as read
+
+        loading(v-if='loading', :normal='true')
 
         .contact(v-for='notification in notifications', v-bind:class='{ new_notification: notification.read == null }')
 
