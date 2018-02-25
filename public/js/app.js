@@ -40913,7 +40913,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-5d6741d4] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-5d6741d4] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-5d6741d4] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-5d6741d4] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n.chat_avatar[data-v-5d6741d4] {\n    width: 50px;\n    height: 50px;\n    min-width: 50px;\n    min-height: 50px;\n    margin: 12px 20px;\n    border-radius: 50%;\n}\n.photo[data-v-5d6741d4] {\n    margin-right: 5px;\n    color: #eeeeee;\n    font-size: 15px;\n}\n.time[data-v-5d6741d4] {\n    margin-left: 5px;\n    color: #009688;\n    font-size: 25px;\n}\n.middle[data-v-5d6741d4] {\n    margin: auto;\n    color: #aaaaaa;\n}\n.mark[data-v-5d6741d4] {\n    line-height: 40px;\n    width: 100%;\n    background-color: #fbfbfb;\n    border: solid 1px #EEEEEE;\n    color: #777777;\n    -webkit-transition: all .3s ease-out;\n    transition: all .3s ease-out;\n}\n.mark[data-v-5d6741d4]:hover {\n    font-weight: bold;\n    background-color: #fbfbfb;\n}\n.new_notification[data-v-5d6741d4] {\n    background-color: #FBFCFC;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-5d6741d4] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-5d6741d4] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-5d6741d4] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-5d6741d4] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n.chat_avatar[data-v-5d6741d4] {\n    width: 50px;\n    height: 50px;\n    min-width: 50px;\n    min-height: 50px;\n    margin: 12px 20px;\n    border-radius: 50%;\n}\n.photo[data-v-5d6741d4] {\n    margin-right: 5px;\n    color: #eeeeee;\n    font-size: 15px;\n}\n.time[data-v-5d6741d4] {\n    margin-left: 5px;\n    color: #009688;\n    font-size: 25px;\n}\n.middle[data-v-5d6741d4] {\n    margin: auto;\n    color: #aaaaaa;\n}\n.mark[data-v-5d6741d4] {\n    line-height: 40px;\n    width: 100%;\n    background-color: #fbfbfb;\n    border: solid 1px #EEEEEE;\n    color: #777777;\n    -webkit-transition: all .3s ease-out;\n    transition: all .3s ease-out;\n}\n.mark[data-v-5d6741d4]:hover {\n    font-weight: bold;\n    background-color: #fbfbfb;\n}\n.new_notification[data-v-5d6741d4] {\n    background-color: #FBFCFC;\n}\n.green_teal[data-v-5d6741d4] {\n    color: #009688;\n}\n\n", ""]);
 
 // exports
 
@@ -40924,6 +40924,11 @@ exports.push([module.i, "\na[data-v-5d6741d4] {\n    text-decoration: none;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41094,7 +41099,15 @@ var render = function() {
           },
           [
             _c(
-              "a",
+              "router-link",
+              {
+                attrs: {
+                  to: {
+                    name: "profile",
+                    params: { profile_id: notification.info.user.id }
+                  }
+                }
+              },
               [
                 _c("avatar", {
                   staticClass: "chat_avatar",
@@ -41109,9 +41122,26 @@ var render = function() {
             ),
             _c("div", { staticClass: "contact-preview" }, [
               _c("div", { staticClass: "contact-text" }, [
-                _c("h1", { staticClass: "font-name" }, [
-                  _c("a", [_vm._v(_vm._s(notification.info.user.name))])
-                ]),
+                _c(
+                  "h1",
+                  { staticClass: "font-name" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        attrs: {
+                          "exact-active-class": "green_teal",
+                          to: {
+                            name: "profile",
+                            params: { profile_id: notification.info.user.id }
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(notification.info.user.name))]
+                    )
+                  ],
+                  1
+                ),
                 _c("p", { staticClass: "font-preview" }, [
                   _c("a", [_vm._v(_vm._s(notification.info.msg))])
                 ])
@@ -41122,7 +41152,8 @@ var render = function() {
                 _vm._v(_vm._s(_vm._f("moment")(notification.data.date, "H:mm")))
               ])
             ])
-          ]
+          ],
+          1
         )
       })
     ],

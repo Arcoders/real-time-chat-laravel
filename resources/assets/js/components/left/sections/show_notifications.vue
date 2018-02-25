@@ -7,13 +7,14 @@
 
         .contact(v-for='notification in notifications', v-bind:class='{ new_notification: notification.read == null }')
 
-            a
+            router-link(:to="{ name: 'profile', params: { profile_id: notification.info.user.id }}")
                 avatar.chat_avatar(:username='notification.info.user.name', :src='notification.info.user.avatar', color='#fff')
 
             .contact-preview
                 .contact-text
                     h1.font-name
-                        a {{ notification.info.user.name }}
+                        router-link(exact-active-class='green_teal', :to="{ name: 'profile', params: { profile_id: notification.info.user.id }}")
+                            | {{ notification.info.user.name }}
                     p.font-preview
                         a {{ notification.info.msg}}
 
@@ -80,6 +81,10 @@
     .new_notification {
         background-color: #FBFCFC;
     }
+    .green_teal {
+        color: #009688;
+    }
+
 </style>
 
 <script>
