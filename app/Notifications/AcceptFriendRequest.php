@@ -6,8 +6,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Auth;
 
-class FriendRequestAccepted extends Notification
+class AcceptFriendRequest extends Notification
 {
     use Queueable;
 
@@ -46,6 +47,14 @@ class FriendRequestAccepted extends Notification
                     ->line('Thank you for using our application!');
     }
 
+    public function toDatabase($notifiable)
+    {
+        return [
+            'user' => Auth::user(),
+            'msg' => "Accepted your friend request"
+        ];
+    }
+
     /**
      * Get the array representation of the notification.
      *
@@ -55,8 +64,7 @@ class FriendRequestAccepted extends Notification
     public function toArray($notifiable)
     {
         return [
-            'id' => 1,
-            'msg' => 'nuevo amigo'
+            //
         ];
     }
 }

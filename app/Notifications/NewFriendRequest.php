@@ -55,11 +55,8 @@ class NewFriendRequest extends Notification
      */
     public function toDatabase($notifiable)
     {
-
-        $user = Auth::user();
-
         return [
-            'user' => $user,
+            'user' => Auth::user(),
             'msg' => "Sent you a friend request"
         ];
     }

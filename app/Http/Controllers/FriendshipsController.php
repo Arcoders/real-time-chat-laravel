@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Chat;
+use App\Notifications\AcceptFriendRequest;
 use App\Notifications\NewFriendRequest;
 use App\Traits\TriggerPusher;
 use App\User;
@@ -51,7 +52,9 @@ class FriendshipsController extends Controller
             $accept = Auth::user()->accept_friends($id);
             if ($accept)
             {
+                User::find($id)->notify(new AcceptFriendRequest());
                 $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
+                $this->triggerPusher('notification'.$id, 'updateNotifications', []);
                 return response()->json($accept, 200);
             } else {
                 $chat->delete();
