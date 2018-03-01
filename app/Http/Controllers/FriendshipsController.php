@@ -55,6 +55,7 @@ class FriendshipsController extends Controller
                 User::find($id)->notify(new AcceptFriendRequest());
                 $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
                 $this->triggerPusher('notification'.$id, 'updateNotifications', []);
+
                 return response()->json($accept, 200);
             } else {
                 $chat->delete();

@@ -45,7 +45,7 @@
                             span(v-if='group.msg')
                                 span(v-if='group.msg.body && group.msg.photo')
                                     i.material-icons.photo photo
-                                    | {{ group[0].body | truncate(35) }}
+                                    | {{ group.msg.body | truncate(35) }}
                                 span(v-else-if='group.msg.body') {{ group.msg.body | truncate(20) }}
                                 span(v-else-if='group.msg.photo')
                                     i.material-icons.photo photo
@@ -129,6 +129,7 @@
                 loading: false,
                 groups: this.$store.state.groups,
                 friends: this.$store.state.friends,
+                chatIds: [],
                 notFound: false,
                 errorLoad: false
             }
@@ -138,6 +139,8 @@
 
         created() {
             this.$eventBus.$on('update' , (data) => {
+
+                console.log(data);
 
                 switch (data.action) {
 
@@ -155,10 +158,13 @@
                         break;
                 }
 
-                if (data.refresh) this.chatsList();
+                if (data.refresh) {
+                    this.getChatIds();
+                    this.chatsList();
+                }
 
             });
-            this.updateList();
+            this.getChatIds();
         },
 
         // ----------------------------------------------
@@ -192,6 +198,8 @@
                 this.channel = this.$pusher.subscribe('group_chat');
                 this.channel.bind('updateList', (data) => {
 
+                    console.log('aaaaaaaa - group');
+
                     this.$eventBus.$emit('update', {
                         type: 'group',
                         action: 'up',
@@ -201,20 +209,18 @@
 
                 });
 
-                this.$http.get('/get_chats_ids').then(res => {
+                this.chatIds.forEach(id => {
 
-                    res.data.forEach(id => {
+                    this.channel = this.$pusher.subscribe(`friend_chat-${id}`);
+                    this.channel.bind('updateList', (data) => {
 
-                        this.channel = this.$pusher.subscribe(`friend_chat-${id}`);
-                        this.channel.bind('updateList', (data) => {
+                        console.log('aaaaaaaa - chat');
 
-                            this.$eventBus.$emit('update', {
-                                type: 'group',
-                                action: 'up-chat',
-                                chatId: parseInt(data.message.friend_chat),
-                                message: data.message
-                            });
-
+                        this.$eventBus.$emit('update', {
+                            type: 'friend',
+                            action: 'up-chat',
+                            chatId: parseInt(data.message.friend_chat),
+                            message: data.message
                         });
 
                     });
@@ -246,6 +252,19 @@
 
                     this.loading = false;
                     this.errorLoad = true;
+
+                });
+            },
+
+            // ---------------------------------------------------
+
+            getChatIds() {
+                this.$http.get('/get_chats_ids').then(res => {
+
+                    if (res.status === 200) {
+                        this.chatIds = res.data;
+                        this.updateList();
+                    }
 
                 });
             },

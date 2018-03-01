@@ -39582,6 +39582,7 @@ var arrayFindIndex = __webpack_require__(125);
             loading: false,
             groups: this.$store.state.groups,
             friends: this.$store.state.friends,
+            chatIds: [],
             notFound: false,
             errorLoad: false
         };
@@ -39594,6 +39595,8 @@ var arrayFindIndex = __webpack_require__(125);
         var _this = this;
 
         this.$eventBus.$on('update', function (data) {
+
+            console.log(data);
 
             switch (data.action) {
 
@@ -39611,9 +39614,12 @@ var arrayFindIndex = __webpack_require__(125);
                     break;
             }
 
-            if (data.refresh) _this.chatsList();
+            if (data.refresh) {
+                _this.getChatIds();
+                _this.chatsList();
+            }
         });
-        this.updateList();
+        this.getChatIds();
     },
 
 
@@ -39655,6 +39661,8 @@ var arrayFindIndex = __webpack_require__(125);
             this.channel = this.$pusher.subscribe('group_chat');
             this.channel.bind('updateList', function (data) {
 
+                console.log('aaaaaaaa - group');
+
                 _this2.$eventBus.$emit('update', {
                     type: 'group',
                     action: 'up',
@@ -39663,19 +39671,18 @@ var arrayFindIndex = __webpack_require__(125);
                 });
             });
 
-            this.$http.get('/get_chats_ids').then(function (res) {
+            this.chatIds.forEach(function (id) {
 
-                res.data.forEach(function (id) {
+                _this2.channel = _this2.$pusher.subscribe('friend_chat-' + id);
+                _this2.channel.bind('updateList', function (data) {
 
-                    _this2.channel = _this2.$pusher.subscribe('friend_chat-' + id);
-                    _this2.channel.bind('updateList', function (data) {
+                    console.log('aaaaaaaa - chat');
 
-                        _this2.$eventBus.$emit('update', {
-                            type: 'group',
-                            action: 'up-chat',
-                            chatId: parseInt(data.message.friend_chat),
-                            message: data.message
-                        });
+                    _this2.$eventBus.$emit('update', {
+                        type: 'friend',
+                        action: 'up-chat',
+                        chatId: parseInt(data.message.friend_chat),
+                        message: data.message
                     });
                 });
             });
@@ -39704,6 +39711,21 @@ var arrayFindIndex = __webpack_require__(125);
 
                 _this3.loading = false;
                 _this3.errorLoad = true;
+            });
+        },
+
+
+        // ---------------------------------------------------
+
+        getChatIds: function getChatIds() {
+            var _this4 = this;
+
+            this.$http.get('/get_chats_ids').then(function (res) {
+
+                if (res.status === 200) {
+                    _this4.chatIds = res.data;
+                    _this4.updateList();
+                }
             });
         },
 
@@ -40588,7 +40610,7 @@ var render = function() {
                                         _vm._v(
                                           _vm._s(
                                             _vm._f("truncate")(
-                                              group[0].body,
+                                              group.msg.body,
                                               35
                                             )
                                           )
