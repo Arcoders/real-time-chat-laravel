@@ -140,8 +140,6 @@
         created() {
             this.$eventBus.$on('update' , (data) => {
 
-                console.log(data);
-
                 switch (data.action) {
 
                     case 'filter':
@@ -198,8 +196,6 @@
                 this.channel = this.$pusher.subscribe('group_chat');
                 this.channel.bind('updateList', (data) => {
 
-                    console.log('aaaaaaaa - group');
-
                     this.$eventBus.$emit('update', {
                         type: 'group',
                         action: 'up',
@@ -213,8 +209,6 @@
 
                     this.channel = this.$pusher.subscribe(`friend_chat-${id}`);
                     this.channel.bind('updateList', (data) => {
-
-                        console.log('aaaaaaaa - chat');
 
                         this.$eventBus.$emit('update', {
                             type: 'friend',

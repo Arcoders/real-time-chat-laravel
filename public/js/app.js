@@ -39596,8 +39596,6 @@ var arrayFindIndex = __webpack_require__(125);
 
         this.$eventBus.$on('update', function (data) {
 
-            console.log(data);
-
             switch (data.action) {
 
                 case 'filter':
@@ -39661,8 +39659,6 @@ var arrayFindIndex = __webpack_require__(125);
             this.channel = this.$pusher.subscribe('group_chat');
             this.channel.bind('updateList', function (data) {
 
-                console.log('aaaaaaaa - group');
-
                 _this2.$eventBus.$emit('update', {
                     type: 'group',
                     action: 'up',
@@ -39675,8 +39671,6 @@ var arrayFindIndex = __webpack_require__(125);
 
                 _this2.channel = _this2.$pusher.subscribe('friend_chat-' + id);
                 _this2.channel.bind('updateList', function (data) {
-
-                    console.log('aaaaaaaa - chat');
 
                     _this2.$eventBus.$emit('update', {
                         type: 'friend',
