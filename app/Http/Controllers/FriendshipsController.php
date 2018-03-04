@@ -16,13 +16,17 @@ class FriendshipsController extends Controller
     public function check($id)
     {
 
+        //return Auth::user()->friends();
+
         return response()->json(['status' => Auth::user()->checkFriendship($id)], 200);
 
     }
 
     public function addFriend($id)
     {
+
         return response()->json(Auth::user()->add_friend($id), 200);
+
     }
 
     public function acceptFriend($id)
@@ -45,12 +49,16 @@ class FriendshipsController extends Controller
 
     public function rejectFriendship($id)
     {
+
         return response()->json(Auth::user()->reject_friendships($id), 200);
+
     }
 
     public function getFriendForChat($friend_id)
     {
+
         return response()->json(User::find($friend_id), 200);
+
     }
 
 }

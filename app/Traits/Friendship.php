@@ -75,10 +75,12 @@ trait Friendship
 
     public function friends($justId = null)
     {
-        $friendsIds = array_merge(
-            ModelFriends::whereSender($this)->accepted(1)->get(['requested'])->toArray(),
-            ModelFriends::whereSender($this)->accepted(1)->get(['requester'])->toArray()
-        );
+
+        $recipients = ModelFriends::whereSender($this)->accepted(1)->get(['requested'])->toArray();
+
+        $senders = ModelFriends::whereRecipient($this)->accepted(1)->get(['requester'])->toArray();
+
+        $friendsIds = array_merge($recipients, $senders);
 
         if ($justId) return static::whereIn('id', $friendsIds)->pluck('id')->toArray();
 
@@ -87,16 +89,16 @@ trait Friendship
 
     public function friendRequestsReceived()
     {
-        $senders = ModelFriends::whereRecipient($this)->accepted(0)->get(['requester'])->toArray();
-
-        return static::whereIn('id', $senders)->get();
+        return static::whereIn(
+            'id', ModelFriends::whereRecipient($this)->accepted(0)->get(['requester'])->toArray()
+        )->get();
     }
 
     public function friendRequestsSent()
     {
-        $recipients = ModelFriends::whereSender($this)->accepted(0)->get(['requested'])->toArray();
-
-        return static::whereIn('id', $recipients)->get();
+        return static::whereIn(
+            'id', ModelFriends::whereSender($this)->accepted(0)->get(['requested'])->toArray()
+        )->get();
     }
 
     public function checkFriendship($id)
