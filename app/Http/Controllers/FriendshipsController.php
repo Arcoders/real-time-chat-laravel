@@ -27,38 +27,25 @@ class FriendshipsController extends Controller
     public function addFriend($id)
     {
         $add = Auth::user()->add_friend($id);
-        if ($add)
-        {
-            User::find($id)->notify(new NewFriendRequest());
-            $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
-            $this->triggerPusher('notification'.$id, 'updateNotifications', []);
-            return response()->json($add, 200);
-        }
+
+        if ($add) return response()->json($add, 200);
     }
 
     public function acceptFriend($id)
     {
 
-        $chat= new Chat();
-        $chat->user_id = Auth::user()->id;
-        $chat->friend_id = $id;
+        $accept = Auth::user()->accept_friends($id);
 
-        if ($chat->save())
-        {
-            $accept = Auth::user()->accept_friends($id);
-            if ($accept)
-            {
-                User::find($id)->notify(new AcceptFriendRequest());
-                $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
-                $this->triggerPusher('notification'.$id, 'updateNotifications', []);
+        if ($accept == 'friends') {
 
-                return response()->json($accept, 200);
-            } else {
-                $chat->delete();
-            }
-        } else {
-            return response()->json('pending', 200);
+            $chat= new Chat();
+            $chat->user_id = Auth::user()->id;
+            $chat->friend_id = $id;
+            $chat->save();
+
         }
+
+        return response()->json($accept, 200);
 
     }
 
@@ -66,19 +53,13 @@ class FriendshipsController extends Controller
     {
         $reject = Auth::user()->reject_friendships($id);
 
-        if ($reject)
-        {
-            $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
-            return response()->json($reject, 200);
-        }
+        if ($reject) return response()->json($reject, 200);
 
     }
 
     protected function status($type)
     {
-        return response()->json([
-            'status' => $type
-        ], 200);
+        return response()->json(['status' => $type], 200);
     }
 
     public function getFriendForChat($friend_id)

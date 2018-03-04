@@ -2,10 +2,14 @@
 
 namespace App\Traits;
 use App\Friendship as ModelFriends;
+use App\Notifications\AcceptFriendRequest;
+use App\Notifications\NewFriendRequest;
 use App\User;
 
 trait Friendship
 {
+
+    use TriggerPusher;
 
     public function add_friend($recipientId)
     {
@@ -14,10 +18,13 @@ trait Friendship
 
         if ($status == 'add') {
 
-            ModelFriends::create([
-                    'requester' => $this->id,
-                    'requested' => $recipientId]
-            );
+            ModelFriends::create(['requester' => $this->id, 'requested' => $recipientId]);
+
+            User::find($recipientId)->notify(new NewFriendRequest());
+
+            $this->triggerPusher('user'.$recipientId, 'updateStatus', ['update' => true]);
+
+            $this->triggerPusher('notification'.$recipientId, 'updateNotifications', []);
 
             return 'waiting';
         }
@@ -26,14 +33,20 @@ trait Friendship
 
     }
 
-    public function accept_friends($sender)
+    public function accept_friends($senderId)
     {
 
-        $status = $this->checkFriendship($sender);
+        $status = $this->checkFriendship($senderId);
 
         if ($status == 'pending') {
 
-            ModelFriends::betweenUsers($this, User::find($sender))->update(['status' => 1]);
+            ModelFriends::betweenUsers($this, User::find($senderId))->update(['status' => 1]);
+
+            User::find($senderId)->notify(new AcceptFriendRequest());
+
+            $this->triggerPusher('user'.$senderId, 'updateStatus', ['update' => true]);
+
+            $this->triggerPusher('notification'.$senderId, 'updateNotifications', []);
 
             return 'friends';
         }
@@ -42,14 +55,16 @@ trait Friendship
 
     }
 
-    public function reject_friendships($user)
+    public function reject_friendships($userId)
     {
 
-        $status = $this->checkFriendship($user);
+        $status = $this->checkFriendship($userId);
 
         if ($status != 'add') {
 
-            ModelFriends::betweenUsers($this, User::find($user))->delete();
+            ModelFriends::betweenUsers($this, User::find($userId))->delete();
+
+            $this->triggerPusher('user'.$userId, 'updateStatus', ['update' => true]);
 
             return 'add';
         }
