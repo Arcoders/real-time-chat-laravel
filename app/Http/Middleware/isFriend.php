@@ -16,7 +16,6 @@ class isFriend
      */
     public function handle($request, Closure $next)
     {
-        $friendsIds = Auth::user()->friends();
-        if (in_array($request['friend_id'], $friendsIds)) return $next($request);
+        if (Auth::user()->isFriendsWith($request['friend_id'])) return $next($request);
     }
 }

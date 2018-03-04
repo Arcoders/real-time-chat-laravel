@@ -116,4 +116,9 @@ trait Friendship
         if ($friendship->requested == $this->id)  return 'pending';
     }
 
+    public function isFriendsWith($user)
+    {
+        return $this->checkFriendship($user) === 'friends';
+    }
+
 }

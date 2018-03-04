@@ -16,7 +16,7 @@ class FriendshipsController extends Controller
     public function check($id)
     {
 
-        //return Auth::user()->friends();
+        //$data = Auth::user()->isFriendsWith($id);
 
         return response()->json(['status' => Auth::user()->checkFriendship($id)], 200);
 
