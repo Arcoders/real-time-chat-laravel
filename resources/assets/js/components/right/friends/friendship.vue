@@ -125,10 +125,7 @@
 
                     this.loading = false;
 
-                    if (response.status === 200) {
-                        if (response.body === 'deleted') this.status = 'add';
-                        if (response.body === 'pending') this.status = 'pending';
-                    }
+                    if (response.status === 200) this.status = response.body;
 
                 });
             }

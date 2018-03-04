@@ -18,15 +18,9 @@ class FriendshipsController extends Controller
 
         $user = Auth::user();
 
-        return $user->friendRequestsSent();
+        $relation = $user->checkFriendship($id);
 
-        if (in_array($id, $user->friends())) return $this->status('friends');
-
-        if (in_array($id, $user->pending_friend_requests())) return $this->status('pending');
-
-        if (in_array($id, $user->pending_friend_requests_sent())) return $this->status('waiting');
-
-        return $this->status('add');
+        return $this->status($relation);
 
     }
 
@@ -71,11 +65,13 @@ class FriendshipsController extends Controller
     public function rejectFriendship($id)
     {
         $reject = Auth::user()->reject_friendships($id);
+
         if ($reject)
         {
             $this->triggerPusher('user'.$id, 'updateStatus', ['update' => true]);
             return response()->json($reject, 200);
         }
+
     }
 
     protected function status($type)

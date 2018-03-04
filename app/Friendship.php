@@ -33,4 +33,21 @@ class Friendship extends Model
         return $query->where('requested', $model->getKey());
     }
 
+    public function scopeBetweenUsers($query, $sender, $recipient)
+    {
+        $query->where(function ($queryIn) use ($sender, $recipient) {
+
+            $queryIn->where(function ($q) use ($sender, $recipient) {
+
+                $q->whereSender($sender)->whereRecipient($recipient);
+
+            })->orWhere(function ($q) use ($sender, $recipient) {
+
+                $q->whereSender($recipient)->whereRecipient($sender);
+
+            });
+
+        });
+    }
+
 }

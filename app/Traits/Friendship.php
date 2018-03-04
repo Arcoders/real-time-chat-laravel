@@ -2,75 +2,72 @@
 
 namespace App\Traits;
 use App\Friendship as ModelFriends;
+use App\User;
 
 trait Friendship
 {
 
-    public function add_friend($id)
+    public function add_friend($recipientId)
     {
-        if ($this->id === $id) return false;
 
-        if (in_array($id, $this->friends())) return 'friends';
+        $status = $this->checkFriendship($recipientId);
 
-        if (in_array($id, $this->pending_friend_requests_sent())) return 'waiting';
+        if ($status == 'add') {
 
-        if (in_array($id, $this->pending_friend_requests())) return $this->accept_friends($id);
+            ModelFriends::create([
+                    'requester' => $this->id,
+                    'requested' => $recipientId]
+            );
 
-        $Friendship = ModelFriends::create([
-            'requester' => $this->id,
-            'requested' => $id
-        ]);
+            return 'waiting';
+        }
 
-        return ($Friendship) ? 'waiting' : 'add';
+        return $status;
+
     }
 
-    public function accept_friends($requester)
+    public function accept_friends($sender)
     {
-        if (!in_array($requester, $this->pending_friend_requests())) return 'pending';
 
-        $Friendship = ModelFriends::where('requester', $requester)->where('requested', $this->id)->update([ 'status' => 1 ]);
+        $status = $this->checkFriendship($sender);
 
-        return ($Friendship) ? 'friends' : 'pending';
+        if ($status == 'pending') {
+
+            ModelFriends::betweenUsers($this, User::find($sender))->update(['status' => 1]);
+
+            return 'friends';
+        }
+
+        return $status;
+
     }
 
-    public function reject_friendships($requester)
+    public function reject_friendships($user)
     {
-        if (!in_array($requester, $this->pending_friend_requests())) return 0;
 
-        $Friendship = ModelFriends::where('requester', $requester)->where('requested', $this->id)->delete();
+        $status = $this->checkFriendship($user);
 
-        return ($Friendship) ? 'deleted' : 'pending';
+        if ($status != 'add') {
+
+            ModelFriends::betweenUsers($this, User::find($user))->delete();
+
+            return 'add';
+        }
+
+        return $status;
+
     }
 
-    public function friends($user = null)
+    public function friends($justId = null)
     {
-        return array_merge(
-            $this->filter(1, 'requester', $user ? 'requester' : 'requester.id'),
-            $this->filter(1, 'requested', $user ? 'requested' : 'requested.id')
+        $friendsIds = array_merge(
+            ModelFriends::whereSender($this)->accepted(1)->get(['requested'])->toArray(),
+            ModelFriends::whereSender($this)->accepted(1)->get(['requester'])->toArray()
         );
-    }
 
-    public function pending_friend_requests()
-    {
-        return $this->filter(0, 'requested', 'requested.id');
-    }
+        if ($justId) return static::whereIn('id', $friendsIds)->pluck('id')->toArray();
 
-    public function pending_friend_requests_sent()
-    {
-        return $this->filter(0, 'requester', 'requester.id');
-    }
-
-    protected function filter($status, $type, $data)
-    {
-        $result = array();
-
-        $Friendships = ModelFriends::accepted($status)->where($type, $this->id)->with($type)->get()->toArray();
-
-        foreach ($Friendships as $friend):
-            array_push($result, array_get($friend, $data));
-        endforeach;
-
-        return $result;
+        return static::whereIn('id', $friendsIds)->get();
     }
 
     public function friendRequestsReceived()
@@ -85,6 +82,21 @@ trait Friendship
         $recipients = ModelFriends::whereSender($this)->accepted(0)->get(['requested'])->toArray();
 
         return static::whereIn('id', $recipients)->get();
+    }
+
+    public function checkFriendship($id)
+    {
+        if ($this->id == $id) return 'same_user';
+
+        $friendship = ModelFriends::betweenUsers($this, User::find($id))->first();
+
+        if (!$friendship) return 'add';
+
+        if ($friendship->status == 1) return 'friends';
+
+        if ($friendship->requester == $this->id) return 'waiting';
+
+        if ($friendship->requested == $this->id)  return 'pending';
     }
 
 }

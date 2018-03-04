@@ -42095,10 +42095,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this5.loading = false;
 
-                if (response.status === 200) {
-                    if (response.body === 'deleted') _this5.status = 'add';
-                    if (response.body === 'pending') _this5.status = 'pending';
-                }
+                if (response.status === 200) _this5.status = response.body;
             });
         }
 
