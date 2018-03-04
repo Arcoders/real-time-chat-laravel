@@ -10,7 +10,7 @@
                     i.material-icons near_me
                 button(v-if="status == 'friends'")
                     i.material-icons favorite
-            .delete_friend.style_friend(v-if="status == 'pending'")
+            .delete_friend.style_friend(v-if="status == 'pending' || status == 'waiting'")
                 button(@click='reject_friendship')
                     i.material-icons clear
         loading(v-if='loading')
@@ -85,10 +85,7 @@
 
                     this.loading = false;
 
-                    if (response.status === 200) {
-                        if (response.body === 'waiting') this.status = 'waiting';
-                        if (response.body === 'add') this.status = 'add';
-                    }
+                    if (response.status === 200) this.status = response.body;
 
                 });
             },
@@ -104,12 +101,11 @@
 
                     if (response.status === 200) {
 
-                        if (response.body === 'friends') {
-                            this.status = 'friends';
+                        this.status = response.body;
+
+                        if (this.status === 'friends') {
                             this.$eventBus.$emit('update', {type: 'friend', refresh: true, profileId: this.profile_user_id});
                         }
-
-                        if (response.body === 'pending') this.status = 'pending';
 
                     }
 

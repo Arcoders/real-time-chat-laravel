@@ -42052,10 +42052,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this3.loading = false;
 
-                if (response.status === 200) {
-                    if (response.body === 'waiting') _this3.status = 'waiting';
-                    if (response.body === 'add') _this3.status = 'add';
-                }
+                if (response.status === 200) _this3.status = response.body;
             });
         },
 
@@ -42073,12 +42070,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status === 200) {
 
-                    if (response.body === 'friends') {
-                        _this4.status = 'friends';
+                    _this4.status = response.body;
+
+                    if (_this4.status === 'friends') {
                         _this4.$eventBus.$emit('update', { type: 'friend', refresh: true, profileId: _this4.profile_user_id });
                     }
-
-                    if (response.body === 'pending') _this4.status = 'pending';
                 }
             });
         },
@@ -42148,7 +42144,7 @@ var render = function() {
                   ])
                 : _vm._e()
             ]),
-            _vm.status == "pending"
+            _vm.status == "pending" || _vm.status == "waiting"
               ? _c("div", { staticClass: "delete_friend style_friend" }, [
                   _c("button", { on: { click: _vm.reject_friendship } }, [
                     _c("i", { staticClass: "material-icons" }, [
