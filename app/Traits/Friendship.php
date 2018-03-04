@@ -64,13 +64,27 @@ trait Friendship
     {
         $result = array();
 
-        $Friendships = ModelFriends::where('status', $status)->where($type, $this->id)->with($type)->get()->toArray();
+        $Friendships = ModelFriends::accepted($status)->where($type, $this->id)->with($type)->get()->toArray();
 
         foreach ($Friendships as $friend):
             array_push($result, array_get($friend, $data));
         endforeach;
 
         return $result;
+    }
+
+    public function friendRequestsReceived()
+    {
+        $senders = ModelFriends::whereRecipient($this)->accepted(0)->get(['requester'])->toArray();
+
+        return static::whereIn('id', $senders)->get();
+    }
+
+    public function friendRequestsSent()
+    {
+        $recipients = ModelFriends::whereSender($this)->accepted(0)->get(['requested'])->toArray();
+
+        return static::whereIn('id', $recipients)->get();
     }
 
 }

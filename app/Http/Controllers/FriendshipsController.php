@@ -18,6 +18,8 @@ class FriendshipsController extends Controller
 
         $user = Auth::user();
 
+        return $user->friendRequestsSent();
+
         if (in_array($id, $user->friends())) return $this->status('friends');
 
         if (in_array($id, $user->pending_friend_requests())) return $this->status('pending');
