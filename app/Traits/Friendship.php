@@ -22,9 +22,9 @@ trait Friendship
 
             User::find($recipientId)->notify(new NewFriendRequest());
 
-            $this->triggerPusher('user'.$recipientId, 'updateStatus', ['update' => true]);
+            $this->triggerPusher("user$recipientId", 'updateStatus', ['update' => true]);
 
-            $this->triggerPusher('notification'.$recipientId, 'updateNotifications', []);
+            $this->triggerPusher("notification$recipientId", 'updateNotifications', []);
 
             return 'waiting';
         }
@@ -44,9 +44,9 @@ trait Friendship
 
             User::find($senderId)->notify(new AcceptFriendRequest());
 
-            $this->triggerPusher('user'.$senderId, 'updateStatus', ['update' => true]);
+            $this->triggerPusher("user$senderId", 'updateStatus', ['update' => true]);
 
-            $this->triggerPusher('notification'.$senderId, 'updateNotifications', []);
+            $this->triggerPusher("notification$senderId", 'updateNotifications', []);
 
             return 'friends';
         }
@@ -64,7 +64,7 @@ trait Friendship
 
             ModelFriends::betweenUsers($this, User::find($userId))->delete();
 
-            $this->triggerPusher('user'.$userId, 'updateStatus', ['update' => true]);
+            $this->triggerPusher("user$userId", 'updateStatus', ['update' => true]);
 
             return 'add';
         }
