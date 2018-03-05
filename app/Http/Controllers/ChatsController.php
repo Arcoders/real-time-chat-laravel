@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Chat;
+use App\Friendship;
 use App\Message;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,9 +23,7 @@ class ChatsController extends Controller
         $allGroups = array();
 
         foreach (Auth::user()->groups as $group):
-
-            array_push($allGroups, collect($group)->prepend(Message::where('group_chat', $group->id)->get()->last(), 'msg'));
-
+            array_push($allGroups, collect($group)->prepend($group->messages->last(), 'msg'));
         endforeach;
 
         return $allGroups;
@@ -36,13 +35,13 @@ class ChatsController extends Controller
         $user = Auth::user();
         $allChats = array();
 
-        $a = Chat::where('friend_id', $user->id)->select('id', 'user_id')->with('user')->get()->toArray();
+        $a = Friendship::whereSender($user)->accepted(1)->select('id', 'requested')->with('friend')->get();
 
-        $b = Chat::where('user_id', $user->id)->select('id', 'friend_id')->with('friend')->get()->toArray();
+        $b = Friendship::whereRecipient($user)->accepted(1)->select('id', 'requester')->with('user')->get();
 
-        foreach (array_merge($a, $b) as $chat):
+        foreach ($a->merge($b) as $chat):
 
-            array_push($allChats, collect($chat)->prepend(Message::where('friend_chat', $chat['id'])->get()->last(), 'msg'));
+            array_push($allChats, collect($chat)->prepend($chat->messages->last(), 'msg'));
 
         endforeach;
 
@@ -52,11 +51,14 @@ class ChatsController extends Controller
 
     public function myChats()
     {
-        $user_id = Auth::user()->id;
+        $user = Auth::user();
 
-        $chat = Chat::where('user_id', $user_id)->orWhere('friend_id', $user_id)->pluck('id');
+        $chats = array_merge(
+            Friendship::whereSender($user)->accepted(1)->pluck('id')->toArray(),
+            Friendship::whereRecipient($user)->accepted(1)->pluck('id')->toArray()
+        );
 
-        if ($chat) return response()->json($chat, 200);
+        return response()->json($chats, 200);
 
     }
 

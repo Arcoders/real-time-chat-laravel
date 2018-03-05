@@ -30,18 +30,7 @@ class FriendshipsController extends Controller
     public function acceptFriend($id)
     {
 
-        $accept = Auth::user()->accept_friends($id);
-
-        if ($accept == 'friends') {
-
-            $chat= new Chat();
-            $chat->user_id = Auth::user()->id;
-            $chat->friend_id = $id;
-            $chat->save();
-
-        }
-
-        return response()->json($accept, 200);
+        return response()->json(Auth::user()->accept_friends($id), 200);
 
     }
 

@@ -44,9 +44,4 @@ class User extends Authenticatable
         return $this->hasOne(Online::class);
     }
 
-    public function chat()
-    {
-        return $this->hasOne(Chat::class);
-    }
-
 }

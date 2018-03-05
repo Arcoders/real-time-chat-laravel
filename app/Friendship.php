@@ -50,4 +50,19 @@ class Friendship extends Model
         });
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'friend_chat');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'requester');
+    }
+
+    public function friend()
+    {
+        return $this->belongsTo(User::class, 'requested');
+    }
+
 }
