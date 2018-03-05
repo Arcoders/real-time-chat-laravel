@@ -42153,7 +42153,7 @@ var render = function() {
                   ])
                 : _vm._e()
             ]),
-            _vm.status != "add"
+            _vm.status == "pending" || _vm.status == "waiting"
               ? _c("div", { staticClass: "delete_friend style_friend" }, [
                   _c("button", { on: { click: _vm.reject_friendship } }, [
                     _c("i", { staticClass: "material-icons" }, [
