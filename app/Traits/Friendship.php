@@ -76,9 +76,9 @@ trait Friendship
     public function friends($justId = null)
     {
 
-        $recipients = ModelFriends::whereSender($this)->accepted(1)->get(['requested'])->toArray();
+        $recipients = ModelFriends::accepted(1)->whereSender($this)->get(['requested'])->toArray();
 
-        $senders = ModelFriends::whereRecipient($this)->accepted(1)->get(['requester'])->toArray();
+        $senders = ModelFriends::accepted(1)->whereRecipient($this)->get(['requester'])->toArray();
 
         $friendsIds = array_merge($recipients, $senders);
 
@@ -90,14 +90,14 @@ trait Friendship
     public function friendRequestsReceived()
     {
         return static::whereIn(
-            'id', ModelFriends::whereRecipient($this)->accepted(0)->get(['requester'])->toArray()
+            'id', ModelFriends::accepted(0)->whereRecipient($this)->get(['requester'])->toArray()
         )->get();
     }
 
     public function friendRequestsSent()
     {
         return static::whereIn(
-            'id', ModelFriends::whereSender($this)->accepted(0)->get(['requested'])->toArray()
+            'id', ModelFriends::accepted(0)->whereSender($this)->get(['requested'])->toArray()
         )->get();
     }
 
