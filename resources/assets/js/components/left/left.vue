@@ -42,7 +42,7 @@
         section(v-show="!showNotification")
 
             .contact-list
-                list(:showChatList='myChatList')
+                list(:showChatList='myChatList', :my_id='auth_user.id')
 
 </template>
 

@@ -193,6 +193,12 @@
 
             updateList() {
 
+
+                this.channel = this.$pusher.subscribe('user' + this.my_id);
+                this.channel.bind('updateStatus', () => {
+                    this.$eventBus.$emit('update', {refresh: true});
+                });
+
                 this.channel = this.$pusher.subscribe('group_chat');
                 this.channel.bind('updateList', (data) => {
 

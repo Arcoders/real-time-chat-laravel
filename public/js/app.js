@@ -39110,7 +39110,11 @@ var render = function() {
           _c(
             "div",
             { staticClass: "contact-list" },
-            [_c("list", { attrs: { showChatList: _vm.myChatList } })],
+            [
+              _c("list", {
+                attrs: { showChatList: _vm.myChatList, my_id: _vm.auth_user.id }
+              })
+            ],
             1
           )
         ]
@@ -39655,6 +39659,11 @@ var arrayFindIndex = __webpack_require__(125);
 
         updateList: function updateList() {
             var _this2 = this;
+
+            this.channel = this.$pusher.subscribe('user' + this.my_id);
+            this.channel.bind('updateStatus', function () {
+                _this2.$eventBus.$emit('update', { refresh: true });
+            });
 
             this.channel = this.$pusher.subscribe('group_chat');
             this.channel.bind('updateList', function (data) {

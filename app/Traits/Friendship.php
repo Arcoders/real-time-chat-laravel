@@ -22,7 +22,7 @@ trait Friendship
 
             User::find($recipientId)->notify(new NewFriendRequest());
 
-            $this->triggerPusher("user$recipientId", 'updateStatus', ['update' => true]);
+            $this->triggerPusher("user$recipientId", 'updateStatus', []);
 
             $this->triggerPusher("notification$recipientId", 'updateNotifications', []);
 
