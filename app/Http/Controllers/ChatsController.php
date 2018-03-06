@@ -12,44 +12,31 @@ class ChatsController extends Controller
 
     public function chatsList()
     {
-        return response()->json([
-            'groups' => $this->chatGroups(),
-            'friends' => $this->chatFriends()
-        ], 200);
+
+        $chats = [
+            'groups' => $this->getLastMessage(Auth::user()->groups),
+            'friends' => $this->getLastMessage(Auth::user()->chats())
+        ];
+
+        return response()->json($chats, 200);
     }
-
-    protected function chatGroups()
-    {
-        $allGroups = array();
-
-        foreach (Auth::user()->groups as $group):
-            array_push($allGroups, $this->lastMessage($group));
-        endforeach;
-
-        return $allGroups;
-    }
-
-    protected function chatFriends()
-    {
-        $allChats = array();
-
-        foreach (Auth::user()->chats() as $chat):
-
-            array_push($allChats, $this->lastMessage($chat));
-
-        endforeach;
-
-        return $allChats;
-    }
-
+    
     public function myChats()
     {
         return response()->json(Auth::user()->chatsIds(), 200);
     }
 
-    protected function lastMessage($chat) {
+    protected function getLastMessage($chats) {
 
-        return collect($chat)->prepend($chat->messages->last(), 'msg');
+        $data = array();
+
+        foreach ($chats as $chat):
+
+            array_push($data, collect($chat)->prepend($chat->messages->last(), 'msg'));
+
+        endforeach;
+
+        return $data;
 
     }
 
