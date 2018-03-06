@@ -121,4 +121,22 @@ trait Friendship
         return $this->checkFriendship($user) === 'friends';
     }
 
+    public function chats() {
+
+        $a = ModelFriends::whereSender($this)->accepted(1)->select('id', 'requested')->with('friend')->get();
+
+        $b = ModelFriends::whereRecipient($this)->accepted(1)->select('id', 'requester')->with('user')->get();
+
+        return $a->merge($b);
+    }
+
+    public function chatsIds() {
+
+        $a = ModelFriends::whereSender($this)->accepted(1)->pluck('id')->toArray();
+
+        $b = ModelFriends::whereRecipient($this)->accepted(1)->pluck('id')->toArray();
+
+        return  array_merge($a, $b);
+    }
+
 }

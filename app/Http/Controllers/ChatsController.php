@@ -23,7 +23,7 @@ class ChatsController extends Controller
         $allGroups = array();
 
         foreach (Auth::user()->groups as $group):
-            array_push($allGroups, collect($group)->prepend($group->messages->last(), 'msg'));
+            array_push($allGroups, $this->lastMessage($group));
         endforeach;
 
         return $allGroups;
@@ -31,34 +31,25 @@ class ChatsController extends Controller
 
     protected function chatFriends()
     {
-
-        $user = Auth::user();
         $allChats = array();
 
-        $a = Friendship::whereSender($user)->accepted(1)->select('id', 'requested')->with('friend')->get();
+        foreach (Auth::user()->chats() as $chat):
 
-        $b = Friendship::whereRecipient($user)->accepted(1)->select('id', 'requester')->with('user')->get();
-
-        foreach ($a->merge($b) as $chat):
-
-            array_push($allChats, collect($chat)->prepend($chat->messages->last(), 'msg'));
+            array_push($allChats, $this->lastMessage($chat));
 
         endforeach;
 
         return $allChats;
-
     }
 
     public function myChats()
     {
-        $user = Auth::user();
+        return response()->json(Auth::user()->chatsIds(), 200);
+    }
 
-        $chats = array_merge(
-            Friendship::whereSender($user)->accepted(1)->pluck('id')->toArray(),
-            Friendship::whereRecipient($user)->accepted(1)->pluck('id')->toArray()
-        );
+    protected function lastMessage($chat) {
 
-        return response()->json($chats, 200);
+        return collect($chat)->prepend($chat->messages->last(), 'msg');
 
     }
 
