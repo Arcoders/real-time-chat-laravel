@@ -132,9 +132,10 @@ trait Friendship
 
         if ($friendship) {
 
-            $friendship->update(['requester' => $this->id, 'requested' => $id, 'deleted_at' => NULL]);
+            $friendship->update(['requester' => $this->id, 'requested' => $id]);
+            $friendship->restore();
 
-            return true;
+            return $friendship;
 
         }
 
