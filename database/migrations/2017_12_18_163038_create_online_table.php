@@ -19,8 +19,6 @@ class CreateOnlineTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('group_chat')->nullable();
             $table->integer('friend_chat')->nullable();
-            $table->string('timelogin');
-            $table->string('timelogout')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
 

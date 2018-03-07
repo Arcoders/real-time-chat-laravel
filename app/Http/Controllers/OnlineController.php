@@ -15,20 +15,19 @@ class OnlineController extends Controller
     {
 
         $user = Auth::user();
-        $roomName = $r['room_name'];
-        $chatId = $r['chat_id'];
 
         if ($user->online()->count() > 0) return;
 
-        $this->insertOnlineGroup($user->id, $chatId, $roomName);
+        Online::create(['user_id' => $user->id, $r['room_name'] => $r['chat_id']]);
 
-        $this->updateOnlineUsers($chatId, $roomName);
+        $this->updateOnlineUsers($r['chat_id'], $r['room_name']);
 
     }
 
     public function disconnectUser(Request $r)
     {
         Auth::user()->online()->delete();
+
         $this->updateOnlineUsers($r->chat_id, $r->room_name);
     }
 
@@ -40,15 +39,5 @@ class OnlineController extends Controller
             Online::where($room_name, $chat_id)->with('user')->get()->pluck('user')
         );
     }
-
-    protected function insertOnlineGroup($user, $room, $room_name)
-    {
-        $online = new Online();
-        $online->user_id = $user;
-        $online->$room_name = $room;
-        $online->timelogin = time();
-        $online->save();
-    }
-
 
 }
