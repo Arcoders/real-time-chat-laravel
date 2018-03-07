@@ -16,13 +16,9 @@ trait Friendship
 
         $status = $this->checkFriendship($recipientId);
 
-        $data = 'waiting';
-
         if ($status == 'add') {
 
-            $restored = $this->restoreFriendship($recipientId);
-
-            if ($restored == 'create') {
+            if ($this->restoreFriendship($recipientId) == 'create') {
 
                 ModelFriends::create(['requester' => $this->id, 'requested' => $recipientId]);
 
@@ -34,7 +30,7 @@ trait Friendship
 
             $this->triggerPusher("notification$recipientId", 'updateNotifications', []);
 
-            return $data;
+            return 'waiting';
 
         }
 
