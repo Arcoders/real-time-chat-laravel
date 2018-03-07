@@ -20,7 +20,7 @@ class ChatsController extends Controller
 
         return response()->json($chats, 200);
     }
-    
+
     public function myChats()
     {
         return response()->json(Auth::user()->chatsIds(), 200);

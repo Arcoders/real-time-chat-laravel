@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Friendship extends Model
 {
+
+    use SoftDeletes;
 
     protected $fillable = ['requester', 'requested', 'status'];
 
@@ -28,6 +31,7 @@ class Friendship extends Model
     {
         return $query->where('requester', $model->getKey());
     }
+
     public function scopeWhereRecipient($query, $model)
     {
         return $query->where('requested', $model->getKey());

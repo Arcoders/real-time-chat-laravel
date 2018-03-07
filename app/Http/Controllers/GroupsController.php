@@ -70,19 +70,14 @@ class GroupsController extends Controller
 
     public function getGroup($group_id)
     {
-        $group = Group::where('id', $group_id)
-                ->where('user_id', Auth::user()->id)
-                ->with('users')
-                ->first();
+        $group = Group::where('id', $group_id)->where('user_id', Auth::user()->id)->with('users')->first();
 
-        if ($group) return response()->json($group, 200);
+        return response()->json($group,200);
     }
 
     public function listFriends()
     {
-        $friends = Auth::user()->friends(true);
-
-        if ($friends) return response($friends,200);
+        return response(Auth::user()->friends(),200);
     }
 
     public function editGroup($group_id, Request $request)
@@ -97,7 +92,7 @@ class GroupsController extends Controller
             $group->avatar = null;
             $save = $group->save();
 
-            if ($save) return response()->json('Avatar edited successfully', 200);
+            if ($save) return response()->json('Avatar deleted successfully', 200);
         }
 
         $request['id'] = $this->idsToArray($request['id']);
@@ -137,9 +132,7 @@ class GroupsController extends Controller
 
     public function getGroupForChat($group_id)
     {
-        $group = Group::find($group_id);
-
-        if ($group) return response()->json($group, 200);
+        return response()->json(Group::find($group_id), 200);
     }
 
 }

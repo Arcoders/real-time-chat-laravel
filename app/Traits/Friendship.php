@@ -16,9 +16,17 @@ trait Friendship
 
         $status = $this->checkFriendship($recipientId);
 
+        $data = 'waiting';
+
         if ($status == 'add') {
 
-            ModelFriends::create(['requester' => $this->id, 'requested' => $recipientId]);
+            $restored = $this->restoreFriendship($recipientId);
+
+            if ($restored == 'create') {
+
+                ModelFriends::create(['requester' => $this->id, 'requested' => $recipientId]);
+
+            }
 
             User::find($recipientId)->notify(new NewFriendRequest());
 
@@ -26,7 +34,8 @@ trait Friendship
 
             $this->triggerPusher("notification$recipientId", 'updateNotifications', []);
 
-            return 'waiting';
+            return $data;
+
         }
 
         return $status;
@@ -62,7 +71,10 @@ trait Friendship
 
         if ($status != 'add') {
 
-            ModelFriends::betweenUsers($this, User::find($userId))->delete();
+            $relationship = ModelFriends::betweenUsers($this, User::find($userId));
+
+            $relationship->update(['status' => 0]);
+            $relationship->delete();
 
             $this->triggerPusher("user$userId", 'updateStatus', ['update' => true]);
 
@@ -111,9 +123,27 @@ trait Friendship
 
         if ($friendship->status == 1) return 'friends';
 
+        if ($friendship->deleted_ad) return 'they_were_friends';
+
         if ($friendship->requester == $this->id) return 'waiting';
 
         if ($friendship->requested == $this->id)  return 'pending';
+    }
+
+    protected function restoreFriendship($id) {
+
+        $friendship = ModelFriends::withTrashed()->betweenUsers($this, User::find($id))->first();
+
+        if ($friendship) {
+
+            $friendship->update(['requester' => $this->id, 'requested' => $id]);
+            $friendship->restore();
+
+            return $friendship;
+
+        }
+
+        return 'create';
     }
 
     public function isFriendsWith($user)

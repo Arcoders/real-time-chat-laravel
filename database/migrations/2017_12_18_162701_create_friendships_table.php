@@ -24,6 +24,8 @@ class CreateFriendshipsTable extends Migration
             $table->foreign('requester')->references('id')->on('users');
             $table->foreign('requested')->references('id')->on('users');
 
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }

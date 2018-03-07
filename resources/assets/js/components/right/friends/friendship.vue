@@ -10,7 +10,7 @@
                     i.material-icons near_me
                 button(v-if="status == 'friends'")
                     i.material-icons favorite
-            .delete_friend.style_friend(v-if="status == 'pending' || status == 'waiting'")
+            .delete_friend.style_friend(v-if="status != 'add'")
                 button(@click='reject_friendship')
                     i.material-icons clear
         loading(v-if='loading')
