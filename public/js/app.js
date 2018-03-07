@@ -42100,7 +42100,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this5.loading = false;
 
-                if (response.status === 200) _this5.status = response.body;
+                if (response.status === 200) {
+
+                    _this5.status = response.body;
+
+                    _this5.$eventBus.$emit('update', { type: 'friend', refresh: true, profileId: _this5.profile_user_id });
+                }
             });
         }
 

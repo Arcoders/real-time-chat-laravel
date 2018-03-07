@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Chat;
-use App\Friendship;
-use App\Message;
 use Illuminate\Support\Facades\Auth;
 
 class ChatsController extends Controller
