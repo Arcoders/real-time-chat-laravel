@@ -7,6 +7,7 @@ use App\Traits\UploadFiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\TriggerPusher;
+use Illuminate\Support\Facades\Storage;
 
 class MessagesController extends Controller
 {
@@ -28,7 +29,7 @@ class MessagesController extends Controller
                 'photo' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
             ]);
 
-            $photo = $this->processImage($r->file('photo'), $user->id, $this->folder, false);
+            $photo = Storage::url(request()->file('photo')->store('public'));
 
         } else {
 
@@ -64,15 +65,13 @@ class MessagesController extends Controller
 
     protected function saveMessages($r, $photo, $user) {
 
-        $message = new Message();
-        $roomName = $r->roomName;
+        return Message::create([
+            'body' => $r->messageText,
+            'user_id' => $user->id,
+            $r->roomName => $r->chatId,
+            'photo' => $photo
+        ]);
 
-        $message->body = $r->messageText;
-        $message->user_id = $user->id;
-        $message->$roomName = $r->chatId;
-        $message->photo = $photo;
-
-        return $message;
     }
 
     protected function pushMessage(array $data)
