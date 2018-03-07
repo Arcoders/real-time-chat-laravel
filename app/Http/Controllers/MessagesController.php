@@ -74,7 +74,7 @@ class MessagesController extends Controller
 
     protected function pushMessage(array $data)
     {
-        if ($data['message']->save()) {
+        if ($data['message']) {
 
             $this->triggerPusher($data['room_message'], 'pushMessage', [
                 'message' => $data['message'],
