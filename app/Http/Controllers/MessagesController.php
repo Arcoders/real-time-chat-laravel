@@ -49,9 +49,7 @@ class MessagesController extends Controller
 
     public function lastMessagesGroup(Request $r)
     {
-        $count =  Message::where($r->room_name, $r->chat_id)->count();
-
-        return Message::where($r->room_name, $r->chat_id)->with('user')->skip($count - 5)->take(5)->get();
+        return response()->json(Message::lastMessages($r->room_name, $r->chat_id, 5), 200);
     }
 
     public function usersTyping(Request $r)

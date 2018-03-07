@@ -14,5 +14,14 @@ class Message extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function scopeTotalMessages($query, $room, $chat)
+    {
+        return $query->where($room, $chat)->count();
+    }
+
+    public function scopeLastMessages($query, $room, $chat, $num)
+    {
+        return $query->where($room, $chat)->with('user')->skip($this->totalMessages($room, $chat) - $num)->take($num)->get();
+    }
 
 }
