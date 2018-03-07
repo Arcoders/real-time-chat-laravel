@@ -119,8 +119,6 @@ trait Friendship
 
         if ($friendship->status == 1) return 'friends';
 
-        if ($friendship->deleted_ad) return 'they_were_friends';
-
         if ($friendship->requester == $this->id) return 'waiting';
 
         if ($friendship->requested == $this->id)  return 'pending';
