@@ -57,15 +57,16 @@ class GroupsController extends Controller
     public function deleteGroup($group_id)
     {
         $query = Group::where('id', $group_id)->where('user_id', Auth::user()->id);
+
         $group = $query->first();
 
         if ($group->avatar) $this->deleteImage($group->avatar);
 
         $group->users()->detach();
 
-        $delete = $query->delete();
+        $query->delete();
 
-        if ($delete) return response()->json("$group->name was deleted", 200);
+        return response()->json("$group->name was deleted", 200);
     }
 
     public function getGroup($group_id)

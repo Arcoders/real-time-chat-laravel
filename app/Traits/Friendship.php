@@ -132,6 +132,7 @@ trait Friendship
         if ($friendship) {
 
             $friendship->update(['requester' => $this->id, 'requested' => $id]);
+
             $friendship->restore();
 
             return $friendship;
