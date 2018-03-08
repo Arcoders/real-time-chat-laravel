@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Notifications\ManageGroupsNotification;
 use App\Traits\TriggerPusher;
 use App\Traits\UploadFiles;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class GroupsController extends Controller
 {
@@ -66,6 +69,12 @@ class GroupsController extends Controller
 
             $this->triggerPusher("user$user->id", 'updateStatus', ['update' => true]);
 
+            $this->triggerPusher("notification$user->id", 'updateNotifications', []);
+
+            if ($user->id == Auth::user()->id) continue;
+
+            Notification::send($user, new ManageGroupsNotification("$group->name group was archived"));
+
         endforeach;
 
         return response()->json("Group was deleted", 200);
@@ -80,6 +89,12 @@ class GroupsController extends Controller
         foreach ($group->users as $user):
 
             $this->triggerPusher("user$user->id", 'updateStatus', ['update' => true]);
+
+            $this->triggerPusher("notification$user->id", 'updateNotifications', []);
+
+            if ($user->id == Auth::user()->id) continue;
+
+            Notification::send($user, new ManageGroupsNotification("$group->name group was restored"));
 
         endforeach;
 
