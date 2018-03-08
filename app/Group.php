@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Group extends Model
 {
@@ -21,5 +22,11 @@ class Group extends Model
     {
         return $this->belongsToMany(User::class)->withPivot('group_id', 'user_id');
     }
+
+    public function scopeMyGroup($query, $group)
+    {
+        return $query->where('id', $group)->where('user_id', Auth::user()->id);
+    }
+
 
 }

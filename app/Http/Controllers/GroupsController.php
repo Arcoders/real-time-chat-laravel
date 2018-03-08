@@ -56,13 +56,16 @@ class GroupsController extends Controller
 
     public function deleteGroup($group_id)
     {
-        $query = Group::where('id', $group_id)->where('user_id', Auth::user()->id);
-
-        $query->first()->users()->detach();
-
-        $query->delete();
+        Group::myGroup($group_id)->delete();
 
         return response()->json("Group was deleted", 200);
+    }
+
+    public function restoreGroup($group_id)
+    {
+        Group::myGroup($group_id)->restore();
+
+        return response()->json("Group was restored", 200);
     }
 
     public function getGroup($group_id)
@@ -80,6 +83,7 @@ class GroupsController extends Controller
     public function editGroup($group_id, Request $request)
     {
         $user = Auth::user();
+
         $group = Group::find($group_id);
 
         if ($request['deleteImage']) {

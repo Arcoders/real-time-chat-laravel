@@ -15,7 +15,7 @@
                     th Avatar
                     th Name
                     th Edit
-                    th Delete
+                    th Status
             tbody
                 tr.data(v-for='(group, index) in groups')
                     td
@@ -28,8 +28,11 @@
                         router-link(:to="editLink(group)")
                             i.material-icons.green_teal mode_edit
                     td
-                        button.format_button(v-on:click='deleteGroup(group.id, index)')
+                        button.format_button(v-if="!group.deleted_at", v-on:click="changeStatus(group.id, 'delete')")
                             i.material-icons.cool_red delete
+
+                        button.format_button(v-else, v-on:click="changeStatus(group.id, 'restore')")
+                            i.material-icons.orange settings_backup_restore
                 tr(v-if='notFound')
                     td(colspan='4') No records found please
                         router-link.green_teal.link_add(to='/groups/add') Add Group
@@ -52,6 +55,9 @@
     .add:hover {
         background-color: #f1f1f1;
         color: #009688;
+    }
+    .orange {
+        color: #FF9800;
     }
     .group_avatar {
         margin: auto;
@@ -132,17 +138,17 @@
 
             // ---------------------------------------------------
 
-            deleteGroup(group_id, index) {
+            changeStatus(group_id, type) {
 
                 this.loading = true;
 
-                this.$http.delete('/delete_group/' + group_id).then(response => {
+                let url =  (type === 'delete') ? 'delete_group' : 'restore_group';
+
+                this.$http.delete(`/${url}/${group_id}`).then(response => {
 
                     this.loading = false;
 
                     if (response.status === 200) {
-
-                        this.groups.splice(index, 1);
 
                         this.done(response.data);
 

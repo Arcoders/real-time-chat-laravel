@@ -44987,7 +44987,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.data a[data-v-9220cbd4] {\n    text-decoration: none;\n    color: #777777;\n}\n.add[data-v-9220cbd4] {\n    background-color: #fafafa;\n    border-radius: 50%;\n}\n.add[data-v-9220cbd4]:hover {\n    background-color: #f1f1f1;\n    color: #009688;\n}\n.group_avatar[data-v-9220cbd4] {\n    margin: auto;\n}\n.link_add[data-v-9220cbd4] {\n    text-decoration: none;\n}\n.error[data-v-9220cbd4] {\n    color: #E57373;\n}\n", ""]);
+exports.push([module.i, "\n.data a[data-v-9220cbd4] {\n    text-decoration: none;\n    color: #777777;\n}\n.add[data-v-9220cbd4] {\n    background-color: #fafafa;\n    border-radius: 50%;\n}\n.add[data-v-9220cbd4]:hover {\n    background-color: #f1f1f1;\n    color: #009688;\n}\n.orange[data-v-9220cbd4] {\n    color: #FF9800;\n}\n.group_avatar[data-v-9220cbd4] {\n    margin: auto;\n}\n.link_add[data-v-9220cbd4] {\n    text-decoration: none;\n}\n.error[data-v-9220cbd4] {\n    color: #E57373;\n}\n", ""]);
 
 // exports
 
@@ -44998,6 +44998,12 @@ exports.push([module.i, "\n.data a[data-v-9220cbd4] {\n    text-decoration: none
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -45133,18 +45139,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ---------------------------------------------------
 
-        deleteGroup: function deleteGroup(group_id, index) {
+        changeStatus: function changeStatus(group_id, type) {
             var _this2 = this;
 
             this.loading = true;
 
-            this.$http.delete('/delete_group/' + group_id).then(function (response) {
+            var url = type === 'delete' ? 'delete_group' : 'restore_group';
+
+            this.$http.delete('/' + url + '/' + group_id).then(function (response) {
 
                 _this2.loading = false;
 
                 if (response.status === 200) {
-
-                    _this2.groups.splice(index, 1);
 
                     _this2.done(response.data);
 
@@ -45275,22 +45281,39 @@ var render = function() {
                   1
                 ),
                 _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "format_button",
-                      on: {
-                        click: function($event) {
-                          _vm.deleteGroup(group.id, index)
-                        }
-                      }
-                    },
-                    [
-                      _c("i", { staticClass: "material-icons cool_red" }, [
-                        _vm._v("delete")
-                      ])
-                    ]
-                  )
+                  !group.deleted_at
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "format_button",
+                          on: {
+                            click: function($event) {
+                              _vm.changeStatus(group.id, "delete")
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons cool_red" }, [
+                            _vm._v("delete")
+                          ])
+                        ]
+                      )
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "format_button",
+                          on: {
+                            click: function($event) {
+                              _vm.changeStatus(group.id, "restore")
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons orange" }, [
+                            _vm._v("settings_backup_restore")
+                          ])
+                        ]
+                      )
                 ])
               ])
             }),
@@ -45337,7 +45360,7 @@ var staticRenderFns = [
         _c("th", [_vm._v("Avatar")]),
         _c("th", [_vm._v("Name")]),
         _c("th", [_vm._v("Edit")]),
-        _c("th", [_vm._v("Delete")])
+        _c("th", [_vm._v("Status")])
       ])
     ])
   },
