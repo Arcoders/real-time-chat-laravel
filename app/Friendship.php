@@ -22,9 +22,14 @@ class Friendship extends Model
         return $this->belongsTo(User::class, 'requester');
     }
 
-    public function scopeAccepted($query, $val)
+    public function scopeAccepted($query)
     {
-        return $query->where('status', $val);
+        return $query->where('status', 1);
+    }
+
+    public function scopePending($query)
+    {
+        return $query->where('status', 0);
     }
 
     public function scopeWhereSender($query, $model)

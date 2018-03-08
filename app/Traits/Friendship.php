@@ -70,6 +70,7 @@ trait Friendship
             $relationship = ModelFriends::betweenUsers($this, User::find($userId));
 
             $relationship->update(['status' => 0]);
+
             $relationship->delete();
 
             $this->triggerPusher("user$userId", 'updateStatus', ['update' => true]);
@@ -84,9 +85,9 @@ trait Friendship
     public function friends($justId = null)
     {
 
-        $recipients = ModelFriends::accepted(1)->whereSender($this)->get(['requested'])->toArray();
+        $recipients = ModelFriends::accepted()->whereSender($this)->get(['requested'])->toArray();
 
-        $senders = ModelFriends::accepted(1)->whereRecipient($this)->get(['requester'])->toArray();
+        $senders = ModelFriends::accepted()->whereRecipient($this)->get(['requester'])->toArray();
 
         $friendsIds = array_merge($recipients, $senders);
 
@@ -98,14 +99,14 @@ trait Friendship
     public function friendRequestsReceived()
     {
         return static::whereIn(
-            'id', ModelFriends::accepted(0)->whereRecipient($this)->get(['requester'])->toArray()
+            'id', ModelFriends::pending()->whereRecipient($this)->get(['requester'])->toArray()
         )->get();
     }
 
     public function friendRequestsSent()
     {
         return static::whereIn(
-            'id', ModelFriends::accepted(0)->whereSender($this)->get(['requested'])->toArray()
+            'id', ModelFriends::pending()->whereSender($this)->get(['requested'])->toArray()
         )->get();
     }
 
@@ -147,18 +148,18 @@ trait Friendship
 
     public function chats() {
 
-        $a = ModelFriends::whereSender($this)->accepted(1)->select('id', 'requested')->with('friend')->get();
+        $a = ModelFriends::whereSender($this)->accepted()->select('id', 'requested')->with('friend')->get();
 
-        $b = ModelFriends::whereRecipient($this)->accepted(1)->select('id', 'requester')->with('user')->get();
+        $b = ModelFriends::whereRecipient($this)->accepted()->select('id', 'requester')->with('user')->get();
 
         return $a->merge($b);
     }
 
     public function chatsIds() {
 
-        $a = ModelFriends::whereSender($this)->accepted(1)->pluck('id')->toArray();
+        $a = ModelFriends::whereSender($this)->accepted()->pluck('id')->toArray();
 
-        $b = ModelFriends::whereRecipient($this)->accepted(1)->pluck('id')->toArray();
+        $b = ModelFriends::whereRecipient($this)->accepted()->pluck('id')->toArray();
 
         return  array_merge($a, $b);
     }
