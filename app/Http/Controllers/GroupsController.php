@@ -60,11 +60,9 @@ class GroupsController extends Controller
     {
         $group = Group::myGroup($group_id);
 
-        $users = $group->users;
-
         $group->delete();
 
-        foreach ($users as $user):
+        foreach ($group->users as $user):
 
             $this->triggerPusher("user$user->id", 'updateStatus', ['update' => true]);
 
@@ -77,11 +75,9 @@ class GroupsController extends Controller
     {
         $group = Group::myGroup($group_id);
 
-        $users = $group->users;
-
         $group->restore();
 
-        foreach ($users as $user):
+        foreach ($group->users as $user):
 
             $this->triggerPusher("user$user->id", 'updateStatus', ['update' => true]);
 
