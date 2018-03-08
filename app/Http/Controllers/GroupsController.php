@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Traits\TriggerPusher;
 use App\Traits\UploadFiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ class GroupsController extends Controller
 {
 
     use UploadFiles;
+    use TriggerPusher;
 
     protected $folder = '/images/avatars/';
 
@@ -56,21 +58,41 @@ class GroupsController extends Controller
 
     public function deleteGroup($group_id)
     {
-        Group::myGroup($group_id)->delete();
+        $group = Group::myGroup($group_id);
+
+        $users = $group->users;
+
+        $group->delete();
+
+        foreach ($users as $user):
+
+            $this->triggerPusher("user$user->id", 'updateStatus', ['update' => true]);
+
+        endforeach;
 
         return response()->json("Group was deleted", 200);
     }
 
     public function restoreGroup($group_id)
     {
-        Group::myGroup($group_id)->restore();
+        $group = Group::myGroup($group_id);
+
+        $users = $group->users;
+
+        $group->restore();
+
+        foreach ($users as $user):
+
+            $this->triggerPusher("user$user->id", 'updateStatus', ['update' => true]);
+
+        endforeach;
 
         return response()->json("Group was restored", 200);
     }
 
     public function getGroup($group_id)
     {
-        $group = Group::where('id', $group_id)->where('user_id', Auth::user()->id)->with('users')->first();
+        $group = Group::myGroup($group_id);
 
         return response()->json($group,200);
     }

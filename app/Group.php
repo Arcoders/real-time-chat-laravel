@@ -25,7 +25,7 @@ class Group extends Model
 
     public function scopeMyGroup($query, $group)
     {
-        return $query->where('id', $group)->where('user_id', Auth::user()->id);
+        return $query->where('id', $group)->where('user_id', Auth::user()->id)->withTrashed()->with('users')->first();
     }
 
 
