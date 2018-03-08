@@ -44,12 +44,12 @@ class GroupsController extends Controller
 
         $group->users()->sync($request['id']);
 
-        if ($group) return response()->json("$group->name created successfully", 200);
+        return response()->json("$group->name created successfully", 200);
     }
 
     public function myGroups()
     {
-        $groups = Group::where('user_id', Auth::user()->id)->paginate(4);
+        $groups = Group::where('user_id', Auth::user()->id)->withTrashed()->paginate(4);
 
         return response()->json($groups, 200);
     }
@@ -58,15 +58,11 @@ class GroupsController extends Controller
     {
         $query = Group::where('id', $group_id)->where('user_id', Auth::user()->id);
 
-        $group = $query->first();
-
-        if ($group->avatar) $this->deleteImage($group->avatar);
-
-        $group->users()->detach();
+        $query->first()->users()->detach();
 
         $query->delete();
 
-        return response()->json("$group->name was deleted", 200);
+        return response()->json("Group was deleted", 200);
     }
 
     public function getGroup($group_id)
@@ -91,9 +87,10 @@ class GroupsController extends Controller
             $this->deleteImage($group->avatar);
 
             $group->avatar = null;
-            $save = $group->save();
 
-            if ($save) return response()->json('Avatar deleted successfully', 200);
+            $group->save();
+
+            return response()->json('Avatar deleted successfully', 200);
         }
 
         $request['id'] = $this->idsToArray($request['id']);
@@ -117,17 +114,19 @@ class GroupsController extends Controller
 
         $group->name = $request['name'];
 
-        $save = $group->save();
+        $group->save();
 
         $group->users()->sync($request['id']);
 
-        if ($save) return response()->json('Group edited successfully', 200);
+        return response()->json('Group edited successfully', 200);
     }
 
     protected function idsToArray($request)
     {
         $usersIds = $request ? explode(',', $request) : [];
+
         array_push($usersIds, Auth::user()->id);
+
         return $usersIds;
     }
 
