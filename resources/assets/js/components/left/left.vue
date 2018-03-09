@@ -119,12 +119,16 @@
                 if (data.type === 'profile') this.user = this.$store.state.user;
             });
 
-            this.channel = this.$pusher.subscribe('notification' + this.auth_user.id);
-            this.channel.bind('updateNotifications', () => this.getTotalNotifications());
+            this.$pusher.subscribe(`notification${this.auth_user.id}`).bind('updateNotifications', () => this.getTotalNotifications());
 
-            this.channel = this.$pusher.subscribe('user' + this.auth_user.id);
+            this.$pusher.subscribe(`user${this.auth_user.id}`).bind('updateStatus', (data) => {
 
-            this.channel.bind('updateStatus', (data) => {
+                if (data.type === 'group') this.myChatList = false;
+                if (data.type === 'chat') this.myChatList = true;
+
+            });
+
+            this.$eventBus.$on('update' , (data) => {
                 if (data.type === 'group') this.myChatList = false;
                 if (data.type === 'chat') this.myChatList = true;
             });

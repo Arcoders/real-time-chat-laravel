@@ -27610,8 +27610,7 @@ var mixin = {
         pushRealTimeMessage: function pushRealTimeMessage() {
             var _this = this;
 
-            this.channel = this.$pusher.subscribe(this.dataType.push);
-            this.channel.bind('pushMessage', function (data) {
+            this.$pusher.subscribe(this.dataType.push).bind('pushMessage', function (data) {
 
                 _this.typing = _this.typing.filter(function (t) {
                     return t.id !== data.user.id;
@@ -27668,8 +27667,7 @@ var mixin = {
         UpdateOnlineUsers: function UpdateOnlineUsers() {
             var _this3 = this;
 
-            this.channel = this.$pusher.subscribe(this.dataType.online);
-            this.channel.bind('onlineUsers', function (data) {
+            this.$pusher.subscribe(this.dataType.online).bind('onlineUsers', function (data) {
                 if (data.length === 0) return _this3.onlineUsers = null;
                 _this3.onlineUsers = data;
             });
@@ -38878,14 +38876,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (data.type === 'profile') _this.user = _this.$store.state.user;
         });
 
-        this.channel = this.$pusher.subscribe('notification' + this.auth_user.id);
-        this.channel.bind('updateNotifications', function () {
+        this.$pusher.subscribe('notification' + this.auth_user.id).bind('updateNotifications', function () {
             return _this.getTotalNotifications();
         });
 
-        this.channel = this.$pusher.subscribe('user' + this.auth_user.id);
+        this.$pusher.subscribe('user' + this.auth_user.id).bind('updateStatus', function (data) {
 
-        this.channel.bind('updateStatus', function (data) {
+            if (data.type === 'group') _this.myChatList = false;
+            if (data.type === 'chat') _this.myChatList = true;
+        });
+
+        this.$eventBus.$on('update', function (data) {
             if (data.type === 'group') _this.myChatList = false;
             if (data.type === 'chat') _this.myChatList = true;
         });
@@ -39667,13 +39668,11 @@ var arrayFindIndex = __webpack_require__(125);
         updateList: function updateList() {
             var _this2 = this;
 
-            this.channel = this.$pusher.subscribe('user' + this.my_id);
-            this.channel.bind('updateStatus', function () {
+            this.$pusher.subscribe('user' + this.my_id).bind('updateStatus', function () {
                 _this2.$eventBus.$emit('update', { refresh: true });
             });
 
-            this.channel = this.$pusher.subscribe('group_chat');
-            this.channel.bind('updateList', function (data) {
+            this.$pusher.subscribe('group_chat').bind('updateList', function (data) {
 
                 _this2.$eventBus.$emit('update', {
                     type: 'group',
@@ -39685,8 +39684,7 @@ var arrayFindIndex = __webpack_require__(125);
 
             this.chatIds.forEach(function (id) {
 
-                _this2.channel = _this2.$pusher.subscribe('friend_chat-' + id);
-                _this2.channel.bind('updateList', function (data) {
+                _this2.$pusher.subscribe('friend_chat-' + id).bind('updateList', function (data) {
 
                     _this2.$eventBus.$emit('update', {
                         type: 'friend',
@@ -42051,7 +42049,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status === 200) {
                     _this2.status = response.body.status;
-                    if (_this2.status === 'friends') _this2.$eventBus.$emit('update', { type: 'friend', refresh: true });
+                    if (_this2.status === 'friends') _this2.$eventBus.$emit('update', { type: 'chat', refresh: true });
                 }
             });
         },
@@ -42089,7 +42087,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this4.status = response.body;
 
                     if (_this4.status === 'friends') {
-                        _this4.$eventBus.$emit('update', { type: 'friend', refresh: true, profileId: _this4.profile_user_id });
+                        _this4.$eventBus.$emit('update', { type: 'chat', refresh: true, profileId: _this4.profile_user_id });
                     }
                 }
             });
@@ -42111,7 +42109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     _this5.status = response.body;
 
-                    _this5.$eventBus.$emit('update', { type: 'friend', refresh: true, profileId: _this5.profile_user_id });
+                    _this5.$eventBus.$emit('update', { type: 'chat', refresh: true, profileId: _this5.profile_user_id });
                 }
             });
         }

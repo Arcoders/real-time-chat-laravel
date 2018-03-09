@@ -43,8 +43,7 @@ export const mixin = {
         // ----------------------------------------------
 
         pushRealTimeMessage() {
-            this.channel = this.$pusher.subscribe(this.dataType.push);
-            this.channel.bind('pushMessage', (data) => {
+            this.$pusher.subscribe(this.dataType.push).bind('pushMessage', (data) => {
 
                 this.typing = this.typing.filter(t => t.id !== data.user.id);
 
@@ -90,8 +89,7 @@ export const mixin = {
         // ----------------------------------------------
 
         UpdateOnlineUsers() {
-            this.channel = this.$pusher.subscribe(this.dataType.online);
-            this.channel.bind('onlineUsers', (data) => {
+            this.$pusher.subscribe(this.dataType.online).bind('onlineUsers', (data) => {
                 if (data.length === 0) return this.onlineUsers = null;
                 this.onlineUsers = data;
             });

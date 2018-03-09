@@ -70,7 +70,7 @@
 
                     if (response.status === 200) {
                         this.status = response.body.status;
-                        if (this.status === 'friends') this.$eventBus.$emit('update', {type: 'friend', refresh: true});
+                        if (this.status === 'friends') this.$eventBus.$emit('update', {type: 'chat', refresh: true});
                     }
 
                 });
@@ -104,7 +104,7 @@
                         this.status = response.body;
 
                         if (this.status === 'friends') {
-                            this.$eventBus.$emit('update', {type: 'friend', refresh: true, profileId: this.profile_user_id});
+                            this.$eventBus.$emit('update', {type: 'chat', refresh: true, profileId: this.profile_user_id});
                         }
 
                     }
@@ -125,7 +125,7 @@
 
                         this.status = response.body;
 
-                        this.$eventBus.$emit('update', {type: 'friend', refresh: true, profileId: this.profile_user_id});
+                        this.$eventBus.$emit('update', {type: 'chat', refresh: true, profileId: this.profile_user_id});
                     }
 
                 });

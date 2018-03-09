@@ -193,14 +193,11 @@
 
             updateList() {
 
-
-                this.channel = this.$pusher.subscribe('user' + this.my_id);
-                this.channel.bind('updateStatus', () => {
+                this.$pusher.subscribe('user' + this.my_id).bind('updateStatus', () => {
                     this.$eventBus.$emit('update', {refresh: true});
                 });
 
-                this.channel = this.$pusher.subscribe('group_chat');
-                this.channel.bind('updateList', (data) => {
+                this.$pusher.subscribe('group_chat').bind('updateList', (data) => {
 
                     this.$eventBus.$emit('update', {
                         type: 'group',
@@ -213,8 +210,7 @@
 
                 this.chatIds.forEach(id => {
 
-                    this.channel = this.$pusher.subscribe(`friend_chat-${id}`);
-                    this.channel.bind('updateList', (data) => {
+                    this.$pusher.subscribe(`friend_chat-${id}`).bind('updateList', (data) => {
 
                         this.$eventBus.$emit('update', {
                             type: 'friend',
