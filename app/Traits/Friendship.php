@@ -26,9 +26,7 @@ trait Friendship
 
             User::find($recipientId)->notify(new NewFriendRequest());
 
-            $this->triggerPusher("user$recipientId", 'updateStatus', []);
-
-            $this->triggerPusher("notification$recipientId", 'updateNotifications', []);
+            $this->realTimeUpdate($recipientId);
 
             return 'waiting';
 
@@ -49,9 +47,7 @@ trait Friendship
 
             User::find($senderId)->notify(new AcceptFriendRequest());
 
-            $this->triggerPusher("user$senderId", 'updateStatus', ['update' => true]);
-
-            $this->triggerPusher("notification$senderId", 'updateNotifications', []);
+            $this->realTimeUpdate($senderId);
 
             return 'friends';
         }
@@ -163,6 +159,13 @@ trait Friendship
         $b = ModelFriends::whereRecipient($this)->accepted()->pluck('id')->toArray();
 
         return  array_merge($a, $b);
+    }
+
+    protected function realTimeUpdate($id)
+    {
+        $this->triggerPusher("user$id", 'updateStatus', []);
+
+        $this->triggerPusher("notification$id", 'updateNotifications', []);
     }
 
 }
