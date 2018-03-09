@@ -38882,6 +38882,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.channel.bind('updateNotifications', function () {
             return _this.getTotalNotifications();
         });
+
+        this.channel = this.$pusher.subscribe('user' + this.auth_user.id);
+
+        this.channel.bind('updateStatus', function (data) {
+            if (data.type === 'group') _this.myChatList = false;
+            if (data.type === 'chat') _this.myChatList = true;
+        });
     },
 
 

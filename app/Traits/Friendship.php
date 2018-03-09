@@ -69,7 +69,7 @@ trait Friendship
 
             $relationship->delete();
 
-            $this->triggerPusher("user$userId", 'updateStatus', []);
+            $this->triggerPusher("user$userId", 'updateStatus', ['type' => 'chat']);
 
             return 'add';
         }
@@ -163,7 +163,7 @@ trait Friendship
 
     protected function realTimeUpdate($id)
     {
-        $this->triggerPusher("user$id", 'updateStatus', []);
+        $this->triggerPusher("user$id", 'updateStatus', ['type' => 'chat']);
 
         $this->triggerPusher("notification$id", 'updateNotifications', []);
     }
