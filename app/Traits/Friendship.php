@@ -69,7 +69,7 @@ trait Friendship
 
             $relationship->delete();
 
-            $this->triggerPusher("user$userId", 'updateStatus', ['update' => true]);
+            $this->triggerPusher("user$userId", 'updateStatus', []);
 
             return 'add';
         }
