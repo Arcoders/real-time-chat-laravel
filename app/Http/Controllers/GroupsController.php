@@ -67,11 +67,13 @@ class GroupsController extends Controller
 
         foreach ($group->users as $user):
 
-            $this->updateList($user->id);
+            $this->triggerPusher("user$user->id", 'updateStatus', []);
 
             if ($user->id == Auth::user()->id) continue;
 
             Notification::send($user, new ManageGroupsNotification("$group->name group was archived"));
+
+            $this->triggerPusher("notification$user->id", 'updateNotifications', []);
 
         endforeach;
 
@@ -86,11 +88,13 @@ class GroupsController extends Controller
 
         foreach ($group->users as $user):
 
-            $this->updateList($user->id);
+            $this->triggerPusher("user$user->id", 'updateStatus', []);
 
             if ($user->id == Auth::user()->id) continue;
 
             Notification::send($user, new ManageGroupsNotification("$group->name group was restored"));
+
+            $this->triggerPusher("notification$user->id", 'updateNotifications', []);
 
         endforeach;
 
@@ -166,13 +170,6 @@ class GroupsController extends Controller
     public function getGroupForChat($group_id)
     {
         return response()->json(Group::find($group_id), 200);
-    }
-
-    protected function updateList($id)
-    {
-        $this->triggerPusher("user$id", 'updateStatus', ['update' => true]);
-
-        $this->triggerPusher("notification$id", 'updateNotifications', []);
     }
 
 }
