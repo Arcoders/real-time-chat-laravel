@@ -1,7 +1,7 @@
 <template lang="pug">
     #left_app
 
-        .profile(v-if='showUser')
+        .profile
 
             avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
 
@@ -101,8 +101,7 @@
 
         data() {
             return {
-                showUser: false,
-                user: null,
+                user: this.$store.state.user,
                 logoutError: null,
                 loading: false,
                 myChatList: true,
@@ -138,21 +137,12 @@
         // ----------------------------------------------
 
         mounted() {
-            this.userInfo();
             this.getTotalNotifications();
         },
 
         // ----------------------------------------------
 
         methods: {
-
-            // ----------------------------------------------
-
-            userInfo() {
-                this.$store.commit('updateUser', this.auth_user);
-                this.user = this.$store.state.user;
-                this.showUser = true;
-            },
 
             // ----------------------------------------------
 

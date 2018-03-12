@@ -28082,6 +28082,10 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = CSRF;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Global component
+
+Vue.component('global', __webpack_require__(255));
+
 // Components for left side
 
 Vue.component('left', __webpack_require__(147));
@@ -38856,8 +38860,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            showUser: false,
-            user: null,
+            user: this.$store.state.user,
             logoutError: null,
             loading: false,
             myChatList: true,
@@ -38896,7 +38899,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ----------------------------------------------
 
     mounted: function mounted() {
-        this.userInfo();
         this.getTotalNotifications();
     },
 
@@ -38904,15 +38906,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ----------------------------------------------
 
     methods: {
-
-        // ----------------------------------------------
-
-        userInfo: function userInfo() {
-            this.$store.commit('updateUser', this.auth_user);
-            this.user = this.$store.state.user;
-            this.showUser = true;
-        },
-
 
         // ----------------------------------------------
 
@@ -38986,75 +38979,71 @@ var render = function() {
     "div",
     { attrs: { id: "left_app" } },
     [
-      _vm.showUser
-        ? _c(
+      _c(
+        "div",
+        { staticClass: "profile" },
+        [
+          _c("avatar", {
+            staticClass: "avatar",
+            attrs: {
+              username: _vm.user.name,
+              color: "#fff",
+              src: _vm.user.avatar
+            }
+          }),
+          _vm.totalNotifications == 0
+            ? _c("div", { staticClass: "name" }, [
+                _vm._v(_vm._s(_vm.user.name))
+              ])
+            : _vm._e(),
+          _c(
             "div",
-            { staticClass: "profile" },
+            { staticClass: "icons" },
             [
-              _c("avatar", {
-                staticClass: "avatar",
-                attrs: {
-                  username: _vm.user.name,
-                  color: "#fff",
-                  src: _vm.user.avatar
-                }
-              }),
-              _vm.totalNotifications == 0
-                ? _c("div", { staticClass: "name" }, [
-                    _vm._v(_vm._s(_vm.user.name))
-                  ])
-                : _vm._e(),
-              _c(
-                "div",
-                { staticClass: "icons" },
-                [
-                  _c("router-link", { attrs: { to: "/profile" } }, [
-                    _c("i", { staticClass: "material-icons" }, [
-                      _vm._v("person")
-                    ])
-                  ]),
-                  _c("router-link", { attrs: { to: "/groups" } }, [
-                    _c("i", { staticClass: "material-icons" }, [
-                      _vm._v("person_add")
-                    ]),
-                    _c("span", { staticClass: "step" })
-                  ]),
-                  _vm.totalNotifications > 0
-                    ? _c(
-                        "a",
-                        {
-                          staticClass: "notif",
-                          attrs: { "data-badge": _vm.totalNotifications },
-                          on: { click: _vm.showListNotifications }
-                        },
-                        [
-                          _c("i", { staticClass: "material-icons" }, [
-                            _vm._v("notifications")
-                          ])
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm.loading
-                    ? _c("loading", { attrs: { normal: true } })
-                    : _c("a", { on: { click: _vm.logout } }, [
-                        _c(
-                          "i",
-                          {
-                            class: [
-                              _vm.logoutError ? "error" : "",
-                              "material-icons"
-                            ]
-                          },
-                          [_vm._v("fingerprint")]
-                        )
+              _c("router-link", { attrs: { to: "/profile" } }, [
+                _c("i", { staticClass: "material-icons" }, [_vm._v("person")])
+              ]),
+              _c("router-link", { attrs: { to: "/groups" } }, [
+                _c("i", { staticClass: "material-icons" }, [
+                  _vm._v("person_add")
+                ]),
+                _c("span", { staticClass: "step" })
+              ]),
+              _vm.totalNotifications > 0
+                ? _c(
+                    "a",
+                    {
+                      staticClass: "notif",
+                      attrs: { "data-badge": _vm.totalNotifications },
+                      on: { click: _vm.showListNotifications }
+                    },
+                    [
+                      _c("i", { staticClass: "material-icons" }, [
+                        _vm._v("notifications")
                       ])
-                ],
-                1
-              )
+                    ]
+                  )
+                : _vm._e(),
+              _vm.loading
+                ? _c("loading", { attrs: { normal: true } })
+                : _c("a", { on: { click: _vm.logout } }, [
+                    _c(
+                      "i",
+                      {
+                        class: [
+                          _vm.logoutError ? "error" : "",
+                          "material-icons"
+                        ]
+                      },
+                      [_vm._v("fingerprint")]
+                    )
+                  ])
             ],
             1
           )
-        : _vm._e(),
+        ],
+        1
+      ),
       _c("search"),
       _c("div", { staticClass: "wrap-filter" }, [
         _c("div", { staticClass: "link_filter" }, [
@@ -45157,7 +45146,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status === 200) {
 
-                    _this2.done(response.data);
+                    _this2.showNotification(response.data, 'done');
 
                     if (_this2.groups.length === 0) return _this2.clickedPage(_this2.actualPage - 1);
 
@@ -45169,14 +45158,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.loading = false;
                 _this2.error();
             });
-        },
-
-
-        // ---------------------------------------------------
-
-        done: function done(msg) {
-            this.showNotification(msg, 'done');
-            this.$eventBus.$emit('update', { type: 'group', refresh: true });
         },
 
 
@@ -46321,6 +46302,190 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(256)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(258)
+/* template */
+var __vue_template__ = __webpack_require__(259)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-083f9f8c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\global.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-083f9f8c", Component.options)
+  } else {
+    hotAPI.reload("data-v-083f9f8c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 256 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(257);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("88f377ce", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-083f9f8c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./global.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-083f9f8c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./global.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 258 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    // ---------------------------------------------------
+
+    props: ['auth_user'],
+
+    // ---------------------------------------------------
+
+    created: function created() {
+        this.$store.commit('updateUser', this.auth_user);
+    },
+
+
+    // ---------------------------------------------------
+
+    mounted: function mounted() {
+        console.log('Global .................');
+    }
+
+    // ---------------------------------------------------
+
+});
+
+/***/ }),
+/* 259 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "wrap" }, [
+    _c(
+      "section",
+      { staticClass: "left" },
+      [_c("left", { attrs: { auth_user: _vm.auth_user } })],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "section",
+      { staticClass: "right" },
+      [_c("router-view", { key: _vm.$route.fullPath })],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-083f9f8c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

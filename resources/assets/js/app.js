@@ -44,6 +44,10 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = CSRF;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Global component
+
+Vue.component('global', require('./components/global.vue'));
+
 // Components for left side
 
 Vue.component('left', require('./components/left/left.vue'));

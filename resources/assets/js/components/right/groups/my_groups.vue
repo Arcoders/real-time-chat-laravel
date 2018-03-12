@@ -150,7 +150,7 @@
 
                     if (response.status === 200) {
 
-                        this.done(response.data);
+                        this.showNotification(response.data, 'done');
 
                         if (this.groups.length === 0) return this.clickedPage(this.actualPage - 1);
 
@@ -164,13 +164,6 @@
                     this.loading = false;
                     this.error();
                 });
-            },
-
-            // ---------------------------------------------------
-
-            done(msg) {
-                this.showNotification(msg, 'done');
-                this.$eventBus.$emit('update', {type: 'group', refresh: true});
             },
 
             // ---------------------------------------------------
