@@ -3,7 +3,7 @@
 
         <section class="left">
 
-            <left :auth_user="auth_user"></left>
+            <left></left>
 
         </section>
 
@@ -35,12 +35,6 @@
         created() {
             this.$store.commit('updateUser', this.auth_user);
         },
-
-        // ---------------------------------------------------
-
-        mounted() {
-            console.log('Global .................');
-        }
 
         // ---------------------------------------------------
 

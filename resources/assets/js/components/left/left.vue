@@ -42,7 +42,7 @@
         section(v-show="!showNotification")
 
             .contact-list
-                list(:showChatList='myChatList', :my_id='auth_user.id')
+                list(:showChatList='myChatList')
 
 </template>
 
@@ -95,10 +95,6 @@
 
         // ----------------------------------------------
 
-        props: ['auth_user'],
-
-        // ----------------------------------------------
-
         data() {
             return {
                 user: this.$store.state.user,
@@ -118,19 +114,11 @@
                 if (data.type === 'profile') this.user = this.$store.state.user;
             });
 
-            this.$pusher.subscribe(`notification${this.auth_user.id}`).bind('updateNotifications', () => this.getTotalNotifications());
+            this.$pusher.subscribe(`notification${this.user.id}`).bind('updateNotifications', () => this.getTotalNotifications());
 
-            this.$pusher.subscribe(`user${this.auth_user.id}`).bind('updateStatus', (data) => {
+            this.$pusher.subscribe(`user${this.user.id}`).bind('updateStatus', (data) => this.listType(data.type));
 
-                if (data.type === 'group') this.myChatList = false;
-                if (data.type === 'chat') this.myChatList = true;
-
-            });
-
-            this.$eventBus.$on('update' , (data) => {
-                if (data.type === 'group') this.myChatList = false;
-                if (data.type === 'chat') this.myChatList = true;
-            });
+            this.$eventBus.$on('update' , (data) => this.listType(data.type));
 
         },
 
@@ -159,6 +147,13 @@
 
             // ----------------------------------------------
 
+            listType(type) {
+                if (type === 'group') this.myChatList = false;
+                if (type === 'chat') this.myChatList = true;
+            },
+
+            // ----------------------------------------------
+
             logout() {
                 this.$http.post('/logout').then(response => {
 
@@ -166,10 +161,8 @@
 
                     if (response.status === 200) {
 
-                        setTimeout(()=>{
-                            this.$router.push('/');
-                            window.location.reload();
-                        }, 2000);
+                        this.$router.push('/');
+                        window.location.reload();
 
                     } else {
                         this.loading = false;

@@ -120,7 +120,7 @@
 
         // ----------------------------------------------
 
-        props: ['showChatList', 'my_id'],
+        props: ['showChatList'],
 
         // ----------------------------------------------
 
@@ -129,6 +129,7 @@
                 loading: false,
                 groups: this.$store.state.groups,
                 friends: this.$store.state.friends,
+                user: this.$store.state.user,
                 chatIds: [],
                 notFound: false,
                 errorLoad: false
@@ -193,7 +194,7 @@
 
             updateList() {
 
-                this.$pusher.subscribe('user' + this.my_id).bind('updateStatus', () => {
+                this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', () => {
                     this.$eventBus.$emit('update', {refresh: true});
                 });
 

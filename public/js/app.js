@@ -38854,10 +38854,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ----------------------------------------------
 
-    props: ['auth_user'],
-
-    // ----------------------------------------------
-
     data: function data() {
         return {
             user: this.$store.state.user,
@@ -38879,19 +38875,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (data.type === 'profile') _this.user = _this.$store.state.user;
         });
 
-        this.$pusher.subscribe('notification' + this.auth_user.id).bind('updateNotifications', function () {
+        this.$pusher.subscribe('notification' + this.user.id).bind('updateNotifications', function () {
             return _this.getTotalNotifications();
         });
 
-        this.$pusher.subscribe('user' + this.auth_user.id).bind('updateStatus', function (data) {
-
-            if (data.type === 'group') _this.myChatList = false;
-            if (data.type === 'chat') _this.myChatList = true;
+        this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', function (data) {
+            return _this.listType(data.type);
         });
 
         this.$eventBus.$on('update', function (data) {
-            if (data.type === 'group') _this.myChatList = false;
-            if (data.type === 'chat') _this.myChatList = true;
+            return _this.listType(data.type);
         });
     },
 
@@ -38924,6 +38917,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ----------------------------------------------
 
+        listType: function listType(type) {
+            if (type === 'group') this.myChatList = false;
+            if (type === 'chat') this.myChatList = true;
+        },
+
+
+        // ----------------------------------------------
+
         logout: function logout() {
             var _this2 = this;
 
@@ -38933,10 +38934,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (response.status === 200) {
 
-                    setTimeout(function () {
-                        _this2.$router.push('/');
-                        window.location.reload();
-                    }, 2000);
+                    _this2.$router.push('/');
+                    window.location.reload();
                 } else {
                     _this2.loading = false;
                     _this2.logoutError = true;
@@ -39107,11 +39106,7 @@ var render = function() {
           _c(
             "div",
             { staticClass: "contact-list" },
-            [
-              _c("list", {
-                attrs: { showChatList: _vm.myChatList, my_id: _vm.auth_user.id }
-              })
-            ],
+            [_c("list", { attrs: { showChatList: _vm.myChatList } })],
             1
           )
         ]
@@ -39574,7 +39569,7 @@ var arrayFindIndex = __webpack_require__(125);
 
     // ----------------------------------------------
 
-    props: ['showChatList', 'my_id'],
+    props: ['showChatList'],
 
     // ----------------------------------------------
 
@@ -39583,6 +39578,7 @@ var arrayFindIndex = __webpack_require__(125);
             loading: false,
             groups: this.$store.state.groups,
             friends: this.$store.state.friends,
+            user: this.$store.state.user,
             chatIds: [],
             notFound: false,
             errorLoad: false
@@ -39657,7 +39653,7 @@ var arrayFindIndex = __webpack_require__(125);
         updateList: function updateList() {
             var _this2 = this;
 
-            this.$pusher.subscribe('user' + this.my_id).bind('updateStatus', function () {
+            this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', function () {
                 _this2.$eventBus.$emit('update', { refresh: true });
             });
 
@@ -46440,17 +46436,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     created: function created() {
         this.$store.commit('updateUser', this.auth_user);
-    },
-
-
-    // ---------------------------------------------------
-
-    mounted: function mounted() {
-        console.log('Global .................');
     }
-
-    // ---------------------------------------------------
-
 });
 
 /***/ }),
@@ -46462,12 +46448,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrap" }, [
-    _c(
-      "section",
-      { staticClass: "left" },
-      [_c("left", { attrs: { auth_user: _vm.auth_user } })],
-      1
-    ),
+    _c("section", { staticClass: "left" }, [_c("left")], 1),
     _vm._v(" "),
     _c(
       "section",
