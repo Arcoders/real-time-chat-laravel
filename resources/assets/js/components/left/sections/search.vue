@@ -23,7 +23,7 @@
             updateGroups() {
 
                 this.$eventBus.$emit('update', {
-                    type: 'group',
+                    type: 'filter',
                     action: 'filter',
                     filtered: {
                         friends: this.$store.state.friends.filter(g => g.user.name.match(new RegExp(this.name, 'i'))),
