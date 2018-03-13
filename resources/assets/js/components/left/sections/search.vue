@@ -22,12 +22,22 @@
 
             updateGroups() {
 
+                let type = 'filter';
+
+                let friends = this.$store.state.friends.filter(g => g.user.name.match(new RegExp(this.name, 'i')));
+
+                let groups = this.$store.state.groups.filter(g => g.name.match(new RegExp(this.name, 'i')));
+
+                type = (groups.length > 0 && groups.length > friends.length) ? 'group' : 'chat';
+
+                if (this.name === '') type = 'chat';
+
                 this.$eventBus.$emit('update', {
-                    type: 'filter',
+                    type: type,
                     action: 'filter',
                     filtered: {
-                        friends: this.$store.state.friends.filter(g => g.user.name.match(new RegExp(this.name, 'i'))),
-                        groups: this.$store.state.groups.filter(g => g.name.match(new RegExp(this.name, 'i')))
+                        friends: friends,
+                        groups: groups
                     }
                 });
 

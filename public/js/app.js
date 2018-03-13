@@ -40940,16 +40940,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateGroups: function updateGroups() {
             var _this = this;
 
+            var type = 'filter';
+
+            var friends = this.$store.state.friends.filter(function (g) {
+                return g.user.name.match(new RegExp(_this.name, 'i'));
+            });
+
+            var groups = this.$store.state.groups.filter(function (g) {
+                return g.name.match(new RegExp(_this.name, 'i'));
+            });
+
+            type = groups.length > 0 && groups.length > friends.length ? 'group' : 'chat';
+
+            if (this.name === '') type = 'chat';
+
             this.$eventBus.$emit('update', {
-                type: 'filter',
+                type: type,
                 action: 'filter',
                 filtered: {
-                    friends: this.$store.state.friends.filter(function (g) {
-                        return g.user.name.match(new RegExp(_this.name, 'i'));
-                    }),
-                    groups: this.$store.state.groups.filter(function (g) {
-                        return g.name.match(new RegExp(_this.name, 'i'));
-                    })
+                    friends: friends,
+                    groups: groups
                 }
             });
         }
