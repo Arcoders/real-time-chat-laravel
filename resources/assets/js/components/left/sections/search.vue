@@ -33,7 +33,7 @@
                 if (this.name === '') type = 'chat';
 
                 this.$eventBus.$emit('update', {
-                    type: type,
+                    type,
                     action: 'filter',
                     filtered: {friends, groups}
                 });
