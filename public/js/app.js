@@ -40940,7 +40940,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateGroups: function updateGroups() {
             var _this = this;
 
-            var type = 'filter';
+            var type = 'chat';
 
             var friends = this.$store.state.friends.filter(function (g) {
                 return g.user.name.match(new RegExp(_this.name, 'i'));
@@ -40957,10 +40957,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$eventBus.$emit('update', {
                 type: type,
                 action: 'filter',
-                filtered: {
-                    friends: friends,
-                    groups: groups
-                }
+                filtered: { friends: friends, groups: groups }
             });
         }
     }
