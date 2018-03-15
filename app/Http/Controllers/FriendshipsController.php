@@ -34,7 +34,7 @@ class FriendshipsController extends Controller
 
     }
 
-    public function delete($id)
+    public function reject($id)
     {
 
         return response()->json(Auth::user()->rejectFriendships($id), 200);
