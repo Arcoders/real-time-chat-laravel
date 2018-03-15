@@ -12,15 +12,11 @@ class ChatsController extends Controller
 
         $chats = [
             'groups' => $this->getLastMessage(Auth::user()->groups),
-            'friends' => $this->getLastMessage(Auth::user()->chats())
+            'friends' => $this->getLastMessage(Auth::user()->chats()),
+            'chatIds' => Auth::user()->chatsIds()
         ];
 
         return response()->json($chats, 200);
-    }
-
-    public function myChats()
-    {
-        return response()->json(Auth::user()->chatsIds(), 200);
     }
 
     protected function getLastMessage($chats) {

@@ -157,18 +157,9 @@
                         break;
                 }
 
-                if (data.refresh) {
-                    this.getChatIds();
-                    this.chatsList();
-                }
-
+                if (data.refresh) this.chatsList();
             });
-            this.getChatIds();
-        },
 
-        // ----------------------------------------------
-
-        mounted() {
             this.chatsList();
         },
 
@@ -240,6 +231,8 @@
 
                         if (res.data.length === 0) this.notFound = true;
                         this.done(res.data.groups, res.data.friends);
+                        this.chatIds = res.data.chatIds;
+                        this.updateList();
 
                     } else {
                         this.errorLoad = true;
@@ -249,19 +242,6 @@
 
                     this.loading = false;
                     this.errorLoad = true;
-
-                });
-            },
-
-            // ---------------------------------------------------
-
-            getChatIds() {
-                this.$http.get('/get_chats_ids').then(res => {
-
-                    if (res.status === 200) {
-                        this.chatIds = res.data;
-                        this.updateList();
-                    }
 
                 });
             },

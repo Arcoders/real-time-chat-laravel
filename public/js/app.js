@@ -39774,18 +39774,9 @@ var arrayFindIndex = __webpack_require__(125);
                     break;
             }
 
-            if (data.refresh) {
-                _this.getChatIds();
-                _this.chatsList();
-            }
+            if (data.refresh) _this.chatsList();
         });
-        this.getChatIds();
-    },
 
-
-    // ----------------------------------------------
-
-    mounted: function mounted() {
         this.chatsList();
     },
 
@@ -39862,6 +39853,8 @@ var arrayFindIndex = __webpack_require__(125);
 
                     if (res.data.length === 0) _this3.notFound = true;
                     _this3.done(res.data.groups, res.data.friends);
+                    _this3.chatIds = res.data.chatIds;
+                    _this3.updateList();
                 } else {
                     _this3.errorLoad = true;
                 }
@@ -39869,21 +39862,6 @@ var arrayFindIndex = __webpack_require__(125);
 
                 _this3.loading = false;
                 _this3.errorLoad = true;
-            });
-        },
-
-
-        // ---------------------------------------------------
-
-        getChatIds: function getChatIds() {
-            var _this4 = this;
-
-            this.$http.get('/get_chats_ids').then(function (res) {
-
-                if (res.status === 200) {
-                    _this4.chatIds = res.data;
-                    _this4.updateList();
-                }
             });
         },
 
