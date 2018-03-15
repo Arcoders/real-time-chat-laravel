@@ -26,14 +26,17 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::prefix('groups')->group(function () {
 
-        Route::post('/create', 'GroupsController@create');
         Route::get('/my', 'GroupsController@my');
         Route::delete('/delete/{group_id}', 'GroupsController@delete');
         Route::delete('/restore/{group_id}', 'GroupsController@restore');
-        Route::get('/get/{group_id}', 'GroupsController@get');
-        Route::post('/edit/{group_id}', 'GroupsController@edit');
+
+        Route::post('/create', 'GroupsController@create');
         Route::get('/friends', 'GroupsController@friends');
 
+
+        Route::get('/get/{group_id}', 'GroupsController@get');
+        Route::post('/edit/{group_id}', 'GroupsController@edit');
+        
     });
 
     // -----------------------------------------------------------------
