@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/get/{group_id}', 'GroupsController@get');
         Route::post('/edit/{group_id}', 'GroupsController@edit');
-        
+
     });
 
     // -----------------------------------------------------------------
@@ -75,9 +75,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/check/{user_id}', 'FriendshipsController@check');
         Route::post('/add/{user_id}', 'FriendshipsController@add');
         Route::patch('/accept/{user_id}', 'FriendshipsController@accept');
-        Route::delete('/reject/{user_id}', 'FriendshipsController@reject');
 
     });
+
+    Route::resource('friendship', 'FriendshipsController', ['only' => ['delete']]);
 
     // -----------------------------------------------------------------
 

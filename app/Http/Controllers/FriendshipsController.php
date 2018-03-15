@@ -23,21 +23,21 @@ class FriendshipsController extends Controller
     public function add($id)
     {
 
-        return response()->json(Auth::user()->add_friend($id), 200);
+        return response()->json(Auth::user()->addFriend($id), 200);
 
     }
 
     public function accept($id)
     {
 
-        return response()->json(Auth::user()->accept_friends($id), 200);
+        return response()->json(Auth::user()->acceptFriends($id), 200);
 
     }
 
-    public function reject($id)
+    public function delete($id)
     {
 
-        return response()->json(Auth::user()->reject_friendships($id), 200);
+        return response()->json(Auth::user()->rejectFriendships($id), 200);
 
     }
 

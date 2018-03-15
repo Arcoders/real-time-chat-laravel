@@ -11,7 +11,7 @@ trait Friendship
 
     use TriggerPusher;
 
-    public function add_friend($recipientId)
+    public function addFriend($recipientId)
     {
 
         $status = $this->checkFriendship($recipientId);
@@ -36,7 +36,7 @@ trait Friendship
 
     }
 
-    public function accept_friends($senderId)
+    public function acceptFriends($senderId)
     {
 
         $status = $this->checkFriendship($senderId);
@@ -56,7 +56,7 @@ trait Friendship
 
     }
 
-    public function reject_friendships($userId)
+    public function rejectFriendships($userId)
     {
 
         $status = $this->checkFriendship($userId);
