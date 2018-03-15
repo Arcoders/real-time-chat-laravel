@@ -165,7 +165,7 @@
 
             getProfile(id) {
                 this.loading = true;
-                this.$http.get('/get_profile/' + id).then(res => {
+                this.$http.get(`/profile/user/${id}`).then(res => {
 
                     if (res.status === 200) {
 
@@ -194,7 +194,7 @@
             // ---------------------------------------------------
 
             getUsers() {
-                this.$http.get('/get_users/').then(response => {
+                this.$http.get('/profile/users').then(response => {
 
                     if (response.status === 200) {
                         if (response.data.length === 0) this.records = false;

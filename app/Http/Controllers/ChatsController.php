@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 class ChatsController extends Controller
 {
 
-    public function chatsList()
+    public function chats()
     {
 
         $chats = [

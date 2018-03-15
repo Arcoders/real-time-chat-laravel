@@ -77,7 +77,6 @@
         // ---------------------------------------------------
 
         mounted() {
-            this.listFriends();
             this.getGroup();
             console.log('Edit group ok!');
         },
@@ -103,7 +102,7 @@
 
                 let data = (type === 'image') ? {deleteImage: true} : this.formData;
 
-                this.$http.post(`/edit_group/${this.group_id}`, data).then(res => {
+                this.$http.post(`/groups/edit/${this.group_id}`, data).then(res => {
 
                     this.loading = false;
 
@@ -120,49 +119,27 @@
 
             // ---------------------------------------------------
 
-            listFriends() {
-
-                this.loading = true;
-
-                this.$http.get('/list_friends').then(res => {
-
-                    this.loading = false;
+            getGroup() {
+                this.$http.get(`/groups/get/${this.group_id}`).then(res => {
 
                     if (res.status === 200) {
 
-                        if (res.data.length > 0) {
+                        if (Object.keys(res.data.group).length === 0) return this.back();
+
+                        this.groupName = res.data.group.name;
+                        if (res.data.group.avatar) this.groupAvatar = res.data.group.avatar;
+                        this.selectedUsers = res.data.group.users;
+
+                        this.showEdit = true;
+
+                        if (res.data.friends.length > 0) {
 
                             this.access = true;
-                            this.listUsers = res.data;
+                            this.listUsers = res.data.friends;
 
                         } else {
                             this.showNotification('Find friends to add them to the group', 'done');
                         }
-
-                    } else {
-                        this.back();
-                    }
-
-                }, () => {
-                    this.loading = false;
-                    this.back();
-                });
-            },
-
-            // ---------------------------------------------------
-
-            getGroup() {
-                this.$http.get(`/get_group/${this.group_id}`).then(res => {
-
-                    if (res.status === 200) {
-
-                        if (res.data === 0) return this.back();
-
-                        this.showEdit = true;
-
-                        this.groupName = res.data.name;
-                        if (res.data.avatar) this.groupAvatar = res.data.avatar;
-                        this.selectedUsers = res.data.users;
 
                     } else {
                         this.back();

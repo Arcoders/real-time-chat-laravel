@@ -177,7 +177,7 @@
             // ----------------------------------------------
 
             getTotalNotifications() {
-                this.$http.get('/count_notifications').then(res => {
+                this.$http.get('/notifications/count').then(res => {
 
                     if (res.status === 200) {
                         this.totalNotifications = res.data.total_notifications;

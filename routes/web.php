@@ -11,64 +11,79 @@
 |
 */
 
-// Auth...
-use App\User;
-
-
 Auth::routes();
 
-// Welcome
 Route::get('/', function () { return view('welcome'); });
 
-// Group routes
+
 Route::group(['middleware' => ['auth']], function () {
 
-    // Home...
     Route::get('/home', 'HomeController@index')->name('home');
 
-    // User..
-    Route::get('/get_user',  function () { return Auth::user(); });
+    Route::prefix('groups')->group(function () {
 
-    // Groups...
-    Route::post('/new_group', 'GroupsController@newGroup'); // Add new group
-    Route::get('/my_groups', 'GroupsController@myGroups'); // list my groups
-    Route::delete('/delete_group/{group_id}', 'GroupsController@deleteGroup'); // delete selected group
-    Route::delete('/restore_group/{group_id}', 'GroupsController@restoreGroup'); // restore deleted group
-    Route::get('/get_group/{group_id}', 'GroupsController@getGroup'); // get determinate group with users
-    Route::get('/get_group_chat/{group_id}', 'GroupsController@getGroupForChat')->middleware('groupMember'); // get determinate group
-    Route::post('/edit_group/{group_id}', 'GroupsController@editGroup'); // edit group
-    Route::get('/list_friends', 'GroupsController@listFriends'); // list all friends
+        Route::post('/create', 'GroupsController@create');
+        Route::get('/my', 'GroupsController@my');
+        Route::delete('/delete/{group_id}', 'GroupsController@delete');
+        Route::delete('/restore/{group_id}', 'GroupsController@restore');
+        Route::get('/get/{group_id}', 'GroupsController@get');
+        Route::post('/edit/{group_id}', 'GroupsController@edit');
+        Route::get('/friends', 'GroupsController@friends');
 
-    // Profile...
-    Route::get('/get_profile/{profile_id}', 'ProfileController@getProfile'); // get determinate profile
-    Route::get('/get_users', 'ProfileController@getUsers'); // get all users
-    Route::post('/edit_profile', 'ProfileController@editProfile'); // edit my profile
+    });
 
-    // Friendships...
-    Route::get('/check_relationship_status/{user_id}', 'FriendshipsController@check'); // check relation ship status
-    Route::post('/add_friend/{user_id}', 'FriendshipsController@addFriend'); // send friend request
-    Route::patch('/accept_friend/{user_id}', 'FriendshipsController@acceptFriend'); // accept friend
-    Route::delete('/reject_friendship/{user_id}', 'FriendshipsController@rejectFriendship'); // reject request
+    Route::prefix('access-box')->group(function () {
 
-    // Chats list...
-    Route::get('/chats_list', 'ChatsController@chatsList');
+        Route::get('/group_chat/{group_id}', 'GroupsController@group')->middleware('groupMember');
+        Route::get('/friend_chat/{friend_id}', 'FriendshipsController@friend')->middleware('isFriend');
 
-    // Send message
-    Route::Post('/send_message', 'MessagesController@sendMessage');
-    Route::get('/get_latest_messages/{chat_id}/{room_name}', 'MessagesController@lastMessagesGroup');
-    Route::get('/user_typing/{chat_id}/{room_name}', 'MessagesController@usersTyping');
+    });
 
-    // Online users in group
-    Route::get('/get_online_group_users/{chat_id}/{room_name}', 'OnlineController@onlineGroupUsers');
-    Route::get('/disconnect_user/{chat_id}/{room_name}', 'OnlineController@disconnectUser');
+    Route::prefix('messages')->group(function () {
 
-    // Get friend info for chat
-    Route::get('/get_friend_chat/{friend_id}', 'FriendshipsController@getFriendForChat')->middleware('isFriend');
+        Route::Post('/send', 'MessagesController@send');
+        Route::get('/latest/{chat_id}/{room_name}', 'MessagesController@latest');
+        Route::get('/typing/{chat_id}/{room_name}', 'MessagesController@typing');
 
-    // Get notifications that belong to the current user
+    });
 
-    Route::get('/count_notifications', 'HomeController@countNotifications');
-    Route::get('/show_notifications', 'HomeController@showNotifications');
-    Route::get('/mark_as_read', 'HomeController@markAsRead');
+    Route::prefix('profile')->group(function () {
+
+        Route::get('/user/{user}', 'ProfileController@user');
+        Route::get('/users', 'ProfileController@users');
+        Route::post('/edit', 'ProfileController@edit');
+
+    });
+
+    Route::prefix('friendship')->group(function () {
+
+        Route::get('/check/{user_id}', 'FriendshipsController@check');
+        Route::post('/add/{user_id}', 'FriendshipsController@add');
+        Route::patch('/accept/{user_id}', 'FriendshipsController@accept');
+        Route::delete('/reject/{user_id}', 'FriendshipsController@reject');
+
+    });
+
+    Route::prefix('online')->group(function () {
+
+        Route::get('/connected/{chat_id}/{room_name}', 'OnlineController@connected');
+        Route::get('/disconnect/{chat_id}/{room_name}', 'OnlineController@disconnect');
+
+    });
+
+    Route::prefix('notifications')->group(function () {
+
+        Route::get('/count', 'NotificationsController@count');
+        Route::get('/show', 'NotificationsController@show');
+        Route::get('/mark_as_read', 'NotificationsController@markAsRead');
+
+    });
+
+    Route::prefix('list')->group(function () {
+
+        Route::get('/chats', 'ChatsController@chats');
+
+    });
+
 
 });

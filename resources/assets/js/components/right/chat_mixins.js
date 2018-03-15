@@ -98,7 +98,7 @@ export const mixin = {
         // ----------------------------------------------
 
         GetOnlineUsers() {
-            this.$http.get(`/get_online_group_users/${this.chatId}/${this.$route.name}`).then(response => {
+            this.$http.get(`/online/connected/${this.chatId}/${this.$route.name}`).then(response => {
                 if (response.status !== 200) this.onlineUsers = null;
             }, () => this.onlineUsers = null);
         },
@@ -106,7 +106,7 @@ export const mixin = {
         // ----------------------------------------------
 
         mouseLeave() {
-            this.$http.get(`/disconnect_user/${this.chatId}/${this.$route.name}`).then(this.hover = true);
+            this.$http.get(`/online/disconnect/${this.chatId}/${this.$route.name}`).then(this.hover = true);
         },
 
         // ----------------------------------------------
@@ -158,7 +158,7 @@ export const mixin = {
 
         allMessages() {
 
-            this.$http.get(`/get_latest_messages/${this.chatId}/${this.$route.name}`).then(res => {
+            this.$http.get(`/messages/latest/${this.chatId}/${this.$route.name}`).then(res => {
                 if (res.status === 200) {
 
                     if (res.data.length === 0) return this.welcomeMessage();
@@ -184,15 +184,7 @@ export const mixin = {
         getInformation() {
             this.$http.get(this.dataType.information).then(res => {
 
-                if (res.status === 200) {
-
-                    if (res.data === 0 || !res.data) return this.$router.push('/');
-
-                    this.done(res.data);
-
-                } else {
-                    this.$router.push('/');
-                }
+                (res.status === 200) ? this.done(res.data) : this.$router.push('/');
 
             }, () => {
                 this.$router.push('/');
@@ -251,7 +243,7 @@ export const mixin = {
                     push: `${this.$route.name}-${this.chatId}`,
                     typing: `typing-${this.$route.name}-${this.chatId}`,
                     online: `online-${this.$route.name}-${this.chatId}`,
-                    information: `/get_${this.$route.name}/${this.roomId}`
+                    information: `/access-box/${this.$route.name}/${this.roomId}`
                 };
         },
 

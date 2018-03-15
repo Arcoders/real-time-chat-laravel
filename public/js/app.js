@@ -27679,7 +27679,7 @@ var mixin = {
         GetOnlineUsers: function GetOnlineUsers() {
             var _this4 = this;
 
-            this.$http.get('/get_online_group_users/' + this.chatId + '/' + this.$route.name).then(function (response) {
+            this.$http.get('/online/connected/' + this.chatId + '/' + this.$route.name).then(function (response) {
                 if (response.status !== 200) _this4.onlineUsers = null;
             }, function () {
                 return _this4.onlineUsers = null;
@@ -27690,7 +27690,7 @@ var mixin = {
         // ----------------------------------------------
 
         mouseLeave: function mouseLeave() {
-            this.$http.get('/disconnect_user/' + this.chatId + '/' + this.$route.name).then(this.hover = true);
+            this.$http.get('/online/disconnect/' + this.chatId + '/' + this.$route.name).then(this.hover = true);
         },
 
 
@@ -27750,7 +27750,7 @@ var mixin = {
         allMessages: function allMessages() {
             var _this6 = this;
 
-            this.$http.get('/get_latest_messages/' + this.chatId + '/' + this.$route.name).then(function (res) {
+            this.$http.get('/messages/latest/' + this.chatId + '/' + this.$route.name).then(function (res) {
                 if (res.status === 200) {
 
                     if (res.data.length === 0) return _this6.welcomeMessage();
@@ -27777,14 +27777,7 @@ var mixin = {
 
             this.$http.get(this.dataType.information).then(function (res) {
 
-                if (res.status === 200) {
-
-                    if (res.data === 0 || !res.data) return _this7.$router.push('/');
-
-                    _this7.done(res.data);
-                } else {
-                    _this7.$router.push('/');
-                }
+                res.status === 200 ? _this7.done(res.data) : _this7.$router.push('/');
             }, function () {
                 _this7.$router.push('/');
             });
@@ -27847,7 +27840,7 @@ var mixin = {
                 push: this.$route.name + '-' + this.chatId,
                 typing: 'typing-' + this.$route.name + '-' + this.chatId,
                 online: 'online-' + this.$route.name + '-' + this.chatId,
-                information: '/get_' + this.$route.name + '/' + this.roomId
+                information: '/access-box/' + this.$route.name + '/' + this.roomId
             };
         }
     }
@@ -39117,7 +39110,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getTotalNotifications: function getTotalNotifications() {
             var _this3 = this;
 
-            this.$http.get('/count_notifications').then(function (res) {
+            this.$http.get('/notifications/count').then(function (res) {
 
                 if (res.status === 200) {
                     _this3.totalNotifications = res.data.total_notifications;
@@ -39845,7 +39838,7 @@ var arrayFindIndex = __webpack_require__(125);
 
             this.loading = true;
 
-            this.$http.get('/chats_list').then(function (res) {
+            this.$http.get('/list/chats').then(function (res) {
 
                 _this3.loading = false;
 
@@ -41210,7 +41203,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            this.$http.get('/show_notifications').then(function (res) {
+            this.$http.get('/notifications/show').then(function (res) {
 
                 if (res.status === 200) _this.notifications = res.data;
                 _this.loading = false;
@@ -41225,7 +41218,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            this.$http.get('/mark_as_read').then(function (res) {
+            this.$http.get('/notifications/mark_as_read').then(function (res) {
 
                 if (res.status === 200) _this2.$emit('updateNotifications', []);
 
@@ -41866,7 +41859,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.btnSubmit) return;
 
-            this.$http.post('/send_message', this.formData).then(function (response) {
+            this.$http.post('/messages/send', this.formData).then(function (response) {
 
                 response.status === 200 ? _this.resMessage('done') : _this.resMessage('error');
             }, function () {
@@ -41902,7 +41895,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         typingUsers: function typingUsers() {
-            this.$http.get('/user_typing/' + this.chatId + '/' + this.$route.name);
+            this.$http.get('/messages/typing/' + this.chatId + '/' + this.$route.name);
         }
     },
     computed: {
@@ -42178,7 +42171,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         relationShipStatus: function relationShipStatus() {
             var _this2 = this;
 
-            this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (response) {
+            this.$http.get('/friendship/check/' + this.profile_user_id).then(function (response) {
 
                 _this2.loading = false;
 
@@ -42197,7 +42190,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            this.$http.post('/add_friend/' + this.profile_user_id).then(function (response) {
+            this.$http.post('/friendship/add/' + this.profile_user_id).then(function (response) {
 
                 _this3.loading = false;
 
@@ -42213,7 +42206,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            this.$http.patch('/accept_friend/' + this.profile_user_id).then(function (response) {
+            this.$http.patch('/friendship/accept/' + this.profile_user_id).then(function (response) {
 
                 _this4.loading = false;
 
@@ -42236,7 +42229,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            this.$http.delete('/reject_friendship/' + this.profile_user_id).then(function (response) {
+            this.$http.delete('/friendship/reject/' + this.profile_user_id).then(function (response) {
 
                 _this5.loading = false;
 
@@ -44074,7 +44067,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.loading = true;
-            this.$http.get('/get_profile/' + id).then(function (res) {
+            this.$http.get('/profile/user/' + id).then(function (res) {
 
                 if (res.status === 200) {
 
@@ -44104,7 +44097,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getUsers: function getUsers() {
             var _this3 = this;
 
-            this.$http.get('/get_users/').then(function (response) {
+            this.$http.get('/profile/users').then(function (response) {
 
                 if (response.status === 200) {
                     if (response.data.length === 0) _this3.records = false;
@@ -44508,12 +44501,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             reader.onload = function (e) {
 
-                if (type == 'avatar') {
+                if (type === 'avatar') {
                     _this.avatar = e.target.result;
                     _this.newAvatar = true;
                 }
 
-                if (type == 'cover') {
+                if (type === 'cover') {
                     _this.cover = e.target.result;
                     _this.newCover = true;
                 }
@@ -44546,7 +44539,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!this.btnSubmit) return;
             this.loading = true;
 
-            this.$http.post('/edit_profile', this.formData).then(function (response) {
+            this.$http.post('/profile/edit', this.formData).then(function (response) {
 
                 _this2.loading = false;
 
@@ -45232,7 +45225,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ---------------------------------------------------
 
     mounted: function mounted() {
-        this.myGroups('/my_groups');
+        this.myGroups('/groups/my');
         console.log('My groups ok!');
     },
 
@@ -45244,7 +45237,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         clickedPage: function clickedPage(page) {
-            this.myGroups('/my_groups?page=' + page);
+            this.myGroups('/groups/my?page=' + page);
         },
 
 
@@ -45284,9 +45277,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            var url = type === 'delete' ? 'delete_group' : 'restore_group';
-
-            this.$http.delete('/' + url + '/' + group_id).then(function (response) {
+            this.$http.delete('/groups/' + type + '/' + group_id).then(function (response) {
 
                 _this2.loading = false;
 
@@ -45726,7 +45717,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            this.$http.get('/list_friends').then(function (res) {
+            this.$http.get('/groups/friends').then(function (res) {
 
                 _this.loading = false;
 
@@ -45756,7 +45747,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.btnSubmit) return;
             this.loading = true;
 
-            this.$http.post('/new_group', this.formData).then(function (res) {
+            this.$http.post('/groups/create', this.formData).then(function (res) {
 
                 _this2.loading = false;
                 res.status === 200 ? _this2.done(res.data) : _this2.error();
@@ -46137,7 +46128,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ---------------------------------------------------
 
     mounted: function mounted() {
-        this.listFriends();
         this.getGroup();
         console.log('Edit group ok!');
     },
@@ -46169,7 +46159,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var data = type === 'image' ? { deleteImage: true } : this.formData;
 
-            this.$http.post('/edit_group/' + this.group_id, data).then(function (res) {
+            this.$http.post('/groups/edit/' + this.group_id, data).then(function (res) {
 
                 _this.loading = false;
 
@@ -46185,21 +46175,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ---------------------------------------------------
 
-        listFriends: function listFriends() {
+        getGroup: function getGroup() {
             var _this2 = this;
 
-            this.loading = true;
-
-            this.$http.get('/list_friends').then(function (res) {
-
-                _this2.loading = false;
+            this.$http.get('/groups/get/' + this.group_id).then(function (res) {
 
                 if (res.status === 200) {
 
-                    if (res.data.length > 0) {
+                    if (Object.keys(res.data.group).length === 0) return _this2.back();
+
+                    _this2.groupName = res.data.group.name;
+                    if (res.data.group.avatar) _this2.groupAvatar = res.data.group.avatar;
+                    _this2.selectedUsers = res.data.group.users;
+
+                    _this2.showEdit = true;
+
+                    if (res.data.friends.length > 0) {
 
                         _this2.access = true;
-                        _this2.listUsers = res.data;
+                        _this2.listUsers = res.data.friends;
                     } else {
                         _this2.showNotification('Find friends to add them to the group', 'done');
                     }
@@ -46207,33 +46201,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.back();
                 }
             }, function () {
-                _this2.loading = false;
                 _this2.back();
-            });
-        },
-
-
-        // ---------------------------------------------------
-
-        getGroup: function getGroup() {
-            var _this3 = this;
-
-            this.$http.get('/get_group/' + this.group_id).then(function (res) {
-
-                if (res.status === 200) {
-
-                    if (res.data === 0) return _this3.back();
-
-                    _this3.showEdit = true;
-
-                    _this3.groupName = res.data.name;
-                    if (res.data.avatar) _this3.groupAvatar = res.data.avatar;
-                    _this3.selectedUsers = res.data.users;
-                } else {
-                    _this3.back();
-                }
-            }, function () {
-                _this3.back();
             });
         },
 

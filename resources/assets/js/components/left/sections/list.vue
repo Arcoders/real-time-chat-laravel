@@ -223,7 +223,7 @@
 
                 this.loading = true;
 
-                this.$http.get('/chats_list').then(res => {
+                this.$http.get('/list/chats').then(res => {
 
                     this.loading = false;
 

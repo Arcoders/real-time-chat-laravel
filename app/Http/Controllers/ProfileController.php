@@ -13,14 +13,12 @@ class profileController extends Controller
 
     protected $folder = '/images/profiles/';
 
-    public function getProfile($profile_id)
+    public function user(User $user)
     {
-        $profile = User::find($profile_id);
-
-        if ($profile) return response()->json($profile, 200);
+        return response()->json($user, 200);
     }
 
-    public function getUsers()
+    public function users()
     {
         $sugg = Auth::user()->friends('ids');
 
@@ -31,7 +29,7 @@ class profileController extends Controller
         if ($users) return response()->json($users, 200);
     }
 
-    public function editProfile(Request $request)
+    public function edit(Request $request)
     {
 
         $user= Auth::user();

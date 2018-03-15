@@ -17,7 +17,7 @@ class MessagesController extends Controller
 
     protected $folder = '/images/messages/';
 
-    public function sendMessage(Request $r)
+    public function send(Request $r)
     {
 
         $user = Auth::user();
@@ -47,18 +47,14 @@ class MessagesController extends Controller
 
     }
 
-    public function lastMessagesGroup(Request $r)
+    public function latest(Request $r)
     {
         return response()->json(Message::lastMessages($r->room_name, $r->chat_id, 5), 200);
     }
 
-    public function usersTyping(Request $r)
+    public function typing(Request $r)
     {
-        $this->triggerPusher(
-            "typing-$r->room_name-$r->chat_id",
-            'userTyping',
-            Auth::user()
-        );
+        $this->triggerPusher("typing-$r->room_name-$r->chat_id", 'userTyping', Auth::user());
     }
 
     protected function saveMessages($r, $photo, $user) {
@@ -74,8 +70,6 @@ class MessagesController extends Controller
 
     protected function pushMessage(array $data)
     {
-        if ($data['message']) {
-
             $this->triggerPusher($data['room_message'], 'pushMessage', [
                 'message' => $data['message'],
                 'user' => Auth::user()
@@ -84,7 +78,6 @@ class MessagesController extends Controller
             $this->triggerPusher($data['room_list'], 'updateList', ['message' => $data['message']]);
 
             return response()->json($data['message'], 200);
-        }
     }
 
 }

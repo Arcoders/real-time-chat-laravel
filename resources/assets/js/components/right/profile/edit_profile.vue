@@ -72,14 +72,14 @@
 
                 reader.onload = (e) => {
 
-                    if (type == 'avatar')
+                    if (type === 'avatar')
                     {
                         this.avatar = e.target.result;
                         this.newAvatar = true;
                     }
 
 
-                    if (type == 'cover')
+                    if (type === 'cover')
                     {
                         this.cover = e.target.result;
                         this.newCover = true;
@@ -112,7 +112,7 @@
                 if (!this.btnSubmit) return;
                 this.loading = true;
 
-                this.$http.post('/edit_profile', this.formData).then(response => {
+                this.$http.post('/profile/edit', this.formData).then(response => {
 
                     this.loading = false;
 

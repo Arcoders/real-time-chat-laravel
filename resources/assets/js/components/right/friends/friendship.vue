@@ -64,7 +64,7 @@
             // ---------------------------------------------------
 
             relationShipStatus() {
-                this.$http.get(`/check_relationship_status/${this.profile_user_id}`).then(response => {
+                this.$http.get(`/friendship/check/${this.profile_user_id}`).then(response => {
 
                     this.loading = false;
 
@@ -81,7 +81,7 @@
             add_friend() {
                 this.loading = true;
 
-                this.$http.post('/add_friend/'+this.profile_user_id).then(response => {
+                this.$http.post('/friendship/add/'+this.profile_user_id).then(response => {
 
                     this.loading = false;
 
@@ -95,7 +95,7 @@
             accept_friend() {
                 this.loading = true;
 
-                this.$http.patch(`/accept_friend/${this.profile_user_id}`).then(response => {
+                this.$http.patch(`/friendship/accept/${this.profile_user_id}`).then(response => {
 
                     this.loading = false;
 
@@ -117,7 +117,7 @@
             reject_friendship() {
                 this.loading = true;
 
-                this.$http.delete('/reject_friendship/'+this.profile_user_id).then(response => {
+                this.$http.delete('/friendship/reject/'+this.profile_user_id).then(response => {
 
                     this.loading = false;
 

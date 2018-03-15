@@ -91,7 +91,7 @@
         // ---------------------------------------------------
 
         mounted() {
-            this.myGroups('/my_groups');
+            this.myGroups('/groups/my');
             console.log('My groups ok!');
         },
 
@@ -102,7 +102,7 @@
             // ---------------------------------------------------
 
             clickedPage(page) {
-                this.myGroups('/my_groups?page=' + page);
+                this.myGroups('/groups/my?page=' + page);
             },
 
             // ---------------------------------------------------
@@ -142,9 +142,7 @@
 
                 this.loading = true;
 
-                let url =  (type === 'delete') ? 'delete_group' : 'restore_group';
-
-                this.$http.delete(`/${url}/${group_id}`).then(response => {
+                this.$http.delete(`/groups/${type}/${group_id}`).then(response => {
 
                     this.loading = false;
 

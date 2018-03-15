@@ -107,7 +107,7 @@
 
                 this.loading = true;
 
-                this.$http.get('/list_friends').then(res => {
+                this.$http.get('/groups/friends').then(res => {
 
                     this.loading = false;
 
@@ -137,7 +137,7 @@
                 if (this.btnSubmit) return;
                 this.loading = true;
 
-                this.$http.post('/new_group', this.formData).then(res => {
+                this.$http.post('/groups/create', this.formData).then(res => {
 
                     this.loading = false;
                     (res.status === 200) ? this.done(res.data) : this.error();

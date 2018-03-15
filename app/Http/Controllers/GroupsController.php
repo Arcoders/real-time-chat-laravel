@@ -19,7 +19,7 @@ class GroupsController extends Controller
 
     protected $folder = '/images/avatars/';
 
-    public function newGroup(Request $request)
+    public function create(Request $request)
     {
 
         $request['id'] = $this->idsToArray($request['id']);
@@ -52,14 +52,14 @@ class GroupsController extends Controller
         return response()->json("$group->name created successfully", 200);
     }
 
-    public function myGroups()
+    public function my()
     {
         $groups = Group::where('user_id', Auth::user()->id)->withTrashed()->paginate(4);
 
         return response()->json($groups, 200);
     }
 
-    public function deleteGroup($group_id)
+    public function delete($group_id)
     {
         $group = Group::myGroup($group_id);
 
@@ -78,7 +78,7 @@ class GroupsController extends Controller
         return response()->json("Group was deleted", 200);
     }
 
-    public function restoreGroup($group_id)
+    public function restore($group_id)
     {
         $group = Group::myGroup($group_id);
 
@@ -97,19 +97,17 @@ class GroupsController extends Controller
         return response()->json("Group was restored", 200);
     }
 
-    public function getGroup($group_id)
+    public function get($group_id)
     {
-        $group = Group::myGroup($group_id);
-
-        return response()->json($group,200);
+        return response()->json( ['group' => Group::myGroup($group_id), 'friends' => Auth::user()->friends()], 200);
     }
 
-    public function listFriends()
+    public function friends()
     {
         return response(Auth::user()->friends(),200);
     }
 
-    public function editGroup($group_id, Request $request)
+    public function edit($group_id, Request $request)
     {
         $user = Auth::user();
 
@@ -163,7 +161,7 @@ class GroupsController extends Controller
         return $usersIds;
     }
 
-    public function getGroupForChat($group_id)
+    public function group($group_id)
     {
         return response()->json(Group::find($group_id), 200);
     }

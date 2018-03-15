@@ -64,7 +64,7 @@
             addMessage() {
                 if (this.btnSubmit) return;
 
-                this.$http.post('/send_message', this.formData).then(response => {
+                this.$http.post('/messages/send', this.formData).then(response => {
 
                     (response.status === 200) ? this.resMessage('done') : this.resMessage('error');
 
@@ -99,7 +99,7 @@
             // ----------------------------------------------
 
             typingUsers() {
-                this.$http.get(`/user_typing/${this.chatId}/${this.$route.name}`);
+                this.$http.get(`/messages/typing/${this.chatId}/${this.$route.name}`);
             },
 
             // ----------------------------------------------

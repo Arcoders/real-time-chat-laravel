@@ -11,7 +11,7 @@ class OnlineController extends Controller
 {
     use TriggerPusher;
 
-    public function onlineGroupUsers(Request $r)
+    public function connected(Request $r)
     {
 
         $user = Auth::user();
@@ -24,7 +24,7 @@ class OnlineController extends Controller
 
     }
 
-    public function disconnectUser(Request $r)
+    public function disconnect(Request $r)
     {
         Auth::user()->online()->delete();
 
