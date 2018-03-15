@@ -18,7 +18,11 @@ Route::get('/', function () { return view('welcome'); });
 
 Route::group(['middleware' => ['auth']], function () {
 
+    // -----------------------------------------------------------------
+
     Route::get('/home', 'HomeController@index')->name('home');
+
+    // -----------------------------------------------------------------
 
     Route::prefix('groups')->group(function () {
 
@@ -32,12 +36,16 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
+    // -----------------------------------------------------------------
+
     Route::prefix('access-box')->group(function () {
 
         Route::get('/group_chat/{group_id}', 'GroupsController@group')->middleware('groupMember');
         Route::get('/friend_chat/{friend_id}', 'FriendshipsController@friend')->middleware('isFriend');
 
     });
+
+    // -----------------------------------------------------------------
 
     Route::prefix('messages')->group(function () {
 
@@ -47,6 +55,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
+    // -----------------------------------------------------------------
+
     Route::prefix('profile')->group(function () {
 
         Route::get('/user/{user}', 'ProfileController@user');
@@ -54,6 +64,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/edit', 'ProfileController@edit');
 
     });
+
+    // -----------------------------------------------------------------
 
     Route::prefix('friendship')->group(function () {
 
@@ -64,12 +76,16 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
+    // -----------------------------------------------------------------
+
     Route::prefix('online')->group(function () {
 
         Route::get('/connected/{chat_id}/{room_name}', 'OnlineController@connected');
         Route::get('/disconnect/{chat_id}/{room_name}', 'OnlineController@disconnect');
 
     });
+
+    // -----------------------------------------------------------------
 
     Route::prefix('notifications')->group(function () {
 
@@ -79,11 +95,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
+    // -----------------------------------------------------------------
+
     Route::prefix('list')->group(function () {
 
         Route::get('/chats', 'ChatsController@chats');
 
     });
 
+    // -----------------------------------------------------------------
 
 });
