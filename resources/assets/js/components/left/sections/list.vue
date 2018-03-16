@@ -186,7 +186,7 @@
             updateList() {
 
                 this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', (data) => {
-                    if (data.type === 'chat') this.chatsList();
+                    if (data.type === 'chat' || data.type === 'group') this.chatsList();
                 });
 
                 this.$pusher.subscribe('group_chat').bind('updateList', (data) => {

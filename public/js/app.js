@@ -39803,7 +39803,7 @@ var arrayFindIndex = __webpack_require__(125);
             var _this2 = this;
 
             this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', function (data) {
-                if (data.type === 'chat') _this2.chatsList();
+                if (data.type === 'chat' || data.type === 'group') _this2.chatsList();
             });
 
             this.$pusher.subscribe('group_chat').bind('updateList', function (data) {
