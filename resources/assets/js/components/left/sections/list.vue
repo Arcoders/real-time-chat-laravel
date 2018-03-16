@@ -148,7 +148,7 @@
                         this.friends = data.filtered.friends;
                         break;
 
-                    case 'up':
+                    case 'up-group':
                         this.updatePreview(this.groups, data.groupId, data.message);
                         break;
 
@@ -192,8 +192,7 @@
                 this.$pusher.subscribe('group_chat').bind('updateList', (data) => {
 
                     this.$eventBus.$emit('update', {
-                        type: 'group',
-                        action: 'up',
+                        action: 'up-group',
                         groupId: parseInt(data.message.group_chat),
                         message: data.message
                     });
@@ -205,7 +204,6 @@
                     this.$pusher.subscribe(`friend_chat-${id}`).bind('updateList', (data) => {
 
                         this.$eventBus.$emit('update', {
-                            type: 'friend',
                             action: 'up-chat',
                             chatId: parseInt(data.message.friend_chat),
                             message: data.message

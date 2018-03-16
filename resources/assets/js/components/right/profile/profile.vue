@@ -106,7 +106,7 @@
 
         data() {
             return {
-                user: null,
+                user: this.$store.state.user,
                 showProfile: false,
                 users: [],
                 records: true,
@@ -119,7 +119,7 @@
         // ---------------------------------------------------
 
         created() {
-            this.$pusher.subscribe('user' + this.$store.state.user.id).bind('updateStatus', (data) => {
+            this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', (data) => {
                 this.users = this.users.filter(u => u.id !== Number(data.id));
             });
         },
@@ -137,7 +137,6 @@
             // ---------------------------------------------------
 
             setUserInfo() {
-                this.user = this.$store.state.user;
 
                 if (this.profileId) return;
 

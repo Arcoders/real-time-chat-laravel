@@ -39758,7 +39758,7 @@ var arrayFindIndex = __webpack_require__(125);
                     _this.friends = data.filtered.friends;
                     break;
 
-                case 'up':
+                case 'up-group':
                     _this.updatePreview(_this.groups, data.groupId, data.message);
                     break;
 
@@ -39809,8 +39809,7 @@ var arrayFindIndex = __webpack_require__(125);
             this.$pusher.subscribe('group_chat').bind('updateList', function (data) {
 
                 _this2.$eventBus.$emit('update', {
-                    type: 'group',
-                    action: 'up',
+                    action: 'up-group',
                     groupId: parseInt(data.message.group_chat),
                     message: data.message
                 });
@@ -39821,7 +39820,6 @@ var arrayFindIndex = __webpack_require__(125);
                 _this2.$pusher.subscribe('friend_chat-' + id).bind('updateList', function (data) {
 
                     _this2.$eventBus.$emit('update', {
-                        type: 'friend',
                         action: 'up-chat',
                         chatId: parseInt(data.message.friend_chat),
                         message: data.message
@@ -43983,7 +43981,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            user: null,
+            user: this.$store.state.user,
             showProfile: false,
             users: [],
             records: true,
@@ -43999,7 +43997,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        this.$pusher.subscribe('user' + this.$store.state.user.id).bind('updateStatus', function (data) {
+        this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', function (data) {
             _this.users = _this.users.filter(function (u) {
                 return u.id !== Number(data.id);
             });
@@ -44021,7 +44019,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ---------------------------------------------------
 
         setUserInfo: function setUserInfo() {
-            this.user = this.$store.state.user;
 
             if (this.profileId) return;
 
