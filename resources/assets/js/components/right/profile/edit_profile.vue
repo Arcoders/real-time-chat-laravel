@@ -13,13 +13,13 @@
                 label.fileContainer
                     button
                         i.material-icons.edit_i photo_camera
-                        span.select_image Change avatar
+                        span.select_image &nbsp; Change avatar
                     input(type='file', name='fileInput', v-on:change="onFileChange($event, 'avatar')", ref='fileInput')
                 h1 Select Cover
                 label.fileContainer
                     button
                         i.material-icons.edit_i photo_size_select_actual
-                        span.select_image Choose Cover
+                        span.select_image &nbsp; Choose Cover
                     input(type='file', name='fileCover', v-on:change="onFileChange($event, 'cover')", ref='fileCover')
                 button.save(v-if='btnSubmit')
                     | Save

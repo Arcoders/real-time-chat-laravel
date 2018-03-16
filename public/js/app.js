@@ -44738,7 +44738,7 @@ var staticRenderFns = [
       _c("i", { staticClass: "material-icons edit_i" }, [
         _vm._v("photo_camera")
       ]),
-      _c("span", { staticClass: "select_image" }, [_vm._v("Change avatar")])
+      _c("span", { staticClass: "select_image" }, [_vm._v("  Change avatar")])
     ])
   },
   function() {
@@ -44749,7 +44749,7 @@ var staticRenderFns = [
       _c("i", { staticClass: "material-icons edit_i" }, [
         _vm._v("photo_size_select_actual")
       ]),
-      _c("span", { staticClass: "select_image" }, [_vm._v("Choose Cover")])
+      _c("span", { staticClass: "select_image" }, [_vm._v("  Choose Cover")])
     ])
   }
 ]
