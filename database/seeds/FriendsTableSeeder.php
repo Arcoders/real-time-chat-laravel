@@ -30,5 +30,20 @@ class FriendsTableSeeder extends Seeder
             'status' => 0
         ]);
 
+        foreach (range(4, 12) as $i):
+
+            $chat = factory(\App\Friendship::class)->create([
+                'requester' =>  1,
+                'requested' => $i,
+                'status' => 1
+            ]);
+
+            factory(\App\Message::class)->create([
+                'user_id' =>  1,
+                'friend_chat' => $chat->id,
+            ]);
+
+        endforeach;
+
     }
 }
