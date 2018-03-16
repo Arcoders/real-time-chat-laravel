@@ -39802,8 +39802,8 @@ var arrayFindIndex = __webpack_require__(125);
         updateList: function updateList() {
             var _this2 = this;
 
-            this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', function () {
-                _this2.$eventBus.$emit('update', { refresh: true });
+            this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', function (data) {
+                if (data.type === 'chat') _this2.chatsList();
             });
 
             this.$pusher.subscribe('group_chat').bind('updateList', function (data) {
@@ -42175,10 +42175,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this2.loading = false;
 
-                if (response.status === 200) {
-                    _this2.status = response.body.status;
-                    if (_this2.status === 'friends') _this2.$eventBus.$emit('update', { type: 'chat', refresh: true });
-                }
+                if (response.status === 200) _this2.status = response.body.status;
             });
         },
 
@@ -42210,14 +42207,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this4.loading = false;
 
-                if (response.status === 200) {
-
-                    _this4.status = response.body;
-
-                    if (_this4.status === 'friends') {
-                        _this4.$eventBus.$emit('update', { type: 'chat', refresh: true, profileId: _this4.profile_user_id });
-                    }
-                }
+                if (response.status === 200) _this4.status = response.body;
             });
         },
 
@@ -42233,12 +42223,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 _this5.loading = false;
 
-                if (response.status === 200) {
-
-                    _this5.status = response.body;
-
-                    _this5.$eventBus.$emit('update', { type: 'chat', refresh: true, profileId: _this5.profile_user_id });
-                }
+                if (response.status === 200) _this5.status = response.body;
             });
         }
 
@@ -44014,10 +43999,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        this.$eventBus.$on('update', function (data) {
-
-            if (data.profileId) _this.users = _this.users.filter(function (u) {
-                return u.id !== data.profileId;
+        this.$pusher.subscribe('user' + this.$store.state.user.id).bind('updateStatus', function (data) {
+            _this.users = _this.users.filter(function (u) {
+                return u.id !== Number(data.id);
             });
         });
     },

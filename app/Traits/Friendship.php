@@ -24,9 +24,7 @@ trait Friendship
 
             }
 
-            User::find($recipientId)->notify(new NewFriendRequest());
-
-            $this->realTimeUpdate($recipientId);
+            $this->notifyRequestSent($recipientId);
 
             return 'waiting';
 
@@ -45,9 +43,7 @@ trait Friendship
 
             ModelFriends::betweenUsers($this, User::find($senderId))->update(['status' => 1]);
 
-            User::find($senderId)->notify(new AcceptFriendRequest());
-
-            $this->realTimeUpdate($senderId);
+            $this->notifyAcceptedRequest($senderId);
 
             return 'friends';
         }
@@ -69,7 +65,7 @@ trait Friendship
 
             $relationship->delete();
 
-            $this->triggerPusher("user$userId", 'updateStatus', ['type' => 'chat']);
+            $this->removeChat($userId);
 
             return 'add';
         }
@@ -161,11 +157,33 @@ trait Friendship
         return  array_merge($a, $b);
     }
 
-    protected function realTimeUpdate($id)
+    protected function notifyRequestSent($recipientId)
     {
-        $this->triggerPusher("user$id", 'updateStatus', ['type' => 'chat']);
+        User::find($recipientId)->notify(new NewFriendRequest());
 
-        $this->triggerPusher("notification$id", 'updateNotifications', []);
+        $this->triggerPusher("user$recipientId", 'updateStatus', []);
+
+        $this->triggerPusher("user$this->id", 'updateStatus', []);
+
+        $this->triggerPusher("notification$recipientId", 'updateNotifications', []);
+    }
+
+    protected function notifyAcceptedRequest($senderId)
+    {
+        User::find($senderId)->notify(new AcceptFriendRequest());
+
+        $this->triggerPusher("user$senderId", 'updateStatus', ['type' => 'chat', 'id' => $this->id]);
+
+        $this->triggerPusher("user$this->id", 'updateStatus', ['type' => 'chat', 'id' => $senderId]);
+
+        $this->triggerPusher("notification$senderId", 'updateNotifications', []);
+    }
+
+    protected function removeChat($userId)
+    {
+        $this->triggerPusher("user$userId", 'updateStatus', ['type' => 'chat']);
+
+        $this->triggerPusher("user$this->id", 'updateStatus', ['type' => 'chat']);
     }
 
 }

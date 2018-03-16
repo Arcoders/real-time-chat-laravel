@@ -119,10 +119,8 @@
         // ---------------------------------------------------
 
         created() {
-            this.$eventBus.$on('update' , (data) => {
-
-                if (data.profileId) this.users = this.users.filter(u => u.id !== data.profileId);
-
+            this.$pusher.subscribe('user' + this.$store.state.user.id).bind('updateStatus', (data) => {
+                this.users = this.users.filter(u => u.id !== Number(data.id));
             });
         },
 

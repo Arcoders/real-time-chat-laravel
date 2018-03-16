@@ -68,11 +68,7 @@
 
                     this.loading = false;
 
-                    if (response.status === 200) {
-                        this.status = response.body.status;
-                        if (this.status === 'friends') this.$eventBus.$emit('update', {type: 'chat', refresh: true});
-                    }
-
+                    if (response.status === 200) this.status = response.body.status;
                 });
             },
 
@@ -99,15 +95,7 @@
 
                     this.loading = false;
 
-                    if (response.status === 200) {
-
-                        this.status = response.body;
-
-                        if (this.status === 'friends') {
-                            this.$eventBus.$emit('update', {type: 'chat', refresh: true, profileId: this.profile_user_id});
-                        }
-
-                    }
+                    if (response.status === 200) this.status = response.body;
 
                 });
             },
@@ -121,12 +109,7 @@
 
                     this.loading = false;
 
-                    if (response.status === 200) {
-
-                        this.status = response.body;
-
-                        this.$eventBus.$emit('update', {type: 'chat', refresh: true, profileId: this.profile_user_id});
-                    }
+                    if (response.status === 200) this.status = response.body;
 
                 });
             }
