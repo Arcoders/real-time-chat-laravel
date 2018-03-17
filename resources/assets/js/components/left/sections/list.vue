@@ -131,7 +131,6 @@
                 friends: this.$store.state.friends,
                 user: this.$store.state.user,
                 chatIds: [],
-                notFound: false,
                 errorLoad: false
             }
         },
@@ -139,33 +138,27 @@
         // ----------------------------------------------
 
         created() {
-            this.$eventBus.$on('update' , (data) => {
-
-                switch (data.action) {
-
-                    case 'filter':
-                        this.groups = data.filtered.groups;
-                        this.friends = data.filtered.friends;
-                        break;
-
-                    case 'up-group':
-                        this.updatePreview(this.groups, data.groupId, data.message);
-                        break;
-
-                    case 'up-chat':
-                        this.updatePreview(this.friends, data.chatId, data.message);
-                        break;
-                }
-
-                if (data.refresh) this.chatsList();
-            });
-
+            this.updateList();
             this.chatsList();
         },
 
         // ----------------------------------------------
 
         methods: {
+
+            // ----------------------------------------------
+
+            updateList() {
+                this.$eventBus.$on('update' , (data) => {
+
+                    if (data.filter) {
+                        this.groups = data.filtered.groups;
+                        this.friends = data.filtered.friends;
+                    }
+
+                    if (data.refresh) this.chatsList();
+                });
+            },
 
             // ----------------------------------------------
 
@@ -183,7 +176,7 @@
 
             // ----------------------------------------------
 
-            updateList() {
+            listEvents() {
 
                 this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', (data) => {
                     if (data.type === 'chat' || data.type === 'group') this.chatsList();
@@ -191,11 +184,7 @@
 
                 this.$pusher.subscribe('group_chat').bind('updateList', (data) => {
 
-                    this.$eventBus.$emit('update', {
-                        action: 'up-group',
-                        groupId: parseInt(data.message.group_chat),
-                        message: data.message
-                    });
+                    this.updatePreview(this.groups, parseInt(data.message.group_chat), data.message);
 
                 });
 
@@ -203,11 +192,7 @@
 
                     this.$pusher.subscribe(`friend_chat-${id}`).bind('updateList', (data) => {
 
-                        this.$eventBus.$emit('update', {
-                            action: 'up-chat',
-                            chatId: parseInt(data.message.friend_chat),
-                            message: data.message
-                        });
+                        this.updatePreview(this.friends, parseInt(data.message.friend_chat), data.message);
 
                     });
 
@@ -225,16 +210,7 @@
 
                     this.loading = false;
 
-                    if (res.status === 200) {
-
-                        if (res.data.length === 0) this.notFound = true;
-                        this.done(res.data.groups, res.data.friends);
-                        this.chatIds = res.data.chatIds;
-                        this.updateList();
-
-                    } else {
-                        this.errorLoad = true;
-                    }
+                    (res.status === 200) ? this.done(res.data) : this.errorLoad = true;
 
                 }, () => {
 
@@ -246,18 +222,21 @@
 
             // ---------------------------------------------------
 
-            done(groups, friends) {
+            done(data) {
 
-                this.groups = groups;
+                this.groups = data.groups;
 
                 this.$store.commit('updateGroups', arraySort(this.groups, "msg.created_at").reverse());
 
-                this.friends = friends.map(u => {
+                this.friends = data.friends.map(u => {
                     return renameKeys(u, key =>  (key === 'friend') ? 'user' : key);
                 });
 
                 this.$store.commit('updateFriends', arraySort(this.friends, "msg.created_at").reverse());
 
+                this.chatIds = data.chatIds;
+
+                this.listEvents();
             },
 
             // ---------------------------------------------------

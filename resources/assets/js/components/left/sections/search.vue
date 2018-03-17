@@ -34,7 +34,7 @@
 
                 this.$eventBus.$emit('update', {
                     type,
-                    action: 'filter',
+                    filter: 'true',
                     filtered: {friends, groups}
                 });
 

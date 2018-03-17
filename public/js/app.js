@@ -39738,7 +39738,6 @@ var arrayFindIndex = __webpack_require__(125);
             friends: this.$store.state.friends,
             user: this.$store.state.user,
             chatIds: [],
-            notFound: false,
             errorLoad: false
         };
     },
@@ -39747,29 +39746,7 @@ var arrayFindIndex = __webpack_require__(125);
     // ----------------------------------------------
 
     created: function created() {
-        var _this = this;
-
-        this.$eventBus.$on('update', function (data) {
-
-            switch (data.action) {
-
-                case 'filter':
-                    _this.groups = data.filtered.groups;
-                    _this.friends = data.filtered.friends;
-                    break;
-
-                case 'up-group':
-                    _this.updatePreview(_this.groups, data.groupId, data.message);
-                    break;
-
-                case 'up-chat':
-                    _this.updatePreview(_this.friends, data.chatId, data.message);
-                    break;
-            }
-
-            if (data.refresh) _this.chatsList();
-        });
-
+        this.updateList();
         this.chatsList();
     },
 
@@ -39777,6 +39754,23 @@ var arrayFindIndex = __webpack_require__(125);
     // ----------------------------------------------
 
     methods: {
+
+        // ----------------------------------------------
+
+        updateList: function updateList() {
+            var _this = this;
+
+            this.$eventBus.$on('update', function (data) {
+
+                if (data.filter) {
+                    _this.groups = data.filtered.groups;
+                    _this.friends = data.filtered.friends;
+                }
+
+                if (data.refresh) _this.chatsList();
+            });
+        },
+
 
         // ----------------------------------------------
 
@@ -39799,7 +39793,7 @@ var arrayFindIndex = __webpack_require__(125);
 
         // ----------------------------------------------
 
-        updateList: function updateList() {
+        listEvents: function listEvents() {
             var _this2 = this;
 
             this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', function (data) {
@@ -39808,22 +39802,14 @@ var arrayFindIndex = __webpack_require__(125);
 
             this.$pusher.subscribe('group_chat').bind('updateList', function (data) {
 
-                _this2.$eventBus.$emit('update', {
-                    action: 'up-group',
-                    groupId: parseInt(data.message.group_chat),
-                    message: data.message
-                });
+                _this2.updatePreview(_this2.groups, parseInt(data.message.group_chat), data.message);
             });
 
             this.chatIds.forEach(function (id) {
 
                 _this2.$pusher.subscribe('friend_chat-' + id).bind('updateList', function (data) {
 
-                    _this2.$eventBus.$emit('update', {
-                        action: 'up-chat',
-                        chatId: parseInt(data.message.friend_chat),
-                        message: data.message
-                    });
+                    _this2.updatePreview(_this2.friends, parseInt(data.message.friend_chat), data.message);
                 });
             });
         },
@@ -39840,15 +39826,7 @@ var arrayFindIndex = __webpack_require__(125);
 
                 _this3.loading = false;
 
-                if (res.status === 200) {
-
-                    if (res.data.length === 0) _this3.notFound = true;
-                    _this3.done(res.data.groups, res.data.friends);
-                    _this3.chatIds = res.data.chatIds;
-                    _this3.updateList();
-                } else {
-                    _this3.errorLoad = true;
-                }
+                res.status === 200 ? _this3.done(res.data) : _this3.errorLoad = true;
             }, function () {
 
                 _this3.loading = false;
@@ -39859,19 +39837,23 @@ var arrayFindIndex = __webpack_require__(125);
 
         // ---------------------------------------------------
 
-        done: function done(groups, friends) {
+        done: function done(data) {
 
-            this.groups = groups;
+            this.groups = data.groups;
 
             this.$store.commit('updateGroups', arraySort(this.groups, "msg.created_at").reverse());
 
-            this.friends = friends.map(function (u) {
+            this.friends = data.friends.map(function (u) {
                 return renameKeys(u, function (key) {
                     return key === 'friend' ? 'user' : key;
                 });
             });
 
             this.$store.commit('updateFriends', arraySort(this.friends, "msg.created_at").reverse());
+
+            this.chatIds = data.chatIds;
+
+            this.listEvents();
         },
 
 
@@ -40925,7 +40907,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$eventBus.$emit('update', {
                 type: type,
-                action: 'filter',
+                filter: 'true',
                 filtered: { friends: friends, groups: groups }
             });
         }
