@@ -39737,7 +39737,7 @@ var arrayFindIndex = __webpack_require__(125);
             groups: this.$store.state.groups,
             friends: this.$store.state.friends,
             user: this.$store.state.user,
-            chatIds: [],
+            chatIds: null,
             errorLoad: false
         };
     },

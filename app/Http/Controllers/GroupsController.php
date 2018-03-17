@@ -107,12 +107,8 @@ class GroupsController extends Controller
         return response(Auth::user()->friends(),200);
     }
 
-    public function edit($group_id, Request $request)
+    public function edit(Group $group, Request $request)
     {
-        $user = Auth::user();
-
-        $group = Group::find($group_id);
-
         if ($request['deleteImage']) {
 
             $this->deleteImage($group->avatar);
@@ -139,7 +135,7 @@ class GroupsController extends Controller
 
             $this->deleteImage($group->avatar);
 
-            $group->avatar = $this->processImage($request->file('avatar'), $user->id, $this->folder);
+            $group->avatar = $this->processImage($request->file('avatar'), Auth::user()->id, $this->folder);
 
         }
 

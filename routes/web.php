@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
         Route::get('/get/{group_id}', 'GroupsController@get');
-        Route::post('/edit/{group_id}', 'GroupsController@edit');
+        Route::post('/edit/{group}', 'GroupsController@edit');
 
     });
 
