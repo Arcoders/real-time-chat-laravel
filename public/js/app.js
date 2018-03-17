@@ -39040,10 +39040,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$pusher.subscribe('user' + this.user.id).bind('updateStatus', function (data) {
             return _this.listType(data.type);
         });
-
-        this.$eventBus.$on('update', function (data) {
-            return _this.listType(data.type);
-        });
     },
 
 
