@@ -163,15 +163,15 @@
             // ----------------------------------------------
 
             updatePreview(object, id, message) {
-                let chat = arrayFindIndex(object, f => f.id === id);
 
+                let chat = arrayFindIndex(object, f => f.id === Number(id));
                 if (chat === -1) return;
 
-                let up = object[chat];
-                up.msg = message;
+                let obj = object[chat];
+                obj.msg = message;
 
                 object.splice(chat, 1);
-                object.splice(object.filter(f => !f.msg).length, 0, up);
+                object.splice(object.filter(f => !f.msg).length, 0, obj);
             },
 
             // ----------------------------------------------
@@ -184,7 +184,7 @@
 
                 this.$pusher.subscribe('group_chat').bind('updateList', (data) => {
 
-                    this.updatePreview(this.groups, parseInt(data.message.group_chat), data.message);
+                    this.updatePreview(this.groups, data.message.group_chat, data.message);
 
                 });
 
@@ -192,7 +192,7 @@
 
                     this.$pusher.subscribe(`friend_chat-${id}`).bind('updateList', (data) => {
 
-                        this.updatePreview(this.friends, parseInt(data.message.friend_chat), data.message);
+                        this.updatePreview(this.friends, data.message.friend_chat, data.message);
 
                     });
 

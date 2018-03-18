@@ -33,7 +33,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/create', 'GroupsController@create');
         Route::get('/friends', 'GroupsController@friends');
 
-
         Route::get('/get/{group_id}', 'GroupsController@get');
         Route::post('/edit/{group}', 'GroupsController@edit');
 

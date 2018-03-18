@@ -39030,7 +39030,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         this.$eventBus.$on('update', function (data) {
-            if (data.type === 'profile') _this.user = _this.$store.state.user;
+
+            data.type === 'profile' ? _this.user = _this.$store.state.user : _this.listType(data.type);
         });
 
         this.$pusher.subscribe('notification' + this.user.id).bind('updateNotifications', function () {
@@ -39771,19 +39772,19 @@ var arrayFindIndex = __webpack_require__(125);
         // ----------------------------------------------
 
         updatePreview: function updatePreview(object, id, message) {
-            var chat = arrayFindIndex(object, function (f) {
-                return f.id === id;
-            });
 
+            var chat = arrayFindIndex(object, function (f) {
+                return f.id === Number(id);
+            });
             if (chat === -1) return;
 
-            var up = object[chat];
-            up.msg = message;
+            var obj = object[chat];
+            obj.msg = message;
 
             object.splice(chat, 1);
             object.splice(object.filter(function (f) {
                 return !f.msg;
-            }).length, 0, up);
+            }).length, 0, obj);
         },
 
 
@@ -39798,14 +39799,14 @@ var arrayFindIndex = __webpack_require__(125);
 
             this.$pusher.subscribe('group_chat').bind('updateList', function (data) {
 
-                _this2.updatePreview(_this2.groups, parseInt(data.message.group_chat), data.message);
+                _this2.updatePreview(_this2.groups, data.message.group_chat, data.message);
             });
 
             this.chatIds.forEach(function (id) {
 
                 _this2.$pusher.subscribe('friend_chat-' + id).bind('updateList', function (data) {
 
-                    _this2.updatePreview(_this2.friends, parseInt(data.message.friend_chat), data.message);
+                    _this2.updatePreview(_this2.friends, data.message.friend_chat, data.message);
                 });
             });
         },

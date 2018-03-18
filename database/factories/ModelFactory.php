@@ -17,7 +17,7 @@ $factory->define(App\User::class, function (Faker $faker) {
 
     static $password;
 
-    $avatar = (rand(1, 2) === 1) ? $faker->imageUrl(400, 400) : NULL;
+    $avatar = (rand(1, 2) === 1) ? "https://api.adorable.io/avatars/285/$faker->firstName.png" : NULL;
 
     return [
         'name' => $faker->firstName . ' ' . $faker->lastName,

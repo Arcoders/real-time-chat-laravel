@@ -110,12 +110,15 @@
 
         created() {
 
-            this.$eventBus.$on('update' , (data) => { if (data.type === 'profile') this.user = this.$store.state.user });
+            this.$eventBus.$on('update' , (data) => {
+
+                (data.type === 'profile') ? this.user = this.$store.state.user : this.listType(data.type);
+            });
 
             this.$pusher.subscribe(`notification${this.user.id}`).bind('updateNotifications', () => this.getTotalNotifications());
 
             this.$pusher.subscribe(`user${this.user.id}`).bind('updateStatus', (data) => this.listType(data.type));
-
+            
         },
 
         // ----------------------------------------------
