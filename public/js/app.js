@@ -40902,11 +40902,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.name === '') type = 'chat';
 
-            this.$eventBus.$emit('update', {
-                type: type,
-                filter: 'true',
-                filtered: { friends: friends, groups: groups }
-            });
+            this.$eventBus.$emit('update', { type: type, filter: 'true', filtered: { friends: friends, groups: groups } });
         }
     }
 

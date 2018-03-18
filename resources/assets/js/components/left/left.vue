@@ -118,7 +118,7 @@
             this.$pusher.subscribe(`notification${this.user.id}`).bind('updateNotifications', () => this.getTotalNotifications());
 
             this.$pusher.subscribe(`user${this.user.id}`).bind('updateStatus', (data) => this.listType(data.type));
-            
+
         },
 
         // ----------------------------------------------

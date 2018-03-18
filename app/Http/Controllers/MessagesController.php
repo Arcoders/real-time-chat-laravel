@@ -11,25 +11,17 @@ use Illuminate\Support\Facades\Storage;
 
 class MessagesController extends Controller
 {
-
-    use UploadFiles;
     use TriggerPusher;
-
-    protected $folder = '/images/messages/';
 
     public function send(Request $r)
     {
-
-        $user = Auth::user();
         $photo = null;
 
         if ($r->file('photo')) {
 
-            $r->validate([
-                'photo' => 'image|mimes:jpeg,jpg,png,gif|max:1000'
-            ]);
+            $r->validate(['photo' => 'image|mimes:jpeg,jpg,png,gif|max:1000']);
 
-            $photo = Storage::url(request()->file('photo')->store('public'));
+            $photo = Storage::url(request()->file('photo')->store('public/messages'));
 
         } else {
 
@@ -37,12 +29,14 @@ class MessagesController extends Controller
 
         }
 
-        $roomName = ($r->roomName === 'group_chat') ? $r->roomName : "$r->roomName-$r->chatId";
-
         $this->pushMessage([
-            'message' => $this->saveMessages($r, $photo, $user),
-            'room_message' => "$r->roomName-$r->chatId",
-            'room_list' => $roomName
+
+            'msg' => $this->saveMessages($r, $photo, Auth::user()),
+
+            'room' => "$r->roomName-$r->chatId",
+
+            'list' => ($r->roomName === 'group_chat') ? $r->roomName : "$r->roomName-$r->chatId"
+
         ]);
 
     }
@@ -60,24 +54,24 @@ class MessagesController extends Controller
     protected function saveMessages($r, $photo, $user) {
 
         return Message::create([
+
             'body' => $r->messageText,
+
             'user_id' => $user->id,
+
             $r->roomName => $r->chatId,
+
             'photo' => $photo
+        
         ]);
 
     }
 
     protected function pushMessage(array $data)
     {
-            $this->triggerPusher($data['room_message'], 'pushMessage', [
-                'message' => $data['message'],
-                'user' => Auth::user()
-            ]);
+        $this->triggerPusher($data['room'], 'pushMessage', ['message' => $data['msg'], 'user' => Auth::user()]);
 
-            $this->triggerPusher($data['room_list'], 'updateList', ['message' => $data['message']]);
-
-            return response()->json($data['message'], 200);
+        $this->triggerPusher($data['list'], 'updateList', ['message' => $data['msg']]);
     }
 
 }
