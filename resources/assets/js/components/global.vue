@@ -10,9 +10,7 @@
 
         <section class="right">
 
-
             <router-view :key="$route.fullPath"></router-view>
-
 
         </section>
 

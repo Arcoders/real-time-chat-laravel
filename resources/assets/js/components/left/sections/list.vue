@@ -69,47 +69,6 @@
 
 </template>
 
-<style scoped>
-    a {
-        text-decoration: none;
-        color: #2a2a2a;
-    }
-    .active_chat {
-        color: #009688;
-        padding-left: 15px;
-    }
-    .active_message {
-        padding-left: 15px;
-        color: #444444;
-    }
-    .active_image {
-        box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);
-    }
-    .chat_avatar {
-        width: 50px;
-        height: 50px;
-        min-width: 50px;
-        min-height: 50px;
-        margin: 12px 20px;
-        border-radius: 50%;
-    }
-    .photo {
-        margin-right: 5px;
-        color: #eeeeee;
-        font-size: 15px;
-    }
-    .time {
-        margin-left: 5px;
-        color: #009688;
-        font-size: 25px;
-    }
-
-    .middle {
-        margin: auto;
-        color: #aaaaaa;
-    }
-</style>
-
 <script>
 
     const arraySort = require('array-sort');

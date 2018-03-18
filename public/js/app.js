@@ -28082,7 +28082,6 @@ Vue.component('global', __webpack_require__(147));
 // Components for left side
 
 Vue.component('left', __webpack_require__(153));
-Vue.component('groups', __webpack_require__(158));
 Vue.component('list', __webpack_require__(161));
 Vue.component('search', __webpack_require__(173));
 Vue.component('allnotifications', __webpack_require__(176));
@@ -38706,7 +38705,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -38750,8 +38749,6 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -38904,7 +38901,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n.icons a[data-v-62e5a916] {\n    display: inline-block;\n    height: 100%;\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    text-decoration: none;\n}\n.router-link-active[data-v-62e5a916] {\n    -webkit-box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n            box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);\n}\n.avatar[data-v-62e5a916] {\n    margin: 5px 20px;\n}\n.error[data-v-62e5a916] {\n    color: #E57373;\n}\n.notif[data-v-62e5a916] {\n    position: relative;\n}\n.notif[data-badge][data-v-62e5a916]:after {\n    content: attr(data-badge);\n    position:absolute;\n    top: 10px;\n    right: 5px;\n    font-size: 12px;\n    background: white;\n    color: #009688;\n    width: 20px;\n    height: 20px;\n    text-align: center;\n    border-radius: 50%;\n    -webkit-box-shadow: 0 0 1px #fff;\n            box-shadow: 0 0 1px #fff;\n    font-weight: bold;\n    line-height: 22px;\n}\n", ""]);
+exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98vh - 180px);\n}\n", ""]);
 
 // exports
 
@@ -38915,43 +38912,6 @@ exports.push([module.i, "\n.contact-list[data-v-62e5a916] {\n    height: calc(98
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -39281,250 +39241,24 @@ if (false) {
 }
 
 /***/ }),
-/* 158 */
+/* 158 */,
+/* 159 */,
+/* 160 */,
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(159)
+var __vue_script__ = __webpack_require__(164)
 /* template */
-var __vue_template__ = __webpack_require__(160)
+var __vue_template__ = __webpack_require__(262)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = null
 /* scopeId */
 var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\left\\sections\\groups.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-63979a78", Component.options)
-  } else {
-    hotAPI.reload("data-v-63979a78", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 159 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Groups ok!');
-    }
-});
-
-/***/ }),
-/* 160 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "groups_app" } }, [
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "contact" }, [
-        _c("img", {
-          attrs: {
-            src: "https://avatars.io/twitter/maryam",
-            alt: "profilpicture"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-preview" }, [
-          _c("div", { staticClass: "contact-text" }, [
-            _c("h1", { staticClass: "font-name" }, [_vm._v("Nuevo grupo")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "font-preview" }, [
-              _vm._v("Hola muy buenas")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "contact-time" }, [_c("p", [_vm._v("00:24")])])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-63979a78", module.exports)
-  }
-}
-
-/***/ }),
-/* 161 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(162)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(164)
-/* template */
-var __vue_template__ = __webpack_require__(172)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-078cca8e"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -39557,92 +39291,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 162 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(163);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("55ed6508", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-078cca8e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./list.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-078cca8e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./list.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 163 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\na[data-v-078cca8e] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-078cca8e] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-078cca8e] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-078cca8e] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n.chat_avatar[data-v-078cca8e] {\n    width: 50px;\n    height: 50px;\n    min-width: 50px;\n    min-height: 50px;\n    margin: 12px 20px;\n    border-radius: 50%;\n}\n.photo[data-v-078cca8e] {\n    margin-right: 5px;\n    color: #eeeeee;\n    font-size: 15px;\n}\n.time[data-v-078cca8e] {\n    margin-left: 5px;\n    color: #009688;\n    font-size: 25px;\n}\n.middle[data-v-078cca8e] {\n    margin: auto;\n    color: #aaaaaa;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 162 */,
+/* 163 */,
 /* 164 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -40501,316 +40156,7 @@ module.exports = function isObject(val) {
 
 
 /***/ }),
-/* 172 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "private_app" } },
-    [
-      _vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e(),
-      _vm._l(_vm.friends, function(friend) {
-        return _vm.showChatList
-          ? _c(
-              "div",
-              { staticClass: "contact" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_image",
-                      to: _vm.chatLink(friend, "friend")
-                    }
-                  },
-                  [
-                    _c("avatar", {
-                      staticClass: "chat_avatar",
-                      attrs: {
-                        username: friend.user.name,
-                        src: friend.user.avatar,
-                        color: "#fff"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _c("div", { staticClass: "contact-preview" }, [
-                  _c("div", { staticClass: "contact-text" }, [
-                    _c(
-                      "h1",
-                      { staticClass: "font-name" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              "exact-active-class": "active_chat",
-                              to: _vm.chatLink(friend, "friend")
-                            }
-                          },
-                          [_vm._v(_vm._s(friend.user.name))]
-                        )
-                      ],
-                      1
-                    ),
-                    _c(
-                      "p",
-                      { staticClass: "font-preview" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              "exact-active-class": "active_message",
-                              to: _vm.chatLink(friend, "friend")
-                            }
-                          },
-                          [
-                            friend.msg
-                              ? _c("span", [
-                                  friend.msg.body && friend.msg.photo
-                                    ? _c("span", [
-                                        _c(
-                                          "i",
-                                          {
-                                            staticClass: "material-icons photo"
-                                          },
-                                          [_vm._v("photo")]
-                                        ),
-                                        _vm._v(
-                                          _vm._s(
-                                            _vm._f("truncate")(
-                                              friend.msg.body,
-                                              35
-                                            )
-                                          )
-                                        )
-                                      ])
-                                    : friend.msg.body
-                                      ? _c("span", [
-                                          _vm._v(
-                                            _vm._s(
-                                              _vm._f("truncate")(
-                                                friend.msg.body,
-                                                20
-                                              )
-                                            )
-                                          )
-                                        ])
-                                      : friend.msg.photo
-                                        ? _c("span", [
-                                            _c(
-                                              "i",
-                                              {
-                                                staticClass:
-                                                  "material-icons photo"
-                                              },
-                                              [_vm._v("photo")]
-                                            ),
-                                            _vm._v("a photo has been shared")
-                                          ])
-                                        : _vm._e()
-                                ])
-                              : _c("span", [_vm._v("Empty chat...")])
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ]),
-                _c("div", { staticClass: "contact-time" }, [
-                  friend.msg
-                    ? _c("p", [
-                        _vm._v(
-                          _vm._s(
-                            _vm._f("moment")(friend.msg.created_at, "H:mm")
-                          )
-                        )
-                      ])
-                    : _c("p", [
-                        _c("i", { staticClass: "material-icons time" }, [
-                          _vm._v("fiber_new")
-                        ])
-                      ])
-                ])
-              ],
-              1
-            )
-          : _vm._e()
-      }),
-      _vm._l(_vm.groups, function(group) {
-        return !_vm.showChatList
-          ? _c(
-              "div",
-              { staticClass: "contact" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    attrs: {
-                      "exact-active-class": "active_image",
-                      to: _vm.chatLink(group, "group")
-                    }
-                  },
-                  [
-                    _c("avatar", {
-                      staticClass: "chat_avatar",
-                      attrs: {
-                        username: group.name,
-                        src: group.avatar,
-                        color: "#fff"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _c("div", { staticClass: "contact-preview" }, [
-                  _c("div", { staticClass: "contact-text" }, [
-                    _c(
-                      "h1",
-                      { staticClass: "font-name" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              "exact-active-class": "active_chat",
-                              to: _vm.chatLink(group, "group")
-                            }
-                          },
-                          [_vm._v(_vm._s(group.name))]
-                        )
-                      ],
-                      1
-                    ),
-                    _c(
-                      "p",
-                      { staticClass: "font-preview" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              "exact-active-class": "active_message",
-                              to: _vm.chatLink(group, "group")
-                            }
-                          },
-                          [
-                            group.msg
-                              ? _c("span", [
-                                  group.msg.body && group.msg.photo
-                                    ? _c("span", [
-                                        _c(
-                                          "i",
-                                          {
-                                            staticClass: "material-icons photo"
-                                          },
-                                          [_vm._v("photo")]
-                                        ),
-                                        _vm._v(
-                                          _vm._s(
-                                            _vm._f("truncate")(
-                                              group.msg.body,
-                                              35
-                                            )
-                                          )
-                                        )
-                                      ])
-                                    : group.msg.body
-                                      ? _c("span", [
-                                          _vm._v(
-                                            _vm._s(
-                                              _vm._f("truncate")(
-                                                group.msg.body,
-                                                20
-                                              )
-                                            )
-                                          )
-                                        ])
-                                      : group.msg.photo
-                                        ? _c("span", [
-                                            _c(
-                                              "i",
-                                              {
-                                                staticClass:
-                                                  "material-icons photo"
-                                              },
-                                              [_vm._v("photo")]
-                                            ),
-                                            _vm._v("a photo has been shared")
-                                          ])
-                                        : _vm._e()
-                                ])
-                              : _c("span", [_vm._v("Empty group...")])
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ]),
-                _c("div", { staticClass: "contact-time" }, [
-                  group.msg
-                    ? _c("p", [
-                        _vm._v(
-                          _vm._s(_vm._f("moment")(group.msg.created_at, "H:mm"))
-                        )
-                      ])
-                    : _c("p", [
-                        _c("i", { staticClass: "material-icons time" }, [
-                          _vm._v("fiber_new")
-                        ])
-                      ])
-                ])
-              ],
-              1
-            )
-          : _vm._e()
-      }),
-      _vm.notFoundGroups
-        ? _c("div", { staticClass: "contact" }, [_vm._m(0)])
-        : _vm._e(),
-      _vm.notFoundFriends
-        ? _c("div", { staticClass: "contact" }, [_vm._m(1)])
-        : _vm._e()
-    ],
-    2
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-preview" }, [
-      _c("p", { staticClass: "middle" }, [_vm._v("group not found")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-preview" }, [
-      _c("p", { staticClass: "middle" }, [_vm._v("friend not found")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-078cca8e", module.exports)
-  }
-}
-
-/***/ }),
+/* 172 */,
 /* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -41044,7 +40390,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\na[data-v-5d6741d4] {\n    text-decoration: none;\n    color: #2a2a2a;\n}\n.active_chat[data-v-5d6741d4] {\n    color: #009688;\n    padding-left: 15px;\n}\n.active_message[data-v-5d6741d4] {\n    padding-left: 15px;\n    color: #444444;\n}\n.active_image[data-v-5d6741d4] {\n    -webkit-box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n            box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);\n}\n.chat_avatar[data-v-5d6741d4] {\n    width: 50px;\n    height: 50px;\n    min-width: 50px;\n    min-height: 50px;\n    margin: 12px 20px;\n    border-radius: 50%;\n}\n.photo[data-v-5d6741d4] {\n    margin-right: 5px;\n    color: #eeeeee;\n    font-size: 15px;\n}\n.time[data-v-5d6741d4] {\n    margin-left: 5px;\n    color: #009688;\n    font-size: 25px;\n}\n.middle[data-v-5d6741d4] {\n    margin: auto;\n    color: #aaaaaa;\n}\n.mark[data-v-5d6741d4] {\n    line-height: 40px;\n    width: 100%;\n    background-color: #fbfbfb;\n    border: solid 1px #EEEEEE;\n    color: #777777;\n    -webkit-transition: all .3s ease-out;\n    transition: all .3s ease-out;\n}\n.mark[data-v-5d6741d4]:hover {\n    font-weight: bold;\n    background-color: #fbfbfb;\n}\n.new_notification[data-v-5d6741d4] {\n    background-color: #FBFCFC;\n}\n.green_teal[data-v-5d6741d4] {\n    color: #009688;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -41055,65 +40401,6 @@ exports.push([module.i, "\na[data-v-5d6741d4] {\n    text-decoration: none;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -41215,7 +40502,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "private_app" } },
+    { staticClass: "notifications" },
     [
       _c("button", { staticClass: "mark", on: { click: _vm.markAsRead } }, [
         _vm._v("Mark all as read")
@@ -46372,6 +45659,322 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "private_app" } },
+    [
+      _vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e(),
+      _vm._l(_vm.friends, function(friend) {
+        return _vm.showChatList
+          ? _c(
+              "div",
+              { staticClass: "contact" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_image",
+                      to: _vm.chatLink(friend, "friend")
+                    }
+                  },
+                  [
+                    _c("avatar", {
+                      staticClass: "chat_avatar",
+                      attrs: {
+                        username: friend.user.name,
+                        src: friend.user.avatar,
+                        color: "#fff"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _c("div", { staticClass: "contact-preview" }, [
+                  _c("div", { staticClass: "contact-text" }, [
+                    _c(
+                      "h1",
+                      { staticClass: "font-name" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              "exact-active-class": "active_chat",
+                              to: _vm.chatLink(friend, "friend")
+                            }
+                          },
+                          [_vm._v(_vm._s(friend.user.name))]
+                        )
+                      ],
+                      1
+                    ),
+                    _c(
+                      "p",
+                      { staticClass: "font-preview" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              "exact-active-class": "active_message",
+                              to: _vm.chatLink(friend, "friend")
+                            }
+                          },
+                          [
+                            friend.msg
+                              ? _c("span", [
+                                  friend.msg.body && friend.msg.photo
+                                    ? _c("span", [
+                                        _c(
+                                          "i",
+                                          {
+                                            staticClass: "material-icons photo"
+                                          },
+                                          [_vm._v("photo")]
+                                        ),
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm._f("truncate")(
+                                              friend.msg.body,
+                                              35
+                                            )
+                                          )
+                                        )
+                                      ])
+                                    : friend.msg.body
+                                      ? _c("span", [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("truncate")(
+                                                friend.msg.body,
+                                                20
+                                              )
+                                            )
+                                          )
+                                        ])
+                                      : friend.msg.photo
+                                        ? _c("span", [
+                                            _c(
+                                              "i",
+                                              {
+                                                staticClass:
+                                                  "material-icons photo"
+                                              },
+                                              [_vm._v("photo")]
+                                            ),
+                                            _vm._v("a photo has been shared")
+                                          ])
+                                        : _vm._e()
+                                ])
+                              : _c("span", [_vm._v("Empty chat...")])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ]),
+                _c("div", { staticClass: "contact-time" }, [
+                  friend.msg
+                    ? _c("p", [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("moment")(friend.msg.created_at, "H:mm")
+                          )
+                        )
+                      ])
+                    : _c("p", [
+                        _c("i", { staticClass: "material-icons time" }, [
+                          _vm._v("fiber_new")
+                        ])
+                      ])
+                ])
+              ],
+              1
+            )
+          : _vm._e()
+      }),
+      _vm._l(_vm.groups, function(group) {
+        return !_vm.showChatList
+          ? _c(
+              "div",
+              { staticClass: "contact" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      "exact-active-class": "active_image",
+                      to: _vm.chatLink(group, "group")
+                    }
+                  },
+                  [
+                    _c("avatar", {
+                      staticClass: "chat_avatar",
+                      attrs: {
+                        username: group.name,
+                        src: group.avatar,
+                        color: "#fff"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _c("div", { staticClass: "contact-preview" }, [
+                  _c("div", { staticClass: "contact-text" }, [
+                    _c(
+                      "h1",
+                      { staticClass: "font-name" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              "exact-active-class": "active_chat",
+                              to: _vm.chatLink(group, "group")
+                            }
+                          },
+                          [_vm._v(_vm._s(group.name))]
+                        )
+                      ],
+                      1
+                    ),
+                    _c(
+                      "p",
+                      { staticClass: "font-preview" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              "exact-active-class": "active_message",
+                              to: _vm.chatLink(group, "group")
+                            }
+                          },
+                          [
+                            group.msg
+                              ? _c("span", [
+                                  group.msg.body && group.msg.photo
+                                    ? _c("span", [
+                                        _c(
+                                          "i",
+                                          {
+                                            staticClass: "material-icons photo"
+                                          },
+                                          [_vm._v("photo")]
+                                        ),
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm._f("truncate")(
+                                              group.msg.body,
+                                              35
+                                            )
+                                          )
+                                        )
+                                      ])
+                                    : group.msg.body
+                                      ? _c("span", [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("truncate")(
+                                                group.msg.body,
+                                                20
+                                              )
+                                            )
+                                          )
+                                        ])
+                                      : group.msg.photo
+                                        ? _c("span", [
+                                            _c(
+                                              "i",
+                                              {
+                                                staticClass:
+                                                  "material-icons photo"
+                                              },
+                                              [_vm._v("photo")]
+                                            ),
+                                            _vm._v("a photo has been shared")
+                                          ])
+                                        : _vm._e()
+                                ])
+                              : _c("span", [_vm._v("Empty group...")])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ]),
+                _c("div", { staticClass: "contact-time" }, [
+                  group.msg
+                    ? _c("p", [
+                        _vm._v(
+                          _vm._s(_vm._f("moment")(group.msg.created_at, "H:mm"))
+                        )
+                      ])
+                    : _c("p", [
+                        _c("i", { staticClass: "material-icons time" }, [
+                          _vm._v("fiber_new")
+                        ])
+                      ])
+                ])
+              ],
+              1
+            )
+          : _vm._e()
+      }),
+      _vm.notFoundGroups
+        ? _c("div", { staticClass: "contact" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm.notFoundFriends
+        ? _c("div", { staticClass: "contact" }, [_vm._m(1)])
+        : _vm._e()
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-preview" }, [
+      _c("p", { staticClass: "middle" }, [_vm._v("group not found")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-preview" }, [
+      _c("p", { staticClass: "middle" }, [_vm._v("friend not found")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-078cca8e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

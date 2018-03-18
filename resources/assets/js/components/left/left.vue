@@ -50,43 +50,6 @@
     .contact-list {
         height: calc(98vh - 180px);
     }
-    .icons a {
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-    }
-    .router-link-active {
-        box-shadow: 0px 1px 0px 0px rgba(186,186,186,1);
-    }
-    .avatar {
-        margin: 5px 20px;
-    }
-    .error {
-        color: #E57373;
-    }
-    .notif {
-        position: relative;
-    }
-    .notif[data-badge]:after {
-        content: attr(data-badge);
-        position:absolute;
-        top: 10px;
-        right: 5px;
-        font-size: 12px;
-        background: white;
-        color: #009688;
-        width: 20px;
-        height: 20px;
-        text-align: center;
-        border-radius: 50%;
-        box-shadow: 0 0 1px #fff;
-        font-weight: bold;
-        line-height: 22px;
-    }
 </style>
 
 <script>

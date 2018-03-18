@@ -51,7 +51,6 @@ Vue.component('global', require('./components/global.vue'));
 // Components for left side
 
 Vue.component('left', require('./components/left/left.vue'));
-Vue.component('groups', require('./components/left/sections/groups.vue'));
 Vue.component('list', require('./components/left/sections/list.vue'));
 Vue.component('search', require('./components/left/sections/search.vue'));
 Vue.component('allnotifications', require('./components/left/sections/show_notifications.vue'));

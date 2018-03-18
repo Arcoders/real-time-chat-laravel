@@ -19,7 +19,7 @@ class MessagesController extends Controller
 
         if ($r->file('photo')) {
 
-            $r->validate(['photo' => 'image|mimes:jpeg,jpg,png,gif|max:1000']);
+            $r->validate(['photo' => 'image|mimes:jpeg,jpg,png,gif|max:1500']);
 
             $photo = Storage::url(request()->file('photo')->store('public/messages'));
 
@@ -62,7 +62,7 @@ class MessagesController extends Controller
             $r->roomName => $r->chatId,
 
             'photo' => $photo
-        
+
         ]);
 
     }

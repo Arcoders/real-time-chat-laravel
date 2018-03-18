@@ -1,5 +1,5 @@
 <template lang="pug">
-    #private_app
+    .notifications
 
         button.mark(@click="markAsRead") Mark all as read
 
@@ -25,65 +25,6 @@
 </template>
 
 <style scoped>
-    a {
-        text-decoration: none;
-        color: #2a2a2a;
-    }
-    .active_chat {
-        color: #009688;
-        padding-left: 15px;
-    }
-    .active_message {
-        padding-left: 15px;
-        color: #444444;
-    }
-    .active_image {
-        box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);
-    }
-    .chat_avatar {
-        width: 50px;
-        height: 50px;
-        min-width: 50px;
-        min-height: 50px;
-        margin: 12px 20px;
-        border-radius: 50%;
-    }
-    .photo {
-        margin-right: 5px;
-        color: #eeeeee;
-        font-size: 15px;
-    }
-    .time {
-        margin-left: 5px;
-        color: #009688;
-        font-size: 25px;
-    }
-
-    .middle {
-        margin: auto;
-        color: #aaaaaa;
-    }
-    .mark {
-        line-height: 40px;
-        width: 100%;
-        background-color: #fbfbfb;
-        border: solid 1px #EEEEEE;
-        color: #777777;
-        -webkit-transition: all .3s ease-out;
-        transition: all .3s ease-out;
-    }
-
-    .mark:hover {
-        font-weight: bold;
-        background-color: #fbfbfb;
-    }
-
-    .new_notification {
-        background-color: #FBFCFC;
-    }
-    .green_teal {
-        color: #009688;
-    }
 
 </style>
 
