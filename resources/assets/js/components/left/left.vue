@@ -1,7 +1,7 @@
 <template lang="pug">
     #left_app
 
-        .profile
+        .menu
 
             avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
 
@@ -16,7 +16,7 @@
                     i.material-icons person_add
                     span.step
 
-                a(v-if="totalNotifications > 0", :data-badge="totalNotifications" v-on:click='showListNotifications').notif
+                a(v-if="totalNotifications > 0", :data-badge="totalNotifications" v-on:click='showListNotifications').notifications
                     i.material-icons notifications
 
                 loading(:normal='true', v-if='loading')
@@ -27,13 +27,11 @@
 
         search
 
-        .wrap-filter
+        .filter
 
-            .link_filter
-                a(href='#', @click='changeList(true)', v-bind:class='{ active: myChatList }') Private
+            button(@click='changeList(true)', v-bind:class='{ active: myChatList }') Private
 
-            .link_filter
-                a(href='#', @click='changeList(false)', v-bind:class='{ active: !myChatList }') Groups
+            button( @click='changeList(false)', v-bind:class='{ active: !myChatList }') Groups
 
         section(v-if="showNotification")
             .contact-list

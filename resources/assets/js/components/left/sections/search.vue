@@ -1,10 +1,10 @@
 <template lang="pug">
 
     #search_app
-        .wrap-input
+        .search
             .input
                 i.material-icons search
-                input.input-global(type='text', v-model='name', v-on:keyup='updateGroups', placeholder='Search...')
+                input.global(type='text', v-model='name', v-on:keyup='updateGroups', placeholder='Search...')
 
 
 </template>
