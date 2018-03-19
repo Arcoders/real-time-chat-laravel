@@ -159,7 +159,7 @@ i {
 
 /* Search ---------------------------------------------------------------- */
 
-.search {
+.search-container {
   width: 100%;
   height: 55px;
   background: #fbfbfb;
@@ -168,29 +168,30 @@ i {
   display: flex;
 }
 
-.search .input {
+.search-container .search {
   width: 90%;
   height: 30px;
   margin: auto;
   border: 1px solid #f1f1f1;
-  border-radius: 2px;
+  border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.search .input i {
+.search-container .search i {
   color: #aaaaaa;
   margin: 4px 5px 0 5px;
 }
 
-.search .global {
+.search-container .search input {
   width: 100%;
   border: none;
-  padding-left: 5px;
+  border-radius: 5px;
+  padding-left: 10px;
 }
 
-.search .global:focus {
+.search-container .search input:focus {
   outline: none;
 }
 

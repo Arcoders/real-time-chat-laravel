@@ -40561,8 +40561,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "search_app" } }, [
-    _c("div", { staticClass: "search" }, [
-      _c("div", { staticClass: "input" }, [
+    _c("div", { staticClass: "search-container" }, [
+      _c("div", { staticClass: "search" }, [
         _c("i", { staticClass: "material-icons" }, [_vm._v("search")]),
         _c("input", {
           directives: [
@@ -40573,7 +40573,6 @@ var render = function() {
               expression: "name"
             }
           ],
-          staticClass: "global",
           attrs: { type: "text", placeholder: "Search..." },
           domProps: { value: _vm.name },
           on: {
