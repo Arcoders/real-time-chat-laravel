@@ -8,17 +8,17 @@
         .contact(v-for='notification in notifications', v-bind:class='{ new_notification: notification.read == null }')
 
             router-link(:to="{ name: 'profile', params: { profile_id: notification.info.user.id }}")
-                avatar.chat_avatar(:username='notification.info.user.name', :src='notification.info.user.avatar', color='#fff')
+                avatar.avatar(:username='notification.info.user.name', :src='notification.info.user.avatar', color='#fff')
 
-            .contact-preview
-                .contact-text
-                    h1.font-name
+            .preview
+                .text
+                    h5
                         router-link(exact-active-class='green_teal', :to="{ name: 'profile', params: { profile_id: notification.info.user.id }}")
                             | {{ notification.info.user.name }}
-                    p.font-preview
+                    h6
                         a {{ notification.info.msg}}
 
-            .contact-time
+            .time
                 p {{ notification.data.date | moment('H:mm') }}
 
 

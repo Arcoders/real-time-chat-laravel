@@ -59,30 +59,6 @@
     }
 }
 
-/* Notifications ---------------------------------------------------------------- */
-
-.notifications {
-    .mark {
-        line-height: 40px;
-        width: 100%;
-        background-color: #fbfbfb;
-        border: solid 1px #EEEEEE;
-        color: #777777;
-        -webkit-transition: all .3s ease-out;
-        transition: all .3s ease-out;
-        &:hover {
-            font-weight: bold;
-            background-color: #fbfbfb;
-        }
-    }
-    .new_notification {
-        background-color: #FBFCFC;
-    }
-    .green_teal {
-        color: #009688;
-    }
-}
-
 /* Search ---------------------------------------------------------------- */
 
 .search-container {
@@ -148,83 +124,87 @@
     height: 70px;
     background-color: #ffffff;
     display: flex;
+    &:hover {
+        background-color: #f5f5f5;
+    }
+    .preview {
+        width: 100%;
+        height: 70px;
+        border-bottom: 1px solid #eeeeee;
+        overflow: hidden;
+    }
+    a {
+        text-decoration: none;
+        color: #2a2a2a;
+    }
+    .text {
+        margin-top: 20px;
+    }
+    h5 {
+        font-size: 16px;
+        font-weight: inherit;
+    }
+    h6 {
+        font-weight: inherit;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    .avatar {
+        margin: 12px 20px;
+    }
+    .photo {
+        margin-right: 5px;
+        color: #eeeeee;
+        font-size: 15px;
+    }
+    .time {
+        margin: 30px 10px;
+        p {
+            color: #74787E;
+            font-size: 12px;
+        }
+        i {
+            color: #009688;
+            font-size: 25px;
+        }
+    }
+    .middle {
+        margin: 30px auto;
+        color: #aaaaaa;
+    }
+    .active_chat {
+        color: #009688;
+        padding-left: 15px;
+    }
+    .active_message {
+        padding-left: 15px;
+        color: #444444;
+    }
+    .active_image {
+        box-shadow: 6px 0px 16px -13px rgba(119, 119, 119, 1);
+    }
 }
 
-.contact img {
-    width: 50px;
-    height: 50px;
-    min-width: 50px;
-    min-height: 50px;
-    margin: 10px 20px ;
-    border-radius: 50%;
-}
+/* Notifications ---------------------------------------------------------------- */
 
-.contact:hover {
-    background-color: #f5f5f5;
+.notifications {
+    .mark {
+        line-height: 40px;
+        width: 100%;
+        background-color: #fbfbfb;
+        border: solid 1px #EEEEEE;
+        color: #777777;
+        -webkit-transition: all .3s ease-out;
+        transition: all .3s ease-out;
+        &:hover {
+            font-weight: bold;
+            background-color: #fbfbfb;
+        }
+    }
+    .new_notification {
+        background-color: #FBFCFC;
+    }
+    .green_teal {
+        color: #009688;
+    }
 }
-
-.contact-preview {
-    width: 100%;
-    height: 70px;
-    border-bottom: 1px solid #eeeeee;
-    display: flex;
-    overflow: hidden;
-}
-
-.contact-text {
-    height: 40px;
-    margin: auto 0;
-    overflow: hidden;
-}
-
-.contact-time {
-    width: 55px;
-    color: rgba(0,0,0,0.4);
-    font-size: 0.8em;
-    display: flex;
-    margin-top: 20px;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 0px solid #eeeeee;
-}
-
-.contact-list a {
-    text-decoration: none;
-    color: #2a2a2a;
-}
-.contact-list .active_chat {
-    color: #009688;
-    padding-left: 15px;
-}
-.contact-list .active_message {
-    padding-left: 15px;
-    color: #444444;
-}
-.active_image {
-    box-shadow: 6px 0px 16px -13px rgba(119,119,119,1);
-}
-.chat_avatar {
-    width: 50px;
-    height: 50px;
-    min-width: 50px;
-    min-height: 50px;
-    margin: 12px 20px;
-    border-radius: 50%;
-}
-.photo {
-    margin-right: 5px;
-    color: #eeeeee;
-    font-size: 15px;
-}
-.contact-list .time {
-    margin-left: 5px;
-    color: #009688;
-    font-size: 25px;
-}
-
-.middle {
-    margin: auto;
-    color: #aaaaaa;
-}
-

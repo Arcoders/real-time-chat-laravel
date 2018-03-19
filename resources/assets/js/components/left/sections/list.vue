@@ -6,14 +6,14 @@
         .contact(v-if='showChatList', v-for='friend in friends')
 
             router-link(exact-active-class='active_image', :to="chatLink(friend, 'friend')")
-                avatar.chat_avatar(:username='friend.user.name', :src='friend.user.avatar', color='#fff')
+                avatar.avatar(:username='friend.user.name', :src='friend.user.avatar', color='#fff')
 
-            .contact-preview
-                .contact-text
-                    h1.font-name
+            .preview
+                .text
+                    h5
                         router-link(exact-active-class='active_chat', :to="chatLink(friend, 'friend')")
                             | {{ friend.user.name }}
-                    p.font-preview
+                    h6
                         router-link(exact-active-class='active_message', :to="chatLink(friend, 'friend')")
                             span(v-if="friend.msg")
                                 span(v-if="friend.msg.body && friend.msg.photo")
@@ -25,22 +25,21 @@
                                     | a photo has been shared
                             span(v-else) Empty chat...
 
-            .contact-time
+            .time
                 p(v-if="friend.msg") {{ friend.msg.created_at | moment('H:mm') }}
-                p(v-else)
-                    i.material-icons.time fiber_new
+                i.material-icons(v-else) fiber_new
 
         .contact(v-if='!showChatList', v-for='group in groups')
 
             router-link(exact-active-class='active_image', :to="chatLink(group, 'group')")
-                avatar.chat_avatar(:username='group.name', :src='group.avatar', color='#fff')
+                avatar.avatar(:username='group.name', :src='group.avatar', color='#fff')
 
-            .contact-preview
-                .contact-text
-                    h1.font-name
+            .preview
+                .text
+                    h5
                         router-link(exact-active-class='active_chat', :to="chatLink(group, 'group')")
                             | {{ group.name }}
-                    p.font-preview
+                    h6
                         router-link(exact-active-class='active_message', :to="chatLink(group, 'group')")
                             span(v-if='group.msg')
                                 span(v-if='group.msg.body && group.msg.photo')
@@ -52,19 +51,15 @@
                                     | a photo has been shared
                             span(v-else) Empty group...
 
-
-            .contact-time
+            .time
                 p(v-if='group.msg') {{ group.msg.created_at | moment('H:mm') }}
-                p(v-else)
-                    i.material-icons.time fiber_new
+                i.material-icons(v-else) fiber_new
 
         .contact(v-if='notFoundGroups')
-                .contact-preview
-                    p.middle group not found
+                p.middle group not found
 
         .contact(v-if='notFoundFriends')
-            .contact-preview
-                p.middle friend not found
+            p.middle friend not found
 
 
 </template>

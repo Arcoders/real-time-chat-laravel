@@ -39351,11 +39351,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 var arraySort = __webpack_require__(160);
@@ -40171,7 +40166,7 @@ var render = function() {
                   },
                   [
                     _c("avatar", {
-                      staticClass: "chat_avatar",
+                      staticClass: "avatar",
                       attrs: {
                         username: friend.user.name,
                         src: friend.user.avatar,
@@ -40181,11 +40176,10 @@ var render = function() {
                   ],
                   1
                 ),
-                _c("div", { staticClass: "contact-preview" }, [
-                  _c("div", { staticClass: "contact-text" }, [
+                _c("div", { staticClass: "preview" }, [
+                  _c("div", { staticClass: "text" }, [
                     _c(
-                      "h1",
-                      { staticClass: "font-name" },
+                      "h5",
                       [
                         _c(
                           "router-link",
@@ -40201,8 +40195,7 @@ var render = function() {
                       1
                     ),
                     _c(
-                      "p",
-                      { staticClass: "font-preview" },
+                      "h6",
                       [
                         _c(
                           "router-link",
@@ -40266,7 +40259,7 @@ var render = function() {
                     )
                   ])
                 ]),
-                _c("div", { staticClass: "contact-time" }, [
+                _c("div", { staticClass: "time" }, [
                   friend.msg
                     ? _c("p", [
                         _vm._v(
@@ -40275,10 +40268,8 @@ var render = function() {
                           )
                         )
                       ])
-                    : _c("p", [
-                        _c("i", { staticClass: "material-icons time" }, [
-                          _vm._v("fiber_new")
-                        ])
+                    : _c("i", { staticClass: "material-icons" }, [
+                        _vm._v("fiber_new")
                       ])
                 ])
               ],
@@ -40302,7 +40293,7 @@ var render = function() {
                   },
                   [
                     _c("avatar", {
-                      staticClass: "chat_avatar",
+                      staticClass: "avatar",
                       attrs: {
                         username: group.name,
                         src: group.avatar,
@@ -40312,11 +40303,10 @@ var render = function() {
                   ],
                   1
                 ),
-                _c("div", { staticClass: "contact-preview" }, [
-                  _c("div", { staticClass: "contact-text" }, [
+                _c("div", { staticClass: "preview" }, [
+                  _c("div", { staticClass: "text" }, [
                     _c(
-                      "h1",
-                      { staticClass: "font-name" },
+                      "h5",
                       [
                         _c(
                           "router-link",
@@ -40332,8 +40322,7 @@ var render = function() {
                       1
                     ),
                     _c(
-                      "p",
-                      { staticClass: "font-preview" },
+                      "h6",
                       [
                         _c(
                           "router-link",
@@ -40397,17 +40386,15 @@ var render = function() {
                     )
                   ])
                 ]),
-                _c("div", { staticClass: "contact-time" }, [
+                _c("div", { staticClass: "time" }, [
                   group.msg
                     ? _c("p", [
                         _vm._v(
                           _vm._s(_vm._f("moment")(group.msg.created_at, "H:mm"))
                         )
                       ])
-                    : _c("p", [
-                        _c("i", { staticClass: "material-icons time" }, [
-                          _vm._v("fiber_new")
-                        ])
+                    : _c("i", { staticClass: "material-icons" }, [
+                        _vm._v("fiber_new")
                       ])
                 ])
               ],
@@ -40416,33 +40403,20 @@ var render = function() {
           : _vm._e()
       }),
       _vm.notFoundGroups
-        ? _c("div", { staticClass: "contact" }, [_vm._m(0)])
+        ? _c("div", { staticClass: "contact" }, [
+            _c("p", { staticClass: "middle" }, [_vm._v("group not found")])
+          ])
         : _vm._e(),
       _vm.notFoundFriends
-        ? _c("div", { staticClass: "contact" }, [_vm._m(1)])
+        ? _c("div", { staticClass: "contact" }, [
+            _c("p", { staticClass: "middle" }, [_vm._v("friend not found")])
+          ])
         : _vm._e()
     ],
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-preview" }, [
-      _c("p", { staticClass: "middle" }, [_vm._v("group not found")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-preview" }, [
-      _c("p", { staticClass: "middle" }, [_vm._v("friend not found")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -40823,7 +40797,7 @@ var render = function() {
               },
               [
                 _c("avatar", {
-                  staticClass: "chat_avatar",
+                  staticClass: "avatar",
                   attrs: {
                     username: notification.info.user.name,
                     src: notification.info.user.avatar,
@@ -40833,11 +40807,10 @@ var render = function() {
               ],
               1
             ),
-            _c("div", { staticClass: "contact-preview" }, [
-              _c("div", { staticClass: "contact-text" }, [
+            _c("div", { staticClass: "preview" }, [
+              _c("div", { staticClass: "text" }, [
                 _c(
-                  "h1",
-                  { staticClass: "font-name" },
+                  "h5",
                   [
                     _c(
                       "router-link",
@@ -40855,12 +40828,10 @@ var render = function() {
                   ],
                   1
                 ),
-                _c("p", { staticClass: "font-preview" }, [
-                  _c("a", [_vm._v(_vm._s(notification.info.msg))])
-                ])
+                _c("h6", [_c("a", [_vm._v(_vm._s(notification.info.msg))])])
               ])
             ]),
-            _c("div", { staticClass: "contact-time" }, [
+            _c("div", { staticClass: "time" }, [
               _c("p", [
                 _vm._v(_vm._s(_vm._f("moment")(notification.data.date, "H:mm")))
               ])
