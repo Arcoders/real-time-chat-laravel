@@ -33,13 +33,10 @@
 
             button( @click='changeList(false)', v-bind:class='{ active: !myChatList }') Groups
 
-        section(v-if="showNotification")
-            .contact-list
+        .contact-list(v-if="showNotification")
                 allnotifications(v-on:updateNotifications="getTotalNotifications")
 
-        section(v-show="!showNotification")
-
-            .contact-list
+        .contact-list(v-if="!showNotification")
                 list(:showChatList='myChatList')
 
 </template>

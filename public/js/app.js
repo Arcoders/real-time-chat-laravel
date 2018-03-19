@@ -38961,9 +38961,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39184,40 +39181,25 @@ var render = function() {
         )
       ]),
       _vm.showNotification
-        ? _c("section", [
-            _c(
-              "div",
-              { staticClass: "contact-list" },
-              [
-                _c("allnotifications", {
-                  on: { updateNotifications: _vm.getTotalNotifications }
-                })
-              ],
-              1
-            )
-          ])
+        ? _c(
+            "div",
+            { staticClass: "contact-list" },
+            [
+              _c("allnotifications", {
+                on: { updateNotifications: _vm.getTotalNotifications }
+              })
+            ],
+            1
+          )
         : _vm._e(),
-      _c(
-        "section",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: !_vm.showNotification,
-              expression: "!showNotification"
-            }
-          ]
-        },
-        [
-          _c(
+      !_vm.showNotification
+        ? _c(
             "div",
             { staticClass: "contact-list" },
             [_c("list", { attrs: { showChatList: _vm.myChatList } })],
             1
           )
-        ]
-      )
+        : _vm._e()
     ],
     1
   )
@@ -40578,21 +40560,17 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(172)
-}
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(174)
 /* template */
-var __vue_template__ = __webpack_require__(175)
+var __vue_template__ = __webpack_require__(259)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-5d6741d4"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -40625,55 +40603,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 172 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(173);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("4b36dd40", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5d6741d4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./show_notifications.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5d6741d4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./show_notifications.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 173 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 172 */,
+/* 173 */,
 /* 174 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
 //
 //
 //
@@ -40762,99 +40698,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 175 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "notifications" },
-    [
-      _c("button", { staticClass: "mark", on: { click: _vm.markAsRead } }, [
-        _vm._v("Mark all as read")
-      ]),
-      _vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e(),
-      _vm._l(_vm.notifications, function(notification) {
-        return _c(
-          "div",
-          {
-            staticClass: "contact",
-            class: { new_notification: notification.read == null }
-          },
-          [
-            _c(
-              "router-link",
-              {
-                attrs: {
-                  to: {
-                    name: "profile",
-                    params: { profile_id: notification.info.user.id }
-                  }
-                }
-              },
-              [
-                _c("avatar", {
-                  staticClass: "avatar",
-                  attrs: {
-                    username: notification.info.user.name,
-                    src: notification.info.user.avatar,
-                    color: "#fff"
-                  }
-                })
-              ],
-              1
-            ),
-            _c("div", { staticClass: "preview" }, [
-              _c("div", { staticClass: "text" }, [
-                _c(
-                  "h5",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: {
-                          "exact-active-class": "green_teal",
-                          to: {
-                            name: "profile",
-                            params: { profile_id: notification.info.user.id }
-                          }
-                        }
-                      },
-                      [_vm._v(_vm._s(notification.info.user.name))]
-                    )
-                  ],
-                  1
-                ),
-                _c("h6", [_c("a", [_vm._v(_vm._s(notification.info.msg))])])
-              ])
-            ]),
-            _c("div", { staticClass: "time" }, [
-              _c("p", [
-                _vm._v(_vm._s(_vm._f("moment")(notification.data.date, "H:mm")))
-              ])
-            ])
-          ],
-          1
-        )
-      })
-    ],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5d6741d4", module.exports)
-  }
-}
-
-/***/ }),
+/* 175 */,
 /* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45925,6 +45769,107 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "notifications" },
+    [
+      _c("button", { staticClass: "mark", on: { click: _vm.markAsRead } }, [
+        _vm._v("Mark all as read")
+      ]),
+      _vm.loading ? _c("loading", { attrs: { normal: true } }) : _vm._e(),
+      _vm._l(_vm.notifications, function(notification) {
+        return _c(
+          "div",
+          {
+            staticClass: "contact",
+            class: { new_notification: notification.read == null }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: {
+                    name: "profile",
+                    params: { profile_id: notification.info.user.id }
+                  }
+                }
+              },
+              [
+                _c("avatar", {
+                  staticClass: "avatar",
+                  attrs: {
+                    username: notification.info.user.name,
+                    src: notification.info.user.avatar,
+                    color: "#fff"
+                  }
+                })
+              ],
+              1
+            ),
+            _c("div", { staticClass: "preview" }, [
+              _c("div", { staticClass: "text" }, [
+                _c(
+                  "h5",
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        attrs: {
+                          "exact-active-class": "green_teal",
+                          to: {
+                            name: "profile",
+                            params: { profile_id: notification.info.user.id }
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(notification.info.user.name))]
+                    )
+                  ],
+                  1
+                ),
+                _c("h6", [_c("a", [_vm._v(_vm._s(notification.info.msg))])])
+              ])
+            ]),
+            _c("div", { staticClass: "time" }, [
+              _c("p", [
+                _vm._v(_vm._s(_vm._f("moment")(notification.data.date, "H:mm")))
+              ])
+            ])
+          ],
+          1
+        )
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5d6741d4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
