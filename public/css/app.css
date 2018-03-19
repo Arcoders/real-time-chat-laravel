@@ -59,8 +59,8 @@ i {
 }
 
 .left {
-  width: 400px;
-  min-width: 400px;
+  width: 420px;
+  min-width: 420px;
   height: 100%;
   background-color: #fafafa;
 }
@@ -315,7 +315,7 @@ i {
 }
 
 .right {
-  min-width: calc(100% - 400px);
+  min-width: calc(100% - 420px);
   height: 100%;
   background-color: #ECE5DD;
 }

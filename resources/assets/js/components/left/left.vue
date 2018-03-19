@@ -5,7 +5,7 @@
 
             avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
 
-            .name(v-if="totalNotifications == 0") {{ user.name }}
+            .name {{ user.name }}
 
             .icons
 
@@ -16,7 +16,7 @@
                     i.material-icons person_add
                     span.step
 
-                a(v-if="totalNotifications > 0", :data-badge="totalNotifications" v-on:click='showListNotifications').notifications
+                a(:data-badge="totalNotifications" v-on:click='showListNotifications').notifications
                     i.material-icons notifications
 
                 loading(:normal='true', v-if='loading')

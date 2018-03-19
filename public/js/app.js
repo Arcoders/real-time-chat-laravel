@@ -39100,11 +39100,7 @@ var render = function() {
               src: _vm.user.avatar
             }
           }),
-          _vm.totalNotifications == 0
-            ? _c("div", { staticClass: "name" }, [
-                _vm._v(_vm._s(_vm.user.name))
-              ])
-            : _vm._e(),
+          _c("div", { staticClass: "name" }, [_vm._v(_vm._s(_vm.user.name))]),
           _c(
             "div",
             { staticClass: "icons" },
@@ -39118,21 +39114,19 @@ var render = function() {
                 ]),
                 _c("span", { staticClass: "step" })
               ]),
-              _vm.totalNotifications > 0
-                ? _c(
-                    "a",
-                    {
-                      staticClass: "notifications",
-                      attrs: { "data-badge": _vm.totalNotifications },
-                      on: { click: _vm.showListNotifications }
-                    },
-                    [
-                      _c("i", { staticClass: "material-icons" }, [
-                        _vm._v("notifications")
-                      ])
-                    ]
-                  )
-                : _vm._e(),
+              _c(
+                "a",
+                {
+                  staticClass: "notifications",
+                  attrs: { "data-badge": _vm.totalNotifications },
+                  on: { click: _vm.showListNotifications }
+                },
+                [
+                  _c("i", { staticClass: "material-icons" }, [
+                    _vm._v("notifications")
+                  ])
+                ]
+              ),
               _vm.loading
                 ? _c("loading", { attrs: { normal: true } })
                 : _c("a", { on: { click: _vm.logout } }, [
