@@ -38783,6 +38783,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     created: function created() {
         this.$store.commit('updateUser', this.auth_user);
+    },
+
+
+    // ---------------------------------------------------
+
+    data: function data() {
+        return {
+            show: false
+        };
+    },
+
+
+    // ---------------------------------------------------
+
+    mounted: function mounted() {
+        var _this = this;
+
+        setTimeout(function () {
+            _this.show = true;
+        }, 1500);
     }
 });
 
@@ -38795,12 +38815,40 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrap" }, [
-    _c("section", { staticClass: "left" }, [_c("left")], 1),
+    _c(
+      "section",
+      { staticClass: "left" },
+      [
+        _c("left", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.show,
+              expression: "show"
+            }
+          ]
+        })
+      ],
+      1
+    ),
     _vm._v(" "),
     _c(
       "section",
       { staticClass: "right" },
-      [_c("router-view", { key: _vm.$route.fullPath })],
+      [
+        _c("router-view", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.show,
+              expression: "show"
+            }
+          ],
+          key: _vm.$route.fullPath
+        })
+      ],
       1
     )
   ])
