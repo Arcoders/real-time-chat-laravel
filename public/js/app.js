@@ -39006,8 +39006,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39018,7 +39016,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             user: this.$store.state.user,
             logoutError: null,
-            loading: false,
             myChatList: true,
             totalNotifications: 0,
             showNotification: false
@@ -39087,19 +39084,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$http.post('/logout').then(function (response) {
 
-                _this2.loading = true;
-
                 if (response.status === 200) {
 
                     _this2.$router.push('/');
                     window.location.reload();
                 } else {
-                    _this2.loading = false;
                     _this2.logoutError = true;
                 }
             }, function () {
-                _this2.loading = false;
-                _this2.logoutError = true;
+                return _this2.logoutError = true;
             });
         },
 
@@ -39176,20 +39169,13 @@ var render = function() {
                   ])
                 ]
               ),
-              _vm.loading
-                ? _c("loading", { attrs: { normal: true } })
-                : _c("a", { on: { click: _vm.logout } }, [
-                    _c(
-                      "i",
-                      {
-                        class: [
-                          _vm.logoutError ? "error" : "",
-                          "material-icons"
-                        ]
-                      },
-                      [_vm._v("fingerprint")]
-                    )
-                  ])
+              _c("a", { on: { click: _vm.logout } }, [
+                _c(
+                  "i",
+                  { class: [_vm.logoutError ? "error" : "", "material-icons"] },
+                  [_vm._v("fingerprint")]
+                )
+              ])
             ],
             1
           )

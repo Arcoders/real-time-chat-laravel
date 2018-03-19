@@ -101,12 +101,12 @@ i {
   cursor: pointer;
 }
 
-.menu .router-link-active i {
-  color: #009688;
+.menu .icons .error {
+  color: #E57373;
 }
 
-.menu .error {
-  color: #E57373;
+.menu .router-link-active i {
+  color: #009688;
 }
 
 .menu .notifications {

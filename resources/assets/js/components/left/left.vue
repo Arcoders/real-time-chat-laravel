@@ -19,9 +19,7 @@
                 a(:data-badge="totalNotifications" v-on:click='showListNotifications').notifications
                     i.material-icons notifications
 
-                loading(:normal='true', v-if='loading')
-
-                a(v-else, v-on:click='logout')
+                a(v-on:click='logout')
                     i(v-bind:class="[logoutError ? 'error' : '', 'material-icons']") fingerprint
 
         search
@@ -56,7 +54,6 @@
             return {
                 user: this.$store.state.user,
                 logoutError: null,
-                loading: false,
                 myChatList: true,
                 totalNotifications: 0,
                 showNotification: false
@@ -113,21 +110,16 @@
             logout() {
                 this.$http.post('/logout').then(response => {
 
-                    this.loading = true;
-
                     if (response.status === 200) {
 
                         this.$router.push('/');
                         window.location.reload();
 
                     } else {
-                        this.loading = false;
                         this.logoutError = true;
                     }
-                }, () => {
-                    this.loading = false;
-                    this.logoutError = true;
-                });
+
+                }, () => this.logoutError = true);
             },
 
             // ----------------------------------------------
