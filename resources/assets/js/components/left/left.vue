@@ -5,7 +5,7 @@
 
             avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
 
-            .name {{ user.name }}
+            .name {{ user.name | truncate(15)}}
 
             .icons
 
@@ -23,7 +23,6 @@
 
                 a(v-else, v-on:click='logout')
                     i(v-bind:class="[logoutError ? 'error' : '', 'material-icons']") fingerprint
-
 
         search
 

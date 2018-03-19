@@ -33,7 +33,9 @@
         }
     }
     .router-link-active {
-        box-shadow: 0px 1px 0px 0px rgba(186, 186, 186, 1);
+        i {
+            color: #009688;
+        }
     }
     .error {
         color: #E57373;

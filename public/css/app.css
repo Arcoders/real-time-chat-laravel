@@ -101,9 +101,8 @@ i {
   cursor: pointer;
 }
 
-.menu .router-link-active {
-  -webkit-box-shadow: 0px 1px 0px 0px #bababa;
-          box-shadow: 0px 1px 0px 0px #bababa;
+.menu .router-link-active i {
+  color: #009688;
 }
 
 .menu .error {

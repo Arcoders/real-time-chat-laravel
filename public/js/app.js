@@ -38960,7 +38960,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39100,7 +39099,9 @@ var render = function() {
               src: _vm.user.avatar
             }
           }),
-          _c("div", { staticClass: "name" }, [_vm._v(_vm._s(_vm.user.name))]),
+          _c("div", { staticClass: "name" }, [
+            _vm._v(_vm._s(_vm._f("truncate")(_vm.user.name, 15)))
+          ]),
           _c(
             "div",
             { staticClass: "icons" },
