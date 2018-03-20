@@ -75,32 +75,53 @@
 
 <script>
     export default {
+
+        // ----------------------------------------------
+
         props: ['source'],
+
+        // ----------------------------------------------
+
         data() {
             return {
                 pages: []
             }
         },
+
+        // ----------------------------------------------
+
         watch: {
             source() {
-                    this.pages = Array.apply(null, {length: this.source.last_page}).map(function(value, index){
-                        return index + 1;
-                    });
+                this.pages = Array.apply(null, {length: this.source.last_page}).map((value, index) => index + 1);
             }
         },
+
+        // ----------------------------------------------
+
         mounted() {
             console.log('Paginate ok!');
         },
+
+        // ----------------------------------------------
+
         methods: {
+
+            // ----------------------------------------------
+
             navigate(event, page) {
                 event.preventDefault();
                 this.$emit('navigate', page);
             },
+
+            // ----------------------------------------------
+
             nextPrev(event, page) {
                 if (page === 0 || page === this.source.last_page + 1) return;
 
                 this.navigate(event, page);
             }
+
+            // ----------------------------------------------
         }
     }
 </script>

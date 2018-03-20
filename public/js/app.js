@@ -42379,12 +42379,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+
+    // ----------------------------------------------
+
     props: ['source'],
+
+    // ----------------------------------------------
+
     data: function data() {
         return {
             pages: []
         };
     },
+
+
+    // ----------------------------------------------
 
     watch: {
         source: function source() {
@@ -42393,20 +42402,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         }
     },
+
+    // ----------------------------------------------
+
     mounted: function mounted() {
         console.log('Paginate ok!');
     },
 
+
+    // ----------------------------------------------
+
     methods: {
+
+        // ----------------------------------------------
+
         navigate: function navigate(event, page) {
             event.preventDefault();
             this.$emit('navigate', page);
         },
+
+
+        // ----------------------------------------------
+
         nextPrev: function nextPrev(event, page) {
             if (page === 0 || page === this.source.last_page + 1) return;
 
             this.navigate(event, page);
         }
+
+        // ----------------------------------------------
+
     }
 });
 
