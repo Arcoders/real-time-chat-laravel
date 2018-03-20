@@ -18,7 +18,7 @@ class GroupsTableSeeder extends Seeder
 
             foreach (range(1, $i) as $j):
 
-                factory(\App\Message::class)->create(['user_id' =>  ($j % 2) ? $j : 1, 'group_chat' => rand(1, $j)]);
+                factory(\App\Message::class)->create(['user_id' =>  ($j % 3) ? $j : 1, 'group_chat' => rand(1, $j)]);
 
             endforeach;
 
