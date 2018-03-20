@@ -51,6 +51,7 @@ $factory->define(App\Group::class, function (Faker $faker) {
         'user_id' => function () {
                         return factory(\App\User::class)->create()->id;
                      },
+        'deleted_at' => (rand(1, 2) === 1) ? $faker->dateTimeThisMonth()->format('Y-m-d H:i:s') : NULL
     ];
 });
 

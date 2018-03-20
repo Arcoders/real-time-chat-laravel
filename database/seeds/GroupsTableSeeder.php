@@ -15,21 +15,24 @@ class GroupsTableSeeder extends Seeder
         factory(\App\Group::class)->create([
             'name' => 'Arcoders',
             'avatar' => NULL,
-            'user_id' => 1
+            'user_id' => 1,
+            'deleted_at' => NULL
         ])->users()->sync([1, 2]);
 
 
         factory(\App\Group::class)->create([
             'name' => 'Fustal Vidreras',
             'avatar' => NULL,
-            'user_id' => 1
+            'user_id' => 1,
+            'deleted_at' => NULL
         ])->users()->sync([1, 2, 3]);
 
 
         factory(\App\Group::class)->create([
             'name' => 'Tecnología',
             'avatar' => NULL,
-            'user_id' => 3
+            'user_id' => 3,
+            'deleted_at' => NULL
         ])->users()->sync([3, 1]);
 
 
