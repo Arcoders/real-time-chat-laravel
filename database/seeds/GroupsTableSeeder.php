@@ -12,11 +12,15 @@ class GroupsTableSeeder extends Seeder
     public function run()
     {
 
-        foreach (range(4, 15) as $i):
+        foreach (range(1, 15) as $i):
 
             factory(\App\Group::class)->create(['user_id' => 1])->users()->sync([1, $i]);
 
-            factory(\App\Message::class)->create(['user_id' =>  ($i % 2) ? $i : 1, 'group_chat' => rand(4, $i)]);
+            foreach (range(1, $i) as $j):
+
+                factory(\App\Message::class)->create(['user_id' =>  ($j % 2) ? $j : 1, 'group_chat' => rand(1, $j)]);
+
+            endforeach;
 
         endforeach;
 
