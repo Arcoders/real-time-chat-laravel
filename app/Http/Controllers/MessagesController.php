@@ -43,7 +43,7 @@ class MessagesController extends Controller
 
     public function latest(Request $r)
     {
-        return response()->json(Message::lastMessages($r->room_name, $r->chat_id, 5), 200);
+        return response()->json(Message::lastMessages($r->room_name, $r->chat_id, 10), 200);
     }
 
     public function typing(Request $r)
