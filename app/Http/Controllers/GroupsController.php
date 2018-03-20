@@ -25,31 +25,37 @@ class GroupsController extends Controller
         $request['id'] = $this->idsToArray($request['id']);
 
         $request->validate([
+
             'name' => 'required|unique:groups|min:4|max:15',
+
             'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000',
+
             'id'  => 'required|array|min:1'
         ],
         [
             'id.required' => 'You must select at least one user'
         ]);
 
-        $avatar_name = null;
+        $avatar = null;
+
         $user = Auth::user();
 
         if ($request->file('avatar')) {
 
-            $avatar_name = $this->processImage($request->file('avatar'), $user->id, $this->folder);
+            $avatar = $this->processImage($request->file('avatar'), $user->id, $this->folder);
         }
 
-        $group = Group::create([
+        Group::create([
+
             'name' => $request['name'],
+
             'user_id' => $user->id,
-            'avatar' => $avatar_name
-        ]);
 
-        $group->users()->sync($request['id']);
+            'avatar' => $avatar
 
-        return response()->json("$group->name created successfully", 200);
+        ])->users()->sync($request['id']);
+
+        return response()->json($request['name'] . " created successfully", 200);
     }
 
     public function my()
@@ -123,8 +129,11 @@ class GroupsController extends Controller
         $request['id'] = $this->idsToArray($request['id']);
 
         $request->validate([
+
             'name' => 'required|min:4|max:15|unique:groups,name,'.$group->id,
+
             'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1000',
+
             'id'  => 'required|array|min:1'
         ],
         [
