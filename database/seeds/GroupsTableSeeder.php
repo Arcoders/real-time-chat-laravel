@@ -12,6 +12,15 @@ class GroupsTableSeeder extends Seeder
     public function run()
     {
 
+        foreach (range(4, 15) as $i):
+
+            factory(\App\Group::class)->create(['user_id' => 1])->users()->sync([1, $i]);
+
+            factory(\App\Message::class)->create(['user_id' =>  ($i % 2) ? $i : 1, 'group_chat' => rand(4, $i)]);
+
+        endforeach;
+
+
         factory(\App\Group::class)->create([
             'name' => 'Arcoders',
             'avatar' => NULL,
@@ -35,12 +44,6 @@ class GroupsTableSeeder extends Seeder
             'deleted_at' => NULL
         ])->users()->sync([3, 1]);
 
-
-        foreach (range(4, 15) as $i):
-
-            factory(\App\Group::class)->create(['user_id' => 1])->users()->sync([1, $i]);
-
-        endforeach;
 
     }
 }
