@@ -65,7 +65,7 @@ i {
   background-color: #fafafa;
 }
 
-/* Menu -------------------------------------------------------- */
+/* Menu */
 
 .menu {
   width: 100%;
@@ -131,7 +131,7 @@ i {
   line-height: 22px;
 }
 
-/* Search ---------------------------------------------------------------- */
+/* Search */
 
 .search-container {
   width: 100%;
@@ -169,7 +169,7 @@ i {
   outline: none;
 }
 
-/* filter ----------------------------------------------------- */
+/* Filter */
 
 .filter {
   width: 100%;
@@ -195,7 +195,7 @@ i {
           box-shadow: 0px -1px 0px 0px #bababa;
 }
 
-/* contact list  -----------------------------------------------------------*/
+/* Contacts */
 
 .contact-list {
   background-color: #ffffff;
@@ -288,7 +288,7 @@ i {
           box-shadow: 6px 0px 16px -13px #777777;
 }
 
-/* Notifications ---------------------------------------------------------------- */
+/* Notifications */
 
 .notifications .mark {
   line-height: 40px;

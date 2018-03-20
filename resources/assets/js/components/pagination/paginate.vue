@@ -97,7 +97,7 @@
                 this.$emit('navigate', page);
             },
             nextPrev(event, page) {
-                if (page == 0 || page == this.source.last_page + 1) return;
+                if (page === 0 || page === this.source.last_page + 1) return;
 
                 this.navigate(event, page);
             }

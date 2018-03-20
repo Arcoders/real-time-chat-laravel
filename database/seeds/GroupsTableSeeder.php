@@ -12,26 +12,32 @@ class GroupsTableSeeder extends Seeder
     public function run()
     {
 
-        $group_arc = factory(\App\Group::class)->create([
+        factory(\App\Group::class)->create([
             'name' => 'Arcoders',
+            'avatar' => NULL,
             'user_id' => 1
-        ]);
+        ])->users()->sync([1, 2]);
 
-        $group_arc->users()->sync([1, 2]);
 
-        $group_fut = factory(\App\Group::class)->create([
+        factory(\App\Group::class)->create([
             'name' => 'Fustal Vidreras',
+            'avatar' => NULL,
             'user_id' => 1
-        ]);
+        ])->users()->sync([1, 2, 3]);
 
-        $group_fut->users()->sync([1, 2, 3]);
 
-        $group_tec = factory(\App\Group::class)->create([
+        factory(\App\Group::class)->create([
             'name' => 'Tecnología',
+            'avatar' => NULL,
             'user_id' => 3
-        ]);
+        ])->users()->sync([3, 1]);
 
-        $group_tec->users()->sync([3, 1]);
+
+        foreach (range(4, 15) as $i):
+
+            factory(\App\Group::class)->create(['user_id' => 1])->users()->sync([1, $i]);
+
+        endforeach;
 
     }
 }

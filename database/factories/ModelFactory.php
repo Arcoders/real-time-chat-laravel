@@ -47,8 +47,8 @@ $factory->define(App\Friendship::class, function (Faker $faker) {
 $factory->define(App\Group::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'user_id' => function ()
-                     {
+        'avatar' => "https://api.adorable.io/avatars/285/$faker->firstName.png",
+        'user_id' => function () {
                         return factory(\App\User::class)->create()->id;
                      },
     ];
