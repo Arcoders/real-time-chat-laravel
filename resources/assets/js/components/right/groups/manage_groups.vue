@@ -1,65 +1,24 @@
 <template lang="pug">
-    #manage_groups_app.right
-        .chat-head
-            i.material-icons.big_icon group_add
-            .chat-name
-                h1.font-name Groups
-                p.font-online You can create public chat rooms for all users...
-        .wrap-content
-            .dynamic_content
-                div(v-if="$route.path == '/groups'")
-                    .groups
-                        .group
-                            router-link(to='groups/add', exact-active-class='active') Add groups
-                        .group
-                            router-link(to='groups/my') My groups
+    #manage_groups_app
+
+        .head
+
+            h1
+                i.material-icons group_add
+
+            .info
+                p Groups
+                p.online You can create public chat rooms for all users...
+
+        .groups_box
+            .content
+                .groups(v-if="$route.path == '/groups'")
+                    .group
+                        router-link(to='groups/add', exact-active-class='active') Add groups
+                    .group
+                        router-link(to='groups/my') My groups
                 router-view
 </template>
-
-<style scoped>
-    #manage_groups_app {
-        background-color: #ffffff;
-        border-radius: 2px;
-        height: calc(98vh - 25px);
-    }
-    .big_icon {
-        margin: 10px 20px;
-        border-radius: 50%;
-        font-size: 40px;
-        color: #777777;
-    }
-    .dynamic_content {
-        padding: 20px;
-        background-color: #ffffff;
-        height: calc(98vh - 125px);
-    }
-    .groups {
-        width: 100%;
-        background: #f1f1f1;
-        display: flex;
-    }
-
-    .group {
-        width: 50%;
-        height: calc(98vh - 125px);
-    }
-
-    .group a{
-        width: 100%;
-        height: 100%;
-        color: #777777;
-        font-size: 0.9em;
-        font-weight: bold;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .group a:hover{
-        color: #009688;
-        background-color: #f3f3f3;
-    }
-</style>
 
 <script>
     export default {

@@ -16,7 +16,7 @@ transition(name='slide-fade')
                 p.online(v-else) Offline
                     span.state.red &#8226;
 
-        .box
+        .chat_box
 
             .chat_content#chat(v-chat-scroll='')
                 messages(:messages='messages', :user='user', :usersTyping="typing")

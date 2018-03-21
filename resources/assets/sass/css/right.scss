@@ -40,12 +40,6 @@
         margin: 5px 20px;
         border-radius: 50%;
     }
-    i {
-        color: #aaaaaa;
-        width: 60px;
-        margin: 20px;
-        text-align: center;
-    }
     .info {
         width: 100%;
         margin: 10px;
@@ -71,7 +65,7 @@
 
 /* Chat ---------------------------------------------------------------------- */
 
-.box {
+.chat_box {
     height: calc(98vh - 145px);
     display: flex;
     position: relative;
@@ -328,13 +322,59 @@
     }
 }
 
-/* table */
+/* Groups ---------------------------------------------------------------------- */
+
+.head h1 i {
+  border-radius: 50%;
+  font-size: 40px;
+  margin: 10px 20px;
+  color: #777777;
+}
+
+.groups_box {
+  height: calc(98vh - 85px);
+  display: flex;
+  position: relative;
+  .content {
+    width: 100%;
+    height: 100%;
+    background-color: #ECE5DD;
+    overflow-y: auto;
+  }
+  .groups {
+    width: 100%;
+    height: 100%;
+    background: #f1f1f1;
+    display: flex;
+  }
+  .group {
+    width: 50%;
+    height: 100%;
+    a {
+      width: 100%;
+      height: 100%;
+      color: #777777;
+      font-size: 0.9em;
+      font-weight: bold;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:hover {
+        color: #009688;
+        background-color: #f3f3f3;
+      }
+    }
+  }
+}
+
+/* Table ----------------------------------------------------------------------  */
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin: auto;
-    box-shadow: 0px 0px 2px 0px rgba(119,119,119, .5);
+    box-shadow: 0 0 2px 0 rgba(119,119,119, .5);
     transition: all 2s ease-out;
 }
 
