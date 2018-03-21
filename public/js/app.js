@@ -40961,23 +40961,25 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "messages_app" } },
+    { staticClass: "bubble" },
     [
       _vm._l(_vm.messages, function(message_user) {
         return _c(
           "div",
-          {
-            class: [_vm.checkId(message_user.id) ? "me" : "you", "chat-bubble"]
-          },
+          { class: ["line", _vm.checkId(message_user.id) ? "user" : "friend"] },
           [
             _c(
               "div",
               {
-                class: _vm.checkId(message_user.id) ? "my-mouth" : "your-mouth"
+                class: _vm.checkId(message_user.id)
+                  ? "user_mouth"
+                  : "friend_mouth"
               },
               [
                 _c("avatar", {
-                  class: _vm.checkId(message_user.id) ? "me_img" : "you_img",
+                  class: _vm.checkId(message_user.id)
+                    ? "user_img"
+                    : "friend_img",
                   attrs: {
                     username: message_user.name,
                     color: "#fff",
@@ -41001,7 +41003,7 @@ var render = function() {
                   )
                 ])
               : _c("div", { staticClass: "time" }, [
-                  _c("i", { staticClass: "material-icons errorchat" }, [
+                  _c("i", { staticClass: "material-icons error" }, [
                     _vm._v("error")
                   ])
                 ])
@@ -41010,13 +41012,13 @@ var render = function() {
       }),
       _vm._l(_vm.usersTyping, function(userTyping) {
         return userTyping.id != _vm.user.id
-          ? _c("div", { staticClass: "typing-bubble" }, [
+          ? _c("div", { staticClass: "typing" }, [
               _c(
                 "div",
-                { staticClass: "typing-mouth" },
+                { staticClass: "typing_mouth" },
                 [
                   _c("avatar", {
-                    staticClass: "you_img",
+                    staticClass: "friend_img",
                     attrs: {
                       username: userTyping.name,
                       color: "#fff",
@@ -41040,7 +41042,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "typing-content" }, [
+    return _c("div", { staticClass: "typing_content" }, [
       _c("span", { staticClass: "dot" }),
       _c("span", { staticClass: "dot" }),
       _c("span", { staticClass: "dot" })
@@ -41142,7 +41144,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -41153,9 +41155,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
 //
 //
 //

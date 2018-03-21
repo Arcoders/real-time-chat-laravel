@@ -7,13 +7,10 @@
                 i(v-bind:class="[uploadImageState ? 'green' : '', 'material-icons']") photo_camera
 
             .message
-                input(@keyup.enter='addMessage',
-                                    v-model='messageText',
-                                    type='text',
-                                    autocomplete='off',
-                                    placeholder='Write a new message')
+                input(@keyup.enter='addMessage', v-model='messageText', type='text', autocomplete='off', placeholder='Write a new message')
 
             button(type='button', @click='addMessage')
+
                 i(v-bind:class="[btnSubmit ? '' : 'green', 'material-icons']") send
 
 </template>
