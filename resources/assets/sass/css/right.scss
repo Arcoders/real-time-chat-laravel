@@ -75,6 +75,7 @@
     position: relative;
     .chat_content {
         width: 100%;
+        height: calc(98vh - 165px);
         background-color: #ECE5DD;
         padding: 10px 100px;
         overflow-y: auto;
@@ -156,7 +157,46 @@
     }
 }
 
-/* bubble */
+/* Send Message ---------------------------------------------------------------------- */
+
+.wrap-message {
+    width: 100%;
+    height: 60px;
+    background: #f1f1f1;
+    border-radius: 0 0 3px 0;
+    display: flex;
+}
+
+.message {
+    width: 100%;
+    height: 45px;
+    background: #ffffff;
+    margin: auto;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    display: flex;
+}
+
+.input-message {
+    width: 100%;
+    margin: 0px 10px;
+    border: none;
+}
+
+.input-message:focus {
+    outline: none;
+}
+
+.wrap-message i {
+    color: #aaaaaa;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Bubble ---------------------------------------------------------------------- */
 
 .chat-bubble {
     border-radius: 7px;
@@ -248,6 +288,8 @@
     margin-top: -10px;
 }
 
+/* Typing ---------------------------------------------------------------------- */
+
 .typing-bubble {
     border-radius: 7px;
     padding: 5px 7px;
@@ -296,46 +338,6 @@
     30% {
         transform: translateY(-15px);
     }
-}
-
-
-/* message */
-
-.wrap-message {
-    width: 100%;
-    height: 60px;
-    background: #f1f1f1;
-    border-radius: 0 0 3px 0;
-    display: flex;
-}
-
-.message {
-    width: 100%;
-    height: 45px;
-    background: #ffffff;
-    margin: auto;
-    border: 1px solid #eeeeee;
-    border-radius: 5px;
-    display: flex;
-}
-
-.input-message {
-    width: 100%;
-    margin: 0px 10px;
-    border: none;
-}
-
-.input-message:focus {
-    outline: none;
-}
-
-.wrap-message i {
-    color: #aaaaaa;
-    width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
 }
 
 /* table */
@@ -609,3 +611,14 @@ button[disabled]{
 .information_form {
     padding: 20px;
 }
+
+/* Vue effects ---------------------------------------------------------------------- */
+
+.slide-fade-enter-active {
+    transition: all .5s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to {
+    transform: translateX(5px);
+    opacity: 0;
+}
+

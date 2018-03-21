@@ -27,7 +27,7 @@ transition(name='slide-fade')
                     label.upload_photo
                         button
                             i.material-icons file_upload
-                        input(type='file', name='foto', v-on:change='onFileChange($event)', ref='fileInput')
+                        input(type='file', name='photo', v-on:change='onFileChange($event)', ref='fileInput')
 
                 .container(v-else)
                     .preview
