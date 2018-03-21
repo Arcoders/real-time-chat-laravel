@@ -319,9 +319,32 @@ i {
   background-color: #ECE5DD;
 }
 
-/* chat head */
+/* Welcome ---------------------------------------------------------------------- */
 
-.chat-head {
+.welcome {
+  padding: 10px;
+  background-color: #f7f9fa;
+  height: calc(98vh - 50px);
+  border-bottom: 5px solid #25D366;
+  border-radius: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.welcome p {
+  color: #a8a8a8;
+}
+
+/* Header ---------------------------------------------------------------------- */
+
+.head {
   background-color: #eeeeee;
   width: 100%;
   height: 60px;
@@ -334,7 +357,7 @@ i {
   display: flex;
 }
 
-.img-head {
+.head .img {
   width: 50px;
   height: 50px;
   min-width: 50px;
@@ -343,30 +366,41 @@ i {
   border-radius: 50%;
 }
 
-.chat-head i {
+.head i {
   color: #aaaaaa;
   width: 60px;
   margin: 20px;
   text-align: center;
 }
 
-.chat-name {
+.head .info {
   width: 100%;
   margin: 10px;
 }
 
-/* chat */
-
-.complet-content {
-  height: calc(100% - 60px);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  background-color: #f7f7f7;
+.head .online {
+  color: #777777;
+  font-size: 0.8em;
+  font-weight: inherit;
 }
 
-.wrap-content {
+.head .online .state {
+  margin: 0 7px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.head .online .green {
+  color: #009688;
+}
+
+.head .online .red {
+  color: #E57373;
+}
+
+/* Chat ---------------------------------------------------------------------- */
+
+.box {
   height: calc(100% - 120px);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -374,33 +408,20 @@ i {
   position: relative;
 }
 
-.dynamic_content {
+.box .chat_content {
   width: 100%;
+  background-color: #ECE5DD;
   padding: 10px 100px;
   overflow-y: auto;
 }
 
-.complete_dynamic_content {
-  width: 100%;
-  overflow-y: auto;
-  padding: 10px;
-}
+/* Modal ---------------------------------------------------------------------- */
 
-.chat {
-  background-color: #ECE5DD;
-}
-
-/* Upload foto */
-
-.upload_foto {
+.modal {
   background-color: rgba(225, 225, 225, 0.8);
   width: 100%;
   height: 100%;
-  min-width: 100%;
-  min-height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
   z-index: 10;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -413,7 +434,7 @@ i {
           justify-content: center;
 }
 
-.container_foto {
+.modal .container {
   background-color: #fbfbfb;
   border: 0px solid #ffffff;
   width: 70%;
@@ -432,7 +453,7 @@ i {
           justify-content: center;
 }
 
-.preview-image {
+.modal .preview {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -440,38 +461,40 @@ i {
   display: flex;
 }
 
-.container_foto img {
+.modal img {
   width: 100%;
   height: 100%;
   min-width: 100%;
   min-height: 100%;
 }
 
-.container_foto a {
-  background-color: #f9f9f9;
+.modal a {
+  background-color: #FFFFFF;
   height: 30px;
+  width: 30px;
   text-decoration: none;
   cursor: pointer;
-  border-radius: 0 2px 2px 0;
+  border-radius: 50px;
+  margin-left: 10px;
 }
 
-.container_foto i {
+.modal i {
   color: #009688;
   font-size: 30px;
 }
 
-.container_foto i:hover {
+.modal i:hover {
   color: #E57373;
 }
 
-/* input file */
+/* Upload photo ---------------------------------------------------------------------- */
 
-.fileContainer {
+.upload_photo {
   overflow: hidden;
   position: relative;
 }
 
-.fileContainer [type=file] {
+.upload_photo [type=file] {
   cursor: pointer;
   display: block;
   filter: alpha(opacity=0);
@@ -484,7 +507,7 @@ i {
   top: 0;
 }
 
-.fileContainer i {
+.upload_photo i {
   color: #f1f1f1;
   font-size: 100px;
 }

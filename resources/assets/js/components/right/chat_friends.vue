@@ -15,16 +15,6 @@
         transform: translateX(5px);
         opacity: 0;
     }
-    .green_font {
-        color: #009688;
-        margin: 0 7px;
-        font-weight: bold;
-    }
-    .red_font {
-        color: #E57373;
-        margin: 0 7px;
-        font-weight: bold;
-    }
 
 </style>
 
