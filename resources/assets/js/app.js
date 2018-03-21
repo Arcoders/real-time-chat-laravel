@@ -57,7 +57,6 @@ Vue.component('allnotifications', require('./components/left/sections/show_notif
 
 // Components for right side
 
-Vue.component('bar', require('./components/right/chat/bar.vue'));
 Vue.component('messages', require('./components/right/chat/messages.vue'));
 Vue.component('send', require('./components/right/chat/send.vue'));
 Vue.component('friendship', require('./components/right/friends/friendship.vue'));

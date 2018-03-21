@@ -27987,7 +27987,7 @@ var mixin = {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(129);
-module.exports = __webpack_require__(246);
+module.exports = __webpack_require__(242);
 
 
 /***/ }),
@@ -28013,21 +28013,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__store_store__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_right_chat_group_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue__ = __webpack_require__(206);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_right_chat_friends_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_right_profile_edit_profile__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_right_profile_edit_profile__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_right_profile_edit_profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_right_profile_edit_profile__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue__ = __webpack_require__(222);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue__);
 
 /**
@@ -28088,7 +28088,6 @@ Vue.component('allnotifications', __webpack_require__(171));
 
 // Components for right side
 
-Vue.component('bar', __webpack_require__(174));
 Vue.component('messages', __webpack_require__(177));
 Vue.component('send', __webpack_require__(180));
 Vue.component('friendship', __webpack_require__(185));
@@ -40818,132 +40817,9 @@ if (false) {
 }
 
 /***/ }),
-/* 174 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(175)
-/* template */
-var __vue_template__ = __webpack_require__(176)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\right\\chat\\bar.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-40d0bee6", Component.options)
-  } else {
-    hotAPI.reload("data-v-40d0bee6", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 175 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            private_name: this.$route.params.user_name,
-            private_id: this.$route.params.private_id
-        };
-    },
-    mounted: function mounted() {
-        console.log('Bar ok!');
-    }
-});
-
-/***/ }),
-/* 176 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "bar_app" } }, [
-    _c("div", { staticClass: "chat-head" }, [
-      _c("img", {
-        staticClass: "img-head",
-        attrs: {
-          alt: "profilepicture",
-          src: "https://avatars.io/twitter/maryam"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "chat-name" }, [
-        _c("h1", { staticClass: "font-name" }, [
-          _vm._v(_vm._s(_vm.private_name))
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "font-online" }, [
-          _vm._v("Ismael, Fatima, Admin, Marta, victor...")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("i", {
-        staticClass: "fa fa-whatsapp fa-lg",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-40d0bee6", module.exports)
-  }
-}
-
-/***/ }),
+/* 174 */,
+/* 175 */,
+/* 176 */,
 /* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -41266,7 +41142,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.green_teal[data-v-e24e3876] {\n    color: #009688;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -41277,9 +41153,6 @@ exports.push([module.i, "\n.green_teal[data-v-e24e3876] {\n    color: #009688;\n
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
 //
 //
 //
@@ -41431,98 +41304,75 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "send_app" } }, [
-    _c("div", { staticClass: "wrap-message" }, [
+  return _c(
+    "form",
+    {
+      staticClass: "send",
+      attrs: { method: "POST", enctype: "multipart/form-data" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+        }
+      }
+    },
+    [
       _c(
-        "form",
-        {
-          staticClass: "wrap-message",
-          attrs: { method: "POST", enctype: "multipart/form-data" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-            }
-          }
-        },
+        "button",
+        { attrs: { type: "button" }, on: { click: _vm.showModal } },
         [
           _c(
-            "button",
-            {
-              staticClass: "format_button",
-              attrs: { type: "button" },
-              on: { click: _vm.showModal }
-            },
-            [
-              _c(
-                "i",
-                {
-                  class: [
-                    _vm.uploadImageState ? "green_teal" : "",
-                    "material-icons"
-                  ]
-                },
-                [_vm._v("photo_camera")]
-              )
-            ]
-          ),
-          _c("div", { staticClass: "message" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.messageText,
-                  expression: "messageText"
-                }
-              ],
-              staticClass: "input-message",
-              attrs: {
-                id: "inputMessage",
-                type: "text",
-                autocomplete: "off",
-                placeholder: "Write a new message"
-              },
-              domProps: { value: _vm.messageText },
-              on: {
-                keyup: function($event) {
-                  if (
-                    !("button" in $event) &&
-                    _vm._k($event.keyCode, "enter", 13, $event.key)
-                  ) {
-                    return null
-                  }
-                  _vm.addMessage($event)
-                },
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.messageText = $event.target.value
-                }
-              }
-            })
-          ]),
-          _c(
-            "button",
-            {
-              staticClass: "format_button",
-              attrs: { type: "button" },
-              on: { click: _vm.addMessage }
-            },
-            [
-              _c(
-                "i",
-                {
-                  class: [_vm.btnSubmit ? "" : "green_teal", "material-icons"]
-                },
-                [_vm._v("send")]
-              )
-            ]
+            "i",
+            { class: [_vm.uploadImageState ? "green" : "", "material-icons"] },
+            [_vm._v("photo_camera")]
           )
         ]
+      ),
+      _c("div", { staticClass: "message" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.messageText,
+              expression: "messageText"
+            }
+          ],
+          attrs: {
+            type: "text",
+            autocomplete: "off",
+            placeholder: "Write a new message"
+          },
+          domProps: { value: _vm.messageText },
+          on: {
+            keyup: function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key)
+              ) {
+                return null
+              }
+              _vm.addMessage($event)
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.messageText = $event.target.value
+            }
+          }
+        })
+      ]),
+      _c(
+        "button",
+        { attrs: { type: "button" }, on: { click: _vm.addMessage } },
+        [
+          _c("i", { class: [_vm.btnSubmit ? "" : "green", "material-icons"] }, [
+            _vm._v("send")
+          ])
+        ]
       )
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42520,9 +42370,9 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(206)
+var __vue_script__ = __webpack_require__(204)
 /* template */
-var __vue_template__ = __webpack_require__(251)
+var __vue_template__ = __webpack_require__(205)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -42561,9 +42411,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 204 */,
-/* 205 */,
-/* 206 */
+/* 204 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42589,16 +42437,162 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 207 */,
-/* 208 */
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade" } }, [
+    _vm.showChat
+      ? _c(
+          "div",
+          {
+            attrs: { id: "right_app" },
+            on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "head" },
+              [
+                _c("avatar", {
+                  staticClass: "img",
+                  attrs: {
+                    username: _vm.chatName,
+                    color: "#fff",
+                    src: _vm.avatar
+                  }
+                }),
+                _c("div", { staticClass: "info" }, [
+                  _c("p", [_vm._v(_vm._s(_vm.chatName))]),
+                  _vm.onlineUsers
+                    ? _c(
+                        "p",
+                        { staticClass: "online" },
+                        _vm._l(_vm.onlineUsers, function(onlineUser) {
+                          return _c("span", [
+                            _vm._v(_vm._s(onlineUser.name)),
+                            _c("span", { staticClass: "state green" }, [
+                              _vm._v("•")
+                            ])
+                          ])
+                        })
+                      )
+                    : _c("p", { staticClass: "online" }, [
+                        _vm._v("Offline"),
+                        _c("span", { staticClass: "state red" }, [_vm._v("•")])
+                      ])
+                ])
+              ],
+              1
+            ),
+            _c("div", { staticClass: "box" }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    { name: "chat-scroll", rawName: "v-chat-scroll" }
+                  ],
+                  staticClass: "chat_content",
+                  attrs: { id: "chat" }
+                },
+                [
+                  _c("messages", {
+                    attrs: {
+                      messages: _vm.messages,
+                      user: _vm.user,
+                      usersTyping: _vm.typing
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm.uploadImage
+                ? _c("div", { staticClass: "modal" }, [
+                    !_vm.photo
+                      ? _c("div", { staticClass: "container" }, [
+                          _c("label", { staticClass: "upload_photo" }, [
+                            _c("button", [
+                              _c("i", { staticClass: "material-icons" }, [
+                                _vm._v("file_upload")
+                              ])
+                            ]),
+                            _c("input", {
+                              ref: "fileInput",
+                              attrs: { type: "file", name: "photo" },
+                              on: {
+                                change: function($event) {
+                                  _vm.onFileChange($event)
+                                }
+                              }
+                            })
+                          ])
+                        ])
+                      : _c("div", { staticClass: "container" }, [
+                          _c("div", { staticClass: "preview" }, [
+                            _c("img", { attrs: { src: _vm.photo } }),
+                            _c(
+                              "a",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    _vm.photo = null
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", { staticClass: "material-icons" }, [
+                                  _vm._v("clear")
+                                ])
+                              ]
+                            )
+                          ])
+                        ])
+                  ])
+                : _vm._e()
+            ]),
+            _c("send", {
+              attrs: {
+                uploadImageState: _vm.uploadImage,
+                photo: _vm.photo,
+                uploadedPhoto: _vm.uploadedPhoto
+              },
+              on: {
+                errorMessages: function($event) {
+                  _vm.pushErrorMessage($event)
+                },
+                clearPhoto: _vm.hideModal,
+                showUpload: _vm.showImageModal
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5c781822", module.exports)
+  }
+}
+
+/***/ }),
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(211)
+var __vue_script__ = __webpack_require__(207)
 /* template */
-var __vue_template__ = __webpack_require__(252)
+var __vue_template__ = __webpack_require__(208)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -42637,9 +42631,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 209 */,
-/* 210 */,
-/* 211 */
+/* 207 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42664,16 +42656,162 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 212 */,
-/* 213 */
+/* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide-fade" } }, [
+    _vm.showChat
+      ? _c(
+          "div",
+          {
+            attrs: { id: "right_app" },
+            on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "head" },
+              [
+                _c("avatar", {
+                  staticClass: "img",
+                  attrs: {
+                    username: _vm.chatName,
+                    color: "#fff",
+                    src: _vm.avatar
+                  }
+                }),
+                _c("div", { staticClass: "info" }, [
+                  _c("p", [_vm._v(_vm._s(_vm.chatName))]),
+                  _vm.onlineUsers
+                    ? _c(
+                        "p",
+                        { staticClass: "online" },
+                        _vm._l(_vm.onlineUsers, function(onlineUser) {
+                          return _c("span", [
+                            _vm._v(_vm._s(onlineUser.name)),
+                            _c("span", { staticClass: "state green" }, [
+                              _vm._v("•")
+                            ])
+                          ])
+                        })
+                      )
+                    : _c("p", { staticClass: "online" }, [
+                        _vm._v("Offline"),
+                        _c("span", { staticClass: "state red" }, [_vm._v("•")])
+                      ])
+                ])
+              ],
+              1
+            ),
+            _c("div", { staticClass: "box" }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    { name: "chat-scroll", rawName: "v-chat-scroll" }
+                  ],
+                  staticClass: "chat_content",
+                  attrs: { id: "chat" }
+                },
+                [
+                  _c("messages", {
+                    attrs: {
+                      messages: _vm.messages,
+                      user: _vm.user,
+                      usersTyping: _vm.typing
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm.uploadImage
+                ? _c("div", { staticClass: "modal" }, [
+                    !_vm.photo
+                      ? _c("div", { staticClass: "container" }, [
+                          _c("label", { staticClass: "upload_photo" }, [
+                            _c("button", [
+                              _c("i", { staticClass: "material-icons" }, [
+                                _vm._v("file_upload")
+                              ])
+                            ]),
+                            _c("input", {
+                              ref: "fileInput",
+                              attrs: { type: "file", name: "photo" },
+                              on: {
+                                change: function($event) {
+                                  _vm.onFileChange($event)
+                                }
+                              }
+                            })
+                          ])
+                        ])
+                      : _c("div", { staticClass: "container" }, [
+                          _c("div", { staticClass: "preview" }, [
+                            _c("img", { attrs: { src: _vm.photo } }),
+                            _c(
+                              "a",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    _vm.photo = null
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", { staticClass: "material-icons" }, [
+                                  _vm._v("clear")
+                                ])
+                              ]
+                            )
+                          ])
+                        ])
+                  ])
+                : _vm._e()
+            ]),
+            _c("send", {
+              attrs: {
+                uploadImageState: _vm.uploadImage,
+                photo: _vm.photo,
+                uploadedPhoto: _vm.uploadedPhoto
+              },
+              on: {
+                errorMessages: function($event) {
+                  _vm.pushErrorMessage($event)
+                },
+                clearPhoto: _vm.hideModal,
+                showUpload: _vm.showImageModal
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-53d8d3f6", module.exports)
+  }
+}
+
+/***/ }),
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(214)
+var __vue_script__ = __webpack_require__(210)
 /* template */
-var __vue_template__ = __webpack_require__(215)
+var __vue_template__ = __webpack_require__(211)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -42712,7 +42850,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 214 */
+/* 210 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42736,7 +42874,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 215 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -42759,19 +42897,19 @@ if (false) {
 }
 
 /***/ }),
-/* 216 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(217)
+  __webpack_require__(213)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(219)
+var __vue_script__ = __webpack_require__(215)
 /* template */
-var __vue_template__ = __webpack_require__(220)
+var __vue_template__ = __webpack_require__(216)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -42810,13 +42948,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 217 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(218);
+var content = __webpack_require__(214);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -42836,7 +42974,7 @@ if(false) {
 }
 
 /***/ }),
-/* 218 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -42850,7 +42988,7 @@ exports.push([module.i, "\n.complete_dynamic_content[data-v-3f8256ef] {\n    pad
 
 
 /***/ }),
-/* 219 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43114,7 +43252,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 220 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -43291,19 +43429,19 @@ if (false) {
 }
 
 /***/ }),
-/* 221 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(222)
+  __webpack_require__(218)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(224)
+var __vue_script__ = __webpack_require__(220)
 /* template */
-var __vue_template__ = __webpack_require__(225)
+var __vue_template__ = __webpack_require__(221)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -43342,13 +43480,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 222 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(223);
+var content = __webpack_require__(219);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -43368,7 +43506,7 @@ if(false) {
 }
 
 /***/ }),
-/* 223 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -43382,7 +43520,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 224 */
+/* 220 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43591,7 +43729,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 225 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -43745,19 +43883,19 @@ if (false) {
 }
 
 /***/ }),
-/* 226 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(227)
+  __webpack_require__(223)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(229)
+var __vue_script__ = __webpack_require__(225)
 /* template */
-var __vue_template__ = __webpack_require__(230)
+var __vue_template__ = __webpack_require__(226)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -43796,13 +43934,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 227 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(228);
+var content = __webpack_require__(224);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -43822,7 +43960,7 @@ if(false) {
 }
 
 /***/ }),
-/* 228 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -43836,7 +43974,7 @@ exports.push([module.i, "\n#manage_groups_app[data-v-d3688d86] {\n    background
 
 
 /***/ }),
-/* 229 */
+/* 225 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43912,7 +44050,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 230 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -43998,19 +44136,19 @@ if (false) {
 }
 
 /***/ }),
-/* 231 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(232)
+  __webpack_require__(228)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(234)
+var __vue_script__ = __webpack_require__(230)
 /* template */
-var __vue_template__ = __webpack_require__(235)
+var __vue_template__ = __webpack_require__(231)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44049,13 +44187,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 232 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(233);
+var content = __webpack_require__(229);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -44075,7 +44213,7 @@ if(false) {
 }
 
 /***/ }),
-/* 233 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -44089,7 +44227,7 @@ exports.push([module.i, "\n.data a[data-v-9220cbd4] {\n    text-decoration: none
 
 
 /***/ }),
-/* 234 */
+/* 230 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44298,7 +44436,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 235 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -44471,19 +44609,19 @@ if (false) {
 }
 
 /***/ }),
-/* 236 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(237)
+  __webpack_require__(233)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(239)
+var __vue_script__ = __webpack_require__(235)
 /* template */
-var __vue_template__ = __webpack_require__(240)
+var __vue_template__ = __webpack_require__(236)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44522,13 +44660,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 237 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(238);
+var content = __webpack_require__(234);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -44548,7 +44686,7 @@ if(false) {
 }
 
 /***/ }),
-/* 238 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -44562,7 +44700,7 @@ exports.push([module.i, "\na[data-v-5ddffaa0] {\n    text-decoration: none;\n   
 
 
 /***/ }),
-/* 239 */
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44725,7 +44863,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 240 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -44915,19 +45053,19 @@ if (false) {
 }
 
 /***/ }),
-/* 241 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(242)
+  __webpack_require__(238)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(244)
+var __vue_script__ = __webpack_require__(240)
 /* template */
-var __vue_template__ = __webpack_require__(245)
+var __vue_template__ = __webpack_require__(241)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44966,13 +45104,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 242 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(243);
+var content = __webpack_require__(239);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -44992,7 +45130,7 @@ if(false) {
 }
 
 /***/ }),
-/* 243 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -45006,7 +45144,7 @@ exports.push([module.i, "\na[data-v-3aadc94b] {\n    text-decoration: none;\n   
 
 
 /***/ }),
-/* 244 */
+/* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45184,7 +45322,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 245 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -45375,308 +45513,10 @@ if (false) {
 }
 
 /***/ }),
-/* 246 */
+/* 242 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 247 */,
-/* 248 */,
-/* 249 */,
-/* 250 */,
-/* 251 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "slide-fade" } }, [
-    _vm.showChat
-      ? _c(
-          "div",
-          {
-            attrs: { id: "right_app" },
-            on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "head" },
-              [
-                _c("avatar", {
-                  staticClass: "img",
-                  attrs: {
-                    username: _vm.chatName,
-                    color: "#fff",
-                    src: _vm.avatar
-                  }
-                }),
-                _c("div", { staticClass: "info" }, [
-                  _c("p", [_vm._v(_vm._s(_vm.chatName))]),
-                  _vm.onlineUsers
-                    ? _c(
-                        "p",
-                        { staticClass: "online" },
-                        _vm._l(_vm.onlineUsers, function(onlineUser) {
-                          return _c("span", [
-                            _vm._v(_vm._s(onlineUser.name)),
-                            _c("span", { staticClass: "state green" }, [
-                              _vm._v("•")
-                            ])
-                          ])
-                        })
-                      )
-                    : _c("p", { staticClass: "online" }, [
-                        _vm._v("Offline"),
-                        _c("span", { staticClass: "state red" }, [_vm._v("•")])
-                      ])
-                ])
-              ],
-              1
-            ),
-            _c("div", { staticClass: "box" }, [
-              _c(
-                "div",
-                {
-                  directives: [
-                    { name: "chat-scroll", rawName: "v-chat-scroll" }
-                  ],
-                  staticClass: "chat_content",
-                  attrs: { id: "chat" }
-                },
-                [
-                  _c("messages", {
-                    attrs: {
-                      messages: _vm.messages,
-                      user: _vm.user,
-                      usersTyping: _vm.typing
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm.uploadImage
-                ? _c("div", { staticClass: "modal" }, [
-                    !_vm.photo
-                      ? _c("div", { staticClass: "container" }, [
-                          _c("label", { staticClass: "upload_photo" }, [
-                            _c("button", [
-                              _c("i", { staticClass: "material-icons" }, [
-                                _vm._v("file_upload")
-                              ])
-                            ]),
-                            _c("input", {
-                              ref: "fileInput",
-                              attrs: { type: "file", name: "photo" },
-                              on: {
-                                change: function($event) {
-                                  _vm.onFileChange($event)
-                                }
-                              }
-                            })
-                          ])
-                        ])
-                      : _c("div", { staticClass: "container" }, [
-                          _c("div", { staticClass: "preview" }, [
-                            _c("img", { attrs: { src: _vm.photo } }),
-                            _c(
-                              "a",
-                              {
-                                on: {
-                                  click: function($event) {
-                                    _vm.photo = null
-                                  }
-                                }
-                              },
-                              [
-                                _c("i", { staticClass: "material-icons" }, [
-                                  _vm._v("clear")
-                                ])
-                              ]
-                            )
-                          ])
-                        ])
-                  ])
-                : _vm._e()
-            ]),
-            _c("send", {
-              attrs: {
-                uploadImageState: _vm.uploadImage,
-                photo: _vm.photo,
-                uploadedPhoto: _vm.uploadedPhoto
-              },
-              on: {
-                errorMessages: function($event) {
-                  _vm.pushErrorMessage($event)
-                },
-                clearPhoto: _vm.hideModal,
-                showUpload: _vm.showImageModal
-              }
-            })
-          ],
-          1
-        )
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5c781822", module.exports)
-  }
-}
-
-/***/ }),
-/* 252 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "slide-fade" } }, [
-    _vm.showChat
-      ? _c(
-          "div",
-          {
-            attrs: { id: "right_app" },
-            on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "head" },
-              [
-                _c("avatar", {
-                  staticClass: "img",
-                  attrs: {
-                    username: _vm.chatName,
-                    color: "#fff",
-                    src: _vm.avatar
-                  }
-                }),
-                _c("div", { staticClass: "info" }, [
-                  _c("p", [_vm._v(_vm._s(_vm.chatName))]),
-                  _vm.onlineUsers
-                    ? _c(
-                        "p",
-                        { staticClass: "online" },
-                        _vm._l(_vm.onlineUsers, function(onlineUser) {
-                          return _c("span", [
-                            _vm._v(_vm._s(onlineUser.name)),
-                            _c("span", { staticClass: "state green" }, [
-                              _vm._v("•")
-                            ])
-                          ])
-                        })
-                      )
-                    : _c("p", { staticClass: "online" }, [
-                        _vm._v("Offline"),
-                        _c("span", { staticClass: "state red" }, [_vm._v("•")])
-                      ])
-                ])
-              ],
-              1
-            ),
-            _c("div", { staticClass: "box" }, [
-              _c(
-                "div",
-                {
-                  directives: [
-                    { name: "chat-scroll", rawName: "v-chat-scroll" }
-                  ],
-                  staticClass: "chat_content",
-                  attrs: { id: "chat" }
-                },
-                [
-                  _c("messages", {
-                    attrs: {
-                      messages: _vm.messages,
-                      user: _vm.user,
-                      usersTyping: _vm.typing
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm.uploadImage
-                ? _c("div", { staticClass: "modal" }, [
-                    !_vm.photo
-                      ? _c("div", { staticClass: "container" }, [
-                          _c("label", { staticClass: "upload_photo" }, [
-                            _c("button", [
-                              _c("i", { staticClass: "material-icons" }, [
-                                _vm._v("file_upload")
-                              ])
-                            ]),
-                            _c("input", {
-                              ref: "fileInput",
-                              attrs: { type: "file", name: "photo" },
-                              on: {
-                                change: function($event) {
-                                  _vm.onFileChange($event)
-                                }
-                              }
-                            })
-                          ])
-                        ])
-                      : _c("div", { staticClass: "container" }, [
-                          _c("div", { staticClass: "preview" }, [
-                            _c("img", { attrs: { src: _vm.photo } }),
-                            _c(
-                              "a",
-                              {
-                                on: {
-                                  click: function($event) {
-                                    _vm.photo = null
-                                  }
-                                }
-                              },
-                              [
-                                _c("i", { staticClass: "material-icons" }, [
-                                  _vm._v("clear")
-                                ])
-                              ]
-                            )
-                          ])
-                        ])
-                  ])
-                : _vm._e()
-            ]),
-            _c("send", {
-              attrs: {
-                uploadImageState: _vm.uploadImage,
-                photo: _vm.photo,
-                uploadedPhoto: _vm.uploadedPhoto
-              },
-              on: {
-                errorMessages: function($event) {
-                  _vm.pushErrorMessage($event)
-                },
-                clearPhoto: _vm.hideModal,
-                showUpload: _vm.showImageModal
-              }
-            })
-          ],
-          1
-        )
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-53d8d3f6", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

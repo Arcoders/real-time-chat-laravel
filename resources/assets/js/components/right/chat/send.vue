@@ -1,28 +1,25 @@
 <template lang="pug">
-    #send_app
-        .wrap-message
-            form.wrap-message(method='POST', v-on:submit.prevent='', enctype='multipart/form-data')
 
-                button.format_button(type='button', v-on:click='showModal')
-                    i(v-bind:class="[uploadImageState ? 'green_teal' : '', 'material-icons']")
-                        | photo_camera
+        form.send(method='POST', v-on:submit.prevent='', enctype='multipart/form-data')
 
-                .message
-                    input#inputMessage.input-message(@keyup.enter='addMessage',
-                                                        v-model='messageText',
-                                                        type='text',
-                                                        autocomplete='off',
-                                                        placeholder='Write a new message')
+            button(type='button', v-on:click='showModal')
 
-                button.format_button(type='button', @click='addMessage')
-                    i(v-bind:class="[btnSubmit ? '' : 'green_teal', 'material-icons']") send
+                i(v-bind:class="[uploadImageState ? 'green' : '', 'material-icons']") photo_camera
+
+            .message
+                input(@keyup.enter='addMessage',
+                                    v-model='messageText',
+                                    type='text',
+                                    autocomplete='off',
+                                    placeholder='Write a new message')
+
+            button(type='button', @click='addMessage')
+                i(v-bind:class="[btnSubmit ? '' : 'green', 'material-icons']") send
 
 </template>
 
 <style scoped>
-    .green_teal {
-        color: #009688;
-    }
+
 </style>
 
 <script>

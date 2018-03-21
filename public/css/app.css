@@ -401,7 +401,7 @@ i {
 /* Chat ---------------------------------------------------------------------- */
 
 .box {
-  height: calc(100% - 120px);
+  height: calc(98vh - 145px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -410,7 +410,6 @@ i {
 
 .box .chat_content {
   width: 100%;
-  height: calc(98vh - 165px);
   background-color: #ECE5DD;
   padding: 10px 100px;
   overflow-y: auto;
@@ -515,39 +514,44 @@ i {
 
 /* Send Message ---------------------------------------------------------------------- */
 
-.wrap-message {
+.send {
   width: 100%;
   height: 60px;
   background: #f1f1f1;
-  border-radius: 0 0 3px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.message {
+.send .message {
   width: 100%;
   height: 45px;
   background: #ffffff;
   margin: auto;
-  border: 1px solid #eeeeee;
   border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.input-message {
+.send button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.send input {
   width: 100%;
-  margin: 0px 10px;
+  margin: 0 10px;
   border: none;
 }
 
-.input-message:focus {
+.send input:focus {
   outline: none;
 }
 
-.wrap-message i {
+.send i {
   color: #aaaaaa;
   width: 60px;
   display: -webkit-box;
@@ -560,6 +564,10 @@ i {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
+}
+
+.send .green {
+  color: #009688;
 }
 
 /* Bubble ---------------------------------------------------------------------- */
