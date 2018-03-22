@@ -371,7 +371,7 @@
 /* Table ---------------------------------------------------------------------- */
 
 .groups_table {
-  background: #f1f1f1;
+  background: #f8f8f8;
   height: calc(100% - 30px);
   padding: 15px 40px;
   h4 {
@@ -380,9 +380,17 @@
   }
   hr {
     border: 0;
-    height: 3px;
+    height: 2px;
     margin: 20px 0;
-    background: #fbfbfb;
+    background: #FFFFFF;
+  }
+  .add {
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    margin-left: 5px;
+    &:hover {
+      color: #009688;
+    }
   }
   .data a {
     text-decoration: none;
@@ -404,7 +412,7 @@
     color: #777777;
     font-size: 0.8em;
     text-align: center;
-    padding: 15px;
+    padding: 15px 0;
     border-bottom: 1px solid #ccc;
   }
   td {
@@ -416,9 +424,6 @@
     font-weight: inherit;
   }
   .avatar {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
     margin: auto;
   }
   .green {
@@ -427,26 +432,61 @@
   .red {
     color: #E57373;
   }
+  .orange {
+    color: #FF9800;
+  }
   .format {
     border: none;
     background-color: transparent;
     outline: none;
     cursor: pointer;
   }
-  .add {
-    background-color: #FFFFFF;
-    border-radius: 50%;
-    margin-left: 5px;
-    &:hover {
-      color: #009688;
-    }
-  }
-  .orange {
-    color: #FF9800;
-  }
   .link_add {
     text-decoration: none;
     margin-left: 5px;
+  }
+  .pagination {
+    display: block;
+    margin-top: 1em;
+    color: white;
+    text-align: right;
+    .page-numbers li {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      .disable {
+        pointer-events: none;
+        box-shadow: none;
+        border-radius: 2px;
+        color: #aaaaaa;
+        border: 1px solid #f5f5f5;
+      }
+      a, span {
+        color: #777777;
+        background: white;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        display: block;
+        text-align: center;
+        border-radius: 5px;
+        margin: 2px;
+        box-shadow: 0 0 1px 0 rgba(119, 119, 119, 0.5);
+      }
+      a.current, span.current {
+        background: #fafafa;
+        color: #009688;
+      }
+      a {
+        text-decoration: none;
+        transition: all .3s ease-out;
+        cursor: pointer;
+        &:hover {
+          background: #f1f1f1;
+          color: #009688;
+          box-shadow: none;
+        }
+      }
+    }
   }
 }
 

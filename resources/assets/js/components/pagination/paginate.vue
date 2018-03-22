@@ -17,62 +17,6 @@
 
 </template>
 
-<style lang="scss" scoped>
-
-    a {
-        text-decoration:none;
-        transition: all .3s ease-out;
-        cursor: pointer;
-    }
-
-    .pagination {
-        display: block;
-        margin-top: 1em;
-        color: white;
-        text-align: right;
-
-        .page-numbers li {
-            display: inline-block;
-            width: 28px;
-            height: 28px;
-
-            .disable {
-                pointer-events: none;
-                box-shadow: none;
-                border-radius: 2px;
-                color: #aaaaaa;
-                border: 1px solid #f5f5f5;
-            }
-
-            a,span {
-                color: #777777;
-                background: white;
-                border: 1px solid #cccccc;
-                padding: 5px;
-                display: block;
-                text-align: center;
-                border-radius: 2px;
-                margin: 2px;
-                box-shadow: 0px 0px 1px 0px rgba(119, 119, 119, 0.5);
-
-                &.current {
-                    background: #f1f1f1;
-                    color: #009688;
-                }
-            }
-
-            a:hover {
-                background: #f1f1f1;
-                color: #009688;
-                box-shadow: none;
-            }
-
-        }
-    }
-
-
-</style>
-
 <script>
     export default {
 
