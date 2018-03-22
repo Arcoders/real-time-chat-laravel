@@ -108,16 +108,9 @@
             // ----------------------------------------------
 
             logout() {
-                this.$http.post('/logout').then(response => {
+                this.$http.post('/logout').then(res => {
 
-                    if (response.status === 200) {
-
-                        this.$router.push('/');
-                        window.location.reload();
-
-                    } else {
-                        this.logoutError = true;
-                    }
+                    (res.status === 200) ? window.location.reload() : this.logoutError = true;
 
                 }, () => this.logoutError = true);
             },

@@ -12,11 +12,13 @@
 
         .groups_box
             .content
+
                 .groups(v-if="$route.path == '/groups'")
                     .group
                         router-link(to='groups/add', exact-active-class='active') Add groups
                     .group
                         router-link(to='groups/my') My groups
+
                 router-view
 </template>
 

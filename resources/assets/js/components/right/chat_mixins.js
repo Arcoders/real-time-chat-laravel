@@ -186,9 +186,7 @@ export const mixin = {
 
                 (res.status === 200) ? this.done(res.data) : this.$router.push('/');
 
-            }, () => {
-                this.$router.push('/');
-            });
+            }, () => this.$router.push('/'));
         },
 
         // ----------------------------------------------

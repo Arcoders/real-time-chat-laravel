@@ -1,25 +1,13 @@
-<template>
-    <div class="wrap">
+<template lang="pug">
 
-        <section class="left">
+    .wrap
+        section.left
+            left(v-show='show')
 
-            <left v-show="show"></left>
+        section.right
+            router-view(:key='$route.fullPath', v-show='show')
 
-        </section>
-
-
-        <section class="right">
-
-            <router-view :key="$route.fullPath" v-show="show"></router-view>
-
-        </section>
-
-    </div>
 </template>
-
-<style scoped>
-
-</style>
 
 <script>
     export default {
@@ -45,9 +33,7 @@
         // ---------------------------------------------------
 
         mounted() {
-            setTimeout(() => {
-                this.show = true;
-            }, 0);
+            setTimeout(() => this.show = true, 0);
         },
 
         // ---------------------------------------------------
