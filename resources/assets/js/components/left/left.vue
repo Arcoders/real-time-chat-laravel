@@ -46,13 +46,14 @@
 
 <script>
 
+    import {mapState} from 'vuex';
+
     export default {
 
         // ----------------------------------------------
 
         data() {
             return {
-                user: this.$store.state.user,
                 logoutError: null,
                 myChatList: true,
                 totalNotifications: 0,
@@ -66,7 +67,7 @@
 
             this.$eventBus.$on('update' , (data) => {
 
-                (data.type === 'profile') ? this.user = this.$store.state.user : this.listType(data.type);
+                if (data.type !== 'profile')  this.listType(data.type);
             });
 
             this.$pusher.subscribe(`notification${this.user.id}`).bind('updateNotifications', () => this.getTotalNotifications());
@@ -129,6 +130,15 @@
             }
 
             // ----------------------------------------------
-        }
+        },
+
+        // ----------------------------------------------
+
+        computed: mapState({
+            user: (state) => state.user
+        }),
+
+        // ----------------------------------------------
+
     }
 </script>

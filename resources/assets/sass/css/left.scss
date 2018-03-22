@@ -1,3 +1,4 @@
+/* Left */
 
 .left {
     width: 420px;
@@ -101,6 +102,10 @@
         width: 50%;
         height: 100%;
         color: #777777;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
         &:hover {
             box-shadow: 0px -1px 0px 0px rgba(186, 186, 186, 1);
         }

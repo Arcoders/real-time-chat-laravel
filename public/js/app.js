@@ -37680,7 +37680,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 "use strict";
 /* unused harmony export Store */
 /* unused harmony export install */
-/* unused harmony export mapState */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapState; });
 /* unused harmony export mapMutations */
 /* unused harmony export mapGetters */
 /* unused harmony export mapActions */
@@ -38847,6 +38847,7 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(146);
 //
 //
 //
@@ -38893,6 +38894,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -38901,7 +38904,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            user: this.$store.state.user,
             logoutError: null,
             myChatList: true,
             totalNotifications: 0,
@@ -38917,7 +38919,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.$eventBus.$on('update', function (data) {
 
-            data.type === 'profile' ? _this.user = _this.$store.state.user : _this.listType(data.type);
+            if (data.type !== 'profile') _this.listType(data.type);
         });
 
         this.$pusher.subscribe('notification' + this.user.id).bind('updateNotifications', function () {
@@ -38994,7 +38996,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ----------------------------------------------
 
-    }
+    },
+
+    // ----------------------------------------------
+
+    computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])({
+        user: function user(state) {
+            return state.user;
+        }
+    })
+
+    // ----------------------------------------------
+
 });
 
 /***/ }),
@@ -43962,7 +43975,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.data a[data-v-9220cbd4] {\n    text-decoration: none;\n    color: #777777;\n}\n.add[data-v-9220cbd4] {\n    background-color: #fafafa;\n    border-radius: 50%;\n}\n.add[data-v-9220cbd4]:hover {\n    background-color: #f1f1f1;\n    color: #009688;\n}\n.orange[data-v-9220cbd4] {\n    color: #FF9800;\n}\n.group_avatar[data-v-9220cbd4] {\n    margin: auto;\n}\n.link_add[data-v-9220cbd4] {\n    text-decoration: none;\n}\n.error[data-v-9220cbd4] {\n    color: #E57373;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -43973,25 +43986,6 @@ exports.push([module.i, "\n.data a[data-v-9220cbd4] {\n    text-decoration: none
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -44068,7 +44062,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted: function mounted() {
         this.myGroups('/groups/my');
-        console.log('My groups ok!');
     },
 
 
@@ -44154,7 +44147,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.notifications.push({ message: msg, type: type });
             setTimeout(function () {
-                _this3.notifications.shift();
+                return _this3.notifications.shift();
             }, this.time);
         },
 
@@ -44186,7 +44179,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "my_groups_app" } },
+    { staticClass: "groups_table" },
     [
       _c("notifications", { attrs: { vue_notifications: _vm.notifications } }),
       _vm.loading ? _c("loading") : _vm._e(),
@@ -44222,7 +44215,7 @@ var render = function() {
                   "td",
                   [
                     _c("avatar", {
-                      staticClass: "group_avatar",
+                      staticClass: "avatar",
                       attrs: {
                         size: 45,
                         username: group.name,
@@ -44238,7 +44231,7 @@ var render = function() {
                   "td",
                   [
                     _c("router-link", { attrs: { to: _vm.editLink(group) } }, [
-                      _c("i", { staticClass: "material-icons green_teal" }, [
+                      _c("i", { staticClass: "material-icons green" }, [
                         _vm._v("mode_edit")
                       ])
                     ])
@@ -44250,7 +44243,7 @@ var render = function() {
                     ? _c(
                         "button",
                         {
-                          staticClass: "format_button",
+                          staticClass: "format",
                           on: {
                             click: function($event) {
                               _vm.changeStatus(group.id, "delete")
@@ -44258,7 +44251,7 @@ var render = function() {
                           }
                         },
                         [
-                          _c("i", { staticClass: "material-icons cool_red" }, [
+                          _c("i", { staticClass: "material-icons red" }, [
                             _vm._v("delete")
                           ])
                         ]
@@ -44266,7 +44259,7 @@ var render = function() {
                     : _c(
                         "button",
                         {
-                          staticClass: "format_button",
+                          staticClass: "format",
                           on: {
                             click: function($event) {
                               _vm.changeStatus(group.id, "restore")
@@ -44292,7 +44285,7 @@ var render = function() {
                       _c(
                         "router-link",
                         {
-                          staticClass: "green_teal link_add",
+                          staticClass: "green link_add",
                           attrs: { to: "/groups/add" }
                         },
                         [_vm._v("Add Group")]
@@ -44334,7 +44327,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { attrs: { colspan: "4" } }, [
-      _c("p", { staticClass: "error" }, [
+      _c("p", { staticClass: "red" }, [
         _vm._v("Sorry :( records could not be loaded")
       ])
     ])
