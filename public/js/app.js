@@ -44172,21 +44172,17 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(224)
-}
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(226)
 /* template */
-var __vue_template__ = __webpack_require__(227)
+var __vue_template__ = __webpack_require__(241)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-5ddffaa0"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -44219,79 +44215,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 224 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(225);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("5c62632f", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5ddffaa0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./add_group.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5ddffaa0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./add_group.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 225 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\na[data-v-5ddffaa0] {\n    text-decoration: none;\n    color: #777777;\n}\n.fileContainer i[data-v-5ddffaa0]{\n    font-size: 23px;\n    color: #777777;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 224 */,
+/* 225 */,
 /* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__group_mixins__ = __webpack_require__(127);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -44422,196 +44353,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 227 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "chat_groups" },
-    [
-      _c("notifications", {
-        attrs: { vue_notifications: _vm.notifications, width: 50 }
-      }),
-      _c("router-link", { attrs: { to: "/groups/my" } }, [
-        _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
-      ]),
-      _c("avatar", {
-        attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
-      }),
-      _c("h4", [_vm._v("Add new group")]),
-      _c("hr"),
-      _c(
-        "form",
-        {
-          attrs: { method: "POST", enctype: "multipart/form-data" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-            }
-          }
-        },
-        [
-          _vm.access
-            ? _c(
-                "div",
-                { staticClass: "input wrap-input" },
-                [
-                  _c("multiselect", {
-                    attrs: {
-                      multiple: true,
-                      "track-by": "id",
-                      label: "name",
-                      "hide-selected": true,
-                      "close-on-select": false,
-                      options: _vm.listUsers
-                    },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "tag",
-                        fn: function(props) {
-                          return [
-                            _c("span", { staticClass: "custom__tag" }, [
-                              _c("span", [
-                                _vm._v(" " + _vm._s(props.option.name))
-                              ]),
-                              _c(
-                                "span",
-                                {
-                                  staticClass: "custom__remove",
-                                  on: {
-                                    click: function($event) {
-                                      props.remove(props.option)
-                                    }
-                                  }
-                                },
-                                [_vm._v(" ❌")]
-                              )
-                            ])
-                          ]
-                        }
-                      }
-                    ]),
-                    model: {
-                      value: _vm.selectedUsers,
-                      callback: function($$v) {
-                        _vm.selectedUsers = $$v
-                      },
-                      expression: "selectedUsers"
-                    }
-                  })
-                ],
-                1
-              )
-            : _vm._e(),
-          _c("br"),
-          _c("br"),
-          _c("div", { staticClass: "input wrap-input" }, [
-            _c("label", { staticClass: "fileContainer font-online" }, [
-              !_vm.avatar
-                ? _c("button", { attrs: { type: "button" } }, [
-                    _c("i", { staticClass: "material-icons" }, [
-                      _vm._v("photo")
-                    ])
-                  ])
-                : _c(
-                    "button",
-                    {
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.avatar = null
-                        }
-                      }
-                    },
-                    [
-                      _c("i", { staticClass: "material-icons" }, [
-                        _vm._v("clear")
-                      ])
-                    ]
-                  ),
-              _c("input", {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.avatar,
-                    expression: "!avatar"
-                  }
-                ],
-                ref: "fileInput",
-                attrs: { type: "file", name: "avatar" },
-                on: {
-                  change: function($event) {
-                    _vm.onFileChange($event)
-                  }
-                }
-              })
-            ]),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.groupName,
-                  expression: "groupName"
-                }
-              ],
-              staticClass: "input-global",
-              attrs: {
-                name: "name",
-                type: "text",
-                placeholder: "Group name..."
-              },
-              domProps: { value: _vm.groupName },
-              on: {
-                keyup: function($event) {
-                  if (
-                    !("button" in $event) &&
-                    _vm._k($event.keyCode, "enter", 13, $event.key)
-                  ) {
-                    return null
-                  }
-                  _vm.addGroup($event)
-                },
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.groupName = $event.target.value
-                }
-              }
-            }),
-            _c(
-              "button",
-              {
-                attrs: { type: "button", disabled: _vm.btnDisabled },
-                on: { click: _vm.addGroup }
-              },
-              [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
-            )
-          ])
-        ]
-      ),
-      _vm.loading ? _c("loading") : _vm._e()
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5ddffaa0", module.exports)
-  }
-}
-
-/***/ }),
+/* 227 */,
 /* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45213,6 +44955,192 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-5890a772", module.exports)
+  }
+}
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "chat_groups" },
+    [
+      _c("notifications", {
+        attrs: { vue_notifications: _vm.notifications, width: 50 }
+      }),
+      _c("router-link", { attrs: { to: "/groups/my" } }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])
+      ]),
+      _c("avatar", {
+        attrs: { username: _vm.groupName, color: "#fff", src: _vm.avatar }
+      }),
+      _c("h4", [_vm._v("Add new group")]),
+      _c("hr"),
+      _c(
+        "form",
+        {
+          attrs: { method: "POST", enctype: "multipart/form-data" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "group_input" }, [
+            _c("label", { staticClass: "upload_avatar" }, [
+              !_vm.avatar
+                ? _c(
+                    "button",
+                    { staticClass: "button_upload", attrs: { type: "button" } },
+                    [
+                      _c("i", { staticClass: "material-icons" }, [
+                        _vm._v("photo")
+                      ])
+                    ]
+                  )
+                : _c(
+                    "button",
+                    {
+                      staticClass: "button_upload",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.avatar = null
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "material-icons" }, [
+                        _vm._v("clear")
+                      ])
+                    ]
+                  ),
+              _c("input", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.avatar,
+                    expression: "!avatar"
+                  }
+                ],
+                ref: "fileInput",
+                attrs: { type: "file", name: "avatar" },
+                on: {
+                  change: function($event) {
+                    _vm.onFileChange($event)
+                  }
+                }
+              })
+            ]),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.groupName,
+                  expression: "groupName"
+                }
+              ],
+              staticClass: "input_name",
+              attrs: {
+                name: "name",
+                type: "text",
+                placeholder: "Group name..."
+              },
+              domProps: { value: _vm.groupName },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key)
+                  ) {
+                    return null
+                  }
+                  _vm.addGroup($event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.groupName = $event.target.value
+                }
+              }
+            }),
+            _c(
+              "button",
+              {
+                staticClass: "button_send",
+                attrs: { type: "button", disabled: _vm.btnDisabled },
+                on: { click: _vm.addGroup }
+              },
+              [_vm._v("save")]
+            )
+          ]),
+          _vm.access
+            ? _c("multiselect", {
+                attrs: {
+                  multiple: true,
+                  "track-by": "id",
+                  label: "name",
+                  "hide-selected": true,
+                  "close-on-select": false,
+                  options: _vm.listUsers
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "tag",
+                    fn: function(props) {
+                      return [
+                        _c("span", { staticClass: "custom__tag" }, [
+                          _c("span", [_vm._v(" " + _vm._s(props.option.name))]),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "custom__remove",
+                              on: {
+                                click: function($event) {
+                                  props.remove(props.option)
+                                }
+                              }
+                            },
+                            [_vm._v(" ❌")]
+                          )
+                        ])
+                      ]
+                    }
+                  }
+                ]),
+                model: {
+                  value: _vm.selectedUsers,
+                  callback: function($$v) {
+                    _vm.selectedUsers = $$v
+                  },
+                  expression: "selectedUsers"
+                }
+              })
+            : _vm._e()
+        ],
+        1
+      ),
+      _vm.loading ? _c("loading") : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5ddffaa0", module.exports)
   }
 }
 

@@ -14,63 +14,36 @@
 
         form(v-on:submit.prevent='', method='POST', enctype='multipart/form-data')
 
-            .input.wrap-input(v-if='access')
+            .group_input
 
-                multiselect(v-model='selectedUsers',
-                            :multiple='true',
-                            track-by='id',
-                            label='name',
-                            :hide-selected='true',
-                            :close-on-select='false',
-                            :options='listUsers')
+                label.upload_avatar
 
-                    template(slot='tag', slot-scope='props')
-                        span.custom__tag
-                            span  {{ props.option.name }}
-                            span.custom__remove(@click='props.remove(props.option)')  ❌
-
-            br
-            br
-
-            .input.wrap-input
-
-                label.fileContainer.font-online
-
-                    button(v-if='!avatar', type='button')
+                    button.button_upload(v-if='!avatar', type='button')
                         i.material-icons photo
 
-                    button(v-else='', v-on:click='avatar = null', type='button')
+                    button.button_upload(v-else, v-on:click='avatar = null', type='button')
                         i.material-icons clear
 
-                    input(v-show='!avatar',
-                            type='file',
-                            name='avatar',
-                            v-on:change='onFileChange($event)',
-                            ref='fileInput')
+                    input(v-show='!avatar', type='file', name='avatar', v-on:change='onFileChange($event)', ref='fileInput')
 
-                input.input-global(@keyup.enter='addGroup',
-                                    v-model='groupName',
-                                    name='name',
-                                    type='text',
-                                    placeholder='Group name...')
+                input.input_name(@keyup.enter='addGroup', v-model='groupName', name='name', type='text', placeholder='Group name...')
 
-                button(type='button', @click='addGroup', v-bind:disabled='btnDisabled')
-                    i.material-icons add
+                button.button_send(type='button', @click='addGroup', v-bind:disabled='btnDisabled') save
+
+
+            multiselect(v-if='access', v-model='selectedUsers', :multiple='true', track-by='id', label='name',
+            :hide-selected='true',
+            :close-on-select='false',
+            :options='listUsers')
+
+                template(slot='tag', slot-scope='props')
+                    span.custom__tag
+                        span  {{ props.option.name }}
+                        span.custom__remove(@click='props.remove(props.option)')  ❌
 
         loading(v-if='loading')
 
 </template>
-
-<style scoped>
-    a {
-        text-decoration: none;
-        color: #777777;
-    }
-    .fileContainer i{
-        font-size: 23px;
-        color: #777777;
-    }
-</style>
 
 <script>
 
