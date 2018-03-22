@@ -44509,14 +44509,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -44633,7 +44625,7 @@ var render = function() {
   return _vm.showEdit
     ? _c(
         "div",
-        { attrs: { id: "edit_group_app" } },
+        { staticClass: "chat_groups" },
         [
           _c("notifications", {
             attrs: { vue_notifications: _vm.notifications, width: 50 }
@@ -44661,17 +44653,25 @@ var render = function() {
               }
             },
             [
-              _c("div", { staticClass: "input wrap-input" }, [
-                _c("label", { staticClass: "fileContainer font-online" }, [
+              _c("div", { staticClass: "group_input" }, [
+                _c("label", { staticClass: "upload_avatar" }, [
                   !_vm.groupAvatar
-                    ? _c("button", { attrs: { type: "button" } }, [
-                        _c("i", { staticClass: "material-icons" }, [
-                          _vm._v("photo")
-                        ])
-                      ])
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "button_upload",
+                          attrs: { type: "button" }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons" }, [
+                            _vm._v("backup")
+                          ])
+                        ]
+                      )
                     : _c(
                         "button",
                         {
+                          staticClass: "button_upload",
                           attrs: { type: "button" },
                           on: { click: _vm.clearAvatar }
                         },
@@ -44708,7 +44708,7 @@ var render = function() {
                       expression: "groupName"
                     }
                   ],
-                  staticClass: "input-global",
+                  staticClass: "input_name",
                   attrs: {
                     name: "name",
                     type: "text",
@@ -44736,66 +44736,60 @@ var render = function() {
                 _c(
                   "button",
                   {
+                    staticClass: "button_send",
                     attrs: { type: "button", disabled: _vm.btnDisabled },
                     on: { click: _vm.editGroup }
                   },
-                  [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
+                  [_vm._v("save")]
                 )
               ]),
-              _c("br"),
               _vm.access
-                ? _c(
-                    "div",
-                    { staticClass: "input wrap-input" },
-                    [
-                      _c("multiselect", {
-                        attrs: {
-                          multiple: true,
-                          "track-by": "id",
-                          label: "name",
-                          "hide-selected": true,
-                          "close-on-select": false,
-                          options: _vm.listUsers
-                        },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "tag",
-                            fn: function(props) {
-                              return [
-                                _c("span", { staticClass: "custom__tag" }, [
-                                  _c("span", [
-                                    _vm._v(" " + _vm._s(props.option.name))
-                                  ]),
-                                  _c(
-                                    "span",
-                                    {
-                                      staticClass: "custom__remove",
-                                      on: {
-                                        click: function($event) {
-                                          props.remove(props.option)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v(" ❌")]
-                                  )
-                                ])
-                              ]
-                            }
-                          }
-                        ]),
-                        model: {
-                          value: _vm.selectedUsers,
-                          callback: function($$v) {
-                            _vm.selectedUsers = $$v
-                          },
-                          expression: "selectedUsers"
+                ? _c("multiselect", {
+                    attrs: {
+                      multiple: true,
+                      "track-by": "id",
+                      label: "name",
+                      "hide-selected": true,
+                      "close-on-select": false,
+                      options: _vm.listUsers
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "tag",
+                        fn: function(props) {
+                          return [
+                            _c("span", { staticClass: "custom__tag" }, [
+                              _c("span", [
+                                _vm._v(" " + _vm._s(props.option.name))
+                              ]),
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "custom__remove",
+                                  on: {
+                                    click: function($event) {
+                                      props.remove(props.option)
+                                    }
+                                  }
+                                },
+                                [_vm._v("  ❌")]
+                              )
+                            ])
+                          ]
                         }
-                      })
-                    ],
-                    1
-                  )
+                      }
+                    ]),
+                    model: {
+                      value: _vm.selectedUsers,
+                      callback: function($$v) {
+                        _vm.selectedUsers = $$v
+                      },
+                      expression: "selectedUsers"
+                    }
+                  })
                 : _vm._e()
-            ]
+            ],
+            1
           ),
           _vm.loading ? _c("loading") : _vm._e()
         ],

@@ -1,5 +1,5 @@
 <template lang="pug">
-    #edit_group_app(v-if='showEdit')
+    .chat_groups(v-if='showEdit')
 
         notifications(:vue_notifications='notifications', :width='50')
 
@@ -12,42 +12,34 @@
         hr
 
         form(v-on:submit.prevent='', method='POST', enctype='multipart/form-data')
-            .input.wrap-input
-                label.fileContainer.font-online
+            .group_input
 
-                    button(v-if='!groupAvatar', type='button')
-                        i.material-icons photo
+                label.upload_avatar
 
-                    button(v-else='', v-on:click='clearAvatar', type='button')
+                    button.button_upload(v-if='!groupAvatar', type='button')
+                        i.material-icons backup
+
+                    button.button_upload(v-else, v-on:click='clearAvatar', type='button')
                         i.material-icons clear
 
-                    input(v-show='!groupAvatar',
-                                type='file',
-                                name='avatar',
-                                v-on:change='onFileChange($event)',
-                                ref='fileInput')
+                    input(v-show='!groupAvatar', type='file', name='avatar', v-on:change='onFileChange($event)', ref='fileInput')
 
-                input.input-global(@keyup.enter='editGroup',
-                                    v-model='groupName',
-                                    name='name',
-                                    type='text',
-                                    placeholder='Group name...')
+                input.input_name(@keyup.enter='editGroup', v-model='groupName', name='name', type='text', placeholder='Group name...')
 
-                button(type='button', @click='editGroup', v-bind:disabled='btnDisabled')
-                    i.material-icons add
-            br
-            .input.wrap-input(v-if='access')
-                multiselect(v-model='selectedUsers',
-                                :multiple='true',
-                                track-by='id',
-                                label='name',
-                                :hide-selected='true',
-                                :close-on-select='false',
-                                :options='listUsers')
-                    template(slot='tag', slot-scope='props')
-                        span.custom__tag
-                            span  {{ props.option.name }}
-                            span.custom__remove(@click='props.remove(props.option)')  ❌
+                button.button_send(type='button', @click='editGroup', v-bind:disabled='btnDisabled') save
+
+
+            multiselect(v-if='access', v-model='selectedUsers',
+                            :multiple='true',
+                            track-by='id',
+                            label='name',
+                            :hide-selected='true',
+                            :close-on-select='false',
+                            :options='listUsers')
+                template(slot='tag', slot-scope='props')
+                    span.custom__tag
+                        span  {{ props.option.name }}
+                        span.custom__remove(@click='props.remove(props.option)') &nbsp; ❌
 
         loading(v-if='loading')
 
