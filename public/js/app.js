@@ -45000,7 +45000,7 @@ var render = function() {
                     { staticClass: "button_upload", attrs: { type: "button" } },
                     [
                       _c("i", { staticClass: "material-icons" }, [
-                        _vm._v("photo")
+                        _vm._v("backup")
                       ])
                     ]
                   )
@@ -45110,7 +45110,7 @@ var render = function() {
                                 }
                               }
                             },
-                            [_vm._v(" ❌")]
+                            [_vm._v("  ❌")]
                           )
                         ])
                       ]

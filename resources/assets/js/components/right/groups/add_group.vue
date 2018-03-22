@@ -19,7 +19,7 @@
                 label.upload_avatar
 
                     button.button_upload(v-if='!avatar', type='button')
-                        i.material-icons photo
+                        i.material-icons backup
 
                     button.button_upload(v-else, v-on:click='avatar = null', type='button')
                         i.material-icons clear
@@ -39,7 +39,7 @@
                 template(slot='tag', slot-scope='props')
                     span.custom__tag
                         span  {{ props.option.name }}
-                        span.custom__remove(@click='props.remove(props.option)')  ❌
+                        span.custom__remove(@click='props.remove(props.option)') &nbsp; ❌
 
         loading(v-if='loading')
 
