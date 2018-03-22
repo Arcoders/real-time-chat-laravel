@@ -1002,10 +1002,16 @@ i {
   background-color: #f1f1f1;
   cursor: pointer;
   font-weight: bold;
+  color: #009688;
 }
 
 .chat_groups .group_input .button_send:hover {
   background-color: #EEEEEE;
+}
+
+.chat_groups .group_input button:disabled,
+.chat_groups .group_input button[disabled] {
+  display: none;
 }
 
 /* Profile ------------------------------------------------------ */
