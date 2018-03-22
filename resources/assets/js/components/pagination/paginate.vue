@@ -1,7 +1,7 @@
 <template lang="pug">
     #paginate_app
         .pagination
-            ul.page-numbers
+            ul.numbers
                 li
                     a.prev(@click='nextPrev($event, source.current_page - 1)',
                             :class='{disable: source.current_page == 1}')

@@ -370,19 +370,20 @@
 
 /* Table ---------------------------------------------------------------------- */
 
-.groups_table {
+.chat_groups {
   background: #f8f8f8;
   height: calc(100% - 30px);
   padding: 15px 40px;
+  overflow-y: hidden;
   h4 {
     margin: 25px 0;
     color: #777777;
   }
   hr {
     border: 0;
-    height: 2px;
+    height: 3px;
     margin: 20px 0;
-    background: #FFFFFF;
+    background: #EEEEEE;
   }
   .add {
     background-color: #FFFFFF;
@@ -450,10 +451,8 @@
     margin-top: 1em;
     color: white;
     text-align: right;
-    .page-numbers li {
+    .numbers li {
       display: inline-block;
-      width: 28px;
-      height: 28px;
       .disable {
         pointer-events: none;
         box-shadow: none;

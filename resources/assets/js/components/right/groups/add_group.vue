@@ -1,6 +1,6 @@
 <template lang="pug">
 
-    #add_group_app
+    .chat_groups
 
         notifications(:vue_notifications='notifications', :width='50')
 

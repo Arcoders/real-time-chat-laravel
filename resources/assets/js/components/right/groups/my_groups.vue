@@ -1,5 +1,5 @@
 <template lang="pug">
-    .groups_table
+    .chat_groups
 
         notifications(:vue_notifications='notifications')
         loading(v-if='loading')

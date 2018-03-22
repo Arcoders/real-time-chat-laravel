@@ -44004,7 +44004,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "groups_table" },
+    { staticClass: "chat_groups" },
     [
       _c("notifications", { attrs: { vue_notifications: _vm.notifications } }),
       _vm.loading ? _c("loading") : _vm._e(),
@@ -44431,7 +44431,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "add_group_app" } },
+    { staticClass: "chat_groups" },
     [
       _c("notifications", {
         attrs: { vue_notifications: _vm.notifications, width: 50 }
@@ -45150,7 +45150,7 @@ var render = function() {
     _c("div", { staticClass: "pagination" }, [
       _c(
         "ul",
-        { staticClass: "page-numbers" },
+        { staticClass: "numbers" },
         [
           _c("li", [
             _c(

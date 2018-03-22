@@ -796,40 +796,41 @@ i {
 
 /* Table ---------------------------------------------------------------------- */
 
-.groups_table {
+.chat_groups {
   background: #f8f8f8;
   height: calc(100% - 30px);
   padding: 15px 40px;
+  overflow-y: hidden;
 }
 
-.groups_table h4 {
+.chat_groups h4 {
   margin: 25px 0;
   color: #777777;
 }
 
-.groups_table hr {
+.chat_groups hr {
   border: 0;
-  height: 2px;
+  height: 3px;
   margin: 20px 0;
-  background: #FFFFFF;
+  background: #EEEEEE;
 }
 
-.groups_table .add {
+.chat_groups .add {
   background-color: #FFFFFF;
   border-radius: 50%;
   margin-left: 5px;
 }
 
-.groups_table .add:hover {
+.chat_groups .add:hover {
   color: #009688;
 }
 
-.groups_table .data a {
+.chat_groups .data a {
   text-decoration: none;
   color: #777777;
 }
 
-.groups_table table {
+.chat_groups table {
   width: 100%;
   border-collapse: collapse;
   margin: auto;
@@ -840,11 +841,11 @@ i {
   background: #fbfbfb;
 }
 
-.groups_table tr:nth-of-type(odd) {
+.chat_groups tr:nth-of-type(odd) {
   background: #FFFFFF;
 }
 
-.groups_table th {
+.chat_groups th {
   background: #fbfbfb;
   color: #777777;
   font-size: 0.8em;
@@ -853,7 +854,7 @@ i {
   border-bottom: 1px solid #ccc;
 }
 
-.groups_table td {
+.chat_groups td {
   padding: 10px;
   border-bottom: 1px solid #ccc;
   text-align: center;
@@ -862,48 +863,46 @@ i {
   font-weight: inherit;
 }
 
-.groups_table .avatar {
+.chat_groups .avatar {
   margin: auto;
 }
 
-.groups_table .green {
+.chat_groups .green {
   color: #009688;
 }
 
-.groups_table .red {
+.chat_groups .red {
   color: #E57373;
 }
 
-.groups_table .orange {
+.chat_groups .orange {
   color: #FF9800;
 }
 
-.groups_table .format {
+.chat_groups .format {
   border: none;
   background-color: transparent;
   outline: none;
   cursor: pointer;
 }
 
-.groups_table .link_add {
+.chat_groups .link_add {
   text-decoration: none;
   margin-left: 5px;
 }
 
-.groups_table .pagination {
+.chat_groups .pagination {
   display: block;
   margin-top: 1em;
   color: white;
   text-align: right;
 }
 
-.groups_table .pagination .page-numbers li {
+.chat_groups .pagination .numbers li {
   display: inline-block;
-  width: 28px;
-  height: 28px;
 }
 
-.groups_table .pagination .page-numbers li .disable {
+.chat_groups .pagination .numbers li .disable {
   pointer-events: none;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -912,8 +911,8 @@ i {
   border: 1px solid #f5f5f5;
 }
 
-.groups_table .pagination .page-numbers li a,
-.groups_table .pagination .page-numbers li span {
+.chat_groups .pagination .numbers li a,
+.chat_groups .pagination .numbers li span {
   color: #777777;
   background: white;
   border: 1px solid #cccccc;
@@ -926,20 +925,20 @@ i {
           box-shadow: 0 0 1px 0 rgba(119, 119, 119, 0.5);
 }
 
-.groups_table .pagination .page-numbers li a.current,
-.groups_table .pagination .page-numbers li span.current {
+.chat_groups .pagination .numbers li a.current,
+.chat_groups .pagination .numbers li span.current {
   background: #fafafa;
   color: #009688;
 }
 
-.groups_table .pagination .page-numbers li a {
+.chat_groups .pagination .numbers li a {
   text-decoration: none;
   -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
   cursor: pointer;
 }
 
-.groups_table .pagination .page-numbers li a:hover {
+.chat_groups .pagination .numbers li a:hover {
   background: #f1f1f1;
   color: #009688;
   -webkit-box-shadow: none;
