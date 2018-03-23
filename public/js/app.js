@@ -38712,7 +38712,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         setTimeout(function () {
             return _this.show = true;
-        }, 0);
+        }, 1000);
     }
 });
 

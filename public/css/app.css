@@ -865,6 +865,8 @@ i {
 
 .chat_groups .avatar {
   margin: auto;
+  max-height: 40px;
+  max-width: 40px;
 }
 
 .chat_groups .green {
