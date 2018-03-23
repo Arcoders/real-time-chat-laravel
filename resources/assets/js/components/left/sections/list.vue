@@ -103,9 +103,13 @@
             // ----------------------------------------------
 
             test() {
-                if (window.innerWidth <= 850) {
+                if (window.innerWidth <= 800) {
+                    document.querySelector(".navigate").style.display = "block";
                     document.querySelector(".left").style.display = "none";
-                    document.querySelector(".right").style.width = "100%";
+
+                    let right = document.querySelector(".right");
+                    right.style.width = "100%";
+                    right.style.display = "block";
                 }
             },
 

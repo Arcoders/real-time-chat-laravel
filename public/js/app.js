@@ -38683,6 +38683,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -38714,7 +38718,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         setTimeout(function () {
             return _this.show = true;
         }, 1000);
+    },
+
+
+    // ---------------------------------------------------
+
+    methods: {
+        toggle: function toggle() {
+            document.querySelector(".navigate").style.display = "none";
+            document.querySelector(".right").style.display = "none";
+
+            var left = document.querySelector(".left");
+            left.style.display = "block";
+            left.style.width = "100%";
+        }
     }
+
+    // ---------------------------------------------------
+
 });
 
 /***/ }),
@@ -38725,43 +38746,61 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrap" }, [
-    _c(
-      "section",
-      { staticClass: "left" },
-      [
-        _c("left", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.show,
-              expression: "show"
+  return _c(
+    "div",
+    { staticClass: "wrap" },
+    [
+      _c(
+        "router-link",
+        {
+          staticClass: "navigate",
+          attrs: { to: "#" },
+          nativeOn: {
+            click: function($event) {
+              _vm.toggle($event)
             }
-          ]
-        })
-      ],
-      1
-    ),
-    _c(
-      "section",
-      { staticClass: "right" },
-      [
-        _c("router-view", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.show,
-              expression: "show"
-            }
-          ],
-          key: _vm.$route.fullPath
-        })
-      ],
-      1
-    )
-  ])
+          }
+        },
+        [_c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])]
+      ),
+      _c(
+        "section",
+        { staticClass: "left" },
+        [
+          _c("left", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.show,
+                expression: "show"
+              }
+            ]
+          })
+        ],
+        1
+      ),
+      _c(
+        "section",
+        { staticClass: "right" },
+        [
+          _c("router-view", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.show,
+                expression: "show"
+              }
+            ],
+            key: _vm.$route.fullPath
+          })
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -39001,6 +39040,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         // ----------------------------------------------
 
+        test: function test() {
+            if (window.innerWidth <= 800) {
+                document.querySelector(".navigate").style.display = "block";
+                document.querySelector(".left").style.display = "none";
+
+                var right = document.querySelector(".right");
+                right.style.width = "100%";
+                right.style.display = "block";
+            }
+        },
+
+
+        // ----------------------------------------------
+
         showListNotifications: function showListNotifications() {
             this.showNotification = !this.showNotification;
         },
@@ -39097,15 +39150,35 @@ var render = function() {
             "div",
             { staticClass: "icons" },
             [
-              _c("router-link", { attrs: { to: "/profile" } }, [
-                _c("i", { staticClass: "material-icons" }, [_vm._v("person")])
-              ]),
-              _c("router-link", { attrs: { to: "/groups" } }, [
-                _c("i", { staticClass: "material-icons" }, [
-                  _vm._v("person_add")
-                ]),
-                _c("span", { staticClass: "step" })
-              ]),
+              _c(
+                "router-link",
+                {
+                  attrs: { to: "/profile" },
+                  nativeOn: {
+                    click: function($event) {
+                      _vm.test($event)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "material-icons" }, [_vm._v("person")])]
+              ),
+              _c(
+                "router-link",
+                {
+                  attrs: { to: "/groups" },
+                  nativeOn: {
+                    click: function($event) {
+                      _vm.test($event)
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "material-icons" }, [
+                    _vm._v("person_add")
+                  ]),
+                  _c("span", { staticClass: "step" })
+                ]
+              ),
               _c(
                 "a",
                 {
@@ -39353,9 +39426,13 @@ var arrayFindIndex = __webpack_require__(126);
         // ----------------------------------------------
 
         test: function test() {
-            if (window.innerWidth <= 850) {
+            if (window.innerWidth <= 800) {
+                document.querySelector(".navigate").style.display = "block";
                 document.querySelector(".left").style.display = "none";
-                document.querySelector(".right").style.width = "100%";
+
+                var right = document.querySelector(".right");
+                right.style.width = "100%";
+                right.style.display = "block";
             }
         },
 
@@ -42284,140 +42361,132 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade" } }, [
-    _c(
-      "div",
-      {
-        attrs: { id: "right_app" },
-        on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
-      },
-      [
-        _vm.showChat
-          ? _c(
+    _vm.showChat
+      ? _c(
+          "div",
+          {
+            staticClass: "chat",
+            on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
+          },
+          [
+            _c(
               "div",
-              { staticClass: "chat" },
+              { staticClass: "head" },
               [
-                _c(
-                  "div",
-                  { staticClass: "head" },
-                  [
-                    _c("avatar", {
-                      staticClass: "img",
-                      attrs: {
-                        username: _vm.chatName,
-                        color: "#fff",
-                        src: _vm.avatar
-                      }
-                    }),
-                    _c("div", { staticClass: "info" }, [
-                      _c("p", [_vm._v(_vm._s(_vm.chatName))]),
-                      _vm.onlineUsers
-                        ? _c(
-                            "p",
-                            { staticClass: "online" },
-                            _vm._l(_vm.onlineUsers, function(onlineUser) {
-                              return _c("span", [
-                                _vm._v(_vm._s(onlineUser.name)),
-                                _c("span", { staticClass: "state green" }, [
-                                  _vm._v("•")
-                                ])
-                              ])
-                            })
-                          )
-                        : _c("p", { staticClass: "online" }, [
-                            _vm._v("Offline"),
-                            _c("span", { staticClass: "state red" }, [
+                _c("avatar", {
+                  staticClass: "img",
+                  attrs: {
+                    username: _vm.chatName,
+                    color: "#fff",
+                    src: _vm.avatar
+                  }
+                }),
+                _c("div", { staticClass: "info" }, [
+                  _c("p", [_vm._v(_vm._s(_vm.chatName))]),
+                  _vm.onlineUsers
+                    ? _c(
+                        "p",
+                        { staticClass: "online" },
+                        _vm._l(_vm.onlineUsers, function(onlineUser) {
+                          return _c("span", [
+                            _vm._v(_vm._s(onlineUser.name)),
+                            _c("span", { staticClass: "state green" }, [
                               _vm._v("•")
                             ])
                           ])
-                    ])
-                  ],
-                  1
-                ),
-                _c("div", { staticClass: "chat_box" }, [
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        { name: "chat-scroll", rawName: "v-chat-scroll" }
-                      ],
-                      staticClass: "chat_content",
-                      attrs: { id: "chat" }
-                    },
-                    [
-                      _c("messages", {
-                        attrs: {
-                          messages: _vm.messages,
-                          user: _vm.user,
-                          usersTyping: _vm.typing
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm.uploadImage
-                    ? _c("div", { staticClass: "modal" }, [
-                        !_vm.photo
-                          ? _c("div", { staticClass: "container" }, [
-                              _c("label", { staticClass: "upload_photo" }, [
-                                _c("button", [
-                                  _c("i", { staticClass: "material-icons" }, [
-                                    _vm._v("file_upload")
-                                  ])
-                                ]),
-                                _c("input", {
-                                  ref: "fileInput",
-                                  attrs: { type: "file", name: "photo" },
-                                  on: {
-                                    change: function($event) {
-                                      _vm.onFileChange($event)
-                                    }
-                                  }
-                                })
-                              ])
-                            ])
-                          : _c("div", { staticClass: "container" }, [
-                              _c("div", { staticClass: "preview" }, [
-                                _c("img", { attrs: { src: _vm.photo } }),
-                                _c(
-                                  "a",
-                                  {
-                                    on: {
-                                      click: function($event) {
-                                        _vm.photo = null
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c("i", { staticClass: "material-icons" }, [
-                                      _vm._v("clear")
-                                    ])
-                                  ]
-                                )
-                              ])
-                            ])
+                        })
+                      )
+                    : _c("p", { staticClass: "online" }, [
+                        _vm._v("Offline"),
+                        _c("span", { staticClass: "state red" }, [_vm._v("•")])
                       ])
-                    : _vm._e()
-                ]),
-                _c("send", {
-                  attrs: {
-                    uploadImageState: _vm.uploadImage,
-                    photo: _vm.photo,
-                    uploadedPhoto: _vm.uploadedPhoto
-                  },
-                  on: {
-                    errorMessages: function($event) {
-                      _vm.pushErrorMessage($event)
-                    },
-                    clearPhoto: _vm.hideModal,
-                    showUpload: _vm.showImageModal
-                  }
-                })
+                ])
               ],
               1
-            )
-          : _vm._e()
-      ]
-    )
+            ),
+            _c("div", { staticClass: "chat_box" }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    { name: "chat-scroll", rawName: "v-chat-scroll" }
+                  ],
+                  staticClass: "chat_content",
+                  attrs: { id: "chat" }
+                },
+                [
+                  _c("messages", {
+                    attrs: {
+                      messages: _vm.messages,
+                      user: _vm.user,
+                      usersTyping: _vm.typing
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm.uploadImage
+                ? _c("div", { staticClass: "modal" }, [
+                    !_vm.photo
+                      ? _c("div", { staticClass: "container" }, [
+                          _c("label", { staticClass: "upload_photo" }, [
+                            _c("button", [
+                              _c("i", { staticClass: "material-icons" }, [
+                                _vm._v("file_upload")
+                              ])
+                            ]),
+                            _c("input", {
+                              ref: "fileInput",
+                              attrs: { type: "file", name: "photo" },
+                              on: {
+                                change: function($event) {
+                                  _vm.onFileChange($event)
+                                }
+                              }
+                            })
+                          ])
+                        ])
+                      : _c("div", { staticClass: "container" }, [
+                          _c("div", { staticClass: "preview" }, [
+                            _c("img", { attrs: { src: _vm.photo } }),
+                            _c(
+                              "a",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    _vm.photo = null
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", { staticClass: "material-icons" }, [
+                                  _vm._v("clear")
+                                ])
+                              ]
+                            )
+                          ])
+                        ])
+                  ])
+                : _vm._e()
+            ]),
+            _c("send", {
+              attrs: {
+                uploadImageState: _vm.uploadImage,
+                photo: _vm.photo,
+                uploadedPhoto: _vm.uploadedPhoto
+              },
+              on: {
+                errorMessages: function($event) {
+                  _vm.pushErrorMessage($event)
+                },
+                clearPhoto: _vm.hideModal,
+                showUpload: _vm.showImageModal
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -42511,140 +42580,132 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade" } }, [
-    _c(
-      "div",
-      {
-        attrs: { id: "right_app" },
-        on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
-      },
-      [
-        _vm.showChat
-          ? _c(
+    _vm.showChat
+      ? _c(
+          "div",
+          {
+            staticClass: "chat",
+            on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
+          },
+          [
+            _c(
               "div",
-              { staticClass: "chat" },
+              { staticClass: "head" },
               [
-                _c(
-                  "div",
-                  { staticClass: "head" },
-                  [
-                    _c("avatar", {
-                      staticClass: "img",
-                      attrs: {
-                        username: _vm.chatName,
-                        color: "#fff",
-                        src: _vm.avatar
-                      }
-                    }),
-                    _c("div", { staticClass: "info" }, [
-                      _c("p", [_vm._v(_vm._s(_vm.chatName))]),
-                      _vm.onlineUsers
-                        ? _c(
-                            "p",
-                            { staticClass: "online" },
-                            _vm._l(_vm.onlineUsers, function(onlineUser) {
-                              return _c("span", [
-                                _vm._v(_vm._s(onlineUser.name)),
-                                _c("span", { staticClass: "state green" }, [
-                                  _vm._v("•")
-                                ])
-                              ])
-                            })
-                          )
-                        : _c("p", { staticClass: "online" }, [
-                            _vm._v("Offline"),
-                            _c("span", { staticClass: "state red" }, [
+                _c("avatar", {
+                  staticClass: "img",
+                  attrs: {
+                    username: _vm.chatName,
+                    color: "#fff",
+                    src: _vm.avatar
+                  }
+                }),
+                _c("div", { staticClass: "info" }, [
+                  _c("p", [_vm._v(_vm._s(_vm.chatName))]),
+                  _vm.onlineUsers
+                    ? _c(
+                        "p",
+                        { staticClass: "online" },
+                        _vm._l(_vm.onlineUsers, function(onlineUser) {
+                          return _c("span", [
+                            _vm._v(_vm._s(onlineUser.name)),
+                            _c("span", { staticClass: "state green" }, [
                               _vm._v("•")
                             ])
                           ])
-                    ])
-                  ],
-                  1
-                ),
-                _c("div", { staticClass: "chat_box" }, [
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        { name: "chat-scroll", rawName: "v-chat-scroll" }
-                      ],
-                      staticClass: "chat_content",
-                      attrs: { id: "chat" }
-                    },
-                    [
-                      _c("messages", {
-                        attrs: {
-                          messages: _vm.messages,
-                          user: _vm.user,
-                          usersTyping: _vm.typing
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm.uploadImage
-                    ? _c("div", { staticClass: "modal" }, [
-                        !_vm.photo
-                          ? _c("div", { staticClass: "container" }, [
-                              _c("label", { staticClass: "upload_photo" }, [
-                                _c("button", [
-                                  _c("i", { staticClass: "material-icons" }, [
-                                    _vm._v("file_upload")
-                                  ])
-                                ]),
-                                _c("input", {
-                                  ref: "fileInput",
-                                  attrs: { type: "file", name: "photo" },
-                                  on: {
-                                    change: function($event) {
-                                      _vm.onFileChange($event)
-                                    }
-                                  }
-                                })
-                              ])
-                            ])
-                          : _c("div", { staticClass: "container" }, [
-                              _c("div", { staticClass: "preview" }, [
-                                _c("img", { attrs: { src: _vm.photo } }),
-                                _c(
-                                  "a",
-                                  {
-                                    on: {
-                                      click: function($event) {
-                                        _vm.photo = null
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c("i", { staticClass: "material-icons" }, [
-                                      _vm._v("clear")
-                                    ])
-                                  ]
-                                )
-                              ])
-                            ])
+                        })
+                      )
+                    : _c("p", { staticClass: "online" }, [
+                        _vm._v("Offline"),
+                        _c("span", { staticClass: "state red" }, [_vm._v("•")])
                       ])
-                    : _vm._e()
-                ]),
-                _c("send", {
-                  attrs: {
-                    uploadImageState: _vm.uploadImage,
-                    photo: _vm.photo,
-                    uploadedPhoto: _vm.uploadedPhoto
-                  },
-                  on: {
-                    errorMessages: function($event) {
-                      _vm.pushErrorMessage($event)
-                    },
-                    clearPhoto: _vm.hideModal,
-                    showUpload: _vm.showImageModal
-                  }
-                })
+                ])
               ],
               1
-            )
-          : _vm._e()
-      ]
-    )
+            ),
+            _c("div", { staticClass: "chat_box" }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    { name: "chat-scroll", rawName: "v-chat-scroll" }
+                  ],
+                  staticClass: "chat_content",
+                  attrs: { id: "chat" }
+                },
+                [
+                  _c("messages", {
+                    attrs: {
+                      messages: _vm.messages,
+                      user: _vm.user,
+                      usersTyping: _vm.typing
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm.uploadImage
+                ? _c("div", { staticClass: "modal" }, [
+                    !_vm.photo
+                      ? _c("div", { staticClass: "container" }, [
+                          _c("label", { staticClass: "upload_photo" }, [
+                            _c("button", [
+                              _c("i", { staticClass: "material-icons" }, [
+                                _vm._v("file_upload")
+                              ])
+                            ]),
+                            _c("input", {
+                              ref: "fileInput",
+                              attrs: { type: "file", name: "photo" },
+                              on: {
+                                change: function($event) {
+                                  _vm.onFileChange($event)
+                                }
+                              }
+                            })
+                          ])
+                        ])
+                      : _c("div", { staticClass: "container" }, [
+                          _c("div", { staticClass: "preview" }, [
+                            _c("img", { attrs: { src: _vm.photo } }),
+                            _c(
+                              "a",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    _vm.photo = null
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", { staticClass: "material-icons" }, [
+                                  _vm._v("clear")
+                                ])
+                              ]
+                            )
+                          ])
+                        ])
+                  ])
+                : _vm._e()
+            ]),
+            _c("send", {
+              attrs: {
+                uploadImageState: _vm.uploadImage,
+                photo: _vm.photo,
+                uploadedPhoto: _vm.uploadedPhoto
+              },
+              on: {
+                errorMessages: function($event) {
+                  _vm.pushErrorMessage($event)
+                },
+                clearPhoto: _vm.hideModal,
+                showUpload: _vm.showImageModal
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []

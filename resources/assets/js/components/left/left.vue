@@ -9,10 +9,10 @@
 
             .icons
 
-                router-link(to='/profile')
+                router-link(to='/profile', @click.native='test')
                     i.material-icons person
 
-                router-link(to='/groups')
+                router-link(to='/groups', @click.native='test')
                     i.material-icons person_add
                     span.step
 
@@ -85,6 +85,19 @@
         // ----------------------------------------------
 
         methods: {
+
+            // ----------------------------------------------
+
+            test() {
+                if (window.innerWidth <= 800) {
+                    document.querySelector(".navigate").style.display = "block";
+                    document.querySelector(".left").style.display = "none";
+
+                    let right = document.querySelector(".right");
+                    right.style.width = "100%";
+                    right.style.display = "block";
+                }
+            },
 
             // ----------------------------------------------
 

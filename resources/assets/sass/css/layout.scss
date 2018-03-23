@@ -21,6 +21,10 @@ body {
 		z-index: -100;
 }
 
+.navigate {
+	display: none;
+}
+
 .wrap {
 	display: flex;
 	height: calc(98vh - 25px);

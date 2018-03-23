@@ -1,9 +1,36 @@
 
 @media (max-width: 800px) {
+	.navigate {
+		position: absolute;
+		right: 60px;
+		display: block;
+		i {
+			margin-top: 15px;
+			color: #777777;
+			text-decoration: none;
+		}
+	}
 	.left {
-		//display: none;
+		display: none;
 	}
 	.right {
 		width: 100%;
+	}
+}
+
+@media (min-width: 800px) {
+	.navigate {
+		display: none;
+		i {
+			display: none;
+		}
+	}
+	.left {
+		width: 420px;
+		display: block !important;
+	}
+	.right {
+		width: 100%;
+		display: block !important;
 	}
 }
