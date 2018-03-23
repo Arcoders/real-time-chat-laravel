@@ -192,13 +192,13 @@ export const mixin = {
         // ----------------------------------------------
 
         done(data) {
-            this.showChat = true;
-
             this.chatName = data.name;
             if (data.avatar) this.avatar = data.avatar;
 
             this.allMessages();
             this.GetOnlineUsers();
+
+            this.showChat = true;
         },
 
         // ----------------------------------------------
