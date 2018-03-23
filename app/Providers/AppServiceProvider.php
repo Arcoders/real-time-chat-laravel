@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Group;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        Route::bind('group', function ($value) {
+            return Group::withTrashed()->find($value);
+        });
     }
 
     /**

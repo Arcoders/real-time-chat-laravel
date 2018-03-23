@@ -13,11 +13,6 @@ class Group extends Model
 
     protected $fillable = ['name', 'user_id', 'avatar'];
 
-    public static function find($id, $columns = array('*'))
-    {
-        return parent::withTrashed()->find($id, $columns);
-    }
-
     public function messages()
     {
         return $this->hasMany(Message::class, 'group_chat');
