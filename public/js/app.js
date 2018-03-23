@@ -44816,6 +44816,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.btnSubmit) return;
 
+            //return console.log(this.formData);
+
             if (type === 'image' && this.newImage) return;
 
             var data = type === 'image' ? { deleteImage: true } : this.formData;

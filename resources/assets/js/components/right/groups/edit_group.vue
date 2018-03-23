@@ -79,6 +79,8 @@
 
                 if (this.btnSubmit) return;
 
+                //return console.log(this.formData);
+
                 if (type === 'image' && this.newImage) return;
 
                 let data = (type === 'image' ) ? {deleteImage: true} : this.formData;
