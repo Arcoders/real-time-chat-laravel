@@ -9,6 +9,7 @@ body {
 		overflow: hidden;
 }
 
+
 /* layouts */
 
 .green-background {
@@ -21,11 +22,10 @@ body {
 }
 
 .wrap {
-		display: flex;
-		height: 100vh;
-		min-width: 600px;
-		max-width: 90%;
-		margin: auto;
-		border-radius: 10px;
-		box-shadow: 0 2px 4px #7E7E7E;
+	display: flex;
+	height: calc(98vh - 25px);
+	width: 90%;
+	margin: 25px auto 2vh auto;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px #7E7E7E;
 }
