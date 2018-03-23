@@ -28668,7 +28668,7 @@ var mixin = {
 
             reader.onload = function (e) {
                 _this5.photo = e.target.result;
-                document.getElementById("inputMessage").focus();
+                document.getElementById("msg").focus();
             };
 
             reader.readAsDataURL(files[0]);
@@ -41354,6 +41354,7 @@ var render = function() {
             }
           ],
           attrs: {
+            id: "msg",
             type: "text",
             autocomplete: "off",
             placeholder: "Write a new message"

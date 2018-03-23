@@ -134,7 +134,7 @@ export const mixin = {
 
             reader.onload = (e) => {
                 this.photo = e.target.result;
-                document.getElementById("inputMessage").focus();
+                document.getElementById("msg").focus();
             };
 
             reader.readAsDataURL(files[0]);
