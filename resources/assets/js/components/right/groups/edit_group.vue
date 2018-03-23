@@ -3,13 +3,14 @@
 
         notifications(:vue_notifications='notifications', :width='50')
 
-        router-link(to='/groups/my')
-            i.material-icons arrow_back
+        .data
+            router-link(to='/groups/my')
+                i.material-icons arrow_back
 
-        avatar(:username='groupName', color='#fff', :src='groupAvatar')
+            avatar(:username='groupName', color='#fff', :src='groupAvatar')
 
-        h4  Edit group
-        hr
+            h4  Edit group
+            hr
 
         form(v-on:submit.prevent='', method='POST', enctype='multipart/form-data')
             .group_input
@@ -45,17 +46,6 @@
 
 </template>
 
-<style scoped>
-    a {
-        text-decoration: none;
-        color: #777777;
-    }
-    .fileContainer i{
-        font-size: 23px;
-        color: #777777;
-    }
-</style>
-
 <script>
 
     import {mixin} from './group_mixins';
@@ -70,7 +60,6 @@
 
         mounted() {
             this.getGroup();
-            console.log('Edit group ok!');
         },
 
         // ---------------------------------------------------
@@ -90,9 +79,11 @@
 
                 if (this.btnSubmit) return;
 
-                this.loading = true;
+                if (type === 'image' && this.newImage) return;
 
-                let data = (type === 'image') ? {deleteImage: true} : this.formData;
+                let data = (type === 'image' ) ? {deleteImage: true} : this.formData;
+
+                this.loading = true;
 
                 this.$http.post(`/groups/edit/${this.group_id}`, data).then(res => {
 

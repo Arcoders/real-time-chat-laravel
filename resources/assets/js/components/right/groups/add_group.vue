@@ -4,13 +4,14 @@
 
         notifications(:vue_notifications='notifications', :width='50')
 
-        router-link(to='/groups/my')
-            i.material-icons arrow_back
+        .data
+            router-link(to='/groups/my')
+                i.material-icons arrow_back
 
-        avatar(:username='groupName', color='#fff', :src='avatar')
+            avatar(:username='groupName', color='#fff', :src='avatar')
 
-        h4 Add new group
-        hr
+            h4 Add new group
+            hr
 
         form(v-on:submit.prevent='', method='POST', enctype='multipart/form-data')
 

@@ -89,7 +89,7 @@ export const mixin = {
         // ---------------------------------------------------
 
         btnDisabled() {
-            if (this.groupName.length < 3) return true;
+            return (this.groupName.length < 3);
         },
 
         // ---------------------------------------------------
