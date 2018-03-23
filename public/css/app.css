@@ -1236,12 +1236,7 @@ body::-webkit-scrollbar-thumb,
   scrollbar-shadow-color: #dddddd;
 }
 
-@media (max-width: 900px) {
-  .left {
-    width: 100%;
-    display: none;
-  }
-
+@media (max-width: 800px) {
   .right {
     width: 100%;
   }

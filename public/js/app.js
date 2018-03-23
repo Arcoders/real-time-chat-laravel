@@ -39352,6 +39352,16 @@ var arrayFindIndex = __webpack_require__(126);
 
         // ----------------------------------------------
 
+        test: function test() {
+            if (window.innerWidth <= 850) {
+                document.querySelector(".left").style.display = "none";
+                document.querySelector(".right").style.width = "100%";
+            }
+        },
+
+
+        // ----------------------------------------------
+
         updateList: function updateList() {
             var _this = this;
 
@@ -40123,6 +40133,11 @@ var render = function() {
                     attrs: {
                       "exact-active-class": "active_image",
                       to: _vm.chatLink(friend, "friend")
+                    },
+                    nativeOn: {
+                      click: function($event) {
+                        _vm.test($event)
+                      }
                     }
                   },
                   [
@@ -40148,6 +40163,11 @@ var render = function() {
                             attrs: {
                               "exact-active-class": "active_chat",
                               to: _vm.chatLink(friend, "friend")
+                            },
+                            nativeOn: {
+                              click: function($event) {
+                                _vm.test($event)
+                              }
                             }
                           },
                           [_vm._v(_vm._s(friend.user.name))]
@@ -40164,6 +40184,11 @@ var render = function() {
                             attrs: {
                               "exact-active-class": "active_message",
                               to: _vm.chatLink(friend, "friend")
+                            },
+                            nativeOn: {
+                              click: function($event) {
+                                _vm.test($event)
+                              }
                             }
                           },
                           [
@@ -40250,6 +40275,11 @@ var render = function() {
                     attrs: {
                       "exact-active-class": "active_image",
                       to: _vm.chatLink(group, "group")
+                    },
+                    nativeOn: {
+                      click: function($event) {
+                        _vm.test($event)
+                      }
                     }
                   },
                   [
@@ -40275,6 +40305,11 @@ var render = function() {
                             attrs: {
                               "exact-active-class": "active_chat",
                               to: _vm.chatLink(group, "group")
+                            },
+                            nativeOn: {
+                              click: function($event) {
+                                _vm.test($event)
+                              }
                             }
                           },
                           [_vm._v(_vm._s(group.name))]
@@ -40291,6 +40326,11 @@ var render = function() {
                             attrs: {
                               "exact-active-class": "active_message",
                               to: _vm.chatLink(group, "group")
+                            },
+                            nativeOn: {
+                              click: function($event) {
+                                _vm.test($event)
+                              }
                             }
                           },
                           [
