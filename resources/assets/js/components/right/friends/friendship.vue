@@ -3,7 +3,7 @@
         div(v-if='!loading')
             .add_friend.style_friend
 
-                button.green(v-if="status == 'add'", @click='add_friend')
+                button(v-if="status == 'add'", @click='add_friend')
                     i.material-icons person_add
 
                 button.green(v-if="status == 'pending'", @click='accept_friend')

@@ -562,42 +562,31 @@
   height: calc(98vh - 85px);
   display: flex;
   position: relative;
-}
-
-.profile_box .content {
-  width: 100%;
-  height: 100%;
-  background-color: #f8f8f8;
-  overflow-y: auto;
-}
-
-.profile_box .widget
-{
+  .content {
+    width: 100%;
+    height: 100%;
+    background-color: #f8f8f8;
+    overflow-y: auto;
+  }
+  .widget {
     position: relative;
     background: #fbfbfb;
     width: 70%;
     height: 100%;
-}
-
-.profile_box .widget_100
-{
+  }
+  .widget_100 {
     width: 100%;
-}
-
-.profile_box .cover
-{
+  }
+  .cover {
     height: 300px;
     width: 100%;
     position: relative;
-}
-
-.profile_box .cover  img {
-    width: 100%;
-    height: 100%;
-}
-
-.profile_box .widget > .photo
-{
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .photo {
     position: absolute;
     top: 225px;
     left: 50%;
@@ -606,107 +595,117 @@
     margin: 0 0 0 -55px;
     border: 5px solid #FFF;
     border-radius: 50%;
-}
-
-.profile_box .widget > h1, .widget > h2, .widget > h3
-{
+  }
+  h1 {
     display: block;
-    margin: 10px 0;
+    margin: 50px 0;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+    color: #999;
+  }
+  h2{
+    display: block;
+    text-align: center;
     font-size: 16px;
     font-weight: 300;
     color: #999;
+  }
 }
-
-.profile_box .widget > h1
-{
-    margin: 60px 0 20px;
-    font-size: 26px;
-    color: #000;
-}
-
-.profile_box .widget > h3 { font-size: 12px }
-
 
 /* Friendship ---------------------------------------------------------------------- */
 
-.friends .style_friend {
-  width: 40px;
-  height: 42px;
-  background-color: rgba(0, 0, 0, .2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 1px solid #EEEEEE;
-  box-shadow: 0 0 26px -5px rgba(255,255,255,1);
-}
-
-.friends .style_friend:hover {
-  background-color: rgba(0, 0, 0, .4);
-}
-
-.friends .add_friend {
-  position: absolute;
-  top: 15px;
-  left: 22px;
-}
-
-.friends .delete_friend {
-  position: absolute;
-  top: 70px;
-  left: 22px;
-}
-
-.friends button {
-  border: 0;
-  background-color: transparent;
-  color: #FFFFFF;
-  cursor: pointer;
-  font-weight: bold;
-  outline: 0;
-}
-
-.friends .accepted {
-  color: #FF6666;
-}
-.friends .green:hover {
-  color: #009688;
-}
-
-.friends .orange:hover {
-  color: #FF9800;
+.friends {
+  .style_friend {
+    width: 40px;
+    height: 42px;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid #EEEEEE;
+    box-shadow: 0 0 26px -5px rgba(255, 255, 255, 1);
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+  .add_friend {
+    position: absolute;
+    top: 15px;
+    left: 22px;
+  }
+  .delete_friend {
+    position: absolute;
+    top: 70px;
+    left: 22px;
+  }
+  button {
+    border: 0;
+    background-color: transparent;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    outline: 0;
+  }
+  .accepted {
+    color: #FF8979;
+  }
+  .green:hover {
+    color: #009688;
+  }
+  .orange:hover {
+    color: #FF9800;
+  }
 }
 
 /* List users ---------------------------------------------------------------------- */
 
 
-.profile_box .users {
+.profile_box {
+  .users {
     position: relative;
     background-color: #ffffff;
     width: 30%;
     height: 100%;
     min-height: 100%;
     overflow-y: auto;
+  }
+  .list {
+    width: 100%;
+    height: 90px;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 2px #777777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .image {
+      margin: 0 5%;
+    }
+    .name {
+      background-color: #fafafa;
+      width: 70%;
+      height: 50%;
+      outline: 0;
+      border: 0;
+      color: #777777;
+      font-size: 14px;
+      border-radius: 25px 0 0 25px;
+      cursor: pointer;
+      &:hover {
+        background-color: #EEEEEE;
+        color: #009688;
+      }
+    }
+    .current_user {
+      background-color: #EEEEEE;
+      color: #009688;
+      font-weight: bold;
+      box-shadow: 1px 1px 2px #fafafa;
+    }
+  }
 }
 
-.profile_box .list
-{
-  width: 100%;
-  height: auto;
-  background-color:#ffffff;
-  box-shadow:1px 1px 2px #777777;
-  display: flex;
-  text-align: left;
-}
-
-.profile_box .name > button {
-  color: #777777;
-  font-size: 14px;
-}
-
-/* Information */
+/* Information --------------------------------------------------------------------- */
 
 .edit_user {
     position: relative;

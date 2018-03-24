@@ -24,14 +24,9 @@
                             .cover
                                 img(:src='userInfo.cover')
 
-                                friendship(v-if='user.id != userInfo.id',
-                                            :my_id='user.id',
-                                            :profile_user_id='userInfo.id')
+                                friendship(v-if='user.id != userInfo.id', :my_id='user.id', :profile_user_id='userInfo.id')
 
-                            avatar.photo(:username='userInfo.name',
-                                            color='#fff',
-                                            :src='userInfo.avatar',
-                                            :size='100')
+                            avatar.photo(:username='userInfo.name', color='#fff', :src='userInfo.avatar', :size='100')
 
                             h1 {{ userInfo.name }}
                             h2 {{ userInfo.status }}
@@ -43,24 +38,17 @@
                             div(v-if='pathProfile')
                                 .list(v-for='user in users')
 
-                                    avatar.img-head(:username='user.name',
-                                    color='#fff',
-                                    :src='user.avatar',
-                                    :size='50')
+                                    avatar.image(:username='user.name', color='#fff', :src='user.avatar', :size='50')
 
-                                    .name
-                                        button(v-on:click='getProfile(user.id)')
-                                            | {{user.name}}
+                                    button.name(v-on:click='getProfile(user.id)',
+                                                v-bind:class="{ current_user: user.id == userInfo.id }")
+                                                | {{user.name}}
 
                                 .list(v-if='!records')
 
-                                    avatar.img-head(username='!',
-                                    color='#fff',
-                                    :size='50',
-                                    backgroundColor='#E57373')
+                                    avatar.image(username='!', color='#fff', :size='50', backgroundColor='#E57373')
 
-                                    .name
-                                        button You are the first user
+                                    button.name You are the first user
 </template>
 
 <script>

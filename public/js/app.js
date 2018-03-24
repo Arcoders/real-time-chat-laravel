@@ -41618,15 +41618,11 @@ var render = function() {
         ? _c("div", [
             _c("div", { staticClass: "add_friend style_friend" }, [
               _vm.status == "add"
-                ? _c(
-                    "button",
-                    { staticClass: "green", on: { click: _vm.add_friend } },
-                    [
-                      _c("i", { staticClass: "material-icons" }, [
-                        _vm._v("person_add")
-                      ])
-                    ]
-                  )
+                ? _c("button", { on: { click: _vm.add_friend } }, [
+                    _c("i", { staticClass: "material-icons" }, [
+                      _vm._v("person_add")
+                    ])
+                  ])
                 : _vm._e(),
               _vm.status == "pending"
                 ? _c(
@@ -42904,18 +42900,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -45101,7 +45085,7 @@ var render = function() {
                                       { staticClass: "list" },
                                       [
                                         _c("avatar", {
-                                          staticClass: "img-head",
+                                          staticClass: "image",
                                           attrs: {
                                             username: user.name,
                                             color: "#fff",
@@ -45109,19 +45093,22 @@ var render = function() {
                                             size: 50
                                           }
                                         }),
-                                        _c("div", { staticClass: "name" }, [
-                                          _c(
-                                            "button",
-                                            {
-                                              on: {
-                                                click: function($event) {
-                                                  _vm.getProfile(user.id)
-                                                }
-                                              }
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "name",
+                                            class: {
+                                              current_user:
+                                                user.id == _vm.userInfo.id
                                             },
-                                            [_vm._v(_vm._s(user.name))]
-                                          )
-                                        ])
+                                            on: {
+                                              click: function($event) {
+                                                _vm.getProfile(user.id)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v(_vm._s(user.name))]
+                                        )
                                       ],
                                       1
                                     )
@@ -45132,7 +45119,7 @@ var render = function() {
                                         { staticClass: "list" },
                                         [
                                           _c("avatar", {
-                                            staticClass: "img-head",
+                                            staticClass: "image",
                                             attrs: {
                                               username: "!",
                                               color: "#fff",
@@ -45140,11 +45127,11 @@ var render = function() {
                                               backgroundColor: "#E57373"
                                             }
                                           }),
-                                          _c("div", { staticClass: "name" }, [
-                                            _c("button", [
-                                              _vm._v("You are the first user")
-                                            ])
-                                          ])
+                                          _c(
+                                            "button",
+                                            { staticClass: "name" },
+                                            [_vm._v("You are the first user")]
+                                          )
                                         ],
                                         1
                                       )

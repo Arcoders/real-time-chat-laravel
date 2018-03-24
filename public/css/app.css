@@ -1044,7 +1044,7 @@ body {
   height: 100%;
 }
 
-.profile_box .widget > .photo {
+.profile_box .photo {
   position: absolute;
   top: 225px;
   left: 50%;
@@ -1055,26 +1055,20 @@ body {
   border-radius: 50%;
 }
 
-.profile_box .widget > h1,
-.widget > h2,
-.widget > h3 {
+.profile_box h1 {
   display: block;
-  margin: 10px 0;
+  margin: 50px 0;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 300;
+  font-weight: 200;
   color: #999;
 }
 
-.profile_box .widget > h1 {
-  margin: 60px 0 20px;
-  font-size: 26px;
-  color: #000;
-}
-
-.profile_box .widget > h3 {
-  font-size: 12px;
+.profile_box h2 {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+  color: #999;
 }
 
 /* Friendship ---------------------------------------------------------------------- */
@@ -1093,7 +1087,7 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 50%;
-  border: 1px solid #EEEEEE;
+  border: 2px solid #EEEEEE;
   -webkit-box-shadow: 0 0 26px -5px white;
           box-shadow: 0 0 26px -5px white;
 }
@@ -1124,7 +1118,7 @@ body {
 }
 
 .friends .accepted {
-  color: #FF6666;
+  color: #FF8979;
 }
 
 .friends .green:hover {
@@ -1148,22 +1142,51 @@ body {
 
 .profile_box .list {
   width: 100%;
-  height: auto;
+  height: 90px;
   background-color: #ffffff;
   -webkit-box-shadow: 1px 1px 2px #777777;
           box-shadow: 1px 1px 2px #777777;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.profile_box .name > button {
+.profile_box .list .image {
+  margin: 0 5%;
+}
+
+.profile_box .list .name {
+  background-color: #fafafa;
+  width: 70%;
+  height: 50%;
+  outline: 0;
+  border: 0;
   color: #777777;
   font-size: 14px;
+  border-radius: 25px 0 0 25px;
+  cursor: pointer;
 }
 
-/* Information */
+.profile_box .list .name:hover {
+  background-color: #EEEEEE;
+  color: #009688;
+}
+
+.profile_box .list .current_user {
+  background-color: #EEEEEE;
+  color: #009688;
+  font-weight: bold;
+  -webkit-box-shadow: 1px 1px 2px #fafafa;
+          box-shadow: 1px 1px 2px #fafafa;
+}
+
+/* Information --------------------------------------------------------------------- */
 
 .edit_user {
   position: relative;
@@ -1282,7 +1305,7 @@ body {
 body::-webkit-scrollbar,
 .contact-list::-webkit-scrollbar,
 .complete_dynamic_content::-webkit-scrollbar,
-.manage_users::-webkit-scrollbar,
+.users::-webkit-scrollbar,
 .chat_content::-webkit-scrollbar {
   width: 0.4em;
   height: 0.4em;
@@ -1291,7 +1314,7 @@ body::-webkit-scrollbar,
 body::-webkit-scrollbar-thumb,
 .contact-list::-webkit-scrollbar-thumb,
 .complete_dynamic_content::-webkit-scrollbar-thumb,
-.manage_users::-webkit-scrollbar-thumb,
+.users::-webkit-scrollbar-thumb,
 .chat_content::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
 }
@@ -1299,7 +1322,7 @@ body::-webkit-scrollbar-thumb,
 .contact-list,
 .chat_content,
 .complete_dynamic_content,
-.manage_users {
+.users {
   scrollbar-arrow-color: #009688;
   scrollbar-face-color: #eeeeee;
   scrollbar-highlight-color: #eeeeee;
