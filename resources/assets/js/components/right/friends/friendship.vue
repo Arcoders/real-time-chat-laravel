@@ -2,17 +2,24 @@
     .friends
         div(v-if='!loading')
             .add_friend.style_friend
-                button(v-if="status == 'add'", @click='add_friend')
+
+                button.green(v-if="status == 'add'", @click='add_friend')
                     i.material-icons person_add
-                button(v-if="status == 'pending'", @click='accept_friend')
+
+                button.green(v-if="status == 'pending'", @click='accept_friend')
                     i.material-icons done_all
+
                 button(v-if="status == 'waiting'")
                     i.material-icons near_me
-                button(v-if="status == 'friends'")
+
+                button.red(v-if="status == 'friends'", v-bind:class="{ accepted: status == 'friends' }")
                     i.material-icons favorite
+
             .delete_friend.style_friend(v-if="status != 'add'")
-                button(@click='reject_friendship')
+
+                button.orange(@click='reject_friendship')
                     i.material-icons clear
+
         loading(v-if='loading')
 </template>
 

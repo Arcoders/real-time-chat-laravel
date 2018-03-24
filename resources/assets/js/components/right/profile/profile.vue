@@ -1,13 +1,14 @@
 <template lang="pug">
     transition(name='fade')
         #profile_app.right(v-if="showProfile")
-            .chat-head
+            .head
 
-                i.material-icons.big_icon person
+                h1
+                    i.material-icons group_add
 
-                .chat-name
-                    h1.font-name Profile
-                    p.font-online {{ userInfo.name }}
+                .info
+                    p Profile
+                    p.online {{ userInfo.name }}
 
                 router-link(v-if='pathProfile', to='/profile/edit')
                     i.material-icons edit
@@ -15,8 +16,8 @@
                 router-link(v-if='pathEdit', to='/profile')
                     i.material-icons arrow_back
 
-            .complet-content
-                .complete_dynamic_content
+            .profile_box
+                .content
                     loading(v-if='loading')
                     .information
                         .widget(v-bind:class="{ widget_100: profileId }")
@@ -35,12 +36,12 @@
                             h1 {{ userInfo.name }}
                             h2 {{ userInfo.status }}
 
-                        .manage_users(v-if='!profileId')
+                        .users(v-if='!profileId')
 
                             router-view(@previewImage='updateImage', :userInfo='userInfo')
 
                             div(v-if='pathProfile')
-                                .contener_txt(v-for='user in users')
+                                .list(v-for='user in users')
 
                                     avatar.img-head(:username='user.name',
                                     color='#fff',
@@ -51,7 +52,7 @@
                                         button(v-on:click='getProfile(user.id)')
                                             | {{user.name}}
 
-                                .contener_txt(v-if='!records')
+                                .list(v-if='!records')
 
                                     avatar.img-head(username='!',
                                     color='#fff',
@@ -61,43 +62,6 @@
                                     .name
                                         button You are the first user
 </template>
-
-<style scoped>
-
-    .complete_dynamic_content {
-        padding: 0;
-    }
-
-    .big_icon {
-        margin: 10px 20px;
-        border-radius: 50%;
-        font-size: 40px;
-        color: #777777;
-    }
-
-    .contener_txt
-    {
-        width: 100%;
-        height: auto;
-        background-color:#ffffff;
-        box-shadow:1px 1px 2px #777777;
-        display: flex;
-        text-align: left;
-    }
-
-    .name > button {
-        color: #777777;
-        font-size: 14px;
-    }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity 1s;
-    }
-    .fade-enter, .fade-leave-to {
-        opacity: 0;
-    }
-
-</style>
 
 <script>
     export default {
