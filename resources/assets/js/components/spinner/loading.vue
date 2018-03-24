@@ -23,6 +23,7 @@
     .dot {
         width: 7px;
         height: 7px;
+        background-color: #FFFFFF;
         border: 2px solid #009688;
         border-radius: 50%;
         float: left;

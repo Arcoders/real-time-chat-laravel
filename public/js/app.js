@@ -38698,7 +38698,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     created: function created() {
         this.$store.commit('updateUser', this.auth_user);
-        // this.resetStyle();
+        this.resetStyle();
     },
 
 
@@ -38771,43 +38771,61 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrap" }, [
-    _c(
-      "section",
-      { staticClass: "left" },
-      [
-        _c("left", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.show,
-              expression: "show"
+  return _c(
+    "div",
+    { staticClass: "wrap" },
+    [
+      _c(
+        "router-link",
+        {
+          staticClass: "navigate",
+          attrs: { to: "#" },
+          nativeOn: {
+            click: function($event) {
+              _vm.updateStyles($event)
             }
-          ]
-        })
-      ],
-      1
-    ),
-    _c(
-      "section",
-      { staticClass: "right" },
-      [
-        _c("router-view", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.show,
-              expression: "show"
-            }
-          ],
-          key: _vm.$route.fullPath
-        })
-      ],
-      1
-    )
-  ])
+          }
+        },
+        [_c("i", { staticClass: "material-icons" }, [_vm._v("arrow_back")])]
+      ),
+      _c(
+        "section",
+        { staticClass: "left" },
+        [
+          _c("left", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.show,
+                expression: "show"
+              }
+            ]
+          })
+        ],
+        1
+      ),
+      _c(
+        "section",
+        { staticClass: "right" },
+        [
+          _c("router-view", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.show,
+                expression: "show"
+              }
+            ],
+            key: _vm.$route.fullPath
+          })
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -41776,7 +41794,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.top[data-v-5d8cd3f2] {\n    position: absolute;\n    top: 10%;\n    right: 0;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n}\n.normal[data-v-5d8cd3f2] {\n    margin: 10px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.dot[data-v-5d8cd3f2] {\n    width: 7px;\n    height: 7px;\n    border: 2px solid #009688;\n    border-radius: 50%;\n    float: left;\n    margin: 0 5px;\n    -webkit-transform: scale(0);\n            transform: scale(0);\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 0ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 0ms;\n}\n.dot[data-v-5d8cd3f2]:nth-child(2) {\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 300ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 300ms;\n}\n.dot[data-v-5d8cd3f2]:nth-child(3) {\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 600ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 600ms;\n}\n@-webkit-keyframes fx-data-v-5d8cd3f2 {\n50% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n        opacity: 1;\n}\n100% {\n        opacity: 0;\n}\n}\n@keyframes fx-data-v-5d8cd3f2 {\n50% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n        opacity: 1;\n}\n100% {\n        opacity: 0;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.top[data-v-5d8cd3f2] {\n    position: absolute;\n    top: 10%;\n    right: 0;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n}\n.normal[data-v-5d8cd3f2] {\n    margin: 10px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.dot[data-v-5d8cd3f2] {\n    width: 7px;\n    height: 7px;\n    background-color: #FFFFFF;\n    border: 2px solid #009688;\n    border-radius: 50%;\n    float: left;\n    margin: 0 5px;\n    -webkit-transform: scale(0);\n            transform: scale(0);\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 0ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 0ms;\n}\n.dot[data-v-5d8cd3f2]:nth-child(2) {\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 300ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 300ms;\n}\n.dot[data-v-5d8cd3f2]:nth-child(3) {\n    -webkit-animation: fx-data-v-5d8cd3f2 1000ms ease infinite 600ms;\n            animation: fx-data-v-5d8cd3f2 1000ms ease infinite 600ms;\n}\n@-webkit-keyframes fx-data-v-5d8cd3f2 {\n50% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n        opacity: 1;\n}\n100% {\n        opacity: 0;\n}\n}\n@keyframes fx-data-v-5d8cd3f2 {\n50% {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n        opacity: 1;\n}\n100% {\n        opacity: 0;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -41787,6 +41805,7 @@ exports.push([module.i, "\n.top[data-v-5d8cd3f2] {\n    position: absolute;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //

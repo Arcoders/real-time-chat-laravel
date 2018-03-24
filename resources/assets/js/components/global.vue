@@ -2,8 +2,8 @@
 
     .wrap
 
-        <!--router-link.navigate(to='#', @click.native='updateStyles')-->
-            <!--i.material-icons arrow_back-->
+        router-link.navigate(to='#', @click.native='updateStyles')
+            i.material-icons arrow_back
 
         section.left
             left(v-show='show')
@@ -24,7 +24,7 @@
 
         created() {
             this.$store.commit('updateUser', this.auth_user);
-           // this.resetStyle();
+            this.resetStyle();
         },
 
         // ---------------------------------------------------
