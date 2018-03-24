@@ -24,7 +24,7 @@ class profileController extends Controller
 
         array_push($friends, Auth::id());
 
-        return response()->json(User::all()->except($friends)->take(15), 200);
+        return response()->json(User::all()->except($friends)->random(10), 200);
     }
 
     public function edit(Request $request)
