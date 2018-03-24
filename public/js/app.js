@@ -42953,6 +42953,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -45135,7 +45141,23 @@ var render = function() {
                                         ],
                                         1
                                       )
-                                    : _vm._e()
+                                    : _vm._e(),
+                                  _c("div", { staticClass: "list" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "random",
+                                        on: { click: _vm.getUsers }
+                                      },
+                                      [
+                                        _c(
+                                          "i",
+                                          { staticClass: "material-icons" },
+                                          [_vm._v("cached")]
+                                        )
+                                      ]
+                                    )
+                                  ])
                                 ],
                                 2
                               )

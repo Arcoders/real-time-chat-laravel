@@ -36,6 +36,7 @@
                             router-view(@previewImage='updateImage', :userInfo='userInfo')
 
                             div(v-if='pathProfile')
+
                                 .list(v-for='user in users')
 
                                     avatar.image(:username='user.name', color='#fff', :src='user.avatar', :size='50')
@@ -49,6 +50,11 @@
                                     avatar.image(username='!', color='#fff', :size='50', backgroundColor='#E57373')
 
                                     button.name You are the first user
+
+                                .list
+
+                                    button.random(@click="getUsers")
+                                        i.material-icons cached
 </template>
 
 <script>
