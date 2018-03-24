@@ -2,7 +2,7 @@
 
     .wrap
 
-        router-link.navigate(to='#', @click.native='toggle')
+        router-link.navigate(to='#', @click.native='updateStyles')
             i.material-icons arrow_back
 
         section.left
@@ -24,6 +24,7 @@
 
         created() {
             this.$store.commit('updateUser', this.auth_user);
+            this.resetStyle();
         },
 
         // ---------------------------------------------------
@@ -44,14 +45,32 @@
 
         methods: {
 
-            toggle() {
-                document.querySelector(".navigate").style.display = "none";
-                document.querySelector(".right").style.display = "none";
+            // ---------------------------------------------------
+
+            updateStyles() {
+                this.Styles('none', 'none', 'block', '100%')
+            },
+
+            // ---------------------------------------------------
+
+            resetStyle() {
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 800) this.Styles('', '', '', '')
+                });
+            },
+
+            // ---------------------------------------------------
+
+            Styles(displayNavigate, displayRight, displayLeft, widthLeft) {
+                document.querySelector(".navigate").style.display = displayNavigate;
+                document.querySelector(".right").style.display = displayRight;
 
                 let left = document.querySelector(".left");
-                left.style.display = "block";
-                left.style.width = "100%";
+                left.style.display = displayLeft;
+                left.style.width = widthLeft;
             }
+
+            // ---------------------------------------------------
 
         }
 

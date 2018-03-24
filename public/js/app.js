@@ -38698,6 +38698,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     created: function created() {
         this.$store.commit('updateUser', this.auth_user);
+        this.resetStyle();
     },
 
 
@@ -38724,14 +38725,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ---------------------------------------------------
 
     methods: {
-        toggle: function toggle() {
-            document.querySelector(".navigate").style.display = "none";
-            document.querySelector(".right").style.display = "none";
+
+        // ---------------------------------------------------
+
+        updateStyles: function updateStyles() {
+            this.Styles('none', 'none', 'block', '100%');
+        },
+
+
+        // ---------------------------------------------------
+
+        resetStyle: function resetStyle() {
+            var _this2 = this;
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 800) _this2.Styles('', '', '', '');
+            });
+        },
+
+
+        // ---------------------------------------------------
+
+        Styles: function Styles(displayNavigate, displayRight, displayLeft, widthLeft) {
+            document.querySelector(".navigate").style.display = displayNavigate;
+            document.querySelector(".right").style.display = displayRight;
 
             var left = document.querySelector(".left");
-            left.style.display = "block";
-            left.style.width = "100%";
+            left.style.display = displayLeft;
+            left.style.width = widthLeft;
         }
+
+        // ---------------------------------------------------
+
     }
 
     // ---------------------------------------------------
@@ -38757,7 +38782,7 @@ var render = function() {
           attrs: { to: "#" },
           nativeOn: {
             click: function($event) {
-              _vm.toggle($event)
+              _vm.updateStyles($event)
             }
           }
         },
