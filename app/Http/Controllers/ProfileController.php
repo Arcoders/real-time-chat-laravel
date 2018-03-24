@@ -20,13 +20,11 @@ class profileController extends Controller
 
     public function users()
     {
-        $sugg = Auth::user()->friends('ids');
+        $friends = Auth::user()->friends('ids');
 
-        array_push($sugg, Auth::id());
+        array_push($friends, Auth::id());
 
-        $users = User::all()->except($sugg);
-
-        if ($users) return response()->json($users, 200);
+        return response()->json(User::all()->except($friends)->take(15), 200);
     }
 
     public function edit(Request $request)
