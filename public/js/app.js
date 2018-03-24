@@ -28933,7 +28933,7 @@ var mixin = {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(130);
-module.exports = __webpack_require__(227);
+module.exports = __webpack_require__(225);
 
 
 /***/ }),
@@ -28965,15 +28965,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_right_welcome_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_right_profile_profile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_right_profile_edit_profile__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_right_profile_edit_profile__ = __webpack_require__(206);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_right_profile_edit_profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_right_profile_edit_profile__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_right_groups_manage_groups_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__components_right_groups_my_groups_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__components_right_groups_add_group_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue__ = __webpack_require__(222);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__components_right_groups_edit_group_vue__);
 
 /**
@@ -42394,15 +42394,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade" } }, [
-    _vm.showChat
-      ? _c(
-          "div",
-          {
-            staticClass: "chat",
-            on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
-          },
-          [
-            _c(
+    _c(
+      "div",
+      {
+        staticClass: "chat",
+        on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
+      },
+      [
+        _vm.showChat
+          ? _c(
               "div",
               { staticClass: "head" },
               [
@@ -42436,8 +42436,10 @@ var render = function() {
                 ])
               ],
               1
-            ),
-            _c("div", { staticClass: "chat_box" }, [
+            )
+          : _vm._e(),
+        _vm.showChat
+          ? _c("div", { staticClass: "chat_box" }, [
               _c(
                 "div",
                 {
@@ -42501,8 +42503,10 @@ var render = function() {
                         ])
                   ])
                 : _vm._e()
-            ]),
-            _c("send", {
+            ])
+          : _vm._e(),
+        _vm.showChat
+          ? _c("send", {
               attrs: {
                 uploadImageState: _vm.uploadImage,
                 photo: _vm.photo,
@@ -42516,10 +42520,10 @@ var render = function() {
                 showUpload: _vm.showImageModal
               }
             })
-          ],
-          1
-        )
-      : _vm._e()
+          : _vm._e()
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -42613,15 +42617,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "slide-fade" } }, [
-    _vm.showChat
-      ? _c(
-          "div",
-          {
-            staticClass: "chat",
-            on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
-          },
-          [
-            _c(
+    _c(
+      "div",
+      {
+        staticClass: "chat",
+        on: { mouseleave: _vm.mouseLeave, mouseout: _vm.mouseOut }
+      },
+      [
+        _vm.showChat
+          ? _c(
               "div",
               { staticClass: "head" },
               [
@@ -42655,8 +42659,10 @@ var render = function() {
                 ])
               ],
               1
-            ),
-            _c("div", { staticClass: "chat_box" }, [
+            )
+          : _vm._e(),
+        _vm.showChat
+          ? _c("div", { staticClass: "chat_box" }, [
               _c(
                 "div",
                 {
@@ -42720,8 +42726,10 @@ var render = function() {
                         ])
                   ])
                 : _vm._e()
-            ]),
-            _c("send", {
+            ])
+          : _vm._e(),
+        _vm.showChat
+          ? _c("send", {
               attrs: {
                 uploadImageState: _vm.uploadImage,
                 photo: _vm.photo,
@@ -42735,10 +42743,10 @@ var render = function() {
                 showUpload: _vm.showImageModal
               }
             })
-          ],
-          1
-        )
-      : _vm._e()
+          : _vm._e()
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -42852,9 +42860,9 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(206)
+var __vue_script__ = __webpack_require__(204)
 /* template */
-var __vue_template__ = __webpack_require__(232)
+var __vue_template__ = __webpack_require__(205)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -42893,9 +42901,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 204 */,
-/* 205 */,
-/* 206 */
+/* 204 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43117,20 +43123,219 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 207 */,
-/* 208 */
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "fade" } }, [
+    _c("div", { staticClass: "right" }, [
+      _vm.showProfile
+        ? _c(
+            "div",
+            { staticClass: "head" },
+            [
+              _c("h1", [
+                _c("i", { staticClass: "material-icons" }, [
+                  _vm._v("group_add")
+                ])
+              ]),
+              _c("div", { staticClass: "info" }, [
+                _c("p", [_vm._v("Profile")]),
+                _c("p", { staticClass: "online" }, [
+                  _vm._v(_vm._s(_vm.userInfo.name))
+                ])
+              ]),
+              _vm.pathProfile
+                ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
+                    _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
+                  ])
+                : _vm._e(),
+              _vm.pathEdit
+                ? _c("router-link", { attrs: { to: "/profile" } }, [
+                    _c("i", { staticClass: "material-icons" }, [
+                      _vm._v("arrow_back")
+                    ])
+                  ])
+                : _vm._e()
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm.showProfile
+        ? _c("div", { staticClass: "profile_box" }, [
+            _c(
+              "div",
+              { staticClass: "content" },
+              [
+                _vm.loading ? _c("loading") : _vm._e(),
+                _c("div", { staticClass: "information" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "widget",
+                      class: { widget_100: _vm.profileId }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "cover" },
+                        [
+                          _c("img", { attrs: { src: _vm.userInfo.cover } }),
+                          _vm.user.id != _vm.userInfo.id
+                            ? _c("friendship", {
+                                attrs: {
+                                  my_id: _vm.user.id,
+                                  profile_user_id: _vm.userInfo.id
+                                }
+                              })
+                            : _vm._e()
+                        ],
+                        1
+                      ),
+                      _c("avatar", {
+                        staticClass: "photo",
+                        attrs: {
+                          username: _vm.userInfo.name,
+                          color: "#fff",
+                          src: _vm.userInfo.avatar,
+                          size: 100
+                        }
+                      }),
+                      _c("h1", [_vm._v(_vm._s(_vm.userInfo.name))]),
+                      _c("h2", [_vm._v(_vm._s(_vm.userInfo.status))])
+                    ],
+                    1
+                  ),
+                  !_vm.profileId
+                    ? _c(
+                        "div",
+                        { staticClass: "users" },
+                        [
+                          _c("router-view", {
+                            attrs: { userInfo: _vm.userInfo },
+                            on: { previewImage: _vm.updateImage }
+                          }),
+                          _vm.pathProfile
+                            ? _c(
+                                "div",
+                                [
+                                  _vm._l(_vm.users, function(user) {
+                                    return _c(
+                                      "div",
+                                      { staticClass: "list" },
+                                      [
+                                        _c("avatar", {
+                                          staticClass: "image",
+                                          attrs: {
+                                            username: user.name,
+                                            color: "#fff",
+                                            src: user.avatar,
+                                            size: 50
+                                          }
+                                        }),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "name",
+                                            class: {
+                                              current_user:
+                                                user.id == _vm.userInfo.id
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.getProfile(user.id)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v(_vm._s(user.name))]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  }),
+                                  !_vm.records
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "list" },
+                                        [
+                                          _c("avatar", {
+                                            staticClass: "image",
+                                            attrs: {
+                                              username: "!",
+                                              color: "#fff",
+                                              size: 50,
+                                              backgroundColor: "#E57373"
+                                            }
+                                          }),
+                                          _c(
+                                            "button",
+                                            { staticClass: "name" },
+                                            [_vm._v("You are the first user")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    : _vm._e(),
+                                  _c("div", { staticClass: "list" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "random",
+                                        on: { click: _vm.getUsers }
+                                      },
+                                      [
+                                        _c(
+                                          "i",
+                                          { staticClass: "material-icons" },
+                                          [_vm._v("cached")]
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ],
+                                2
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ])
+              ],
+              1
+            )
+          ])
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3f8256ef", module.exports)
+  }
+}
+
+/***/ }),
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(209)
+  __webpack_require__(207)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(211)
+var __vue_script__ = __webpack_require__(209)
 /* template */
-var __vue_template__ = __webpack_require__(212)
+var __vue_template__ = __webpack_require__(210)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -43169,13 +43374,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 209 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(210);
+var content = __webpack_require__(208);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -43195,7 +43400,7 @@ if(false) {
 }
 
 /***/ }),
-/* 210 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -43209,7 +43414,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 211 */
+/* 209 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43418,7 +43623,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 212 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -43572,15 +43777,15 @@ if (false) {
 }
 
 /***/ }),
-/* 213 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(214)
+var __vue_script__ = __webpack_require__(212)
 /* template */
-var __vue_template__ = __webpack_require__(215)
+var __vue_template__ = __webpack_require__(213)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -43619,7 +43824,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 214 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43656,7 +43861,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 215 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -43736,19 +43941,19 @@ if (false) {
 }
 
 /***/ }),
-/* 216 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(217)
+  __webpack_require__(215)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(219)
+var __vue_script__ = __webpack_require__(217)
 /* template */
-var __vue_template__ = __webpack_require__(220)
+var __vue_template__ = __webpack_require__(218)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -43787,13 +43992,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 217 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(218);
+var content = __webpack_require__(216);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -43813,7 +44018,7 @@ if(false) {
 }
 
 /***/ }),
-/* 218 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -43827,7 +44032,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 219 */
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44016,7 +44221,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 220 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -44189,15 +44394,15 @@ if (false) {
 }
 
 /***/ }),
-/* 221 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(222)
+var __vue_script__ = __webpack_require__(220)
 /* template */
-var __vue_template__ = __webpack_require__(223)
+var __vue_template__ = __webpack_require__(221)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44236,7 +44441,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 222 */
+/* 220 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44373,7 +44578,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 223 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -44566,15 +44771,15 @@ if (false) {
 }
 
 /***/ }),
-/* 224 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(225)
+var __vue_script__ = __webpack_require__(223)
 /* template */
-var __vue_template__ = __webpack_require__(226)
+var __vue_template__ = __webpack_require__(224)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44613,7 +44818,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 225 */
+/* 223 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44776,7 +44981,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 226 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -44978,212 +45183,10 @@ if (false) {
 }
 
 /***/ }),
-/* 227 */
+/* 225 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 228 */,
-/* 229 */,
-/* 230 */,
-/* 231 */,
-/* 232 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "fade" } }, [
-    _vm.showProfile
-      ? _c("div", { staticClass: "right", attrs: { id: "profile_app" } }, [
-          _c(
-            "div",
-            { staticClass: "head" },
-            [
-              _c("h1", [
-                _c("i", { staticClass: "material-icons" }, [
-                  _vm._v("group_add")
-                ])
-              ]),
-              _c("div", { staticClass: "info" }, [
-                _c("p", [_vm._v("Profile")]),
-                _c("p", { staticClass: "online" }, [
-                  _vm._v(_vm._s(_vm.userInfo.name))
-                ])
-              ]),
-              _vm.pathProfile
-                ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
-                    _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
-                  ])
-                : _vm._e(),
-              _vm.pathEdit
-                ? _c("router-link", { attrs: { to: "/profile" } }, [
-                    _c("i", { staticClass: "material-icons" }, [
-                      _vm._v("arrow_back")
-                    ])
-                  ])
-                : _vm._e()
-            ],
-            1
-          ),
-          _c("div", { staticClass: "profile_box" }, [
-            _c(
-              "div",
-              { staticClass: "content" },
-              [
-                _vm.loading ? _c("loading") : _vm._e(),
-                _c("div", { staticClass: "information" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "widget",
-                      class: { widget_100: _vm.profileId }
-                    },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "cover" },
-                        [
-                          _c("img", { attrs: { src: _vm.userInfo.cover } }),
-                          _vm.user.id != _vm.userInfo.id
-                            ? _c("friendship", {
-                                attrs: {
-                                  my_id: _vm.user.id,
-                                  profile_user_id: _vm.userInfo.id
-                                }
-                              })
-                            : _vm._e()
-                        ],
-                        1
-                      ),
-                      _c("avatar", {
-                        staticClass: "photo",
-                        attrs: {
-                          username: _vm.userInfo.name,
-                          color: "#fff",
-                          src: _vm.userInfo.avatar,
-                          size: 100
-                        }
-                      }),
-                      _c("h1", [_vm._v(_vm._s(_vm.userInfo.name))]),
-                      _c("h2", [_vm._v(_vm._s(_vm.userInfo.status))])
-                    ],
-                    1
-                  ),
-                  !_vm.profileId
-                    ? _c(
-                        "div",
-                        { staticClass: "users" },
-                        [
-                          _c("router-view", {
-                            attrs: { userInfo: _vm.userInfo },
-                            on: { previewImage: _vm.updateImage }
-                          }),
-                          _vm.pathProfile
-                            ? _c(
-                                "div",
-                                [
-                                  _vm._l(_vm.users, function(user) {
-                                    return _c(
-                                      "div",
-                                      { staticClass: "list" },
-                                      [
-                                        _c("avatar", {
-                                          staticClass: "image",
-                                          attrs: {
-                                            username: user.name,
-                                            color: "#fff",
-                                            src: user.avatar,
-                                            size: 50
-                                          }
-                                        }),
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass: "name",
-                                            class: {
-                                              current_user:
-                                                user.id == _vm.userInfo.id
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                _vm.getProfile(user.id)
-                                              }
-                                            }
-                                          },
-                                          [_vm._v(_vm._s(user.name))]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  }),
-                                  !_vm.records
-                                    ? _c(
-                                        "div",
-                                        { staticClass: "list" },
-                                        [
-                                          _c("avatar", {
-                                            staticClass: "image",
-                                            attrs: {
-                                              username: "!",
-                                              color: "#fff",
-                                              size: 50,
-                                              backgroundColor: "#E57373"
-                                            }
-                                          }),
-                                          _c(
-                                            "button",
-                                            { staticClass: "name" },
-                                            [_vm._v("You are the first user")]
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    : _vm._e(),
-                                  _c("div", { staticClass: "list" }, [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass: "random",
-                                        on: { click: _vm.getUsers }
-                                      },
-                                      [
-                                        _c(
-                                          "i",
-                                          { staticClass: "material-icons" },
-                                          [_vm._v("cached")]
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ],
-                                2
-                              )
-                            : _vm._e()
-                        ],
-                        1
-                      )
-                    : _vm._e()
-                ])
-              ],
-              1
-            )
-          ])
-        ])
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3f8256ef", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

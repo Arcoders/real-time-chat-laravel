@@ -1,7 +1,7 @@
 <template lang="pug">
     transition(name='fade')
-        #profile_app.right(v-if="showProfile")
-            .head
+        .right
+            .head(v-if="showProfile")
 
                 h1
                     i.material-icons group_add
@@ -16,7 +16,7 @@
                 router-link(v-if='pathEdit', to='/profile')
                     i.material-icons arrow_back
 
-            .profile_box
+            .profile_box(v-if="showProfile")
                 .content
                     loading(v-if='loading')
                     .information

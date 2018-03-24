@@ -1,6 +1,6 @@
 transition(name='slide-fade')
-        .chat(v-if='showChat', @mouseleave="mouseLeave", @mouseout="mouseOut")
-            .head
+        .chat(@mouseleave="mouseLeave", @mouseout="mouseOut")
+            .head(v-if='showChat')
 
                 avatar.img(:username='chatName', color='#fff', :src='avatar')
 
@@ -15,7 +15,7 @@ transition(name='slide-fade')
                     p.online(v-else) Offline
                         span.state.red &#8226;
 
-            .chat_box
+            .chat_box(v-if='showChat')
 
                 .chat_content#chat(v-chat-scroll='')
                     messages(:messages='messages', :user='user', :usersTyping="typing")
@@ -34,7 +34,7 @@ transition(name='slide-fade')
                             a(v-on:click='photo = null')
                                 i.material-icons clear
 
-            send(v-on:errorMessages="pushErrorMessage($event)",
+            send(v-if='showChat', v-on:errorMessages="pushErrorMessage($event)",
                 v-on:clearPhoto="hideModal",
                 :uploadImageState='uploadImage',
                 @showUpload='showImageModal',
