@@ -39105,7 +39105,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$http.post('/logout').then(function (res) {
 
-                res.status === 200 ? window.location.reload() : _this2.logoutError = true;
+                res.status === 200 ? window.location.href = '/' : _this2.logoutError = true;
             }, function () {
                 return _this2.logoutError = true;
             });
@@ -42976,8 +42976,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -43247,7 +43245,7 @@ var render = function() {
                             ? _c(
                                 "div",
                                 [
-                                  _vm._l(_vm.users, function(user) {
+                                  _vm._l(_vm.users, function(user, index) {
                                     return _c(
                                       "div",
                                       { staticClass: "list" },
@@ -43271,7 +43269,7 @@ var render = function() {
                                             },
                                             on: {
                                               click: function($event) {
-                                                _vm.getProfile(user.id)
+                                                _vm.userInfo = _vm.users[index]
                                               }
                                             }
                                           },

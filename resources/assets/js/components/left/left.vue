@@ -122,7 +122,7 @@
             logout() {
                 this.$http.post('/logout').then(res => {
 
-                    (res.status === 200) ? window.location.reload() : this.logoutError = true;
+                    (res.status === 200) ? window.location.href = '/' : this.logoutError = true;
 
                 }, () => this.logoutError = true);
             },

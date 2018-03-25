@@ -38,13 +38,11 @@
 
                             div(v-if='pathProfile')
 
-                                .list(v-for='user in users')
+                                .list(v-for='(user, index) in users')
 
                                     avatar.image(:username='user.name', color='#fff', :src='user.avatar', :size='50')
 
-                                    button.name(v-on:click='getProfile(user.id)',
-                                                v-bind:class="{ current_user: user.id == userInfo.id }")
-                                                | {{user.name}}
+                                    button.name(@click='userInfo = users[index]', v-bind:class="{ current_user: user.id == userInfo.id }") {{user.name}}
 
                                 .list(v-if='!records')
 
