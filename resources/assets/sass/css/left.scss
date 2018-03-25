@@ -20,8 +20,9 @@
     .avatar {
         margin: 5px 20px;
     }
-    .name {
+    a {
         color: #777777;
+        text-decoration: none;
     }
     .icons {
         i {
@@ -37,6 +38,7 @@
         }
     }
     .router-link-active {
+        color: #009688;
         i {
             color: #009688;
         }

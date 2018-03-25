@@ -4,17 +4,18 @@
             .head(v-if="showProfile")
 
                 h1
-                    i.material-icons group_add
+                    router-link(v-if='pathProfile && user.id == userInfo.id',  to='/profile/edit')
+                        i.material-icons edit_location
+
+                    router-link(v-else-if='pathEdit',  to='/profile')
+                        i.material-icons arrow_back
+
+                    router-link(v-else, to='/profile', @click.native="setUserInfo")
+                        i.material-icons arrow_back
 
                 .info
                     p Profile
                     p.online {{ userInfo.name }}
-
-                router-link(v-if='pathProfile', to='/profile/edit')
-                    i.material-icons edit
-
-                router-link(v-if='pathEdit', to='/profile')
-                    i.material-icons arrow_back
 
             .profile_box(v-if="showProfile")
                 .content

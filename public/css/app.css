@@ -67,8 +67,9 @@ body {
   margin: 5px 20px;
 }
 
-.menu .name {
+.menu a {
   color: #777777;
+  text-decoration: none;
 }
 
 .menu .icons i {
@@ -83,6 +84,10 @@ body {
 
 .menu .icons .error {
   color: #E57373;
+}
+
+.menu .router-link-active {
+  color: #009688;
 }
 
 .menu .router-link-active i {

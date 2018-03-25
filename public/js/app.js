@@ -38718,7 +38718,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         setTimeout(function () {
             return _this.show = true;
-        }, 1000);
+        }, 0);
     },
 
 
@@ -39012,8 +39012,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -39160,33 +39158,28 @@ var render = function() {
         "div",
         { staticClass: "menu" },
         [
-          _c("avatar", {
-            staticClass: "avatar",
-            attrs: {
-              username: _vm.user.name,
-              color: "#fff",
-              src: _vm.user.avatar
-            }
-          }),
-          _c("div", { staticClass: "name" }, [
+          _c(
+            "router-link",
+            { attrs: { to: "/profile" } },
+            [
+              _c("avatar", {
+                staticClass: "avatar",
+                attrs: {
+                  username: _vm.user.name,
+                  color: "#fff",
+                  src: _vm.user.avatar
+                }
+              })
+            ],
+            1
+          ),
+          _c("router-link", { attrs: { to: "/profile" } }, [
             _vm._v(_vm._s(_vm._f("truncate")(_vm.user.name, 15)))
           ]),
           _c(
             "div",
             { staticClass: "icons" },
             [
-              _c(
-                "router-link",
-                {
-                  attrs: { to: "/profile" },
-                  nativeOn: {
-                    click: function($event) {
-                      _vm.test($event)
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "material-icons" }, [_vm._v("person")])]
-              ),
               _c(
                 "router-link",
                 {
@@ -42984,6 +42977,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -43152,36 +43146,48 @@ var render = function() {
   return _c("transition", { attrs: { name: "fade" } }, [
     _c("div", { staticClass: "right" }, [
       _vm.showProfile
-        ? _c(
-            "div",
-            { staticClass: "head" },
-            [
-              _c("h1", [
-                _c("i", { staticClass: "material-icons" }, [
-                  _vm._v("group_add")
-                ])
-              ]),
-              _c("div", { staticClass: "info" }, [
-                _c("p", [_vm._v("Profile")]),
-                _c("p", { staticClass: "online" }, [
-                  _vm._v(_vm._s(_vm.userInfo.name))
-                ])
-              ]),
-              _vm.pathProfile
-                ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
-                    _c("i", { staticClass: "material-icons" }, [_vm._v("edit")])
-                  ])
-                : _vm._e(),
-              _vm.pathEdit
-                ? _c("router-link", { attrs: { to: "/profile" } }, [
-                    _c("i", { staticClass: "material-icons" }, [
-                      _vm._v("arrow_back")
+        ? _c("div", { staticClass: "head" }, [
+            _c(
+              "h1",
+              [
+                _vm.pathProfile && _vm.user.id == _vm.userInfo.id
+                  ? _c("router-link", { attrs: { to: "/profile/edit" } }, [
+                      _c("i", { staticClass: "material-icons" }, [
+                        _vm._v("edit_location")
+                      ])
                     ])
-                  ])
-                : _vm._e()
-            ],
-            1
-          )
+                  : _vm.pathEdit
+                    ? _c("router-link", { attrs: { to: "/profile" } }, [
+                        _c("i", { staticClass: "material-icons" }, [
+                          _vm._v("arrow_back")
+                        ])
+                      ])
+                    : _c(
+                        "router-link",
+                        {
+                          attrs: { to: "/profile" },
+                          nativeOn: {
+                            click: function($event) {
+                              _vm.setUserInfo($event)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons" }, [
+                            _vm._v("arrow_back")
+                          ])
+                        ]
+                      )
+              ],
+              1
+            ),
+            _c("div", { staticClass: "info" }, [
+              _c("p", [_vm._v("Profile")]),
+              _c("p", { staticClass: "online" }, [
+                _vm._v(_vm._s(_vm.userInfo.name))
+              ])
+            ])
+          ])
         : _vm._e(),
       _vm.showProfile
         ? _c("div", { staticClass: "profile_box" }, [

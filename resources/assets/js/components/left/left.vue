@@ -3,14 +3,12 @@
 
         .menu
 
-            avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
+            router-link(to='/profile')
+                avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
 
-            .name {{ user.name | truncate(15)}}
+            router-link(to='/profile') {{ user.name | truncate(15)}}
 
             .icons
-
-                router-link(to='/profile', @click.native='test')
-                    i.material-icons person
 
                 router-link(to='/groups', @click.native='test')
                     i.material-icons person_add
