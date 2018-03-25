@@ -55,7 +55,7 @@
 
             resetStyle() {
                 window.addEventListener('resize', () => {
-                    if (window.innerWidth > 800) this.Styles('', '', '', '')
+                    if (window.innerWidth > 1000) this.Styles('', '', '', '')
                 });
             },
 

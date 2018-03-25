@@ -39,8 +39,8 @@ body {
 /* Left */
 
 .left {
-  width: 420px;
-  min-width: 420px;
+  width: 390px;
+  min-width: 390px;
   height: 100%;
   background-color: #fafafa;
 }
@@ -310,7 +310,7 @@ body {
 /* Right ---------------------------------------------------------------------- */
 
 .right {
-  min-width: calc(100% - 420px);
+  min-width: calc(100% - 390px);
   height: 100%;
   background-color: #ECE5DD;
 }
@@ -1019,10 +1019,6 @@ body {
 
 .profile_box {
   height: calc(98vh - 85px);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
 }
 
 .profile_box .content {
@@ -1030,6 +1026,21 @@ body {
   height: 100%;
   background-color: #f8f8f8;
   overflow-y: auto;
+}
+
+.profile_box .information {
+  width: 100%;
+  background: #f7f7f7;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .profile_box .widget {
@@ -1208,30 +1219,31 @@ body {
   color: #009688;
 }
 
-/* Information --------------------------------------------------------------------- */
+/* Edit User --------------------------------------------------------------------- */
 
 .edit_user {
-  position: relative;
-  background: #ffffff;
+  background-color: #fafafa;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+}
+
+.edit_user form {
+  padding: 20px;
 }
 
 .edit_user h1 {
   color: #009688;
   font-size: 14px;
-  margin: 20px 0;
+  font-weight: bold;
+  margin: 30px 0;
 }
 
-.edit-input {
-  width: 100%;
-}
-
-.edit-input > input {
+.edit_user .info {
   width: 100%;
   margin: auto;
   height: 60px;
   border: 0;
+  text-align: center;
   background-color: transparent;
   border-bottom: 2px solid #EEEEEE;
   outline: none;
@@ -1239,64 +1251,57 @@ body {
   transition: all .3s ease-out;
 }
 
-.edit-input > input:hover {
+.edit_user .info:hover {
   border-bottom: 2px solid #009688;
 }
 
-.edit_i {
-  font-size: 25px !important;
+.edit_user .upload_profile {
+  position: relative;
 }
 
-.edit_i:hover {
-  color: #e1e1e1;
+.edit_user .upload_profile [type=file] {
+  cursor: pointer;
+  display: block;
+  filter: alpha(opacity=0);
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
 }
 
-.select_image {
-  color: transparent;
+.edit_user .upload_profile .area {
+  width: 100%;
+  line-height: 40px;
+  border: 0;
+  outline: 0;
   color: #777777;
+  cursor: pointer;
+  text-align: center;
 }
 
-.save {
+.edit_user .upload_profile .area:hover {
+  color: #009688;
+}
+
+.edit_user .save {
   line-height: 30px;
   width: 100%;
   background-color: transparent;
   border: solid 2px #EEEEEE;
   color: #777777;
   margin-top: 25px;
+  outline: 0;
+  cursor: pointer;
   -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
 }
 
-.save:hover {
+.edit_user .save:hover {
   border: solid 2px #EEEEEE;
   font-weight: bold;
-}
-
-/* Information */
-
-.information {
-  width: 100%;
-  background: #f7f7f7;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.information_content {
-  background-color: #fafafa;
-  max-width: 100%;
-  height: 100%;
-}
-
-.information_form {
-  padding: 20px;
 }
 
 /* Vue effects ---------------------------------------------------------------------- */
@@ -1351,7 +1356,7 @@ body::-webkit-scrollbar-thumb,
   scrollbar-shadow-color: #dddddd;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .navigate {
     position: absolute;
     right: 50px;
@@ -1370,6 +1375,14 @@ body::-webkit-scrollbar-thumb,
 
   .right {
     width: 100%;
+  }
+
+  .profile_box .widget {
+    width: 60%;
+  }
+
+  .profile_box .users {
+    width: 40%;
   }
 }
 

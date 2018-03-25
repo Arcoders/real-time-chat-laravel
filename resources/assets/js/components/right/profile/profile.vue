@@ -32,6 +32,7 @@
                             h1 {{ userInfo.name }}
                             h2 {{ userInfo.status }}
 
+
                         .users(v-if='!profileId')
 
                             router-view(@previewImage='updateImage', :userInfo='userInfo')

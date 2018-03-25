@@ -103,7 +103,7 @@
             // ----------------------------------------------
 
             test() {
-                if (window.innerWidth <= 800) {
+                if (window.innerWidth <= 1000) {
                     document.querySelector(".navigate").style.display = "block";
                     document.querySelector(".left").style.display = "none";
 

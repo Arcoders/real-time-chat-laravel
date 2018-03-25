@@ -147,9 +147,9 @@ export const mixin = {
                 welcome: true,
                 id: this.$store.state.user.id,
                 name: 'h i...',
-                avatar: null,
+                avatar: '/images/default/welcome.png',
                 photo: null,
-                text: 'Be the first person to send a message :)',
+                text: 'be the first to greet...',
                 time: new Date()
             });
         },

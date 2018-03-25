@@ -1,34 +1,36 @@
 <template lang="pug">
 
-    #edit_profile_app.edit_user
-        .information_content
-            notifications(:vue_notifications='notifications', :width='100')
-            form.information_form(method='POST', v-on:submit.prevent='updateProfile()', enctype='multipart/form-data')
-                h1 Edit information
-                .edit-input
-                    input(type='text', v-on:keyup="onInputChange($event, 'name')", v-model='userInfo.name', placeholder='User name')
-                .edit-input
-                    input(type='text', v-on:keyup="onInputChange($event, 'status')", v-model='userInfo.status', placeholder='Status')
-                h1 Select avatar
-                label.fileContainer
-                    button
-                        i.material-icons.edit_i photo_camera
-                        span.select_image &nbsp; Change avatar
-                    input(type='file', name='fileInput', v-on:change="onFileChange($event, 'avatar')", ref='fileInput')
-                h1 Select Cover
-                label.fileContainer
-                    button
-                        i.material-icons.edit_i photo_size_select_actual
-                        span.select_image &nbsp; Choose Cover
-                    input(type='file', name='fileCover', v-on:change="onFileChange($event, 'cover')", ref='fileCover')
-                button.save(v-if='btnSubmit')
-                    | Save
-            loading(v-if='loading')
+    .edit_user
+
+        notifications(:vue_notifications='notifications', :width='100')
+
+        form(method='POST', v-on:submit.prevent='updateProfile()',  enctype='multipart/form-data')
+
+            h1 Edit information
+
+            input.info(type='text', v-on:keyup="onInputChange($event, 'name')", v-model='userInfo.name', placeholder='User name')
+
+            input.info(type='text',  v-on:keyup="onInputChange($event, 'status')", v-model='userInfo.status', placeholder='Status')
+
+            h1 Select avatar
+
+            label.upload_profile
+                .area
+                    i.material-icons.edit_i photo_camera
+                input(type='file', name='fileInput', v-on:change="onFileChange($event, 'avatar')", ref='fileInput')
+
+            h1 Select Cover
+
+            label.upload_profile
+                .area
+                    i.material-icons.edit_i photo_size_select_actual
+                input(type='file', name='fileCover', v-on:change="onFileChange($event, 'cover')", ref='fileCover')
+
+            button.save(v-if='btnSubmit') Save
+
+        loading(v-if='loading')
 
 </template>
-
-<style scoped>
-</style>
 
 <script>
 

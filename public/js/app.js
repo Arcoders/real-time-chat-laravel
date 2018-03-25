@@ -28682,9 +28682,9 @@ var mixin = {
                 welcome: true,
                 id: this.$store.state.user.id,
                 name: 'h i...',
-                avatar: null,
+                avatar: '/images/default/welcome.png',
                 photo: null,
-                text: 'Be the first person to send a message :)',
+                text: 'be the first to greet...',
                 time: new Date()
             });
         },
@@ -38739,7 +38739,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             window.addEventListener('resize', function () {
-                if (window.innerWidth > 800) _this2.Styles('', '', '', '');
+                if (window.innerWidth > 1000) _this2.Styles('', '', '', '');
             });
         },
 
@@ -39064,7 +39064,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // ----------------------------------------------
 
         test: function test() {
-            if (window.innerWidth <= 800) {
+            if (window.innerWidth <= 1000) {
                 document.querySelector(".navigate").style.display = "block";
                 document.querySelector(".left").style.display = "none";
 
@@ -39444,7 +39444,7 @@ var arrayFindIndex = __webpack_require__(126);
         // ----------------------------------------------
 
         test: function test() {
-            if (window.innerWidth <= 800) {
+            if (window.innerWidth <= 1000) {
                 document.querySelector(".navigate").style.display = "block";
                 document.querySelector(".left").style.display = "none";
 
@@ -42976,6 +42976,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -43350,21 +43351,17 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(207)
-}
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(209)
 /* template */
-var __vue_template__ = __webpack_require__(210)
+var __vue_template__ = __webpack_require__(230)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-68f6fac4"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -43397,51 +43394,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 207 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(208);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("227b2d73", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-68f6fac4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./edit_profile.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-68f6fac4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./edit_profile.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 208 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 207 */,
+/* 208 */,
 /* 209 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -43646,160 +43607,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 210 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "edit_user", attrs: { id: "edit_profile_app" } },
-    [
-      _c(
-        "div",
-        { staticClass: "information_content" },
-        [
-          _c("notifications", {
-            attrs: { vue_notifications: _vm.notifications, width: 100 }
-          }),
-          _c(
-            "form",
-            {
-              staticClass: "information_form",
-              attrs: { method: "POST", enctype: "multipart/form-data" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  _vm.updateProfile()
-                }
-              }
-            },
-            [
-              _c("h1", [_vm._v("Edit information")]),
-              _c("div", { staticClass: "edit-input" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.userInfo.name,
-                      expression: "userInfo.name"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "User name" },
-                  domProps: { value: _vm.userInfo.name },
-                  on: {
-                    keyup: function($event) {
-                      _vm.onInputChange($event, "name")
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.userInfo, "name", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _c("div", { staticClass: "edit-input" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.userInfo.status,
-                      expression: "userInfo.status"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "Status" },
-                  domProps: { value: _vm.userInfo.status },
-                  on: {
-                    keyup: function($event) {
-                      _vm.onInputChange($event, "status")
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.userInfo, "status", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _c("h1", [_vm._v("Select avatar")]),
-              _c("label", { staticClass: "fileContainer" }, [
-                _vm._m(0),
-                _c("input", {
-                  ref: "fileInput",
-                  attrs: { type: "file", name: "fileInput" },
-                  on: {
-                    change: function($event) {
-                      _vm.onFileChange($event, "avatar")
-                    }
-                  }
-                })
-              ]),
-              _c("h1", [_vm._v("Select Cover")]),
-              _c("label", { staticClass: "fileContainer" }, [
-                _vm._m(1),
-                _c("input", {
-                  ref: "fileCover",
-                  attrs: { type: "file", name: "fileCover" },
-                  on: {
-                    change: function($event) {
-                      _vm.onFileChange($event, "cover")
-                    }
-                  }
-                })
-              ]),
-              _vm.btnSubmit
-                ? _c("button", { staticClass: "save" }, [_vm._v("Save")])
-                : _vm._e()
-            ]
-          ),
-          _vm.loading ? _c("loading") : _vm._e()
-        ],
-        1
-      )
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [
-      _c("i", { staticClass: "material-icons edit_i" }, [
-        _vm._v("photo_camera")
-      ]),
-      _c("span", { staticClass: "select_image" }, [_vm._v("  Change avatar")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [
-      _c("i", { staticClass: "material-icons edit_i" }, [
-        _vm._v("photo_size_select_actual")
-      ]),
-      _c("span", { staticClass: "select_image" }, [_vm._v("  Choose Cover")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-68f6fac4", module.exports)
-  }
-}
-
-/***/ }),
+/* 210 */,
 /* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45210,6 +45018,153 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "edit_user" },
+    [
+      _c("notifications", {
+        attrs: { vue_notifications: _vm.notifications, width: 100 }
+      }),
+      _c(
+        "form",
+        {
+          attrs: { method: "POST", enctype: "multipart/form-data" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              _vm.updateProfile()
+            }
+          }
+        },
+        [
+          _c("h1", [_vm._v("Edit information")]),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.userInfo.name,
+                expression: "userInfo.name"
+              }
+            ],
+            staticClass: "info",
+            attrs: { type: "text", placeholder: "User name" },
+            domProps: { value: _vm.userInfo.name },
+            on: {
+              keyup: function($event) {
+                _vm.onInputChange($event, "name")
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.userInfo, "name", $event.target.value)
+              }
+            }
+          }),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.userInfo.status,
+                expression: "userInfo.status"
+              }
+            ],
+            staticClass: "info",
+            attrs: { type: "text", placeholder: "Status" },
+            domProps: { value: _vm.userInfo.status },
+            on: {
+              keyup: function($event) {
+                _vm.onInputChange($event, "status")
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.userInfo, "status", $event.target.value)
+              }
+            }
+          }),
+          _c("h1", [_vm._v("Select avatar")]),
+          _c("label", { staticClass: "upload_profile" }, [
+            _vm._m(0),
+            _c("input", {
+              ref: "fileInput",
+              attrs: { type: "file", name: "fileInput" },
+              on: {
+                change: function($event) {
+                  _vm.onFileChange($event, "avatar")
+                }
+              }
+            })
+          ]),
+          _c("h1", [_vm._v("Select Cover")]),
+          _c("label", { staticClass: "upload_profile" }, [
+            _vm._m(1),
+            _c("input", {
+              ref: "fileCover",
+              attrs: { type: "file", name: "fileCover" },
+              on: {
+                change: function($event) {
+                  _vm.onFileChange($event, "cover")
+                }
+              }
+            })
+          ]),
+          _vm.btnSubmit
+            ? _c("button", { staticClass: "save" }, [_vm._v("Save")])
+            : _vm._e()
+        ]
+      ),
+      _vm.loading ? _c("loading") : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "area" }, [
+      _c("i", { staticClass: "material-icons edit_i" }, [
+        _vm._v("photo_camera")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "area" }, [
+      _c("i", { staticClass: "material-icons edit_i" }, [
+        _vm._v("photo_size_select_actual")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-68f6fac4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
