@@ -55,15 +55,7 @@ class GroupsController extends Controller
 
         ])->users()->sync($request['id']);
 
-        foreach (user::find($request['id']) as $user):
-
-            $this->triggerPusher("user$user->id", 'updateStatus', ['type' => 'group']);
-
-            if ($user->id == Auth::user()->id) continue;
-
-            $this->notifyUsers($user, 'invited you to the ' . $request['name'] . ' group');
-
-        endforeach;
+        $this->notifyUsers(user::find($request['id']), 'invited you to the ' . $request['name'] . ' group');
 
         return response()->json($request['name'] . " created successfully", 200);
     }
@@ -81,15 +73,7 @@ class GroupsController extends Controller
 
         $group->delete();
 
-        foreach ($group->users as $user):
-
-            $this->triggerPusher("user$user->id", 'updateStatus', ['type' => 'group']);
-
-            if ($user->id == Auth::user()->id) continue;
-
-            $this->notifyUsers($user, "$group->name group was archived");
-
-        endforeach;
+        $this->notifyUsers($group->users, "$group->name group was archived");
 
         return response()->json("Group was deleted", 200);
     }
@@ -100,15 +84,7 @@ class GroupsController extends Controller
 
         $group->restore();
 
-        foreach ($group->users as $user):
-
-            $this->triggerPusher("user$user->id", 'updateStatus', ['type' => 'group']);
-
-            if ($user->id == Auth::user()->id) continue;
-
-            $this->notifyUsers($user, "$group->name group was restored");
-
-        endforeach;
+        $this->notifyUsers($group->users, "$group->name group was restored");
 
         return response()->json("Group was restored", 200);
     }
@@ -171,15 +147,7 @@ class GroupsController extends Controller
 
         $group->users()->sync($request['id']);
 
-        foreach (user::find($data) as $user):
-
-            $this->triggerPusher("user$user->id", 'updateStatus', ['type' => 'group']);
-
-            if ($user->id == Auth::user()->id) continue;
-
-            $this->notifyUsers($user, "invited you to the $group->name group");
-
-        endforeach;
+        $this->notifyUsers(user::find($data), "invited you to the $group->name group");
 
         return response()->json('Group edited successfully', 200);
     }
@@ -198,17 +166,21 @@ class GroupsController extends Controller
         return response()->json(Group::find($group_id), 200);
     }
 
-    protected function notify() {
+    protected function notifyUsers($users, $message) {
 
-        
+        foreach ($users as $user):
+
+            $this->triggerPusher("user$user->id", 'updateStatus', ['type' => 'group']);
+
+            if ($user->id == Auth::user()->id) continue;
+
+            Notification::send($user, new ManageGroupsNotification($message));
+
+            $this->triggerPusher("notification$user->id", 'updateNotifications', []);
+
+        endforeach;
 
     }
 
-    protected function notifyUsers(User $user, $message)
-    {
-        Notification::send($user, new ManageGroupsNotification($message));
-
-        $this->triggerPusher("notification$user->id", 'updateNotifications', []);
-    }
 
 }
