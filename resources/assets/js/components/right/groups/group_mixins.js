@@ -70,7 +70,6 @@ export const mixin = {
             this.showNotification(msg, 'done');
             this.newImage = false;
             if (this.$route.name === 'add_group') this.resetForm();
-            this.$eventBus.$emit('update', {type: 'group', refresh: true});
         },
 
         // ---------------------------------------------------

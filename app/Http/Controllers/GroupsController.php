@@ -151,7 +151,24 @@ class GroupsController extends Controller
 
         $this->notifyUsers(user::find($deleted), "Deleted you from the $group->name group");
 
+        $fixed = $this->removeItems($old, array_merge($deleted, $added));
+        
+        $this->notifyUsers(user::find($fixed), "Changes made to the $group->name group");
+
         return response()->json('Group edited successfully', 200);
+    }
+
+    protected function removeItems( $array, $items)
+    {
+
+        foreach ($items as $item):
+
+            $index = array_search($item, $array);
+            if ( $index !== false ) unset( $array[$index]);
+
+        endforeach;
+
+        return $array;
     }
 
     protected function idsToArray($request)
