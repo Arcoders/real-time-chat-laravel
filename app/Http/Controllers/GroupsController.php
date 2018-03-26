@@ -102,12 +102,6 @@ class GroupsController extends Controller
     public function edit(Group $group, Request $request)
     {
 
-        $old = $group->users->pluck('id')->toArray();
-
-        $new = $this->idsToArray($request['id']);
-
-        $data = array_values(array_diff($new, $old));
-
         if ($request['deleteImage']) {
 
             $this->deleteImage($group->avatar);
@@ -147,7 +141,15 @@ class GroupsController extends Controller
 
         $group->users()->sync($request['id']);
 
-        $this->notifyUsers(user::find($data), "invited you to the $group->name group");
+        $old = $group->users->pluck('id')->toArray();
+
+        $added = array_values(array_diff($request['id'], $old));
+
+        $this->notifyUsers(user::find($added), "Invited you to the $group->name group");
+
+        $deleted = array_values(array_diff($old, $request['id']));
+
+        $this->notifyUsers(user::find($deleted), "Deleted you from the $group->name group");
 
         return response()->json('Group edited successfully', 200);
     }
