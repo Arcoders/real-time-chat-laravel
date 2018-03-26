@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Route::bind('group', function ($value) {
-            return Group::withTrashed()->find($value);
+            return Group::withTrashed()->with('users')->find($value);
         });
     }
 

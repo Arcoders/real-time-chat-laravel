@@ -55,6 +55,16 @@ class GroupsController extends Controller
 
         ])->users()->sync($request['id']);
 
+        foreach ($request['id'] as $id):
+
+            $this->triggerPusher("user$id", 'updateStatus', ['type' => 'group']);
+
+            if ($id == Auth::user()->id) continue;
+
+            $this->notifyUsers(user::find($id), 'invited you to the ' . $request['name'] . ' group');
+
+        endforeach;
+
         return response()->json($request['name'] . " created successfully", 200);
     }
 
@@ -115,6 +125,13 @@ class GroupsController extends Controller
 
     public function edit(Group $group, Request $request)
     {
+
+        $old = $group->users->pluck('id')->toArray();
+
+        $new = $this->idsToArray($request['id']);
+
+        $data = array_values(array_diff($new, $old));
+
         if ($request['deleteImage']) {
 
             $this->deleteImage($group->avatar);
@@ -153,6 +170,16 @@ class GroupsController extends Controller
         $group->save();
 
         $group->users()->sync($request['id']);
+
+        foreach ($data as $id):
+
+            $this->triggerPusher("user$id", 'updateStatus', ['type' => 'group']);
+
+            if ($id == Auth::user()->id) continue;
+
+            $this->notifyUsers(user::find($id), "invited you to the $group->name group");
+
+        endforeach;
 
         return response()->json('Group edited successfully', 200);
     }
