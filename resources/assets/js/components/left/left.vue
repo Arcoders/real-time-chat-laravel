@@ -3,14 +3,14 @@
 
         .menu
 
-            router-link(to='/profile')
+            router-link(to='/profile', @click.native='showRight')
                 avatar.avatar(:username='user.name', color='#fff', :src='user.avatar')
 
-            router-link(to='/profile') {{ user.name | truncate(15)}}
+            router-link(to='/profile', @click.native='showRight') {{ user.name | truncate(15)}}
 
             .icons
 
-                router-link(to='/groups', @click.native='test')
+                router-link(to='/groups', @click.native='showRight')
                     i.material-icons person_add
                     span.step
 
@@ -46,7 +46,13 @@
 
     import {mapState} from 'vuex';
 
+    import {mixin} from '../../update_style';
+
     export default {
+
+        // ----------------------------------------------
+
+        mixins: [mixin],
 
         // ----------------------------------------------
 
@@ -83,19 +89,6 @@
         // ----------------------------------------------
 
         methods: {
-
-            // ----------------------------------------------
-
-            test() {
-                if (window.innerWidth <= 1000) {
-                    document.querySelector(".navigate").style.display = "block";
-                    document.querySelector(".left").style.display = "none";
-
-                    let right = document.querySelector(".right");
-                    right.style.width = "100%";
-                    right.style.display = "block";
-                }
-            },
 
             // ----------------------------------------------
 

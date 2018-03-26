@@ -38671,6 +38671,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__update_style__ = __webpack_require__(228);
 //
 //
 //
@@ -38686,6 +38687,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -38695,9 +38699,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     // ---------------------------------------------------
 
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__update_style__["a" /* mixin */]],
+
+    // ---------------------------------------------------
+
     created: function created() {
         this.$store.commit('updateUser', this.auth_user);
-        this.resetStyle();
     },
 
 
@@ -38718,48 +38725,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         setTimeout(function () {
             return _this.show = true;
         }, 0);
-    },
-
-
-    // ---------------------------------------------------
-
-    methods: {
-
-        // ---------------------------------------------------
-
-        updateStyles: function updateStyles() {
-            this.Styles('none', 'none', 'block', '100%');
-        },
-
-
-        // ---------------------------------------------------
-
-        resetStyle: function resetStyle() {
-            var _this2 = this;
-
-            window.addEventListener('resize', function () {
-                if (window.innerWidth > 1000) _this2.Styles('', '', '', '');
-            });
-        },
-
-
-        // ---------------------------------------------------
-
-        Styles: function Styles(displayNavigate, displayRight, displayLeft, widthLeft) {
-            document.querySelector(".navigate").style.display = displayNavigate;
-            document.querySelector(".right").style.display = displayRight;
-
-            var left = document.querySelector(".left");
-            left.style.display = displayLeft;
-            left.style.width = widthLeft;
-        }
-
-        // ---------------------------------------------------
-
     }
-
-    // ---------------------------------------------------
-
 });
 
 /***/ }),
@@ -38967,6 +38933,7 @@ module.exports = function listToStyles (parentId, list) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_style__ = __webpack_require__(228);
 //
 //
 //
@@ -39011,11 +38978,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+
+    // ----------------------------------------------
+
+    mixins: [__WEBPACK_IMPORTED_MODULE_1__update_style__["a" /* mixin */]],
 
     // ----------------------------------------------
 
@@ -39059,20 +39032,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // ----------------------------------------------
 
     methods: {
-
-        // ----------------------------------------------
-
-        test: function test() {
-            if (window.innerWidth <= 1000) {
-                document.querySelector(".navigate").style.display = "block";
-                document.querySelector(".left").style.display = "none";
-
-                var right = document.querySelector(".right");
-                right.style.width = "100%";
-                right.style.display = "block";
-            }
-        },
-
 
         // ----------------------------------------------
 
@@ -39159,7 +39118,14 @@ var render = function() {
         [
           _c(
             "router-link",
-            { attrs: { to: "/profile" } },
+            {
+              attrs: { to: "/profile" },
+              nativeOn: {
+                click: function($event) {
+                  _vm.showRight($event)
+                }
+              }
+            },
             [
               _c("avatar", {
                 staticClass: "avatar",
@@ -39172,9 +39138,18 @@ var render = function() {
             ],
             1
           ),
-          _c("router-link", { attrs: { to: "/profile" } }, [
-            _vm._v(_vm._s(_vm._f("truncate")(_vm.user.name, 15)))
-          ]),
+          _c(
+            "router-link",
+            {
+              attrs: { to: "/profile" },
+              nativeOn: {
+                click: function($event) {
+                  _vm.showRight($event)
+                }
+              }
+            },
+            [_vm._v(_vm._s(_vm._f("truncate")(_vm.user.name, 15)))]
+          ),
           _c(
             "div",
             { staticClass: "icons" },
@@ -39185,7 +39160,7 @@ var render = function() {
                   attrs: { to: "/groups" },
                   nativeOn: {
                     click: function($event) {
-                      _vm.test($event)
+                      _vm.showRight($event)
                     }
                   }
                 },
@@ -39336,6 +39311,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__update_style__ = __webpack_require__(228);
 //
 //
 //
@@ -39408,11 +39384,17 @@ var arraySort = __webpack_require__(158);
 var renameKeys = __webpack_require__(163);
 var arrayFindIndex = __webpack_require__(126);
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     // ----------------------------------------------
 
     props: ['showChatList'],
+
+    // ----------------------------------------------
+
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__update_style__["a" /* mixin */]],
 
     // ----------------------------------------------
 
@@ -39439,20 +39421,6 @@ var arrayFindIndex = __webpack_require__(126);
     // ----------------------------------------------
 
     methods: {
-
-        // ----------------------------------------------
-
-        test: function test() {
-            if (window.innerWidth <= 1000) {
-                document.querySelector(".navigate").style.display = "block";
-                document.querySelector(".left").style.display = "none";
-
-                var right = document.querySelector(".right");
-                right.style.width = "100%";
-                right.style.display = "block";
-            }
-        },
-
 
         // ----------------------------------------------
 
@@ -40230,7 +40198,7 @@ var render = function() {
                     },
                     nativeOn: {
                       click: function($event) {
-                        _vm.test($event)
+                        _vm.showRight($event)
                       }
                     }
                   },
@@ -40260,7 +40228,7 @@ var render = function() {
                             },
                             nativeOn: {
                               click: function($event) {
-                                _vm.test($event)
+                                _vm.showRight($event)
                               }
                             }
                           },
@@ -40281,7 +40249,7 @@ var render = function() {
                             },
                             nativeOn: {
                               click: function($event) {
-                                _vm.test($event)
+                                _vm.showRight($event)
                               }
                             }
                           },
@@ -40372,7 +40340,7 @@ var render = function() {
                     },
                     nativeOn: {
                       click: function($event) {
-                        _vm.test($event)
+                        _vm.showRight($event)
                       }
                     }
                   },
@@ -40402,7 +40370,7 @@ var render = function() {
                             },
                             nativeOn: {
                               click: function($event) {
-                                _vm.test($event)
+                                _vm.showRight($event)
                               }
                             }
                           },
@@ -40423,7 +40391,7 @@ var render = function() {
                             },
                             nativeOn: {
                               click: function($event) {
-                                _vm.test($event)
+                                _vm.showRight($event)
                               }
                             }
                           },
@@ -45157,6 +45125,72 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mixin; });
+var mixin = {
+
+        // ----------------------------------------------
+
+        methods: {
+
+                // ----------------------------------------------
+
+                showRight: function showRight() {
+                        if (window.innerWidth <= 1000) {
+                                document.querySelector(".navigate").style.display = "block";
+                                document.querySelector(".left").style.display = "none";
+
+                                var right = document.querySelector(".right");
+                                right.style.width = "100%";
+                                right.style.display = "block";
+                        }
+                },
+
+
+                // ---------------------------------------------------
+
+                updateStyles: function updateStyles() {
+                        this.Styles('none', 'none', 'block', '100%');
+                },
+
+
+                // ---------------------------------------------------
+
+                resetStyle: function resetStyle() {
+                        var _this = this;
+
+                        window.addEventListener('resize', function () {
+                                if (window.innerWidth > 1000) _this.Styles('', '', '', '');
+                        });
+                },
+
+
+                // ---------------------------------------------------
+
+                Styles: function Styles(displayNavigate, displayRight, displayLeft, widthLeft) {
+                        document.querySelector(".navigate").style.display = displayNavigate;
+                        document.querySelector(".right").style.display = displayRight;
+
+                        var left = document.querySelector(".left");
+                        left.style.display = displayLeft;
+                        left.style.width = widthLeft;
+                }
+
+                // ---------------------------------------------------
+
+
+        }
+
+};
 
 /***/ })
 /******/ ]);

@@ -5,16 +5,16 @@
 
         .contact(v-if='showChatList', v-for='friend in friends')
 
-            router-link(exact-active-class='active_image', :to="chatLink(friend, 'friend')", @click.native='test')
+            router-link(exact-active-class='active_image', :to="chatLink(friend, 'friend')", @click.native='showRight')
                 avatar.avatar(:username='friend.user.name', :src='friend.user.avatar', color='#fff')
 
             .preview
                 .text
                     h5
-                        router-link(exact-active-class='active_chat', :to="chatLink(friend, 'friend')", @click.native='test')
+                        router-link(exact-active-class='active_chat', :to="chatLink(friend, 'friend')", @click.native='showRight')
                             | {{ friend.user.name }}
                     h6
-                        router-link(exact-active-class='active_message', :to="chatLink(friend, 'friend')", @click.native='test')
+                        router-link(exact-active-class='active_message', :to="chatLink(friend, 'friend')", @click.native='showRight')
                             span(v-if="friend.msg")
                                 span(v-if="friend.msg.body && friend.msg.photo")
                                     i.material-icons.photo photo
@@ -31,16 +31,16 @@
 
         .contact(v-if='!showChatList', v-for='group in groups')
 
-            router-link(exact-active-class='active_image', :to="chatLink(group, 'group')", @click.native='test')
+            router-link(exact-active-class='active_image', :to="chatLink(group, 'group')", @click.native='showRight')
                 avatar.avatar(:username='group.name', :src='group.avatar', color='#fff')
 
             .preview
                 .text
                     h5
-                        router-link(exact-active-class='active_chat', :to="chatLink(group, 'group')", @click.native='test')
+                        router-link(exact-active-class='active_chat', :to="chatLink(group, 'group')", @click.native='showRight')
                             | {{ group.name }}
                     h6
-                        router-link(exact-active-class='active_message', :to="chatLink(group, 'group')", @click.native='test')
+                        router-link(exact-active-class='active_message', :to="chatLink(group, 'group')", @click.native='showRight')
                             span(v-if='group.msg')
                                 span(v-if='group.msg.body && group.msg.photo')
                                     i.material-icons.photo photo
@@ -70,11 +70,17 @@
     const renameKeys = require('rename-keys');
     const arrayFindIndex = require('array-find-index');
 
+    import {mixin} from '../../../update_style';
+
     export default {
 
         // ----------------------------------------------
 
         props: ['showChatList'],
+
+        // ----------------------------------------------
+
+        mixins: [mixin],
 
         // ----------------------------------------------
 
@@ -99,19 +105,6 @@
         // ----------------------------------------------
 
         methods: {
-
-            // ----------------------------------------------
-
-            test() {
-                if (window.innerWidth <= 1000) {
-                    document.querySelector(".navigate").style.display = "block";
-                    document.querySelector(".left").style.display = "none";
-
-                    let right = document.querySelector(".right");
-                    right.style.width = "100%";
-                    right.style.display = "block";
-                }
-            },
 
             // ----------------------------------------------
 

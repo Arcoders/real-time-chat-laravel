@@ -14,6 +14,9 @@
 </template>
 
 <script>
+
+    import {mixin} from '../update_style';
+
     export default {
 
         // ---------------------------------------------------
@@ -22,9 +25,12 @@
 
         // ---------------------------------------------------
 
+        mixins: [mixin],
+
+        // ---------------------------------------------------
+
         created() {
             this.$store.commit('updateUser', this.auth_user);
-            this.resetStyle();
         },
 
         // ---------------------------------------------------
@@ -40,39 +46,6 @@
         mounted() {
             setTimeout(() => this.show = true, 0);
         },
-
-        // ---------------------------------------------------
-
-        methods: {
-
-            // ---------------------------------------------------
-
-            updateStyles() {
-                this.Styles('none', 'none', 'block', '100%')
-            },
-
-            // ---------------------------------------------------
-
-            resetStyle() {
-                window.addEventListener('resize', () => {
-                    if (window.innerWidth > 1000) this.Styles('', '', '', '')
-                });
-            },
-
-            // ---------------------------------------------------
-
-            Styles(displayNavigate, displayRight, displayLeft, widthLeft) {
-                document.querySelector(".navigate").style.display = displayNavigate;
-                document.querySelector(".right").style.display = displayRight;
-
-                let left = document.querySelector(".left");
-                left.style.display = displayLeft;
-                left.style.width = widthLeft;
-            }
-
-            // ---------------------------------------------------
-
-        }
 
         // ---------------------------------------------------
 
