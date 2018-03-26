@@ -55,13 +55,13 @@ class GroupsController extends Controller
 
         ])->users()->sync($request['id']);
 
-        foreach ($request['id'] as $id):
+        foreach (user::find($request['id']) as $user):
 
-            $this->triggerPusher("user$id", 'updateStatus', ['type' => 'group']);
+            $this->triggerPusher("user$user->id", 'updateStatus', ['type' => 'group']);
 
-            if ($id == Auth::user()->id) continue;
+            if ($user->id == Auth::user()->id) continue;
 
-            $this->notifyUsers(user::find($id), 'invited you to the ' . $request['name'] . ' group');
+            $this->notifyUsers($user, 'invited you to the ' . $request['name'] . ' group');
 
         endforeach;
 
@@ -171,13 +171,13 @@ class GroupsController extends Controller
 
         $group->users()->sync($request['id']);
 
-        foreach ($data as $id):
+        foreach (user::find($data) as $user):
 
-            $this->triggerPusher("user$id", 'updateStatus', ['type' => 'group']);
+            $this->triggerPusher("user$user->id", 'updateStatus', ['type' => 'group']);
 
-            if ($id == Auth::user()->id) continue;
+            if ($user->id == Auth::user()->id) continue;
 
-            $this->notifyUsers(user::find($id), "invited you to the $group->name group");
+            $this->notifyUsers($user, "invited you to the $group->name group");
 
         endforeach;
 
@@ -196,6 +196,12 @@ class GroupsController extends Controller
     public function group($group_id)
     {
         return response()->json(Group::find($group_id), 200);
+    }
+
+    protected function notify() {
+
+        
+
     }
 
     protected function notifyUsers(User $user, $message)
