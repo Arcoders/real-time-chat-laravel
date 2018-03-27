@@ -10,6 +10,9 @@
 </template>
 
 <script>
+
+    import {mapState} from 'vuex';
+
     export default {
 
         data() {
@@ -24,9 +27,9 @@
 
                 let type = 'chat';
 
-                let friends = this.$store.state.friends.filter(g => g.user.name.match(new RegExp(this.name, 'i')));
+                let friends = this.friends.filter(g => g.user.name.match(new RegExp(this.name, 'i')));
 
-                let groups = this.$store.state.groups.filter(g => g.name.match(new RegExp(this.name, 'i')));
+                let groups = this.groups.filter(g => g.name.match(new RegExp(this.name, 'i')));
 
                 type = (groups.length > 0 && groups.length > friends.length) ? 'group' : 'chat';
 
@@ -37,6 +40,13 @@
             }
 
         },
+
+        // ----------------------------------------------
+
+        computed: mapState({
+            friends: (state) => state.friends,
+            groups: (state) => state.groups
+        }),
 
         // ----------------------------------------------
 

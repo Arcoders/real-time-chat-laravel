@@ -40602,6 +40602,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(126);
 //
 //
 //
@@ -40613,6 +40614,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -40629,11 +40633,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var type = 'chat';
 
-            var friends = this.$store.state.friends.filter(function (g) {
+            var friends = this.friends.filter(function (g) {
                 return g.user.name.match(new RegExp(_this.name, 'i'));
             });
 
-            var groups = this.$store.state.groups.filter(function (g) {
+            var groups = this.groups.filter(function (g) {
                 return g.name.match(new RegExp(_this.name, 'i'));
             });
 
@@ -40643,7 +40647,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$eventBus.$emit('update', { type: type, filter: 'true', filtered: { friends: friends, groups: groups } });
         }
-    }
+    },
+
+    // ----------------------------------------------
+
+    computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])({
+        friends: function friends(state) {
+            return state.friends;
+        },
+        groups: function groups(state) {
+            return state.groups;
+        }
+    })
 
     // ----------------------------------------------
 
