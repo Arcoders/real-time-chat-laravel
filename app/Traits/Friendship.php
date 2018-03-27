@@ -34,7 +34,7 @@ trait Friendship
 
     }
 
-    public function acceptFriends($senderId)
+    public function acceptFriend($senderId)
     {
 
         $status = $this->checkFriendship($senderId);
@@ -52,7 +52,7 @@ trait Friendship
 
     }
 
-    public function rejectFriendships($userId)
+    public function rejectFriendship($userId)
     {
 
         $status = $this->checkFriendship($userId);

@@ -30,14 +30,14 @@ class FriendshipsController extends Controller
     public function accept($id)
     {
 
-        return response()->json(Auth::user()->acceptFriends($id), 200);
+        return response()->json(Auth::user()->acceptFriend($id), 200);
 
     }
 
     public function reject($id)
     {
 
-        return response()->json(Auth::user()->rejectFriendships($id), 200);
+        return response()->json(Auth::user()->rejectFriendhips($id), 200);
 
     }
 

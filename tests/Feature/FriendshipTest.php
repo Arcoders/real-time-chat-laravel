@@ -27,15 +27,6 @@ class FriendshipTest extends TestCase
 
     }
 
-/*    public function change_statue_to_pending_and_waiting()
-    {
-        $sender = factory(User::class)->create();
-        $recipient = factory(User::class)->create();
-        $sender->addFriend($recipient);
-        $this->assertEquals('pending', $recipient->checkFriendship($sender));
-        $this->assertEquals('waiting', $sender->checkFriendship($recipient));
-    }*/
-
     public function test_change_status_to_pending_and_waiting()
     {
 
@@ -46,6 +37,53 @@ class FriendshipTest extends TestCase
 
         $this->assertEquals('pending', $recipient->checkFriendship($sender->id));
         $this->assertEquals('waiting', $sender->checkFriendship($recipient->id));
+
+    }
+
+    public function test_it_returns_accepted_friendships()
+    {
+
+        $sender = factory(User::class)->create();
+        $recipients = factory(User::class, 3)->create();
+
+        foreach ($recipients as $recipient) {
+
+            $sender->addFriend($recipient->id);
+            $recipient->acceptFriend($sender->id);
+
+        }
+
+        $this->assertCount(3, $sender->friends());
+
+    }
+
+    public function test_user_can_reject_the_request_and_delete_friend()
+    {
+
+        $sender = factory(User::class)->create();
+        $recipients = factory(User::class, 2)->create();
+
+        foreach ($recipients as $recipient) {
+
+            $sender->addFriend($recipient->id);
+
+        }
+
+        $recipients[0]->rejectFriendship($sender->id);
+
+        $this->assertEquals('add', $sender->checkFriendship($recipients[0]->id));
+
+        $recipients[1]->acceptFriend($sender->id);
+
+        $this->assertEquals('friends', $sender->checkFriendship($recipients[1]->id));
+
+        $this->assertCount(1, $sender->friends());
+
+        $recipients[1]->rejectFriendship($sender->id);
+
+        $this->assertEquals('add', $sender->checkFriendship($recipients[1]->id));
+
+        $this->assertCount(0, $sender->friends());
 
     }
 
