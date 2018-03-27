@@ -15,8 +15,7 @@
                     h5
                         router-link(exact-active-class='green_teal', :to="{ name: 'profile', params: { profile_id: notification.info.user.id }}")
                             | {{ notification.info.user.name }}
-                    h6
-                        a {{ notification.info.msg}}
+                    h6   {{ notification.info.msg}}
 
             .time
                 p {{ notification.data.date | moment('H:mm') }}

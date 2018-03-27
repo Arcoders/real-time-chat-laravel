@@ -116,7 +116,6 @@
                         this.friends = data.filtered.friends;
                     }
 
-                    if (data.refresh) this.chatsList();
                 });
             },
 

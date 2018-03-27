@@ -151,7 +151,7 @@ class GroupsController extends Controller
 
         $this->notifyUsers(user::find($deleted), "Deleted you from the $group->name group");
 
-        $fixed = $this->removeItems($old, array_merge($deleted, $added));
+        $fixed = $this->removeItems($old, $deleted);
 
         $this->notifyUsers(user::find($fixed), "Changes made to the $group->name group");
 
