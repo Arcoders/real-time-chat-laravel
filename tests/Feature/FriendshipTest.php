@@ -27,4 +27,26 @@ class FriendshipTest extends TestCase
 
     }
 
+/*    public function change_statue_to_pending_and_waiting()
+    {
+        $sender = factory(User::class)->create();
+        $recipient = factory(User::class)->create();
+        $sender->addFriend($recipient);
+        $this->assertEquals('pending', $recipient->checkFriendship($sender));
+        $this->assertEquals('waiting', $sender->checkFriendship($recipient));
+    }*/
+
+    public function test_change_status_to_pending_and_waiting()
+    {
+
+        $sender = factory(User::class)->create();
+        $recipient = factory(User::class)->create();
+
+        $sender->addFriend($recipient->id);
+
+        $this->assertEquals('pending', $recipient->checkFriendship($sender->id));
+        $this->assertEquals('waiting', $sender->checkFriendship($recipient->id));
+
+    }
+
 }
