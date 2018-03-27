@@ -27,6 +27,20 @@ class FriendshipTest extends TestCase
 
     }
 
+    public function test_user_can_not_send_a_request_to_himself()
+    {
+
+        $user = factory(User::class)->create();
+
+        $user->addFriend($user->id);
+
+        $this->assertCount(0, $user->friendRequestsReceived());
+        $this->assertCount(0, $user->friendRequestsSent());
+
+        $this->assertEquals('same_user', $user->checkFriendship($user->id));
+
+    }
+
     public function test_change_status_to_pending_and_waiting()
     {
 
@@ -86,5 +100,7 @@ class FriendshipTest extends TestCase
         $this->assertCount(0, $sender->friends());
 
     }
+
+
 
 }
